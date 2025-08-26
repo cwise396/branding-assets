@@ -7,31 +7,36 @@
   <meta name="description" content="Priorisieren, was wirklich Wirkung hat."/>
   <style>
     :root { --bg:#0b1220; --card:#111827; --muted:#9ca3af; --fg:#e5e7eb; --accent:#3b82f6; --ok:#10b981; }
-    html,body { margin:0; padding:0; background:var(--bg); color:var(--fg); font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; }
-    .wrap { max-width:980px; margin:0 auto; padding:40px 20px; text-align:left !important; }
-    h1 { font-size:clamp(28px,5vw,44px); margin:0; }
-    p.lead { margin:8px 0 0; color:var(--muted); }
-    .hero { background:var(--card); border:1px solid #1f2937; border-radius:18px; padding:24px; display:grid; gap:14px; }
-    .cta { display:flex; gap:10px; flex-wrap:wrap; }
-    .btn { display:inline-block; padding:12px 16px; border-radius:12px; border:1px solid #334155; text-decoration:none; color:var(--fg); }
-    .btn.primary { border-color:var(--accent); }
-    .btn.success { border-color:var(--ok); }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; margin-top:22px; }
-    .card { background:var(--card); border:1px solid #1f2937; border-radius:16px; padding:18px; }
-    .card h3 { margin:0 0 8px; font-size:18px; }
-    footer { margin-top:36px; color:var(--muted); font-size:14px; display:flex; gap:14px; flex-wrap:wrap; }
-    footer a { color:var(--muted); }
-    ul { margin:8px 0 0 18px; }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    .wrap{max-width:980px;margin:0 auto;padding:40px 20px;text-align:left !important}
 
-    /* >>> Bulletproof-Header */
+    /* Bulletproof-Header */
     .force-header{display:flex !important;align-items:center !important;gap:16px !important;margin-bottom:24px !important;text-align:left !important}
-    .force-header img{width:48px !important;height:48px !important;display:inline-block !important;margin:0 !important;border-radius:12px !important;float:none !important;vertical-align:middle !important}
+    .force-header .logo{
+      width:48px;height:48px;border-radius:12px;flex:0 0 48px;
+      background-image:url("/branding-assets/icons/tasksieve/tasksieve_logo.svg?v=9");
+      background-size:contain;background-position:center;background-repeat:no-repeat;
+    }
+    h1{font-size:clamp(28px,5vw,44px);margin:0}
+    p.lead{margin:8px 0 0;color:var(--muted)}
+
+    .hero{background:var(--card);border:1px solid #1f2937;border-radius:18px;padding:24px;display:grid;gap:14px}
+    .cta{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{display:inline-block;padding:12px 16px;border-radius:12px;border:1px solid #334155;text-decoration:none;color:var(--fg)}
+    .btn.primary{border-color:var(--accent)}.btn.success{border-color:var(--ok)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:22px}
+    .card{background:var(--card);border:1px solid #1f2937;border-radius:16px;padding:18px}
+    .card h3{margin:0 0 8px;font-size:18px}
+    footer{margin-top:36px;color:var(--muted);font-size:14px;display:flex;gap:14px;flex-wrap:wrap}
+    footer a{color:var(--muted)}
+    ul{margin:8px 0 0 18px}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header class="force-header">
-      <img src="/branding-assets/icons/tasksieve/tasksieve_logo.svg?v=7" alt="TaskSieve Logo" />
+      <div class="logo" aria-hidden="true"></div>
       <div style="flex:1 1 auto;">
         <h1>TaskSieve</h1>
         <p class="lead">Priorisieren, was wirklich Wirkung hat.</p>
@@ -46,8 +51,8 @@
         <li>Export (CSV) und Kalender-Ansicht (in Kürze)</li>
       </ul>
       <div class="cta">
-        <a class="btn primary" href="#">Demo öffnen</a>
-        <a class="btn success" href="#">Zum Setup</a>
+        <a class="btn primary" href="./demo.html">Demo öffnen</a>
+        <a class="btn success" href="./setup.html">Zum Setup</a>
         <a class="btn" href="../index.html">Zur Übersicht</a>
       </div>
     </section>
