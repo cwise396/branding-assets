@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 <html lang="de">
 <head>
   <meta charset="utf-8" />
@@ -9,7 +9,7 @@
     html,body { margin:0; padding:0; background:var(--bg); color:var(--fg); font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
     .wrap { max-width: 980px; margin: 0 auto; padding: 40px 20px; }
     header { display:flex; align-items:center; gap:16px; margin-bottom: 24px; }
-    header img, header svg { width:48px; height:48px; border-radius:12px; background: transparent; }
+    header img { width:48px; height:48px; border-radius:12px; background: transparent; }
     h1 { font-size: clamp(24px, 4vw, 40px); margin: 0; letter-spacing: 0.2px; }
     p.lead { margin: 6px 0 0; color: var(--muted); }
     .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:18px; margin-top: 28px; }
@@ -20,14 +20,14 @@
     .actions { margin-top: 10px; display:flex; gap:10px; flex-wrap:wrap; }
     .btn { display:inline-block; padding:10px 14px; border-radius: 12px; border:1px solid #334155; text-decoration:none; color:var(--fg); }
     .btn.primary { border-color: var(--accent); }
-    footer { margin-top: 40px; color: var(--muted); font-size: 14px; }
-    code { background: #0b1220; border:1px solid #1f2937; padding: 2px 6px; border-radius: 6px; }
+    footer { margin-top: 40px; color: var(--muted); font-size: 14px; display:flex; gap:12px; flex-wrap:wrap; }
+    footer a { color: var(--muted); }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <img src="./icons/changewise/changewise_icon_256.png" alt="ChangeWise Logo" />
+      <img src="./icons/changewise/changewise_icon.svg" alt="ChangeWise Logo" />
       <div>
         <h1>ChangeWise • SlackDigest • TaskSieve</h1>
         <p class="lead">Ein kompaktes SaaS-Portfolio für klare Kommunikation, Priorisierung und Wandel.</p>
@@ -35,18 +35,19 @@
     </header>
 
     <div class="grid">
+      <!-- ChangeWise -->
       <section class="card">
         <div class="icon">
-          <img src="./icons/changewise/changewise_icon_256.png" alt="ChangeWise" width="56" height="56" />
+          <img src="./icons/changewise/changewise_icon.svg" alt="ChangeWise" width="56" height="56" />
         </div>
         <h2>ChangeWise</h2>
         <p>Branding & Change-Kommunikation. Einheitliche Assets, klare Botschaften, sofort einsatzbereit.</p>
         <div class="actions">
-          <a class="btn primary" href="./icons/changewise/changewise_icon.svg">Assets ansehen</a>
-          <a class="btn" href="#">Dokumentation</a>
+          <a class="btn primary" href="./changewise/">Zur Produktseite</a>
         </div>
       </section>
 
+      <!-- SlackDigest -->
       <section class="card">
         <div class="icon">
           <img src="./icons/slackdigest/slackdigest_logo.svg" alt="SlackDigest" width="56" height="56" />
@@ -54,11 +55,11 @@
         <h2>SlackDigest</h2>
         <p>Tägliche/wöchentliche Slack-Zusammenfassungen. Fokus auf Relevanz, weniger Rauschen.</p>
         <div class="actions">
-          <a class="btn primary" href="#">Demo öffnen</a>
-          <a class="btn" href="#">Setup-Anleitung</a>
+          <a class="btn primary" href="./slackdigest/">Zur Produktseite</a>
         </div>
       </section>
 
+      <!-- TaskSieve -->
       <section class="card">
         <div class="icon">
           <img src="./icons/tasksieve/tasksieve_logo.svg" alt="TaskSieve" width="56" height="56" />
@@ -66,14 +67,14 @@
         <h2>TaskSieve</h2>
         <p>Filtern, was zählt: Aufgaben priorisieren, bündeln, intelligent sortieren.</p>
         <div class="actions">
-          <a class="btn primary" href="#">Demo öffnen</a>
-          <a class="btn" href="#">Setup-Anleitung</a>
+          <a class="btn primary" href="./tasksieve/">Zur Produktseite</a>
         </div>
       </section>
     </div>
 
     <footer>
-      <p>Hinweis: Lege die Ordnerstruktur <code>icons/</code> in der Repo-Wurzel an. Ersetze Platzhalter-Links (Demo/Docs), sobald verfügbar.</p>
+      <a href="./impressum.html">Impressum</a>
+      <a href="./datenschutz.html">Datenschutz</a>
     </footer>
   </div>
 </body>
