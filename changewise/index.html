@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 <html lang="de">
 <head>
   <meta charset="utf-8"/>
@@ -7,39 +7,69 @@
   <meta name="description" content="Branding-Bausteine und Landingpages aus einem Guss."/>
   <style>
     :root { --bg:#0b1220; --card:#111827; --muted:#9ca3af; --fg:#e5e7eb; --accent:#3b82f6; }
-    html,body { margin:0; padding:0; background:var(--bg); color:var(--fg); font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; }
-    .wrap { max-width:980px; margin:0 auto; padding:40px 20px; text-align:left !important; }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    .wrap{max-width:980px;margin:0 auto;padding:40px 20px;text-align:left !important}
 
-    h1 { font-size:clamp(28px,5vw,44px); margin:0; }
-    p.lead { margin:8px 0 0; color:var(--muted); }
-
-    .hero { background:var(--card); border:1px solid #1f2937; border-radius:18px; padding:24px; display:grid; gap:14px; }
-    .cta { display:flex; gap:10px; flex-wrap:wrap; }
-    .btn { display:inline-block; padding:12px 16px; border-radius:12px; border:1px solid #334155; text-decoration:none; color:var(--fg); }
-    .btn.primary { border-color:var(--accent); }
-
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; margin-top:22px; }
-    .card { background:var(--card); border:1px solid #1f2937; border-radius:16px; padding:18px; }
-    .card h3 { margin:0 0 8px; font-size:18px; }
-
-    footer { margin-top:36px; color:var(--muted); font-size:14px; display:flex; gap:14px; flex-wrap:wrap; }
-    footer a { color:var(--muted); }
-    ul { margin:8px 0 0 18px; }
-
-    /* >>> Bulletproof-Header (erzwingt Logo links neben Überschrift) */
-    .force-header{
-      display:flex !important;
-      align-items:center !important;
-      gap:16px !important;
-      margin-bottom:24px !important;
-      text-align:left !important;
+    /* Bulletproof-Header links nebeneinander */
+    .force-header{display:flex !important;align-items:center !important;gap:16px !important;margin-bottom:24px !important;text-align:left !important}
+    .force-header .logo{
+      width:48px;height:48px;border-radius:12px;flex:0 0 48px;
+      background-image:url("/branding-assets/icons/changewise/changewise_icon.svg?v=9");
+      background-size:contain;background-position:center;background-repeat:no-repeat;
     }
-    .force-header img{
-      width:48px !important;
-      height:48px !important;
-      display:inline-block !important;
-      margin:0 !important;
-      border-radius:12px !important;
-      float:none !important;
-      vertical-align:middle !important;
-      flex:0 0 auto !important;
+    h1{font-size:clamp(28px,5vw,44px);margin:0}
+    p.lead{margin:8px 0 0;color:var(--muted)}
+
+    .hero{background:var(--card);border:1px solid #1f2937;border-radius:18px;padding:24px;display:grid;gap:14px}
+    .cta{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{display:inline-block;padding:12px 16px;border-radius:12px;border:1px solid #334155;text-decoration:none;color:var(--fg)}
+    .btn.primary{border-color:var(--accent)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:22px}
+    .card{background:var(--card);border:1px solid #1f2937;border-radius:16px;padding:18px}
+    .card h3{margin:0 0 8px;font-size:18px}
+    footer{margin-top:36px;color:var(--muted);font-size:14px;display:flex;gap:14px;flex-wrap:wrap}
+    footer a{color:var(--muted)}
+    ul{margin:8px 0 0 18px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="force-header">
+      <div class="logo" aria-hidden="true"></div>
+      <div style="flex:1 1 auto;">
+        <h1>ChangeWise</h1>
+        <p class="lead">Branding-Bausteine und Landingpages aus einem Guss.</p>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="note">Was du bekommst:</div>
+      <ul>
+        <li>Einheitliches Icon- und Farbset</li>
+        <li>Minimal-Templates für Produkt-Landingpages</li>
+        <li>Sofort auf GitHub Pages oder Render deploybar</li>
+      </ul>
+      <div class="cta">
+        <a class="btn primary" href="./docs.html">Dokumentation</a>
+        <a class="btn" href="../index.html">Zur Übersicht</a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card"><h3>Features</h3><ul>
+        <li>Kanonische Assets & Guidelines</li>
+        <li>Schnelle Anpassung und Wiederverwendung</li>
+        <li>Saubere Struktur für Teams</li>
+      </ul></article>
+      <article class="card"><h3>Preise</h3><p class="note">Platzhalter – Details folgen.</p></article>
+      <article class="card"><h3>FAQ</h3><p class="note">Platzhalter – häufige Fragen kommen hierhin.</p></article>
+    </section>
+
+    <footer>
+      <a href="../impressum.html">Impressum</a>
+      <a href="../datenschutz.html">Datenschutz</a>
+    </footer>
+  </div>
+</body>
+</html>
