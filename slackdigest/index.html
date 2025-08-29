@@ -1,11 +1,12 @@
- <!doctype html>
+<!doctype html>
 <html lang="de">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>SlackDigest – Tägliche/wöchentliche Slack-Zusammenfassungen</title>
   <meta name="description" content="Automatisierte Slack-Zusammenfassungen, die Wichtiges hervorheben."/>
-  <link rel="icon" type="image/svg+xml" href="/branding-assets/icons/slackdigest/slackdigest_logo.svg?v=13">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/branding-assets/icons/slackdigest/slackdigest_logo.svg?v=11">
   <style>
     :root { --bg:#0b1220; --card:#111827; --muted:#9ca3af; --fg:#e5e7eb; --accent:#3b82f6; --ok:#10b981; }
     *{box-sizing:border-box}
@@ -28,17 +29,17 @@
 <body>
   <div class="wrap">
 
-    <!-- Header: Logo direkt im H1 (funktioniert auch im Safari-Reader) -->
-    <header style="margin-bottom:24px;text-align:left">
-      <h1 style="display:flex!important;align-items:center!important;gap:12px!important;margin:0">
-        <img
-          src="/branding-assets/icons/slackdigest/slackdigest_logo.svg?v=13"
-          alt=""
-          style="width:40px;height:40px;border-radius:10px;display:inline-block"
-        />
-        <span>SlackDigest</span>
-      </h1>
-      <p class="lead">Automatisierte Slack-Zusammenfassungen, die Wichtiges hervorheben.</p>
+    <!-- Header: Grid + <img> mit nicht-leerem alt (Reader zeigt es an) -->
+    <header style="display:grid;grid-template-columns:48px 1fr;align-items:center;gap:16px;margin-bottom:24px;text-align:left">
+      <img
+        src="/branding-assets/icons/slackdigest/slackdigest_logo.svg?v=11"
+        alt="SlackDigest Logo"
+        style="width:48px;height:48px;display:block;margin:0;border-radius:12px"
+      />
+      <div>
+        <h1>SlackDigest</h1>
+        <p class="lead">Automatisierte Slack-Zusammenfassungen, die Wichtiges hervorheben.</p>
+      </div>
     </header>
 
     <section class="hero">
