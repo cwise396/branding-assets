@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>SlackDigest – Tägliche/wöchentliche Slack-Zusammenfassungen</title>
   <meta name="description" content="Automatisierte Slack-Zusammenfassungen, die Wichtiges hervorheben."/>
-  <link rel="icon" type="image/svg+xml" href="/branding-assets/icons/slackdigest/slackdigest_logo.svg?v=16">
+  <link rel="icon" type="image/svg+xml" href="/branding-assets/icons/slackdigest/slackdigest_logo.svg?v=17">
   <style>
     :root { --bg:#0b1220; --card:#111827; --muted:#9ca3af; --fg:#e5e7eb; --accent:#3b82f6; --ok:#10b981; }
     *{box-sizing:border-box}
@@ -28,11 +28,13 @@
 <body>
   <div class="wrap">
 
-    <!-- Header: Logo als Inline-Bild IM H1 (kein Grid/Flex nötig) -->
+    <!-- Header: Logo IM H1 + hartes Reload via JS -->
     <header style="margin-bottom:24px;text-align:left">
       <h1>
         <img
-          src="/branding-assets/icons/slackdigest/slackdigest_logo.svg?v=16"
+          id="brand-logo"
+          src="/branding-assets/icons/slackdigest/slackdigest_logo.svg?v=17"
+          data-src="/branding-assets/icons/slackdigest/slackdigest_logo.svg?v=17"
           alt="SlackDigest Logo"
           width="40" height="40"
           style="vertical-align:middle;margin-right:12px;border-radius:10px"
@@ -71,5 +73,17 @@
       <a href="../datenschutz.html">Datenschutz</a>
     </footer>
   </div>
+
+  <!-- Mini-Cachebuster: lädt das Logo nach Page-Load nochmals explizit -->
+  <script>
+    (function () {
+      var img = document.getElementById('brand-logo');
+      if (!img) return;
+      var base = img.getAttribute('data-src') || img.getAttribute('src') || '';
+      if (!base) return;
+      var sep = base.indexOf('?') === -1 ? '?' : '&';
+      img.src = base + sep + 't=' + Date.now();
+    })();
+  </script>
 </body>
 </html>
