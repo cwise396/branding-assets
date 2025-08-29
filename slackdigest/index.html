@@ -29,14 +29,14 @@
 <body>
   <div class="wrap">
 
-    <!-- Header mit <img>-Logo (Reader-sicher) -->
-    <header style="display:flex;align-items:center;gap:16px;margin-bottom:24px;text-align:left">
+    <!-- Header mit CSS-Grid (Logo garantiert links neben Text) -->
+    <header style="display:grid;grid-template-columns:48px 1fr;align-items:center;gap:16px;margin-bottom:24px;text-align:left">
       <img
         src="/branding-assets/icons/slackdigest/slackdigest_logo.svg?v=12"
         alt="SlackDigest"
-        style="width:48px;height:48px;display:block;margin:0;border-radius:12px;flex:0 0 48px"
+        style="width:48px;height:48px;display:block;margin:0;border-radius:12px"
       />
-      <div style="flex:1 1 auto">
+      <div>
         <h1>SlackDigest</h1>
         <p class="lead">Automatisierte Slack-Zusammenfassungen, die Wichtiges hervorheben.</p>
       </div>
