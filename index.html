@@ -3,81 +3,54 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="ChangeWise • SlackDigest • TaskSieve – Ein kompaktes SaaS-Portfolio für klare Kommunikation, Priorisierung und Wandel." />
   <title>ChangeWise • SlackDigest • TaskSieve</title>
-  <meta name="description" content="Ein kompaktes SaaS-Portfolio für klare Kommunikation, Priorisierung und Wandel." />
-  <style>
-    :root { --bg:#0b1220; --card:#111827; --muted:#9ca3af; --fg:#e5e7eb; --accent:#3b82f6; }
-    html,body { margin:0; padding:0; background:var(--bg); color:var(--fg); font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; }
-    .wrap { max-width:980px; margin:0 auto; padding:40px 20px; }
-    header { display:flex; align-items:center; gap:16px; margin-bottom:24px; }
-    header img { width:48px; height:48px; border-radius:12px; }
-    h1 { font-size:clamp(24px,4vw,40px); margin:0; letter-spacing:.2px; }
-    p.lead { margin:6px 0 0; color:var(--muted); }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; margin-top:28px; }
-    .card { background:var(--card); border:1px solid #1f2937; border-radius:16px; padding:20px; display:flex; flex-direction:column; gap:12px; }
-    .card .icon { width:56px; height:56px; border-radius:14px; overflow:hidden; }
-    .card h2 { margin:0; font-size:20px; }
-    .card p { margin:0; color:var(--muted); line-height:1.5; }
-    .actions { margin-top:10px; display:flex; gap:10px; flex-wrap:wrap; }
-    .btn { display:inline-block; padding:10px 14px; border-radius:12px; border:1px solid #334155; text-decoration:none; color:var(--fg); }
-    .btn.primary { border-color:var(--accent); }
-    footer { margin-top:40px; color:var(--muted); font-size:14px; display:flex; gap:12px; flex-wrap:wrap; }
-    footer a { color:var(--muted); }
-  </style>
-<script defer data-domain="cwise396.github.io" src="https://plausible.io/js/script.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="./assets/css/site.css" />
+
+  <!-- Favicon (nach Upload vorhanden) -->
+  <link rel="icon" href="./assets/icons/changewise/favicon.ico">
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <img src="/branding-assets/icons/changewise/changewise_icon.svg" alt="ChangeWise Logo" />
-      <div>
-        <h1>ChangeWise • SlackDigest • TaskSieve</h1>
-        <p class="lead">Ein kompaktes SaaS-Portfolio für klare Kommunikation, Priorisierung und Wandel.</p>
-      </div>
-    </header>
-
-    <div class="grid">
-      <!-- ChangeWise -->
-      <section class="card">
-        <div class="icon">
-          <img src="/branding-assets/icons/changewise/changewise_icon.svg" alt="ChangeWise" width="56" height="56" />
-        </div>
-        <h2>ChangeWise</h2>
-        <p>Branding & Change-Kommunikation. Einheitliche Assets, klare Botschaften, sofort einsatzbereit.</p>
-        <div class="actions">
-          <a class="btn primary" href="./changewise/">Zur Produktseite</a>
-        </div>
-      </section>
-
-      <!-- SlackDigest -->
-      <section class="card">
-        <div class="icon">
-          <img src="/branding-assets/icons/slackdigest/slackdigest_logo.svg" alt="SlackDigest" width="56" height="56" />
-        </div>
-        <h2>SlackDigest</h2>
-        <p>Tägliche/wöchentliche Slack-Zusammenfassungen. Fokus auf Relevanz, weniger Rauschen.</p>
-        <div class="actions">
-          <a class="btn primary" href="./slackdigest/">Zur Produktseite</a>
-        </div>
-      </section>
-
-      <!-- TaskSieve -->
-      <section class="card">
-        <div class="icon">
-          <img src="/branding-assets/icons/tasksieve/tasksieve_logo.svg" alt="TaskSieve" width="56" height="56" />
-        </div>
-        <h2>TaskSieve</h2>
-        <p>Filtern, was zählt: Aufgaben priorisieren, bündeln, intelligent sortieren.</p>
-        <div class="actions">
-          <a class="btn primary" href="./tasksieve/">Zur Produktseite</a>
-        </div>
-      </section>
+  <header class="site-header">
+    <div class="brand">
+      <!-- Logo (nach Upload vorhanden) -->
+      <img src="./assets/icons/changewise/changewise_icon_256.png" alt="ChangeWise Logo" class="brand-logo" />
+      <h1>ChangeWise • SlackDigest • TaskSieve</h1>
+      <p>Ein kompaktes SaaS-Portfolio für klare Kommunikation, Priorisierung und Wandel.</p>
     </div>
+  </header>
 
-    <footer>
+  <main class="grid">
+    <article class="card">
+      <img src="./assets/icons/changewise/changewise_icon_256.png" alt="ChangeWise" />
+      <h2>ChangeWise</h2>
+      <p>Branding &amp; Change-Kommunikation. Einheitliche Assets, klare Botschaften, sofort einsatzbereit.</p>
+      <a class="btn" href="./products/changewise/">Zur Produktseite</a>
+    </article>
+
+    <article class="card">
+      <img src="./assets/icons/slackdigest/slackdigest_icon_256.png" alt="SlackDigest" />
+      <h2>SlackDigest</h2>
+      <p>Tägliche/Wöchentliche Slack-Zusammenfassungen. Fokus auf Relevanz, weniger Rauschen.</p>
+      <a class="btn" href="./products/slackdigest/">Zur Produktseite</a>
+    </article>
+
+    <article class="card">
+      <img src="./assets/icons/tasksieve/tasksieve_icon_256.png" alt="TaskSieve" />
+      <h2>TaskSieve</h2>
+      <p>Filtern, was zählt: Aufgaben priorisieren, bündeln, intelligent sortieren.</p>
+      <a class="btn" href="./products/tasksieve/">Zur Produktseite</a>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <nav>
       <a href="./impressum.html">Impressum</a>
+      <span> · </span>
       <a href="./datenschutz.html">Datenschutz</a>
-    </footer>
-  </div>
+    </nav>
+  </footer>
 </body>
 </html>
