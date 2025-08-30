@@ -1,0 +1,69 @@
+/* SaaS base stylesheet v1 */
+:root { --maxw: 1100px; --radius: 16px; --gap: 16px; }
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color: #111;
+  background: #fff;
+}
+
+a { color: inherit; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.site-header {
+  padding: 32px 16px;
+  border-bottom: 1px solid #eee;
+}
+.brand {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  text-align: center;
+}
+.brand-logo {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+}
+
+.grid {
+  max-width: var(--maxw);
+  margin: 24px auto;
+  padding: 0 16px;
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.card {
+  border: 1px solid #eee;
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+}
+.card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  display: block;
+  margin: 0 auto 8px;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  text-decoration: none;
+}
+
+.site-footer {
+  border-top: 1px solid #eee;
+  padding: 20px 16px;
+  text-align: center;
+}
