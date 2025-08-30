@@ -1,0 +1,7 @@
+# .keep — Do not remove
+# Purpose: keep this folder under version control.
+# Target files (expected later):
+# - changewise_icon_128.png
+# - changewise_icon_256.png
+# - changewise_icon_512.png
+# - favicon.ico
