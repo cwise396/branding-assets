@@ -1,24 +1,32 @@
-/* === theme-changewise (navy) === */
+ /* === theme-changewise (red) === */
 .theme-changewise{
-  --cw-bg1:#0B3B66; /* top */
-  --cw-bg2:#0D213A; /* bottom */
+  /* Seitenhintergrund – roter Verlauf, minimal heller */
+  --cw-bg1:#D33C3C; /* top (helleres Rot) */
+  --cw-bg2:#9E2325; /* bottom (kräftiges Dunkelrot) */
   background:linear-gradient(180deg,var(--cw-bg1) 0%,var(--cw-bg2) 100%);
   color:#fff;
 }
+
 .theme-changewise .site-header{border-bottom-color:rgba(255,255,255,.18);}
-.theme-changewise h1,.theme-changewise h2,.theme-changewise .brand p,.theme-changewise .topnav a{color:#fff;}
-/* Navbar */
-.theme-changewise .topnav{background:#0D213A;}
+.theme-changewise h1,.theme-changewise h2,
+.theme-changewise .brand p,.theme-changewise .topnav a{color:#fff;}
+
+/* Navbar in Rot */
+.theme-changewise .topnav{background:#9E2325;}
 .theme-changewise .lang-pill{border-color:rgba(255,255,255,.5);}
 .theme-changewise .lang-pill:hover{background:rgba(255,255,255,.10);}
-/* Cards: navy + white */
+
+/* Karten: roter Verlauf + weiße Schrift */
 .theme-changewise .card{
-  background:linear-gradient(180deg,#114A7D 0%,#0A2F4F 100%);
-  color:#fff;border:1px solid rgba(255,255,255,.18);
+  background:linear-gradient(180deg,#B5282A 0%,#7E1B1D 100%);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.18);
   box-shadow:0 6px 20px rgba(0,0,0,.15);
 }
 .theme-changewise .card a{color:#fff;text-decoration:underline;}
 .theme-changewise .card ul li::marker,
 .theme-changewise .card ol li::marker{color:rgba(255,255,255,.8);}
-.theme-changewise .card .btn{background:#fff;color:#0B3B66;}
+
+/* Buttons auf roten Karten: weißer Button, roter Text */
+.theme-changewise .card .btn{background:#fff;color:#C73636;}
 .theme-changewise .card .btn:hover{filter:brightness(0.96);}
