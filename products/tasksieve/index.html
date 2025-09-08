@@ -68,7 +68,33 @@
       <p>Mail: <a href="mailto:info@slackdigest.org">info@slackdigest.org</a></p>
     </article>
   </main>
+ <footer class="site-footer"><a href="../../index.html">Zurück zur Startseite</a></footer>
+<script>
+(function(){
+  var el=document.getElementById('lang-toggle');
+  if(!el)return;
+  var m=location.pathname.match(/^\/products\/([^\/]+)\/(?:(en)\/)?(?:index\.html)?$/);
+  if(!m){el.style.display='none';return;}
+  var product=m[1], isEN=!!m[2];
+  el.href=isEN?('/products/'+product+'/'):('/products/'+product+'/en/');
+  el.textContent=isEN?'DE':'EN';
+})();
+</script>
+<script>
+(function(){
+  var brand=document.querySelector('.topnav .brand');
+  if(!brand)return;
+  var m=location.pathname.match(/^\/products\/([^\/]+)/);
+  if(!m)return;
+  var p=m[1], name=p.charAt(0).toUpperCase()+p.slice(1);
+  if(p==='slackdigest')name='SlackDigest';
+  if(p==='tasksieve') name='TaskSieve';
+  if(p==='changewise')name='ChangeWise';
+  var isEN=/\/en\//.test(location.pathname);
+  brand.textContent=name;
+  brand.href='/products/'+p+(isEN?'/en/':'/');
+})();
+</script>
 
-  <footer class="site-footer"><a href="../../index.html">Zurück zur Startseite</a></footer>
 </body>
 </html>
