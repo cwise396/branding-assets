@@ -22,3 +22,14 @@
 .theme-changewise .card ol li::marker{color:rgba(255,255,255,.8);}
 .theme-changewise .card .btn{background:#fff;color:#0B3B66;}
 .theme-changewise .card .btn:hover{filter:brightness(0.96);}
+/* Logo-Fix: perfekte Kreisform, kein weißer Ring (nur ChangeWise) */
+.theme-changewise .brand-logo{
+  width:96px; height:96px;
+  border-radius:50%;
+  padding:0; 
+  border:0; 
+  background:transparent; 
+  box-shadow:none;
+  object-fit:cover;                 /* füllt den Kreis sauber */
+  image-rendering:-webkit-optimize-contrast;
+}
