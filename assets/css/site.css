@@ -80,40 +80,4 @@ h2 { font-size: 22px; margin: 0 0 8px 0; }
   .lang-pill { margin-left: auto; }
 }
  /* === START: theme-slackdigest (OG green) === */
-.theme-slackdigest {
-  --sd-bg1: #0F7B53;  /* OG top */
-  --sd-bg2: #0A5D3E;  /* OG bottom */
-  background: linear-gradient(180deg, var(--sd-bg1) 0%, var(--sd-bg2) 100%);
-  color: #fff;
-}
-
-.theme-slackdigest .site-header { border-bottom-color: rgba(255,255,255,.18); }
-
-.theme-slackdigest h1,
-.theme-slackdigest h2,
-.theme-slackdigest .brand p,
-.theme-slackdigest .topnav a { color: #fff; }
-
-/* Navbar im Grün */
-.theme-slackdigest .topnav { background: #0A5D3E; }
-.theme-slackdigest .lang-pill { border-color: rgba(255,255,255,.50); }
-.theme-slackdigest .lang-pill:hover { background: rgba(255,255,255,.10); }
-
-/* Karten in Grün (weiße Schrift) */
-.theme-slackdigest .card {
-  background: linear-gradient(180deg, #106A49 0%, #0A5237 100%);
-  color: #fff;
-  border: 1px solid rgba(255,255,255,.18);
-  box-shadow: 0 6px 20px rgba(0,0,0,.15);
-}
-.theme-slackdigest .card a { color: #fff; text-decoration: underline; }
-.theme-slackdigest .card ul li::marker,
-.theme-slackdigest .card ol li::marker { color: rgba(255,255,255,.8); }
-
-/* Button auf grüner Karte: weißer Button, grüner Text */
-.theme-slackdigest .card .btn {
-  background: #fff;
-  color: #0A5D3E;
-}
-.theme-slackdigest .card .btn:hover { filter: brightness(0.96); }
 /* === END: theme-slackdigest (OG green) === */
