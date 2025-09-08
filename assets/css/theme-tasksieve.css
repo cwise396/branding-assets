@@ -1,24 +1,26 @@
-/* === theme-tasksieve (navy) === */
+ /* === theme-tasksieve (red) === */
 .theme-tasksieve{
-  --ts-bg1:#0B3B66; /* top */
-  --ts-bg2:#0D213A; /* bottom */
+  /* Page background – red gradient */
+  --ts-bg1:#D33C3C; /* top */
+  --ts-bg2:#9E2325; /* bottom */
   background:linear-gradient(180deg,var(--ts-bg1) 0%,var(--ts-bg2) 100%);
   color:#fff;
 }
 .theme-tasksieve .site-header{border-bottom-color:rgba(255,255,255,.18);}
 .theme-tasksieve h1,.theme-tasksieve h2,.theme-tasksieve .brand p,.theme-tasksieve .topnav a{color:#fff;}
-/* Navbar */
-.theme-tasksieve .topnav{background:#0D213A;}
+/* Navbar in red */
+.theme-tasksieve .topnav{background:#9E2325;}
 .theme-tasksieve .lang-pill{border-color:rgba(255,255,255,.5);}
 .theme-tasksieve .lang-pill:hover{background:rgba(255,255,255,.10);}
-/* Cards: navy + white */
+/* Cards: red + white */
 .theme-tasksieve .card{
-  background:linear-gradient(180deg,#0E416D 0%,#082A47 100%);
-  color:#fff;border:1px solid rgba(255,255,255,.18);
+  background:linear-gradient(180deg,#B5282A 0%,#7E1B1D 100%);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.18);
   box-shadow:0 6px 20px rgba(0,0,0,.15);
 }
 .theme-tasksieve .card a{color:#fff;text-decoration:underline;}
 .theme-tasksieve .card ul li::marker,
 .theme-tasksieve .card ol li::marker{color:rgba(255,255,255,.8);}
-.theme-tasksieve .card .btn{background:#fff;color:#0B3B66;}
+.theme-tasksieve .card .btn{background:#fff;color:#C73636;}
 .theme-tasksieve .card .btn:hover{filter:brightness(0.96);}
