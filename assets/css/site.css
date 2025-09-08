@@ -67,3 +67,13 @@ a:hover { text-decoration: underline; }
   padding: 20px 16px;
   text-align: center;
 }
+/* === Global Top Navigation === */
+.topnav { position: sticky; top: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 16px; background: #0b3b66; color: #fff; box-shadow: 0 2px 12px rgba(0,0,0,.15); }
+.topnav a { color: #fff; text-decoration: none; }
+.topnav .brand { font-weight: 700; letter-spacing: .2px; }
+.topnav .links { display: flex; gap: 14px; flex-wrap: wrap; }
+.topnav .links a { opacity: .92; }
+.topnav .links a:hover { opacity: 1; text-decoration: underline; }
+.lang-pill { border: 1px solid rgba(255,255,255,.45); padding: 6px 12px; border-radius: 999px; font-weight: 600; opacity: .95; }
+.lang-pill:hover { opacity: 1; background: rgba(255,255,255,.08); }
+@media (max-width: 640px) { .topnav { flex-wrap: wrap; } .topnav .links { width: 100%; order: 3; } .lang-pill { margin-left: auto; } }
