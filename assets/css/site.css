@@ -1,4 +1,14 @@
- /* SaaS base stylesheet v1 */
+/* Global: Standard-Hintergrund + Hook für produkt-spezifische Farben */
+:root {
+  --brand-bg-default: #ffffff; /* Fallback */
+}
+
+/* Hintergrund überall vom Hook ableiten */
+html, body {
+  background: var(--brand-bg, var(--brand-bg-default));
+}
+
+/* SaaS base stylesheet v1 */
 :root { --maxw: 1100px; --radius: 16px; --gap: 16px; }
 
 * { box-sizing: border-box; }
