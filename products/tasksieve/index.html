@@ -1,129 +1,88 @@
  <!doctype html>
 <html lang="de">
 <head>
- <meta property="og:title" content="TaskSieve">
-<meta property="og:description" content="Filtern, was zählt: Aufgaben bündeln, priorisieren und fokussiert abarbeiten.">
-<meta property="og:url" content="https://slackdigest.org/products/tasksieve/">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://slackdigest.org/assets/og/og_tasksieve_1200x630.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
- <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TaskSieve – Produkt</title>
-  <link rel="stylesheet" href="../../assets/css/site.css" />
- <link rel="stylesheet" href="/assets/css/theme-tasksieve.css">
- <link rel="icon" href="../../assets/icons/changewise/favicon.ico">
- <!-- TaskSieve: exakte Hintergrundfarbe aus OG-Bild -->
-<style>
-  :root { --brand-bg: /* HEX aus OG */ #EAE6DE; } /* <- Platzhalter, ersetze durch deinen exakten Wert */
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TaskSieve – Filtern, was zählt: Aufgaben priorisieren, bündeln, intelligent sortieren.</title>
+  <meta name="description" content="TaskSieve trennt Wichtiges von Rauschen. Priorisieren, bündeln und intelligent sortieren – schneller zu den richtigen Aufgaben.">
+  <link rel="preconnect" href="https://www.slackdigest.org" crossorigin>
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <style>
+    /* Hintergrund exakt wie OG-Visual (Hex ggf. anpassen, falls du einen exakten Wert misst) */
+    :root { --brand-bg: #EAE6DE; }
 
-<meta property="og:title" content="TaskSieve">
-<meta property="og:description" content="Filtern, was zählt: Aufgaben bündeln, priorisieren und fokussiert abarbeiten.">
-<meta property="og:url" content="https://slackdigest.org/products/tasksieve/">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://slackdigest.org/assets/og/og_tasksieve_1200x630.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
+    /* Minimalstyles für die Navi, falls site.css noch nichts enthält */
+    .site-header { position: sticky; top: 0; background: rgba(255,255,255,0.85); backdrop-filter: blur(6px); border-bottom: 1px solid rgba(0,0,0,.06); z-index: 50; }
+    .nav { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: .9rem 1rem; }
+    .nav .brand { font-weight: 600; text-decoration: none; color: inherit; white-space: nowrap; }
+    .nav-links { list-style: none; display: flex; gap: 1rem; margin: 0; padding: 0; align-items: center; }
+    .nav-links a { text-decoration: none; color: inherit; }
+    .nav-toggle { display: none; background: none; border: 0; font-size: 1.2rem; }
+    @media (max-width: 720px){
+      .nav-links { display: none; position: absolute; top: 56px; left: 0; right: 0; background: rgba(255,255,255,0.95); padding: 1rem; border-bottom: 1px solid rgba(0,0,0,.06); }
+      .nav-links.open { display: flex; flex-direction: column; gap: .6rem; }
+      .nav-toggle { display: inline-block; }
+    }
+
+    /* Hero-Bereich */
+    .hero { max-width: 1100px; margin: 2.2rem auto; padding: 0 1rem; }
+    .hero h1 { font-size: clamp(1.8rem, 4vw, 3rem); margin: 0 0 .6rem; }
+    .hero p.lead { font-size: clamp(1.05rem, 2.2vw, 1.25rem); margin: 0 0 1.2rem; }
+    .cta { display: inline-block; padding: .8rem 1.1rem; border-radius: 12px; text-decoration: none; border: 1px solid rgba(0,0,0,.12); }
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1rem; margin-top: 1.6rem; }
+    .card { grid-column: span 4; background: rgba(255,255,255,.8); border: 1px solid rgba(0,0,0,.06); border-radius: 14px; padding: 1rem; }
+    .card h3 { margin-top: 0; }
+    @media (max-width: 960px){ .card { grid-column: span 6; } }
+    @media (max-width: 640px){ .card { grid-column: span 12; } }
+
+    footer { max-width: 1100px; margin: 2.5rem auto; padding: 0 1rem 2rem; font-size: .95rem; }
+    footer a { color: inherit; }
+  </style>
 </head>
-<body class="theme-tasksieve">
+<body>
   <header class="site-header">
-    <div class="brand">
-      <img
-        src="../../assets/icons/tasksieve/tasksieve_icon_128.png"
-        alt=""
-        class="brand-logo"
-        width="72" height="72"
-        aria-hidden="true">
-      <h1>TaskSieve</h1>
-      <p>Filtern, was zählt: Aufgaben priorisieren, bündeln, intelligent sortieren.</p>
-    </div>
+    <nav class="nav">
+      <a class="brand" href="/">ChangeWise • SlackDigest • TaskSieve</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/products/changewise/">ChangeWise</a></li>
+        <li><a href="/products/slackdigest/">SlackDigest</a></li>
+        <li><a href="/products/tasksieve/">TaskSieve</a></li>
+        <li class="lang">DE | <a href="/products/tasksieve/en/">EN</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen">☰</button>
+    </nav>
   </header>
 
-  <main class="grid">
-  <!-- 1) Messaging -->
-  <article class="card" style="text-align:left">
-    <h2>Messaging</h2>
-    <p><strong>Wichtiges filtern.</strong></p>
-    <p><strong>Bündeln & priorisieren. Dinge erledigen.</strong></p>
-  </article>
+  <main class="hero">
+    <h1>TaskSieve</h1>
+    <p class="lead">Filtern, was zählt: Aufgaben priorisieren, bündeln, intelligent sortieren – weniger Rauschen, mehr Wirkung.</p>
+    <a class="cta" href="/products/tasksieve/en/">Zur EN-Seite</a>
 
-  <!-- 2) So funktioniert’s -->
-  <article class="card" style="text-align:left">
-    <h2>So funktioniert’s</h2>
-    <ol>
-      <li>Quellen verbinden (E-Mail, Notizen, Slack)</li>
-      <li>TaskSieve sortiert automatisch</li>
-      <li>In Fokusblöcken abarbeiten</li>
-    </ol>
-  </article>
+    <section class="grid" aria-label="Key Features">
+      <article class="card">
+        <h3>Priorisieren</h3>
+        <p>Markiert Wichtiges automatisch, damit du zuerst das Richtige erledigst.</p>
+      </article>
+      <article class="card">
+        <h3>Bündeln</h3>
+        <p>Ähnliche Tasks zusammenfassen – kontext-spezifische Arbeitsblöcke ohne Reibung.</p>
+      </article>
+      <article class="card">
+        <h3>Intelligent sortieren</h3>
+        <p>Regeln & Heuristiken, die deine Gewohnheiten lernen und Ordnung schaffen.</p>
+      </article>
+    </section>
+  </main>
 
-  <!-- 3) Was es bietet -->
-  <article class="card" style="text-align:left">
-    <h2>Was es bietet</h2>
-    <p>TaskSieve bündelt verstreute Aufgaben, entfernt Duplikate und priorisiert nach Wirkung, Dringlichkeit und Aufwand – für klaren Fokus.</p>
-  </article>
+  <footer>
+    <a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a>
+  </footer>
 
-  <!-- 4) Module -->
-  <article class="card" style="text-align:left">
-    <h2>Module</h2>
-    <ul>
-      <li>📥 Sammeln aus E-Mail, Notizen, Slack</li>
-      <li>🔎 Duplikat-Erkennung & Clustering</li>
-      <li>⚖️ Priorisierung nach Wirkung/Dringlichkeit/Aufwand</li>
-      <li>🧭 Fokus-Ansicht & Batch-Planung</li>
-    </ul>
-  </article>
-
-  <!-- 5) Status & Kontakt -->
-  <article class="card" style="text-align:left">
-    <h2>Status & Kontakt</h2>
-    <p><strong>Status:</strong> Beta – Anmeldung möglich.</p>
-    <p>Kontakt: <a href="mailto:info@slackdigest.org">info@slackdigest.org</a></p>
-    <p><a class="btn" href="mailto:info@slackdigest.org?subject=TaskSieve%20Beta&body=Hallo,%20ich%20m%C3%B6chte%20die%20TaskSieve%20Beta%20testen.">Jetzt Beta testen</a></p>
-  </article>
-
-  <!-- 6) Nächste Schritte -->
-  <article class="card" style="text-align:left">
-    <h2>Nächste Schritte</h2>
-    <ul>
-      <li>Jira/GitHub/Asana-Connectoren</li>
-      <li>Kalender-Fokusblöcke</li>
-      <li>Mobile Quick-Capture</li>
-    </ul>
-  </article>
-</main>
-
- <footer class="site-footer"><a href="../../index.html">Zurück zur Startseite</a></footer>
-<script>
-(function(){
-  var el=document.getElementById('lang-toggle');
-  if(!el)return;
-  var m=location.pathname.match(/^\/products\/([^\/]+)\/(?:(en)\/)?(?:index\.html)?$/);
-  if(!m){el.style.display='none';return;}
-  var product=m[1], isEN=!!m[2];
-  el.href=isEN?('/products/'+product+'/'):('/products/'+product+'/en/');
-  el.textContent=isEN?'DE':'EN';
-})();
-</script>
-<script>
-(function(){
-  var brand=document.querySelector('.topnav .brand');
-  if(!brand)return;
-  var m=location.pathname.match(/^\/products\/([^\/]+)/);
-  if(!m)return;
-  var p=m[1], name=p.charAt(0).toUpperCase()+p.slice(1);
-  if(p==='slackdigest')name='SlackDigest';
-  if(p==='tasksieve') name='TaskSieve';
-  if(p==='changewise')name='ChangeWise';
-  var isEN=/\/en\//.test(location.pathname);
-  brand.textContent=name;
-  brand.href='/products/'+p+(isEN?'/en/':'/');
-})();
-</script>
-
+  <script>
+    // Mobile-Navigation
+    const t = document.getElementById('navToggle');
+    const l = document.getElementById('navLinks');
+    t?.addEventListener('click', () => l.classList.toggle('open'));
+  </script>
 </body>
 </html>
