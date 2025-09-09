@@ -1,53 +1,60 @@
-R <!doctype html>
+ <!doctype html>
 <html lang="de">
 <head>
- <meta property="og:title" content="ChangeWise">
-<meta property="og:description" content="Branding & Change-Kommunikation. Einheitliche Assets, klare Botschaften, sofort einsatzbereit.">
-<meta property="og:url" content="https://slackdigest.org/products/changewise/">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://slackdigest.org/assets/og/og_changewise_1200x630.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
- <meta charset="utf-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ChangeWise – Produkt</title>
- <link rel="stylesheet" href="/assets/css/site.css">
-<link rel="stylesheet" href="/assets/css/theme-changewise.css">
-<meta property="og:title" content="ChangeWise">
-<meta property="og:description" content="Branding & Change-Kommunikation. Einheitliche Assets, klare Botschaften, sofort einsatzbereit.">
-<meta property="og:url" content="https://slackdigest.org/products/changewise/">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://slackdigest.org/assets/og/og_changewise_1200x630.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/theme-changewise.css">
+  <link rel="icon" href="/assets/icons/changewise/favicon.ico">
+
+  <!-- Canonical / Hreflang -->
+  <link rel="canonical" href="https://slackdigest.org/products/changewise/">
+  <link rel="alternate" href="https://slackdigest.org/products/changewise/" hreflang="de">
+  <link rel="alternate" href="https://slackdigest.org/products/changewise/en/" hreflang="en">
+  <link rel="alternate" href="https://slackdigest.org/products/changewise/" hreflang="x-default">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="ChangeWise – Branding & Change-Kommunikation">
+  <meta property="og:description" content="Kompaktes Brand-Kit für kleine Teams: Messaging, Asset-Pack und einsatzfertige Vorlagen.">
+  <meta property="og:url" content="https://slackdigest.org/products/changewise/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://slackdigest.org/assets/og/og_changewise_1200x630.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
 </head>
 <body class="theme-changewise">
-<nav class="topnav">
-  <a href="/index.html" class="brand">ChangeWise</a>
-  <div class="links">
-    <a href="/products/slackdigest/">SlackDigest</a>
-    <a href="/products/tasksieve/">TaskSieve</a>
-    <a href="/products/changewise/">ChangeWise</a>
-    <a href="/impressum.html">Impressum</a>
-  </div>
-  <a id="lang-toggle" class="lang-pill" href="#" aria-label="Language toggle">EN</a>
-</nav>
 
- <header class="site-header">
-  <div class="brand">
-    <img src="/assets/icons/changewise/changewise_icon_256.png"
-         alt=""
-         class="brand-logo"
-         width="96" height="96"
-         aria-hidden="true">
-    <h1>Branding & Change-Kommunikation.</h1>
-    <p>Klar. Konsistent. Wirksam.</p>
-  </div>
-</header>
+  <!-- Top Navigation -->
+  <nav class="topnav">
+    <a href="/index.html" class="brand">ChangeWise</a>
+    <div class="links">
+      <a href="/products/slackdigest/">SlackDigest</a>
+      <a href="/products/tasksieve/">TaskSieve</a>
+      <a href="/products/changewise/">ChangeWise</a>
+      <a href="/impressum.html">Impressum</a>
+    </div>
+    <a id="lang-toggle" class="lang-pill" href="#" aria-label="Language toggle">EN</a>
+  </nav>
 
- <main class="grid">
+  <!-- Header mit sauberem Kreis-Logo -->
+  <header class="site-header">
+    <div class="brand">
+      <img src="/assets/icons/changewise/changewise_icon_256.png"
+           alt=""
+           class="brand-logo"
+           width="96" height="96"
+           aria-hidden="true">
+      <h1>Branding & Change-Kommunikation.</h1>
+      <p>Klar. Konsistent. Wirksam.</p>
+    </div>
+  </header>
+
+  <!-- Inhalt -->
+  <main class="grid">
     <article class="card" style="text-align:left">
       <h2>Was es bietet</h2>
       <p>Ein kompaktes Brand-Kit für kleine Teams: Logos/Icons, Farb-/Typo-Grundlagen, Vorlagen für Landing-Pages & Präsentationen.</p>
@@ -77,35 +84,38 @@ R <!doctype html>
     </article>
   </main>
 
-  <footer class="site-footer"><a href="../../index.html">Zurück zur Startseite</a></footer>
-<!-- Dynamische Brand im Navbar -->
-<!-- Language Toggle -->
-<script>
-(function(){
-  var el=document.getElementById('lang-toggle');
-  if(!el)return;
-  var m=location.pathname.match(/^\/products\/([^\/]+)\/(?:(en)\/)?(?:index\.html)?$/);
-  if(!m){el.style.display='none';return;}
-  var product=m[1], isEN=!!m[2];
-  el.href=isEN?('/products/'+product+'/'):('/products/'+product+'/en/');
-  el.textContent=isEN?'DE':'EN';
-})();
-</script>
- <script>
-(function(){
-  var brand=document.querySelector('.topnav .brand');
-  if(!brand)return;
-  var m=location.pathname.match(/^\/products\/([^\/]+)/);
-  if(!m)return;
-  var p=m[1], name=p.charAt(0).toUpperCase()+p.slice(1);
-  if(p==='slackdigest')name='SlackDigest';
-  if(p==='tasksieve') name='TaskSieve';
-  if(p==='changewise')name='ChangeWise';
-  var isEN=/\/en\//.test(location.pathname);
-  brand.textContent=name;
-  brand.href='/products/'+p+(isEN?'/en/':'/');
-})();
-</script>
+  <!-- Language Toggle -->
+  <script>
+  (function(){
+    var el=document.getElementById('lang-toggle');
+    if(!el)return;
+    var m=location.pathname.match(/^\/products\/([^\/]+)\/(?:(en)\/)?(?:index\.html)?$/);
+    if(!m){el.style.display='none';return;}
+    var product=m[1], isEN=!!m[2];
+    el.href=isEN?('/products/'+product+'/'):('/products/'+product+'/en/');
+    el.textContent=isEN?'DE':'EN';
+  })();
+  </script>
 
+  <!-- Dynamische Brand -->
+  <script>
+  (function(){
+    var brand=document.querySelector('.topnav .brand');
+    if(!brand)return;
+    var m=location.pathname.match(/^\/products\/([^\/]+)/);
+    if(!m)return;
+    var p=m[1], name=p.charAt(0).toUpperCase()+p.slice(1);
+    if(p==='slackdigest')name='SlackDigest';
+    if(p==='tasksieve')  name='TaskSieve';
+    if(p==='changewise') name='ChangeWise';
+    var isEN=/\/en\//.test(location.pathname);
+    brand.textContent=name;
+    brand.href='/products/'+p+(isEN?'/en/':'/');
+  })();
+  </script>
+
+  <footer class="site-footer">
+    <a href="/index.html">Zurück zur Startseite</a>
+  </footer>
 </body>
 </html>
