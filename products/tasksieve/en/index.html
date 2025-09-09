@@ -7,11 +7,13 @@
   <meta name="description" content="TaskSieve separates signal from noise. Prioritize, bundle, and sort tasks intelligently to move faster on what matters.">
   <link rel="preconnect" href="https://www.slackdigest.org" crossorigin>
   <link rel="stylesheet" href="/assets/css/site.css">
-  <style>
-    /* Background matching the OG visual (adjust Hex if you measure an exact value) */
-    :root { --brand-bg: #EAE6DE; }
 
-    /* Minimal nav styling in case site.css is not yet present */
+  <!-- STRONG FALLBACK: force background even without/against site.css -->
+  <style>
+    :root { --brand-bg: #EAE6DE; } /* replace with measured Hex if needed */
+    html, body { background: var(--brand-bg, #EAE6DE) !important; min-height: 100%; }
+    body { min-height: 100vh; }
+
     .site-header { position: sticky; top: 0; background: rgba(255,255,255,0.85); backdrop-filter: blur(6px); border-bottom: 1px solid rgba(0,0,0,.06); z-index: 50; }
     .nav { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: .9rem 1rem; }
     .nav .brand { font-weight: 600; text-decoration: none; color: inherit; white-space: nowrap; }
@@ -24,7 +26,6 @@
       .nav-toggle { display: inline-block; }
     }
 
-    /* Hero section */
     .hero { max-width: 1100px; margin: 2.2rem auto; padding: 0 1rem; }
     .hero h1 { font-size: clamp(1.8rem, 4vw, 3rem); margin: 0 0 .6rem; }
     .hero p.lead { font-size: clamp(1.05rem, 2.2vw, 1.25rem); margin: 0 0 1.2rem; }
@@ -79,7 +80,6 @@
   </footer>
 
   <script>
-    // Mobile navigation
     const t = document.getElementById('navToggle');
     const l = document.getElementById('navLinks');
     t?.addEventListener('click', () => l.classList.toggle('open'));
