@@ -1,18 +1,18 @@
- <!doctype html>
-<html lang="en">
+<!doctype html>
+<html lang="en" style="background:#EAE6DE !important;">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TaskSieve – Filter what matters: prioritize, bundle, sort intelligently.</title>
   <meta name="description" content="TaskSieve separates signal from noise. Prioritize, bundle, and sort tasks intelligently to move faster on what matters.">
+  <meta name="theme-color" content="#EAE6DE">
   <link rel="preconnect" href="https://www.slackdigest.org" crossorigin>
   <link rel="stylesheet" href="/assets/css/site.css">
 
-  <!-- STRONG FALLBACK: force background even without/against site.css -->
+  <!-- Hard fallback: enforce background regardless of external CSS -->
   <style>
-    :root { --brand-bg: #EAE6DE; } /* replace with measured Hex if needed */
-    html, body { background: var(--brand-bg, #EAE6DE) !important; min-height: 100%; }
-    body { min-height: 100vh; }
+    html, body { background:#EAE6DE !important; height:100%; }
+    body { margin:0 !important; min-height:100vh; }
 
     .site-header { position: sticky; top: 0; background: rgba(255,255,255,0.85); backdrop-filter: blur(6px); border-bottom: 1px solid rgba(0,0,0,.06); z-index: 50; }
     .nav { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: .9rem 1rem; }
@@ -40,7 +40,7 @@
     footer a { color: inherit; }
   </style>
 </head>
-<body>
+<body style="background:#EAE6DE !important;">
   <header class="site-header">
     <nav class="nav">
       <a class="brand" href="/">ChangeWise • SlackDigest • TaskSieve</a>
@@ -48,7 +48,7 @@
         <li><a href="/products/changewise/">ChangeWise</a></li>
         <li><a href="/products/slackdigest/">SlackDigest</a></li>
         <li><a href="/products/tasksieve/">TaskSieve</a></li>
-        <li class="lang"><a href="/products/tasksieve/">DE</a> | EN</li>
+        <li class="lang"><a href="/products/tasksieve/?v=2">DE</a> | EN</li>
       </ul>
       <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
     </nav>
@@ -57,7 +57,7 @@
   <main class="hero">
     <h1>TaskSieve</h1>
     <p class="lead">Filter what matters: prioritize, bundle, and sort intelligently – less noise, more impact.</p>
-    <a class="cta" href="/products/tasksieve/">Back to DE</a>
+    <a class="cta" href="/products/tasksieve/?v=2">Back to DE</a>
 
     <section class="grid" aria-label="Key Features">
       <article class="card">
@@ -83,6 +83,12 @@
     const t = document.getElementById('navToggle');
     const l = document.getElementById('navLinks');
     t?.addEventListener('click', () => l.classList.toggle('open'));
+
+    requestAnimationFrame(() => {
+      document.documentElement.style.background = '#EAE6DE';
+      document.body.style.background = '#EAE6DE';
+      document.body.style.margin = '0';
+    });
   </script>
 </body>
 </html>
