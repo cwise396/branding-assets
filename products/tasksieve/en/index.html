@@ -50,6 +50,38 @@
 
     footer { max-width: 1100px; margin: 2.5rem auto; padding: 0 1rem 2rem; font-size: .95rem; color:#fff; }
     footer a { color: inherit; }
+   /* === Nav-Leiste: sRGB R:162 G:33 B:33 (#A22121) === */
+:root{
+  --nav-bg: #A22121;
+  --nav-fg: #ffffff;
+}
+
+.site-header{
+  background: var(--nav-bg) !important;
+  border-bottom: none !important;
+  backdrop-filter: none !important; /* war vorher leicht transparent */
+}
+
+.nav .brand,
+.nav-links a,
+.nav-toggle{
+  color: var(--nav-fg) !important;
+  text-decoration: none;
+}
+
+.nav .brand:hover,
+.nav-links a:hover{
+  opacity: .9;
+}
+
+/* Mobile-Dropdown ebenfalls in Rot hinterlegen */
+@media (max-width: 720px){
+  .nav-links{
+    background: var(--nav-bg) !important;
+    border-bottom: none !important;
+  }
+}
+
   </style>
 </head>
 <body>
