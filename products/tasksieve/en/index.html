@@ -4,33 +4,36 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TaskSieve – Filter what matters: prioritize, bundle, sort intelligently.</title>
-  <meta name="description" content="TaskSieve separates signal from noise. Prioritize, bundle, and sort tasks intelligently to move faster on what matters.">
+  <meta name="description" content="TaskSieve separates signal from noise. Prioritize by impact, urgency, and effort—automatically.">
   <meta name="theme-color" content="#B90E13">
   <link rel="preconnect" href="https://www.slackdigest.org" crossorigin>
 
   <style>
     :root{
-      --brand-bg:#B90E13;
-      --nav-bg:#A22121;
+      --brand-bg:#B90E13;   /* page background */
+      --nav-bg:#A22121;     /* nav bar */
       --nav-fg:#ffffff;
-      --card-bg:#C3332D;
+      --card-bg:#C3332D;    /* cards */
       --card-fg:#ffffff;
     }
 
+    /* Background enforcement + layout safety */
     html, body { background: var(--brand-bg) !important; height:100%; }
     body { margin:0 !important; min-height:100vh; }
     #bg-overlay { position:fixed; inset:0; background:var(--brand-bg); z-index:-1; }
 
+    /* Neutralize big wrappers (keep cards visible) */
     main, .page, .container, .content, .wrapper, .layout, .site, .shell,
     #page, #content, #main, #app, #root, #__next { background: transparent !important; }
 
+    /* Navigation */
     .site-header { position: sticky; top: 0; background: var(--nav-bg) !important; border-bottom:none !important; z-index:50; }
     .nav { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:.9rem 1rem; }
     .nav .brand, .nav-links a, .nav-toggle { color:var(--nav-fg) !important; text-decoration:none; }
     .nav .brand { font-weight:600; white-space:nowrap; }
     .nav-links { list-style:none; display:flex; gap:1rem; margin:0; padding:0; align-items:center; }
-    .nav-toggle { display:none; background:none; border:0; font-size:1.2rem; }
     .nav a:hover { opacity:.9; }
+    .nav-toggle { display:none; background:none; border:0; font-size:1.2rem; }
 
     @media (max-width: 720px){
       .nav-links { display:none; position:absolute; top:56px; left:0; right:0; background:var(--nav-bg) !important; padding:1rem; }
@@ -38,13 +41,16 @@
       .nav-toggle { display:inline-block; }
     }
 
+    /* Hero */
     .hero { max-width:1100px; margin:2.2rem auto; padding:0 1rem; color:#fff; }
     .hero h1 { font-size:clamp(1.8rem, 4vw, 3rem); margin:0 0 .6rem; }
     .hero p.lead { font-size:clamp(1.05rem, 2.2vw, 1.25rem); margin:0 0 1.2rem; }
     .cta { display:inline-block; padding:.8rem 1.1rem; border-radius:12px; text-decoration:none; border:1px solid rgba(255,255,255,.6); color:#fff; }
 
+    /* Grid & Cards */
     .grid { display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; margin-top:1.6rem; }
-    .card { grid-column:span 4; background:var(--card-bg); color:var(--card-fg); border-radius:14px; padding:1.05rem 1rem; border:1px solid rgba(0,0,0,.08); }
+    .card { grid-column:span 4; background:var(--card-bg); color:var(--card-fg);
+            border-radius:14px; padding:1.05rem 1rem; border:1px solid rgba(0,0,0,.08); }
     .card h3 { margin:0 0 .4rem; }
     .card p, .card li { margin:.35rem 0; }
     .card a { color:#fff; text-decoration: underline; text-underline-offset: 2px; }
@@ -54,6 +60,7 @@
     .btn { display:inline-block; padding:.7rem 1rem; border-radius:12px; border:1px solid rgba(255,255,255,.7); color:#fff; text-decoration:none; }
     .btn:hover { opacity:.92; }
 
+    /* Footer */
     footer { max-width:1100px; margin:2.5rem auto; padding:0 1rem 2rem; font-size:.95rem; color:#fff; }
     footer a { color:inherit; }
   </style>
@@ -76,13 +83,13 @@
 
   <main class="hero">
     <h1>TaskSieve</h1>
-    <p class="lead">Filter what matters. Bundle & prioritize. Get things done.</p>
+    <p class="lead">Prioritize by impact, urgency, and effort—automatically.</p>
     <a class="cta" href="/products/tasksieve/?v=C3332D">Back to DE</a>
 
     <section class="grid" aria-label="Key Features">
       <article class="card">
-        <h3>Messaging</h3>
-        <p>Filter what matters. Bundle & prioritize. Get things done.</p>
+        <h3>Ship it—now</h3>
+        <p>Dedupe, cluster, and clarify order.</p>
       </article>
 
       <article class="card">
@@ -136,6 +143,8 @@
     const t = document.getElementById('navToggle');
     const l = document.getElementById('navLinks');
     t?.addEventListener('click', () => l.classList.toggle('open'));
+
+    // Safety re-apply in case late CSS overrides occur
     requestAnimationFrame(() => {
       document.documentElement.style.background = getComputedStyle(document.documentElement).getPropertyValue('--brand-bg').trim() || '#B90E13';
       document.body.style.background = getComputedStyle(document.documentElement).getPropertyValue('--brand-bg').trim() || '#B90E13';
