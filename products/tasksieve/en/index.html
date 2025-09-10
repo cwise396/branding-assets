@@ -9,79 +9,53 @@
   <link rel="preconnect" href="https://www.slackdigest.org" crossorigin>
 
   <style>
-    :root { --brand-bg: #B90E13; }
-    html, body { background: var(--brand-bg) !important; height: 100%; }
-    body { margin: 0 !important; min-height: 100vh; }
+    :root{
+      --brand-bg:#B90E13;
+      --nav-bg:#A22121;
+      --nav-fg:#ffffff;
+      --card-bg:#C3332D;
+      --card-fg:#ffffff;
+    }
 
-    #bg-overlay { position: fixed; inset: 0; background: var(--brand-bg); z-index: -1; }
+    html, body { background: var(--brand-bg) !important; height:100%; }
+    body { margin:0 !important; min-height:100vh; }
+    #bg-overlay { position:fixed; inset:0; background:var(--brand-bg); z-index:-1; }
 
     main, .page, .container, .content, .wrapper, .layout, .site, .shell,
-    #page, #content, #main, #app, #root, #__next {
-      background: transparent !important;
-    }
+    #page, #content, #main, #app, #root, #__next { background: transparent !important; }
 
-    .site-header { position: sticky; top: 0; background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(6px); border-bottom: 1px solid rgba(0,0,0,.06); z-index: 50; }
-    .nav { max-width: 1100px; margin: 0 auto; display: flex; align-items: center;
-      justify-content: space-between; padding: .9rem 1rem; }
-    .nav .brand { font-weight: 600; text-decoration: none; color: #111; white-space: nowrap; }
-    .nav-links { list-style: none; display: flex; gap: 1rem; margin: 0; padding: 0; align-items: center; }
-    .nav-links a { text-decoration: none; color: #111; }
-    .nav-toggle { display: none; background: none; border: 0; font-size: 1.2rem; }
+    .site-header { position: sticky; top: 0; background: var(--nav-bg) !important; border-bottom:none !important; z-index:50; }
+    .nav { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:.9rem 1rem; }
+    .nav .brand, .nav-links a, .nav-toggle { color:var(--nav-fg) !important; text-decoration:none; }
+    .nav .brand { font-weight:600; white-space:nowrap; }
+    .nav-links { list-style:none; display:flex; gap:1rem; margin:0; padding:0; align-items:center; }
+    .nav-toggle { display:none; background:none; border:0; font-size:1.2rem; }
+    .nav a:hover { opacity:.9; }
+
     @media (max-width: 720px){
-      .nav-links { display: none; position: absolute; top: 56px; left: 0; right: 0;
-        background: rgba(255,255,255,0.95); padding: 1rem; border-bottom: 1px solid rgba(0,0,0,.06); }
-      .nav-links.open { display: flex; flex-direction: column; gap: .6rem; }
-      .nav-toggle { display: inline-block; }
+      .nav-links { display:none; position:absolute; top:56px; left:0; right:0; background:var(--nav-bg) !important; padding:1rem; }
+      .nav-links.open { display:flex; flex-direction:column; gap:.6rem; }
+      .nav-toggle { display:inline-block; }
     }
 
-    .hero { max-width: 1100px; margin: 2.2rem auto; padding: 0 1rem; color: #fff; }
-    .hero h1 { font-size: clamp(1.8rem, 4vw, 3rem); margin: 0 0 .6rem; }
-    .hero p.lead { font-size: clamp(1.05rem, 2.2vw, 1.25rem); margin: 0 0 1.2rem; }
-    .cta { display: inline-block; padding: .8rem 1.1rem; border-radius: 12px;
-      text-decoration: none; border: 1px solid rgba(255,255,255,.35); color:#fff; }
+    .hero { max-width:1100px; margin:2.2rem auto; padding:0 1rem; color:#fff; }
+    .hero h1 { font-size:clamp(1.8rem, 4vw, 3rem); margin:0 0 .6rem; }
+    .hero p.lead { font-size:clamp(1.05rem, 2.2vw, 1.25rem); margin:0 0 1.2rem; }
+    .cta { display:inline-block; padding:.8rem 1.1rem; border-radius:12px; text-decoration:none; border:1px solid rgba(255,255,255,.6); color:#fff; }
 
-    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1rem; margin-top: 1.6rem; }
-    .card { grid-column: span 4; background: rgba(255,255,255,.86); border: 1px solid rgba(0,0,0,.06);
-      border-radius: 14px; padding: 1rem; color:#111; }
-    .card h3 { margin-top: 0; }
-    @media (max-width: 960px){ .card { grid-column: span 6; } }
-    @media (max-width: 640px){ .card { grid-column: span 12; } }
+    .grid { display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; margin-top:1.6rem; }
+    .card { grid-column:span 4; background:var(--card-bg); color:var(--card-fg); border-radius:14px; padding:1.05rem 1rem; border:1px solid rgba(0,0,0,.08); }
+    .card h3 { margin:0 0 .4rem; }
+    .card p, .card li { margin:.35rem 0; }
+    .card a { color:#fff; text-decoration: underline; text-underline-offset: 2px; }
+    @media (max-width:960px){ .card { grid-column:span 6; } }
+    @media (max-width:640px){ .card { grid-column:span 12; } }
 
-    footer { max-width: 1100px; margin: 2.5rem auto; padding: 0 1rem 2rem; font-size: .95rem; color:#fff; }
-    footer a { color: inherit; }
-   /* === Nav-Leiste: sRGB R:162 G:33 B:33 (#A22121) === */
-:root{
-  --nav-bg: #A22121;
-  --nav-fg: #ffffff;
-}
+    .btn { display:inline-block; padding:.7rem 1rem; border-radius:12px; border:1px solid rgba(255,255,255,.7); color:#fff; text-decoration:none; }
+    .btn:hover { opacity:.92; }
 
-.site-header{
-  background: var(--nav-bg) !important;
-  border-bottom: none !important;
-  backdrop-filter: none !important; /* war vorher leicht transparent */
-}
-
-.nav .brand,
-.nav-links a,
-.nav-toggle{
-  color: var(--nav-fg) !important;
-  text-decoration: none;
-}
-
-.nav .brand:hover,
-.nav-links a:hover{
-  opacity: .9;
-}
-
-/* Mobile-Dropdown ebenfalls in Rot hinterlegen */
-@media (max-width: 720px){
-  .nav-links{
-    background: var(--nav-bg) !important;
-    border-bottom: none !important;
-  }
-}
-
+    footer { max-width:1100px; margin:2.5rem auto; padding:0 1rem 2rem; font-size:.95rem; color:#fff; }
+    footer a { color:inherit; }
   </style>
 </head>
 <body>
@@ -94,7 +68,7 @@
         <li><a href="/products/changewise/">ChangeWise</a></li>
         <li><a href="/products/slackdigest/">SlackDigest</a></li>
         <li><a href="/products/tasksieve/">TaskSieve</a></li>
-        <li class="lang"><a href="/products/tasksieve/?v=B90E13">DE</a> | EN</li>
+        <li class="lang"><a href="/products/tasksieve/?v=C3332D">DE</a> | EN</li>
       </ul>
       <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
     </nav>
@@ -102,21 +76,54 @@
 
   <main class="hero">
     <h1>TaskSieve</h1>
-    <p class="lead">Filter what matters: prioritize, bundle, and sort intelligently – less noise, more impact.</p>
-    <a class="cta" href="/products/tasksieve/?v=B90E13">Back to DE</a>
+    <p class="lead">Filter what matters. Bundle & prioritize. Get things done.</p>
+    <a class="cta" href="/products/tasksieve/?v=C3332D">Back to DE</a>
 
     <section class="grid" aria-label="Key Features">
       <article class="card">
-        <h3>Prioritize</h3>
-        <p>Automatically highlights what’s important so you work on the right things first.</p>
+        <h3>Messaging</h3>
+        <p>Filter what matters. Bundle & prioritize. Get things done.</p>
       </article>
+
       <article class="card">
-        <h3>Bundle</h3>
-        <p>Group similar tasks into context blocks to reduce friction and switching.</p>
+        <h3>How it works</h3>
+        <ul>
+          <li>Connect your sources (email, notes, Slack)</li>
+          <li>Let TaskSieve auto-sort</li>
+          <li>Work in focused blocks</li>
+        </ul>
       </article>
+
       <article class="card">
-        <h3>Sort intelligently</h3>
-        <p>Rules and heuristics that learn your habits and keep things tidy.</p>
+        <h3>What it offers</h3>
+        <p>TaskSieve aggregates scattered tasks, removes duplicates, and prioritizes by impact, urgency, and effort — for a clear focus.</p>
+      </article>
+
+      <article class="card">
+        <h3>Modules</h3>
+        <ul>
+          <li>📥 Collect from email, notes, Slack</li>
+          <li>🔎 Duplicate detection & clustering</li>
+          <li>⚖️ Priority by impact/urgency/effort</li>
+          <li>🧭 Focus view & smart batching</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3>Status & Contact</h3>
+        <p>Status: <strong>Beta</strong> — join now.</p>
+        <p>Contact: <a href="mailto:info@slackdigest.org">info@slackdigest.org</a></p>
+        <p><a class="btn" href="mailto:info@slackdigest.org?subject=TaskSieve%20Beta&body=Hi%20TaskSieve%20team%2C%0A%0AI%27d%20like%20to%20join%20the%20beta.">Request Beta access</a></p>
+      </article>
+
+      <article class="card">
+        <h3>Next steps</h3>
+        <ul>
+          <li>Jira/GitHub/Asana connectors</li>
+          <li>Calendar focus blocks</li>
+          <li>Mobile quick capture</li>
+        </ul>
+        <p><a class="btn" href="/">Back to Home</a></p>
       </article>
     </section>
   </main>
@@ -130,8 +137,8 @@
     const l = document.getElementById('navLinks');
     t?.addEventListener('click', () => l.classList.toggle('open'));
     requestAnimationFrame(() => {
-      document.documentElement.style.background = '#B90E13';
-      document.body.style.background = '#B90E13';
+      document.documentElement.style.background = getComputedStyle(document.documentElement).getPropertyValue('--brand-bg').trim() || '#B90E13';
+      document.body.style.background = getComputedStyle(document.documentElement).getPropertyValue('--brand-bg').trim() || '#B90E13';
       document.body.style.margin = '0';
     });
   </script>
