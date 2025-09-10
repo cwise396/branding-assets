@@ -9,83 +9,60 @@
   <link rel="preconnect" href="https://www.slackdigest.org" crossorigin>
 
   <style>
-    /* === Hintergrund robust erzwingen (deine Farbe) === */
-    :root { --brand-bg: #B90E13; }
-    html, body { background: var(--brand-bg) !important; height: 100%; }
-    body { margin: 0 !important; min-height: 100vh; }
-
-    /* Overlay als „Falls-alles-andere-schiefgeht“-Backup */
-    #bg-overlay { position: fixed; inset: 0; background: var(--brand-bg); z-index: -1; }
-
-    /* Kill-White minimal: große Wrapper neutralisieren (Karten/Boxen bleiben) */
-    main, .page, .container, .content, .wrapper, .layout, .site, .shell,
-    #page, #content, #main, #app, #root, #__next {
-      background: transparent !important;
+    /* === Grundfarben === */
+    :root{
+      --brand-bg:#B90E13;      /* Seitenhintergrund */
+      --nav-bg:#A22121;        /* Nav-Leiste (dein Wunsch) */
+      --nav-fg:#ffffff;
+      --card-bg:#C3332D;       /* Karten-Hintergrund (sRGB 195,51,45) */
+      --card-fg:#ffffff;
     }
 
-    /* ====== Minimal-Styles (Nav/Hero/Grid) – selbsttragend ohne site.css ====== */
-    .site-header { position: sticky; top: 0; background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(6px); border-bottom: 1px solid rgba(0,0,0,.06); z-index: 50; }
-    .nav { max-width: 1100px; margin: 0 auto; display: flex; align-items: center;
-      justify-content: space-between; padding: .9rem 1rem; }
-    .nav .brand { font-weight: 600; text-decoration: none; color: #111; white-space: nowrap; }
+    /* === Hintergrund robust erzwingen === */
+    html, body { background: var(--brand-bg) !important; height:100%; }
+    body { margin:0 !important; min-height:100vh; }
+    #bg-overlay { position:fixed; inset:0; background:var(--brand-bg); z-index:-1; }
+
+    /* === Kill-White minimal === */
+    main, .page, .container, .content, .wrapper, .layout, .site, .shell,
+    #page, #content, #main, #app, #root, #__next { background: transparent !important; }
+
+    /* === Navigation === */
+    .site-header { position: sticky; top: 0; background: var(--nav-bg) !important; border-bottom: none !important; z-index: 50; }
+    .nav { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: .9rem 1rem; }
+    .nav .brand, .nav-links a, .nav-toggle { color: var(--nav-fg) !important; text-decoration: none; }
+    .nav .brand { font-weight: 600; white-space: nowrap; }
     .nav-links { list-style: none; display: flex; gap: 1rem; margin: 0; padding: 0; align-items: center; }
-    .nav-links a { text-decoration: none; color: #111; }
-    .nav-toggle { display: none; background: none; border: 0; font-size: 1.2rem; }
+    .nav-toggle { display:none; background:none; border:0; font-size:1.2rem; }
+    .nav a:hover { opacity:.9; }
+
     @media (max-width: 720px){
-      .nav-links { display: none; position: absolute; top: 56px; left: 0; right: 0;
-        background: rgba(255,255,255,0.95); padding: 1rem; border-bottom: 1px solid rgba(0,0,0,.06); }
+      .nav-links { display: none; position: absolute; top: 56px; left: 0; right: 0; background: var(--nav-bg) !important; padding: 1rem; }
       .nav-links.open { display: flex; flex-direction: column; gap: .6rem; }
       .nav-toggle { display: inline-block; }
     }
 
+    /* === Hero === */
     .hero { max-width: 1100px; margin: 2.2rem auto; padding: 0 1rem; color: #fff; }
     .hero h1 { font-size: clamp(1.8rem, 4vw, 3rem); margin: 0 0 .6rem; }
     .hero p.lead { font-size: clamp(1.05rem, 2.2vw, 1.25rem); margin: 0 0 1.2rem; }
-    .cta { display: inline-block; padding: .8rem 1.1rem; border-radius: 12px;
-      text-decoration: none; border: 1px solid rgba(255,255,255,.35); color:#fff; }
+    .cta { display:inline-block; padding:.8rem 1.1rem; border-radius:12px; text-decoration:none; border:1px solid rgba(255,255,255,.6); color:#fff; }
 
-    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1rem; margin-top: 1.6rem; }
-    .card { grid-column: span 4; background: rgba(255,255,255,.86); border: 1px solid rgba(0,0,0,.06);
-      border-radius: 14px; padding: 1rem; color:#111; }
-    .card h3 { margin-top: 0; }
+    /* === Grid & Karten (6 Stück) === */
+    .grid { display:grid; grid-template-columns: repeat(12, 1fr); gap:1rem; margin-top:1.6rem; }
+    .card { grid-column: span 4; background: var(--card-bg); color: var(--card-fg); border-radius:14px; padding:1.05rem 1rem; border:1px solid rgba(0,0,0,.08); }
+    .card h3 { margin:0 0 .4rem; }
+    .card p, .card li { margin:.35rem 0; }
+    .card a { color:#fff; text-decoration: underline; text-underline-offset: 2px; }
     @media (max-width: 960px){ .card { grid-column: span 6; } }
     @media (max-width: 640px){ .card { grid-column: span 12; } }
 
-    footer { max-width: 1100px; margin: 2.5rem auto; padding: 0 1rem 2rem; font-size: .95rem; color:#fff; }
-    footer a { color: inherit; }
- /* === Nav-Leiste: sRGB R:162 G:33 B:33 (#A22121) === */
-:root{
-  --nav-bg: #A22121;
-  --nav-fg: #ffffff;
-}
+    /* Buttons in Karten */
+    .btn { display:inline-block; padding:.7rem 1rem; border-radius:12px; border:1px solid rgba(255,255,255,.7); color:#fff; text-decoration:none; }
+    .btn:hover { opacity:.92; }
 
-.site-header{
-  background: var(--nav-bg) !important;
-  border-bottom: none !important;
-  backdrop-filter: none !important; /* war vorher leicht transparent */
-}
-
-.nav .brand,
-.nav-links a,
-.nav-toggle{
-  color: var(--nav-fg) !important;
-  text-decoration: none;
-}
-
-.nav .brand:hover,
-.nav-links a:hover{
-  opacity: .9;
-}
-
-/* Mobile-Dropdown ebenfalls in Rot hinterlegen */
-@media (max-width: 720px){
-  .nav-links{
-    background: var(--nav-bg) !important;
-    border-bottom: none !important;
-  }
-}
-
+    footer { max-width:1100px; margin:2.5rem auto; padding:0 1rem 2rem; font-size:.95rem; color:#fff; }
+    footer a { color:inherit; }
   </style>
 </head>
 <body>
@@ -98,7 +75,7 @@
         <li><a href="/products/changewise/">ChangeWise</a></li>
         <li><a href="/products/slackdigest/">SlackDigest</a></li>
         <li><a href="/products/tasksieve/">TaskSieve</a></li>
-        <li class="lang">DE | <a href="/products/tasksieve/en/?v=B90E13">EN</a></li>
+        <li class="lang">DE | <a href="/products/tasksieve/en/?v=C3332D">EN</a></li>
       </ul>
       <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen">☰</button>
     </nav>
@@ -106,21 +83,54 @@
 
   <main class="hero">
     <h1>TaskSieve</h1>
-    <p class="lead">Filtern, was zählt: Aufgaben priorisieren, bündeln, intelligent sortieren – weniger Rauschen, mehr Wirkung.</p>
-    <a class="cta" href="/products/tasksieve/en/?v=B90E13">Zur EN-Seite</a>
+    <p class="lead">Filtern, was zählt. Bündeln & priorisieren. In die Umsetzung kommen.</p>
+    <a class="cta" href="/products/tasksieve/en/?v=C3332D">Zur EN-Seite</a>
 
     <section class="grid" aria-label="Key Features">
       <article class="card">
-        <h3>Priorisieren</h3>
-        <p>Markiert Wichtiges automatisch, damit du zuerst das Richtige erledigst.</p>
+        <h3>Messaging</h3>
+        <p>Filtern, was zählt. Bündeln & priorisieren. In die Umsetzung kommen.</p>
       </article>
+
       <article class="card">
-        <h3>Bündeln</h3>
-        <p>Ähnliche Tasks zusammenfassen – kontext-spezifische Arbeitsblöcke ohne Reibung.</p>
+        <h3>So funktioniert’s</h3>
+        <ul>
+          <li>Quellen verbinden (E-Mail, Notizen, Slack)</li>
+          <li>TaskSieve automatisch sortieren lassen</li>
+          <li>In Fokus-Blöcken arbeiten</li>
+        </ul>
       </article>
+
       <article class="card">
-        <h3>Intelligent sortieren</h3>
-        <p>Regeln & Heuristiken, die deine Gewohnheiten lernen und Ordnung schaffen.</p>
+        <h3>Was es bietet</h3>
+        <p>TaskSieve bündelt verstreute Aufgaben, entfernt Duplikate und priorisiert nach Wirkung, Dringlichkeit und Aufwand — für klaren Fokus.</p>
+      </article>
+
+      <article class="card">
+        <h3>Module</h3>
+        <ul>
+          <li>📥 Sammeln aus E-Mail, Notizen, Slack</li>
+          <li>🔎 Dubletten-Erkennung & Clustering</li>
+          <li>⚖️ Priorisierung: Wirkung/Dringlichkeit/Aufwand</li>
+          <li>🧭 Fokus-Ansicht & Smart Batching</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3>Status & Kontakt</h3>
+        <p>Status: <strong>Beta</strong> — jetzt beitreten.</p>
+        <p>Kontakt: <a href="mailto:info@slackdigest.org">info@slackdigest.org</a></p>
+        <p><a class="btn" href="mailto:info@slackdigest.org?subject=TaskSieve%20Beta&body=Hallo%20TaskSieve-Team%2C%0A%0Aich%20m%C3%B6chte%20am%20Beta-Programm%20teilnehmen.">Beta-Zugang anfragen</a></p>
+      </article>
+
+      <article class="card">
+        <h3>Nächste Schritte</h3>
+        <ul>
+          <li>Jira/GitHub/Asana-Connectoren</li>
+          <li>Kalender-Fokusblöcke</li>
+          <li>Mobile Schnell-Erfassung</li>
+        </ul>
+        <p><a class="btn" href="/">Zur Startseite</a></p>
       </article>
     </section>
   </main>
@@ -130,15 +140,12 @@
   </footer>
 
   <script>
-    // Mobile-Navigation
     const t = document.getElementById('navToggle');
     const l = document.getElementById('navLinks');
     t?.addEventListener('click', () => l.classList.toggle('open'));
-
-    // Letzte Absicherung: falls irgendwas später überschreibt
     requestAnimationFrame(() => {
-      document.documentElement.style.background = '#B90E13';
-      document.body.style.background = '#B90E13';
+      document.documentElement.style.background = getComputedStyle(document.documentElement).getPropertyValue('--brand-bg').trim() || '#B90E13';
+      document.body.style.background = getComputedStyle(document.documentElement).getPropertyValue('--brand-bg').trim() || '#B90E13';
       document.body.style.margin = '0';
     });
   </script>
