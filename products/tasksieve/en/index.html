@@ -1,63 +1,60 @@
-<!doctype html>
-<html lang="en" style="background:#EAE6DE !important;">
+ <!doctype html>
+<html lang="en" style="background:#B90E13 !important;">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TaskSieve – Filter what matters: prioritize, bundle, sort intelligently.</title>
   <meta name="description" content="TaskSieve separates signal from noise. Prioritize, bundle, and sort tasks intelligently to move faster on what matters.">
-  <meta name="theme-color" content="#EAE6DE">
+  <meta name="theme-color" content="#B90E13">
   <link rel="preconnect" href="https://www.slackdigest.org" crossorigin>
-  <link rel="stylesheet" href="/assets/css/site.css">
 
-  <!-- Hard fallback: enforce background regardless of external CSS -->
   <style>
-    html, body { background:#EAE6DE !important; height:100%; }
-    body { margin:0 !important; min-height:100vh; }
+    :root { --brand-bg: #B90E13; }
+    html, body { background: var(--brand-bg) !important; height: 100%; }
+    body { margin: 0 !important; min-height: 100vh; }
 
-    .site-header { position: sticky; top: 0; background: rgba(255,255,255,0.85); backdrop-filter: blur(6px); border-bottom: 1px solid rgba(0,0,0,.06); z-index: 50; }
-    .nav { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: .9rem 1rem; }
-    .nav .brand { font-weight: 600; text-decoration: none; color: inherit; white-space: nowrap; }
+    #bg-overlay { position: fixed; inset: 0; background: var(--brand-bg); z-index: -1; }
+
+    main, .page, .container, .content, .wrapper, .layout, .site, .shell,
+    #page, #content, #main, #app, #root, #__next {
+      background: transparent !important;
+    }
+
+    .site-header { position: sticky; top: 0; background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(6px); border-bottom: 1px solid rgba(0,0,0,.06); z-index: 50; }
+    .nav { max-width: 1100px; margin: 0 auto; display: flex; align-items: center;
+      justify-content: space-between; padding: .9rem 1rem; }
+    .nav .brand { font-weight: 600; text-decoration: none; color: #111; white-space: nowrap; }
     .nav-links { list-style: none; display: flex; gap: 1rem; margin: 0; padding: 0; align-items: center; }
-    .nav-links a { text-decoration: none; color: inherit; }
+    .nav-links a { text-decoration: none; color: #111; }
     .nav-toggle { display: none; background: none; border: 0; font-size: 1.2rem; }
     @media (max-width: 720px){
-      .nav-links { display: none; position: absolute; top: 56px; left: 0; right: 0; background: rgba(255,255,255,0.95); padding: 1rem; border-bottom: 1px solid rgba(0,0,0,.06); }
+      .nav-links { display: none; position: absolute; top: 56px; left: 0; right: 0;
+        background: rgba(255,255,255,0.95); padding: 1rem; border-bottom: 1px solid rgba(0,0,0,.06); }
       .nav-links.open { display: flex; flex-direction: column; gap: .6rem; }
       .nav-toggle { display: inline-block; }
     }
 
-    .hero { max-width: 1100px; margin: 2.2rem auto; padding: 0 1rem; }
+    .hero { max-width: 1100px; margin: 2.2rem auto; padding: 0 1rem; color: #fff; }
     .hero h1 { font-size: clamp(1.8rem, 4vw, 3rem); margin: 0 0 .6rem; }
     .hero p.lead { font-size: clamp(1.05rem, 2.2vw, 1.25rem); margin: 0 0 1.2rem; }
-    .cta { display: inline-block; padding: .8rem 1.1rem; border-radius: 12px; text-decoration: none; border: 1px solid rgba(0,0,0,.12); }
+    .cta { display: inline-block; padding: .8rem 1.1rem; border-radius: 12px;
+      text-decoration: none; border: 1px solid rgba(255,255,255,.35); color:#fff; }
+
     .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1rem; margin-top: 1.6rem; }
-    .card { grid-column: span 4; background: rgba(255,255,255,.8); border: 1px solid rgba(0,0,0,.06); border-radius: 14px; padding: 1rem; }
+    .card { grid-column: span 4; background: rgba(255,255,255,.86); border: 1px solid rgba(0,0,0,.06);
+      border-radius: 14px; padding: 1rem; color:#111; }
     .card h3 { margin-top: 0; }
     @media (max-width: 960px){ .card { grid-column: span 6; } }
     @media (max-width: 640px){ .card { grid-column: span 12; } }
 
-    footer { max-width: 1100px; margin: 2.5rem auto; padding: 0 1rem 2rem; font-size: .95rem; }
+    footer { max-width: 1100px; margin: 2.5rem auto; padding: 0 1rem 2rem; font-size: .95rem; color:#fff; }
     footer a { color: inherit; }
-<style>
-  /* Seite zwingend einfärben */
-  html, body { background:#EAE6DE !important; height:100%; }
-  body { margin:0 !important; min-height:100vh; }
-
-  /* Kill-White: typische Wrapper transparent setzen (ohne Karten etc. anzutasten) */
-  main, .page, .container, .content, .wrapper, .layout, .site, .shell,
-  #page, #content, #main, #app, #root, #__next {
-    background: transparent !important;
-  }
-
-  /* Falls ein direktes Body-Kind den Hintergrund überschreibt (Safety): */
-  :where(body) > :is(header, main, footer, section, article, div) {
-    background: transparent !important;
-  }
-</style>
-
- </style>
+  </style>
 </head>
-<body style="background:#EAE6DE !important;">
+<body>
+  <div id="bg-overlay" aria-hidden="true"></div>
+
   <header class="site-header">
     <nav class="nav">
       <a class="brand" href="/">ChangeWise • SlackDigest • TaskSieve</a>
@@ -65,7 +62,7 @@
         <li><a href="/products/changewise/">ChangeWise</a></li>
         <li><a href="/products/slackdigest/">SlackDigest</a></li>
         <li><a href="/products/tasksieve/">TaskSieve</a></li>
-        <li class="lang"><a href="/products/tasksieve/?v=2">DE</a> | EN</li>
+        <li class="lang"><a href="/products/tasksieve/?v=B90E13">DE</a> | EN</li>
       </ul>
       <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
     </nav>
@@ -74,7 +71,7 @@
   <main class="hero">
     <h1>TaskSieve</h1>
     <p class="lead">Filter what matters: prioritize, bundle, and sort intelligently – less noise, more impact.</p>
-    <a class="cta" href="/products/tasksieve/?v=2">Back to DE</a>
+    <a class="cta" href="/products/tasksieve/?v=B90E13">Back to DE</a>
 
     <section class="grid" aria-label="Key Features">
       <article class="card">
@@ -100,10 +97,9 @@
     const t = document.getElementById('navToggle');
     const l = document.getElementById('navLinks');
     t?.addEventListener('click', () => l.classList.toggle('open'));
-
     requestAnimationFrame(() => {
-      document.documentElement.style.background = '#EAE6DE';
-      document.body.style.background = '#EAE6DE';
+      document.documentElement.style.background = '#B90E13';
+      document.body.style.background = '#B90E13';
       document.body.style.margin = '0';
     });
   </script>
