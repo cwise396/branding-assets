@@ -7,24 +7,30 @@
   <meta name="description" content="TaskSieve trennt Wichtiges von Rauschen. Priorisierung nach Wirkung, Dringlichkeit und Aufwand – automatisch.">
   <meta name="theme-color" content="#B90E13">
   <link rel="preconnect" href="https://www.slackdigest.org" crossorigin>
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="de" href="https://www.slackdigest.org/products/tasksieve/">
+  <link rel="alternate" hreflang="en" href="https://www.slackdigest.org/products/tasksieve/en/">
+  <link rel="alternate" hreflang="x-default" href="https://www.slackdigest.org/products/tasksieve/en/">
 
   <style>
     :root{
-      --brand-bg:#B90E13;      /* Hintergrund */
-      --nav-bg:#A22121;        /* Navi */
+      --brand-bg:#B90E13;      /* Seitenhintergrund */
+      --nav-bg:#A22121;        /* Nav-Leiste */
       --nav-fg:#ffffff;
-      --logo-fg:#ffffff;       /* Logo-Farbe */
       --card-bg:#B90E13;       /* Karten */
       --card-fg:#ffffff;
     }
 
+    /* Hintergrund + Layout-Sicherheit */
     html, body { background: var(--brand-bg) !important; height:100%; }
     body { margin:0 !important; min-height:100vh; }
     #bg-overlay { position:fixed; inset:0; background:var(--brand-bg); z-index:-1; }
 
+    /* Große Wrapper neutralisieren, Karten bleiben sichtbar */
     main, .page, .container, .content, .wrapper, .layout, .site, .shell,
     #page, #content, #main, #app, #root, #__next { background: transparent !important; }
 
+    /* Navigation */
     .site-header { position: sticky; top: 0; background: var(--nav-bg) !important; border-bottom:none !important; z-index:50; }
     .nav { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:.9rem 1rem; }
     .nav .brand, .nav-links a, .nav-toggle { color:var(--nav-fg) !important; text-decoration:none; }
@@ -32,21 +38,23 @@
     .nav-links { list-style:none; display:flex; gap:1rem; margin:0; padding:0; align-items:center; }
     .nav a:hover { opacity:.9; }
     .nav-toggle { display:none; background:none; border:0; font-size:1.2rem; }
+    /* Sprachumschalter in der Nav */
+    .nav .lang { opacity:.95 }
+    .nav .lang a, .nav .lang span { color:var(--nav-fg) !important; text-decoration:none; }
+    .nav .lang .active { font-weight:700; text-decoration:underline; text-underline-offset:3px; }
+
     @media (max-width: 720px){
       .nav-links { display:none; position:absolute; top:56px; left:0; right:0; background:var(--nav-bg) !important; padding:1rem; }
       .nav-links.open { display:flex; flex-direction:column; gap:.6rem; }
       .nav-toggle { display:inline-block; }
     }
 
-    /* Produktlogo */
-    .product-logo{ display:flex; justify-content:center; align-items:center; margin:20px 0 6px; color:var(--logo-fg); }
-    .product-logo svg, .product-logo img{ width:88px; height:88px; display:block; }
-
-    .hero { max-width:1100px; margin:1.2rem auto 2.2rem; padding:0 1rem; color:#fff; }
-    .hero h1 { font-size:clamp(1.8rem, 4vw, 3rem); margin:.2rem 0 .6rem; }
+    /* Hero */
+    .hero { max-width:1100px; margin:2.2rem auto; padding:0 1rem; color:#fff; }
+    .hero h1 { font-size:clamp(1.8rem, 4vw, 3rem); margin:0 0 .6rem; }
     .hero p.lead { font-size:clamp(1.05rem, 2.2vw, 1.25rem); margin:0 0 1.2rem; }
-    .cta { display:inline-block; padding:.8rem 1.1rem; border-radius:12px; text-decoration:none; border:1px solid rgba(255,255,255,.6); color:#fff; }
 
+    /* Grid & Karten (6 Stück) */
     .grid { display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; margin-top:1.6rem; }
     .card {
       grid-column:span 4;
@@ -63,14 +71,30 @@
     @media (max-width:960px){ .card { grid-column:span 6; } }
     @media (max-width:640px){ .card { grid-column:span 12; } }
 
+    /* Buttons */
     .btn { display:inline-block; padding:.7rem 1rem; border-radius:12px; border:1px solid rgba(255,255,255,.7); color:#fff; text-decoration:none; }
     .btn:hover { opacity:.92; }
+    /* Beta-Button: weiß mit roter Schrift */
+    .btn--inverse {
+      background:#fff; color:#B90E13 !important; border-color:#fff !important;
+      box-shadow:0 1px 0 rgba(0,0,0,.05), 0 6px 16px rgba(0,0,0,.12);
+    }
+    .btn--inverse:hover { background:#f7f7f7; }
 
     footer { max-width:1100px; margin:2.5rem auto; padding:0 1rem 2rem; font-size:.95rem; color:#fff; }
     footer a { color:inherit; }
 
-    .sr-only{ position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,1px,1px);white-space:nowrap;border:0; }
-    .grid .card:first-child p{ font-size:1.17em; line-height:1.2; font-weight:700; margin:0; }
+    /* A11y & Punchline */
+    .sr-only{
+      position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+      clip:rect(0,0,1px,1px);white-space:nowrap;border:0;
+    }
+    .grid .card:first-child p{
+      font-size: 1.17em; /* wie h3 */
+      line-height: 1.2;
+      font-weight: 700;
+      margin: 0;
+    }
   </style>
 </head>
 <body>
@@ -83,32 +107,15 @@
         <li><a href="/products/changewise/">ChangeWise</a></li>
         <li><a href="/products/slackdigest/">SlackDigest</a></li>
         <li><a href="/products/tasksieve/">TaskSieve</a></li>
-        <li class="lang">DE | <a href="/products/tasksieve/en/?v=logo">EN</a></li>
+        <li class="lang"><span class="active">DE</span> | <a href="/products/tasksieve/en/">EN</a></li>
       </ul>
       <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen">☰</button>
     </nav>
   </header>
 
-  <!-- zentriertes Produktlogo -->
-  <div class="product-logo" aria-label="TaskSieve Logo">
-    <!-- Inline-SVG Platzhalter (weiß). Später gerne durch <img src="/assets/brand/tasksieve_logo.svg"> ersetzen -->
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-      <circle cx="12" cy="12" r="9"></circle>
-      <circle cx="9"  cy="9"  r="0.9" fill="currentColor" stroke="none"/>
-      <circle cx="12" cy="9"  r="0.9" fill="currentColor" stroke="none"/>
-      <circle cx="15" cy="9"  r="0.9" fill="currentColor" stroke="none"/>
-      <circle cx="9"  cy="12" r="0.9" fill="currentColor" stroke="none"/>
-      <circle cx="12" cy="12" r="0.9" fill="currentColor" stroke="none"/>
-      <circle cx="15" cy="12" r="0.9" fill="currentColor" stroke="none"/>
-      <circle cx="10.5" cy="15" r="0.9" fill="currentColor" stroke="none"/>
-      <circle cx="13.5" cy="15" r="0.9" fill="currentColor" stroke="none"/>
-    </svg>
-  </div>
-
   <main class="hero">
     <h1>TaskSieve</h1>
     <p class="lead">Priorisierung nach Wirkung, Dringlichkeit und Aufwand – automatisch.</p>
-    <a class="cta" href="/products/tasksieve/en/?v=logo">Zur EN-Seite</a>
 
     <section class="grid" aria-label="Key Features">
       <article class="card">
@@ -144,7 +151,7 @@
         <h3>Status & Kontakt</h3>
         <p>Status: <strong>Beta</strong> — jetzt beitreten.</p>
         <p>Kontakt: <a href="mailto:info@slackdigest.org">info@slackdigest.org</a></p>
-        <p><a class="btn" href="mailto:info@slackdigest.org?subject=TaskSieve%20Beta&body=Hallo%20TaskSieve-Team%2C%0A%0Aich%20m%C3%B6chte%20am%20Beta-Programm%20teilnehmen.">Beta-Zugang anfragen</a></p>
+        <p><a class="btn btn--inverse" href="mailto:info@slackdigest.org?subject=TaskSieve%20Beta&body=Hallo%20TaskSieve-Team%2C%0A%0Aich%20m%C3%B6chte%20am%20Beta-Programm%20teilnehmen.">Beta-Zugang anfragen</a></p>
       </article>
 
       <article class="card">
@@ -167,6 +174,7 @@
     const t = document.getElementById('navToggle');
     const l = document.getElementById('navLinks');
     t?.addEventListener('click', () => l.classList.toggle('open'));
+    // Safety re-apply
     requestAnimationFrame(() => {
       const bg = getComputedStyle(document.documentElement).getPropertyValue('--brand-bg').trim() || '#B90E13';
       document.documentElement.style.background = bg;
