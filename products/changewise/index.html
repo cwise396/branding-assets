@@ -15,10 +15,11 @@
   <style>
     :root{
       --brand-bg:#0C3960;   /* Hintergrund (sRGB 12,57,96) */
-      --nav-bg:#A22121;     /* Nav-Leiste wie bei TaskSieve */
+      --nav-bg:#A22121;     /* Nav-Leiste (konstant) */
       --nav-fg:#ffffff;
-      --card-bg:#0C3960;    /* Karten mit Kontur/Schatten */
+      --card-bg:#0C3960;    /* Karten */
       --card-fg:#ffffff;
+      --accent-blue:#0C3960;/* Button-Schriftfarbe für invertierten Button */
     }
 
     html, body { background: var(--brand-bg) !important; height:100%; }
@@ -65,11 +66,16 @@
 
     .btn { display:inline-block; padding:.7rem 1rem; border-radius:12px; border:1px solid rgba(255,255,255,.7); color:#fff; text-decoration:none; }
     .btn:hover { opacity:.92; }
+    /* Invertierter Button (weiß mit blauer Schrift) */
+    .btn--inverse-blue {
+      background:#fff; color:var(--accent-blue) !important; border-color:#fff !important;
+      box-shadow:0 1px 0 rgba(0,0,0,.05), 0 6px 16px rgba(0,0,0,.12);
+    }
+    .btn--inverse-blue:hover { background:#f7f7f7; }
 
     footer { max-width:1100px; margin:2.5rem auto; padding:0 1rem 2rem; font-size:.95rem; color:#fff; }
     footer a { color:inherit; }
 
-    /* 1. Karte Punchline größer (wie h3) */
     .grid .card:first-child p{
       font-size:1.17em; line-height:1.2; font-weight:700; margin:0;
     }
@@ -96,7 +102,6 @@
     <p class="lead">Branding & Change-Kommunikation. Klar. Konsistent. Wirksam.</p>
 
     <section class="grid" aria-label="Key Features">
-      <!-- 1. Karte: Messaging raus → klare Zeile -->
       <article class="card">
         <h3>Veränderung verständlich machen</h3>
         <p>Botschaft schärfen.<br>Team mitnehmen, Haltung zeigen.</p>
@@ -126,15 +131,15 @@
         </ul>
       </article>
 
-      <!-- Karte 5: Status & Kontakt (vorher 6) -->
+      <!-- 5: Status & Kontakt -->
       <article class="card">
         <h3>Status & Kontakt</h3>
         <p>Status: <strong>Open</strong> — unverbindlich anfragen.</p>
         <p>Kontakt: <a href="mailto:info@slackdigest.org">info@slackdigest.org</a></p>
-        <p><a class="btn" href="mailto:info@slackdigest.org?subject=ChangeWise%20Anfrage&body=Hallo%20ChangeWise-Team%2C%0A%0Aich%20m%C3%B6chte%20unverbindlich%20sprechen.">Kontakt aufnehmen</a></p>
+        <p><a class="btn btn--inverse-blue" href="mailto:info@slackdigest.org?subject=ChangeWise%20Anfrage&body=Hallo%20ChangeWise-Team%2C%0A%0Aich%20m%C3%B6chte%20unverbindlich%20sprechen.">Kontakt aufnehmen</a></p>
       </article>
 
-      <!-- Karte 6: Nächste Schritte (vorher 5) -->
+      <!-- 6: Nächste Schritte -->
       <article class="card">
         <h3>Nächste Schritte</h3>
         <ul>
