@@ -19,6 +19,7 @@
       --nav-fg:#ffffff;
       --card-bg:#0C3960;
       --card-fg:#ffffff;
+      --accent-blue:#0C3960;
     }
 
     html, body { background: var(--brand-bg) !important; height:100%; }
@@ -65,6 +66,12 @@
 
     .btn { display:inline-block; padding:.7rem 1rem; border-radius:12px; border:1px solid rgba(255,255,255,.7); color:#fff; text-decoration:none; }
     .btn:hover { opacity:.92; }
+    /* Inverted button (white with blue text) */
+    .btn--inverse-blue {
+      background:#fff; color:var(--accent-blue) !important; border-color:#fff !important;
+      box-shadow:0 1px 0 rgba(0,0,0,.05), 0 6px 16px rgba(0,0,0,.12);
+    }
+    .btn--inverse-blue:hover { background:#f7f7f7; }
 
     footer { max-width:1100px; margin:2.5rem auto; padding:0 1rem 2rem; font-size:.95rem; color:#fff; }
     footer a { color:inherit; }
@@ -129,7 +136,7 @@
         <h3>Status & Contact</h3>
         <p>Status: <strong>Open</strong> — get in touch.</p>
         <p>Contact: <a href="mailto:info@slackdigest.org">info@slackdigest.org</a></p>
-        <p><a class="btn" href="mailto:info@slackdigest.org?subject=ChangeWise%20Inquiry&body=Hi%20ChangeWise%20team%2C%0A%0AI%27d%20like%20to%20talk.">Get in touch</a></p>
+        <p><a class="btn btn--inverse-blue" href="mailto:info@slackdigest.org?subject=ChangeWise%20Inquiry&body=Hi%20ChangeWise%20team%2C%0A%0AI%27d%20like%20to%20talk.">Get in touch</a></p>
       </article>
 
       <!-- Card 6: Next steps -->
