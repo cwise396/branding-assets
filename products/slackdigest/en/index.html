@@ -3,14 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SlackDigest – Clear team updates as a digest.</title>
-  <meta name="description" content="SlackDigest condenses Slack & email into short, relevant summaries. Surface what matters—without noise.">
+  <title>SlackDigest – Updates that move.</title>
+  <meta name="description" content="SlackDigest condenses signals from Slack & email into clear updates — one glance, one link, done.">
   <meta name="theme-color" content="#0C6C48">
   <link rel="preconnect" href="https://www.slackdigest.org" crossorigin>
-  <!-- hreflang -->
-  <link rel="alternate" hreflang="en" href="https://www.slackdigest.org/products/slackdigest/en/">
-  <link rel="alternate" hreflang="de" href="https://www.slackdigest.org/products/slackdigest/">
-  <link rel="alternate" hreflang="x-default" href="https://www.slackdigest.org/products/slackdigest/en/">
 
   <style>
     :root{
@@ -19,67 +15,60 @@
       --nav-fg:#ffffff;
       --card-bg:#0C6C48;
       --card-fg:#ffffff;
-      --accent:#0C6C48;
+      --accent-green:#0C6C48;
+      --logo-size:88px;
+      --logo-overlap:24px;
     }
-
-    html, body { background: var(--brand-bg) !important; height:100%; }
+    html, body { background:var(--brand-bg) !important; height:100%; }
     body { margin:0 !important; min-height:100vh; }
     #bg-overlay { position:fixed; inset:0; background:var(--brand-bg); z-index:-1; }
 
-    main, .page, .container, .content, .wrapper, .layout, .site, .shell,
-    #page, #content, #main, #app, #root, #__next { background: transparent !important; }
+    .site-header{ position:sticky; top:0; background:var(--nav-bg) !important; z-index:50; }
+    .nav{ max-width:1100px; margin:0 auto; padding:.9rem 1rem; display:flex; justify-content:space-between; align-items:center; }
+    .nav a{ color:var(--nav-fg) !important; text-decoration:none; }
+    .nav-links{ list-style:none; display:flex; gap:1rem; margin:0; padding:0; align-items:center; }
+    .nav .lang .active{ font-weight:700; text-decoration:underline; text-underline-offset:3px; }
 
-    .site-header { position: sticky; top: 0; background: var(--nav-bg) !important; border-bottom:none !important; z-index:50; }
-    .nav { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:.9rem 1rem; }
-    .nav .brand, .nav-links a, .nav-toggle { color:var(--nav-fg) !important; text-decoration:none; }
-    .nav .brand { font-weight:600; white-space:nowrap; }
-    .nav-links { list-style:none; display:flex; gap:1rem; margin:0; padding:0; align-items:center; }
-    .nav a:hover { opacity:.9; }
-    .nav-toggle { display:none; background:none; border:0; font-size:1.2rem; }
-    .nav .lang { opacity:.95 }
-    .nav .lang a, .nav .lang span { color:var(--nav-fg) !important; text-decoration:none; }
-    .nav .lang .active { font-weight:700; text-decoration:underline; text-underline-offset:3px; }
+    .hero{ color:#fff; padding-top:24mm; }
+    .hero-header{
+      max-width:1100px; margin:0 auto; padding:0 1rem;
+      display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; align-items:end;
+    }
+    .hero-text{ grid-column:1 / 9; }
+    .hero h1{ font-size:clamp(1.8rem,4vw,3rem); line-height:1.1; margin:0 0 .15rem; }
+    .hero p.lead{ margin:0; font-size:clamp(1.2rem,2.4vw,1.4rem); font-weight:700; }
 
-    @media (max-width: 720px){
-      .nav-links { display:none; position:absolute; top:56px; left:0; right:0; background:var(--nav-bg) !important; padding:1rem; }
-      .nav-links.open { display:flex; flex-direction:column; gap:.6rem; }
-      .nav-toggle { display:inline-block; }
+    .product-logo{ display:flex; align-items:center; justify-content:flex-start; }
+    .product-logo img{ width:var(--logo-size); height:var(--logo-size); object-fit:contain; display:block; }
+    .logo--rightcol{ grid-column:9 / 13; justify-self:start; }
+    .product-logo--baseline{ margin-top:calc(-1 * var(--logo-overlap)); }
+    @media (max-width:640px){
+      .hero-header{ grid-template-columns:1fr; text-align:center; }
+      .hero-text{ grid-column:1 / -1; }
+      .logo--rightcol{ grid-column:1 / -1; justify-self:center; }
+      .product-logo--baseline{ margin-top:0; }
     }
 
-    .hero { max-width:1100px; margin:2.2rem auto; padding:0 1rem; color:#fff; }
-    .hero h1 { font-size:clamp(1.8rem, 4vw, 3rem); margin:0 0 .6rem; }
-    .hero p.lead { font-size:clamp(1.05rem, 2.2vw, 1.25rem); margin:0 0 1.2rem; }
-
-    .grid { display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; margin-top:1.6rem; }
-    .card {
-      grid-column:span 4;
-      background:var(--card-bg);
-      color:var(--card-fg);
-      border-radius:14px;
-      padding:1.05rem 1rem;
+    .section-cards{ max-width:1100px; margin:0 auto; padding:0 1rem; }
+    .grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; margin-top:1rem; }
+    .card{
+      grid-column:span 4; background:var(--card-bg); color:var(--card-fg);
+      border-radius:14px; padding:1.05rem 1rem;
       border:1px solid rgba(255,255,255,.28);
-      box-shadow: 0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06);
+      box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06);
     }
-    .card h3 { margin:0 0 .4rem; }
-    .card p, .card li { margin:.35rem 0; }
-    .card a { color:#fff; text-decoration: underline; text-underline-offset: 2px; }
-    @media (max-width:960px){ .card { grid-column:span 6; } }
-    @media (max-width:640px){ .card { grid-column:span 12; } }
+    .card h3{ margin:0 0 .4rem; }
+    .card p, .card li{ margin:.35rem 0; }
+    .card ul{ list-style:disc; padding-left:1.2rem; }
+    @media (max-width:960px){ .card{ grid-column:span 6; } }
+    @media (max-width:640px){ .card{ grid-column:span 12; } }
 
-    .btn { display:inline-block; padding:.7rem 1rem; border-radius:12px; border:1px solid rgba(255,255,255,.7); color:#fff; text-decoration:none; }
-    .btn:hover { opacity:.92; }
-    .btn--inverse-green {
-      background:#fff; color:var(--accent) !important; border-color:#fff !important;
-      box-shadow:0 1px 0 rgba(0,0,0,.05), 0 6px 16px rgba(0,0,0,.12);
-    }
-    .btn--inverse-green:hover { background:#f7f7f7; }
+    .btn{ display:inline-block; padding:.7rem 1rem; border-radius:12px; border:1px solid #fff; color:#fff; text-decoration:none; }
+    .btn--inverse{ background:#fff; color:var(--accent-green) !important; border-color:#fff; box-shadow:0 6px 16px rgba(0,0,0,.12); }
+    .btn--inverse:hover{ background:#f7f7f7; }
 
-    footer { max-width:1100px; margin:2.5rem auto; padding:0 1rem 2rem; font-size:.95rem; color:#fff; }
-    footer a { color:inherit; }
-
-    .grid .card:first-child p{
-      font-size:1.17em; line-height:1.2; font-weight:700; margin:0;
-    }
+    footer{ max-width:1100px; margin:2.2rem auto; padding:0 1rem 2rem; color:#fff; }
+    footer a{ color:inherit; }
   </style>
 </head>
 <body>
@@ -88,78 +77,67 @@
   <header class="site-header">
     <nav class="nav">
       <a class="brand" href="/">ChangeWise • SlackDigest • TaskSieve</a>
-      <ul class="nav-links" id="navLinks">
+      <ul class="nav-links">
         <li><a href="/products/changewise/">ChangeWise</a></li>
         <li><a href="/products/slackdigest/">SlackDigest</a></li>
         <li><a href="/products/tasksieve/">TaskSieve</a></li>
         <li class="lang"><a href="/products/slackdigest/">DE</a> | <span class="active">EN</span></li>
       </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
     </nav>
   </header>
 
   <main class="hero">
-    <h1>SlackDigest</h1>
-    <p class="lead">Short, relevant summaries for Slack & email—without the noise.</p>
+    <div class="hero-header">
+      <div class="hero-text">
+        <h1>SlackDigest</h1>
+        <p class="lead">Updates that move.</p>
+      </div>
+      <div class="product-logo product-logo--baseline logo--rightcol">
+        <img src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo" width="88" height="88" loading="lazy" decoding="async">
+      </div>
+    </div>
 
-    <section class="grid" aria-label="Key Features">
-      <article class="card">
-        <h3>A digest that delivers</h3>
-        <p>Surface what matters.<br>Bundle channels, cut the noise.</p>
-      </article>
+    <section class="section-cards">
+      <section class="grid" aria-label="Key Features">
+        <article class="card">
+          <h3>To the point</h3>
+          <p>One glance. One link. Done.</p>
+        </article>
 
-       <article class="card">
-  <h3>How it works</h3>
-  <ul>
-    <li>Connect Slack/email.</li>
-    <li>Auto-condense.</li>
-    <li>Deliver updates (one glance, one link, done).</li>
-  </ul>
-</article>
+        <article class="card">
+          <h3>How it works</h3>
+          <ul>
+            <li>Connect Slack/email</li>
+            <li>Auto-condense</li>
+            <li>Deliver updates (one glance, one link, done)</li>
+          </ul>
+        </article>
 
+        <article class="card">
+          <h3>What it offers</h3>
+          <ul>
+            <li>Less scatter, more focus</li>
+            <li>A compact digest that surfaces what matters and hides the rest—so teams decide faster.</li>
+          </ul>
+        </article>
 
-       <article class="card">
-  <h3>What it offers</h3>
-  <ul>
-    <li>Less scatter, more focus.</li>
-    <li>A compact digest that surfaces what matters and filters the rest—so teams decide faster.</li>
-  </ul>
-</article>
+        <article class="card">
+          <h3>Status &amp; Contact</h3>
+          <p>Status: <strong>Open</strong> — try it.</p>
+          <p>Contact: <a href="mailto:info@slackdigest.org">info@slackdigest.org</a></p>
+          <p><a class="btn btn--inverse" href="mailto:info@slackdigest.org?subject=SlackDigest%20Test&body=Hi%20SlackDigest%20team%2C%0A%0AI%27d%20like%20to%20try%20it.">Try Beta</a></p>
+        </article>
 
-
-      <article class="card">
-        <h3>Modules</h3>
-        <ul>
-          <li>🔔 Mentions & decisions first</li>
-          <li>📌 Project/channel digests</li>
-          <li>🧹 Dedupe & remove off-topic</li>
-          <li>🕒 Daily/weekly delivery</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <h3>Status & Contact</h3>
-        <p>Status: <strong>Beta</strong> — try it now.</p>
-        <p>Contact: <a href="mailto:info@slackdigest.org">info@slackdigest.org</a></p>
-        <p><a class="btn btn--inverse-green" href="mailto:info@slackdigest.org?subject=SlackDigest%20Beta&body=Hi%20SlackDigest%20team%2C%0A%0AI%27d%20like%20to%20try%20the%20beta.">Try the beta</a></p>
-      </article>
+        <article class="card">
+          <h3>Integrations</h3>
+          <p>Slack, email — more on request.</p>
+        </article>
+      </section>
     </section>
   </main>
 
   <footer>
     <a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a>
   </footer>
-
-  <script>
-    const t = document.getElementById('navToggle');
-    const l = document.getElementById('navLinks');
-    t?.addEventListener('click', () => l.classList.toggle('open'));
-    requestAnimationFrame(() => {
-      const bg = getComputedStyle(document.documentElement).getPropertyValue('--brand-bg').trim() || '#0C6C48';
-      document.documentElement.style.background = bg;
-      document.body.style.background = bg;
-      document.body.style.margin = '0';
-    });
-  </script>
 </body>
 </html>
