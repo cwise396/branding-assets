@@ -60,6 +60,15 @@
     .card h3{ margin:0 0 .4rem; }
     .card p, .card li{ margin:.35rem 0; }
     .card ul{ list-style:disc; padding-left:1.2rem; }
+    .card a{ color:#fff; text-decoration:underline; text-underline-offset:2px; }
+
+    .card--inverse{
+      background:#fff; color:var(--accent-green);
+      border:1px solid rgba(0,0,0,.08);
+      box-shadow:0 10px 24px rgba(0,0,0,.08);
+    }
+    .card--inverse a{ color:var(--accent-green); }
+
     @media (max-width:960px){ .card{ grid-column:span 6; } }
     @media (max-width:640px){ .card{ grid-column:span 12; } }
 
@@ -121,7 +130,7 @@
           </ul>
         </article>
 
-        <article class="card">
+        <article class="card card--inverse">
           <h3>Status &amp; Contact</h3>
           <p>Status: <strong>Open</strong> — try it.</p>
           <p>Contact: <a href="mailto:info@slackdigest.org">info@slackdigest.org</a></p>
