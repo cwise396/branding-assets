@@ -49,11 +49,14 @@
     }
 
     /* HERO: Text links (Spalten 1–8), Logo rechts (9–12) */
-    .hero { color:#fff; }
-    .hero-header{
-      max-width:1100px; margin:1.2rem auto 0; padding:0 1rem;
-      display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; align-items:end;
-    }
+    /* HERO: gesamter Block 12mm unter der Nav */
+.hero { color:#fff; padding-top:12mm; }
+
+     .hero-header{
+  max-width:1100px; margin:0 auto; padding:0 1rem;
+  display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; align-items:end;
+}
+
     .hero-text{ grid-column:1 / 9; }
     .hero h1{ font-size:clamp(1.8rem, 4vw, 3rem); line-height:1.1; margin:0 0 .15rem; }
     .hero p.lead{ margin:0; font-size:clamp(1.2rem, 2.4vw, 1.4rem); font-weight:700; } /* größer + fett */
