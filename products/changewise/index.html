@@ -45,16 +45,16 @@
       .nav-links.open { display:flex; flex-direction:column; gap:.6rem; }
       .nav-toggle { display:inline-block; }
     }
-<div class="product-logo">
-  <img src="/assets/brand/changewise_logo_circle_lightblue_arrow_sharp.svg"
-       alt="ChangeWise Logo" width="88" height="88" loading="lazy" decoding="async">
-</div>
 
-    .hero { max-width:1100px; margin:2.2rem auto; padding:0 1rem; color:#fff; }
-    .hero h1 { font-size:clamp(1.8rem, 4vw, 3rem); margin:0 0 .6rem; }
+    /* Logo unter der Nav */
+    .product-logo{ display:flex; justify-content:center; align-items:center; margin:20px 0 6px; }
+    .product-logo img{ width:88px; height:88px; object-fit:contain; display:block; }
+
+    .hero { max-width:1100px; margin:1.2rem auto 0; padding:0 1rem; color:#fff; }
+    .hero h1 { font-size:clamp(1.8rem, 4vw, 3rem); margin:.4rem 0 .6rem; }
     .hero p.lead { font-size:clamp(1.05rem, 2.2vw, 1.25rem); margin:0 0 1.2rem; }
 
-    .grid { display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; margin-top:1.6rem; }
+    .grid { display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; margin-top:1.0rem; }
     .card {
       grid-column:span 4;
       background:var(--card-bg); color:var(--card-fg);
@@ -65,6 +65,7 @@
     .card h3 { margin:0 0 .4rem; }
     .card p, .card li { margin:.35rem 0; }
     .card a { color:#fff; text-decoration: underline; text-underline-offset: 2px; }
+    .card ul { list-style: disc; padding-left: 1.2rem; } /* Bullet-Sicherheit */
     @media (max-width:960px){ .card { grid-column:span 6; } }
     @media (max-width:640px){ .card { grid-column:span 12; } }
 
@@ -76,7 +77,7 @@
     }
     .btn--inverse-blue:hover { background:#f7f7f7; }
 
-    footer { max-width:1100px; margin:2.5rem auto; padding:0 1rem 2rem; font-size:.95rem; color:#fff; }
+    footer { max-width:1100px; margin:2.2rem auto; padding:0 1rem 2rem; font-size:.95rem; color:#fff; }
     footer a { color:inherit; }
 
     .grid .card:first-child p{
@@ -97,11 +98,14 @@
         <li class="lang"><span class="active">DE</span> | <a href="/products/changewise/en/">EN</a></li>
       </ul>
       <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen">☰</button>
-   .product-logo{ display:flex; justify-content:center; align-items:center; margin:20px 0 6px; }
-.product-logo img{ width:88px; height:88px; object-fit:contain; display:block; }
-
-      </nav>
+    </nav>
   </header>
+
+  <!-- Logo unter der Nav -->
+  <div class="product-logo">
+    <img src="/assets/brand/changewise_logo_circle_lightblue_arrow_sharp.svg"
+         alt="ChangeWise Logo" width="88" height="88" loading="lazy" decoding="async">
+  </div>
 
   <main class="hero">
     <h1>ChangeWise</h1>
