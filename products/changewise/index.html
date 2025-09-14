@@ -15,11 +15,13 @@
   <style>
     :root{
       --brand-bg:#0C3960;   /* Hintergrund (sRGB 12,57,96) */
-      --nav-bg:#A22121;     /* Nav-Leiste (konstant) */
+      --nav-bg:#A22121;     /* Nav-Leiste (rot, wie abgestimmt) */
       --nav-fg:#ffffff;
       --card-bg:#0C3960;    /* Karten */
       --card-fg:#ffffff;
-      --accent-blue:#0C3960;/* Button-Schriftfarbe invertiert */
+      --accent-blue:#0C3960;/* Invertierter Button-Text */
+      --logo-size:88px;     /* Anzeigegröße des Logos */
+      --logo-overlap:24px;  /* Feintuning: Überlappung nach oben für Baseline-Tangente (20–28px) */
     }
 
     html, body { background: var(--brand-bg) !important; height:100%; }
@@ -29,6 +31,7 @@
     main, .page, .container, .content, .wrapper, .layout, .site, .shell,
     #page, #content, #main, #app, #root, #__next { background: transparent !important; }
 
+    /* NAV */
     .site-header { position: sticky; top: 0; background: var(--nav-bg) !important; border-bottom:none !important; z-index:50; }
     .nav { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:.9rem 1rem; }
     .nav .brand, .nav-links a, .nav-toggle { color:var(--nav-fg) !important; text-decoration:none; }
@@ -46,14 +49,18 @@
       .nav-toggle { display:inline-block; }
     }
 
-    /* Logo unter der Nav */
-    .product-logo{ display:flex; justify-content:center; align-items:center; margin:20px 0 6px; }
-    .product-logo img{ width:88px; height:88px; object-fit:contain; display:block; }
-
+    /* HERO */
     .hero { max-width:1100px; margin:1.2rem auto 0; padding:0 1rem; color:#fff; }
-    .hero h1 { font-size:clamp(1.8rem, 4vw, 3rem); margin:.4rem 0 .6rem; }
+    .hero h1 { font-size:clamp(1.8rem, 4vw, 3rem); margin:.4rem 0 .6rem; line-height:1.1; }
+
+    /* LOGO IM HERO (unter H1) */
+    .product-logo{ display:flex; justify-content:center; align-items:center; margin:20px 0 6px; }
+    .product-logo img{ width:var(--logo-size); height:var(--logo-size); object-fit:contain; display:block; }
+    .product-logo--baseline{ margin-top: calc(-1 * var(--logo-overlap)); } /* Kreis tangent zur H1-Baseline */
+
     .hero p.lead { font-size:clamp(1.05rem, 2.2vw, 1.25rem); margin:0 0 1.2rem; }
 
+    /* GRID + CARDS */
     .grid { display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; margin-top:1.0rem; }
     .card {
       grid-column:span 4;
@@ -69,6 +76,7 @@
     @media (max-width:960px){ .card { grid-column:span 6; } }
     @media (max-width:640px){ .card { grid-column:span 12; } }
 
+    /* BUTTONS + FOOTER */
     .btn { display:inline-block; padding:.7rem 1rem; border-radius:12px; border:1px solid rgba(255,255,255,.7); color:#fff; text-decoration:none; }
     .btn:hover { opacity:.92; }
     .btn--inverse-blue {
@@ -101,14 +109,15 @@
     </nav>
   </header>
 
-  <!-- Logo unter der Nav -->
-  <div class="product-logo">
-    <img src="/assets/brand/changewise_logo_circle_lightblue_arrow_sharp.svg"
-         alt="ChangeWise Logo" width="88" height="88" loading="lazy" decoding="async">
-  </div>
-
   <main class="hero">
     <h1>ChangeWise</h1>
+
+    <!-- Logo im Hero, unmittelbar unter der H1 (roter Kreis #A22021) -->
+    <div class="product-logo product-logo--baseline">
+      <img src="/assets/brand/changewise_logo_circle_brandred_arrow_sharp.svg"
+           alt="ChangeWise Logo" width="88" height="88" loading="lazy" decoding="async">
+    </div>
+
     <p class="lead">Branding & Change-Kommunikation. Klar. Konsistent. Wirksam.</p>
 
     <section class="grid" aria-label="Key Features">
@@ -117,7 +126,6 @@
         <p>Botschaft schärfen.<br>Team mitnehmen, Haltung zeigen.</p>
       </article>
 
-      <!-- So funktioniert’s: komprimiert -->
       <article class="card">
         <h3>So funktioniert’s</h3>
         <ul>
@@ -127,7 +135,6 @@
         </ul>
       </article>
 
-      <!-- Was es bietet: produkt­spezifisch gelistet -->
       <article class="card">
         <h3>Was es bietet</h3>
         <ul>
@@ -146,7 +153,6 @@
         </ul>
       </article>
 
-      <!-- 5: Status & Kontakt -->
       <article class="card">
         <h3>Status &amp; Kontakt</h3>
         <p>Status: <strong>Open</strong> — unverbindlich anfragen.</p>
@@ -154,7 +160,6 @@
         <p><a class="btn btn--inverse-blue" href="mailto:info@slackdigest.org?subject=ChangeWise%20Anfrage&body=Hallo%20ChangeWise-Team%2C%0A%0Aich%20m%C3%B6chte%20unverbindlich%20sprechen.">Kontakt aufnehmen</a></p>
       </article>
 
-      <!-- 6: Nächste Schritte -->
       <article class="card">
         <h3>Nächste Schritte</h3>
         <ul>
