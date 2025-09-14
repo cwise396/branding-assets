@@ -10,14 +10,14 @@
 
   <style>
     :root{
-      --brand-bg:#0C6C48;   /* sRGB 12,108,72 */
-      --nav-bg:#A22121;     /* rot wie bei den anderen */
+      --brand-bg:#0C6C48;   /* sRGB (12,108,72) */
+      --nav-bg:#A22121;     /* rot (gemeinsam) */
       --nav-fg:#ffffff;
       --card-bg:#0C6C48;
       --card-fg:#ffffff;
-      --accent-green:#0C6C48; /* Button-Text auf Weiß */
+      --accent-green:#0C6C48; /* Textfarbe auf weißem Button/Karte */
       --logo-size:88px;
-      --logo-overlap:24px;  /* Baseline-Feinheit wenn nötig */
+      --logo-overlap:24px;  /* Baseline-Feintuning */
     }
 
     html, body { background:var(--brand-bg) !important; height:100%; }
@@ -33,7 +33,7 @@
     @media (max-width:720px){ .nav-links{ display:none; } }
 
     /* HERO */
-    .hero{ color:#fff; padding-top:24mm; } /* 24mm unter Nav */
+    .hero{ color:#fff; padding-top:24mm; } /* 24 mm unter Nav */
     .hero-header{
       max-width:1100px; margin:0 auto; padding:0 1rem;
       display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; align-items:end;
@@ -65,6 +65,16 @@
     .card h3{ margin:0 0 .4rem; }
     .card p, .card li{ margin:.35rem 0; }
     .card ul{ list-style:disc; padding-left:1.2rem; }
+    .card a{ color:#fff; text-decoration:underline; text-underline-offset:2px; } /* Standard: Links auf grüner Karte = weiß */
+
+    /* Invertierte Kontakt-Karte: weißer Hintergrund, grüne Schrift/Links */
+    .card--inverse{
+      background:#fff; color:var(--accent-green);
+      border:1px solid rgba(0,0,0,.08);
+      box-shadow:0 10px 24px rgba(0,0,0,.08);
+    }
+    .card--inverse a{ color:var(--accent-green); }
+
     @media (max-width:960px){ .card{ grid-column:span 6; } }
     @media (max-width:640px){ .card{ grid-column:span 12; } }
 
@@ -98,7 +108,7 @@
         <h1>SlackDigest</h1>
         <p class="lead">Updates, die bewegen.</p>
       </div>
-      <!-- Logo: ersetze src durch dein hochgeladenes Logo -->
+      <!-- Logo: ersetze src nur wenn dein Dateiname anders ist -->
       <div class="product-logo product-logo--baseline logo--rightcol">
         <img src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo" width="88" height="88" loading="lazy" decoding="async">
       </div>
@@ -128,7 +138,8 @@
           </ul>
         </article>
 
-        <article class="card">
+        <!-- Invertierte Kontakt-Karte -->
+        <article class="card card--inverse">
           <h3>Status &amp; Kontakt</h3>
           <p>Status: <strong>Open</strong> — ausprobieren.</p>
           <p>Kontakt: <a href="mailto:info@slackdigest.org">info@slackdigest.org</a></p>
