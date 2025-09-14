@@ -21,7 +21,7 @@
       --card-fg:#ffffff;
       --accent-blue:#0C3960;
       --logo-size:88px;
-      --logo-overlap:24px; /* tweak 20–28px for baseline tangent */
+      --logo-overlap:24px; /* baseline tangent (desktop) */
     }
 
     html, body { background: var(--brand-bg) !important; height:100%; }
@@ -48,30 +48,33 @@
       .nav-toggle { display:inline-block; }
     }
 
-    /* HERO */
-    .hero { max-width:1100px; margin:1.2rem auto 0; padding:0 1rem; color:#fff; }
-    .hero h1 { font-size:clamp(1.8rem, 4vw, 3rem); margin:.4rem 0 .6rem; line-height:1.1; }
-
-    /* Align logo to grid column 9 (line with "What it offers") */
-    .hero-align{
-      max-width:1100px; margin:0 auto; padding:0 1rem;
-      display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; align-items:start;
+    /* HERO grid */
+    .hero { color:#fff; }
+    .hero-header{
+      max-width:1100px; margin:1.2rem auto 0; padding:0 1rem;
+      display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; align-items:end;
     }
-    .product-logo{ display:flex; justify-content:center; align-items:center; margin:20px 0 6px; }
+    .hero-text{ grid-column:1 / 9; }
+    .hero h1{ font-size:clamp(1.8rem, 4vw, 3rem); line-height:1.1; margin:0 0 .15rem; }
+    .hero p.lead{ margin:0; font-size:clamp(1.2rem, 2.4vw, 1.4rem); font-weight:700; } /* larger + bold */
+
+    .product-logo{ display:flex; align-items:center; justify-content:flex-start; }
     .product-logo img{ width:var(--logo-size); height:var(--logo-size); object-fit:contain; display:block; }
-    .product-logo--baseline{ margin-top: calc(-1 * var(--logo-overlap)); }
     .logo--rightcol{ grid-column:9 / 13; justify-self:start; }
-    @media (max-width:640px){
-      .logo--rightcol{ grid-column:1 / -1; justify-self:center; }
-    }
+    .product-logo--baseline{ margin-top: calc(-1 * var(--logo-overlap)); }
 
-    .hero p.lead { font-size:clamp(1.05rem, 2.2vw, 1.25rem); margin:0 0 1.2rem; }
+    @media (max-width:640px){
+      .hero-header{ grid-template-columns:1fr; align-items:center; }
+      .hero-text{ grid-column:1 / -1; text-align:center; }
+      .logo--rightcol{ grid-column:1 / -1; justify-self:center; }
+      .product-logo--baseline{ margin-top:0; }
+    }
 
     /* GRID + CARDS */
+    .section-cards{ max-width:1100px; margin:0 auto; padding:0 1rem; }
     .grid { display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; margin-top:1.0rem; }
     .card {
-      grid-column:span 4;
-      background:var(--card-bg); color:var(--card-fg);
+      grid-column:span 4; background:var(--card-bg); color:var(--card-fg);
       border-radius:14px; padding:1.05rem 1rem;
       border:1px solid rgba(255,255,255,.28);
       box-shadow: 0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06);
@@ -79,7 +82,7 @@
     .card h3 { margin:0 0 .4rem; }
     .card p, .card li { margin:.35rem 0; }
     .card a { color:#fff; text-decoration: underline; text-underline-offset: 2px; }
-    .card ul { list-style: disc; padding-left: 1.2rem; } /* ensure bullets */
+    .card ul { list-style: disc; padding-left: 1.2rem; }
     @media (max-width:960px){ .card { grid-column:span 6; } }
     @media (max-width:640px){ .card { grid-column:span 12; } }
 
@@ -95,9 +98,7 @@
     footer { max-width:1100px; margin:2.2rem auto; padding:0 1rem 2rem; font-size:.95rem; color:#fff; }
     footer a { color:inherit; }
 
-    .grid .card:first-child p{
-      font-size:1.17em; line-height:1.2; font-weight:700; margin:0;
-    }
+    .grid .card:first-child p{ font-size:1.17em; line-height:1.2; font-weight:700; margin:0; }
   </style>
 </head>
 <body>
@@ -117,66 +118,69 @@
   </header>
 
   <main class="hero">
-    <h1>ChangeWise</h1>
+    <div class="hero-header">
+      <div class="hero-text">
+        <h1>ChangeWise</h1>
+        <p class="lead">Branding &amp; change communications. Clear. Consistent. Effective.</p>
+      </div>
 
-    <!-- Logo aligned to column 9 (shift-style, brand red circle) -->
-    <div class="hero-align">
+      <!-- Logo right, left circle tangent aligned to "What it offers" column -->
       <div class="product-logo product-logo--baseline logo--rightcol">
         <img src="/assets/brand/changewise_logo_circle_brandred_shift_right_v3.svg"
              alt="ChangeWise Logo" width="88" height="88" loading="lazy" decoding="async">
       </div>
     </div>
 
-    <p class="lead">Branding & change communications. Clear. Consistent. Effective.</p>
+    <section class="section-cards">
+      <section class="grid" aria-label="Key Features">
+        <article class="card">
+          <h3>Make change understandable</h3>
+          <p>Sharpen the message.<br>Bring people along.</p>
+        </article>
 
-    <section class="grid" aria-label="Key Features">
-      <article class="card">
-        <h3>Make change understandable</h3>
-        <p>Sharpen the message.<br>Bring people along.</p>
-      </article>
+        <article class="card">
+          <h3>How it works</h3>
+          <ul>
+            <li>Define core messages &amp; tone</li>
+            <li>Assemble assets (logo, colors, typography)</li>
+            <li>Publish ready-to-use templates</li>
+          </ul>
+        </article>
 
-      <article class="card">
-        <h3>How it works</h3>
-        <ul>
-          <li>Define core messages &amp; tone</li>
-          <li>Assemble assets (logo, colors, typography)</li>
-          <li>Publish ready-to-use templates</li>
-        </ul>
-      </article>
+        <article class="card">
+          <h3>What it offers</h3>
+          <ul>
+            <li>Clarity, consistency, and adoption</li>
+            <li>A compact brand kit for small teams: logos/icons, color/type essentials, templates for landing pages &amp; presentations</li>
+          </ul>
+        </article>
 
-      <article class="card">
-        <h3>What it offers</h3>
-        <ul>
-          <li>Clarity, consistency, and adoption</li>
-          <li>A compact brand kit for small teams: logos/icons, color/type essentials, templates for landing pages &amp; presentations</li>
-        </ul>
-      </article>
+        <article class="card">
+          <h3>Modules</h3>
+          <ul>
+            <li>🎯 Positioning &amp; narrative</li>
+            <li>🧩 Messaging &amp; identity system</li>
+            <li>📚 Playbooks &amp; templates</li>
+            <li>🎓 Training &amp; enablement</li>
+          </ul>
+        </article>
 
-      <article class="card">
-        <h3>Modules</h3>
-        <ul>
-          <li>🎯 Positioning &amp; narrative</li>
-          <li>🧩 Messaging &amp; identity system</li>
-          <li>📚 Playbooks &amp; templates</li>
-          <li>🎓 Training &amp; enablement</li>
-        </ul>
-      </article>
+        <article class="card">
+          <h3>Status &amp; Contact</h3>
+          <p>Status: <strong>Open</strong> — get in touch.</p>
+          <p>Contact: <a href="mailto:info@slackdigest.org">info@slackdigest.org</a></p>
+          <p><a class="btn btn--inverse-blue" href="mailto:info@slackdigest.org?subject=ChangeWise%20Inquiry&body=Hi%20ChangeWise%20team%2C%0A%0AI%27d%20like%20to%20talk.">Get in touch</a></p>
+        </article>
 
-      <article class="card">
-        <h3>Status &amp; Contact</h3>
-        <p>Status: <strong>Open</strong> — get in touch.</p>
-        <p>Contact: <a href="mailto:info@slackdigest.org">info@slackdigest.org</a></p>
-        <p><a class="btn btn--inverse-blue" href="mailto:info@slackdigest.org?subject=ChangeWise%20Inquiry&body=Hi%20ChangeWise%20team%2C%0A%0AI%27d%20like%20to%20talk.">Get in touch</a></p>
-      </article>
-
-      <article class="card">
-        <h3>Next steps</h3>
-        <ul>
-          <li>Short workshop (goals, stakeholders, risks)</li>
-          <li>Prototype narrative &amp; visual</li>
-          <li>Go/iterate, then rollout</li>
-        </ul>
-      </article>
+        <article class="card">
+          <h3>Next steps</h3>
+          <ul>
+            <li>Short workshop (goals, stakeholders, risks)</li>
+            <li>Prototype narrative &amp; visual</li>
+            <li>Go/iterate, then rollout</li>
+          </ul>
+        </article>
+      </section>
     </section>
   </main>
 
