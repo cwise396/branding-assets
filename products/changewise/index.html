@@ -15,13 +15,13 @@
   <style>
     :root{
       --brand-bg:#0C3960;   /* Hintergrund (sRGB 12,57,96) */
-      --nav-bg:#A22121;     /* Nav-Leiste (rot, wie abgestimmt) */
+      --nav-bg:#A22121;     /* Nav-Leiste */
       --nav-fg:#ffffff;
-      --card-bg:#0C3960;    /* Karten */
+      --card-bg:#0C3960;
       --card-fg:#ffffff;
-      --accent-blue:#0C3960;/* Invertierter Button-Text */
-      --logo-size:88px;     /* Anzeigegröße des Logos */
-      --logo-overlap:24px;  /* Feintuning: Überlappung nach oben für Baseline-Tangente (20–28px) */
+      --accent-blue:#0C3960;
+      --logo-size:88px;
+      --logo-overlap:24px;  /* Feintuning 20–28px, tangential zur H1-Baseline */
     }
 
     html, body { background: var(--brand-bg) !important; height:100%; }
@@ -42,7 +42,6 @@
     .nav .lang { opacity:.95 }
     .nav .lang a, .nav .lang span { color:var(--nav-fg) !important; text-decoration:none; }
     .nav .lang .active { font-weight:700; text-decoration:underline; text-underline-offset:3px; }
-
     @media (max-width: 720px){
       .nav-links { display:none; position:absolute; top:56px; left:0; right:0; background:var(--nav-bg) !important; padding:1rem; }
       .nav-links.open { display:flex; flex-direction:column; gap:.6rem; }
@@ -53,10 +52,18 @@
     .hero { max-width:1100px; margin:1.2rem auto 0; padding:0 1rem; color:#fff; }
     .hero h1 { font-size:clamp(1.8rem, 4vw, 3rem); margin:.4rem 0 .6rem; line-height:1.1; }
 
-    /* LOGO IM HERO (unter H1) */
+    /* Logo exakt an Spalte 9 (fluchtet mit „Was es bietet“) */
+    .hero-align{
+      max-width:1100px; margin:0 auto; padding:0 1rem;
+      display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; align-items:start;
+    }
     .product-logo{ display:flex; justify-content:center; align-items:center; margin:20px 0 6px; }
     .product-logo img{ width:var(--logo-size); height:var(--logo-size); object-fit:contain; display:block; }
-    .product-logo--baseline{ margin-top: calc(-1 * var(--logo-overlap)); } /* Kreis tangent zur H1-Baseline */
+    .product-logo--baseline{ margin-top: calc(-1 * var(--logo-overlap)); }
+    .logo--rightcol{ grid-column:9 / 13; justify-self:start; }
+    @media (max-width:640px){
+      .logo--rightcol{ grid-column:1 / -1; justify-self:center; } /* mobil mittig */
+    }
 
     .hero p.lead { font-size:clamp(1.05rem, 2.2vw, 1.25rem); margin:0 0 1.2rem; }
 
@@ -112,10 +119,12 @@
   <main class="hero">
     <h1>ChangeWise</h1>
 
-    <!-- Logo im Hero, unmittelbar unter der H1 (roter Kreis #A22021) -->
-    <div class="product-logo product-logo--baseline">
-      <img src="/assets/brand/changewise_logo_circle_brandred_arrow_sharp.svg"
-           alt="ChangeWise Logo" width="88" height="88" loading="lazy" decoding="async">
+    <!-- Logo rechts ausgerichtet an Spalte 9 (Shift-Style, roter Kreis) -->
+    <div class="hero-align">
+      <div class="product-logo product-logo--baseline logo--rightcol">
+        <img src="/assets/brand/changewise_logo_circle_brandred_shift_right_v3.svg"
+             alt="ChangeWise Logo" width="88" height="88" loading="lazy" decoding="async">
+      </div>
     </div>
 
     <p class="lead">Branding & Change-Kommunikation. Klar. Konsistent. Wirksam.</p>
