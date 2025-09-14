@@ -7,73 +7,69 @@
   <meta name="description" content="ChangeWise macht Veränderung verständlich: klare Botschaft, konsistente Umsetzung, wirksame Kommunikation.">
   <meta name="theme-color" content="#0C3960">
   <link rel="preconnect" href="https://www.slackdigest.org" crossorigin>
-  <!-- hreflang -->
-  <link rel="alternate" hreflang="de" href="https://www.slackdigest.org/products/changewise/">
-  <link rel="alternate" hreflang="en" href="https://www.slackdigest.org/products/changewise/en/">
-  <link rel="alternate" hreflang="x-default" href="https://www.slackdigest.org/products/changewise/en/">
 
   <style>
     :root{
       --brand-bg:#0C3960;   /* Hintergrund */
-      --nav-bg:#A22121;     /* Nav rot */
+      --nav-bg:#A22121;     /* Rot wie bei den anderen */
       --nav-fg:#ffffff;
       --card-bg:#0C3960;
       --card-fg:#ffffff;
       --accent-blue:#0C3960;
       --logo-size:88px;
-      --logo-overlap:24px;  /* Feintuning Baseline-Tangente (Desktop): 20–28px */
+      --logo-overlap:24px;  /* Baseline-Feintuning (px) */
     }
 
-    html, body { background: var(--brand-bg) !important; height:100%; }
+    html, body { background:var(--brand-bg) !important; height:100%; }
     body { margin:0 !important; min-height:100vh; }
     #bg-overlay { position:fixed; inset:0; background:var(--brand-bg); z-index:-1; }
 
     main, .page, .container, .content, .wrapper, .layout, .site, .shell,
     #page, #content, #main, #app, #root, #__next { background: transparent !important; }
 
-    /* NAV */
-    .site-header { position: sticky; top: 0; background: var(--nav-bg) !important; border-bottom:none !important; z-index:50; }
-    .nav { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:.9rem 1rem; }
-    .nav .brand, .nav-links a, .nav-toggle { color:var(--nav-fg) !important; text-decoration:none; }
-    .nav .brand { font-weight:600; white-space:nowrap; }
+    /* NAV (Burger identisch zu SlackDigest/TaskSieve) */
+    .site-header{ position:sticky; top:0; background: var(--nav-bg) !important; border-bottom:none !important; z-index:50; }
+    .nav{
+      max-width:1100px; margin:0 auto; padding:.9rem 1rem;
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .nav .brand, .nav a, .nav-toggle { color:var(--nav-fg) !important; text-decoration:none; }
+    .brand { font-weight:600; white-space:nowrap; }
     .nav-links { list-style:none; display:flex; gap:1rem; margin:0; padding:0; align-items:center; }
-    .nav a:hover { opacity:.9; }
-    .nav-toggle { display:none; background:none; border:0; font-size:1.2rem; }
-    .nav .lang { opacity:.95 }
-    .nav .lang a, .nav .lang span { color:var(--nav-fg) !important; text-decoration:none; }
     .nav .lang .active { font-weight:700; text-decoration:underline; text-underline-offset:3px; }
+    .nav-toggle { display:none; background:none; border:0; font-size:1.2rem; color:var(--nav-fg); }
     @media (max-width: 720px){
-      .nav-links { display:none; position:absolute; top:56px; left:0; right:0; background:var(--nav-bg) !important; padding:1rem; }
-      .nav-links.open { display:flex; flex-direction:column; gap:.6rem; }
-      .nav-toggle { display:inline-block; }
+      .nav{ position:relative; }
+      .nav-links{
+        display:none; position:absolute; top:56px; left:0; right:0;
+        background:var(--nav-bg) !important; padding:1rem; margin:0;
+        flex-direction:column; gap:.6rem;
+      }
+      .nav-links.open{ display:flex; }
+      .nav-toggle{ display:inline-block; }
     }
 
-    /* HERO: Text links (Spalten 1–8), Logo rechts (9–12) */
-    
- /* HERO: gesamter Block 24mm unter der Nav */
-.hero { color:#fff; padding-top:24mm; }
-
-
-     .hero-header{
-  max-width:1100px; margin:0 auto; padding:0 1rem;
-  display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; align-items:end;
-}
-
+    /* HERO */
+    .hero { color:#fff; padding-top:24mm; } /* gesamter Block 24 mm unter Nav */
+    .hero-header{
+      max-width:1100px; margin:0 auto; padding:0 1rem;
+      display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; align-items:end;
+    }
     .hero-text{ grid-column:1 / 9; }
     .hero h1{ font-size:clamp(1.8rem, 4vw, 3rem); line-height:1.1; margin:0 0 .15rem; }
     .hero p.lead{ margin:0; font-size:clamp(1.2rem, 2.4vw, 1.4rem); font-weight:700; } /* größer + fett */
 
     .product-logo{ display:flex; align-items:center; justify-content:flex-start; }
-    .product-logo img{ width:var(--logo-size); height:var(--logo-size); object-fit:contain; display:block; }
+    /* height:auto: zukunftssicher (falls später oval etc.) */
+    .product-logo img{ width:var(--logo-size); height:auto; object-fit:contain; display:block; }
     .logo--rightcol{ grid-column:9 / 13; justify-self:start; }
-    /* Baseline-Tangente: Kreis top berührt H1-Baseline */
     .product-logo--baseline{ margin-top: calc(-1 * var(--logo-overlap)); }
 
     @media (max-width:640px){
       .hero-header{ grid-template-columns:1fr; align-items:center; }
       .hero-text{ grid-column:1 / -1; text-align:center; }
       .logo--rightcol{ grid-column:1 / -1; justify-self:center; }
-      .product-logo--baseline{ margin-top:0; } /* auf Mobile kein Überlappen */
+      .product-logo--baseline{ margin-top:0; }
     }
 
     /* GRID + CARDS */
@@ -104,6 +100,7 @@
     footer { max-width:1100px; margin:2.2rem auto; padding:0 1rem 2rem; font-size:.95rem; color:#fff; }
     footer a { color:inherit; }
 
+    /* Punchline-Größe (erste Karte) wie zuvor */
     .grid .card:first-child p{ font-size:1.17em; line-height:1.2; font-weight:700; margin:0; }
   </style>
 </head>
@@ -113,13 +110,15 @@
   <header class="site-header">
     <nav class="nav">
       <a class="brand" href="/">ChangeWise • SlackDigest • TaskSieve</a>
+
       <ul class="nav-links" id="navLinks">
         <li><a href="/products/changewise/">ChangeWise</a></li>
         <li><a href="/products/slackdigest/">SlackDigest</a></li>
         <li><a href="/products/tasksieve/">TaskSieve</a></li>
         <li class="lang"><span class="active">DE</span> | <a href="/products/changewise/en/">EN</a></li>
       </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen">☰</button>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-controls="navLinks" aria-expanded="false">☰</button>
     </nav>
   </header>
 
@@ -130,10 +129,9 @@
         <p class="lead">Branding &amp; Change-Kommunikation. Klar. Konsistent. Wirksam.</p>
       </div>
 
-      <!-- Logo rechts, linke Kreistangente fluchtet mit „Was es bietet“ -->
       <div class="product-logo product-logo--baseline logo--rightcol">
         <img src="/assets/brand/changewise_logo_circle_brandred_shift_right_v3.svg"
-             alt="ChangeWise Logo" width="88" height="88" loading="lazy" decoding="async">
+             alt="ChangeWise Logo" width="88" loading="lazy" decoding="async">
       </div>
     </div>
 
@@ -197,13 +195,12 @@
   <script>
     const t = document.getElementById('navToggle');
     const l = document.getElementById('navLinks');
-    t?.addEventListener('click', () => l.classList.toggle('open'));
-    requestAnimationFrame(() => {
-      const bg = getComputedStyle(document.documentElement).getPropertyValue('--brand-bg').trim() || '#0C3960';
-      document.documentElement.style.background = bg;
-      document.body.style.background = bg;
-      document.body.style.margin = '0';
-    });
+    if (t && l) {
+      t.addEventListener('click', () => {
+        const open = l.classList.toggle('open');
+        t.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
   </script>
 </body>
 </html>
