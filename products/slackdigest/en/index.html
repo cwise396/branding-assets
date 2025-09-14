@@ -19,16 +19,34 @@
       --logo-size:88px;
       --logo-overlap:24px;
     }
+
     html, body { background:var(--brand-bg) !important; height:100%; }
     body { margin:0 !important; min-height:100vh; }
     #bg-overlay { position:fixed; inset:0; background:var(--brand-bg); z-index:-1; }
 
+    /* NAV */
     .site-header{ position:sticky; top:0; background:var(--nav-bg) !important; z-index:50; }
-    .nav{ max-width:1100px; margin:0 auto; padding:.9rem 1rem; display:flex; justify-content:space-between; align-items:center; }
+    .nav{
+      max-width:1100px; margin:0 auto; padding:.9rem 1rem;
+      display:flex; justify-content:space-between; align-items:center;
+    }
     .nav a{ color:var(--nav-fg) !important; text-decoration:none; }
+    .brand{ font-weight:600; white-space:nowrap; }
     .nav-links{ list-style:none; display:flex; gap:1rem; margin:0; padding:0; align-items:center; }
     .nav .lang .active{ font-weight:700; text-decoration:underline; text-underline-offset:3px; }
+    .nav-toggle{ display:none; background:none; border:0; font-size:1.2rem; color:var(--nav-fg); }
+    @media (max-width: 720px){
+      .nav{ position:relative; }
+      .nav-links{
+        display:none; position:absolute; top:56px; left:0; right:0;
+        background:var(--nav-bg) !important; padding:1rem; margin:0;
+        flex-direction:column; gap:.6rem;
+      }
+      .nav-links.open{ display:flex; }
+      .nav-toggle{ display:inline-block; }
+    }
 
+    /* HERO */
     .hero{ color:#fff; padding-top:24mm; }
     .hero-header{
       max-width:1100px; margin:0 auto; padding:0 1rem;
@@ -39,7 +57,7 @@
     .hero p.lead{ margin:0; font-size:clamp(1.2rem,2.4vw,1.4rem); font-weight:700; }
 
     .product-logo{ display:flex; align-items:center; justify-content:flex-start; }
-    .product-logo img{ width:var(--logo-size); height:var(--logo-size); object-fit:contain; display:block; }
+    .product-logo img{ width:var(--logo-size); height:auto; object-fit:contain; display:block; }
     .logo--rightcol{ grid-column:9 / 13; justify-self:start; }
     .product-logo--baseline{ margin-top:calc(-1 * var(--logo-overlap)); }
     @media (max-width:640px){
@@ -62,22 +80,14 @@
     .card ul{ list-style:disc; padding-left:1.2rem; }
     .card a{ color:#fff; text-decoration:underline; text-underline-offset:2px; }
 
-     <article class="card">
-  <h3>Status &amp; Contact</h3>
-  <p>Status: <strong>Open</strong> — try it.</p>
-  <p class="contact-chip">Contact: <a href="mailto:info@slackdigest.org">info@slackdigest.org</a></p>
-  <p><a class="btn btn--inverse" href="mailto:info@slackdigest.org?subject=SlackDigest%20Test&body=Hi%20SlackDigest%20team%2C%0A%0AI%27d%20like%20to%20try%20it.">Try Beta</a></p>
-</article>
-
-
-/* Kontakt-Mail als weißer Chip auf grüner Karte */
-.contact-chip { margin:.35rem 0; }
-.contact-chip a{
-  background:#fff; color:#0C6C48;
-  display:inline-block; padding:2px 8px; border-radius:10px;
-  text-decoration:none; border:1px solid rgba(0,0,0,.08);
-}
-.contact-chip a:hover{ background:#f7f7f7; }
+    /* White email chip */
+    .contact-chip { margin:.35rem 0; }
+    .contact-chip a{
+      background:#fff; color:var(--accent-green);
+      display:inline-block; padding:2px 8px; border-radius:10px;
+      text-decoration:none; border:1px solid rgba(0,0,0,.08);
+    }
+    .contact-chip a:hover{ background:#f7f7f7; }
 
     @media (max-width:960px){ .card{ grid-column:span 6; } }
     @media (max-width:640px){ .card{ grid-column:span 12; } }
@@ -96,12 +106,15 @@
   <header class="site-header">
     <nav class="nav">
       <a class="brand" href="/">ChangeWise • SlackDigest • TaskSieve</a>
-      <ul class="nav-links">
+
+      <ul class="nav-links" id="navLinks">
         <li><a href="/products/changewise/">ChangeWise</a></li>
         <li><a href="/products/slackdigest/">SlackDigest</a></li>
         <li><a href="/products/tasksieve/">TaskSieve</a></li>
         <li class="lang"><a href="/products/slackdigest/">DE</a> | <span class="active">EN</span></li>
       </ul>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">☰</button>
     </nav>
   </header>
 
@@ -112,7 +125,7 @@
         <p class="lead">Updates that move.</p>
       </div>
       <div class="product-logo product-logo--baseline logo--rightcol">
-        <img src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo" width="88" height="88" loading="lazy" decoding="async">
+        <img src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo" width="88" loading="lazy" decoding="async">
       </div>
     </div>
 
@@ -140,10 +153,10 @@
           </ul>
         </article>
 
-        <article class="card card--inverse">
+        <article class="card">
           <h3>Status &amp; Contact</h3>
           <p>Status: <strong>Open</strong> — try it.</p>
-          <p>Contact: <a href="mailto:info@slackdigest.org">info@slackdigest.org</a></p>
+          <p class="contact-chip">Contact: <a href="mailto:info@slackdigest.org">info@slackdigest.org</a></p>
           <p><a class="btn btn--inverse" href="mailto:info@slackdigest.org?subject=SlackDigest%20Test&body=Hi%20SlackDigest%20team%2C%0A%0AI%27d%20like%20to%20try%20it.">Try Beta</a></p>
         </article>
 
@@ -158,5 +171,16 @@
   <footer>
     <a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a>
   </footer>
+
+  <script>
+    const t = document.getElementById('navToggle');
+    const l = document.getElementById('navLinks');
+    if (t && l) {
+      t.addEventListener('click', () => {
+        const open = l.classList.toggle('open');
+        t.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+  </script>
 </body>
 </html>
