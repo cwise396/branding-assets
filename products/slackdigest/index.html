@@ -67,16 +67,24 @@
     .card ul{ list-style:disc; padding-left:1.2rem; }
     .card a{ color:#fff; text-decoration:underline; text-underline-offset:2px; } /* Standard: Links auf grüner Karte = weiß */
 
-    /* Invertierte Kontakt-Karte: weißer Hintergrund, grüne Schrift/Links */
-    .card--inverse{
-      background:#fff; color:var(--accent-green);
-      border:1px solid rgba(0,0,0,.08);
-      box-shadow:0 10px 24px rgba(0,0,0,.08);
-    }
-    .card--inverse a{ color:var(--accent-green); }
+     <article class="card">
+  <h3>Status &amp; Kontakt</h3>
+  <p>Status: <strong>Open</strong> — ausprobieren.</p>
+  <p class="contact-chip">Kontakt: <a href="mailto:info@slackdigest.org">info@slackdigest.org</a></p>
+  <p><a class="btn btn--inverse" href="mailto:info@slackdigest.org?subject=SlackDigest%20Test&body=Hallo%20SlackDigest-Team%2C%0A%0Aich%20m%C3%B6chte%20testen.">Jetzt Beta testen</a></p>
+</article>
+
 
     @media (max-width:960px){ .card{ grid-column:span 6; } }
     @media (max-width:640px){ .card{ grid-column:span 12; } }
+/* Kontakt-Mail als weißer Chip auf grüner Karte */
+.contact-chip { margin:.35rem 0; }
+.contact-chip a{
+  background:#fff; color:#0C6C48;
+  display:inline-block; padding:2px 8px; border-radius:10px;
+  text-decoration:none; border:1px solid rgba(0,0,0,.08);
+}
+.contact-chip a:hover{ background:#f7f7f7; }
 
     /* BUTTON */
     .btn{ display:inline-block; padding:.7rem 1rem; border-radius:12px; border:1px solid #fff; color:#fff; text-decoration:none; }
