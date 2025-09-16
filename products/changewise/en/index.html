@@ -1,214 +1,79 @@
  <!doctype html>
 <html lang="en" style="background:#0C3960 !important;">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ChangeWise – Branding & change communications. Clear. Consistent. Effective.</title>
   <meta name="description" content="ChangeWise makes change understandable: clear narrative, consistent execution, effective communication.">
-  <meta name="theme-color" content="#0C3960">
-  <link rel="preconnect" href="https://www.slackdigest.org" crossorigin>
-
+  <meta name="theme-color" content="#0C3960"><link rel="preconnect" href="https://www.slackdigest.org" crossorigin>
   <style>
-    :root{
-      --brand-bg:#0C3960;
-      --nav-bg:#A22121;
-      --nav-fg:#ffffff;
-      --card-bg:#0C3960;
-      --card-fg:#ffffff;
-      --accent-blue:#0C3960;
-      --logo-size:88px;
-      --logo-overlap:24px;
-    }
-
-    html, body { background: var(--brand-bg) !important; height:100%; }
-    body { margin:0 !important; min-height:100vh; }
-    #bg-overlay { position:fixed; inset:0; background:var(--brand-bg); z-index:-1; }
-    main, .page, .container, .content, .wrapper, .layout, .site, .shell,
-    #page, #content, #main, #app, #root, #__next { background: transparent !important; }
-
-    .site-header{ position: sticky; top: 0; background: var(--nav-bg) !important; border-bottom:none !important; z-index:50; }
-    .nav{ max-width:1100px; margin:0 auto; padding:.9rem 1rem; display:flex; align-items:center; justify-content:space-between; }
-    .nav .brand, .nav a, .nav-toggle { color:var(--nav-fg) !important; text-decoration:none; }
-    .brand{ font-weight:600; white-space:nowrap; }
-    .nav-links{ list-style:none; display:flex; gap:1rem; margin:0; padding:0; align-items:center; }
-    .nav .lang .active{ font-weight:700; text-decoration:underline; text-underline-offset:3px; }
-    .nav-toggle{ display:none; background:none; border:0; font-size:1.2rem; color:var(--nav-fg); }
-    @media (max-width: 720px){
-      .nav{ position:relative; }
-      .nav-links{
-        display:none; position:absolute; top:56px; left:0; right:0;
-        background:var(--nav-bg) !important; padding:1rem; margin:0;
-        flex-direction:column; gap:.6rem;
-      }
-      .nav-links.open{ display:flex; }
-      .nav-toggle{ display:inline-block; }
-    }
-
-    .hero { color:#fff; padding-top:24mm; }
-    .hero-header{ max-width:1100px; margin:0 auto; padding:0 1rem; display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; align-items:end; }
-    .hero-text{ grid-column:1 / 9; }
-    .hero h1{ font-size:clamp(1.8rem, 4vw, 3rem); line-height:1.1; margin:0 0 .15rem; }
-    .hero p.lead{ margin:0; font-size:clamp(1.2rem, 2.4vw, 1.4rem); font-weight:700; }
-
-    .product-logo{ display:flex; align-items:center; justify-content:flex-start; }
-    .product-logo img{ width:var(--logo-size); height:auto; object-fit:contain; display:block; }
-    .logo--rightcol{ grid-column:9 / 13; justify-self:start; }
-    .product-logo--baseline{ margin-top: calc(-1 * var(--logo-overlap)); }
-
-    @media (max-width:640px){
-      .hero-header{ grid-template-columns:1fr; align-items:center; }
-      .hero-text{ grid-column:1 / -1; text-align:center; }
-      .logo--rightcol{ grid-column:1 / -1; justify-self:center; }
-      .product-logo--baseline{ margin-top:0; }
-    }
-
-    .section-cards{ max-width:1100px; margin:0 auto; padding:0 1rem; }
-    .grid { display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; margin-top:1rem; }
-    .card { grid-column:span 4; background:var(--card-bg); color:var(--card-fg);
-      border-radius:14px; padding:1.05rem 1rem;
-      border:1px solid rgba(255,255,255,.28);
-      box-shadow: 0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06); }
-    .card h3 { margin:0 0 .4rem; }
-    .card p, .card li { margin:.35rem 0; }
-    .card a { color:#fff; text-decoration: underline; text-underline-offset: 2px; }
-    .card ul { list-style: disc; padding-left: 1.2rem; }
-    @media (max-width:960px){ .card { grid-column:span 6; } }
-    @media (max-width:640px){ .card { grid-column:span 12; } }
-
-    .btn { display:inline-block; padding:.7rem 1rem; border-radius:12px; border:1px solid rgba(255,255,255,.7); color:#fff; text-decoration:none; }
-    .btn:hover { opacity:.92; }
-    .btn--inverse-blue { background:#fff; color:var(--accent-blue) !important; border-color:#fff !important;
-      box-shadow:0 1px 0 rgba(0,0,0,.05), 0 6px 16px rgba(0,0,0,.12); }
-    .btn--inverse-blue:hover { background:#f7f7f7; }
-
-    footer { max-width:1100px; margin:2.2rem auto; padding:0 1rem 2rem; font-size:.95rem; color:#fff; }
-    footer a { color:inherit; }
-
-    .grid .card:first-child p{ font-size:1.17em; line-height:1.2; font-weight:700; margin:0; }
-
-    /* TEST-MODE: Force-Mobile bei body[data-mobile] */
-    body[data-mobile] .nav-links{
-      display:none; position:absolute; top:56px; left:0; right:0;
-      background:var(--nav-bg) !important; padding:1rem; margin:0;
-      flex-direction:column; gap:.6rem;
-    }
-    body[data-mobile] .nav-links.open{ display:flex; }
-    body[data-mobile] .nav-toggle{ display:inline-block; }
+    :root{ --brand-bg:#0C3960; --nav-bg:#A22121; --nav-fg:#ffffff; --card-bg:#0C3960; --card-fg:#ffffff; --accent-blue:#0C3960; --logo-size:88px; --logo-overlap:24px; }
+    html,body{ background:var(--brand-bg) !important; height:100% } body{ margin:0 !important; min-height:100vh }
+    #bg-overlay{ position:fixed; inset:0; background:var(--brand-bg); z-index:-1 }
+    .site-header{ position:sticky; top:0; background:var(--nav-bg) !important; border-bottom:none !important; z-index:50 }
+    .nav{ max-width:1100px; margin:0 auto; padding:.9rem 1rem; display:flex; align-items:center; justify-content:space-between }
+    .nav .brand,.nav a,.nav-toggle{ color:var(--nav-fg) !important; text-decoration:none }
+    .brand{ font-weight:600; white-space:nowrap }
+    .nav-links{ list-style:none; display:flex; gap:1rem; margin:0; padding:0; align-items:center }
+    .nav .lang .active{ font-weight:700; text-decoration:underline; text-underline-offset:3px }
+    .nav-toggle{ display:none; background:none; border:0; font-size:1.2rem; color:var(--nav-fg) }
+    @media (max-width:720px){ .nav{ position:relative } .nav-links{ display:none; position:absolute; top:56px; left:0; right:0; background:var(--nav-bg) !important; padding:1rem; margin:0; flex-direction:column; gap:.6rem } .nav-links.open{ display:flex } .nav-toggle{ display:inline-block } }
+    .hero{ color:#fff; padding-top:24mm }
+    .hero-header{ max-width:1100px; margin:0 auto; padding:0 1rem; display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; align-items:end }
+    .hero-text{ grid-column:1 / 9 }
+    .hero h1{ font-size:clamp(1.8rem,4vw,3rem); line-height:1.1; margin:0 0 .15rem }
+    .hero p.lead{ margin:0; font-size:clamp(1.2rem,2.4vw,1.4rem); font-weight:700 }
+    .product-logo{ display:flex; align-items:center; justify-content:flex-start }
+    .product-logo img{ width:var(--logo-size); height:auto; object-fit:contain; display:block }
+    .logo--rightcol{ grid-column:9 / 13; justify-self:start }
+    .product-logo--baseline{ margin-top:calc(-1 * var(--logo-overlap)) }
+    @media (max-width:640px){ .hero-header{ grid-template-columns:1fr; align-items:center } .hero-text{ grid-column:1 / -1; text-align:center } .logo--rightcol{ grid-column:1 / -1; justify-self:center } .product-logo--baseline{ margin-top:0 } }
+    .section-cards{ max-width:1100px; margin:0 auto; padding:0 1rem }
+    .grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; margin-top:1rem }
+    .card{ grid-column:span 4; background:var(--card-bg); color:var(--card-fg); border-radius:14px; padding:1.05rem 1rem; border:1px solid rgba(255,255,255,.28); box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06) }
+    .card h3{ margin:0 0 .4rem } .card p,.card li{ margin:.35rem 0 } .card a{ color:#fff; text-decoration:underline; text-underline-offset:2px } .card ul{ list-style:disc; padding-left:1.2rem }
+    @media (max-width:960px){ .card{ grid-column:span 6 } } @media (max-width:640px){ .card{ grid-column:span 12 } }
+    .btn{ display:inline-block; padding:.7rem 1rem; border-radius:12px; border:1px solid rgba(255,255,255,.7); color:#fff; text-decoration:none }
+    .btn--inverse-blue{ background:#fff; color:var(--accent-blue) !important; border-color:#fff !important; box-shadow:0 1px 0 rgba(0,0,0,.05), 0 6px 16px rgba(0,0,0,.12) }
+    .btn--inverse-blue:hover{ background:#f7f7f7 } footer{ max-width:1100px; margin:2.2rem auto; padding:0 1rem 2rem; font-size:.95rem; color:#fff } footer a{ color:inherit }
+    .grid .card:first-child p{ font-size:1.17em; line-height:1.2; font-weight:700; margin:0 }
   </style>
 </head>
 <body>
   <div id="bg-overlay" aria-hidden="true"></div>
-
   <header class="site-header">
     <nav class="nav">
-      <a class="brand" href="/">ChangeWise • SlackDigest • TaskSieve</a>
-
+      <a class="brand" href="/">Home</a>
       <ul class="nav-links" id="navLinks">
         <li><a href="/products/changewise/">ChangeWise</a></li>
         <li><a href="/products/slackdigest/">SlackDigest</a></li>
         <li><a href="/products/tasksieve/">TaskSieve</a></li>
         <li class="lang"><a href="../">DE</a> | <span class="active">EN</span></li>
       </ul>
-
       <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">☰</button>
     </nav>
   </header>
-
   <main class="hero">
     <div class="hero-header">
       <div class="hero-text">
         <h1>ChangeWise</h1>
         <p class="lead">Branding &amp; change communications. Clear. Consistent. Effective.</p>
       </div>
-
       <div class="product-logo product-logo--baseline logo--rightcol">
-        <img src="/assets/brand/changewise_logo_circle_brandred_shift_right_v3.svg"
-             alt="ChangeWise Logo" width="88" loading="lazy" decoding="async">
+        <img src="/assets/brand/changewise_logo_circle_brandred_shift_right_v3.svg" alt="ChangeWise Logo" width="88" loading="lazy" decoding="async">
       </div>
     </div>
-
     <section class="section-cards">
       <section class="grid" aria-label="Key Features">
-        <article class="card">
-          <h3>Make change understandable</h3>
-          <p>Sharpen the message.<br>Bring people along.</p>
-        </article>
-
-        <article class="card">
-          <h3>How it works</h3>
-          <ul>
-            <li>Define core messages &amp; tone</li>
-            <li>Assemble assets (logo, colors, typography)</li>
-            <li>Publish ready-to-use templates</li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h3>What it offers</h3>
-          <ul>
-            <li>Clarity, consistency, and adoption</li>
-            <li>A compact brand kit for small teams: logos/icons, color/type essentials, templates for landing pages &amp; presentations</li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h3>Modules</h3>
-          <ul>
-            <li>🎯 Positioning &amp; narrative</li>
-            <li>🧩 Messaging &amp; identity system</li>
-            <li>📚 Playbooks &amp; templates</li>
-            <li>🎓 Training &amp; enablement</li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h3>Status &amp; Contact</h3>
-          <p>Status: <strong>Open</strong> — get in touch.</p>
-          <p>Contact: <a href="mailto:info@slackdigest.org">info@slackdigest.org</a></p>
-          <p><a class="btn btn--inverse-blue" href="mailto:info@slackdigest.org?subject=ChangeWise%20Inquiry&body=Hi%20ChangeWise%20team%2C%0A%0AI%27d%20like%20to%20talk.">Get in touch</a></p>
-        </article>
-
-        <article class="card">
-          <h3>Next steps</h3>
-          <ul>
-            <li>Short workshop (goals, stakeholders, risks)</li>
-            <li>Prototype narrative &amp; visual</li>
-            <li>Go/iterate, then rollout</li>
-          </ul>
-        </article>
+        <article class="card"><h3>Make change understandable</h3><p>Sharpen the message.<br>Bring people along.</p></article>
+        <article class="card"><h3>How it works</h3><ul><li>Define core messages &amp; tone</li><li>Assemble assets (logo, colors, typography)</li><li>Publish ready-to-use templates</li></ul></article>
+        <article class="card"><h3>What it offers</h3><ul><li>Clarity, consistency, and adoption</li><li>A compact brand kit for small teams: logos/icons, color/type essentials, templates for landing pages &amp; presentations</li></ul></article>
+        <article class="card"><h3>Modules</h3><ul><li>🎯 Positioning &amp; narrative</li><li>🧩 Messaging &amp; identity system</li><li>📚 Playbooks &amp; templates</li><li>🎓 Training &amp; enablement</li></ul></article>
+        <article class="card"><h3>Status &amp; Contact</h3><p>Status: <strong>Open</strong> — get in touch.</p><p>Contact: <a href="mailto:info@slackdigest.org">info@slackdigest.org</a></p><p><a class="btn btn--inverse-blue" href="mailto:info@slackdigest.org?subject=ChangeWise%20Inquiry&body=Hi%20ChangeWise%20team%2C%0A%0AI%27d%20like%20to%20talk.">Get in touch</a></p></article>
+        <article class="card"><h3>Next steps</h3><ul><li>Short workshop (goals, stakeholders, risks)</li><li>Prototype narrative &amp; visual</li><li>Go/iterate, then rollout</li></ul></article>
       </section>
     </section>
   </main>
-
-  <footer>
-    <a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a>
-  </footer>
-
-  <script>
-  (function(){
-    const t = document.getElementById('navToggle');
-    const l = document.getElementById('navLinks');
-
-    function setMobile(on){
-      if(on){ document.body.setAttribute('data-mobile',''); }
-      else  { document.body.removeAttribute('data-mobile'); l?.classList.remove('open'); t?.setAttribute('aria-expanded','false'); }
-    }
-
-    if (location.hash === '#mobile') setMobile(true);
-
-    document.addEventListener('keydown', (e)=>{
-      if(e.altKey && (e.key === 'm' || e.key === 'M')){
-        setMobile(!document.body.hasAttribute('data-mobile'));
-      }
-    });
-
-    if (t && l) {
-      t.addEventListener('click', () => {
-        const open = l.classList.toggle('open');
-        t.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-    }
-  })();
-  </script>
+  <footer><a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a></footer>
+  <script>const t=document.getElementById('navToggle'),l=document.getElementById('navLinks');t&&l&&t.addEventListener('click',()=>{const o=l.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});</script>
 </body>
 </html>
