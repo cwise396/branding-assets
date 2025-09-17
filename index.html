@@ -18,7 +18,7 @@
     }
     .container{width:min(1160px,92%); margin:0 auto}
 
-    /* Header */
+    /* Header (reduziert) */
     .site-header{
       position:sticky; top:0;
       background:rgba(255,255,255,.75);
@@ -28,8 +28,7 @@
     .site-header .bar{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
     .brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:inherit;font-weight:700}
     .brand img{width:28px;height:28px}
-    .top-nav a{margin-left:16px;color:var(--muted);text-decoration:none}
-    .top-nav a:hover{text-decoration:underline}
+    /* keine Produktlinks oben – Kacheln führen zu den Seiten */
 
     /* Hero */
     .hero{padding:32px 0 12px}
@@ -53,45 +52,49 @@
     }
     .tile:hover{ transform:translateY(-3px); box-shadow:0 18px 36px rgba(0,0,0,.16); }
 
-    /* Logo oben rechts */
-    .logo{
+    /* Logo-Badge (sorgt immer für Kontrast, egal wie das Logo selbst gestaltet ist) */
+    .logo-wrap{
       position:absolute; right:14px; top:14px; z-index:1;
-      width:110px; height:110px; object-fit:contain;
-      filter: drop-shadow(0 2px 8px rgba(0,0,0,.35));
-      display:none; /* wird per JS sichtbar gemacht, wenn geladen */
+      width:120px; height:120px; display:grid; place-items:center;
+      border-radius:50%;
+      background:#fff; /* weißer Kreis hinter dem Logo */
+      box-shadow:0 2px 10px rgba(0,0,0,.25);
     }
+    .logo{
+      width:92px; height:92px; object-fit:contain; display:block;
+    }
+    /* Notfall-Monogramm falls Logo fehlt */
     .logo-fallback{
-      position:absolute; right:14px; top:14px; z-index:1;
-      width:110px; height:110px; display:grid; place-items:center;
-      border-radius:50%; background:rgba(255,255,255,.16);
-      border:1px solid rgba(255,255,255,.35);
-      font-weight:800; font-size:34px; color:#fff;
-      text-shadow:0 1px 2px rgba(0,0,0,.35);
+      width:92px; height:92px; display:none; place-items:center;
+      border-radius:50%;
+      background:rgba(0,0,0,.06);
+      font-weight:800; font-size:34px; color:#222;
     }
 
     /* Text in der Kachel */
-    .tile h2{ margin:0 0 8px; font-size:1.35rem; position:relative; z-index:1 }
-    .tile p.sub{ margin:0 0 16px; opacity:.98; position:relative; z-index:1 }
+    .tile h2{ margin:0 0 8px; font-size:1.35rem; position:relative; z-index:0 }
+    .tile p.sub{ margin:0 0 16px; opacity:.98; position:relative; z-index:0 }
     .btn{
-      align-self:flex-start; position:relative; z-index:1;
+      align-self:flex-start; position:relative; z-index:0;
       padding:10px 14px; border-radius:12px;
       border:1px solid rgba(255,255,255,.8); color:#fff; background:rgba(255,255,255,.10);
       font-weight:600; text-decoration:none; backdrop-filter:saturate(140%) blur(2px);
     }
     .btn:hover{ background:rgba(255,255,255,.18) }
 
-    /* Footer */
+    /* Footer (Links unten links) */
     footer{border-top:1px solid var(--border); padding:20px 0; color:var(--muted)}
+    .footbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .footbar .legal{display:flex;gap:12px}
+    .footbar a{color:inherit;text-decoration:none}
+    .footbar a:hover{text-decoration:underline}
   </style>
 </head>
 <body>
 <header class="site-header">
   <div class="container bar">
     <a class="brand" href="/"><img src="/assets/icons/changewise/changewise_icon_64.png" alt="ChangeWise Icon"><span>ChangeWise • SlackDigest • TaskSieve</span></a>
-    <nav class="top-nav">
-      <a href="/impressum.html">Impressum</a>
-      <a href="/datenschutz.html">Datenschutz</a>
-    </nav>
+    <div></div><!-- rechts bewusst leer -->
   </div>
 </header>
 
@@ -101,37 +104,43 @@
     <p class="lead">Drei Tools, die zusammenpassen – und schnell Ergebnisse liefern.</p>
 
     <div class="tiles">
-      <!-- SlackDigest (exaktes Grün) -->
+      <!-- SlackDigest – exaktes Grün -->
       <a class="tile" href="/products/slackdigest/" style="background-color:#0C6C48 !important">
-        <img class="logo"
-             data-srcs='["/assets/icons/slackdigest/slackdigest_icon_150px.png","/assets/brand/slackdigest_logo.svg","/assets/brand/slackdigest.png"]'
-             alt="SlackDigest Logo">
-        <span class="logo-fallback" aria-hidden="true">SD</span>
-
+        <div class="logo-wrap">
+          <img class="logo"
+               src="/assets/brand/slackdigest_logo.svg"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+               alt="SlackDigest Logo">
+          <span class="logo-fallback" aria-hidden="true">SD</span>
+        </div>
         <h2>SlackDigest</h2>
         <p class="sub">Relevantes aus Slack – kompakt, zum richtigen Zeitpunkt.</p>
         <span class="btn">Zur Produktseite</span>
       </a>
 
-      <!-- TaskSieve (exaktes Rot) -->
+      <!-- TaskSieve – exaktes Rot -->
       <a class="tile" href="/products/tasksieve/" style="background-color:#B90E13 !important">
-        <img class="logo"
-             data-srcs='["/assets/icons/tasksieve/tasksieve_icon_150px.png","/assets/brand/tasksieve_logo.svg","/assets/brand/tasksieve.png"]'
-             alt="TaskSieve Logo">
-        <span class="logo-fallback" aria-hidden="true">TS</span>
-
+        <div class="logo-wrap">
+          <img class="logo"
+               src="/assets/brand/tasksieve_logo.svg"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+               alt="TaskSieve Logo">
+          <span class="logo-fallback" aria-hidden="true">TS</span>
+        </div>
         <h2>TaskSieve</h2>
-        <p class="sub">Wichtige Aufgaben zuerst – mit System statt Bauchgefühl.</p>
+        <p class="sub">Wichtige Aufgaben zuerst – mit System.</p>
         <span class="btn">Zur Produktseite</span>
       </a>
 
-      <!-- ChangeWise (exaktes Blau) -->
+      <!-- ChangeWise – exaktes Blau -->
       <a class="tile" href="/products/changewise/" style="background-color:#0E3960 !important">
-        <img class="logo"
-             data-srcs='["/assets/icons/changewise/changewise_icon_150px.png","/assets/brand/changewise_logo.svg","/assets/brand/changewise.png"]'
-             alt="ChangeWise Logo">
-        <span class="logo-fallback" aria-hidden="true">CW</span>
-
+        <div class="logo-wrap">
+          <img class="logo"
+               src="/assets/brand/changewise_logo.svg"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+               alt="ChangeWise Logo">
+          <span class="logo-fallback" aria-hidden="true">CW</span>
+        </div>
         <h2>ChangeWise</h2>
         <p class="sub">Marke &amp; Change-Kommunikation – klar, konsistent, startklar.</p>
         <span class="btn">Zur Produktseite</span>
@@ -141,30 +150,13 @@
 </main>
 
 <footer>
-  <div class="container">
+  <div class="container footbar">
+    <div class="legal">
+      <a href="/impressum.html">Impressum</a>
+      <a href="/datenschutz.html">Datenschutz</a>
+    </div>
     <small>© ChangeWise • SlackDigest • TaskSieve</small>
   </div>
 </footer>
-
-<!-- Minimaler Logo-Loader: probiert Pfade nacheinander und zeigt notfalls Monogramm -->
-<script>
-(function(){
-  document.querySelectorAll('.logo[data-srcs]').forEach(function(img){
-    var list;
-    try { list = JSON.parse(img.getAttribute('data-srcs')); }
-    catch(e){ list = []; }
-    var fallback = img.nextElementSibling;
-    function tryNext(i){
-      if(i >= list.length){ img.style.display='none'; if(fallback) fallback.style.display='grid'; return; }
-      var url = list[i];
-      var test = new Image();
-      test.onload = function(){ img.src = url; img.style.display='block'; if(fallback) fallback.style.display='none'; };
-      test.onerror = function(){ tryNext(i+1); };
-      test.src = url;
-    }
-    tryNext(0);
-  });
-})();
-</script>
 </body>
 </html>
