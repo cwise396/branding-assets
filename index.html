@@ -7,16 +7,20 @@
   <meta name="description" content="Drei kleine Tools, großer Effekt: SlackDigest (klare Zusammenfassungen), TaskSieve (Priorisieren nach Wirkung/Dringlichkeit/Aufwand), ChangeWise (konsistente Assets & Botschaften).">
   <link rel="canonical" href="/">
   <style>
-    :root {
-      --bg: #f7f7f5; --text: #0e1116; --muted: #4b5563; --card: #ffffff; --border: #e5e7eb;
-      --sd: #4a8aff; --ts: #f59e0b; --cw: #0ea5e9;
+    :root{
+      --bg:#f7f7f5; --text:#0e1116; --muted:#4b5563;
+      --card:#ffffff; --border:#e5e7eb;
+      --sd:#4a8aff; --ts:#f59e0b; --cw:#0ea5e9;
     }
-    *{box-sizing:border-box} html,body{height:100%}
-    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--text);
+         font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
     .container{width:min(1100px,92%);margin:0 auto}
 
-    /* Slim Header */
-    .site-header{position:sticky;top:0;background:rgba(255,255,255,.7);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--border)}
+    /* Header */
+    .site-header{position:sticky;top:0;background:rgba(255,255,255,.7);
+      backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--border)}
     .site-header .bar{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
     .brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:inherit;font-weight:700}
     .brand img{width:28px;height:28px}
@@ -25,23 +29,27 @@
 
     /* Hero + Grid */
     .hero h1{font-size:clamp(1.5rem,1.1rem + 1.8vw,2.2rem);margin:28px 0 12px}
+    .hero p.lead{margin:0 0 18px;color:var(--muted)}
     .product-grid{display:grid;gap:16px;grid-template-columns:1fr;margin:16px 0 40px}
     @media (min-width:720px){.product-grid{grid-template-columns:repeat(2,1fr)}}
     @media (min-width:1024px){.product-grid{grid-template-columns:repeat(3,1fr)}}
 
-    .product-card{display:block;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;text-decoration:none;color:inherit;box-shadow:0 1px 2px rgba(0,0,0,.05);transition:transform .15s ease, box-shadow .15s ease}
+    /* Cards */
+    .product-card{display:block;background:var(--card);border:1px solid var(--border);
+      border-radius:16px;padding:20px;text-decoration:none;color:inherit;
+      box-shadow:0 1px 2px rgba(0,0,0,.05);transition:transform .15s ease, box-shadow .15s ease}
     .product-card:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.08)}
     .product-card img{display:block;margin:4px 0 8px;width:72px;height:72px}
     .product-card h2{margin:6px 0 6px;font-size:1.1rem}
     .product-card p{margin:0 0 10px;color:var(--muted)}
     .product-card .btn{display:inline-block;padding:8px 12px;border-radius:10px;border:1px solid var(--border);background:#fff;font-weight:600}
 
-    /* Akzentkante */
+    /* Accent top border per product */
     .product-card.sd{border-top:3px solid var(--sd)}
     .product-card.ts{border-top:3px solid var(--ts)}
     .product-card.cw{border-top:3px solid var(--cw)}
 
-    /* Mikro-Benefit (dezent) */
+    /* Mikro-Benefit */
     .cw-micro{margin:6px 0 8px;font-size:.95rem;color:var(--muted)}
     .cw-micro-link{margin-left:8px;text-decoration:underline;color:inherit}
     .cw-micro-link:hover{text-decoration:none}
@@ -63,15 +71,16 @@
 <main class="container">
   <section class="hero">
     <h1>Ein kompaktes Portfolio für klare Kommunikation, Prioritäten & Wandel.</h1>
+    <p class="lead">Drei fokussierte Tools, die zusammenpassen – und schnell Ergebnisse liefern.</p>
 
     <div class="product-grid">
-      <!-- Links: SlackDigest -->
+      <!-- SlackDigest -->
       <a class="product-card sd" href="/products/slackdigest/">
         <img src="/assets/icons/slackdigest/slackdigest_icon_150px.png" alt="SlackDigest Logo" loading="lazy">
         <h2>SlackDigest</h2>
         <p>Relevantes aus Slack – kompakt, zum richtigen Zeitpunkt.</p>
 
-        <!-- Mikro-Benefit + Link zum Anker der Produktseite -->
+        <!-- Mikro-Benefit + Link zum späteren Anker auf der Produktseite -->
         <p class="cw-micro">
           Relevantes aus Slack – kompakt, zum richtigen Zeitpunkt.
           <a class="cw-micro-link" href="/products/slackdigest/#benefits" aria-label="Zu den Vorteilen von SlackDigest">Vorteile zeigen</a>
@@ -80,19 +89,31 @@
         <span class="btn">Zur Produktseite</span>
       </a>
 
-      <!-- Mitte: TaskSieve -->
+      <!-- TaskSieve -->
       <a class="product-card ts" href="/products/tasksieve/">
         <img src="/assets/icons/tasksieve/tasksieve_icon_150px.png" alt="TaskSieve Logo" loading="lazy">
         <h2>TaskSieve</h2>
         <p>Wichtige Aufgaben zuerst – mit System statt Bauchgefühl.</p>
+
+        <p class="cw-micro">
+          Eine Inbox, klare Reihenfolge, nächste Schritte sichtbar.
+          <a class="cw-micro-link" href="/products/tasksieve/#benefits" aria-label="Zu den Vorteilen von TaskSieve">Vorteile zeigen</a>
+        </p>
+
         <span class="btn">Zur Produktseite</span>
       </a>
 
-      <!-- Rechts: ChangeWise -->
+      <!-- ChangeWise -->
       <a class="product-card cw" href="/products/changewise/">
         <img src="/assets/icons/changewise/changewise_icon_150px.png" alt="ChangeWise Icon" loading="lazy">
         <h2>ChangeWise</h2>
-        <p>Marke & Change-Kommunikation – klar, konsistent, startklar.</p>
+        <p>Marke &amp; Change-Kommunikation – klar, konsistent, startklar.</p>
+
+        <p class="cw-micro">
+          Einheitliche Botschaften &amp; Vorlagen – schneller konsistent.
+          <a class="cw-micro-link" href="/products/changewise/#benefits" aria-label="Zu den Vorteilen von ChangeWise">Vorteile zeigen</a>
+        </p>
+
         <span class="btn">Zur Produktseite</span>
       </a>
     </div>
