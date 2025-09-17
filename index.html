@@ -8,12 +8,13 @@
   <link rel="canonical" href="/">
   <style>
     :root{
-      --bg:#f7f7f5; --text:#0e1116; --muted:#4b5563;
-      --border:#e5e7eb;
-      /* Produktfarben (mit Verlaufs-Partner) */
-      --sd1:#0C6C48; --sd2:#0A5E3F;   /* SlackDigest Grün */
-      --ts1:#f59e0b; --ts2:#d97706;   /* TaskSieve Orange */
-      --cw1:#0ea5e9; --cw2:#0284c7;   /* ChangeWise Cyan */
+      --bg:#f7f7f5; --text:#0e1116; --muted:#4b5563; --border:#e5e7eb;
+      /* Produktfarben laut Vorgabe */
+      --sd:#0C6C48; /* SlackDigest Grün (12,108,72) */
+      --ts:#B90E13; /* TaskSieve Rot   (185,14,19) */
+      --cw:#0E3960; /* ChangeWise Blau (14,57,96)  */
+      /* Abgeleitete, etwas dunklere Töne für dezente Tiefe */
+      --sd-d:#0A5E3F; --ts-d:#8E0A0E; --cw-d:#0C3051;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -21,7 +22,7 @@
       margin:0; background:var(--bg); color:var(--text);
       font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
     }
-    .container{width:min(1100px,92%); margin:0 auto}
+    .container{width:min(1160px,92%); margin:0 auto}
 
     /* Header */
     .site-header{
@@ -30,67 +31,65 @@
       backdrop-filter:saturate(180%) blur(8px);
       border-bottom:1px solid var(--border);
     }
-    .site-header .bar{
-      display:flex; align-items:center; justify-content:space-between; padding:12px 0;
-    }
-    .brand{
-      display:inline-flex; align-items:center; gap:10px;
-      text-decoration:none; color:inherit; font-weight:700;
-    }
-    .brand img{width:28px; height:28px}
-    .top-nav a{margin-left:16px; color:var(--muted); text-decoration:none}
+    .site-header .bar{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:inherit;font-weight:700}
+    .brand img{width:28px;height:28px}
+    .top-nav a{margin-left:16px;color:var(--muted);text-decoration:none}
     .top-nav a:hover{text-decoration:underline}
 
     /* Hero */
-    .hero{padding:28px 0 8px}
-    .hero h1{font-size:clamp(1.6rem,1.1rem + 2vw,2.3rem); margin:0 0 6px}
-    .hero p.lead{margin:0 0 18px; color:var(--muted)}
+    .hero{padding:32px 0 12px}
+    .hero h1{font-size:clamp(1.6rem,1.1rem + 2vw,2.4rem);margin:0 0 6px}
+    .hero p.lead{margin:0 0 22px;color:var(--muted)}
 
     /* Grid */
-    .tiles{
-      display:grid; gap:18px;
-      grid-template-columns:1fr;
-      margin:14px 0 40px;
-    }
-    @media (min-width:720px){ .tiles{ grid-template-columns:repeat(3,1fr); } }
+    .tiles{display:grid;gap:22px;grid-template-columns:1fr;margin:14px 0 44px}
+    @media (min-width:860px){ .tiles{ grid-template-columns:repeat(3,1fr); } }
 
-    /* Tile / Card */
+    /* Karten */
     .tile{
       position:relative; overflow:hidden;
-      min-height:220px; border-radius:18px;
-      text-decoration:none; color:#fff;
-      box-shadow:0 8px 22px rgba(0,0,0,.10);
+      min-height:320px; /* größer wie gewünscht */
+      border-radius:20px; text-decoration:none; color:#fff;
+      box-shadow:0 12px 28px rgba(0,0,0,.12);
       transition:transform .18s ease, box-shadow .18s ease;
       display:flex; flex-direction:column; justify-content:flex-end;
-      padding:18px;
+      padding:22px;
+      isolation:isolate; /* Logo-Schlagschatten sauber */
     }
-    .tile:hover{ transform:translateY(-2px); box-shadow:0 14px 28px rgba(0,0,0,.14); }
+    .tile:hover{ transform:translateY(-3px); box-shadow:0 18px 36px rgba(0,0,0,.16); }
 
-    /* farbige Hintergründe */
-    .tile.sd{ background:linear-gradient(135deg, var(--sd1), var(--sd2)); }
-    .tile.ts{ background:linear-gradient(135deg, var(--ts1), var(--ts2)); }
-    .tile.cw{ background:linear-gradient(135deg, var(--cw1), var(--cw2)); }
+    /* Farbflächen (solide + leichte Schräg-Überlagerung für Tiefe) */
+    .tile.sd{ background:linear-gradient(135deg,var(--sd) 0%, var(--sd-d) 85%); }
+    .tile.ts{ background:linear-gradient(135deg,var(--ts) 0%, var(--ts-d) 85%); }
+    .tile.cw{ background:linear-gradient(135deg,var(--cw) 0%, var(--cw-d) 85%); }
+    .tile::before{
+      content:""; position:absolute; inset:-30% -10% auto auto; height:60%;
+      background:rgba(255,255,255,.06); transform:rotate(20deg);
+      filter:blur(6px); border-radius:24px; z-index:0;
+    }
 
-    /* Logo oben rechts als Akzent */
+    /* Logos groß sichtbar (oben rechts) */
     .tile .logo{
-      position:absolute; right:10px; top:10px;
-      width:72px; height:72px; opacity:.95;
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,.25));
+      position:absolute; right:14px; top:14px; z-index:1;
+      width:96px; height:96px; object-fit:contain;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,.35));
+      opacity:1;
     }
 
     /* Text in der Kachel */
-    .tile h2{ margin:0 0 4px; font-size:1.15rem }
-    .tile p.sub{ margin:0 0 10px; opacity:.95 }
+    .tile h2{ margin:0 0 6px; font-size:1.25rem; position:relative; z-index:1 }
+    .tile p.sub{ margin:0 0 14px; opacity:.98; position:relative; z-index:1 }
     .btn{
-      align-self:flex-start;
-      padding:8px 12px; border-radius:12px;
-      border:1px solid rgba(255,255,255,.7); color:#fff; background:rgba(255,255,255,.08);
+      align-self:flex-start; position:relative; z-index:1;
+      padding:10px 14px; border-radius:12px;
+      border:1px solid rgba(255,255,255,.8); color:#fff; background:rgba(255,255,255,.10);
       font-weight:600; text-decoration:none; backdrop-filter:saturate(140%) blur(2px);
     }
-    .btn:hover{ background:rgba(255,255,255,.16) }
+    .btn:hover{ background:rgba(255,255,255,.18) }
 
     /* Footer */
-    footer{border-top:1px solid var(--border); padding:18px 0; color:var(--muted)}
+    footer{border-top:1px solid var(--border); padding:20px 0; color:var(--muted)}
   </style>
 </head>
 <body>
@@ -110,25 +109,25 @@
     <p class="lead">Drei Tools, die zusammenpassen – und schnell Ergebnisse liefern.</p>
 
     <div class="tiles">
-      <!-- SlackDigest -->
+      <!-- SlackDigest (Grün) -->
       <a class="tile sd" href="/products/slackdigest/">
-        <img class="logo" src="/assets/icons/slackdigest/slackdigest_icon_150px.png" alt="SlackDigest Logo" loading="lazy">
+        <img class="logo" src="/assets/icons/slackdigest/slackdigest_icon_150px.png" alt="SlackDigest Logo" loading="lazy" decoding="async">
         <h2>SlackDigest</h2>
         <p class="sub">Relevantes aus Slack – kompakt, zum richtigen Zeitpunkt.</p>
         <span class="btn">Zur Produktseite</span>
       </a>
 
-      <!-- TaskSieve -->
+      <!-- TaskSieve (Rot) -->
       <a class="tile ts" href="/products/tasksieve/">
-        <img class="logo" src="/assets/icons/tasksieve/tasksieve_icon_150px.png" alt="TaskSieve Logo" loading="lazy">
+        <img class="logo" src="/assets/icons/tasksieve/tasksieve_icon_150px.png" alt="TaskSieve Logo" loading="lazy" decoding="async">
         <h2>TaskSieve</h2>
         <p class="sub">Wichtige Aufgaben zuerst – mit System statt Bauchgefühl.</p>
         <span class="btn">Zur Produktseite</span>
       </a>
 
-      <!-- ChangeWise -->
+      <!-- ChangeWise (Blau) -->
       <a class="tile cw" href="/products/changewise/">
-        <img class="logo" src="/assets/icons/changewise/changewise_icon_150px.png" alt="ChangeWise Icon" loading="lazy">
+        <img class="logo" src="/assets/icons/changewise/changewise_icon_150px.png" alt="ChangeWise Icon" loading="lazy" decoding="async">
         <h2>ChangeWise</h2>
         <p class="sub">Marke &amp; Change-Kommunikation – klar, konsistent, startklar.</p>
         <span class="btn">Zur Produktseite</span>
