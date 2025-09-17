@@ -28,7 +28,6 @@
     .site-header .bar{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
     .brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:inherit;font-weight:700}
     .brand img{width:28px;height:28px}
-    /* keine Produktlinks oben – Kacheln führen zu den Seiten */
 
     /* Hero */
     .hero{padding:32px 0 12px}
@@ -52,20 +51,20 @@
     }
     .tile:hover{ transform:translateY(-3px); box-shadow:0 18px 36px rgba(0,0,0,.16); }
 
-    /* Logo-Badge (sorgt immer für Kontrast, egal wie das Logo selbst gestaltet ist) */
+    /* Logo-Badge (weißer Kreis hinter Logo; Rand ~6px) */
     .logo-wrap{
       position:absolute; right:14px; top:14px; z-index:1;
       width:120px; height:120px; display:grid; place-items:center;
       border-radius:50%;
-      background:#fff; /* weißer Kreis hinter dem Logo */
+      background:#fff;
       box-shadow:0 2px 10px rgba(0,0,0,.25);
     }
     .logo{
-      width:92px; height:92px; object-fit:contain; display:block;
+      width:108px; height:108px; /* vorher 102px → ~1/3 dünnerer Rand */
+      object-fit:contain; display:block;
     }
-    /* Notfall-Monogramm falls Logo fehlt */
     .logo-fallback{
-      width:92px; height:92px; display:none; place-items:center;
+      width:108px; height:108px; display:none; place-items:center;
       border-radius:50%;
       background:rgba(0,0,0,.06);
       font-weight:800; font-size:34px; color:#222;
@@ -82,7 +81,7 @@
     }
     .btn:hover{ background:rgba(255,255,255,.18) }
 
-    /* Footer (Links unten links) */
+    /* Footer */
     footer{border-top:1px solid var(--border); padding:20px 0; color:var(--muted)}
     .footbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
     .footbar .legal{display:flex;gap:12px}
@@ -94,7 +93,7 @@
 <header class="site-header">
   <div class="container bar">
     <a class="brand" href="/"><img src="/assets/icons/changewise/changewise_icon_64.png" alt="ChangeWise Icon"><span>ChangeWise • SlackDigest • TaskSieve</span></a>
-    <div></div><!-- rechts bewusst leer -->
+    <div></div>
   </div>
 </header>
 
