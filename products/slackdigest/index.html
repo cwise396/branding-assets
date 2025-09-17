@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 <html lang="de">
 <head>
   <meta charset="utf-8">
@@ -32,23 +32,9 @@
 
     .section{padding:18px 0 36px}
     .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px}
-    .accent{border-left:4px solid var(--accent);padding-left:12px}
     .section h2{font-size:1.2rem;margin:0 0 .6rem}
     .meta{color:var(--muted)}
     footer{border-top:1px solid var(--border);padding:18px 0;margin-top:24px;color:var(--muted)}
-
-    /* Akkordeon (kollisionsarm) */
-    .cw-section{margin:24px 0}
-    .cw-accordion{border:1px solid var(--border);border-radius:12px;background:var(--card);overflow:hidden}
-    .cw-accordion>summary{cursor:pointer;padding:14px 16px;font-weight:600;list-style:none;position:relative}
-    .cw-accordion>summary::-webkit-details-marker{display:none}
-    .cw-accordion>summary::after{content:"▸";position:absolute;right:16px;top:50%;transform:translateY(-50%) rotate(0deg);transition:transform .16s ease}
-    .cw-accordion[open]>summary::after{transform:translateY(-50%) rotate(90deg)}
-    .cw-acc-content{padding:16px;border-top:1px solid var(--border)}
-    .cw-acc-content h3{margin:6px 0 8px;font-size:1.05rem}
-    .cw-acc-content ul{margin:.2rem 0 .8rem;padding-left:1.15rem}
-    .cw-acc-content li{margin:.35rem 0}
-    .cw-accordion>summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
   </style>
 </head>
 <body>
@@ -70,36 +56,14 @@
     <p class="sub">Täglicher oder wöchentlicher Digest. Wichtiges zuerst, mit Link zum Kontext.</p>
     <div class="cta">
       <a class="btn primary" href="#">Test-Digest anfordern</a>
-      <a class="btn" href="#benefits">Vorteile anzeigen</a>
+      <a class="btn" href="#overview">So funktioniert’s</a>
     </div>
   </section>
 
-  <!-- Dein vorhandener Hauptinhalt bleibt – Beispielblock -->
+  <!-- Ausgangsbasis-Inhalt (ohne Vorteile/Akkordeon) -->
   <section class="section card" id="overview">
     <h2>Überblick</h2>
     <p>Wähle Kanäle &amp; Teams, lege Takt und Filter fest und erhalte deinen Digest per E-Mail oder in Slack. Mit Links zurück zum Kontext.</p>
-  </section>
-
-  <!-- NEU: Akkordeon Vorteile & FAQ -->
-  <section id="benefits" class="cw-section">
-    <details class="cw-accordion">
-      <summary>Vorteile &amp; FAQ</summary>
-      <div class="cw-acc-content">
-        <h3>Vorteile</h3>
-        <ul>
-          <li><strong>Signal-Overload in Slack/E-Mail</strong> → Ein <strong>täglicher oder wöchentlicher Digest</strong> mit den relevanten Updates zuerst.</li>
-          <li><strong>Ständige Unterbrechungen</strong> → <strong>Asynchrone Übersicht</strong> statt Pings &amp; Ad-hoc-Meetings.</li>
-          <li><strong>Wissen verstreut</strong> → Jedes Update kommt mit <strong>Link zum Kontext</strong> – auffindbar &amp; referenzierbar.</li>
-          <li><strong>Unklare Zuständigkeit</strong> → Updates nennen <strong>Owner/nächsten Schritt</strong>.</li>
-        </ul>
-
-        <h3>FAQ (kurz)</h3>
-        <ul>
-          <li><strong>Admin nötig?</strong> Leserechte genügen.</li>
-          <li><strong>Setup?</strong> Minuten.</li>
-        </ul>
-      </div>
-    </details>
   </section>
 </main>
 
