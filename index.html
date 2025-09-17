@@ -1,94 +1,108 @@
  <!doctype html>
 <html lang="de">
 <head>
- <meta property="og:image" content="https://slackdigest.org/assets/og/og_home_1200x630_logos_v2.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
- <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="ChangeWise • SlackDigest • TaskSieve – Ein kompaktes SaaS-Portfolio für klare Kommunikation, Priorisierung und Wandel." />
-  <title>ChangeWise • SlackDigest • TaskSieve</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ChangeWise • SlackDigest • TaskSieve – Klarheit, Prioritäten, konsistente Kommunikation</title>
+  <meta name="description" content="Drei kleine Tools, großer Effekt: SlackDigest (klare Zusammenfassungen), TaskSieve (Priorisieren nach Wirkung/Dringlichkeit/Aufwand), ChangeWise (konsistente Assets & Botschaften).">
+  <link rel="canonical" href="/">
+  <style>
+    :root {
+      --bg: #f7f7f5; --text: #0e1116; --muted: #4b5563; --card: #ffffff; --border: #e5e7eb;
+      --sd: #4a8aff; --ts: #f59e0b; --cw: #0ea5e9;
+    }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+    .container{width:min(1100px,92%);margin:0 auto}
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="./assets/css/site.css" />
+    /* Slim Header */
+    .site-header{position:sticky;top:0;background:rgba(255,255,255,.7);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--border)}
+    .site-header .bar{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:inherit;font-weight:700}
+    .brand img{width:28px;height:28px}
+    .top-nav a{margin-left:16px;color:var(--muted);text-decoration:none}
+    .top-nav a:hover{text-decoration:underline}
 
-  <!-- Favicon -->
-  <link rel="icon" href="./assets/icons/changewise/favicon.ico">
+    /* Hero + Grid */
+    .hero h1{font-size:clamp(1.5rem,1.1rem + 1.8vw,2.2rem);margin:28px 0 12px}
+    .product-grid{display:grid;gap:16px;grid-template-columns:1fr;margin:16px 0 40px}
+    @media (min-width:720px){.product-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (min-width:1024px){.product-grid{grid-template-columns:repeat(3,1fr)}}
 
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="ChangeWise • SlackDigest • TaskSieve">
-  <meta property="og:description" content="Ein kompaktes SaaS-Portfolio für klare Kommunikation, Priorisierung und Wandel.">
-  <meta property="og:url" content="https://slackdigest.org/">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://slackdigest.org/assets/icons/changewise/changewise_icon_512.png">
-  <meta name="twitter:card" content="summary_large_image">
+    .product-card{display:block;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;text-decoration:none;color:inherit;box-shadow:0 1px 2px rgba(0,0,0,.05);transition:transform .15s ease, box-shadow .15s ease}
+    .product-card:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.08)}
+    .product-card img{display:block;margin:4px 0 8px;width:72px;height:72px}
+    .product-card h2{margin:6px 0 6px;font-size:1.1rem}
+    .product-card p{margin:0 0 10px;color:var(--muted)}
+    .product-card .btn{display:inline-block;padding:8px 12px;border-radius:10px;border:1px solid var(--border);background:#fff;font-weight:600}
+
+    /* Akzentkante */
+    .product-card.sd{border-top:3px solid var(--sd)}
+    .product-card.ts{border-top:3px solid var(--ts)}
+    .product-card.cw{border-top:3px solid var(--cw)}
+
+    /* Mikro-Benefit (dezent) */
+    .cw-micro{margin:6px 0 8px;font-size:.95rem;color:var(--muted)}
+    .cw-micro-link{margin-left:8px;text-decoration:underline;color:inherit}
+    .cw-micro-link:hover{text-decoration:none}
+
+    footer{border-top:1px solid var(--border);padding:18px 0;margin-top:24px;color:var(--muted)}
+  </style>
 </head>
 <body>
- <nav class="topnav">
-  <a href="/index.html" class="brand">ChangeWise</a>
-  <div class="links">
-    <a href="/products/slackdigest/">SlackDigest</a>
-    <a href="/products/tasksieve/">TaskSieve</a>
-    <a href="/products/changewise/">ChangeWise</a>
-    <a href="/impressum.html">Impressum</a>
-  </div>
-  <a id="lang-toggle" class="lang-pill" href="#" aria-label="Language toggle">EN</a>
-</nav>
- <header class="site-header">
-    <div class="brand">
-      <!-- Dekoratives Header-Logo: leeres Alt + aria-hidden -->
-      <img
-        src="./assets/icons/changewise/changewise_icon_128.png"
-        alt=""
-        class="brand-logo"
-        width="72" height="72"
-        aria-hidden="true">
-      <h1>ChangeWise • SlackDigest • TaskSieve</h1>
-      <p>Ein kompaktes SaaS-Portfolio für klare Kommunikation, Priorisierung und Wandel.</p>
-    </div>
-  </header>
-
-  <main class="grid">
-    <article class="card">
-      <img
-        src="./assets/icons/changewise/changewise_icon_128.png"
-        alt="ChangeWise Logo"
-        width="80" height="80"
-        loading="lazy" decoding="async">
-      <h2>ChangeWise</h2>
-      <p>Branding &amp; Change-Kommunikation. Einheitliche Assets, klare Botschaften, sofort einsatzbereit.</p>
-      <a class="btn" href="./products/changewise/">Zur Produktseite</a>
-    </article>
-
-    <article class="card">
-      <img
-        src="./assets/icons/slackdigest/slackdigest_icon_128.png"
-        alt="SlackDigest Logo"
-        width="80" height="80"
-        loading="lazy" decoding="async">
-      <h2>SlackDigest</h2>
-      <p>Tägliche/Wöchentliche Slack-Zusammenfassungen. Fokus auf Relevanz, weniger Rauschen.</p>
-      <a class="btn" href="./products/slackdigest/">Zur Produktseite</a>
-    </article>
-
-    <article class="card">
-      <img
-        src="./assets/icons/tasksieve/tasksieve_icon_128.png"
-        alt="TaskSieve Logo"
-        width="80" height="80"
-        loading="lazy" decoding="async">
-      <h2>TaskSieve</h2>
-      <p>Filtern, was zählt: Aufgaben priorisieren, bündeln, intelligent sortieren.</p>
-      <a class="btn" href="./products/tasksieve/">Zur Produktseite</a>
-    </article>
-  </main>
-
-  <footer class="site-footer">
-    <nav>
-      <a href="./impressum.html">Impressum</a>
-      <span> · </span>
-      <a href="./datenschutz.html">Datenschutz</a>
+<header class="site-header">
+  <div class="container bar">
+    <a class="brand" href="/"><img src="/assets/icons/changewise/changewise_icon_64.png" alt="ChangeWise Icon"><span>ChangeWise • SlackDigest • TaskSieve</span></a>
+    <nav class="top-nav">
+      <a href="/impressum.html">Impressum</a>
+      <a href="/datenschutz.html">Datenschutz</a>
     </nav>
-  </footer>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <h1>Ein kompaktes Portfolio für klare Kommunikation, Prioritäten & Wandel.</h1>
+
+    <div class="product-grid">
+      <!-- Links: SlackDigest -->
+      <a class="product-card sd" href="/products/slackdigest/">
+        <img src="/assets/icons/slackdigest/slackdigest_icon_150px.png" alt="SlackDigest Logo" loading="lazy">
+        <h2>SlackDigest</h2>
+        <p>Relevantes aus Slack – kompakt, zum richtigen Zeitpunkt.</p>
+
+        <!-- Mikro-Benefit + Link zum Anker der Produktseite -->
+        <p class="cw-micro">
+          Relevantes aus Slack – kompakt, zum richtigen Zeitpunkt.
+          <a class="cw-micro-link" href="/products/slackdigest/#benefits" aria-label="Zu den Vorteilen von SlackDigest">Vorteile zeigen</a>
+        </p>
+
+        <span class="btn">Zur Produktseite</span>
+      </a>
+
+      <!-- Mitte: TaskSieve -->
+      <a class="product-card ts" href="/products/tasksieve/">
+        <img src="/assets/icons/tasksieve/tasksieve_icon_150px.png" alt="TaskSieve Logo" loading="lazy">
+        <h2>TaskSieve</h2>
+        <p>Wichtige Aufgaben zuerst – mit System statt Bauchgefühl.</p>
+        <span class="btn">Zur Produktseite</span>
+      </a>
+
+      <!-- Rechts: ChangeWise -->
+      <a class="product-card cw" href="/products/changewise/">
+        <img src="/assets/icons/changewise/changewise_icon_150px.png" alt="ChangeWise Icon" loading="lazy">
+        <h2>ChangeWise</h2>
+        <p>Marke & Change-Kommunikation – klar, konsistent, startklar.</p>
+        <span class="btn">Zur Produktseite</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <small>© ChangeWise • SlackDigest • TaskSieve</small>
+  </div>
+</footer>
 </body>
 </html>
