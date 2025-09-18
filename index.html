@@ -7,47 +7,22 @@
   <title>ChangeWise • SlackDigest • TaskSieve</title>
   <meta name="description" content="Drei fokussierte Tools: SlackDigest, TaskSieve, ChangeWise. Klarheit, Prioritäten, konsistente Kommunikation.">
   <link rel="canonical" href="/">
-  <!-- Theme-Initialisierung VOR CSS: Query > Session > System -->
- <script>
-/* Theme init: Query > localStorage > Cookie > System  (früh im Head, vor CSS) */
-(function(){
-  var DOC = document.documentElement;
-  var KEY = 'cw_theme';
-
-  function getCookie(name){
-    var m = document.cookie.match(new RegExp('(?:^|; )' + name.replace(/([.$?*|{}()[\]\\/+^])/g,'\\$1') + '=([^;]*)'));
-    return m ? decodeURIComponent(m[1]) : null;
-  }
-  function setCookie(name, value){
-    try { document.cookie = name + '=' + encodeURIComponent(value) + '; path=/; max-age=31536000; SameSite=Lax'; } catch(e){}
-  }
-
-  try{
-    var qs = new URLSearchParams(location.search).get('theme');
-    if (qs === 'dark' || qs === 'light') {
-      DOC.classList.toggle('dark', qs === 'dark');
-      try { localStorage.setItem(KEY, qs); } catch(e){}
-      setCookie(KEY, qs);
-      return;
-    }
-    var saved = null;
-    try { saved = localStorage.getItem(KEY); } catch(e){}
-    if (saved === 'dark' || saved === 'light') {
-      DOC.classList.toggle('dark', saved === 'dark');
-      return;
-    }
-    var ck = getCookie(KEY);
-    if (ck === 'dark' || ck === 'light') {
-      DOC.classList.toggle('dark', ck === 'dark');
-      try { localStorage.setItem(KEY, ck); } catch(e){}
-      return;
-    }
-    var mql = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
-    DOC.classList.toggle('dark', !!(mql && mql.matches));
-  } catch(e){}
-})();
-</script>
-
+  <!-- Theme init: Query > localStorage > Cookie > System (früh, vor CSS) -->
+  <script>
+  (function(){
+    var DOC=document.documentElement, KEY='cw_theme';
+    function getCookie(n){var m=document.cookie.match(new RegExp('(?:^|; )'+n.replace(/([.$?*|{}()[\\]\\/+^])/g,'\\$1')+'=([^;]*)'));return m?decodeURIComponent(m[1]):null}
+    function setCookie(n,v){try{document.cookie=n+'='+encodeURIComponent(v)+'; path=/; max-age=31536000; SameSite=Lax'}catch(e){}}
+    try{
+      var qs=new URLSearchParams(location.search).get('theme');
+      if(qs==='dark'||qs==='light'){ DOC.classList.toggle('dark',qs==='dark'); try{localStorage.setItem(KEY,qs)}catch(e){} setCookie(KEY,qs); return; }
+      var saved=null; try{saved=localStorage.getItem(KEY)}catch(e){}
+      if(saved==='dark'||saved==='light'){ DOC.classList.toggle('dark',saved==='dark'); return; }
+      var ck=getCookie(KEY); if(ck==='dark'||ck==='light'){ DOC.classList.toggle('dark',ck==='dark'); try{localStorage.setItem(KEY,ck)}catch(e){}; return; }
+      var m=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)'); DOC.classList.toggle('dark',!!(m&&m.matches));
+    }catch(e){}
+  })();
+  </script>
   <style>
     :root{
       /* === Theme (Light) === */
@@ -132,7 +107,7 @@
 
     /* Karten */
     .tile{
-      position:relative; overflow:hidden; min-height:360px; border-radius:20px;
+      position:relative; overflow:hidden; min-height:390px; border-radius:20px; /* leicht höher wegen Mikro-Benefits */
       text-decoration:none; color:#fff; box-shadow:var(--card-shadow);
       transition:transform .18s ease, box-shadow .18s ease;
       display:flex; flex-direction:column; justify-content:flex-end; padding:22px; isolation:isolate;
@@ -170,7 +145,16 @@
 
     /* Text & Button */
     .tile h2{margin:0 0 8px;font-size:1.35rem;position:relative;z-index:0}
-    .tile p.sub{margin:0 0 16px;opacity:.98;position:relative;z-index:0}
+    .tile p.sub{margin:0 0 10px;opacity:.98;position:relative;z-index:0}
+
+    /* Mikro-Benefits unter dem Subline-Text */
+    .micro{
+      margin:0 0 14px;
+      padding-left:1.1rem;
+      font-size:.92rem; line-height:1.35; opacity:.98;
+    }
+    .micro li{margin:2px 0}
+
     .btn{
       align-self:flex-start; position:relative; z-index:0;
       padding:var(--btn-pad-y) var(--btn-pad-x); border-radius:12px;
@@ -188,27 +172,7 @@
     .footbar a:hover{text-decoration:underline}
   </style>
 </head>
-<script>
-/* Hänge ?theme=… an alle internen Links, damit Safari den Modus beim Navigieren behält */
-(function(){
-  try{
-    var KEY='cw_theme';
-    var theme = (new URLSearchParams(location.search).get('theme'))
-             || (function(){ try{return localStorage.getItem(KEY)}catch(e){ return null } })()
-             || (document.cookie.match(/(?:^|; )cw_theme=([^;]*)/)||[])[1];
-    if(!theme) return;
-    document.querySelectorAll('a[href^="/"]').forEach(function(a){
-      try{
-        var url = new URL(a.getAttribute('href'), location.origin);
-        if(!url.searchParams.get('theme')) url.searchParams.set('theme', theme);
-        a.setAttribute('href', url.pathname + url.search + url.hash);
-      }catch(e){}
-    });
-  }catch(e){}
-})();
-</script>
-
- <body>
+<body>
 
 <main class="container">
   <section class="hero">
@@ -220,7 +184,7 @@
       <a class="tile sd" href="/products/slackdigest/">
         <div class="logo-wrap">
           <div class="logo-inner">
-            <img class="logo" src="/assets/brand/slackdigest_logo.svg?v=5"
+            <img class="logo" src="/assets/brand/slackdigest_logo.svg?v=6"
                  onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}"
                  alt="SlackDigest Logo">
             <span class="logo-fallback" aria-hidden="true">SD</span>
@@ -228,6 +192,10 @@
         </div>
         <h2>SlackDigest</h2>
         <p class="sub">Relevantes aus Slack – kompakt, zum richtigen Zeitpunkt.</p>
+        <ul class="micro">
+          <li>Wichtiges zuerst, weniger Slack-Lärm.</li>
+          <li>Ein Blick, ein Link – erledigt.</li>
+        </ul>
         <span class="btn">Zur Produktseite</span>
       </a>
 
@@ -235,7 +203,7 @@
       <a class="tile ts" href="/products/tasksieve/">
         <div class="logo-wrap">
           <div class="logo-inner">
-            <img class="logo" src="/assets/brand/tasksieve_logo.svg?v=5"
+            <img class="logo" src="/assets/brand/tasksieve_logo.svg?v=6"
                  onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}"
                  alt="TaskSieve Logo">
             <span class="logo-fallback" aria-hidden="true">TS</span>
@@ -243,6 +211,10 @@
         </div>
         <h2>TaskSieve</h2>
         <p class="sub">Wichtige Aufgaben zuerst – mit System.</p>
+        <ul class="micro">
+          <li>Eine Inbox für E-Mail, Notizen & Slack.</li>
+          <li>Auto-Sortierung mit manueller Feinsteuerung.</li>
+        </ul>
         <span class="btn">Zur Produktseite</span>
       </a>
 
@@ -250,7 +222,7 @@
       <a class="tile cw" href="/products/changewise/">
         <div class="logo-wrap">
           <div class="logo-inner">
-            <img class="logo" src="/assets/brand/changewise_logo.svg?v=5"
+            <img class="logo" src="/assets/brand/changewise_logo.svg?v=6"
                  onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}"
                  alt="ChangeWise Logo">
             <span class="logo-fallback" aria-hidden="true">CW</span>
@@ -258,6 +230,10 @@
         </div>
         <h2>ChangeWise</h2>
         <p class="sub">Marke &amp; Change-Kommunikation – klar, konsistent, startklar.</p>
+        <ul class="micro">
+          <li>Eine Stimme: Kernnarrativ & Ton.</li>
+          <li>Brand-Kit & Vorlagen beschleunigen Output.</li>
+        </ul>
         <span class="btn">Zur Produktseite</span>
       </a>
     </div>
@@ -274,18 +250,22 @@
   </div>
 </footer>
 
+<!-- Theme-Param an interne Links anhängen, damit Safari den Modus beim Navigieren beibehält -->
 <script>
-/* Hängt den Theme-Param an interne Links an, damit Dark bei Navigation bleibt */
 (function(){
   try{
-    var qs = new URLSearchParams(location.search);
-    var theme = qs.get('theme') || sessionStorage.getItem('cw_theme');
+    var KEY='cw_theme';
+    var theme=(new URLSearchParams(location.search).get('theme'))
+           || (function(){try{return localStorage.getItem(KEY)}catch(e){return null}})()
+           || (document.cookie.match(/(?:^|; )cw_theme=([^;]*)/)||[])[1];
     if(!theme) return;
-    document.querySelectorAll('a[href^="/"]').forEach(function(a){
+    document.querySelectorAll('a[href]').forEach(function(a){
+      var href=a.getAttribute('href'); if(!href) return;
+      if(/^https?:\/\//i.test(href) && href.indexOf(location.origin)!==0) return; // nur interne Links
       try{
-        var url = new URL(a.getAttribute('href'), location.origin);
-        if(!url.searchParams.get('theme')){ url.searchParams.set('theme', theme); }
-        a.setAttribute('href', url.pathname + url.search + url.hash);
+        var url=new URL(href, location.href);
+        if(!url.searchParams.get('theme')) url.searchParams.set('theme', theme);
+        a.setAttribute('href', url.pathname+url.search+url.hash);
       }catch(e){}
     });
   }catch(e){}
