@@ -11,7 +11,7 @@
     :root{
       /* Brand */
       --brand:#B90E13;              /* sRGB(185,14,19) – Karten & Akzente */
-      --nav:#AE0F12;                /* sRGB(174,15,18) – Navigationsleiste */
+      --nav:#AE0F12;                /* sRGB(174,15,18) – Navigation */
       --accent:#ffffff;
 
       /* Light (brand-forward) */
@@ -26,7 +26,7 @@
       --card-bd:rgba(255,255,255,.45);
       --shadow:0 14px 30px rgba(0,0,0,.28);
 
-      /* Hero-Textfarben (Light weiß, Dark rot) */
+      /* Hero-Textfarben (Light weiß, Dark -> unten überschrieben) */
       --hero-h:#ffffff;
       --hero-sub:rgba(255,255,255,.88);
 
@@ -58,9 +58,9 @@
       --card-bd:#52080A;            /* dunkler Randton fürs Rot */
       --shadow:0 16px 34px rgba(0,0,0,.50);
 
-      /* Hero in Rot gewünscht */
-      --hero-h:#B90E13;
-      --hero-sub:#B90E13;
+      /* Hero in DARK: weiß */
+      --hero-h:#ffffff;
+      --hero-sub:rgba(255,255,255,.92);
 
       --btn-bd:#2A3548;
       --i18n-bg:#141A2A; --i18n-fg:#E5E7EB; --i18n-bd:#2A3548;
@@ -122,7 +122,7 @@
     }
     .logo{width:100%; height:100%; object-fit:contain; display:block}
 
-    /* Grid cards – jetzt rot */
+    /* Grid cards – rot */
     .section{width:min(1100px,92%); margin:14px auto 40px}
     .grid{display:grid; grid-template-columns:repeat(12,1fr); gap:14px}
     .card{
@@ -169,7 +169,7 @@
       </div>
       <div class="logo-col">
         <div class="logo-wrap"><div class="logo-inner">
-          <img class="logo" src="/assets/brand/tasksieve_logo.svg?v=2" alt="TaskSieve Logo"
+          <img class="logo" src="/assets/brand/tasksieve_logo.svg?v=3" alt="TaskSieve Logo"
                onerror="this.style.display='none'">
         </div></div>
       </div>
@@ -216,7 +216,7 @@
 
       <article class="card">
         <h3>Integrationen</h3>
-        <p>E-Mail, Notizen, Slack — weitere auf Anfrage.</p>
+        <p>E-Mail, Notizen, Slack.</p>
       </article>
     </div>
   </section>
