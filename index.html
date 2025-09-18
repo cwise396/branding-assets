@@ -1,7 +1,8 @@
  <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
+ <meta name="color-scheme" content="light dark">
+<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ChangeWise • SlackDigest • TaskSieve</title>
   <meta name="description" content="Drei fokussierte Tools: SlackDigest, TaskSieve, ChangeWise. Klarheit, Prioritäten, konsistente Kommunikation.">
@@ -103,6 +104,41 @@
     .footbar .legal{display:flex;gap:12px}
     .footbar a{color:inherit;text-decoration:none}
     .footbar a:hover{text-decoration:underline}
+ /* ===== Dark Mode (automatisch via System-Einstellung) ===== */
+@media (prefers-color-scheme: dark){
+  :root{
+    /* Seite & Typo */
+    --page-bg:#0B1220;   /* dunkles Navy statt Gelb */
+    --text:#E5E7EB;
+    --muted:#9AA4B2;
+    --border:#243041;
+
+    /* Hero-Farbe: auf Dark kontrastreiches Blau
+       (Wenn du strikt #0C3960 willst, setze hier wieder --hero-color:#0C3960) */
+    --hero-color:#9FB8D8;
+
+    /* Schatten etwas „tiefer“ auf Dark */
+    --logo-shadow:0 1px 2px rgba(0,0,0,.6);
+  }
+
+  /* Kachelschatten auf Dark etwas kräftiger */
+  .tile{
+    box-shadow:0 12px 32px rgba(0,0,0,.50);
+  }
+
+  /* Buttons: etwas mehr Opazität auf Dark */
+  .btn{
+    border-color:rgba(255,255,255,.85);
+    background:rgba(255,255,255,.12);
+  }
+  .btn:hover{
+    background:rgba(255,255,255,.18);
+  }
+
+  /* Footer-Kontrast bleibt dezent über --muted */
+  footer{ color:var(--muted); }
+}
+
   </style>
 </head>
 <body>
