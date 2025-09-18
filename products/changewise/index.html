@@ -124,5 +124,28 @@
   </main>
   <footer><a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a></footer>
   <script>const t=document.getElementById('navToggle'),l=document.getElementById('navLinks');t&&l&&t.addEventListener('click',()=>{const o=l.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});</script>
+<script>
+/* Theme-Param an interne Links anhängen (auch relative), damit Dark beim Navigieren bleibt */
+(function(){
+  try{
+    var KEY='cw_theme';
+    var theme=(new URLSearchParams(location.search).get('theme'))
+           || (function(){try{return localStorage.getItem(KEY)}catch(e){return null}})()
+           || (document.cookie.match(/(?:^|; )cw_theme=([^;]*)/)||[])[1];
+    if(!theme) return;
+    document.querySelectorAll('a[href]').forEach(function(a){
+      var href=a.getAttribute('href'); if(!href) return;
+      // nur interne Links anfassen
+      if(/^https?:\/\//i.test(href) && href.indexOf(location.origin)!==0) return;
+      try{
+        var url=new URL(href, location.href);
+        if(!url.searchParams.get('theme')) url.searchParams.set('theme', theme);
+        a.setAttribute('href', url.pathname+url.search+url.hash);
+      }catch(e){}
+    });
+  }catch(e){}
+})();
+</script>
+
 </body>
 </html>
