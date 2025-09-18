@@ -10,21 +10,27 @@
   <style>
     :root{
       /* Brand */
-      --brand:#B90E13;              /* TaskSieve Rot sRGB(185,14,19) */
+      --brand:#B90E13;              /* sRGB(185,14,19) – Karten & Akzente */
+      --nav:#AE0F12;                /* sRGB(174,15,18) – Navigationsleiste */
       --accent:#ffffff;
 
       /* Light (brand-forward) */
-      --page-bg:#B90E13;            /* Rot als Fläche */
+      --page-bg:#B90E13;            /* Vollfläche Rot */
       --text:#ffffff;
-      --muted:rgba(255,255,255,.85);
-      --border:rgba(255,255,255,.30);
+      --muted:rgba(255,255,255,.86);
+      --border:rgba(255,255,255,.35);
 
-      /* Cards & UI */
-      --card-bg:rgba(0,0,0,.06);
+      /* Karten: IMMER Brand-Rot */
+      --card-bg:#B90E13;
       --card-fg:#ffffff;
-      --shadow:0 12px 24px rgba(0,0,0,.25);
+      --card-bd:rgba(255,255,255,.45);
+      --shadow:0 14px 30px rgba(0,0,0,.28);
 
-      /* Logo badge (wie Home) */
+      /* Hero-Textfarben (Light weiß, Dark rot) */
+      --hero-h:#ffffff;
+      --hero-sub:rgba(255,255,255,.88);
+
+      /* Logo badge */
       --badge-size:100px;
       --badge-ring:#fff;
       --badge-ring-w:5px;
@@ -33,10 +39,10 @@
       /* CTA */
       --btn-bg:#ffffff;
       --btn-fg:var(--brand);
-      --btn-bd:rgba(255,255,255,.22);
+      --btn-bd:rgba(255,255,255,.25);
       --btn-bg-hover:rgba(255,255,255,.92);
 
-      /* Lang switch pill (oben rechts, links vom Toggle) */
+      /* Lang switch pill */
       --i18n-bg:#ffffff; --i18n-fg:#B90E13; --i18n-bd:rgba(0,0,0,.15);
     }
     /* Dark overrides (seitenlokal via .ts-dark) */
@@ -45,9 +51,17 @@
       --text:#E5E7EB;
       --muted:#9AA4B2;
       --border:#243041;
-      --card-bg:rgba(255,255,255,.06);
-      --card-fg:#E5E7EB;
-      --shadow:0 14px 30px rgba(0,0,0,.50);
+
+      /* Karten bleiben rot */
+      --card-bg:#B90E13;
+      --card-fg:#ffffff;
+      --card-bd:#52080A;            /* dunkler Randton fürs Rot */
+      --shadow:0 16px 34px rgba(0,0,0,.50);
+
+      /* Hero in Rot gewünscht */
+      --hero-h:#B90E13;
+      --hero-sub:#B90E13;
+
       --btn-bd:#2A3548;
       --i18n-bg:#141A2A; --i18n-fg:#E5E7EB; --i18n-bd:#2A3548;
     }
@@ -60,10 +74,10 @@
       font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
     }
 
-    /* Header: nur Home-Link links, Language rechts */
-    .site-header{position:sticky; top:0; padding:10px 0}
-    .nav{width:min(1100px,92%); margin:0 auto; display:flex; align-items:center; justify-content:space-between}
-    .brand a{color:var(--accent); text-decoration:none; font-weight:700}
+    /* Header mit fester Nav-Farbe */
+    .site-header{position:sticky; top:0; background:var(--nav); color:#fff}
+    .nav{width:min(1100px,92%); margin:0 auto; padding:10px 0; display:flex; align-items:center; justify-content:space-between}
+    .brand a{color:#fff; text-decoration:none; font-weight:700}
     .rightbar{display:flex; gap:8px; align-items:center}
 
     .pill{
@@ -86,8 +100,8 @@
     .hero{padding:28px 0 10px}
     .hero-wrap{width:min(1100px,92%); margin:0 auto; display:grid; grid-template-columns:repeat(12,1fr); gap:16px; align-items:end}
     .hero-text{grid-column:1 / 10}
-    .hero h1{margin:0 0 6px; font-size:clamp(1.8rem,1.2rem + 2.2vw,2.6rem)}
-    .hero p.lead{margin:0; color:var(--muted); font-weight:600}
+    .hero h1{margin:0 0 6px; font-size:clamp(1.8rem,1.2rem + 2.2vw,2.6rem); color:var(--hero-h)}
+    .hero p.lead{margin:0; color:var(--hero-sub); font-weight:700}
     .logo-col{grid-column:10 / 13; justify-self:start}
     @media (max-width:720px){
       .hero-wrap{grid-template-columns:1fr; text-align:center}
@@ -108,12 +122,12 @@
     }
     .logo{width:100%; height:100%; object-fit:contain; display:block}
 
-    /* Grid cards */
+    /* Grid cards – jetzt rot */
     .section{width:min(1100px,92%); margin:14px auto 40px}
     .grid{display:grid; grid-template-columns:repeat(12,1fr); gap:14px}
     .card{
       grid-column:span 4; background:var(--card-bg); color:var(--card-fg);
-      border:1px solid var(--border); border-radius:14px; padding:14px;
+      border:1px solid var(--card-bd); border-radius:14px; padding:14px;
       box-shadow:var(--shadow);
     }
     .card h3{margin:0 0 8px}
@@ -155,7 +169,7 @@
       </div>
       <div class="logo-col">
         <div class="logo-wrap"><div class="logo-inner">
-          <img class="logo" src="/assets/brand/tasksieve_logo.svg?v=1" alt="TaskSieve Logo"
+          <img class="logo" src="/assets/brand/tasksieve_logo.svg?v=2" alt="TaskSieve Logo"
                onerror="this.style.display='none'">
         </div></div>
       </div>
@@ -192,7 +206,6 @@
           <li>Quellen: E-Mail / Notizen / Slack</li>
           <li>Auto vs. manuell: Auto-Sortierung mit manuellem Feinschliff</li>
         </ul>
-        <!-- Optional: weitere Details hier -->
       </article>
 
       <article class="card">
@@ -231,7 +244,7 @@
   }
 
   var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
-  var initial = saved || 'dark';   // <<< Standard: dunkel
+  var initial = saved || 'dark';   // Standard: dunkel
   apply(initial);
 
   if(btn){
