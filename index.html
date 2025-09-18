@@ -50,9 +50,10 @@
       --btn-fg:#0C3960;             /* Fallback, pro Kachel überschrieben */
       --btn-border:rgba(0,0,0,.12);
       --btn-bg-hover:rgba(255,255,255,.92);
-      --btn-pad-y:8px;              /* ca. –25% */
-      --btn-pad-x:10px;
-      --btn-font:.9rem;
+      --btn-pad-y:8px; --btn-pad-x:10px; --btn-font:.9rem;
+
+      /* I18N Toggle */
+      --i18n-bg:#ffffff; --i18n-fg:#0C3960; --i18n-bd:rgba(0,0,0,.12);
 
       /* Schatten */
       --card-shadow:0 12px 28px rgba(0,0,0,.12);
@@ -66,8 +67,8 @@
       --hero-color:#9FB8D8;
       --logo-shadow:0 1px 2px rgba(0,0,0,.6);
       --btn-border:rgba(255,255,255,.22);
-      --btn-bg:#ffffff;             /* bleibt weiß */
-      --btn-bg-hover:rgba(255,255,255,.9);
+      --btn-bg:#ffffff; --btn-bg-hover:rgba(255,255,255,.9);
+      --i18n-bg:#141A2A; --i18n-fg:#E5E7EB; --i18n-bd:#2A3548;
       --card-shadow:0 12px 32px rgba(0,0,0,.50);
       --card-shadow-hover:0 18px 40px rgba(0,0,0,.60);
     }
@@ -75,26 +76,30 @@
     /* Zusätzlich: System-Dark als Fallback */
     @media (prefers-color-scheme: dark){
       :root{
-        --page-bg:#0B1220;
-        --text:#E5E7EB; --muted:#9AA4B2; --border:#243041;
-        --hero-color:#9FB8D8;
-        --logo-shadow:0 1px 2px rgba(0,0,0,.6);
-        --btn-border:rgba(255,255,255,.22);
-        --btn-bg:#ffffff;
-        --btn-bg-hover:rgba(255,255,255,.9);
-        --card-shadow:0 12px 32px rgba(0,0,0,.50);
-        --card-shadow-hover:0 18px 40px rgba(0,0,0,.60);
+        --page-bg:#0B1220; --text:#E5E7EB; --muted:#9AA4B2; --border:#243041;
+        --hero-color:#9FB8D8; --logo-shadow:0 1px 2px rgba(0,0,0,.6);
+        --btn-border:rgba(255,255,255,.22); --btn-bg:#ffffff; --btn-bg-hover:rgba(255,255,255,.9);
+        --i18n-bg:#141A2A; --i18n-fg:#E5E7EB; --i18n-bd:#2A3548;
+        --card-shadow:0 12px 32px rgba(0,0,0,.50); --card-shadow-hover:0 18px 40px rgba(0,0,0,.60);
       }
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
     html,body{background:var(--page-bg)}
-    body{
-      margin:0; color:var(--text);
-      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-    }
+    body{ margin:0; color:var(--text);
+      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif }
+
     .container{width:min(1160px,92%); margin:0 auto}
+
+    /* Language Switch (oben rechts) */
+    .i18n-toggle{
+      position:fixed; right:14px; top:14px; z-index:99;
+      padding:8px 12px; border-radius:999px;
+      background:var(--i18n-bg); color:var(--i18n-fg);
+      border:1px solid var(--i18n-bd); text-decoration:none; font-weight:700;
+    }
+    .i18n-toggle:hover{ filter:brightness(0.97) }
 
     /* Hero */
     .hero{padding:36px 0 12px}
@@ -107,7 +112,7 @@
 
     /* Karten */
     .tile{
-      position:relative; overflow:hidden; min-height:390px; border-radius:20px; /* leicht höher wegen Mikro-Benefits */
+      position:relative; overflow:hidden; min-height:390px; border-radius:20px;
       text-decoration:none; color:#fff; box-shadow:var(--card-shadow);
       transition:transform .18s ease, box-shadow .18s ease;
       display:flex; flex-direction:column; justify-content:flex-end; padding:22px; isolation:isolate;
@@ -117,44 +122,25 @@
     .tile.ts{ background-color:var(--color-ts) !important; --btn-fg:var(--color-ts) }
     .tile.cw{ background-color:var(--color-cw) !important; --btn-fg:var(--color-cw) }
 
-    /* Logo-Badge (weißer Ring + roter Innenkreis) */
-    .logo-wrap{
-      position:absolute; right:14px; top:14px; z-index:1;
+    /* Logo-Badge */
+    .logo-wrap{ position:absolute; right:14px; top:14px; z-index:1;
       width:var(--badge-size); height:var(--badge-size);
       display:grid; place-items:center; border-radius:50%;
-      background:var(--badge-ring-color); box-shadow:0 2px 10px rgba(0,0,0,.25);
-    }
-    .logo-inner{
-      width:calc(var(--badge-size) - 2 * var(--badge-ring-width));
+      background:var(--badge-ring-color); box-shadow:0 2px 10px rgba(0,0,0,.25) }
+    .logo-inner{ width:calc(var(--badge-size) - 2 * var(--badge-ring-width));
       height:calc(var(--badge-size) - 2 * var(--badge-ring-width));
-      border-radius:50%;
-      background:var(--badge-inner-color);
-      display:grid; place-items:center; overflow:hidden;
-    }
-    .logo{
-      width:100%; height:100%;
-      object-fit:contain; display:block;
-      filter:var(--logo-filter); -webkit-filter:var(--logo-filter);
-      box-shadow:var(--logo-shadow);
-    }
-    .logo-fallback{
-      width:100%; height:100%;
-      display:none; place-items:center; color:#fff; font-weight:800; font-size:34px;
-      text-shadow:0 1px 2px rgba(0,0,0,.35);
-    }
+      border-radius:50%; background:var(--badge-inner-color);
+      display:grid; place-items:center; overflow:hidden }
+    .logo{ width:100%; height:100%; object-fit:contain; display:block;
+      filter:var(--logo-filter); -webkit-filter:var(--logo-filter); box-shadow:var(--logo-shadow) }
+    .logo-fallback{ width:100%; height:100%; display:none; place-items:center; color:#fff;
+      font-weight:800; font-size:34px; text-shadow:0 1px 2px rgba(0,0,0,.35) }
 
-    /* Text & Button */
+    /* Text, Mikro-Benefits & Button */
     .tile h2{margin:0 0 8px;font-size:1.35rem;position:relative;z-index:0}
     .tile p.sub{margin:0 0 10px;opacity:.98;position:relative;z-index:0}
-
-    /* Mikro-Benefits unter dem Subline-Text */
-    .micro{
-      margin:0 0 14px;
-      padding-left:1.1rem;
-      font-size:.92rem; line-height:1.35; opacity:.98;
-    }
+    .micro{margin:0 0 14px;padding-left:1.1rem;font-size:.92rem;line-height:1.35;opacity:.98}
     .micro li{margin:2px 0}
-
     .btn{
       align-self:flex-start; position:relative; z-index:0;
       padding:var(--btn-pad-y) var(--btn-pad-x); border-radius:12px;
@@ -174,6 +160,9 @@
 </head>
 <body>
 
+<!-- EN-Switch -->
+<a class="i18n-toggle" id="langSwitch" href="/en/" hreflang="en" aria-label="Switch to English">EN</a>
+
 <main class="container">
   <section class="hero">
     <h1>Ein kompaktes Portfolio für klare Kommunikation, Prioritäten & Wandel.</h1>
@@ -182,58 +171,40 @@
     <div class="tiles">
       <!-- SlackDigest -->
       <a class="tile sd" href="/products/slackdigest/">
-        <div class="logo-wrap">
-          <div class="logo-inner">
-            <img class="logo" src="/assets/brand/slackdigest_logo.svg?v=6"
-                 onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}"
-                 alt="SlackDigest Logo">
-            <span class="logo-fallback" aria-hidden="true">SD</span>
-          </div>
-        </div>
+        <div class="logo-wrap"><div class="logo-inner">
+          <img class="logo" src="/assets/brand/slackdigest_logo.svg?v=6" alt="SlackDigest Logo"
+               onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}">
+          <span class="logo-fallback" aria-hidden="true">SD</span>
+        </div></div>
         <h2>SlackDigest</h2>
         <p class="sub">Relevantes aus Slack – kompakt, zum richtigen Zeitpunkt.</p>
-        <ul class="micro">
-          <li>Wichtiges zuerst, weniger Slack-Lärm.</li>
-          <li>Ein Blick, ein Link – erledigt.</li>
-        </ul>
+        <ul class="micro"><li>Wichtiges zuerst, weniger Slack-Lärm.</li><li>Ein Blick, ein Link – erledigt.</li></ul>
         <span class="btn">Zur Produktseite</span>
       </a>
 
       <!-- TaskSieve -->
       <a class="tile ts" href="/products/tasksieve/">
-        <div class="logo-wrap">
-          <div class="logo-inner">
-            <img class="logo" src="/assets/brand/tasksieve_logo.svg?v=6"
-                 onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}"
-                 alt="TaskSieve Logo">
-            <span class="logo-fallback" aria-hidden="true">TS</span>
-          </div>
-        </div>
+        <div class="logo-wrap"><div class="logo-inner">
+          <img class="logo" src="/assets/brand/tasksieve_logo.svg?v=6" alt="TaskSieve Logo"
+               onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}">
+          <span class="logo-fallback" aria-hidden="true">TS</span>
+        </div></div>
         <h2>TaskSieve</h2>
         <p class="sub">Wichtige Aufgaben zuerst – mit System.</p>
-        <ul class="micro">
-          <li>Eine Inbox für E-Mail, Notizen & Slack.</li>
-          <li>Auto-Sortierung mit manueller Feinsteuerung.</li>
-        </ul>
+        <ul class="micro"><li>Eine Inbox für E-Mail, Notizen & Slack.</li><li>Auto-Sortierung mit manueller Feinsteuerung.</li></ul>
         <span class="btn">Zur Produktseite</span>
       </a>
 
       <!-- ChangeWise -->
       <a class="tile cw" href="/products/changewise/">
-        <div class="logo-wrap">
-          <div class="logo-inner">
-            <img class="logo" src="/assets/brand/changewise_logo.svg?v=6"
-                 onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}"
-                 alt="ChangeWise Logo">
-            <span class="logo-fallback" aria-hidden="true">CW</span>
-          </div>
-        </div>
+        <div class="logo-wrap"><div class="logo-inner">
+          <img class="logo" src="/assets/brand/changewise_logo.svg?v=6" alt="ChangeWise Logo"
+               onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}">
+          <span class="logo-fallback" aria-hidden="true">CW</span>
+        </div></div>
         <h2>ChangeWise</h2>
         <p class="sub">Marke &amp; Change-Kommunikation – klar, konsistent, startklar.</p>
-        <ul class="micro">
-          <li>Eine Stimme: Kernnarrativ & Ton.</li>
-          <li>Brand-Kit & Vorlagen beschleunigen Output.</li>
-        </ul>
+        <ul class="micro"><li>Eine Stimme: Kernnarrativ & Ton.</li><li>Brand-Kit & Vorlagen beschleunigen Output.</li></ul>
         <span class="btn">Zur Produktseite</span>
       </a>
     </div>
@@ -250,7 +221,7 @@
   </div>
 </footer>
 
-<!-- Theme-Param an interne Links anhängen, damit Safari den Modus beim Navigieren beibehält -->
+<!-- ?theme an interne Links hängen (Dark bleibt in Safari erhalten) -->
 <script>
 (function(){
   try{
@@ -261,7 +232,7 @@
     if(!theme) return;
     document.querySelectorAll('a[href]').forEach(function(a){
       var href=a.getAttribute('href'); if(!href) return;
-      if(/^https?:\/\//i.test(href) && href.indexOf(location.origin)!==0) return; // nur interne Links
+      if(/^https?:\/\//i.test(href) && href.indexOf(location.origin)!==0) return;
       try{
         var url=new URL(href, location.href);
         if(!url.searchParams.get('theme')) url.searchParams.set('theme', theme);
