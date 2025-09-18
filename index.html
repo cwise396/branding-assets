@@ -7,15 +7,26 @@
   <title>ChangeWise • SlackDigest • TaskSieve</title>
   <meta name="description" content="Drei fokussierte Tools: SlackDigest, TaskSieve, ChangeWise. Klarheit, Prioritäten, konsistente Kommunikation.">
   <link rel="canonical" href="/">
-  <!-- ✅ Setzt Dark-Klasse VOR dem CSS (keine Chance auf Nicht-Greifen) -->
+  <!-- Theme-Initialisierung VOR CSS: Query > Session > System -->
   <script>
   (function(){
     try{
-      var q = new URLSearchParams(location.search);
-      if(q.get('theme') === 'dark'){ document.documentElement.classList.add('dark'); return; }
-      if(q.get('theme') === 'light'){ document.documentElement.classList.remove('dark'); return; }
-      var m = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
-      if(m && m.matches){ document.documentElement.classList.add('dark'); }
+      var root = document.documentElement;
+      var key  = 'cw_theme';
+      var qs   = new URLSearchParams(location.search).get('theme');
+      if (qs === 'dark' || qs === 'light') {
+        root.classList.toggle('dark', qs === 'dark');
+        try { sessionStorage.setItem(key, qs); } catch(e){}
+      } else {
+        var saved = null;
+        try { saved = sessionStorage.getItem(key); } catch(e){}
+        if (saved === 'dark' || saved === 'light') {
+          root.classList.toggle('dark', saved === 'dark');
+        } else {
+          var m = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+          root.classList.toggle('dark', !!(m && m.matches));
+        }
+      }
     }catch(e){}
   })();
   </script>
@@ -46,8 +57,8 @@
       --btn-fg:#0C3960;             /* Fallback, pro Kachel überschrieben */
       --btn-border:rgba(0,0,0,.12);
       --btn-bg-hover:rgba(255,255,255,.92);
-      --btn-pad-y:8px;              /* vorher ~10px */
-      --btn-pad-x:10px;             /* vorher ~14px */
+      --btn-pad-y:8px;              /* ca. –25% */
+      --btn-pad-x:10px;
       --btn-font:.9rem;
 
       /* Schatten */
@@ -55,7 +66,7 @@
       --card-shadow-hover:0 18px 36px rgba(0,0,0,.16);
     }
 
-    /* ✅ Dark-Variablen via Klasse (.dark) — wird im HEAD gesetzt */
+    /* Dark-Variablen via Klasse (.dark) */
     html.dark{
       --page-bg:#0B1220;
       --text:#E5E7EB; --muted:#9AA4B2; --border:#243041;
@@ -68,7 +79,7 @@
       --card-shadow-hover:0 18px 40px rgba(0,0,0,.60);
     }
 
-    /* 🔁 Zusätzlich: System-Dark via Media Query (als doppelter Schutz) */
+    /* Zusätzlich: System-Dark als Fallback */
     @media (prefers-color-scheme: dark){
       :root{
         --page-bg:#0B1220;
@@ -171,7 +182,7 @@
       <a class="tile sd" href="/products/slackdigest/">
         <div class="logo-wrap">
           <div class="logo-inner">
-            <img class="logo" src="/assets/brand/slackdigest_logo.svg?v=4"
+            <img class="logo" src="/assets/brand/slackdigest_logo.svg?v=5"
                  onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}"
                  alt="SlackDigest Logo">
             <span class="logo-fallback" aria-hidden="true">SD</span>
@@ -186,7 +197,7 @@
       <a class="tile ts" href="/products/tasksieve/">
         <div class="logo-wrap">
           <div class="logo-inner">
-            <img class="logo" src="/assets/brand/tasksieve_logo.svg?v=4"
+            <img class="logo" src="/assets/brand/tasksieve_logo.svg?v=5"
                  onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}"
                  alt="TaskSieve Logo">
             <span class="logo-fallback" aria-hidden="true">TS</span>
@@ -201,7 +212,7 @@
       <a class="tile cw" href="/products/changewise/">
         <div class="logo-wrap">
           <div class="logo-inner">
-            <img class="logo" src="/assets/brand/changewise_logo.svg?v=4"
+            <img class="logo" src="/assets/brand/changewise_logo.svg?v=5"
                  onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}"
                  alt="ChangeWise Logo">
             <span class="logo-fallback" aria-hidden="true">CW</span>
@@ -224,5 +235,23 @@
     <small>© ChangeWise • SlackDigest • TaskSieve</small>
   </div>
 </footer>
+
+<script>
+/* Hängt den Theme-Param an interne Links an, damit Dark bei Navigation bleibt */
+(function(){
+  try{
+    var qs = new URLSearchParams(location.search);
+    var theme = qs.get('theme') || sessionStorage.getItem('cw_theme');
+    if(!theme) return;
+    document.querySelectorAll('a[href^="/"]').forEach(function(a){
+      try{
+        var url = new URL(a.getAttribute('href'), location.origin);
+        if(!url.searchParams.get('theme')){ url.searchParams.set('theme', theme); }
+        a.setAttribute('href', url.pathname + url.search + url.hash);
+      }catch(e){}
+    });
+  }catch(e){}
+})();
+</script>
 </body>
 </html>
