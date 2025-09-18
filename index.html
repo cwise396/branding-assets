@@ -8,28 +8,46 @@
   <meta name="description" content="Drei fokussierte Tools: SlackDigest, TaskSieve, ChangeWise. Klarheit, Prioritäten, konsistente Kommunikation.">
   <link rel="canonical" href="/">
   <!-- Theme-Initialisierung VOR CSS: Query > Session > System -->
-  <script>
-  (function(){
-    try{
-      var root = document.documentElement;
-      var key  = 'cw_theme';
-      var qs   = new URLSearchParams(location.search).get('theme');
-      if (qs === 'dark' || qs === 'light') {
-        root.classList.toggle('dark', qs === 'dark');
-        try { sessionStorage.setItem(key, qs); } catch(e){}
-      } else {
-        var saved = null;
-        try { saved = sessionStorage.getItem(key); } catch(e){}
-        if (saved === 'dark' || saved === 'light') {
-          root.classList.toggle('dark', saved === 'dark');
-        } else {
-          var m = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
-          root.classList.toggle('dark', !!(m && m.matches));
-        }
-      }
-    }catch(e){}
-  })();
-  </script>
+ <script>
+/* Theme init: Query > localStorage > Cookie > System  (früh im Head, vor CSS) */
+(function(){
+  var DOC = document.documentElement;
+  var KEY = 'cw_theme';
+
+  function getCookie(name){
+    var m = document.cookie.match(new RegExp('(?:^|; )' + name.replace(/([.$?*|{}()[\]\\/+^])/g,'\\$1') + '=([^;]*)'));
+    return m ? decodeURIComponent(m[1]) : null;
+  }
+  function setCookie(name, value){
+    try { document.cookie = name + '=' + encodeURIComponent(value) + '; path=/; max-age=31536000; SameSite=Lax'; } catch(e){}
+  }
+
+  try{
+    var qs = new URLSearchParams(location.search).get('theme');
+    if (qs === 'dark' || qs === 'light') {
+      DOC.classList.toggle('dark', qs === 'dark');
+      try { localStorage.setItem(KEY, qs); } catch(e){}
+      setCookie(KEY, qs);
+      return;
+    }
+    var saved = null;
+    try { saved = localStorage.getItem(KEY); } catch(e){}
+    if (saved === 'dark' || saved === 'light') {
+      DOC.classList.toggle('dark', saved === 'dark');
+      return;
+    }
+    var ck = getCookie(KEY);
+    if (ck === 'dark' || ck === 'light') {
+      DOC.classList.toggle('dark', ck === 'dark');
+      try { localStorage.setItem(KEY, ck); } catch(e){}
+      return;
+    }
+    var mql = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+    DOC.classList.toggle('dark', !!(mql && mql.matches));
+  } catch(e){}
+})();
+</script>
+
   <style>
     :root{
       /* === Theme (Light) === */
@@ -170,7 +188,27 @@
     .footbar a:hover{text-decoration:underline}
   </style>
 </head>
-<body>
+<script>
+/* Hänge ?theme=… an alle internen Links, damit Safari den Modus beim Navigieren behält */
+(function(){
+  try{
+    var KEY='cw_theme';
+    var theme = (new URLSearchParams(location.search).get('theme'))
+             || (function(){ try{return localStorage.getItem(KEY)}catch(e){ return null } })()
+             || (document.cookie.match(/(?:^|; )cw_theme=([^;]*)/)||[])[1];
+    if(!theme) return;
+    document.querySelectorAll('a[href^="/"]').forEach(function(a){
+      try{
+        var url = new URL(a.getAttribute('href'), location.origin);
+        if(!url.searchParams.get('theme')) url.searchParams.set('theme', theme);
+        a.setAttribute('href', url.pathname + url.search + url.hash);
+      }catch(e){}
+    });
+  }catch(e){}
+})();
+</script>
+
+ <body>
 
 <main class="container">
   <section class="hero">
