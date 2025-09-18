@@ -7,22 +7,35 @@
   <title>ChangeWise • SlackDigest • TaskSieve</title>
   <meta name="description" content="Drei fokussierte Tools: SlackDigest, TaskSieve, ChangeWise. Klarheit, Prioritäten, konsistente Kommunikation.">
   <link rel="canonical" href="/">
-  <!-- Theme init: Query > localStorage > Cookie > System (früh, vor CSS) -->
-  <script>
-  (function(){
-    var DOC=document.documentElement, KEY='cw_theme';
-    function getCookie(n){var m=document.cookie.match(new RegExp('(?:^|; )'+n.replace(/([.$?*|{}()[\\]\\/+^])/g,'\\$1')+'=([^;]*)'));return m?decodeURIComponent(m[1]):null}
-    function setCookie(n,v){try{document.cookie=n+'='+encodeURIComponent(v)+'; path=/; max-age=31536000; SameSite=Lax'}catch(e){}}
-    try{
-      var qs=new URLSearchParams(location.search).get('theme');
-      if(qs==='dark'||qs==='light'){ DOC.classList.toggle('dark',qs==='dark'); try{localStorage.setItem(KEY,qs)}catch(e){} setCookie(KEY,qs); return; }
-      var saved=null; try{saved=localStorage.getItem(KEY)}catch(e){}
-      if(saved==='dark'||saved==='light'){ DOC.classList.toggle('dark',saved==='dark'); return; }
-      var ck=getCookie(KEY); if(ck==='dark'||ck==='light'){ DOC.classList.toggle('dark',ck==='dark'); try{localStorage.setItem(KEY,ck)}catch(e){}; return; }
-      var m=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)'); DOC.classList.toggle('dark',!!(m&&m.matches));
-    }catch(e){}
-  })();
-  </script>
+   <script>
+/* Home theme init: persist & apply early (Query > saved > cookie > system) */
+(function(){
+  var DOC=document.documentElement, KEY='cw_theme';
+  function getCookie(n){var m=document.cookie.match(new RegExp('(?:^|; )'+n.replace(/([.$?*|{}()[\\]\\/+^])/g,'\\$1')+'=([^;]*)'));return m?decodeURIComponent(m[1]):null}
+  function setCookie(n,v){try{document.cookie=n+'='+encodeURIComponent(v)+'; path=/; max-age=31536000; SameSite=Lax'}catch(e){}}
+  try{
+    var qs=new URLSearchParams(location.search).get('theme');
+    var mode=null;
+    if(qs==='dark'||qs==='light'){ mode=qs; }
+    else{
+      var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+      if(saved==='dark'||saved==='light'){ mode=saved; }
+      else{
+        var ck=getCookie(KEY);
+        if(ck==='dark'||ck==='light'){ mode=ck; }
+        else{
+          var m=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)');
+          mode=(m&&m.matches)?'dark':'light';
+        }
+      }
+    }
+    DOC.classList.toggle('dark', mode==='dark');
+    try{ localStorage.setItem(KEY, mode); }catch(e){}
+    setCookie(KEY, mode);
+  }catch(e){}
+})();
+</script>
+
   <style>
     :root{
       /* === Theme (Light) === */
