@@ -7,7 +7,47 @@
   <meta name="description" content="ChangeWise macht Veränderung verständlich: klare Botschaft, konsistente Umsetzung, wirksame Kommunikation.">
   <meta name="theme-color" content="#0C3960">
   <link rel="preconnect" href="https://www.slackdigest.org" crossorigin>
-  <style>
+<script>
+/* Theme init: Query > localStorage > Cookie > System  (früh im Head, vor CSS) */
+(function(){
+  var DOC = document.documentElement;
+  var KEY = 'cw_theme';
+
+  function getCookie(name){
+    var m = document.cookie.match(new RegExp('(?:^|; )' + name.replace(/([.$?*|{}()[\]\\/+^])/g,'\\$1') + '=([^;]*)'));
+    return m ? decodeURIComponent(m[1]) : null;
+  }
+  function setCookie(name, value){
+    try { document.cookie = name + '=' + encodeURIComponent(value) + '; path=/; max-age=31536000; SameSite=Lax'; } catch(e){}
+  }
+
+  try{
+    var qs = new URLSearchParams(location.search).get('theme');
+    if (qs === 'dark' || qs === 'light') {
+      DOC.classList.toggle('dark', qs === 'dark');
+      try { localStorage.setItem(KEY, qs); } catch(e){}
+      setCookie(KEY, qs);
+      return;
+    }
+    var saved = null;
+    try { saved = localStorage.getItem(KEY); } catch(e){}
+    if (saved === 'dark' || saved === 'light') {
+      DOC.classList.toggle('dark', saved === 'dark');
+      return;
+    }
+    var ck = getCookie(KEY);
+    if (ck === 'dark' || ck === 'light') {
+      DOC.classList.toggle('dark', ck === 'dark');
+      try { localStorage.setItem(KEY, ck); } catch(e){}
+      return;
+    }
+    var mql = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+    DOC.classList.toggle('dark', !!(mql && mql.matches));
+  } catch(e){}
+})();
+</script>
+ 
+ <style>
     :root{ --brand-bg:#0C3960; --nav-bg:#A22121; --nav-fg:#ffffff; --card-bg:#0C3960; --card-fg:#ffffff; --accent-blue:#0C3960; --logo-size:88px; --logo-overlap:24px; }
     html, body { background:var(--brand-bg) !important; height:100%; } body { margin:0 !important; min-height:100vh; }
     #bg-overlay { position:fixed; inset:0; background:var(--brand-bg); z-index:-1; }
