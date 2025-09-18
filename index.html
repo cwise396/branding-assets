@@ -1,5 +1,5 @@
  <!doctype html>
-<html lang="de" data-theme="light">
+<html lang="de">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,9 +9,9 @@
   <link rel="canonical" href="/">
   <style>
     :root{
-      /* === Theme (licht) === */
+      /* === Theme (Light) === */
       --page-bg:#FFD22A;            /* Gelb sRGB(255,210,42) */
-      --hero-color:#0C3960;         /* Blau sRGB(12,57,96)  */
+      --hero-color:#0C3960;         /* Blau sRGB(12,57,96)   */
       --text:#0e1116; --muted:#4b5563; --border:#e5e7eb;
 
       /* Kartenfarben (exakt) */
@@ -19,47 +19,54 @@
       --color-ts:#B90E13;           /* TaskSieve Rot   */
       --color-cw:#0E3960;           /* ChangeWise Blau */
 
-      /* Logo-Badge (global) */
+      /* Logo-Badge (gemeinsam) */
       --badge-size:120px;
-      --badge-ring-color:#fff;      /* weißer Außenring */
-      --badge-ring-width:5px;       /* 5 px Ringbreite   */
-      --badge-inner-color:#B80E13;  /* sRGB(184,14,19)   */
+      --badge-ring-color:#fff;            /* Weißer Außenring */
+      --badge-ring-width:5px;             /* 5 px Rand */
+      --badge-inner-color:#B80E13;        /* sRGB(184,14,19) */
+
+      /* Logo-Darstellung (Home) */
+      --logo-filter:brightness(0) invert(1);  /* -> Logo erscheint weiß */
       --logo-shadow:0 1px 3px rgba(0,0,0,.25);
 
-      /* UI */
+      /* Buttons (Default; pro Kachel überschrieben) */
+      --btn-bg:#ffffff;
+      --btn-fg:#0C3960;      /* Fallback */
+      --btn-border:rgba(255,255,255,.85);
+      --btn-bg-hover:rgba(255,255,255,.92);
+
+      /* Schatten */
       --card-shadow:0 12px 28px rgba(0,0,0,.12);
       --card-shadow-hover:0 18px 36px rgba(0,0,0,.16);
-      --btn-border:rgba(255,255,255,.8);
-      --btn-bg:rgba(255,255,255,.10);
-      --btn-bg-hover:rgba(255,255,255,.18);
-      --toggle-bg:rgba(0,0,0,.08);
-      --toggle-fg:#0C3960;
     }
 
-    /* === Dark Theme Variablen-Overrides via data-theme="dark" === */
-    html[data-theme="dark"]{
-      --page-bg:#0B1220;            /* dunkles Navy */
-      --text:#E5E7EB; --muted:#9AA4B2; --border:#243041;
-      --hero-color:#9FB8D8;         /* gut lesbares Blau auf dark */
-      --logo-shadow:0 1px 2px rgba(0,0,0,.6);
-      --card-shadow:0 12px 32px rgba(0,0,0,.50);
-      --card-shadow-hover:0 18px 40px rgba(0,0,0,.60);
-      --btn-border:rgba(255,255,255,.85);
-      --btn-bg:rgba(255,255,255,.12);
-      --btn-bg-hover:rgba(255,255,255,.18);
-      --toggle-bg:rgba(255,255,255,.15);
-      --toggle-fg:#E5E7EB;
-    }
+    /* === Dark Mode: automatisch via System === */
+    @media (prefers-color-scheme: dark){
+      :root{
+        --page-bg:#0B1220;
+        --text:#E5E7EB; --muted:#9AA4B2; --border:#243041;
+        --hero-color:#9FB8D8;
+        --logo-shadow:0 1px 2px rgba(0,0,0,.6);
 
-    /* Automatisch Dark übernehmen, falls kein gespeichertes/Query-Theme: handled via JS */
+        /* Buttons auf Dark minimal transparenter Rand/Background */
+        --btn-border:rgba(255,255,255,.75);
+        --btn-bg:rgba(255,255,255,.08);
+        --btn-bg-hover:rgba(255,255,255,.16);
+
+        --card-shadow:0 12px 32px rgba(0,0,0,.50);
+        --card-shadow-hover:0 18px 40px rgba(0,0,0,.60);
+      }
+    }
 
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;background:var(--page-bg);color:var(--text);
-         font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-    .container{width:min(1160px,92%);margin:0 auto}
+    body{
+      margin:0; background:var(--page-bg); color:var(--text);
+      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    }
+    .container{width:min(1160px,92%); margin:0 auto}
 
-    /* Hero */
+    /* Hero (ohne Nav) */
     .hero{padding:36px 0 12px}
     .hero h1{font-size:clamp(1.6rem,1.1rem + 2vw,2.4rem);margin:0 0 6px;color:var(--hero-color)}
     .hero p.lead{margin:0 0 22px;color:var(--hero-color)}
@@ -69,50 +76,62 @@
     @media (min-width:860px){.tiles{grid-template-columns:repeat(3,1fr)}}
 
     /* Karten */
-    .tile{position:relative;overflow:hidden;min-height:360px;border-radius:20px;
-          text-decoration:none;color:#fff;box-shadow:var(--card-shadow);
-          transition:transform .18s ease, box-shadow .18s ease;
-          display:flex;flex-direction:column;justify-content:flex-end;padding:22px;isolation:isolate}
-    .tile:hover{transform:translateY(-3px);box-shadow:var(--card-shadow-hover)}
-    .tile.sd{background-color:var(--color-sd)!important}
-    .tile.ts{background-color:var(--color-ts)!important}
-    .tile.cw{background-color:var(--color-cw)!important}
+    .tile{
+      position:relative; overflow:hidden; min-height:360px; border-radius:20px;
+      text-decoration:none; color:#fff; box-shadow:var(--card-shadow);
+      transition:transform .18s ease, box-shadow .18s ease;
+      display:flex; flex-direction:column; justify-content:flex-end; padding:22px; isolation:isolate;
+    }
+    .tile:hover{ transform:translateY(-3px); box-shadow:var(--card-shadow-hover) }
+    .tile.sd{ background-color:var(--color-sd) !important; --btn-fg:var(--color-sd) }
+    .tile.ts{ background-color:var(--color-ts) !important; --btn-fg:var(--color-ts) }
+    .tile.cw{ background-color:var(--color-cw) !important; --btn-fg:var(--color-cw) }
 
-    /* Logo-Badge: Weißer Ring + roter Innenkreis */
-    .logo-wrap{position:absolute;right:14px;top:14px;z-index:1;
-               width:var(--badge-size);height:var(--badge-size);
-               display:grid;place-items:center;border-radius:50%;
-               background:var(--badge-ring-color);box-shadow:0 2px 10px rgba(0,0,0,.25);overflow:hidden}
-    .logo-wrap::before{content:"";position:absolute;inset:var(--badge-ring-width);
-                       background:var(--badge-inner-color);border-radius:50%;z-index:0}
-    .logo{width:calc(var(--badge-size) - 2 * var(--badge-ring-width));
-          height:calc(var(--badge-size) - 2 * var(--badge-ring-width));
-          object-fit:contain;display:block;position:relative;z-index:1;filter:var(--logo-shadow)}
-    .logo-fallback{width:calc(var(--badge-size) - 2 * var(--badge-ring-width));
-                   height:calc(var(--badge-size) - 2 * var(--badge-ring-width));
-                   display:none;place-items:center;border-radius:50%;
-                   background:transparent;color:#fff;font-weight:800;font-size:34px;
-                   text-shadow:0 1px 2px rgba(0,0,0,.35);position:relative;z-index:1}
+    /* Logo-Badge (weißer Ring + roter Innenkreis) */
+    .logo-wrap{
+      position:absolute; right:14px; top:14px; z-index:1;
+      width:var(--badge-size); height:var(--badge-size);
+      display:grid; place-items:center; border-radius:50%;
+      background:var(--badge-ring-color); box-shadow:0 2px 10px rgba(0,0,0,.25); overflow:hidden;
+    }
+    .logo-wrap::before{
+      content:""; position:absolute; inset:var(--badge-ring-width);
+      background:var(--badge-inner-color); border-radius:50%; z-index:0;
+    }
+    .logo{
+      width:calc(var(--badge-size) - 2 * var(--badge-ring-width));
+      height:calc(var(--badge-size) - 2 * var(--badge-ring-width));
+      object-fit:contain; display:block; position:relative; z-index:1;
+      filter:var(--logo-filter); /* -> Logo erscheint weiß */
+      -webkit-filter:var(--logo-filter);
+      filter:var(--logo-filter);
+      box-shadow:var(--logo-shadow);
+    }
+    .logo-fallback{
+      width:calc(var(--badge-size) - 2 * var(--badge-ring-width));
+      height:calc(var(--badge-size) - 2 * var(--badge-ring-width));
+      display:none; place-items:center; border-radius:50%; background:transparent; color:#fff;
+      font-weight:800; font-size:34px; text-shadow:0 1px 2px rgba(0,0,0,.35); position:relative; z-index:1;
+    }
 
-    /* Text & Buttons in Karten */
+    /* Text & Button */
     .tile h2{margin:0 0 8px;font-size:1.35rem;position:relative;z-index:0}
     .tile p.sub{margin:0 0 16px;opacity:.98;position:relative;z-index:0}
-    .btn{align-self:flex-start;position:relative;z-index:0;padding:10px 14px;border-radius:12px;
-         border:1px solid var(--btn-border);color:#fff;background:var(--btn-bg);
-         font-weight:600;text-decoration:none;backdrop-filter:saturate(140%) blur(2px)}
-    .btn:hover{background:var(--btn-bg-hover)}
+    .btn{
+      align-self:flex-start; position:relative; z-index:0;
+      padding:10px 14px; border-radius:12px;
+      border:1px solid var(--btn-border); background:var(--btn-bg);
+      color:var(--btn-fg); font-weight:700; text-decoration:none;
+      backdrop-filter:saturate(140%) blur(2px)
+    }
+    .btn:hover{ background:var(--btn-bg-hover) }
 
     /* Footer */
-    footer{border-top:1px solid var(--border);padding:20px 0;color:var(--muted)}
+    footer{border-top:1px solid var(--border); padding:20px 0; color:var(--muted)}
     .footbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
     .footbar .legal{display:flex;gap:12px}
     .footbar a{color:inherit;text-decoration:none}
     .footbar a:hover{text-decoration:underline}
-
-    /* Theme-Toggle (klein, unaufdringlich) */
-    .theme-toggle{position:fixed;right:14px;bottom:14px;z-index:99;
-      border-radius:999px;border:1px solid var(--border);background:var(--toggle-bg);
-      color:var(--toggle-fg);padding:8px 12px;font-weight:600;cursor:pointer}
   </style>
 </head>
 <body>
@@ -174,37 +193,5 @@
     <small>© ChangeWise • SlackDigest • TaskSieve</small>
   </div>
 </footer>
-
-<button class="theme-toggle" id="themeToggle" aria-label="Theme umschalten">🌙/☀️</button>
-<script>
-(function(){
-  const root = document.documentElement;
-  const key  = 'cw_theme';
-  const btn  = document.getElementById('themeToggle');
-
-  // 1) Explizites Query-Theme? (?theme=dark|light)
-  const qs = new URLSearchParams(location.search).get('theme');
-  if (qs === 'dark' || qs === 'light') {
-    root.setAttribute('data-theme', qs);
-    localStorage.setItem(key, qs);
-  } else {
-    // 2) Gespeichertes Theme?
-    const saved = localStorage.getItem(key);
-    if (saved) {
-      root.setAttribute('data-theme', saved);
-    } else {
-      // 3) System-Preference
-      const prefersDark = matchMedia && matchMedia('(prefers-color-scheme: dark)').matches;
-      root.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-    }
-  }
-
-  btn.addEventListener('click', () => {
-    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    localStorage.setItem(key, next);
-  });
-})();
-</script>
 </body>
 </html>
