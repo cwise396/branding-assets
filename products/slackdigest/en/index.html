@@ -1,141 +1,127 @@
  <!doctype html>
-<html lang="en" style="background:#0C6C48 !important;">
+<html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SlackDigest – Updates that move.</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>SlackDigest — Updates that move things forward.</title>
   <meta name="description" content="SlackDigest condenses signals from Slack & email into clear updates — one glance, one link, done.">
-  <meta name="theme-color" content="#0C6C48"><link rel="preconnect" href="https://www.slackdigest.org" crossorigin>
- <script>
-/* Theme init: Query > localStorage > Cookie > System  (früh im Head, vor CSS) */
-(function(){
-  var DOC = document.documentElement;
-  var KEY = 'cw_theme';
-
-  function getCookie(name){
-    var m = document.cookie.match(new RegExp('(?:^|; )' + name.replace(/([.$?*|{}()[\]\\/+^])/g,'\\$1') + '=([^;]*)'));
-    return m ? decodeURIComponent(m[1]) : null;
-  }
-  function setCookie(name, value){
-    try { document.cookie = name + '=' + encodeURIComponent(value) + '; path=/; max-age=31536000; SameSite=Lax'; } catch(e){}
-  }
-
-  try{
-    var qs = new URLSearchParams(location.search).get('theme');
-    if (qs === 'dark' || qs === 'light') {
-      DOC.classList.toggle('dark', qs === 'dark');
-      try { localStorage.setItem(KEY, qs); } catch(e){}
-      setCookie(KEY, qs);
-      return;
+  <style>
+    :root{
+      --brand-bg:#0C6C48;
+      --nav-bg:#A22121; --nav-fg:#ffffff;
+      --card-bg:#0C6C48; --card-fg:#ffffff;
+      --logo-size:88px;
     }
-    var saved = null;
-    try { saved = localStorage.getItem(KEY); } catch(e){}
-    if (saved === 'dark' || saved === 'light') {
-      DOC.classList.toggle('dark', saved === 'dark');
-      return;
+    html, body { background:var(--brand-bg); height:100%; }
+    body { margin:0; min-height:100vh; color:#fff; }
+    .site-header{ position:sticky; top:0; background:var(--nav-bg); z-index:50; }
+    .nav{ max-width:1100px; margin:0 auto; padding:.9rem 1rem; display:flex; justify-content:space-between; align-items:center; }
+    .nav a{ color:var(--nav-fg); text-decoration:none; }
+    .brand{ font-weight:700; white-space:nowrap; }
+    .nav-links{ list-style:none; display:flex; gap:1rem; margin:0; padding:0; align-items:center; }
+    .nav .lang .active{ font-weight:700; text-decoration:underline; text-underline-offset:3px; }
+    .nav-toggle{ display:none; background:none; border:0; font-size:1.2rem; color:var(--nav-fg); }
+    @media (max-width: 720px){
+      .nav{ position:relative; }
+      .nav-links{ display:none; position:absolute; top:56px; left:0; right:0; background:var(--nav-bg); padding:1rem; margin:0; flex-direction:column; gap:.6rem; }
+      .nav-links.open{ display:flex; } .nav-toggle{ display:inline-block; }
     }
-    var ck = getCookie(KEY);
-    if (ck === 'dark' || ck === 'light') {
-      DOC.classList.toggle('dark', ck === 'dark');
-      try { localStorage.setItem(KEY, ck); } catch(e){}
-      return;
+    .hero{ color:#fff; padding-top:24mm; }
+    .hero-header{ max-width:1100px; margin:0 auto; padding:0 1rem; display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; align-items:end; }
+    .hero-text{ grid-column:1 / 9; }
+    .hero h1{ font-size:clamp(1.8rem,4vw,3rem); line-height:1.1; margin:0 0 .15rem; }
+    .hero p.lead{ margin:0; font-size:clamp(1.2rem,2.4vw,1.4rem); font-weight:700; }
+    .product-logo img{
+      width:var(--logo-size); height:auto; display:block; object-fit:contain;
+      border-radius:50%; outline:5px solid #ffffff; outline-offset:0; background:transparent;
     }
-    var mql = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
-    DOC.classList.toggle('dark', !!(mql && mql.matches));
-  } catch(e){}
-})();
-</script>
-
- <style>
-    :root{ --brand-bg:#0C6C48; --nav-bg:#A22121; --nav-fg:#ffffff; --card-bg:#0C6C48; --card-fg:#ffffff; --accent-green:#0C6C48; --logo-size:88px; --logo-overlap:24px; }
-    html,body{ background:var(--brand-bg) !important; height:100% } body{ margin:0 !important; min-height:100vh }
-    #bg-overlay{ position:fixed; inset:0; background:var(--brand-bg); z-index:-1 }
-    .site-header{ position:sticky; top:0; background:var(--nav-bg) !important; z-index:50 }
-    .nav{ max-width:1100px; margin:0 auto; padding:.9rem 1rem; display:flex; justify-content:space-between; align-items:center }
-    .nav a,.nav .brand,.nav-toggle{ color:var(--nav-fg) !important; text-decoration:none }
-    .brand{ font-weight:600; white-space:nowrap }
-    .nav-links{ list-style:none; display:flex; gap:1rem; margin:0; padding:0; align-items:center }
-    .nav .lang .active{ font-weight:700; text-decoration:underline; text-underline-offset:3px }
-    .nav-toggle{ display:none; background:none; border:0; font-size:1.2rem; color:var(--nav-fg) }
-    @media (max-width:720px){ .nav{ position:relative } .nav-links{ display:none; position:absolute; top:56px; left:0; right:0; background:var(--nav-bg) !important; padding:1rem; margin:0; flex-direction:column; gap:.6rem } .nav-links.open{ display:flex } .nav-toggle{ display:inline-block } }
-    .hero{ color:#fff; padding-top:24mm }
-    .hero-header{ max-width:1100px; margin:0 auto; padding:0 1rem; display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; align-items:end }
-    .hero-text{ grid-column:1 / 9 }
-    .hero h1{ font-size:clamp(1.8rem,4vw,3rem); line-height:1.1; margin:0 0 .15rem }
-    .hero p.lead{ margin:0; font-size:clamp(1.2rem,2.4vw,1.4rem); font-weight:700 }
-    .product-logo{ display:flex; align-items:center; justify-content:flex-start }
-    .product-logo img{ width:var(--logo-size); height:auto; object-fit:contain; display:block }
-    .logo--rightcol{ grid-column:9 / 13; justify-self:start }
-    .product-logo--baseline{ margin-top:calc(-1 * var(--logo-overlap)) }
-    @media (max-width:640px){ .hero-header{ grid-template-columns:1fr; text-align:center } .hero-text{ grid-column:1 / -1 } .logo--rightcol{ grid-column:1 / -1; justify-self:center } .product-logo--baseline{ margin-top:0 } }
-    .section-cards{ max-width:1100px; margin:0 auto; padding:0 1rem }
-    .grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; margin-top:1rem }
-    .card{ grid-column:span 4; background:var(--card-bg); color:var(--card-fg); border-radius:14px; padding:1.05rem 1rem; border:1px solid rgba(255,255,255,.28); box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06) }
-    .card h3{ margin:0 0 .4rem } .card p,.card li{ margin:.35rem 0 } .card ul{ list-style:disc; padding-left:1.2rem }
-    .card a{ color:#fff; text-decoration:underline; text-underline-offset:2px }
-    @media (max-width:960px){ .card{ grid-column:span 6 } } @media (max-width:640px){ .card{ grid-column:span 12 } }
-    .btn{ display:inline-block; padding:.7rem 1rem; border-radius:12px; border:1px solid #fff; color:#fff; text-decoration:none }
-    .btn--inverse{ background:#fff; color:var(--accent-green) !important; border-color:#fff; box-shadow:0 6px 16px rgba(0,0,0,.12) }
-    .btn--inverse:hover{ background:#f7f7f7 }
-    footer{ max-width:1100px; margin:2.2rem auto; padding:0 1rem 2rem; color:#fff } footer a{ color:inherit }
+    .logo--rightcol{ grid-column:9 / 13; justify-self:start; }
+    @media (max-width:640px){
+      .hero-header{ grid-template-columns:1fr; text-align:center; }
+      .hero-text{ grid-column:1 / -1; }
+      .logo--rightcol{ grid-column:1 / -1; justify-self:center; }
+    }
+    .section-cards{ max-width:1100px; margin:0 auto; padding:0 1rem; }
+    .grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; margin-top:1rem; }
+    .card{ grid-column:span 4; background:var(--card-bg); color:var(--card-fg);
+      border-radius:14px; padding:1.05rem 1rem; border:1px solid rgba(255,255,255,.28);
+      box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06); }
+    .card h3{ margin:0 0 .4rem; }
+    .card p, .card li{ margin:.35rem 0; }
+    .card ul{ list-style:disc; padding-left:1.2rem; }
+    .btn{ display:inline-block; padding:.7rem 1rem; border-radius:12px; border:1px solid #fff; color:#0C6C48; background:#fff; text-decoration:none; font-weight:800; }
+    .btn:hover{ background:#f7f7f7; }
+    footer{ max-width:1100px; margin:2.2rem auto; padding:0 1rem 2rem; color:#fff; }
+    footer a{ color:#fff; }
   </style>
 </head>
 <body>
-  <div id="bg-overlay" aria-hidden="true"></div>
   <header class="site-header">
     <nav class="nav">
-      <a class="brand" href="/">Home</a>
+      <a class="brand" href="/en/">Home</a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="/products/changewise/">ChangeWise</a></li>
-        <li><a href="/products/slackdigest/">SlackDigest</a></li>
-        <li><a href="/products/tasksieve/">TaskSieve</a></li>
-        <li class="lang"><a href="../">DE</a> | <span class="active">EN</span></li>
+        <li><a href="/products/changewise/en/">ChangeWise</a></li>
+        <li><a href="/products/slackdigest/en/">SlackDigest</a></li>
+        <li><a href="/products/tasksieve/en/">TaskSieve</a></li>
+        <li class="lang"><a href="../" hreflang="de">DE</a> | <span class="active">EN</span></li>
       </ul>
       <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">☰</button>
     </nav>
   </header>
+
   <main class="hero">
     <div class="hero-header">
-      <div class="hero-text"><h1>SlackDigest</h1><p class="lead">Updates that move.</p></div>
-      <div class="product-logo product-logo--baseline logo--rightcol"><img src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo" width="88" loading="lazy" decoding="async"></div>
+      <div class="hero-text">
+        <h1>SlackDigest</h1>
+        <p class="lead">Updates that move things forward.</p>
+      </div>
+      <div class="product-logo logo--rightcol">
+        <img src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo" width="88" loading="lazy" decoding="async">
+      </div>
     </div>
+
     <section class="section-cards">
       <section class="grid" aria-label="Key Features">
-        <article class="card"><h3>To the point</h3><p>One glance. One link. Done.</p></article>
-        <article class="card"><h3>How it works</h3><ul><li>Connect Slack/email</li><li>Auto-condense</li><li>Deliver updates (one glance, one link, done)</li></ul></article>
-        <article class="card"><h3>What it offers</h3><ul><li>Less scatter, more focus</li><li>A compact digest that surfaces what matters and hides the rest—so teams decide faster.</li></ul></article>
-        <article class="card"><h3>Status &amp; Contact</h3>
-          <p>Status: <strong>Open</strong> — try it.</p>
-          <p>Contact: <a href="mailto:info@slackdigest.org">info@slackdigest.org</a></p>
-          <p><a class="btn btn--inverse" href="mailto:info@slackdigest.org?subject=SlackDigest%20Test&body=Hi%20SlackDigest%20team%2C%0A%0AI%27d%20like%20to%20try%20it.">Try Beta</a></p>
+        <article class="card">
+          <h3>At a glance</h3>
+          <p>One glance, one link — done.</p>
         </article>
-        <article class="card"><h3>Integrations</h3><p>Slack, email.</p></article>
+        <article class="card">
+          <h3>How it works</h3>
+          <ul>
+            <li>Connect Slack/email</li>
+            <li>Auto-condense signals</li>
+            <li>Deliver updates (one glance, one link, done)</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>What it delivers</h3>
+          <ul>
+            <li>Less noise, more focus</li>
+            <li>Compact digest surfacing what matters first</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Status &amp; Contact</h3>
+          <p>Status: <strong>Open</strong> — try it.</p>
+          <p><a class="btn" href="mailto:info@slackdigest.org?subject=SlackDigest%20Test">Request beta</a></p>
+        </article>
+        <article class="card">
+          <h3>Integrations</h3>
+          <p>Slack, email.</p>
+        </article>
       </section>
     </section>
   </main>
-  <footer><a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a></footer>
-  <script>const t=document.getElementById('navToggle'),l=document.getElementById('navLinks');t&&l&&t.addEventListener('click',()=>{const o=l.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});</script>
-<script>
-/* Theme-Param an interne Links anhängen (auch relative), damit Dark beim Navigieren bleibt */
-(function(){
-  try{
-    var KEY='cw_theme';
-    var theme=(new URLSearchParams(location.search).get('theme'))
-           || (function(){try{return localStorage.getItem(KEY)}catch(e){return null}})()
-           || (document.cookie.match(/(?:^|; )cw_theme=([^;]*)/)||[])[1];
-    if(!theme) return;
-    document.querySelectorAll('a[href]').forEach(function(a){
-      var href=a.getAttribute('href'); if(!href) return;
-      // nur interne Links anfassen
-      if(/^https?:\/\//i.test(href) && href.indexOf(location.origin)!==0) return;
-      try{
-        var url=new URL(href, location.href);
-        if(!url.searchParams.get('theme')) url.searchParams.set('theme', theme);
-        a.setAttribute('href', url.pathname+url.search+url.hash);
-      }catch(e){}
-    });
-  }catch(e){}
-})();
-</script>
 
+  <footer>
+    <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
+  </footer>
+
+  <script>
+    const t=document.getElementById('navToggle'), l=document.getElementById('navLinks');
+    if (t && l) t.addEventListener('click',()=>{ const o=l.classList.toggle('open'); t.setAttribute('aria-expanded', o?'true':'false'); });
+  </script>
 </body>
 </html>
