@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kontakt aufnehmen – ChangeWise</title>
+<meta name="description" content="Kontakt zu ChangeWise: kurzes Intro-Video ansehen und Anliegen senden – automatisiert verarbeitet.">
+<style>
+  :root{
+    --brand:#0E3960; --nav:#A22121; --text:#0F172A; --muted:#475569; --bd:#E5E7EB;
+    --btn-bg:#ffffff; --btn-fg:var(--brand); --btn-bd:#CBD5E1; --btn-bg-h:#F8FAFC;
+    --cta-bg:#ffffff; --cta-fg:#0E3960; --cta-bd:#CBD5E1;
+  }
+  *{box-sizing:border-box} html,body{height:100%}
+  body{margin:0; font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; color:var(--text); background:#fff}
+  .container{width:min(980px,92%); margin:0 auto; padding:16px 0 40px}
+  .topbar{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:10px 0}
+  .brand a{color:var(--nav); text-decoration:none; font-weight:800}
+  .lang{padding:8px 12px; border-radius:999px; border:1px solid var(--bd); text-decoration:none; color:var(--brand); font-weight:700}
+  h1{margin:12px 0 6px; color:var(--brand); font-size:clamp(1.6rem,1.1rem + 1.6vw,2.2rem)}
+  .lead{margin:0 0 16px; color:var(--muted)}
+  .grid{display:grid; grid-template-columns:1fr; gap:18px}
+  @media (min-width:980px){ .grid{grid-template-columns:1.15fr .85fr} }
+  .video-wrap{border:1px solid var(--bd); border-radius:14px; overflow:hidden; box-shadow:0 10px 26px rgba(0,0,0,.08)}
+  .video{aspect-ratio:16/9; width:100%; height:auto; display:block; background:#000}
+
+  .side{display:grid; gap:14px}
+  .cta{
+    border:1px solid var(--cta-bd); border-radius:14px; padding:14px;
+    background:var(--cta-bg); color:var(--cta-fg); box-shadow:0 10px 26px rgba(0,0,0,.06)
+  }
+  .cta h2{margin:0 0 6px; font-size:1.1rem; color:var(--brand)}
+  .cta p{margin:6px 0 10px; color:var(--muted)}
+  .btn{background:var(--btn-bg); color:var(--btn-fg); border:1px solid var(--btn-bd);
+       padding:10px 14px; border-radius:12px; font-weight:800; text-decoration:none; cursor:pointer}
+  .btn:hover{background:var(--btn-bg-h)}
+
+  form{border:1px solid var(--bd); border-radius:14px; padding:14px; box-shadow:0 10px 26px rgba(0,0,0,.06)}
+  label{display:block; font-weight:700; margin:10px 0 6px}
+  input[type="text"], input[type="email"], select, textarea{ width:100%; padding:10px 12px; border:1px solid var(--bd); border-radius:10px; font:inherit }
+  textarea{min-height:120px; resize:vertical}
+  .row{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+  .actions{display:flex; gap:10px; align-items:center; margin-top:10px}
+  .small{font-size:.9rem; color:var(--muted)}
+  footer{margin-top:20px; color:var(--muted)}
+  footer a{color:inherit; text-decoration:none}
+  footer a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<main class="container">
+  <nav class="topbar">
+    <div class="brand"><a href="/">← Home</a></div>
+    <a class="lang" href="/en/contact/" hreflang="en">EN</a>
+  </nav>
+
+  <h1>Kontakt aufnehmen</h1>
+  <p class="lead">3–5-Minuten-Video: Was wir liefern & wie der Kurz-Workshop automatisiert läuft. Danach Anfrage senden – automatische Bestätigung per E-Mail.</p>
+
+  <div class="grid">
+    <!-- Video -->
+    <section class="video-wrap">
+      <!-- Ersetze VIDEO_ID -->
+      <iframe class="video" src="https://www.youtube.com/embed/VIDEO_ID"
+              title="ChangeWise Intro" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+    </section>
+
+    <aside class="side">
+      <!-- CTA 1: Erstgespräch buchen -->
+      <section class="cta">
+        <h2>Erstgespräch buchen (25 Min)</h2>
+        <p>Automatischer Kalender-Eintrag, Videolink, ICS &amp; Reminder.</p>
+        <a class="btn" href="/booking/">Jetzt Slot wählen</a>
+      </section>
+
+      <!-- CTA 2: Kurz-Workshop (automatisiert) -->
+      <section class="cta">
+        <h2>Kurz-Workshop (50–60 Min)</h2>
+        <p>Video + vorbereitende Fragen. Automatische Bestätigung &amp; Hand-off.</p>
+        <a class="btn" href="/workshop/">Jetzt starten</a>
+      </section>
+
+      <!-- Direktes Kontaktformular -->
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <input type="hidden" name="_subject" value="ChangeWise: Kontaktanfrage">
+        <input type="hidden" name="language" value="de">
+        <div class="row">
+          <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Vor- und Nachname" required>
+          </div>
+          <div>
+            <label for="email">E-Mail</label>
+            <input id="email" name="email" type="email" placeholder="name@firma.de" required>
+          </div>
+        </div>
+        <label for="goal">Anliegen</label>
+        <textarea id="goal" name="goal" placeholder="Wobei sollen wir helfen?"></textarea>
+        <label><input type="checkbox" name="consent" required> Ich stimme der Verarbeitung meiner Angaben zur Kontaktaufnahme zu.</label>
+        <div class="actions">
+          <button class="btn" type="submit">Anfrage senden</button>
+          <span class="small">Automatische Bestätigung per E-Mail.</span>
+        </div>
+      </form>
+    </aside>
+  </div>
+
+  <footer>
+    © ChangeWise • <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
+  </footer>
+</main>
+</body>
+</html>
