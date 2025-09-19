@@ -58,12 +58,9 @@
       --card-bd:#52080A;            /* dunkler Randton fürs Rot */
       --shadow:0 16px 34px rgba(0,0,0,.50);
 
-      /* Hero in DARK: weiß */
+      /* Hero in DARK: weiß (gemäß Wunsch) */
       --hero-h:#ffffff;
       --hero-sub:rgba(255,255,255,.92);
-
-      --btn-bd:#2A3548;
-      --i18n-bg:#141A2A; --i18n-fg:#E5E7EB; --i18n-bd:#2A3548;
     }
 
     *{box-sizing:border-box}
@@ -81,9 +78,12 @@
     .rightbar{display:flex; gap:8px; align-items:center}
 
     .pill{
-      padding:8px 12px; border-radius:999px; font-weight:700;
+      padding:8px 12px; border-radius:999px; font-weight:700; text-decoration:none;
       background:var(--i18n-bg); color:var(--i18n-fg); border:1px solid var(--i18n-bd);
-      text-decoration:none;
+    }
+    /* Wunsch: im DARK Mode weißer Button mit roter Schrift */
+    html.ts-dark .pill{
+      background:#ffffff; color:#B90E13; border:1px solid #2A3548;
     }
 
     /* Toggle (Dark/Light) */
@@ -92,12 +92,13 @@
       background:#ffffff; color:#B90E13; border:1px solid rgba(0,0,0,.15);
       -webkit-tap-highlight-color:transparent;
     }
+    /* Wunsch: im DARK Mode ebenfalls weiß + rot */
     html.ts-dark .ts-theme-toggle{
-      background:#141A2A; color:#E5E7EB; border:1px solid #2A3548;
+      background:#ffffff; color:#B90E13; border:1px solid #2A3548;
     }
 
-    /* Hero */
-    .hero{padding:28px 0 10px}
+    /* Hero – Abstand oben: exakt 18mm */
+    .hero{padding:18mm 0 10px}
     .hero-wrap{width:min(1100px,92%); margin:0 auto; display:grid; grid-template-columns:repeat(12,1fr); gap:16px; align-items:end}
     .hero-text{grid-column:1 / 10}
     .hero h1{margin:0 0 6px; font-size:clamp(1.8rem,1.2rem + 2.2vw,2.6rem); color:var(--hero-h)}
@@ -169,8 +170,7 @@
       </div>
       <div class="logo-col">
         <div class="logo-wrap"><div class="logo-inner">
-          <img class="logo" src="/assets/brand/tasksieve_logo.svg?v=3" alt="TaskSieve Logo"
-               onerror="this.style.display='none'">
+          <img class="logo" src="/assets/brand/tasksieve_logo.svg?v=4" alt="TaskSieve Logo" onerror="this.style.display='none'">
         </div></div>
       </div>
     </div>
