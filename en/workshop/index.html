@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Short workshop – ChangeWise</title>
+<meta name="description" content="Short workshop: watch the video, answer a few questions, get an automatic confirmation — no manual steps.">
+<style>
+  :root{ --brand:#0E3960; --muted:#475569; --bd:#E5E7EB; --btn-bg:#ffffff; --btn-fg:#0E3960; --btn-bd:#CBD5E1; --btn-bg-h:#F8FAFC; }
+  *{box-sizing:border-box} html,body{height:100%}
+  body{margin:0; font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; color:#0F172A; background:#fff}
+  .container{width:min(980px,92%); margin:0 auto; padding:16px 0 40px}
+  .topbar{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:10px 0}
+  .brand a{color:#A22121; text-decoration:none; font-weight:800}
+  .lang{padding:8px 12px; border-radius:999px; border:1px solid var(--bd); text-decoration:none; color:var(--brand); font-weight:700}
+  h1{margin:12px 0 6px; color:var(--brand); font-size:clamp(1.6rem,1.1rem + 1.6vw,2.2rem)}
+  .lead{margin:0 0 16px; color:var(--muted)}
+  .grid{display:grid; grid-template-columns:1fr; gap:18px}
+  @media (min-width:980px){ .grid{grid-template-columns:1.15fr .85fr} }
+  .video-wrap{border:1px solid var(--bd); border-radius:14px; overflow:hidden; box-shadow:0 10px 26px rgba(0,0,0,.08)}
+  .video{aspect-ratio:16/9; width:100%; background:#000}
+
+  form{border:1px solid var(--bd); border-radius:14px; padding:14px; box-shadow:0 10px 26px rgba(0,0,0,.06)}
+  label{display:block; font-weight:700; margin:10px 0 6px}
+  input[type="text"], input[type="email"], select, textarea{ width:100%; padding:10px 12px; border:1px solid var(--bd); border-radius:10px; font:inherit }
+  textarea{min-height:120px; resize:vertical}
+  .row{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+  .actions{display:flex; gap:10px; align-items:center; margin-top:10px}
+  .btn{background:var(--btn-bg); color:var(--btn-fg); border:1px solid var(--btn-bd); padding:10px 14px; border-radius:12px; font-weight:800; text-decoration:none; cursor:pointer}
+  .btn:hover{background:var(--btn-bg-h)}
+  .small{font-size:.9rem; color:var(--muted)}
+</style>
+</head>
+<body>
+<main class="container">
+  <nav class="topbar">
+    <div class="brand"><a href="/en/">← Home</a></div>
+    <a class="lang" href="/workshop/" hreflang="de">DE</a>
+  </nav>
+
+  <h1>Short workshop (50–60 min)</h1>
+  <p class="lead">1) Watch the video · 2) Answer a few questions · 3) Automatic confirmation & materials.</p>
+
+  <div class="grid">
+    <section class="video-wrap">
+      <!-- Replace VIDEO_ID -->
+      <iframe class="video" src="https://www.youtube.com/embed/VIDEO_ID"
+              title="ChangeWise Short Workshop Intro" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+    </section>
+
+    <form action="https://formspree.io/f/YOUR_WORKSHOP_FORM_ID" method="POST">
+      <input type="hidden" name="_subject" value="ChangeWise: Short Workshop request">
+      <input type="hidden" name="_redirect" value="/en/workshop/thanks.html">
+      <input type="hidden" name="language" value="en">
+
+      <div class="row">
+        <div>
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Full name" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="name@company.com" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label for="company">Company</label>
+          <input id="company" name="company" type="text" placeholder="Company name">
+        </div>
+        <div>
+          <label for="size">Team size</label>
+          <select id="size" name="size">
+            <option value="">Please choose …</option>
+            <option>1–10</option><option>11–50</option><option>51–200</option><option>200+</option>
+          </select>
+        </div>
+      </div>
+
+      <label for="goal">Workshop goal</label>
+      <textarea id="goal" name="goal" placeholder="What should change as a result?"></textarea>
+
+      <label for="assets">Links to assets (Drive/Docs/Brand Kit)</label>
+      <input id="assets" name="assets" type="text" placeholder="https://… (optional)">
+
+      <label for="times">Preferred times (2–3 suggestions)</label>
+      <input id="times" name="times" type="text" placeholder="e.g. Tue 10–12, Thu 2–4pm">
+
+      <label><input type="checkbox" name="consent" required> I agree to the processing of my data for the workshop.</label>
+
+      <div class="actions">
+        <button class="btn" type="submit">Submit</button>
+        <span class="small">Automatic confirmation via email.</span>
+      </div>
+    </form>
+  </div>
+</main>
+</body>
+</html>
