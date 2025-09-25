@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Choose a slot (25 min) – ChangeWise</title>
+  <meta name="description" content="Pick a 25-minute slot. Confirmation, calendar invite, video link & reminders are automatic.">
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <style>
+    :root{ --bg:#ffffff; --fg:#0E1116; --muted:#4b5563; --bd:#e5e7eb; --brand:#0E3960; }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; background:var(--bg); color:var(--fg);
+      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;}
+    .container{width:min(980px,92%); margin:0 auto; padding:20px 0 40px;}
+    .topbar{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:10px 0 6px;}
+    .topbar a{color:var(--brand); text-decoration:none; font-weight:700}
+    .pill{padding:8px 12px; border-radius:999px; border:1px solid var(--bd); text-decoration:none; color:var(--brand); font-weight:700}
+    h1{margin:8px 0 4px; color:var(--brand); font-size:clamp(1.6rem,1.2rem + 1.5vw,2.2rem)}
+    p.lead{margin:0 0 18px; color:var(--muted)}
+    .calwrap{border:1px solid var(--bd); border-radius:14px; overflow:hidden;
+      box-shadow:0 10px 26px rgba(0,0,0,.08)}
+  </style>
+</head>
+<body>
+  <main class="container">
+    <nav class="topbar">
+      <a href="/en/">← Home</a>
+      <a class="pill" href="/booking/" hreflang="de">DE</a>
+    </nav>
+
+    <h1>Choose a slot (25 min)</h1>
+    <p class="lead">You’ll get an automatic calendar invite with video link. Reschedule/cancel any time.</p>
+
+    <!-- Calendly Inline Embed -->
+    <div class="calwrap">
+      <!-- Replace YOUR_HANDLE and optionally intro-25 with your event type -->
+      <div class="calendly-inline-widget"
+           data-url="https://calendly.com/YOUR_HANDLE/intro-25?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=0e3960"
+           style="min-width:320px;height:760px;"></div>
+    </div>
+  </main>
+</body>
+</html>
