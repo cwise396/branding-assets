@@ -54,6 +54,40 @@
     .btn:hover{ background:#f7f7f7; }
     footer{ max-width:1100px; margin:2.2rem auto; padding:0 1rem 2rem; color:#fff; }
     footer a{ color:#fff; }
+ <!-- SlackDigest: Dark/Light Toggle (non-invasive) -->
+<style>
+  /* Aktiviere Dark mit Klasse .sd-dark auf <html> */
+  html.sd-dark { background:#0A0A0A !important; }
+  html.sd-dark body{ background:#0A0A0A; color:#EAEAEA; }
+  html.sd-dark .site-header{ background:#0B3E2C !important; }
+  html.sd-dark .card{ background:#0F0F0F !important; color:#EAEAEA !important; border-color:rgba(255,255,255,.16) !important; }
+  html.sd-dark a{ color:#D6F5E6 !important; }
+  /* kleiner, unaufdringlicher Button oben rechts */
+  .sd-theme-toggle{ position:fixed; top:10px; right:10px; z-index:60 }
+  .sd-theme-toggle button{
+    background:#fff; color:#0C6C48; border:1px solid #E5E7EB; border-radius:12px;
+    padding:.5rem .7rem; font-weight:800; cursor:pointer;
+  }
+</style>
+<script>
+  (function(){
+    var KEY='slackdigest_theme';
+    try{
+      var root=document.documentElement;
+      var saved=localStorage.getItem(KEY);
+      if(!saved){ // Default: Dark beim ersten Besuch
+        root.classList.add('sd-dark'); localStorage.setItem(KEY,'dark');
+      } else {
+        root.classList.toggle('sd-dark', saved==='dark');
+      }
+      window.__toggleSlackDigestTheme=function(){
+        var d=root.classList.toggle('sd-dark');
+        try{ localStorage.setItem(KEY, d?'dark':'light'); }catch(e){}
+      };
+    }catch(e){}
+  })();
+</script>
+
   </style>
 </head>
 <body>
@@ -71,7 +105,11 @@
   </header>
 
   <main class="hero">
-    <div class="hero-header">
+    <div class="sd-theme-toggle" aria-label="Theme toggle">
+  <button type="button" onclick="__toggleSlackDigestTheme()">Dark / Light</button>
+</div>
+
+   <div class="hero-header">
       <div class="hero-text">
         <h1>SlackDigest</h1>
         <p class="lead">Updates that move things forward.</p>
@@ -114,6 +152,27 @@
       </section>
     </section>
   </main>
+<!-- CW: BENEFITS -->
+<section id="benefits" style="margin:1.2rem 0">
+  <details>
+    <summary style="cursor:pointer;font-weight:800">Vorteile &amp; FAQ</summary>
+    <div style="margin-top:.6rem">
+      <h3 style="margin:.6rem 0 .2rem">Vorteile</h3>
+      <ul>
+        <li>Aufgaben überall verteilt → Eine Inbox für E-Mail, Notizen, Slack.</li>
+        <li>Duplikate &amp; Wiederholungen → Automatisches Dedupe &amp; Clustering.</li>
+        <li>Unklare Reihenfolge → Priorisierung nach Wirkung/Dringlichkeit/Aufwand macht die Next Action sichtbar.</li>
+        <li>Kontextwechsel bremst → Fokus-Blöcke &amp; Batching erhöhen Durchsatz.</li>
+        <li>Ideal für: Gründer:innen, PMs, Teamleads, Ops.</li>
+      </ul>
+      <h3 style="margin:.8rem 0 .2rem">FAQ</h3>
+      <ul>
+        <li><strong>Quellen?</strong> E-Mail/Notizen/Slack.</li>
+        <li><strong>Auto vs. manuell?</strong> Auto-Sortierung mit manuellem Feinschliff.</li>
+      </ul>
+    </div>
+  </details>
+</section>
 
   <footer>
     <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
