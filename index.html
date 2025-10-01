@@ -8,10 +8,10 @@
   <meta name="theme-color" content="#0F3960">
   <style>
     :root{
-      --bg:#0F3960;     /* Seitenhintergrund nach Vorgabe (sRGB 15,57,96) */
+      --bg:#0F3960;     /* sRGB(15,57,96) */
       --fg:#F4F7FA;
       --muted:#D9E2EC;
-      --bd:rgba(255,255,255,.18);
+      --bd:rgba(255,255,255,.22);
 
       --cw:#0E3960;     /* ChangeWise Blau (Karte) */
       --sd:#0C6C48;     /* SlackDigest Grün (Karte) */
@@ -35,37 +35,47 @@
 
     /* Grid */
     .grid{display:grid; grid-template-columns:repeat(12,1fr); gap:22px; margin-top:6px}
-    .tile{position:relative; padding-top:14px} /* Platz für schwebenden Badge */
+
     .card{
       grid-column:span 4;
-      border-radius:16px; padding:16px 16px 14px; color:#fff; position:relative; overflow:hidden;
+      position:relative;
+      display:flex; flex-direction:column; justify-content:space-between; gap:6px;
+      border-radius:16px; padding:14px 16px; color:#fff; overflow:hidden;
       box-shadow:0 18px 36px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.06);
-      min-height: 210px;                     /* sorgt für „breiter als hoch“-Eindruck */
+      min-height: 168px;              /* bewusst flach: breiter als hoch */
     }
-    .card h2{margin:0 0 6px; font-size:1.35rem; line-height:1.2}
-    .sub{margin:0 0 10px; font-weight:600; opacity:.96}
-    .micro{margin:8px 0 8px; font-weight:600}
-    .micro-link{display:inline-block; margin:0 0 12px; color:#fff; text-decoration:underline; text-underline-offset:3px}
+    .card h2{margin:0 0 4px; font-size:1.28rem; line-height:1.18}
+    .sub{margin:0; font-weight:600; opacity:.96}
+    .micro{margin:4px 0 0; font-weight:600}
 
-    .cta{display:inline-block; background:#fff; color:#111; text-decoration:none; font-weight:800;
-         border-radius:12px; padding:9px 14px; border:1px solid rgba(0,0,0,.08)}
+    /* Link + CTA in einer Zeile spart Höhe */
+    .actions{display:flex; align-items:center; flex-wrap:wrap; gap:12px; margin-top:8px}
+    .micro-link{color:#fff; text-decoration:underline; text-underline-offset:3px}
+    .cta{
+      display:inline-block; background:#fff; color:#111; text-decoration:none; font-weight:800;
+      border-radius:12px; padding:9px 14px; border:1px solid rgba(0,0,0,.08)
+    }
     .cta--sd{color:var(--sd)} .cta--ts{color:var(--ts)} .cta--cw{color:var(--cw)}
 
     /* Kartenfarben */
     .sd{background:var(--sd)} .ts{background:var(--ts)} .cw{background:var(--cw)}
 
-    /* Logo-Badge: weißer Ring (5px), schwebt ÜBER der Karte (außen) */
+    /* Badge: weißer Ring (5px), sitzt optisch ÜBER der Karte (negativer Offset) */
     .badge{
-      position:absolute; top:-14px; right:16px;
+      position:absolute; top:-14px; right:14px;
       border:5px solid #fff; border-radius:999px; padding:6px;
       background:transparent; display:grid; place-items:center;
       box-shadow:0 8px 20px rgba(0,0,0,.35);
+      pointer-events:none;
     }
     .badge img{display:block; width:56px; height:auto}
 
     /* Responsive */
     @media (max-width:1024px){ .card{grid-column:span 6} }
-    @media (max-width:640px){ .card{grid-column:span 12} .badge{top:-12px; right:12px} }
+    @media (max-width:640px){
+      .card{grid-column:span 12}
+      .badge{top:-12px; right:12px}
+    }
 
     footer{margin-top:36px; color:var(--muted)}
     footer a{color:inherit; text-decoration:none}
@@ -86,46 +96,52 @@
 
     <section class="grid" aria-label="Produkte">
       <!-- SlackDigest -->
-      <div class="tile">
+      <article class="card sd">
         <div class="badge" aria-hidden="true">
           <img src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo" loading="lazy" decoding="async">
         </div>
-        <article class="card sd">
+        <div>
           <h2>SlackDigest</h2>
           <p class="sub">Relevantes aus Slack – kompakt, zum richtigen Zeitpunkt.</p>
           <p class="micro">Signale bündeln – als Digest mit Link zum Kontext.</p>
-          <p><a class="micro-link" href="/products/slackdigest/#benefits">Vorteile zeigen</a></p>
-          <p><a class="cta cta--sd" href="/products/slackdigest/">Zur Produktseite</a></p>
-        </article>
-      </div>
+        </div>
+        <div class="actions">
+          <a class="micro-link" href="/products/slackdigest/#benefits">Vorteile zeigen</a>
+          <a class="cta cta--sd" href="/products/slackdigest/">Zur Produktseite</a>
+        </div>
+      </article>
 
       <!-- TaskSieve -->
-      <div class="tile">
+      <article class="card ts">
         <div class="badge" aria-hidden="true">
           <img src="/assets/brand/tasksieve_logo.svg" alt="TaskSieve Logo" loading="lazy" decoding="async">
         </div>
-        <article class="card ts">
+        <div>
           <h2>TaskSieve</h2>
           <p class="sub">Wichtige Aufgaben zuerst – mit System.</p>
           <p class="micro">Eine Aufgaben-Inbox über E-Mail, Notizen &amp; Slack—priorisiert.</p>
-          <p><a class="micro-link" href="/products/tasksieve/#benefits">Vorteile zeigen</a></p>
-          <p><a class="cta cta--ts" href="/products/tasksieve/">Zur Produktseite</a></p>
-        </article>
-      </div>
+        </div>
+        <div class="actions">
+          <a class="micro-link" href="/products/tasksieve/#benefits">Vorteile zeigen</a>
+          <a class="cta cta--ts" href="/products/tasksieve/">Zur Produktseite</a>
+        </div>
+      </article>
 
       <!-- ChangeWise -->
-      <div class="tile">
+      <article class="card cw">
         <div class="badge" aria-hidden="true">
           <img src="/assets/brand/changewise_logo.svg" alt="ChangeWise Logo" loading="lazy" decoding="async">
         </div>
-        <article class="card cw">
+        <div>
           <h2>ChangeWise</h2>
           <p class="sub">Marke &amp; Change-Kommunikation – klar, konsistent, startklar.</p>
           <p class="micro">Brand-Kit &amp; Vorlagen bündeln Standards – für schnelleren Output.</p>
-          <p><a class="micro-link" href="/products/changewise/#benefits">Vorteile zeigen</a></p>
-          <p><a class="cta cta--cw" href="/products/changewise/">Zur Produktseite</a></p>
-        </article>
-      </div>
+        </div>
+        <div class="actions">
+          <a class="micro-link" href="/products/changewise/#benefits">Vorteile zeigen</a>
+          <a class="cta cta--cw" href="/products/changewise/">Zur Produktseite</a>
+        </div>
+      </article>
     </section>
 
     <footer>
