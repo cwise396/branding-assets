@@ -1,143 +1,273 @@
  <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light">
-  <title>ChangeWise – Marke & Change-Kommunikation</title>
-  <meta name="description" content="ChangeWise schafft Klarheit in Narrativ, Design und Enablement – damit Kommunikation konsistent, schnell und wirkungsvoll ist.">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ChangeWise – Klar, konsistent, startklar.</title>
+  <meta name="description" content="ChangeWise: Kernbotschaft & Tonalität, Brand-Kit, Vorlagen & Guidelines – klare Linie, schneller Output, hohe Akzeptanz." />
+  <meta name="theme-color" content="#0E3960" />
+
   <style>
     :root{
-      --brand-bg:#0E3960;   /* Blau */
-      --nav-bg:#A22121;     /* Rot */
-      --nav-fg:#ffffff;
-      --card-bg:#0E3960;
-      --card-fg:#ffffff;
-      --logo-size:88px;
+      --container:1100px;
+
+      /* Seite: Blau (kein Dark Mode) */
+      --page-blue:#0E3960;  /* sRGB(14,57,96) */
+      --text:#FFFFFF;
+
+      /* Navbar */
+      --nav-red:#AE0F12;    /* sRGB(174,15,18) */
+
+      /* Karten: ebenfalls blau, mit Rand & Schatten für Abhebung */
+      --card-blue:#0E3960;
+      --card-border:rgba(255,255,255,.28);
+
+      /* CTA-Button: weißer Button, blaue Schrift */
+      --btn-bg:#FFFFFF;
+      --btn-fg:#0E3960;
     }
-    html, body { background:var(--brand-bg); height:100%; }
-    body { margin:0; min-height:100vh; color:#fff; }
-    .site-header{ position:sticky; top:0; background:var(--nav-bg); z-index:50; }
-    .nav{ max-width:1100px; margin:0 auto; padding:.9rem 1rem; display:flex; justify-content:space-between; align-items:center; }
-    .nav a{ color:var(--nav-fg); text-decoration:none; }
-    .brand{ font-weight:700; white-space:nowrap; }
-    .nav-links{ list-style:none; display:flex; gap:1rem; margin:0; padding:0; align-items:center; }
-    .nav .lang .active{ font-weight:700; text-decoration:underline; text-underline-offset:3px; }
-    .nav-toggle{ display:none; background:none; border:0; font-size:1.2rem; color:var(--nav-fg); }
-    @media (max-width:720px){
-      .nav{ position:relative; }
-      .nav-links{ display:none; position:absolute; top:56px; left:0; right:0; background:var(--nav-bg); padding:1rem; margin:0; flex-direction:column; gap:.6rem; }
-      .nav-links.open{ display:flex; } .nav-toggle{ display:inline-block; }
+
+    *{ box-sizing:border-box }
+    html,body{ height:100% }
+    body{
+      margin:0; font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+      background:var(--page-blue); color:var(--text);
     }
-    .hero{ color:#fff; padding-top:24mm; }
-    .hero-header{ max-width:1100px; margin:0 auto; padding:0 1rem; display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; align-items:end; }
-    .hero-text{ grid-column:1 / 9; }
-    .hero h1{ font-size:clamp(1.8rem,4vw,3rem); line-height:1.1; margin:0 0 .15rem; }
-    .hero p.lead{ margin:0; font-size:clamp(1.2rem,2.4vw,1.4rem); font-weight:700; }
-    .product-logo img{
-      width:var(--logo-size); height:auto; display:block; object-fit:contain;
-      border-radius:50%; outline:5px solid #ffffff; outline-offset:0; background:transparent; /* Weißer Ring 5px */
+    a{ color:#FFFFFF; text-decoration:none }
+
+    /* Header/Nav – volle Breite rot, Höhe ~12mm */
+    .site-header{ position:sticky; top:0; z-index:50; width:100%; background:var(--nav-red) }
+    .nav{ background:var(--nav-red) }
+    .nav-inner{
+      max-width:var(--container); margin:0 auto; padding:0 1rem;
+      display:flex; align-items:center; justify-content:space-between;
+      min-height:12mm;  /* gewünschte Höhe */
     }
-    .logo--rightcol{ grid-column:9 / 13; justify-self:start; }
+    .brand{ color:#FFFFFF; font-weight:800; white-space:nowrap }
+    .nav-links{ list-style:none; display:flex; gap:1rem; margin:0; padding:0; align-items:center }
+    .nav-links a{ color:#FFFFFF }
+    .nav-toggle{ display:none; background:none; border:0; color:#FFFFFF; font-size:1.2rem }
+
+    @media (max-width:980px){
+      .nav-inner{ position:relative }
+      .nav-links{
+        display:none; position:absolute; top:100%; left:0; right:0;
+        background:var(--nav-red); padding:1rem; margin:0; flex-direction:column; gap:.6rem;
+      }
+      .nav-links.open{ display:flex }
+      .nav-toggle{ display:inline-block }
+    }
+
+    /* Hero */
+    .hero{ color:#FFFFFF; padding-top:11mm } /* 11mm, damit „mehr“ (Karte 6) ohne Scroll sichtbar bleibt */
+    .hero-header{
+      max-width:var(--container); margin:0 auto; padding:0 1rem;
+      display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; align-items:end;
+    }
+    .hero-text{ grid-column:1 / 9 }
+    .hero h1{ margin:0 0 .2rem; font-size:clamp(1.8rem,4vw,3rem); line-height:1.1 }
+    .hero p.lead{ margin:0; font-size:clamp(1.1rem,2.4vw,1.35rem); font-weight:700; opacity:.95 }
+
+    .logo-col{ grid-column:9 / 13; justify-self:start; display:flex; align-items:center }
+    /* Weißer 5px-Ring via Inline-SVG (robust) */
+    .product-logo{ position:relative; width:98px; height:98px }
+    .product-logo .logo-ring{ position:absolute; inset:0; width:98px; height:98px; z-index:2; pointer-events:none; display:block }
+    .product-logo .logo-ring svg{ width:100%; height:100%; display:block }
+    .product-logo .logo-img{
+      position:absolute; top:5px; left:5px;
+      width:88px; height:88px; display:block;
+      border-radius:50%; z-index:1; background:transparent;
+    }
+
     @media (max-width:640px){
-      .hero-header{ grid-template-columns:1fr; text-align:center; }
-      .hero-text{ grid-column:1 / -1; }
-      .logo--rightcol{ grid-column:1 / -1; justify-self:center; }
+      .hero-header{ grid-template-columns:1fr; text-align:center }
+      .hero-text{ grid-column:1 / -1 }
+      .logo-col{ grid-column:1 / -1; justify-self:center }
     }
-    .section-cards{ max-width:1100px; margin:0 auto; padding:0 1rem; }
-    .grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; margin-top:1rem; }
-    .card{ grid-column:span 4; background:var(--card-bg); color:var(--card-fg);
-      border-radius:14px; padding:1.05rem 1rem; border:1px solid rgba(255,255,255,.28);
-      box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06); }
-    .card h3{ margin:0 0 .4rem; }
-    .card ul{ list-style:disc; padding-left:1.2rem; }
-    .btn{ display:inline-block; padding:.7rem 1rem; border-radius:12px; border:1px solid #fff; color:#0E3960; background:#fff; text-decoration:none; font-weight:800; }
-    .btn:hover{ background:#f7f7f7; }
-    footer{ max-width:1100px; margin:2.2rem auto; padding:0 1rem 2rem; color:#fff; }
-    footer a{ color:#fff; }
+
+    /* Cards Grid */
+    .section-cards{ max-width:var(--container); margin:0 auto; padding:0 1rem 2.4rem }
+    .grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; margin-top:1rem }
+    .card{
+      grid-column:span 4;
+      background:var(--card-blue) !important; color:#FFFFFF !important;
+      border-radius:14px; padding:1.05rem 1rem;
+      border:1px solid var(--card-border);
+      box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06);
+    }
+    .card h3{ margin:0 0 .4rem }
+    .card p,.card li{ margin:.35rem 0 }
+    .card ul{ list-style:disc; padding-left:1.2rem }
+    .card a{ text-decoration:underline; text-underline-offset:2px; color:#FFFFFF }
+
+    @media (max-width:960px){ .card{ grid-column:span 6 } }
+    @media (max-width:640px){ .card{ grid-column:span 12 } }
+
+    /* CTA: weißer Button mit blauer Schrift (robust) */
+    .btn{ display:inline-block; padding:.7rem 1rem; border-radius:12px; border:1px solid #FFFFFF; text-decoration:none; font-weight:800; background:transparent }
+    .btn--inverse{ background:var(--btn-bg) }
+    .card a.btn.btn--inverse,
+    .card a.btn.btn--inverse:link,
+    .card a.btn.btn--inverse:visited,
+    .card a.btn.btn--inverse:hover,
+    .card a.btn.btn--inverse:active {
+      color:var(--btn-fg) !important;
+      -webkit-text-fill-color:var(--btn-fg) !important; /* Safari */
+    }
+
+    /* Details/Accordion */
+    details{ border:0 }
+    details summary{ cursor:pointer; font-weight:800 }
+
+    /* Footer */
+    footer{ max-width:var(--container); margin:2.2rem auto; padding:0 1rem 2.4rem; color:#FFFFFF }
+    footer a{ color:#FFFFFF }
+
+    #bg-overlay{ display:none !important; }
   </style>
+
+  <script>
+    /* Mobile nav */
+    function __toggleNav(){
+      var l=document.getElementById('navLinks');
+      if(!l) return;
+      var o=l.classList.toggle('open');
+      document.getElementById('navToggle').setAttribute('aria-expanded', o?'true':'false');
+    }
+  </script>
 </head>
 <body>
+  <!-- Header / Nav -->
   <header class="site-header">
     <nav class="nav">
-      <a class="brand" href="/">Home</a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="/products/changewise/">ChangeWise</a></li>
-        <li><a href="/products/slackdigest/">SlackDigest</a></li>
-        <li><a href="/products/tasksieve/">TaskSieve</a></li>
-        <li class="lang"><span class="active">DE</span> | <a href="./en/">EN</a></li>
-      </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-controls="navLinks" aria-expanded="false">☰</button>
+      <div class="nav-inner">
+        <a class="brand" href="/">Home</a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="/products/changewise/">ChangeWise</a></li>
+          <li><a href="/products/slackdigest/">SlackDigest</a></li>
+          <li><a href="/products/tasksieve/">TaskSieve</a></li>
+          <li class="lang"><span class="active">DE</span> | <a href="./en/">EN</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-controls="navLinks" aria-expanded="false" onclick="__toggleNav()">☰</button>
+      </div>
     </nav>
   </header>
 
+  <!-- Hero -->
   <main class="hero">
     <div class="hero-header">
       <div class="hero-text">
         <h1>ChangeWise</h1>
-        <p class="lead">Marke &amp; Change-Kommunikation – klar, konsistent, startklar.</p>
+        <p class="lead">Marke & Change-Kommunikation – klar, konsistent, startklar.</p>
       </div>
-      <div class="product-logo logo--rightcol">
-        <img src="/assets/brand/changewise_logo.svg" alt="ChangeWise Logo" width="88" loading="lazy" decoding="async">
+      <div class="logo-col">
+        <div class="product-logo">
+          <!-- Weißer 5px-Ring -->
+          <span class="logo-ring" aria-hidden="true">
+            <svg viewBox="0 0 100 100" width="98" height="98" focusable="false" aria-hidden="true">
+              <circle cx="50" cy="50" r="47.5" fill="none" stroke="#FFFFFF" stroke-width="5" />
+            </svg>
+          </span>
+          <!-- Logo -->
+          <img class="logo-img" src="/assets/brand/changewise_logo.svg" alt="ChangeWise Logo" width="88" height="88" loading="lazy" decoding="async" />
+        </div>
       </div>
     </div>
 
+    <!-- Cards -->
     <section class="section-cards">
       <section class="grid" aria-label="Key Features">
+        <!-- 1 -->
         <article class="card">
-          <h3>Kernnarrativ & Ton</h3>
-          <ul><li>Eine Stimme, klare Linie</li><li>Message-House & Leitplanken</li></ul>
+          <h3>Auf den Punkt</h3>
+          <p>Kernbotschaft & Tonalität – klare Linie, weniger Reibung.</p>
         </article>
+
+        <!-- 2 -->
         <article class="card">
-          <h3>Brand-Kit</h3>
-          <ul><li>Logo/Icons, Farben/Typo</li><li>Standards zentral & konsistent</li></ul>
+          <h3>So funktioniert’s</h3>
+          <ul>
+            <li>Core Story & Tonalität definieren</li>
+            <li>Brand-Kit (Logo/Icons, Farben/Typo) bündeln</li>
+            <li>Guidelines & Vorlagen bereitstellen</li>
+          </ul>
         </article>
+
+        <!-- 3 -->
         <article class="card">
-          <h3>Templates & Playbooks</h3>
-          <ul><li>Schneller Output</li><li>Enablement fürs Team</li></ul>
+          <h3>Was es liefert</h3>
+          <ul>
+            <li><strong>Klar abgestimmte Botschaften</strong> → Kernbotschaft & Tonalität geben Richtung.</li>
+            <li><strong>Konsistenter Auftritt</strong> → Brand-Kit an einem Ort.</li>
+            <li><strong>Schneller vom Entwurf zum Output</strong> → Vorlagen & Playbooks.</li>
+            <li><strong>Reibungsloser Rollout</strong> → klare <em>Guidelines & Vorlagen</em>.</li>
+            <li><strong>Weniger Korrekturschleifen</strong> → Do’s & Don’ts, Checklisten, Review-Gates.</li>
+            <li><strong>Self-Serve Enablement</strong> → kurze Playbooks & Mikro-Videos.</li>
+          </ul>
         </article>
+
+        <!-- 4 -->
         <article class="card">
           <h3>Status &amp; Kontakt</h3>
-          <p>Status: <strong>Open</strong> — kennenlernen.</p>
-           <p><a class="btn" href="/booking/">Slot wählen (25 Min)</a></p>
+          <p>Status: <strong>Open</strong> — anfragen.</p>
+          <p>Kontakt: <a href="mailto:hello@changewise.net">hello@changewise.net</a></p>
+          <p>
+            <a class="btn btn--inverse" href="mailto:hello@changewise.net?subject=ChangeWise%20Kontakt&body=Hallo%20ChangeWise%2C%0A%0Akurz%20zu%20uns%3A%20...%0AThema%3A%20...%0AZiel%3A%20...">Kontakt aufnehmen</a>
+          </p>
 
+          <!-- FAQ inline (Summary) -->
+          <details id="cw-faq" style="margin-top:.6rem">
+            <summary>FAQ</summary>
+            <ul>
+              <li><strong>Start?</strong> Kurz-Workshop → Prototyp → Rollout.</li>
+              <li><strong>Lieferumfang?</strong> Brand-Kit, Vorlagen, Guidelines, Playbooks.</li>
+              <li><strong>Team-Enablement?</strong> Mikro-Videos & Checklisten.</li>
+              <li><strong>Wie lange?</strong> Erste Ergebnisse in Tagen/Wochen, nicht Monaten.</li>
+              <li><strong>Skalierung?</strong> Self-Serve: alles wiederverwendbar.</li>
+              <li><strong>Owner?</strong> Gemeinsame Owner-Definition je Kanal.</li>
+              <li><strong>Review?</strong> Do’s/Don’ts + Review-Gates reduzieren Schleifen.</li>
+              <li><strong>Brand-Konsistenz?</strong> Eine Quelle der Wahrheit (Brand-Kit).</li>
+              <li><strong>Datenteilung?</strong> Nur notwendige Assets, auf Wunsch NDA.</li>
+            </ul>
+          </details>
         </article>
+
+        <!-- 5 (unter 2) -->
         <article class="card">
-          <h3>Integrationen</h3>
-          <p>Design-Systeme, Docs, CMS.</p>
+          <h3>Lieferumfang</h3>
+          <ul>
+            <li>Brand-Kit (Logo/Icons, Farben/Typo)</li>
+            <li>Guidelines & Vorlagen</li>
+            <li>Playbooks & Mikro-Videos</li>
+          </ul>
+        </article>
+
+        <!-- 6 (unter 3): Vorteile -->
+        <article class="card" id="card-benefits">
+          <h3>Vorteile</h3>
+          <ul>
+            <li><strong>Klar abgestimmte Botschaften</strong></li>
+            <li><strong>Konsistenter Auftritt</strong></li>
+            <li><strong>Schneller zum Output</strong></li>
+          </ul>
+          <details id="cw-benefits-more" style="margin-top:.4rem">
+            <summary>mehr</summary>
+            <ul>
+              <li>Klar abgestimmte Botschaften → Kernbotschaft & Tonalität geben Richtung.</li>
+              <li>Konsistenter Auftritt → Brand-Kit (Logo, Farben, Typo) an einem Ort.</li>
+              <li>Schneller vom Entwurf zum Output → Vorlagen & Playbooks.</li>
+              <li>Reibungsloser Rollout → klare Guidelines & Vorlagen.</li>
+              <li>Weniger Korrekturschleifen → Do’s & Don’ts, Checklisten, Review-Gates.</li>
+              <li>Self-Serve Enablement → kurze Playbooks & Mikro-Videos – Onboarding in Stunden statt Wochen.</li>
+            </ul>
+          </details>
         </article>
       </section>
     </section>
   </main>
-<!-- CW: BENEFITS -->
-<section id="benefits" style="margin:1.2rem 0">
-  <details>
-    <summary style="cursor:pointer;font-weight:800">Vorteile &amp; FAQ</summary>
-    <div style="margin-top:.6rem">
-      <h3 style="margin:.6rem 0 .2rem">Vorteile</h3>
-      <ul>
-        <li>Uneinheitliche Botschaften → Kernnarrativ &amp; Tonalität sorgen für klare Linie.</li>
-        <li>Design-Fragmentierung → Brand-Kit (Logo/Icons, Farben/Typo) bündelt Standards.</li>
-        <li>Langsame Produktion → Vorlagen &amp; Playbooks beschleunigen Output.</li>
-        <li>Geringe Akzeptanz → Leitplanken &amp; Enablement erhöhen Zustimmung im Team.</li>
-        <li>Ideal für: Kleine/mittlere Teams, Change/Comms, Enablement.</li>
-      </ul>
-      <h3 style="margin:.8rem 0 .2rem">FAQ</h3>
-      <ul>
-        <li><strong>Lieferumfang?</strong> Brand-Kit + Templates.</li>
-        <li><strong>Start?</strong> Kurz-Workshop → Prototyp → Rollout.</li>
-      </ul>
-    </div>
-  </details>
-</section>
 
   <footer>
-    <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
+    <a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a>
   </footer>
-
-  <script>
-    const t=document.getElementById('navToggle'), l=document.getElementById('navLinks');
-    if (t && l) t.addEventListener('click',()=>{ const o=l.classList.toggle('open'); t.setAttribute('aria-expanded', o?'true':'false'); });
-  </script>
 </body>
 </html>
