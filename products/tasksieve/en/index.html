@@ -1,268 +1,236 @@
  <!doctype html>
-<html lang="en">
+<html lang="en"><!-- Dark-only -->
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light dark">
-  <title>TaskSieve — Put important tasks first</title>
-  <meta name="description" content="TaskSieve unifies tasks from email, notes and Slack, deduplicates, clusters and prioritizes — so the next action is clear.">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TaskSieve – Put important work first.</title>
+  <meta name="description" content="TaskSieve unifies tasks from email, notes & Slack into one inbox — auto-priorized by impact, urgency and effort." />
+  <meta name="theme-color" content="#0B0F13" />
 
   <style>
     :root{
-      --brand:#B90E13;              /* sRGB(185,14,19) */
-      --nav:#AE0F12;                /* sRGB(174,15,18) */
-      --accent:#ffffff;
+      --container:1100px;
 
-      --page-bg:#B90E13;
-      --text:#ffffff;
-      --muted:rgba(255,255,255,.86);
-      --border:rgba(255,255,255,.35);
+      /* Dark-only Theme */
+      --bg-dark:#0B0F13;
+      --fg-dark:#EAEAEA;
 
-      /* Cards always brand red */
-      --card-bg:#B90E13;
-      --card-fg:#ffffff;
-      --card-bd:rgba(255,255,255,.45);
-      --shadow:0 14px 30px rgba(0,0,0,.28);
+      /* Brand */
+      --nav-red:#AE0F12;
+      --card-red:#B90E13; /* sRGB(185,14,19) */
 
-      /* Hero colors (Light white, Dark -> overridden below) */
-      --hero-h:#ffffff;
-      --hero-sub:rgba(255,255,255,.88);
-
-      --badge-size:100px;
-      --badge-ring:#fff;
-      --badge-ring-w:5px;
-      --badge-inner:#B80E13;
-
-      --btn-bg:#ffffff;
-      --btn-fg:var(--brand);
-      --btn-bd:rgba(255,255,255,.25);
-      --btn-bg-hover:rgba(255,255,255,.92);
-
-      --i18n-bg:#ffffff; --i18n-fg:#B90E13; --i18n-bd:rgba(0,0,0,.15);
-    }
-    html.ts-dark{
-      --page-bg:#0B1220;
-      --text:#E5E7EB;
-      --muted:#9AA4B2;
-      --border:#243041;
-
-      --card-bg:#B90E13;
-      --card-fg:#ffffff;
-      --card-bd:#52080A;
-      --shadow:0 16px 34px rgba(0,0,0,.50);
-
-      /* Hero in DARK: white */
-      --hero-h:#ffffff;
-      --hero-sub:rgba(255,255,255,.92);
+      /* UI */
+      --card-border:rgba(255,255,255,.28);
+      --btn-inverse-bg:#FFFFFF;
+      --btn-inverse-fg:#B90E13; /* red text in button */
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    html,body{background:var(--page-bg)}
+    *{ box-sizing:border-box }
+    html,body{ height:100% }
     body{
-      margin:0; color:var(--text);
-      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      margin:0; font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+      background:var(--bg-dark); color:var(--fg-dark);
+    }
+    a{ color:#FFFFFF; text-decoration:none }
+
+    .site-header{ position:sticky; top:0; z-index:50; width:100%; background:var(--nav-red) }
+    .nav{ background:var(--nav-red) }
+    .nav-inner{
+      max-width:var(--container); margin:0 auto; padding:.9rem 1rem;
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .brand{ color:#FFFFFF; font-weight:800; white-space:nowrap }
+    .nav-links{ list-style:none; display:flex; gap:1rem; margin:0; padding:0; align-items:center }
+    .nav-links a{ color:#FFFFFF }
+    .nav-toggle{ display:none; background:none; border:0; color:#FFFFFF; font-size:1.2rem }
+
+    @media (max-width:980px){
+      .nav-inner{ position:relative }
+      .nav-links{
+        display:none; position:absolute; top:56px; left:0; right:0;
+        background:var(--nav-red); padding:1rem; margin:0; flex-direction:column; gap:.6rem;
+      }
+      .nav-links.open{ display:flex }
+      .nav-toggle{ display:inline-block }
     }
 
-    .site-header{position:sticky; top:0; background:var(--nav); color:#fff}
-    .nav{width:min(1100px,92%); margin:0 auto; padding:10px 0; display:flex; align-items:center; justify-content:space-between}
-    .brand a{color:#fff; text-decoration:none; font-weight:700}
-    .rightbar{display:flex; gap:8px; align-items:center}
+    .hero{ color:#FFFFFF; padding-top:11mm }
+    .hero-header{
+      max-width:var(--container); margin:0 auto; padding:0 1rem;
+      display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; align-items:end;
+    }
+    .hero-text{ grid-column:1 / 9 }
+    .hero h1{ margin:0 0 .2rem; font-size:clamp(1.8rem,4vw,3rem); line-height:1.1 }
+    .hero p.lead{ margin:0; font-size:clamp(1.1rem,2.4vw,1.35rem); font-weight:700; opacity:.95 }
+    .logo-col{ grid-column:9 / 13; justify-self:start; display:flex; align-items:center }
+    .product-logo img{ width:88px; height:auto; display:block }
 
-    .pill{
-      padding:8px 12px; border-radius:999px; font-weight:700; text-decoration:none;
-      background:var(--i18n-bg); color:var(--i18n-fg); border:1px solid var(--i18n-bd);
-    }
-    /* Dark-mode request: white button with red text */
-    html.ts-dark .pill{
-      background:#ffffff; color:#B90E13; border:1px solid #2A3548;
-    }
-
-    .ts-theme-toggle{
-      padding:8px 12px; border-radius:999px; font-weight:700; cursor:pointer;
-      background:#ffffff; color:#B90E13; border:1px solid rgba(0,0,0,.15);
-      -webkit-tap-highlight-color:transparent;
-    }
-    html.ts-dark .ts-theme-toggle{
-      background:#ffffff; color:#B90E13; border:1px solid #2A3548;
+    @media (max-width:640px){
+      .hero-header{ grid-template-columns:1fr; text-align:center }
+      .hero-text{ grid-column:1 / -1 }
+      .logo-col{ grid-column:1 / -1; justify-self:center }
     }
 
-    /* Hero spacing: exactly 18mm from navbar to logo area */
-    .hero{padding:18mm 0 10px}
-    .hero-wrap{width:min(1100px,92%); margin:0 auto; display:grid; grid-template-columns:repeat(12,1fr); gap:16px; align-items:end}
-    .hero-text{grid-column:1 / 10}
-    .hero h1{margin:0 0 6px; font-size:clamp(1.8rem,1.2rem + 2.2vw,2.6rem); color:var(--hero-h)}
-    .hero p.lead{margin:0; color:var(--hero-sub); font-weight:700}
-    .logo-col{grid-column:10 / 13; justify-self:start}
-    @media (max-width:720px){
-      .hero-wrap{grid-template-columns:1fr; text-align:center}
-      .hero-text{grid-column:1 / -1}
-      .logo-col{grid-column:1 / -1; justify-self:center}
-    }
-
-    .logo-wrap{
-      width:var(--badge-size); height:var(--badge-size);
-      display:grid; place-items:center; border-radius:50%;
-      background:var(--badge-ring); box-shadow:0 2px 10px rgba(0,0,0,.25);
-    }
-    .logo-inner{
-      width:calc(var(--badge-size) - 2*var(--badge-ring-w));
-      height:calc(var(--badge-size) - 2*var(--badge-ring-w));
-      border-radius:50%; background:var(--badge-inner); display:grid; place-items:center; overflow:hidden;
-    }
-    .logo{width:100%; height:100%; object-fit:contain; display:block}
-
-    .section{width:min(1100px,92%); margin:14px auto 40px}
-    .grid{display:grid; grid-template-columns:repeat(12,1fr); gap:14px}
+    .section-cards{ max-width:var(--container); margin:0 auto; padding:0 1rem 2.4rem }
+    .grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; margin-top:1rem }
     .card{
-      grid-column:span 4; background:var(--card-bg); color:var(--card-fg);
-      border:1px solid var(--card-bd); border-radius:14px; padding:14px;
-      box-shadow:var(--shadow);
+      grid-column:span 4;
+      background:var(--card-red) !important; color:#FFFFFF !important;
+      border-radius:14px; padding:1.05rem 1rem;
+      border:1px solid var(--card-border);
+      box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06);
     }
-    .card h3{margin:0 0 8px}
-    .card ul{margin:8px 0; padding-left:1.1rem}
-    .card li{margin:4px 0}
-    @media (max-width:960px){ .card{grid-column:span 6} }
-    @media (max-width:640px){ .card{grid-column:span 12} }
+    .card h3{ margin:0 0 .4rem }
+    .card p,.card li{ margin:.35rem 0 }
+    .card ul{ list-style:disc; padding-left:1.2rem }
+    .card a{ text-decoration:underline; text-underline-offset:2px; color:#FFFFFF }
 
-    .btn{ display:inline-block; padding:8px 10px; border-radius:12px;
-      border:1px solid var(--btn-bd); background:var(--btn-bg); color:var(--btn-fg);
-      font-weight:800; text-decoration:none;
+    @media (max-width:960px){ .card{ grid-column:span 6 } }
+    @media (max-width:640px){ .card{ grid-column:span 12 } }
+
+    .btn{ display:inline-block; padding:.7rem 1rem; border-radius:12px; border:1px solid #FFFFFF; text-decoration:none; font-weight:800; background:transparent }
+    .btn--inverse{ background:var(--btn-inverse-bg) }
+    .card a.btn.btn--inverse,
+    .card a.btn.btn--inverse:link,
+    .card a.btn.btn--inverse:visited,
+    .card a.btn.btn--inverse:hover,
+    .card a.btn.btn--inverse:active {
+      color:var(--btn-inverse-fg) !important;
+      -webkit-text-fill-color:var(--btn-inverse-fg) !important;
     }
-    .btn:hover{ background:var(--btn-bg-hover) }
 
-    footer{width:min(1100px,92%); margin:24px auto 32px; color:var(--muted)}
-    footer a{color:inherit; text-decoration:none}
-    footer a:hover{text-decoration:underline}
+    details{ border:0 }
+    details summary{ cursor:pointer; font-weight:800 }
+
+    footer{ max-width:var(--container); margin:2.2rem auto; padding:0 1rem 2.4rem; color:#FFFFFF }
+    footer a{ color:#FFFFFF }
+
+    #bg-overlay{ display:none !important; }
   </style>
+
+  <script>
+    function __toggleNav(){
+      var l=document.getElementById('navLinks');
+      if(!l) return;
+      var o=l.classList.toggle('open');
+      document.getElementById('navToggle').setAttribute('aria-expanded', o?'true':'false');
+    }
+  </script>
 </head>
 <body>
+  <header class="site-header">
+    <nav class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="/en/">Home</a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="/products/changewise/en/">ChangeWise</a></li>
+          <li><a href="/products/slackdigest/en/">SlackDigest</a></li>
+          <li><a href="/products/tasksieve/en/">TaskSieve</a></li>
+          <li class="lang"><a href="../">DE</a> | <span class="active">EN</span></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false" onclick="__toggleNav()">☰</button>
+      </div>
+    </nav>
+  </header>
 
-<header class="site-header">
-  <nav class="nav">
-    <div class="brand"><a href="/en/">Home</a></div>
-    <div class="rightbar">
-      <a class="pill" href="/products/tasksieve/" hreflang="de" aria-label="Wechsel zu Deutsch">DE</a>
-      <button id="tsThemeToggle" class="ts-theme-toggle" aria-pressed="true" title="Toggle dark/light">Light</button>
-    </div>
-  </nav>
-</header>
-
-<main>
-  <section class="hero">
-    <div class="hero-wrap">
+  <main class="hero">
+    <div class="hero-header">
       <div class="hero-text">
         <h1>TaskSieve</h1>
-        <p class="lead">Important tasks first — with a system.</p>
+        <p class="lead">Put important work first — with a system.</p>
       </div>
       <div class="logo-col">
-        <div class="logo-wrap"><div class="logo-inner">
-          <img class="logo" src="/assets/brand/tasksieve_logo.svg?v=4" alt="TaskSieve Logo" onerror="this.style.display='none'">
-        </div></div>
+        <div class="product-logo">
+          <img src="/assets/brand/tasksieve_logo.svg" alt="TaskSieve Logo" width="88" loading="lazy" decoding="async" />
+        </div>
       </div>
     </div>
-  </section>
 
-  <section class="section">
-    <div class="grid">
-      <article class="card">
-        <h3>At a glance</h3>
-        <p>One inbox across email, notes &amp; Slack — deduped and organized.</p>
-      </article>
+    <section class="section-cards">
+      <section class="grid" aria-label="Key Features">
+        <!-- 1 -->
+        <article class="card">
+          <h3>To the point</h3>
+          <p>One inbox across email, notes & Slack — auto-priorized.</p>
+        </article>
 
-      <article class="card">
-        <h3>How it works</h3>
-        <ul>
-          <li>Connect sources (email, notes, Slack)</li>
-          <li>Automatic dedupe &amp; clustering</li>
-          <li>Impact/urgency/effort scoring</li>
-        </ul>
-      </article>
+        <!-- 2 -->
+        <article class="card">
+          <h3>How it works</h3>
+          <ul>
+            <li>Connect sources (email, notes, Slack)</li>
+            <li>Auto-dedupe &amp; clustering</li>
+            <li>Scoring by impact/urgency/effort</li>
+          </ul>
+        </article>
 
-      <article class="card">
-        <h3>What it delivers</h3>
-        <ul>
-          <li>Clear next action, fewer context switches</li>
-          <li>Focus blocks &amp; batching to boost throughput</li>
-        </ul>
-      </article>
+        <!-- 3 -->
+        <article class="card">
+          <h3>What it delivers</h3>
+          <ul>
+            <li>Next action surfaced — no list grooming</li>
+            <li>Focus blocks &amp; batching increase throughput</li>
+          </ul>
+        </article>
 
-      <article class="card">
-        <h3>Benefits &amp; FAQ</h3>
-        <ul>
-          <li>Sources: email / notes / Slack</li>
-          <li>Auto vs manual: auto-sort with manual tuning</li>
-        </ul>
-      </article>
+        <!-- 4 -->
+        <article class="card">
+          <h3>Status &amp; contact</h3>
+          <p>Status: <strong>Open</strong> — try it.</p>
+          <p>Contact: <a href="mailto:hello@tasksieve.app">hello@tasksieve.app</a></p>
+          <p>
+            <a class="btn btn--inverse" href="mailto:hello@tasksieve.app?subject=TaskSieve%20Test&body=Hi%20TaskSieve%20team%2C%0A%0AI%27d%20like%20to%20try%20the%20beta.'">Request beta</a>
+          </p>
 
-      <article class="card">
-        <h3>Status &amp; Contact</h3>
-        <p>Status: <strong>Open</strong> — try it.</p>
-        <p><a class="btn" href="mailto:hello@changewise.org?subject=TaskSieve%20Demo">Request a demo</a></p>
-      </article>
+          <!-- FAQ inline (Summary) -->
+          <details id="ts-faq-en" style="margin-top:.6rem">
+            <summary>FAQ</summary>
+            <ul>
+              <li><strong>Admin rights?</strong> Not needed — reader access is enough.</li>
+              <li><strong>Setup time?</strong> Minutes, guided assistant.</li>
+              <li><strong>Sources?</strong> Email, notes, Slack.</li>
+              <li><strong>Prioritization?</strong> Impact × urgency × effort.</li>
+              <li><strong>Dedupe?</strong> Duplicates are merged automatically.</li>
+              <li><strong>Clustering?</strong> Similar items are grouped.</li>
+              <li><strong>Focus?</strong> Focus blocks & batching included.</li>
+              <li><strong>Privacy?</strong> Read-only, no write actions.</li>
+              <li><strong>Reliability?</strong> Stable syncs & monitoring.</li>
+            </ul>
+          </details>
+        </article>
 
-      <article class="card">
-        <h3>Integrations</h3>
-        <p>Email, notes, Slack.</p>
-      </article>
-    </div>
-  </section>
-</main>
-<!-- CW: BENEFITS -->
-<section id="benefits" style="margin:1.2rem 0">
-  <details>
-    <summary style="cursor:pointer;font-weight:800">Benefits &amp; FAQ</summary>
-    <div style="margin-top:.6rem">
-      <h3 style="margin:.6rem 0 .2rem">Benefits</h3>
-      <ul>
-        <li>Tasks scattered → One inbox across email, notes, Slack.</li>
-        <li>Duplicates/noise → Auto-dedupe and clustering.</li>
-        <li>No clear order → Impact/urgency/effort scoring surfaces the next action.</li>
-        <li>Context switching → Focus blocks &amp; batching increase throughput.</li>
-        <li>Great for: Founders, PMs, leads, Ops.</li>
-      </ul>
-      <h3 style="margin:.8rem 0 .2rem">FAQ</h3>
-      <ul>
-        <li><strong>Sources?</strong> Email/notes/Slack.</li>
-        <li><strong>Auto vs manual?</strong> Auto-sort with manual tuning.</li>
-      </ul>
-    </div>
-  </details>
-</section>
+        <!-- 5 (under 2) -->
+        <article class="card">
+          <h3>Integrations</h3>
+          <p>Email, notes, Slack.</p>
+        </article>
 
-<footer>
-  <div>© ChangeWise • SlackDigest • TaskSieve · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div>
-</footer>
+        <!-- 6 (under 3): Benefits -->
+        <article class="card" id="card-benefits-en">
+          <h3>Benefits</h3>
+          <ul>
+            <li><strong>Fast start:</strong> Setup in minutes, reader access only.</li>
+            <li><strong>User-friendly & stable:</strong> reliable prioritization.</li>
+            <li><strong>Less grooming:</strong> auto-dedupe & clustering.</li>
+          </ul>
+          <details id="ts-benefits-more-en" style="margin-top:.4rem">
+            <summary>more</summary>
+            <ul>
+              <li>Scoring by impact/urgency/effort.</li>
+              <li>Manual tuning always possible.</li>
+              <li>Focus blocks for deep work.</li>
+              <li>Batching reduces context switching.</li>
+              <li>Lightweight, no vendor lock-in.</li>
+              <li>Team-ready — small to mid-size.</li>
+            </ul>
+          </details>
+        </article>
+      </section>
+    </section>
+  </main>
 
-<script>
-/* TaskSieve: page-local theme toggle (Default = dark) */
-(function(){
-  var KEY='tasksieve_theme';
-  var root=document.documentElement;
-  var btn=document.getElementById('tsThemeToggle');
-
-  function apply(mode){
-    if(mode==='dark'){
-      root.classList.add('ts-dark');
-      if(btn){ btn.setAttribute('aria-pressed','true'); btn.textContent='Light'; }
-    }else{
-      root.classList.remove('ts-dark');
-      if(btn){ btn.setAttribute('aria-pressed','false'); btn.textContent='Dark'; }
-    }
-  }
-
-  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
-  var initial = saved || 'dark';   // default dark
-  apply(initial);
-
-  if(btn){
-    btn.addEventListener('click', function(){
-      var next = root.classList.contains('ts-dark') ? 'light' : 'dark';
-      apply(next);
-      try{ localStorage.setItem(KEY, next); }catch(e){}
-    });
-  }
-})();
-</script>
+  <footer>
+    <a href="/en/impressum">Imprint</a> · <a href="/en/privacy">Privacy</a>
+  </footer>
 </body>
 </html>
