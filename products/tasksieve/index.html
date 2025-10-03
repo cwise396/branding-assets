@@ -123,6 +123,21 @@
       var o=l.classList.toggle('open');
       document.getElementById('navToggle').setAttribute('aria-expanded', o?'true':'false');
     }
+ <style>
+  /* Weißer Ring um Hero-Logo (kreisrund, 5px) */
+  .product-logo .logo-badge{
+    display:grid; place-items:center;
+    width:98px; height:98px;           /* 88px Logo + 2*5px Ring */
+    border-radius:50%;
+    border:5px solid #FFFFFF;
+    background:transparent;
+  }
+  .product-logo .logo-badge img{
+    width:88px; height:auto; display:block;
+    border-radius:50%; /* Logo sauber rund maskieren */
+  }
+</style>
+
   </script>
 </head>
 <body>
@@ -150,9 +165,12 @@
         <p class="lead">Wichtige Aufgaben zuerst – mit System.</p>
       </div>
       <div class="logo-col">
-        <div class="product-logo">
-          <img src="/assets/brand/tasksieve_logo.svg" alt="TaskSieve Logo" width="88" loading="lazy" decoding="async" />
-        </div>
+       <div class="product-logo">
+  <span class="logo-badge">
+    <img src="/assets/brand/tasksieve_logo.svg" alt="TaskSieve Logo" width="88" loading="lazy" decoding="async" />
+  </span>
+</div>
+
       </div>
     </div>
 
