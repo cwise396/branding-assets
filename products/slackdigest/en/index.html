@@ -1,268 +1,226 @@
  <!doctype html>
-<html lang="en">
+<html lang="en" class="sd-dark">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light">
-  <title>SlackDigest — Updates that move things forward.</title>
-  <meta name="description" content="SlackDigest condenses signals from Slack & email into clear updates — one glance, one link, done.">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SlackDigest – Updates that move things.</title>
+  <meta name="description" content="SlackDigest distills signals from Slack & email into clear updates—one glance, one link, done." />
+  <meta name="theme-color" content="#0C6C48" />
+
   <style>
     :root{
       --brand-bg:#0C6C48;
-      --nav-bg:#A22121; --nav-fg:#ffffff;
-      --card-bg:#0C6C48; --card-fg:#ffffff;
-      --logo-size:88px;
+      --nav-red:#AE0F12;
+      --fg:#ffffff;
+      --fg-dark:#EAEAEA;
+      --card-border:rgba(255,255,255,.28);
+      --btn-inverse-bg:#ffffff;
+      --btn-inverse-fg:#0C6C48;
+      --btn-inverse-fg-dark:#096D48;
+      --container:1100px;
     }
-    html, body { background:var(--brand-bg); height:100%; }
-    body { margin:0; min-height:100vh; color:#fff; }
-    .site-header{ position:sticky; top:0; background:var(--nav-bg); z-index:50; }
-    .nav{ max-width:1100px; margin:0 auto; padding:.9rem 1rem; display:flex; justify-content:space-between; align-items:center; }
-    .nav a{ color:var(--nav-fg); text-decoration:none; }
-    .brand{ font-weight:700; white-space:nowrap; }
-    .nav-links{ list-style:none; display:flex; gap:1rem; margin:0; padding:0; align-items:center; }
-    .nav .lang .active{ font-weight:700; text-decoration:underline; text-underline-offset:3px; }
-    .nav-toggle{ display:none; background:none; border:0; font-size:1.2rem; color:var(--nav-fg); }
-    @media (max-width: 720px){
-      .nav{ position:relative; }
-      .nav-links{ display:none; position:absolute; top:56px; left:0; right:0; background:var(--nav-bg); padding:1rem; margin:0; flex-direction:column; gap:.6rem; }
-      .nav-links.open{ display:flex; } .nav-toggle{ display:inline-block; }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif; background:#0B0F13; color:var(--fg-dark)}
+    a{color:#fff; text-decoration:none}
+
+    .site-header{position:sticky; top:0; z-index:50; width:100%; background:var(--nav-red)}
+    .nav{background:var(--nav-red)}
+    .nav-inner{max-width:var(--container); margin:0 auto; padding:.9rem 1rem; display:flex; align-items:center; justify-content:space-between}
+    .brand{color:#fff; font-weight:800; white-space:nowrap}
+    .nav-links{list-style:none; display:flex; gap:1rem; margin:0; padding:0; align-items:center}
+    .nav-links a{color:#fff}
+    .nav-toggle{display:none; background:none; border:0; color:#fff; font-size:1.2rem}
+
+    @media (max-width:980px){
+      .nav-inner{position:relative}
+      .nav-links{display:none; position:absolute; top:56px; left:0; right:0; background:var(--nav-red); padding:1rem; flex-direction:column; gap:.6rem}
+      .nav-links.open{display:flex}
+      .nav-toggle{display:inline-block}
     }
-    .hero{ color:#fff; padding-top:24mm; }
-    .hero-header{ max-width:1100px; margin:0 auto; padding:0 1rem; display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; align-items:end; }
-    .hero-text{ grid-column:1 / 9; }
-    .hero h1{ font-size:clamp(1.8rem,4vw,3rem); line-height:1.1; margin:0 0 .15rem; }
-    .hero p.lead{ margin:0; font-size:clamp(1.2rem,2.4vw,1.4rem); font-weight:700; }
-    .product-logo img{
-      width:var(--logo-size); height:auto; display:block; object-fit:contain;
-      border-radius:50%; outline:5px solid #ffffff; outline-offset:0; background:transparent;
-    }
-    .logo--rightcol{ grid-column:9 / 13; justify-self:start; }
+
+    .hero{color:#fff; padding-top:26mm}
+    .hero-header{max-width:var(--container); margin:0 auto; padding:0 1rem; display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; align-items:end}
+    .hero-text{grid-column:1 / 9}
+    .hero h1{margin:0 0 .2rem; font-size:clamp(1.8rem,4vw,3rem); line-height:1.1}
+    .hero p.lead{margin:0; font-size:clamp(1.1rem,2.4vw,1.35rem); font-weight:700; opacity:.95}
+    .logo-col{grid-column:9 / 13; justify-self:start; display:flex; align-items:center}
+    .product-logo img{width:88px; height:auto; display:block}
+
     @media (max-width:640px){
-      .hero-header{ grid-template-columns:1fr; text-align:center; }
-      .hero-text{ grid-column:1 / -1; }
-      .logo--rightcol{ grid-column:1 / -1; justify-self:center; }
+      .hero-header{grid-template-columns:1fr; text-align:center}
+      .hero-text{grid-column:1 / -1}
+      .logo-col{grid-column:1 / -1; justify-self:center}
     }
-    .section-cards{ max-width:1100px; margin:0 auto; padding:0 1rem; }
-    .grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; margin-top:1rem; }
-    .card{ grid-column:span 4; background:var(--card-bg); color:var(--card-fg);
-      border-radius:14px; padding:1.05rem 1rem; border:1px solid rgba(255,255,255,.28);
-      box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06); }
-    .card h3{ margin:0 0 .4rem; }
-    .card p, .card li{ margin:.35rem 0; }
-    .card ul{ list-style:disc; padding-left:1.2rem; }
-    .btn{ display:inline-block; padding:.7rem 1rem; border-radius:12px; border:1px solid #fff; color:#0C6C48; background:#fff; text-decoration:none; font-weight:800; }
-    .btn:hover{ background:#f7f7f7; }
-    footer{ max-width:1100px; margin:2.2rem auto; padding:0 1rem 2rem; color:#fff; }
-    footer a{ color:#fff; }
- <!-- SlackDigest: Dark/Light Toggle (non-invasive) -->
-<style>
-  /* Aktiviere Dark mit Klasse .sd-dark auf <html> */
-  html.sd-dark { background:#0A0A0A !important; }
-  html.sd-dark body{ background:#0A0A0A; color:#EAEAEA; }
-  html.sd-dark .site-header{ background:#0B3E2C !important; }
-  html.sd-dark .card{ background:#0F0F0F !important; color:#EAEAEA !important; border-color:rgba(255,255,255,.16) !important; }
-  html.sd-dark a{ color:#D6F5E6 !important; }
-  /* kleiner, unaufdringlicher Button oben rechts */
-  .sd-theme-toggle{ position:fixed; top:10px; right:10px; z-index:60 }
-  .sd-theme-toggle button{
-    background:#fff; color:#0C6C48; border:1px solid #E5E7EB; border-radius:12px;
-    padding:.5rem .7rem; font-weight:800; cursor:pointer;
-  }
-<style>
-  /* SlackDigest: Kartenfarbe fixieren (sRGB 12,108,72) */
-  .grid .card { background:#0C6C48 !important; color:#fff !important; border-color:rgba(255,255,255,.28) !important; }
 
-  /* Vorteile-Karte (Pos. 6) */
-  .card--benefits h3 { margin:0 0 .4rem }
-  .card--benefits ul { margin:.2rem 0 .6rem; padding-left:1.1rem; }
-  .card--benefits li { margin:.2rem 0; }
+    .section-cards{max-width:var(--container); margin:0 auto; padding:0 1rem 2rem}
+    .grid{display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; margin-top:1rem}
+    .card{
+      grid-column:span 4;
+      background:#0C6C48 !important; color:#fff !important;
+      border-radius:14px; padding:1.05rem 1rem;
+      border:1px solid var(--card-border);
+      box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06);
+    }
+    .card h3{margin:0 0 .4rem}
+    .card p,.card li{margin:.35rem 0}
+    .card ul{list-style:disc; padding-left:1.2rem}
+    .card a{text-decoration:underline; text-underline-offset:2px; color:#fff}
 
-  /* Mini-Button: „mehr“ / „more“ */
-  .btn-mini{
-    display:inline-block; font:inherit; font-weight:800; cursor:pointer;
-    padding:.35rem .6rem; border-radius:10px; border:1px solid rgba(255,255,255,.3);
-    background:#fff; color:#0C6C48; text-decoration:none;
-  }
-  .btn-mini:hover{ background:#f7f7f7 }
+    @media (max-width:960px){ .card{grid-column:span 6} }
+    @media (max-width:640px){ .card{grid-column:span 12} }
 
-  /* FAQ-Button linksbündig (unter Karte 4) */
-  .faq-wrap{ grid-column:1 / -1; margin:.4rem 0 .8rem; }
-  .btn-faq{
-    display:inline-block; font-weight:800; cursor:pointer;
-    padding:.45rem .7rem; border-radius:10px; border:1px solid rgba(255,255,255,.3);
-    background:#fff; color:#0C6C48; text-decoration:none;
-  }
+    .btn{display:inline-block; padding:.7rem 1rem; border-radius:12px; border:1px solid #fff; text-decoration:none; font-weight:800}
+    .btn--inverse{background:var(--btn-inverse-bg); color:var(--btn-inverse-fg)}
+    html.sd-dark .btn--inverse{color:var(--btn-inverse-fg-dark)} /* Dark: #096D48 */
 
-  /* Accordion-Inhalt */
-  .benefits-accordion, .faq-accordion { margin-top:.6rem; }
-  .benefits-accordion ul, .faq-accordion ul { margin:.2rem 0; padding-left:1.1rem; }
-  .benefits-accordion li, .faq-accordion li { margin:.25rem 0; }
-</style>
+    details{border:0}
+    details summary{cursor:pointer; font-weight:800}
 
-<script>
-  // SlackDigest: Accordion-Toggles
-  function sdToggle(id){
-    var el = document.getElementById(id);
-    if(!el) return;
-    el.open = !el.open;
-    if(el.open){ el.scrollIntoView({behavior:'smooth', block:'nearest'}); }
-  }
-</script>
+    footer{max-width:var(--container); margin:2.2rem auto; padding:0 1rem 2.4rem; color:#fff}
+    footer a{color:#fff}
 
+    html.sd-dark body{background:#0B0F13; color:var(--fg-dark)}
   </style>
-<script>
-  (function(){
-    var KEY='slackdigest_theme';
-    try{
-      var root=document.documentElement;
-      var saved=localStorage.getItem(KEY);
-      if(!saved){ // Default: Dark beim ersten Besuch
-        root.classList.add('sd-dark'); localStorage.setItem(KEY,'dark');
-      } else {
-        root.classList.toggle('sd-dark', saved==='dark');
-      }
-      window.__toggleSlackDigestTheme=function(){
-        var d=root.classList.toggle('sd-dark');
-        try{ localStorage.setItem(KEY, d?'dark':'light'); }catch(e){}
-      };
-    }catch(e){}
-  })();
-</script>
 
-  </style>
+  <script>
+    (function(){
+      var KEY='slackdigest_theme', root=document.documentElement;
+      try{
+        var saved=localStorage.getItem(KEY);
+        if(!saved){ root.classList.add('sd-dark'); localStorage.setItem(KEY,'dark'); }
+        else{ root.classList.toggle('sd-dark', saved==='dark'); }
+        window.__toggleSlackDigestTheme=function(){
+          var d=root.classList.toggle('sd-dark');
+          try{ localStorage.setItem(KEY, d?'dark':'light'); }catch(e){}
+        };
+      }catch(e){}
+    })();
+
+    function __toggleNav(){
+      var l=document.getElementById('navLinks');
+      if(!l) return;
+      var o=l.classList.toggle('open');
+      document.getElementById('navToggle').setAttribute('aria-expanded', o?'true':'false');
+    }
+  </script>
 </head>
 <body>
   <header class="site-header">
     <nav class="nav">
-      <a class="brand" href="/en/">Home</a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="/products/changewise/en/">ChangeWise</a></li>
-        <li><a href="/products/slackdigest/en/">SlackDigest</a></li>
-        <li><a href="/products/tasksieve/en/">TaskSieve</a></li>
-        <li class="lang"><a href="../" hreflang="de">DE</a> | <span class="active">EN</span></li>
-      </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">☰</button>
+      <div class="nav-inner">
+        <a class="brand" href="/en/">ChangeWise • SlackDigest • TaskSieve</a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="/products/changewise/en/">ChangeWise</a></li>
+          <li><a href="/products/slackdigest/en/">SlackDigest</a></li>
+          <li><a href="/products/tasksieve/en/">TaskSieve</a></li>
+          <li class="lang"><a href="../">DE</a> | <span class="active">EN</span></li>
+          <li class="theme"><button type="button" class="btn btn--inverse" onclick="__toggleSlackDigestTheme()">Dark / Light</button></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false" onclick="__toggleNav()">☰</button>
+      </div>
     </nav>
   </header>
 
   <main class="hero">
-    <div class="sd-theme-toggle" aria-label="Theme toggle">
-  <button type="button" onclick="__toggleSlackDigestTheme()">Dark / Light</button>
-</div>
-
-   <div class="hero-header">
+    <div class="hero-header">
       <div class="hero-text">
         <h1>SlackDigest</h1>
-        <p class="lead">Updates that move things forward.</p>
+        <p class="lead">Updates that move things.</p>
       </div>
-      <div class="product-logo logo--rightcol">
-        <img src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo" width="88" loading="lazy" decoding="async">
+      <div class="logo-col">
+        <div class="product-logo">
+          <img src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo" width="88" loading="lazy" decoding="async" />
+        </div>
       </div>
     </div>
 
     <section class="section-cards">
       <section class="grid" aria-label="Key Features">
+        <!-- 1 -->
         <article class="card">
-          <h3>At a glance</h3>
+          <h3>To the point</h3>
           <p>One glance, one link — done.</p>
         </article>
+
+        <!-- 2 -->
         <article class="card">
           <h3>How it works</h3>
           <ul>
             <li>Connect Slack/email</li>
-            <li>Auto-condense signals</li>
+            <li>Auto-distill signals</li>
             <li>Deliver updates (one glance, one link, done)</li>
           </ul>
         </article>
+
+        <!-- 3 -->
         <article class="card">
           <h3>What it delivers</h3>
           <ul>
-            <li>Less noise, more focus</li>
-            <li>Compact digest surfacing what matters first</li>
+            <li>Less scatter, more focus</li>
+            <li>A compact digest that surfaces what matters—so teams decide faster.</li>
           </ul>
         </article>
-        <article class="card">
-          <h3>Status &amp; Contact</h3>
-          <p>Status: <strong>Open</strong> — try it.</p>
-          <p><a class="btn" href="mailto:info@slackdigest.org?subject=SlackDigest%20Test">Request beta</a></p>
-        </article>
-      <!-- FAQ button (left) + accordion -->
-<div class="faq-wrap">
-  <button type="button" class="btn-faq" onclick="sdToggle('sd-faq-en')">FAQ</button>
-  <details id="sd-faq-en" class="faq-accordion">
-    <summary style="display:none">FAQ</summary>
-    <ul>
-      <li><strong>Admin rights?</strong> No – reader access is enough.</li>
-      <li><strong>Setup time?</strong> Minutes. Guided, step by step.</li>
-      <li><strong>Delivery?</strong> Daily or weekly, at your chosen time.</li>
-      <li><strong>Where?</strong> Email or Slack, per team configuration.</li>
-      <li><strong>Filters/channels?</strong> Yes—surface only what matters.</li>
-      <li><strong>Context?</strong> Each item includes a link back + owner/next step.</li>
-      <li><strong>Privacy?</strong> Read-only access, no posts/changes to Slack.</li>
-      <li><strong>Reliability?</strong> Robust delivery with fallbacks & monitoring.</li>
-      <li><strong>Team size?</strong> Works for small to larger teams.</li>
-    </ul>
-  </details>
-</div>
-  
-       <article class="card">
-          <h3>Integrations</h3>
-          <p>Slack, email.</p>
-        </article>
-      <!-- Card 6: Benefits -->
-<article class="card card--benefits" id="card-benefits-en">
-  <h3>Benefits</h3>
-  <ul>
-    <li><strong>Fast start:</strong> Setup in minutes, reader access only.</li>
-    <li><strong>Stable & reliable:</strong> Digest delivered at a fixed time.</li>
-    <li><strong>Clear context:</strong> Link back + owner/next step.</li>
-  </ul>
-  <button type="button" class="btn-mini" onclick="sdToggle('sd-benefits-more-en')">more</button>
-  <details id="sd-benefits-more-en" class="benefits-accordion">
-    <summary style="display:none">More benefits</summary>
-    <ul>
-      <li>Async—fewer pings & ad-hoc meetings.</li>
-      <li>Filters & channel selection—only signals, less noise.</li>
-      <li>Email or Slack delivery, team-level control.</li>
-      <li>Searchable update archive.</li>
-      <li>Privacy-by-default: read-only, no write actions.</li>
-      <li>Lightweight, no vendor lock-in.</li>
-    </ul>
-  </details>
-</article>
 
+        <!-- 4 -->
+        <article class="card">
+          <h3>Status &amp; contact</h3>
+          <p>Status: <strong>Open</strong> — try it.</p>
+          <p>Contact: <a href="mailto:info@slackdigest.org">info@slackdigest.org</a></p>
+          <p>
+            <a class="btn btn--inverse" href="mailto:info@slackdigest.org?subject=SlackDigest%20Test&body=Hi%20SlackDigest%20team%2C%0A%0AI%27d%20like%20to%20try%20the%20beta.'">Request beta</a>
+          </p>
+
+          <!-- FAQ inline -->
+          <details id="sd-faq-en" style="margin-top:.6rem">
+            <summary>FAQ</summary>
+            <ul>
+              <li><strong>Admin rights?</strong> No – reader access is enough.</li>
+              <li><strong>Setup time?</strong> Minutes. Guided step-by-step.</li>
+              <li><strong>Delivery?</strong> Daily/weekly at your chosen time.</li>
+              <li><strong>Filters/channels?</strong> Yes—only signals, less noise.</li>
+              <li><strong>Context?</strong> Link back + owner/next step.</li>
+              <li><strong>Privacy?</strong> Read-only, no posting/changes.</li>
+              <li><strong>Reliability?</strong> Robust delivery with monitoring.</li>
+              <li><strong>Team size?</strong> Works from small to larger teams.</li>
+              <li><strong>Goal?</strong> Fewer pings, faster decisions.</li>
+            </ul>
+          </details>
+        </article>
+
+        <!-- 5 (under 2) -->
+        <article class="card">
+          <h3>Integrations</h3>
+          <p>Slack, email — more on request.</p>
+        </article>
+
+        <!-- 6 (under 3): Benefits -->
+        <article class="card" id="card-benefits-en">
+          <h3>Benefits</h3>
+          <ul>
+            <li><strong>Fast start:</strong> Setup in minutes, reader access only.</li>
+            <li><strong>User-friendly & reliable:</strong> stable digest at a fixed time.</li>
+            <li><strong>Clear context:</strong> link back + owner/next step.</li>
+          </ul>
+          <details id="sd-benefits-more-en" style="margin-top:.4rem">
+            <summary>more</summary>
+            <ul>
+              <li>Async—fewer pings & ad-hoc meetings.</li>
+              <li>Filters & channel selection—only signals.</li>
+              <li>Email or Slack delivery, team-level control.</li>
+              <li>Searchable update archive.</li>
+              <li>Privacy-by-default (read-only).</li>
+              <li>Lightweight, no vendor lock-in.</li>
+            </ul>
+          </details>
+        </article>
       </section>
     </section>
   </main>
-<!-- CW: BENEFITS -->
-<section id="benefits" style="margin:1.2rem 0">
-  <details>
-    <summary style="cursor:pointer;font-weight:800">Vorteile &amp; FAQ</summary>
-    <div style="margin-top:.6rem">
-      <h3 style="margin:.6rem 0 .2rem">Vorteile</h3>
-      <ul>
-        <li>Aufgaben überall verteilt → Eine Inbox für E-Mail, Notizen, Slack.</li>
-        <li>Duplikate &amp; Wiederholungen → Automatisches Dedupe &amp; Clustering.</li>
-        <li>Unklare Reihenfolge → Priorisierung nach Wirkung/Dringlichkeit/Aufwand macht die Next Action sichtbar.</li>
-        <li>Kontextwechsel bremst → Fokus-Blöcke &amp; Batching erhöhen Durchsatz.</li>
-        <li>Ideal für: Gründer:innen, PMs, Teamleads, Ops.</li>
-      </ul>
-      <h3 style="margin:.8rem 0 .2rem">FAQ</h3>
-      <ul>
-        <li><strong>Quellen?</strong> E-Mail/Notizen/Slack.</li>
-        <li><strong>Auto vs. manuell?</strong> Auto-Sortierung mit manuellem Feinschliff.</li>
-      </ul>
-    </div>
-  </details>
-</section>
 
   <footer>
-    <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
+    <a href="/en/impressum">Imprint</a> · <a href="/en/privacy">Privacy</a>
   </footer>
-
-  <script>
-    const t=document.getElementById('navToggle'), l=document.getElementById('navLinks');
-    if (t && l) t.addEventListener('click',()=>{ const o=l.classList.toggle('open'); t.setAttribute('aria-expanded', o?'true':'false'); });
-  </script>
 </body>
 </html>
