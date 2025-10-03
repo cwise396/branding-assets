@@ -6,6 +6,20 @@
   <title>SlackDigest – Updates that move things.</title>
   <meta name="description" content="SlackDigest distills signals from Slack & email into clear updates—one glance, one link, done." />
   <meta name="theme-color" content="#0B0F13" />
+<style>
+  /* Weißer Ring um Hero-Logo (kreisrund, 5px) */
+  .product-logo .logo-badge{
+    display:grid; place-items:center;
+    width:98px; height:98px;            /* 88px Logo + 2*5px Ring */
+    border-radius:50%;
+    border:5px solid #FFFFFF;
+    background:transparent;
+  }
+  .product-logo .logo-badge img{
+    width:88px; height:auto; display:block;
+    border-radius:50%; /* Logo selbst rund maskieren */
+  }
+</style>
 
   <style>
     :root{
@@ -100,9 +114,17 @@
  <style>
   /* Fix: Button-Text "Jetzt Beta testen" / "Request beta" in sRGB(12,108,72) */
   .btn--inverse { color:#0C6C48 !important; }
+<style>
+  /* CTA im weißen Button: sRGB(12,108,72) – robust gegen frühere Regeln */
+  .card .btn.btn--inverse,
+  .card .btn.btn--inverse:link,
+  .card .btn.btn--inverse:visited,
+  .card .btn.btn--inverse:active {
+    color:#0C6C48 !important;
+  }
 </style>
 
- <script>
+   <script>
     /* Mobile nav */
     function __toggleNav(){
       var l=document.getElementById('navLinks');
@@ -135,10 +157,12 @@
         <p class="lead">Updates that move things.</p>
       </div>
       <div class="logo-col">
-        <div class="product-logo">
-          <img src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo" width="88" loading="lazy" decoding="async" />
-        </div>
-      </div>
+         <div class="product-logo">
+  <span class="logo-badge">
+    <img src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo" width="88" loading="lazy" decoding="async" />
+  </span>
+</div>
+  </div>
     </div>
 
     <section class="section-cards">
