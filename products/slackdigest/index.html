@@ -1,5 +1,5 @@
  <!doctype html>
-<html lang="de" class="sd-dark"><!-- Default: Dark -->
+<html lang="de" class="sd-dark"><!-- Dark-only -->
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -11,9 +11,9 @@
     :root{
       --container:1100px;
 
-      /* Theme */
-      --bg-light:#FFFFFF;    --fg-light:#0B0F13;
-      --bg-dark:#0B0F13;     --fg-dark:#EAEAEA;
+      /* Dark-only Theme */
+      --bg-dark:#0B0F13;
+      --fg-dark:#EAEAEA;
 
       /* Brandfarben */
       --nav-red:#AE0F12;                 /* sRGB(174,15,18) */
@@ -22,8 +22,7 @@
       /* UI */
       --card-border:rgba(255,255,255,.28);
       --btn-inverse-bg:#FFFFFF;
-      --btn-inverse-fg:#0C6C48;          /* Light */
-      --btn-inverse-fg-dark:#096D48;     /* Dark sRGB(9,109,72) */
+      --btn-inverse-fg-dark:#096D48;     /* sRGB(9,109,72) */
     }
 
     *{ box-sizing:border-box }
@@ -57,7 +56,7 @@
     }
 
     /* Hero */
-    .hero{ color:#FFFFFF; padding-top:11mm } /* <- 11mm, damit Karte 6 ohne Scroll sichtbar ist */
+    .hero{ color:#FFFFFF; padding-top:11mm } /* 11mm: Benefits „mehr“ ohne Scroll sichtbar */
     .hero-header{
       max-width:var(--container); margin:0 auto; padding:0 1rem;
       display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; align-items:end;
@@ -92,10 +91,9 @@
     @media (max-width:960px){ .card{ grid-column:span 6 } }
     @media (max-width:640px){ .card{ grid-column:span 12 } }
 
-    /* Inverse Button (weiß) */
+    /* Inverse Button (weiß, fester Farbton im Dark-only) */
     .btn{ display:inline-block; padding:.7rem 1rem; border-radius:12px; border:1px solid #FFFFFF; text-decoration:none; font-weight:800 }
-    .btn--inverse{ background:var(--btn-inverse-bg); color:var(--btn-inverse-fg) }
-    html.sd-dark .btn--inverse{ color:var(--btn-inverse-fg-dark) } /* Dark: #096D48 */
+    .btn--inverse{ background:var(--btn-inverse-bg); color:var(--btn-inverse-fg-dark) } /* #096D48 */
 
     /* Details/Accordion */
     details{ border:0 }
@@ -104,38 +102,12 @@
     /* Footer */
     footer{ max-width:var(--container); margin:2.2rem auto; padding:0 1rem 2.4rem; color:#FFFFFF }
     footer a{ color:#FFFFFF }
+
+    /* Reste entfernen (z. B. grüner Streifen) */
+    #bg-overlay{ display:none !important; }
   </style>
 
   <script>
-    /* Theme-Init (Default = Dark) + Toggle; speichert pro Browser */
-    (function(){
-      var KEY='slackdigest_theme';
-      var root=document.documentElement;
-
-      function apply(saved){
-        var dark = (saved==='dark');
-        root.classList.toggle('sd-dark', dark);
-        // Browser-UI-Farbe
-        var meta = document.querySelector('meta[name="theme-color"]') || (function(){
-          var m=document.createElement('meta'); m.setAttribute('name','theme-color'); document.head.appendChild(m); return m;
-        })();
-        meta.setAttribute('content', dark ? '#0B0F13' : '#FFFFFF');
-      }
-
-      try{
-        var saved=localStorage.getItem(KEY);
-        if(!saved){ saved='dark'; localStorage.setItem(KEY,'dark'); }
-        apply(saved);
-        window.__toggleSlackDigestTheme=function(){
-          var now = root.classList.contains('sd-dark') ? 'light' : 'dark';
-          localStorage.setItem(KEY, now);
-          apply(now);
-        };
-      }catch(e){
-        root.classList.add('sd-dark');
-      }
-    })();
-
     /* Mobile nav */
     function __toggleNav(){
       var l=document.getElementById('navLinks');
@@ -156,7 +128,6 @@
           <li><a href="/products/slackdigest/">SlackDigest</a></li>
           <li><a href="/products/tasksieve/">TaskSieve</a></li>
           <li class="lang"><span class="active">DE</span> | <a href="./en/">EN</a></li>
-          <li class="theme"><button type="button" class="btn btn--inverse" onclick="__toggleSlackDigestTheme()">Dark / Light</button></li>
         </ul>
         <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-controls="navLinks" aria-expanded="false" onclick="__toggleNav()">☰</button>
       </div>
@@ -234,7 +205,7 @@
         <!-- 5 (unter 2) -->
         <article class="card">
           <h3>Integrationen</h3>
-          <p>Slack, E-Mail — weitere auf Anfrage.</p>
+          <p>Slack, E-Mail.</p>
         </article>
 
         <!-- 6 (unter 3): Vorteile -->
