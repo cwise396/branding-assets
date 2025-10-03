@@ -114,6 +114,71 @@
       var o=l.classList.toggle('open');
       document.getElementById('navToggle').setAttribute('aria-expanded', o?'true':'false');
     }
+ <style>
+  /* ===== SlackDigest – Final Overrides (DE/EN) ===== */
+
+  /* 1) Vollwertiges Theme: Seite wirklich hell/dunkel schalten */
+  :root{
+    --bg-light:#FFFFFF;    /* helles Seiten-Theme */
+    --fg-light:#0B0F13;
+    --bg-dark:#0B0F13;     /* dunkles Seiten-Theme (wie zuvor) */
+    --fg-dark:#EAEAEA;
+  }
+  /* Dark */
+  html.sd-dark body{
+    background:var(--bg-dark) !important;
+    color:var(--fg-dark) !important;
+  }
+  /* Light */
+  html:not(.sd-dark) body{
+    background:var(--bg-light) !important;
+    color:var(--fg-light) !important;
+  }
+
+  /* Karten bleiben in beiden Themes grün/weiß (dein Wunsch) */
+  .section-cards .card, .grid .card{
+    background:#0C6C48 !important;
+    color:#FFFFFF !important;
+    border-color:rgba(255,255,255,.28) !important;
+  }
+
+  /* CTA im Status-Block: Dark = #096D48, Light = #0C6C48 */
+  .btn--inverse{ color:#0C6C48 !important; }           /* Light */
+  html.sd-dark .btn--inverse{ color:#096D48 !important; } /* Dark */
+
+  /* 2) Hero-Block 15mm nach oben ziehen (26mm → 11mm) */
+  .hero{ padding-top:11mm !important; }
+
+  /* 3) Nav: durchgehend rot + responsive Klappen wie gehabt */
+  .site-header, .nav{ background:#AE0F12 !important; }
+  .nav a, .nav .brand, .nav-toggle{ color:#FFFFFF !important; }
+
+  /* 4) Unten evtl. altes Overlay sicher entfernen (grüner Streifen) */
+  #bg-overlay{ display:none !important; }
+</style>
+
+<script>
+  /* Optional nice-to-have: theme-color der Browser-UI mitswitchen */
+  (function(){
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if(!meta){
+      meta = document.createElement('meta');
+      meta.setAttribute('name','theme-color');
+      document.head.appendChild(meta);
+    }
+    function applyThemeColor(){
+      var isDark = document.documentElement.classList.contains('sd-dark');
+      meta.setAttribute('content', isDark ? '#0B0F13' : '#FFFFFF');
+    }
+    applyThemeColor();
+    var _oldToggle = window.__toggleSlackDigestTheme;
+    window.__toggleSlackDigestTheme = function(){
+      if (typeof _oldToggle === 'function') _oldToggle();
+      applyThemeColor();
+    };
+  })();
+</script>
+
   </script>
 </head>
 <body>
