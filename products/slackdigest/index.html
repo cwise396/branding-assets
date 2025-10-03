@@ -191,6 +191,43 @@
     background:#fff; color:#0C6C48; border:1px solid rgba(255,255,255,.3);
     border-radius:12px; padding:.45rem .7rem; font-weight:800; cursor:pointer;
   }
+<style>
+  /* --- SlackDigest Fixes (DE/EN) --- */
+
+  /* Nav: durchgehend rot + weiße Links */
+  .site-header{ background:#AE0F12 !important; }
+  .nav{ background:#AE0F12 !important; }
+  .nav a, .nav .brand, .nav-toggle{ color:#fff !important; }
+
+  /* Früheres Einklappen, damit nichts überlappt (auch Dark/Light) */
+  @media (max-width: 980px){
+    .nav{ position:relative }
+    .nav-links{
+      display:none; position:absolute; top:56px; left:0; right:0;
+      background:#AE0F12 !important; padding:1rem; margin:0;
+      flex-direction:column; gap:.6rem;
+    }
+    .nav-links.open{ display:flex }
+    .nav-toggle{ display:inline-block }
+  }
+
+  /* Karten immer grün (auch im Dark-Mode) */
+  .section-cards .card, .grid .card{
+    background:#0C6C48 !important;
+    color:#fff !important;
+    border-color:rgba(255,255,255,.28) !important;
+  }
+  html.sd-dark .section-cards .card, html.sd-dark .grid .card{
+    background:#0C6C48 !important; color:#fff !important;
+  }
+
+  /* Dark-Mode: CTA-Text im weißen Button dunkler Grün (#096D48) */
+  html.sd-dark .card .btn--inverse{ color:#096D48 !important; }
+
+  /* Eventuelles Vollflächen-Overlay (grüner Streifen) sichern/entfernen */
+  #bg-overlay{ display:none !important; }
+</style>
+
 </style>
 
 </head>
@@ -257,10 +294,10 @@
           <h3>Status &amp; Kontakt</h3>
           <p>Status: <strong>Open</strong> — ausprobieren.</p>
           <p><a class="btn" href="mailto:info@slackdigest.org?subject=SlackDigest%20Test">Jetzt Beta testen</a></p>
-       <div class="faq-inline">
-  <button type="button" class="btn-faq" onclick="sdToggle('sd-faq')">FAQ</button>
+       <!-- FAQ inline (ohne separaten Button) -->
+<div class="faq-inline">
   <details id="sd-faq">
-    <summary style="display:none">FAQ</summary>
+    <summary style="cursor:pointer;font-weight:800">FAQ</summary>
     <ul>
       <li><strong>Admin-Rechte?</strong> Nein – Leserechte genügen.</li>
       <li><strong>Setup-Zeit?</strong> Minuten. Schritt-für-Schritt geführt.</li>
@@ -274,6 +311,7 @@
     </ul>
   </details>
 </div>
+
 
         </article>
      
