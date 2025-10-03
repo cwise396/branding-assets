@@ -152,9 +152,29 @@
     /* Falls frühere Versuche aktiv sind, neutralisieren: */
     box-shadow:none !important;
   }
-</style>
+<style>
+  /* TaskSieve: 5px weißer Ring hinter dem Hero-Logo (robust) */
+  .logo-col .product-logo{
+    position:relative;
+    width:88px; height:88px;   /* gleiche Größe wie das Logo */
+  }
+  .logo-col .product-logo img{
+    width:88px; height:88px;
+    display:block;
+    border-radius:50%;         /* rund maskieren, falls SVG rechteckig gerendert wird */
+    position:relative;
+    z-index:1;
+  }
+  .logo-col .product-logo .ring{
+    position:absolute;
+    inset:-5px;                /* 5px außen herum */
+    border:5px solid #FFFFFF;  /* der Ring */
+    border-radius:50%;
+    z-index:0;                 /* hinter dem Logo */
+    pointer-events:none;
+  }
 
-  </style>
+ </style>
 </script>
 </head>
 <body>
@@ -181,13 +201,11 @@
       </div>
       <div class="logo-col">
          <div class="product-logo">
-  <span class="logo-badge">
-    <img src="/assets/brand/tasksieve_logo.svg" alt="TaskSieve Logo" width="88" loading="lazy" decoding="async" />
-  </span>
+  <span class="ring" aria-hidden="true"></span>
+  <img src="/assets/brand/tasksieve_logo.svg" alt="TaskSieve Logo" width="88" loading="lazy" decoding="async" />
 </div>
 
-      </div>
-    </div>
+ </div>
 
     <section class="section-cards">
       <section class="grid" aria-label="Key Features">
