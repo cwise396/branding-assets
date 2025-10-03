@@ -136,11 +136,26 @@
     background:transparent !important;
     box-shadow:0 0 0 5px #FFFFFF !important; /* 5px-Ring */
   }
+<style>
+  /* TaskSieve: Weißer Ring (5 px) um das Hero-Logo via Padding */
+  .hero .product-logo img{
+    display:block !important;
+    width:88px !important;
+    height:auto !important;
+    border-radius:50% !important;
+
+    /* Der Ring: 5px „Rand“ durch Padding + weißer Hintergrund */
+    padding:5px !important;
+    background:#FFFFFF !important;
+    box-sizing:content-box !important; /* sorgt dafür, dass die 5px außen sichtbar werden */
+
+    /* Falls frühere Versuche aktiv sind, neutralisieren: */
+    box-shadow:none !important;
+  }
 </style>
 
   </style>
-
-  </script>
+</script>
 </head>
 <body>
   <header class="site-header">
