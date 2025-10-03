@@ -97,9 +97,12 @@
     footer a{ color:#FFFFFF }
 
     #bg-overlay{ display:none !important; }
-  </style>
+ <style>
+  /* Fix: Button-Text "Jetzt Beta testen" / "Request beta" in sRGB(12,108,72) */
+  .btn--inverse { color:#0C6C48 !important; }
+</style>
 
-  <script>
+ <script>
     /* Mobile nav */
     function __toggleNav(){
       var l=document.getElementById('navLinks');
