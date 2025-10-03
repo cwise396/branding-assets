@@ -132,7 +132,19 @@
       var o=l.classList.toggle('open');
       document.getElementById('navToggle').setAttribute('aria-expanded', o?'true':'false');
     }
-  </script>
+ <style>
+  /* Force CTA text "Jetzt Beta testen" / "Request beta" to sRGB(12,108,72) */
+  .card a.btn.btn--inverse,
+  .card a.btn.btn--inverse:link,
+  .card a.btn.btn--inverse:visited,
+  .card a.btn.btn--inverse:hover,
+  .card a.btn.btn--inverse:active {
+    color:#0C6C48 !important;
+    -webkit-text-fill-color:#0C6C48 !important; /* Safari robustness */
+  }
+</style>
+
+   </script>
 </head>
 <body>
   <header class="site-header">
