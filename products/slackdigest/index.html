@@ -78,7 +78,48 @@
     background:#fff; color:#0C6C48; border:1px solid #E5E7EB; border-radius:12px;
     padding:.5rem .7rem; font-weight:800; cursor:pointer;
   }
+<style>
+  /* SlackDigest: Kartenfarbe fixieren (sRGB 12,108,72) */
+  .grid .card { background:#0C6C48 !important; color:#fff !important; border-color:rgba(255,255,255,.28) !important; }
+
+  /* Vorteile-Karte (Pos. 6) */
+  .card--benefits h3 { margin:0 0 .4rem }
+  .card--benefits ul { margin:.2rem 0 .6rem; padding-left:1.1rem; }
+  .card--benefits li { margin:.2rem 0; }
+
+  /* Mini-Button: „mehr“ / „more“ */
+  .btn-mini{
+    display:inline-block; font:inherit; font-weight:800; cursor:pointer;
+    padding:.35rem .6rem; border-radius:10px; border:1px solid rgba(255,255,255,.3);
+    background:#fff; color:#0C6C48; text-decoration:none;
+  }
+  .btn-mini:hover{ background:#f7f7f7 }
+
+  /* FAQ-Button linksbündig (unter Karte 4) */
+  .faq-wrap{ grid-column:1 / -1; margin:.4rem 0 .8rem; }
+  .btn-faq{
+    display:inline-block; font-weight:800; cursor:pointer;
+    padding:.45rem .7rem; border-radius:10px; border:1px solid rgba(255,255,255,.3);
+    background:#fff; color:#0C6C48; text-decoration:none;
+  }
+
+  /* Accordion-Inhalt */
+  .benefits-accordion, .faq-accordion { margin-top:.6rem; }
+  .benefits-accordion ul, .faq-accordion ul { margin:.2rem 0; padding-left:1.1rem; }
+  .benefits-accordion li, .faq-accordion li { margin:.25rem 0; }
 </style>
+
+<script>
+  // SlackDigest: Accordion-Toggles
+  function sdToggle(id){
+    var el = document.getElementById(id);
+    if(!el) return;
+    el.open = !el.open;
+    if(el.open){ el.scrollIntoView({behavior:'smooth', block:'nearest'}); }
+  }
+</script>
+
+  </style>
 <script>
   (function(){
     var KEY='slackdigest_theme';
@@ -155,10 +196,51 @@
           <p>Status: <strong>Open</strong> — ausprobieren.</p>
           <p><a class="btn" href="mailto:info@slackdigest.org?subject=SlackDigest%20Test">Jetzt Beta testen</a></p>
         </article>
-        <article class="card">
+      <!-- FAQ-Button (links) + Accordion -->
+<div class="faq-wrap">
+  <button type="button" class="btn-faq" onclick="sdToggle('sd-faq')">FAQ</button>
+  <details id="sd-faq" class="faq-accordion">
+    <summary style="display:none">FAQ</summary>
+    <ul>
+      <li><strong>Admin-Rechte?</strong> Nein – Leserechte genügen.</li>
+      <li><strong>Setup-Zeit?</strong> Minuten. Schritt-für-Schritt geführt.</li>
+      <li><strong>Zustellung?</strong> Täglich oder wöchentlich, zu deinem Wunschtermin.</li>
+      <li><strong>Wohin?</strong> E-Mail oder Slack, pro Team konfigurierbar.</li>
+      <li><strong>Filter/Kanäle?</strong> Ja – nur Relevantes wird aufgenommen.</li>
+      <li><strong>Kontext?</strong> Jeder Eintrag mit Link zurück + Owner/Nächster Schritt.</li>
+      <li><strong>Datenschutz?</strong> Read-only Zugriff, keine Posts/Änderungen in Slack.</li>
+      <li><strong>Zuverlässigkeit?</strong> Robuste Zustellung, Fallbacks & Monitoring.</li>
+      <li><strong>Teamgröße?</strong> Funktioniert für kleine bis größere Teams.</li>
+    </ul>
+  </details>
+</div>
+ 
+       <article class="card">
           <h3>Integrationen</h3>
           <p>Slack, E-Mail.</p>
         </article>
+     <!-- Karte 6: Vorteile -->
+<article class="card card--benefits" id="card-benefits">
+  <h3>Vorteile</h3>
+  <ul>
+    <li><strong>Schneller Start:</strong> Setup in Minuten, nur Leserechte.</li>
+    <li><strong>Zuverlässig & stabil:</strong> Digest zum festen Zeitpunkt – verlässlich.</li>
+    <li><strong>Klarer Kontext:</strong> Link zurück + Owner/Nächster Schritt.</li>
+  </ul>
+  <button type="button" class="btn-mini" onclick="sdToggle('sd-benefits-more')">mehr</button>
+  <details id="sd-benefits-more" class="benefits-accordion">
+    <summary style="display:none">Weitere Vorteile</summary>
+    <ul>
+      <li>Asynchron – weniger Pings & Ad-hoc-Meetings.</li>
+      <li>Filter & Kanalauswahl – nur Signale, kein Lärm.</li>
+      <li>E-Mail oder Slack, fein steuerbar pro Team.</li>
+      <li>Durchsuchbares Archiv der Updates.</li>
+      <li>Privacy-by-default: read-only, keine Schreibaktionen.</li>
+      <li>Leichtgewichtig, keine Vendor-Lock-ins.</li>
+    </ul>
+  </details>
+</article>
+
       </section>
     </section>
   </main>
