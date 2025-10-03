@@ -136,7 +136,17 @@
     width:88px; height:auto; display:block;
     border-radius:50%; /* Logo sauber rund maskieren */
   }
+<style>
+  /* TaskSieve: Weißer Ring (5px) direkt am Logo-Bild erzwingen */
+  .hero .product-logo img{
+    display:block !important;
+    border-radius:50% !important;        /* rund maskieren */
+    background:transparent !important;
+    box-shadow:0 0 0 5px #FFFFFF !important; /* 5px-Ring */
+  }
 </style>
+
+  </style>
 
   </script>
 </head>
