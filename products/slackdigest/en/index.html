@@ -1,5 +1,5 @@
  <!doctype html>
-<html lang="en" class="sd-dark"><!-- Default: Dark -->
+<html lang="en" class="sd-dark"><!-- Dark-only -->
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -11,9 +11,9 @@
     :root{
       --container:1100px;
 
-      /* Theme */
-      --bg-light:#FFFFFF;    --fg-light:#0B0F13;
-      --bg-dark:#0B0F13;     --fg-dark:#EAEAEA;
+      /* Dark-only Theme */
+      --bg-dark:#0B0F13;
+      --fg-dark:#EAEAEA;
 
       /* Brand */
       --nav-red:#AE0F12;
@@ -21,7 +21,6 @@
 
       --card-border:rgba(255,255,255,.28);
       --btn-inverse-bg:#FFFFFF;
-      --btn-inverse-fg:#0C6C48;
       --btn-inverse-fg-dark:#096D48;
     }
 
@@ -89,44 +88,19 @@
     @media (max-width:640px){ .card{ grid-column:span 12 } }
 
     .btn{ display:inline-block; padding:.7rem 1rem; border-radius:12px; border:1px solid #FFFFFF; text-decoration:none; font-weight:800 }
-    .btn--inverse{ background:var(--btn-inverse-bg); color:var(--btn-inverse-fg) }
-    html.sd-dark .btn--inverse{ color:var(--btn-inverse-fg-dark) } /* Dark: #096D48 */
+    .btn--inverse{ background:var(--btn-inverse-bg); color:var(--btn-inverse-fg-dark) } /* #096D48 */
 
     details{ border:0 }
     details summary{ cursor:pointer; font-weight:800 }
 
     footer{ max-width:var(--container); margin:2.2rem auto; padding:0 1rem 2.4rem; color:#FFFFFF }
     footer a{ color:#FFFFFF }
+
+    #bg-overlay{ display:none !important; }
   </style>
 
   <script>
-    (function(){
-      var KEY='slackdigest_theme';
-      var root=document.documentElement;
-
-      function apply(saved){
-        var dark = (saved==='dark');
-        root.classList.toggle('sd-dark', dark);
-        var meta = document.querySelector('meta[name="theme-color"]') || (function(){
-          var m=document.createElement('meta'); m.setAttribute('name','theme-color'); document.head.appendChild(m); return m;
-        })();
-        meta.setAttribute('content', dark ? '#0B0F13' : '#FFFFFF');
-      }
-
-      try{
-        var saved=localStorage.getItem(KEY);
-        if(!saved){ saved='dark'; localStorage.setItem(KEY,'dark'); }
-        apply(saved);
-        window.__toggleSlackDigestTheme=function(){
-          var now = root.classList.contains('sd-dark') ? 'light' : 'dark';
-          localStorage.setItem(KEY, now);
-          apply(now);
-        };
-      }catch(e){
-        root.classList.add('sd-dark');
-      }
-    })();
-
+    /* Mobile nav */
     function __toggleNav(){
       var l=document.getElementById('navLinks');
       if(!l) return;
@@ -145,7 +119,6 @@
           <li><a href="/products/slackdigest/en/">SlackDigest</a></li>
           <li><a href="/products/tasksieve/en/">TaskSieve</a></li>
           <li class="lang"><a href="../">DE</a> | <span class="active">EN</span></li>
-          <li class="theme"><button type="button" class="btn btn--inverse" onclick="__toggleSlackDigestTheme()">Dark / Light</button></li>
         </ul>
         <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false" onclick="__toggleNav()">☰</button>
       </div>
@@ -221,7 +194,7 @@
         <!-- 5 (under 2) -->
         <article class="card">
           <h3>Integrations</h3>
-          <p>Slack, email — more on request.</p>
+          <p>Slack, email.</p>
         </article>
 
         <!-- 6 (under 3): Benefits -->
