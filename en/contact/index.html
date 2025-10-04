@@ -1,104 +1,275 @@
-<!doctype html>
+ <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Get in touch – ChangeWise</title>
-<meta name="description" content="Get in touch: short intro video and a fully automated contact flow.">
+<title>Contact • ChangeWise / SlackDigest / TaskSieve</title>
+<meta name="description" content="No-call onboarding: request a test digest, load a demo inbox, or fill a quick brief. Instant result and automatic confirmation.">
+<meta name="theme-color" content="#0B1220">
 <style>
-  :root{ --brand:#0E3960; --nav:#A22121; --text:#0F172A; --muted:#475569; --bd:#E5E7EB;
-         --btn-bg:#ffffff; --btn-fg:var(--brand); --btn-bd:#CBD5E1; --btn-bg-h:#F8FAFC; --cta-bg:#ffffff; --cta-fg:#0E3960; --cta-bd:#CBD5E1; }
-  *{box-sizing:border-box} html,body{height:100%}
-  body{margin:0; font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; color:var(--text); background:#fff}
-  .container{width:min(980px,92%); margin:0 auto; padding:16px 0 40px}
-  .topbar{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:10px 0}
-  .brand a{color:var(--nav); text-decoration:none; font-weight:800}
-  .lang{padding:8px 12px; border-radius:999px; border:1px solid var(--bd); text-decoration:none; color:var(--brand); font-weight:700}
-  h1{margin:12px 0 6px; color:var(--brand); font-size:clamp(1.6rem,1.1rem + 1.6vw,2.2rem)}
-  .lead{margin:0 0 16px; color:var(--muted)}
-  .grid{display:grid; grid-template-columns:1fr; gap:18px}
-  @media (min-width:980px){ .grid{grid-template-columns:1.15fr .85fr} }
-  .video-wrap{border:1px solid var(--bd); border-radius:14px; overflow:hidden; box-shadow:0 10px 26px rgba(0,0,0,.08)}
-  .video{aspect-ratio:16/9; width:100%; background:#000}
-  .side{display:grid; gap:14px}
-  .cta{border:1px solid var(--cta-bd); border-radius:14px; padding:14px; background:var(--cta-bg); color:var(--cta-fg); box-shadow:0 10px 26px rgba(0,0,0,.06)}
-  .cta h2{margin:0 0 6px; font-size:1.1rem; color:var(--brand)}
-  .cta p{margin:6px 0 10px; color:var(--muted)}
-  .btn{background:var(--btn-bg); color:var(--btn-fg); border:1px solid var(--btn-bd); padding:10px 14px; border-radius:12px; font-weight:800; text-decoration:none; cursor:pointer}
-  .btn:hover{background:var(--btn-bg-h)}
-  form{border:1px solid var(--bd); border-radius:14px; padding:14px; box-shadow:0 10px 26px rgba(0,0,0,.06)}
-  label{display:block; font-weight:700; margin:10px 0 6px}
-  input[type="text"], input[type="email"], select, textarea{ width:100%; padding:10px 12px; border:1px solid var(--bd); border-radius:10px; font:inherit }
-  textarea{min-height:120px; resize:vertical}
-  .row{display:grid; grid-template-columns:1fr 1fr; gap:10px}
-  .actions{display:flex; gap:10px; align-items:center; margin-top:10px}
-  .small{font-size:.9rem; color:var(--muted)}
-  footer{margin-top:20px; color:var(--muted)}
-  footer a{color:inherit; text-decoration:none}
-  footer a:hover{text-decoration:underline}
+:root{
+  --container:1100px;
+  --bg:#0B1220; --fg:#FFFFFF; --muted:#CBD5E1;
+  --nav-red:#AE0F12;
+  --btn-bg:#FFFFFF; --btn-fg:#0E3960;
+  --card:#0F1A2A; --card-bd:rgba(255,255,255,.14);
+  --link:#FFFFFF;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+a{color:var(--link);text-decoration:none}
+.site-header{position:sticky;top:0;z-index:50;width:100%;background:var(--nav-red)}
+.nav-inner{max-width:var(--container);margin:0 auto;padding:0 1rem;height:12mm;display:flex;align-items:center;justify-content:space-between}
+.brand{color:#fff;font-weight:800}
+.nav-links{list-style:none;display:flex;gap:1rem;margin:0;padding:0}
+.nav-links a{color:#fff}
+.nav-toggle{display:none}
+@media (max-width:980px){
+  .nav-inner{position:relative;height:auto;min-height:12mm;padding-block:.4rem}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--nav-red);padding:1rem;flex-direction:column}
+  .nav-links.open{display:flex}
+  .nav-toggle{display:inline-block;background:none;border:0;color:#fff;font-size:1.2rem}
+}
+main{max-width:var(--container);margin:0 auto;padding:0 1rem 2.4rem}
+.hero{padding:18px 0 6px}
+.hero h1{margin:0 0 4px;font-size:clamp(1.6rem,1.2rem + 2vw,2.2rem)}
+.hero p{margin:0 0 10px;color:var(--muted)}
+.grid{display:grid;gap:16px;margin-top:12px}
+@media (min-width:980px){.grid{grid-template-columns:repeat(12,1fr)}}
+.card{background:var(--card);border:1px solid var(--card-bd);border-radius:14px;padding:16px}
+.card h2{margin:0 0 8px}
+.card p{margin:0 0 8px}
+.video{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;border:1px solid var(--card-bd)}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.section{grid-column:span 12}
+.btn{display:inline-block;padding:.7rem 1rem;border-radius:12px;border:1px solid #fff;background:#fff;color:#0E3960;font-weight:800}
+form{display:grid;gap:10px;margin-top:8px}
+input,textarea,select{width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--card-bd);background:#0B1220;color:#fff}
+label{font-weight:700}
+small.hint{color:var(--muted)}
+.consent{display:flex;gap:8px;align-items:flex-start}
+.alert{background:#132032;border:1px solid var(--card-bd);border-radius:10px;padding:10px;margin:8px 0;color:var(--muted);font-size:.9rem}
+hr.sep{border:0;border-top:1px solid var(--card-bd);margin:12px 0}
+footer{max-width:var(--container);margin:2rem auto;padding:0 1rem 2rem;color:#fff}
+footer a{color:#fff}
+details summary{cursor:pointer;font-weight:800}
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid var(--card-bd);color:var(--muted);font-size:.8rem}
+.hide{display:none !important}
 </style>
+<script>
+function toggleNav(){var l=document.getElementById('navLinks'); if(!l) return; var o=l.classList.toggle('open'); document.getElementById('navToggle').setAttribute('aria-expanded',o?'true':'false');}
+
+// Product context from hash
+function setProductContext(){
+  var hash=(location.hash||'').toLowerCase();
+  var p='general';
+  if(hash.includes('tasksieve')) p='tasksieve';
+  else if(hash.includes('changewise')) p='changewise';
+  else if(hash.includes('slackdigest')) p='slackdigest';
+  document.querySelectorAll('input[name="product"]').forEach(el=>el.value=p);
+
+  if(p==='slackdigest'){ location.hash='#slackdigest'; document.getElementById('sec-sd')?.scrollIntoView({behavior:'smooth',block:'start'}); }
+  if(p==='tasksieve'){ location.hash='#tasksieve'; document.getElementById('sec-ts')?.scrollIntoView({behavior:'smooth',block:'start'}); }
+  if(p==='changewise'){ location.hash='#changewise'; document.getElementById('sec-cw')?.scrollIntoView({behavior:'smooth',block:'start'}); }
+}
+document.addEventListener('DOMContentLoaded', setProductContext);
+
+// Mini diagnosis (ChangeWise)
+function cwDiagnose(ev){
+  ev.preventDefault();
+  var team = document.querySelector('#cw-team')?.value || 'small';
+  var kit  = document.querySelector('input[name="cw-kit"]:checked')?.value || 'no';
+  var goal = document.querySelector('#cw-goal')?.value || 'consistency';
+
+  var rec=[];
+  if(kit==='no') rec.push('Create a brand kit (logo, colors, type) as a single source of truth.');
+  if(goal==='consistency') rec.push('Prioritize guidelines & templates to make outputs consistent.');
+  if(goal==='speed') rec.push('Use playbooks & templates for faster delivery — fewer review loops.');
+  if(team==='mid') rec.push('Self-serve enablement: micro-videos & checklists for the team.');
+
+  if(rec.length===0) rec.push('Polish tone of voice & review gates.');
+
+  var out=document.getElementById('cwResult');
+  out.innerHTML = '<h3>Your result</h3><ul>'+rec.map(r=>'<li>'+r+'</li>').join('')+'</ul><p><span class="badge">You can attach this to the message — it will be sent with the form.</span></p>';
+  document.getElementById('cw_rec').value = rec.join(' | ');
+  out.classList.remove('hide');
+}
+</script>
 </head>
 <body>
-<main class="container">
-  <nav class="topbar">
-    <div class="brand"><a href="/en/">← Home</a></div>
-    <a class="lang" href="/contact/" hreflang="de">DE</a>
+<header class="site-header">
+  <nav>
+    <div class="nav-inner">
+      <a class="brand" href="/en/">Home</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/products/changewise/en/">ChangeWise</a></li>
+        <li><a href="/products/slackdigest/en/">SlackDigest</a></li>
+        <li><a href="/products/tasksieve/en/">TaskSieve</a></li>
+        <li class="lang"><a href="/contact/">DE</a> | <span class="active">EN</span></li>
+      </ul>
+      <button id="navToggle" class="nav-toggle" aria-expanded="false" onclick="toggleNav()">☰</button>
+    </div>
   </nav>
+</header>
 
-  <h1>Get in touch</h1>
-  <p class="lead">3–5 minute video: what we deliver & how the short workshop runs automatically. Then send your request — you’ll get an automatic confirmation.</p>
+<main>
+  <section class="hero">
+    <h1>No-call onboarding</h1>
+    <p>Answer <strong>only what’s needed</strong> — get an instant result or confirmation.</p>
+    <details>
+      <summary>Optional: watch a 90-second video</summary>
+      <div class="video" style="margin-top:10px">
+        <iframe src="https://www.youtube-nocookie.com/embed/YOUTUBE_ID_INTRO?rel=0"
+                title="Quick overview" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen loading="lazy"></iframe>
+      </div>
+    </details>
+  </section>
 
   <div class="grid">
-    <section class="video-wrap">
-      <!-- Replace VIDEO_ID -->
-      <iframe class="video" src="https://www.youtube.com/embed/VIDEO_ID"
-              title="ChangeWise Intro" frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen></iframe>
+    <!-- SlackDigest -->
+    <section id="sec-sd" class="card section">
+      <h2>SlackDigest — Request a test digest</h2>
+      <p><strong>3 steps:</strong> choose channels → cadence (daily/weekly) → delivery (email/Slack). One glance, one link — done.</p>
+      <form action="https://formspree.io/f/FORMSPREE_ID_CONTACT" method="POST">
+        <input type="hidden" name="product" value="slackdigest">
+        <input type="text" name="_gotcha" style="display:none">
+        <label>Name
+          <input type="text" name="name" required>
+        </label>
+        <label>Email
+          <input type="email" name="email" required>
+        </label>
+        <label>Channels
+          <input type="text" name="channels" placeholder="#sales, #support, mailbox …" required>
+        </label>
+        <label>Cadence
+          <select name="cadence" required>
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+          </select>
+        </label>
+        <label>Delivery
+          <select name="delivery" required>
+            <option value="email">Email</option>
+            <option value="slack">Slack</option>
+          </select>
+        </label>
+        <div class="consent">
+          <input id="e1" type="checkbox" name="consent" required>
+          <label for="e1">I agree to the processing of my data according to the <a href="/en/privacy">privacy policy</a>.</label>
+        </div>
+        <button class="btn" type="submit">Request test digest</button>
+        <input type="hidden" name="_subject" value="[Website] SlackDigest Test Digest">
+        <input type="hidden" name="_redirect" value="/en/contact/?success=1#slackdigest">
+      </form>
     </section>
 
-    <aside class="side">
-      <section class="cta">
-        <h2>Book intro call (25 min)</h2>
-        <p>Automatic calendar invite, video link, ICS & reminders.</p>
-        <a class="btn" href="/en/booking/">Choose a slot</a>
-      </section>
-
-      <!-- CTA 1: Choose a slot (25 min) -->
-<section class="cta">
-  <h2>Choose a slot (25 min)</h2>
-  <p>Automatic calendar invite, video link, ICS &amp; reminders.</p>
-  <a class="btn" href="/en/booking/">Choose a slot (25 min)</a>
-</section>
-
-
-      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-        <input type="hidden" name="_subject" value="ChangeWise: Contact request">
-        <input type="hidden" name="language" value="en">
-        <div class="row">
-          <div>
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" placeholder="Full name" required>
-          </div>
-          <div>
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="name@company.com" required>
-          </div>
+    <!-- TaskSieve -->
+    <section id="sec-ts" class="card section">
+      <h2>TaskSieve — Try it quickly</h2>
+      <p><strong>Start without import:</strong> load a demo inbox and see prioritization live. Connect your sources afterwards.</p>
+      <form action="https://formspree.io/f/FORMSPREE_ID_CONTACT" method="POST">
+        <input type="hidden" name="product" value="tasksieve">
+        <input type="text" name="_gotcha" style="display:none">
+        <label>Name
+          <input type="text" name="name" required>
+        </label>
+        <label>Email
+          <input type="email" name="email" required>
+        </label>
+        <label>Mode
+          <select name="mode" required>
+            <option value="demo">Load demo inbox</option>
+            <option value="connect-later">Connect sources later</option>
+          </select>
+        </label>
+        <fieldset>
+          <legend>Sources (optional)</legend>
+          <label><input type="checkbox" name="sources" value="email"> Email</label>
+          <label><input type="checkbox" name="sources" value="notes"> Notes</label>
+          <label><input type="checkbox" name="sources" value="slack"> Slack</label>
+        </fieldset>
+        <div class="consent">
+          <input id="e2" type="checkbox" name="consent" required>
+          <label for="e2">I agree to the processing of my data according to the <a href="/en/privacy">privacy policy</a>.</label>
         </div>
-        <label for="goal">Request</label>
-        <textarea id="goal" name="goal" placeholder="How can we help?"></textarea>
-        <label><input type="checkbox" name="consent" required> I agree that my information will be processed to contact me.</label>
-        <div class="actions">
-          <button class="btn" type="submit">Send request</button>
-          <span class="small">Automatic confirmation via email.</span>
-        </div>
+        <button class="btn" type="submit">Request demo inbox</button>
+        <input type="hidden" name="_subject" value="[Website] TaskSieve Demo">
+        <input type="hidden" name="_redirect" value="/en/contact/?success=1#tasksieve">
       </form>
-    </aside>
+    </section>
+
+    <!-- ChangeWise -->
+    <section id="sec-cw" class="card section">
+      <h2>ChangeWise — Quick brief & mini diagnosis</h2>
+      <p><strong>3–4 answers</strong> → instant result with concrete recommendations. You can submit it along with your message.</p>
+      <form onsubmit="cwDiagnose(event)">
+        <div class="row" style="grid-template-columns:1fr 1fr">
+          <label>Team size
+            <select id="cw-team">
+              <option value="small">1–5</option>
+              <option value="mid">6–20</option>
+              <option value="large">21+</option>
+            </select>
+          </label>
+          <label>Main goal
+            <select id="cw-goal">
+              <option value="consistency">Consistency</option>
+              <option value="speed">Speed</option>
+            </select>
+          </label>
+          <fieldset>
+            <legend>Brand kit available?</legend>
+            <label><input type="radio" name="cw-kit" value="yes"> Yes</label>
+            <label><input type="radio" name="cw-kit" value="no" checked> No</label>
+          </fieldset>
+        </div>
+        <button class="btn" type="submit">See result</button>
+      </form>
+
+      <div id="cwResult" class="card" style="margin-top:12px" class="hide"></div>
+
+      <hr class="sep">
+
+      <form action="https://formspree.io/f/FORMSPREE_ID_CONTACT" method="POST">
+        <input type="hidden" name="product" value="changewise">
+        <input type="hidden" id="cw_rec" name="diagnosis" value="">
+        <input type="text" name="_gotcha" style="display:none">
+        <label>Your name
+          <input type="text" name="name" required>
+        </label>
+        <label>Email
+          <input type="email" name="email" required>
+        </label>
+        <label>Optional: link to brand materials
+          <input type="url" name="asset_url" placeholder="https://…">
+        </label>
+        <div class="consent">
+          <input id="e3" type="checkbox" name="consent" required>
+          <label for="e3">I agree to the processing of my data according to the <a href="/en/privacy">privacy policy</a>.</label>
+        </div>
+        <button class="btn" type="submit">Join waitlist</button>
+        <input type="hidden" name="_subject" value="[Website] ChangeWise Interest">
+        <input type="hidden" name="_redirect" value="/en/contact/?success=1#changewise">
+      </form>
+    </section>
   </div>
 
-  <footer>
-    © ChangeWise • <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
-  </footer>
+  <div class="alert" role="status" aria-live="polite" style="display:none" id="okMsg">
+    Thanks! Your message has been received.
+  </div>
 </main>
+
+<footer>
+  <a href="/en/impressum">Imprint</a> · <a href="/en/privacy">Privacy</a>
+</footer>
+
+<script>
+  if (new URLSearchParams(location.search).get('success')==='1') {
+    var ok=document.getElementById('okMsg'); if(ok) ok.style.display='block';
+  }
+</script>
 </body>
 </html>
