@@ -18,7 +18,7 @@
       /* Navbar */
       --nav-red:#AE0F12;    /* sRGB(174,15,18) */
 
-      /* Karten: ebenfalls blau, mit Rand & Schatten für Abhebung */
+      /* Karten */
       --card-blue:#0E3960;
       --card-border:rgba(255,255,255,.28);
 
@@ -35,13 +35,13 @@
     }
     a{ color:#FFFFFF; text-decoration:none }
 
-    /* Header/Nav – volle Breite rot, Höhe ~12mm */
+    /* Header/Nav – volle Breite rot, EXAKT 12mm hoch */
     .site-header{ position:sticky; top:0; z-index:50; width:100%; background:var(--nav-red) }
     .nav{ background:var(--nav-red) }
     .nav-inner{
       max-width:var(--container); margin:0 auto; padding:0 1rem;
       display:flex; align-items:center; justify-content:space-between;
-      min-height:12mm;  /* gewünschte Höhe */
+      height:12mm;            /* exakt 12mm */
     }
     .brand{ color:#FFFFFF; font-weight:800; white-space:nowrap }
     .nav-links{ list-style:none; display:flex; gap:1rem; margin:0; padding:0; align-items:center }
@@ -198,12 +198,20 @@
           <h3>Was es liefert</h3>
           <ul>
             <li><strong>Klar abgestimmte Botschaften</strong> → Kernbotschaft & Tonalität geben Richtung.</li>
-            <li><strong>Konsistenter Auftritt</strong> → Brand-Kit an einem Ort.</li>
             <li><strong>Schneller vom Entwurf zum Output</strong> → Vorlagen & Playbooks.</li>
-            <li><strong>Reibungsloser Rollout</strong> → klare <em>Guidelines & Vorlagen</em>.</li>
-            <li><strong>Weniger Korrekturschleifen</strong> → Do’s & Don’ts, Checklisten, Review-Gates.</li>
-            <li><strong>Self-Serve Enablement</strong> → kurze Playbooks & Mikro-Videos.</li>
+            <li><strong>Höhere Akzeptanz im Team</strong> → Enablement & klare Erwartungen.</li>
           </ul>
+          <details id="cw-delivers-more" style="margin-top:.4rem">
+            <summary>mehr</summary>
+            <ul>
+              <li>Konsistenter Auftritt → Brand-Kit an einem Ort.</li>
+              <li>Weniger Korrekturschleifen → Do’s & Don’ts, Checklisten, Review-Gates.</li>
+              <li>Reibungsloser Rollout → klare Guidelines & Vorlagen.</li>
+              <li>Messbare Wirkung → klare Ziele & einfache KPIs.</li>
+              <li>Weniger Abstimmungsaufwand → eine Quelle der Wahrheit (Brand-Kit).</li>
+              <li>Qualität bleibt konstant → Beispiele & Standards.</li>
+            </ul>
+          </details>
         </article>
 
         <!-- 4 -->
@@ -246,19 +254,19 @@
         <article class="card" id="card-benefits">
           <h3>Vorteile</h3>
           <ul>
-            <li><strong>Klar abgestimmte Botschaften</strong></li>
-            <li><strong>Konsistenter Auftritt</strong></li>
-            <li><strong>Schneller zum Output</strong></li>
+            <li><strong>Schneller Start</strong> → Kurz-Workshop → Prototyp.</li>
+            <li><strong>Single Source of Truth</strong> → Brand-Kit zentral.</li>
+            <li><strong>Wiederverwendbar</strong> → Vorlagen & Bausteine.</li>
           </ul>
           <details id="cw-benefits-more" style="margin-top:.4rem">
             <summary>mehr</summary>
             <ul>
-              <li>Klar abgestimmte Botschaften → Kernbotschaft & Tonalität geben Richtung.</li>
-              <li>Konsistenter Auftritt → Brand-Kit (Logo, Farben, Typo) an einem Ort.</li>
-              <li>Schneller vom Entwurf zum Output → Vorlagen & Playbooks.</li>
-              <li>Reibungsloser Rollout → klare Guidelines & Vorlagen.</li>
-              <li>Weniger Korrekturschleifen → Do’s & Don’ts, Checklisten, Review-Gates.</li>
-              <li>Self-Serve Enablement → kurze Playbooks & Mikro-Videos – Onboarding in Stunden statt Wochen.</li>
+              <li>Klare Verantwortlichkeiten je Kanal.</li>
+              <li>Governance leicht gemacht (Freigabe-Workflow).</li>
+              <li>Lokalisierung ready (Tone-Guides & Assets).</li>
+              <li>Asset-Bibliothek mit Suchfunktion.</li>
+              <li>Kompakte Guides für schnelles Onboarding.</li>
+              <li>Optionaler Support (remote/onsite).</li>
             </ul>
           </details>
         </article>
