@@ -13,7 +13,6 @@
       --page-blue:#0E3960;  --text:#FFFFFF;
       --nav-red:#AE0F12;
       --card-blue:#0E3960;  --card-border:rgba(255,255,255,.28);
-
       --btn-bg:#FFFFFF;     --btn-fg:#0E3960;
     }
 
@@ -25,20 +24,24 @@
     }
     a{ color:#FFFFFF; text-decoration:none }
 
+    /* Header/Nav – full width red, exact height ~12mm */
     .site-header{ position:sticky; top:0; z-index:50; width:100%; background:var(--nav-red) }
     .nav{ background:var(--nav-red) }
     .nav-inner{
-      max-width:var(--container); margin:0 auto; padding:0 1rem;
+      max-width:var(--container);
+      margin:0 auto;
+      padding-inline:1rem;        /* horizontal only */
+      padding-block:0;            /* ensure exact height */
       display:flex; align-items:center; justify-content:space-between;
-      min-height:12mm;
+      height:12mm;                /* hard height */
     }
     .brand{ color:#FFFFFF; font-weight:800; white-space:nowrap }
     .nav-links{ list-style:none; display:flex; gap:1rem; margin:0; padding:0; align-items:center }
     .nav-links a{ color:#FFFFFF }
-    .nav-toggle{ display:none; background:none; border:0; color:#FFFFFF; font-size:1.2rem }
+    .nav-toggle{ display:none; background:none; border:0; color:#FFFFFF; font-size:1.2rem; line-height:1 }
 
     @media (max-width:980px){
-      .nav-inner{ position:relative }
+      .nav-inner{ position:relative; height:auto; min-height:12mm; padding-block:.4rem }
       .nav-links{
         display:none; position:absolute; top:100%; left:0; right:0;
         background:var(--nav-red); padding:1rem; margin:0; flex-direction:column; gap:.6rem;
@@ -47,7 +50,8 @@
       .nav-toggle{ display:inline-block }
     }
 
-    .hero{ color:#FFFFFF; padding-top:11mm }
+    /* Hero */
+    .hero{ color:#FFFFFF; padding-top:11mm } /* keeps “more” visible without scroll */
     .hero-header{
       max-width:var(--container); margin:0 auto; padding:0 1rem;
       display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; align-items:end;
@@ -57,6 +61,7 @@
     .hero p.lead{ margin:0; font-size:clamp(1.1rem,2.4vw,1.35rem); font-weight:700; opacity:.95 }
 
     .logo-col{ grid-column:9 / 13; justify-self:start; display:flex; align-items:center }
+    /* White 5px ring via inline SVG (robust) */
     .product-logo{ position:relative; width:98px; height:98px }
     .product-logo .logo-ring{ position:absolute; inset:0; width:98px; height:98px; z-index:2; pointer-events:none; display:block }
     .product-logo .logo-ring svg{ width:100%; height:100%; display:block }
@@ -72,6 +77,7 @@
       .logo-col{ grid-column:1 / -1; justify-self:center }
     }
 
+    /* Cards Grid */
     .section-cards{ max-width:var(--container); margin:0 auto; padding:0 1rem 2.4rem }
     .grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; margin-top:1rem }
     .card{
@@ -89,6 +95,7 @@
     @media (max-width:960px){ .card{ grid-column:span 6 } }
     @media (max-width:640px){ .card{ grid-column:span 12 } }
 
+    /* CTA: white button with blue text (robust) */
     .btn{ display:inline-block; padding:.7rem 1rem; border-radius:12px; border:1px solid #FFFFFF; text-decoration:none; font-weight:800; background:transparent }
     .btn--inverse{ background:var(--btn-bg) }
     .card a.btn.btn--inverse,
@@ -127,7 +134,7 @@
           <li><a href="/products/changewise/en/">ChangeWise</a></li>
           <li><a href="/products/slackdigest/en/">SlackDigest</a></li>
           <li><a href="/products/tasksieve/en/">TaskSieve</a></li>
-        <li class="lang"><a href="../">DE</a> | <span class="active">EN</span></li>
+          <li class="lang"><a href="../">DE</a> | <span class="active">EN</span></li>
         </ul>
         <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false" onclick="__toggleNav()">☰</button>
       </div>
@@ -179,10 +186,18 @@
             <li><strong>Aligned messaging across the team</strong> → core message & tone set direction.</li>
             <li><strong>Consistent look & feel</strong> → brand kit in one place.</li>
             <li><strong>Faster from draft to delivery</strong> → templates & playbooks.</li>
-            <li><strong>Smoother rollout</strong> → clear <em>guidelines & templates</em>.</li>
-            <li><strong>Fewer revision cycles</strong> → do’s & don’ts, checklists, review gates.</li>
-            <li><strong>Self-serve enablement</strong> → bite-size playbooks & micro-videos.</li>
           </ul>
+          <details id="cw-delivers-more-en" style="margin-top:.4rem">
+            <summary>more</summary>
+            <ul>
+              <li>Smoother rollout → clear guidelines & templates.</li>
+              <li>Clear ownership per channel → fewer handoffs.</li>
+              <li>Measurable consistency → checklists & brand checks.</li>
+              <li>Channel-ready assets → reusable components.</li>
+              <li>Reduced off-brand risk → do’s & don’ts at a glance.</li>
+              <li>Single source of truth → everything maintained centrally.</li>
+            </ul>
+          </details>
         </article>
 
         <!-- 4 -->
@@ -221,23 +236,23 @@
           </ul>
         </article>
 
-        <!-- 6 (under 3): Benefits -->
+        <!-- 6 (under 3): Benefits (distinct from card 3) -->
         <article class="card" id="card-benefits-en">
           <h3>Benefits</h3>
           <ul>
-            <li><strong>Aligned messaging</strong></li>
-            <li><strong>Consistent look & feel</strong></li>
-            <li><strong>Faster delivery</strong></li>
+            <li><strong>Quick start</strong> → short workshop → prototype → rollout.</li>
+            <li><strong>Fewer revision cycles</strong> → review gates streamline approvals.</li>
+            <li><strong>Self-serve enablement</strong> → bite-size playbooks & micro-videos.</li>
           </ul>
           <details id="cw-benefits-more-en" style="margin-top:.4rem">
             <summary>more</summary>
             <ul>
-              <li>Aligned messaging across the team → core message & tone set direction.</li>
-              <li>Consistent look & feel → brand kit (logo, color, type) in one place.</li>
-              <li>Faster from draft to delivery → templates & playbooks.</li>
-              <li>Smoother rollout → clear guidelines & templates.</li>
-              <li>Fewer revision cycles → do’s & don’ts, checklists, review gates.</li>
-              <li>Self-serve enablement → bite-size playbooks & micro-videos — onboarding in hours, not weeks.</li>
+              <li>Low lift to adopt → guided setup, minimal time.</li>
+              <li>Scales with team size → lightweight governance.</li>
+              <li>Works across teams → comms, product, enablement.</li>
+              <li>Clear decision paths → roles & responsibilities.</li>
+              <li>Saves lead/PM time → less back-and-forth.</li>
+              <li>Portable assets → no vendor lock-in.</li>
             </ul>
           </details>
         </article>
@@ -248,5 +263,14 @@
   <footer>
     <a href="/en/impressum">Imprint</a> · <a href="/en/privacy">Privacy</a>
   </footer>
+
+  <script>
+    function __toggleNav(){
+      var l=document.getElementById('navLinks');
+      if(!l) return;
+      var o=l.classList.toggle('open');
+      document.getElementById('navToggle').setAttribute('aria-expanded', o?'true':'false');
+    }
+  </script>
 </body>
 </html>
