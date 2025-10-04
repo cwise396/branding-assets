@@ -1,336 +1,273 @@
  <!doctype html>
-<html lang="de" class="sd-dark"><!-- Dark-only -->
+<html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SlackDigest – Updates, die bewegen.</title>
-  <meta name="description" content="SlackDigest verdichtet Signale aus Slack & E-Mail zu klaren Updates – ein Blick, ein Link, erledigt." />
-  <meta name="theme-color" content="#0B0F13" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SlackDigest – Updates, die bewegen.</title>
+<meta name="description" content="SlackDigest verdichtet Signale aus Slack & E-Mail zu klaren Updates – ein Blick, ein Link, erledigt." />
+<meta name="theme-color" content="#0B1220" />
 <style>
-  /* Weißer Ring um Hero-Logo (kreisrund, 5px) */
-  .product-logo .logo-badge{
-    display:grid; place-items:center;
-    width:98px; height:98px;            /* 88px Logo + 2*5px Ring */
-    border-radius:50%;
-    border:5px solid #FFFFFF;
-    background:transparent;
-  }
-<!-- A: Benefits Auto-open + Highlight (CSS) -->
-<style id="benefits-autoopen-css">
-  /* Beim Sprung nicht unter die rote Navbar rutschen */
-  #card-benefits, #card-benefits-en { scroll-margin-top: 14mm; }
+:root{
+  --container:1100px;
 
-  /* Zielkarte sichtbar hervorheben */
-  .card:target{
-    outline:3px solid rgba(255,255,255,.75);
-    box-shadow:
-      0 0 0 4px rgba(255,255,255,.25),
-      0 12px 28px rgba(0,0,0,.45);
+  /* Dark-only Seite */
+  --bg-dark:#0B1220; --fg-dark:#FFFFFF; --muted:#CBD5E1;
+
+  /* Navbar */
+  --nav-red:#AE0F12;
+
+  /* Kartenfarbe (Produkt) */
+  --card-green:rgb(12,108,72);
+  --card-border:rgba(255,255,255,.28);
+
+  /* CTA Button: weißer Button, grüne Schrift (robust) */
+  --btn-inverse-bg:#FFFFFF; --btn-inverse-fg:#0C6C48; /* sRGB(12,108,72) */
+
+  /* Ring */
+  --ring:#FFFFFF; --ring-w:5px;
+}
+
+*{ box-sizing:border-box }
+html,body{ height:100% }
+body{
+  margin:0; font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+  background:var(--bg-dark); color:var(--fg-dark);
+}
+a{ color:#FFFFFF; text-decoration:none }
+
+/* Header/Nav – volle Breite rot, Höhe stabil */
+.site-header{ position:sticky; top:0; z-index:50; width:100%; background:var(--nav-red) }
+.nav{ background:var(--nav-red) }
+.nav-inner{
+  max-width:var(--container); margin:0 auto; padding:0 1rem;
+  display:flex; align-items:center; justify-content:space-between;
+  height:12mm;           /* fixe Höhe */
+}
+.brand{ color:#FFFFFF; font-weight:800; white-space:nowrap }
+.nav-links{ list-style:none; display:flex; gap:1rem; margin:0; padding:0; align-items:center }
+.nav-links a{ color:#FFFFFF }
+.nav-toggle{ display:none; background:none; border:0; color:#FFFFFF; font-size:1.2rem }
+
+@media (max-width:980px){
+  .nav-inner{ position:relative; height:auto; min-height:12mm; padding-block:.4rem }
+  .nav-links{
+    display:none; position:absolute; top:100%; left:0; right:0;
+    background:var(--nav-red); padding:1rem; margin:0; flex-direction:column; gap:.6rem;
   }
+  .nav-links.open{ display:flex }
+  .nav-toggle{ display:inline-block }
+}
+
+/* Hero */
+.hero{ color:#FFFFFF; padding-top:11mm } /* 11mm: „mehr“ ohne Scroll sichtbar */
+.hero-header{
+  max-width:var(--container); margin:0 auto; padding:0 1rem;
+  display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; align-items:end;
+}
+.hero-text{ grid-column:1 / 9 }
+.hero h1{ margin:0 0 .2rem; font-size:clamp(1.8rem,4vw,3rem); line-height:1.1 }
+.hero p.lead{ margin:0; font-size:clamp(1.1rem,2.4vw,1.35rem); font-weight:700; opacity:.95 }
+
+.logo-col{ grid-column:9 / 13; justify-self:start; display:flex; align-items:center }
+.product-logo{ position:relative; width:98px; height:98px }
+.product-logo .logo-ring{ position:absolute; inset:0; width:98px; height:98px; z-index:2; pointer-events:none; display:block }
+.product-logo .logo-ring svg{ width:100%; height:100%; display:block }
+.product-logo .logo-img{ position:absolute; top:5px; left:5px; width:88px; height:88px; display:block; border-radius:50%; z-index:1; background:transparent; }
+
+/* Cards Grid */
+.section-cards{ max-width:var(--container); margin:0 auto; padding:0 1rem 2.4rem }
+.grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; margin-top:1rem }
+.card{
+  grid-column:span 4;
+  background:var(--card-green) !important; color:#FFFFFF !important;
+  border-radius:14px; padding:1.05rem 1rem;
+  border:1px solid var(--card-border);
+  box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.card h3{ margin:0 0 .4rem } .card p,.card li{ margin:.35rem 0 }
+.card ul{ list-style:disc; padding-left:1.2rem }
+.card a{ text-decoration:underline; text-underline-offset:2px; color:#FFFFFF }
+
+@media (max-width:960px){ .card{ grid-column:span 6 } }
+@media (max-width:640px){ .card{ grid-column:span 12 } }
+
+/* CTA: weißer Button mit grüner Schrift (hart robust) */
+.btn{ display:inline-block; padding:.7rem 1rem; border-radius:12px; border:1px solid #FFFFFF; text-decoration:none; font-weight:800; background:transparent }
+.btn--inverse{ background:var(--btn-inverse-bg) }
+.card a.btn.btn--inverse,
+.card a.btn.btn--inverse:link,
+.card a.btn.btn--inverse:visited,
+.card a.btn.btn--inverse:hover,
+.card a.btn.btn--inverse:active{
+  color:var(--btn-inverse-fg) !important;
+  -webkit-text-fill-color:var(--btn-inverse-fg) !important;
+}
+
+/* Accordion */
+details{ border:0 } details summary{ cursor:pointer; font-weight:800 }
+
+/* Footer */
+footer{ max-width:var(--container); margin:2.2rem auto; padding:0 1rem 2.4rem; color:#FFFFFF }
+footer a{ color:#FFFFFF }
+
+/* Benefits A (Auto-open + Highlight) */
+#card-benefits, #card-benefits-en { scroll-margin-top: 14mm; }
+.card:target{
+  outline:3px solid rgba(255,255,255,.75);
+  box-shadow:0 0 0 4px rgba(255,255,255,.25), 0 12px 28px rgba(0,0,0,.45);
+}
+
+/* Alt-Overlay sicher aus */
+#bg-overlay{ display:none !important; }
 </style>
-
- .product-logo .logo-badge img{
-    width:88px; height:auto; display:block;
-    border-radius:50%; /* Logo selbst rund maskieren */
-  }
-</style>
-
-  <style>
-    :root{
-      --container:1100px;
-
-      /* Dark-only Theme */
-      --bg-dark:#0B0F13;
-      --fg-dark:#EAEAEA;
-
-      /* Brandfarben */
-      --nav-red:#AE0F12;                 /* sRGB(174,15,18) */
-      --card-green:#0C6C48;              /* sRGB(12,108,72) */
-
-      /* UI */
-      --card-border:rgba(255,255,255,.28);
-      --btn-inverse-bg:#FFFFFF;
-      --btn-inverse-fg-dark:#096D48;     /* sRGB(9,109,72) */
-    }
-
-    *{ box-sizing:border-box }
-    html,body{ height:100% }
-    body{
-      margin:0; font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
-      background:var(--bg-dark); color:var(--fg-dark);
-    }
-    a{ color:#FFFFFF; text-decoration:none }
-
-    /* Header/Nav – volle Breite rot */
-    .site-header{ position:sticky; top:0; z-index:50; width:100%; background:var(--nav-red) }
-    .nav{ background:var(--nav-red) }
-    .nav-inner{
-      max-width:var(--container); margin:0 auto; padding:.9rem 1rem;
-      display:flex; align-items:center; justify-content:space-between;
-    }
-    .brand{ color:#FFFFFF; font-weight:800; white-space:nowrap }
-    .nav-links{ list-style:none; display:flex; gap:1rem; margin:0; padding:0; align-items:center }
-    .nav-links a{ color:#FFFFFF }
-    .nav-toggle{ display:none; background:none; border:0; color:#FFFFFF; font-size:1.2rem }
-
-    @media (max-width:980px){
-      .nav-inner{ position:relative }
-      .nav-links{
-        display:none; position:absolute; top:56px; left:0; right:0;
-        background:var(--nav-red); padding:1rem; margin:0; flex-direction:column; gap:.6rem;
-      }
-      .nav-links.open{ display:flex }
-      .nav-toggle{ display:inline-block }
-    }
-
-    /* Hero */
-    .hero{ color:#FFFFFF; padding-top:11mm } /* 11mm: Benefits „mehr“ ohne Scroll sichtbar */
-    .hero-header{
-      max-width:var(--container); margin:0 auto; padding:0 1rem;
-      display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; align-items:end;
-    }
-    .hero-text{ grid-column:1 / 9 }
-    .hero h1{ margin:0 0 .2rem; font-size:clamp(1.8rem,4vw,3rem); line-height:1.1 }
-    .hero p.lead{ margin:0; font-size:clamp(1.1rem,2.4vw,1.35rem); font-weight:700; opacity:.95 }
-    .logo-col{ grid-column:9 / 13; justify-self:start; display:flex; align-items:center }
-    .product-logo img{ width:88px; height:auto; display:block }
-
-    @media (max-width:640px){
-      .hero-header{ grid-template-columns:1fr; text-align:center }
-      .hero-text{ grid-column:1 / -1 }
-      .logo-col{ grid-column:1 / -1; justify-self:center }
-    }
-
-    /* Cards Grid */
-    .section-cards{ max-width:var(--container); margin:0 auto; padding:0 1rem 2.4rem }
-    .grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; margin-top:1rem }
-    .card{
-      grid-column:span 4;
-      background:var(--card-green) !important; color:#FFFFFF !important;
-      border-radius:14px; padding:1.05rem 1rem;
-      border:1px solid var(--card-border);
-      box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06);
-    }
-    .card h3{ margin:0 0 .4rem }
-    .card p,.card li{ margin:.35rem 0 }
-    .card ul{ list-style:disc; padding-left:1.2rem }
-    .card a{ text-decoration:underline; text-underline-offset:2px; color:#FFFFFF }
-
-    @media (max-width:960px){ .card{ grid-column:span 6 } }
-    @media (max-width:640px){ .card{ grid-column:span 12 } }
-
-    /* Inverse Button (weiß, fester Farbton im Dark-only) */
-    .btn{ display:inline-block; padding:.7rem 1rem; border-radius:12px; border:1px solid #FFFFFF; text-decoration:none; font-weight:800 }
-    .btn--inverse{ background:var(--btn-inverse-bg); color:var(--btn-inverse-fg-dark) } /* #096D48 */
-
-    /* Details/Accordion */
-    details{ border:0 }
-    details summary{ cursor:pointer; font-weight:800 }
-
-    /* Footer */
-    footer{ max-width:var(--container); margin:2.2rem auto; padding:0 1rem 2.4rem; color:#FFFFFF }
-    footer a{ color:#FFFFFF }
-
-    /* Reste entfernen (z. B. grüner Streifen) */
-    #bg-overlay{ display:none !important; }
- <style>
-  /* Fix: Button-Text "Jetzt Beta testen" / "Request beta" in sRGB(12,108,72) */
-  .btn--inverse { color:#0C6C48 !important; }
-<style>
-  /* CTA im weißen Button: sRGB(12,108,72) – robust gegen frühere Regeln */
-  .card .btn.btn--inverse,
-  .card .btn.btn--inverse:link,
-  .card .btn.btn--inverse:visited,
-  .card .btn.btn--inverse:active {
-    color:#0C6C48 !important;
-  }
-</style>
-
-  <script>
-    /* Mobile nav */
-    function __toggleNav(){
-      var l=document.getElementById('navLinks');
-      if(!l) return;
-      var o=l.classList.toggle('open');
-      document.getElementById('navToggle').setAttribute('aria-expanded', o?'true':'false');
-    }
- <style>
-  /* Force CTA text "Jetzt Beta testen" / "Request beta" to sRGB(12,108,72) */
-  .card a.btn.btn--inverse,
-  .card a.btn.btn--inverse:link,
-  .card a.btn.btn--inverse:visited,
-  .card a.btn.btn--inverse:hover,
-  .card a.btn.btn--inverse:active {
-    color:#0C6C48 !important;
-    -webkit-text-fill-color:#0C6C48 !important; /* Safari robustness */
-  }
-<style>
-  /* Erzwingt Grün #0C6C48 im weißen CTA-Button */
-  .card a.btn.btn--inverse,
-  .card p > a.btn.btn--inverse,
-  .card a.btn.btn--inverse:link,
-  .card a.btn.btn--inverse:visited,
-  .card a.btn.btn--inverse:hover,
-  .card a.btn.btn--inverse:active {
-    color:#0C6C48 !important;
-    -webkit-text-fill-color:#0C6C48 !important;
-  }
-</style>
-
-  </script>
+<script>
+function __toggleNav(){
+  var l=document.getElementById('navLinks');
+  if(!l) return;
+  var o=l.classList.toggle('open');
+  document.getElementById('navToggle').setAttribute('aria-expanded', o?'true':'false');
+}
+</script>
 </head>
 <body>
-  <!-- Header / Nav -->
-  <header class="site-header">
-    <nav class="nav">
-      <div class="nav-inner">
-        <a class="brand" href="/">Home</a>
-        <ul class="nav-links" id="navLinks">
-          <li><a href="/products/changewise/">ChangeWise</a></li>
-          <li><a href="/products/slackdigest/">SlackDigest</a></li>
-          <li><a href="/products/tasksieve/">TaskSieve</a></li>
-          <li class="lang"><span class="active">DE</span> | <a href="./en/">EN</a></li>
-        </ul>
-        <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-controls="navLinks" aria-expanded="false" onclick="__toggleNav()">☰</button>
-      </div>
-    </nav>
-  </header>
-
-  <!-- Hero -->
-  <main class="hero">
-    <div class="hero-header">
-      <div class="hero-text">
-        <h1>SlackDigest</h1>
-        <p class="lead">Updates, die bewegen.</p>
-      </div>
-      <div class="logo-col">
-        <div class="product-logo">
-  <span class="logo-badge">
-    <img src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo" width="88" loading="lazy" decoding="async" />
-  </span>
-</div>
- </div>
+<header class="site-header">
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="/">Home</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/products/changewise/">ChangeWise</a></li>
+        <li><a href="/products/slackdigest/">SlackDigest</a></li>
+        <li><a href="/products/tasksieve/">TaskSieve</a></li>
+        <li class="lang"><span class="active">DE</span> | <a href="./en/">EN</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-controls="navLinks" aria-expanded="false" onclick="__toggleNav()">☰</button>
     </div>
+  </nav>
+</header>
 
-    <!-- Cards -->
-    <section class="section-cards">
-      <section class="grid" aria-label="Key Features">
-        <!-- 1 -->
-        <article class="card">
-          <h3>Auf den Punkt</h3>
-          <p>Ein Blick, ein Link — erledigt.</p>
-        </article>
+<main class="hero">
+  <div class="hero-header">
+    <div class="hero-text">
+      <h1>SlackDigest</h1>
+      <p class="lead">Updates, die bewegen.</p>
+    </div>
+    <div class="logo-col">
+      <div class="product-logo">
+        <span class="logo-ring" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="98" height="98" focusable="false" aria-hidden="true">
+            <circle cx="50" cy="50" r="47.5" fill="none" stroke="#FFFFFF" stroke-width="5" />
+          </svg>
+        </span>
+        <img class="logo-img" src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo" width="88" height="88" loading="lazy" decoding="async" />
+      </div>
+    </div>
+  </div>
 
-        <!-- 2 -->
-        <article class="card">
-          <h3>So funktioniert’s</h3>
+  <section class="section-cards">
+    <section class="grid" aria-label="Key Features">
+      <!-- 1 -->
+      <article class="card">
+        <h3>Auf den Punkt</h3>
+        <p>Ein Blick, ein Link — erledigt.</p>
+      </article>
+
+      <!-- 2 -->
+      <article class="card">
+        <h3>So funktioniert’s</h3>
+        <ul>
+          <li>Slack & E-Mail anbinden</li>
+          <li>Automatisch verdichten</li>
+          <li>Digest liefern (ein Blick, ein Link, erledigt)</li>
+        </ul>
+      </article>
+
+      <!-- 3 -->
+      <article class="card">
+        <h3>Was es liefert</h3>
+        <ul>
+          <li><strong>Weniger Lärm, mehr Signal</strong> → Relevantes zuerst.</li>
+          <li><strong>Schnelle Entscheidungen</strong> → Kompakter Digest mit Link zum Kontext.</li>
+          <li><strong>Transparenz</strong> → Owner & nächster Schritt sichtbar.</li>
+        </ul>
+        <details style="margin-top:.4rem">
+          <summary>mehr</summary>
           <ul>
-            <li>Slack/E-Mail anbinden</li>
-            <li>Automatisch verdichten</li>
-            <li>Updates liefern (ein Blick, ein Link, erledigt)</li>
+            <li>Asynchron statt Meetings & Pings.</li>
+            <li>Weniger Suchaufwand dank Deep-Links.</li>
+            <li>Konfiguration pro Team/Kanal.</li>
+            <li>Leserechte genügen, Setup in Minuten.</li>
+            <li>Stabil im Alltag – zuverlässige Zustellung.</li>
+            <li>Skaliert mit Teams & Kanälen.</li>
           </ul>
-        </article>
+        </details>
+      </article>
 
-        <!-- 3 -->
-        <article class="card">
-          <h3>Was es bietet</h3>
+      <!-- 4 -->
+      <article class="card">
+        <h3>Status &amp; Kontakt</h3>
+        <p>Status: <strong>Open</strong> — ausprobieren.</p>
+        <p>Kontakt: <a href="mailto:info@slackdigest.org">info@slackdigest.org</a></p>
+        <p><a class="btn btn--inverse" href="mailto:info@slackdigest.org?subject=SlackDigest%20Test&body=Hallo%20SlackDigest-Team%2C%0A%0Aich%20m%C3%B6chte%20testen.">Jetzt Beta testen</a></p>
+        <details style="margin-top:.6rem">
+          <summary>FAQ</summary>
           <ul>
-            <li>Weniger Streuverlust, mehr Fokus</li>
-            <li>Ein kompakter Digest, der das Wichtige surfaced und den Rest ausblendet – damit Teams schneller entscheiden.</li>
+            <li><strong>Admin nötig?</strong> Leserechte genügen.</li>
+            <li><strong>Setup?</strong> Minuten — Kanäle wählen, Takt & Filter setzen.</li>
+            <li><strong>Formate?</strong> E-Mail oder Slack-DM.</li>
+            <li><strong>Kontext?</strong> Jeder Eintrag mit Link zurück.</li>
+            <li><strong>Eigentümer?</strong> Owner & Next Step optional anzeigen.</li>
+            <li><strong>Sicherheit?</strong> Least-Privilege, nur Lesen.</li>
+            <li><strong>Skalierung?</strong> Beliebig viele Kanäle/Teams.</li>
+            <li><strong>Support?</strong> Per E-Mail, auf Wunsch SLA.</li>
+            <li><strong>Daten?</strong> Kein Verkauf, kein Tracking außer nötig.</li>
           </ul>
-        </article>
+        </details>
+      </article>
 
-        <!-- 4 -->
-        <article class="card">
-          <h3>Status &amp; Kontakt</h3>
-          <p>Status: <strong>Open</strong> — ausprobieren.</p>
-          <p>Kontakt: <a href="mailto:info@slackdigest.org">info@slackdigest.org</a></p>
-           <p>
-  <a class="btn btn--inverse"
-     style="color:#0C6C48 !important; -webkit-text-fill-color:#0C6C48 !important;"
-     href="mailto:info@slackdigest.org?subject=SlackDigest%20Test&body=Hallo%20SlackDigest-Team%2C%0A%0Aich%20m%C3%B6chte%20testen.">
-     Jetzt Beta testen
-  </a>
-</p>
+      <!-- 5 (unter 2) -->
+      <article class="card">
+        <h3>Integrationen</h3>
+        <p>Slack, E-Mail.</p>
+      </article>
 
-
-          <!-- FAQ inline (Summary) -->
-          <details id="sd-faq" style="margin-top:.6rem">
-            <summary>FAQ</summary>
-            <ul>
-              <li><strong>Admin-Rechte?</strong> Nein – Leserechte genügen.</li>
-              <li><strong>Setup-Zeit?</strong> Minuten. Schritt-für-Schritt geführt.</li>
-              <li><strong>Zustellung?</strong> Täglich/Wöchentlich zu Wunschzeit.</li>
-              <li><strong>Kanäle/Filter?</strong> Ja – nur Relevantes wird aufgenommen.</li>
-              <li><strong>Kontext?</strong> Link zurück + Owner/Nächster Schritt.</li>
-              <li><strong>Datenschutz?</strong> Read-only, keine Posts/Änderungen.</li>
-              <li><strong>Zuverlässigkeit?</strong> Robuste Zustellung mit Monitoring.</li>
-              <li><strong>Teamgröße?</strong> Für kleine bis größere Teams.</li>
-              <li><strong>Ziel?</strong> Weniger Pings, schnellere Entscheidungen.</li>
-            </ul>
-          </details>
-        </article>
-
-        <!-- 5 (unter 2) -->
-        <article class="card">
-          <h3>Integrationen</h3>
-          <p>Slack, E-Mail.</p>
-        </article>
-
-        <!-- 6 (unter 3): Vorteile -->
-        <article class="card" id="card-benefits">
-          <h3>Vorteile</h3>
+      <!-- 6 (unter 3): Vorteile -->
+      <article class="card" id="card-benefits">
+        <h3>Vorteile</h3>
+        <ul>
+          <li><strong>Schneller Überblick</strong> → Digest statt Feed.</li>
+          <li><strong>Benutzerfreundlich & stabil</strong> → verlässliche Zustellung.</li>
+          <li><strong>Kontext parat</strong> → Link führt direkt zurück.</li>
+        </ul>
+        <details style="margin-top:.4rem">
+          <summary>mehr</summary>
           <ul>
-            <li><strong>Schneller Start:</strong> Setup in Minuten, nur Leserechte.</li>
-            <li><strong>Benutzerfreundlich & zuverlässig:</strong> stabiler Digest zur festen Zeit.</li>
-            <li><strong>Klarer Kontext:</strong> Link zurück + Owner/Nächster Schritt.</li>
+            <li>Setup in Minuten, Leserechte genügen.</li>
+            <li>Asynchron: weniger Unterbrechungen.</li>
+            <li>Owner/Next Step erhöhen Verbindlichkeit.</li>
+            <li>Weniger Streuverlust, mehr Fokus.</li>
+            <li>Skalierbar pro Team/Kanal.</li>
+            <li>Portabel: E-Mail/Slack, keine Lock-ins.</li>
           </ul>
-          <details id="sd-benefits-more" style="margin-top:.4rem">
-            <summary>mehr</summary>
-            <ul>
-              <li>Asynchron – weniger Pings & Ad-hoc-Meetings.</li>
-              <li>Filter & Kanalauswahl – nur Signale, kein Lärm.</li>
-              <li>E-Mail oder Slack, steuerbar pro Team.</li>
-              <li>Durchsuchbares Update-Archiv.</li>
-              <li>Privacy-by-default (read-only).</li>
-              <li>Leichtgewichtig, kein Vendor-Lock-in.</li>
-            </ul>
-          </details>
-        </article>
-      </section>
+        </details>
+      </article>
     </section>
-  </main>
+  </section>
+</main>
 
-  <footer>
-    <a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a>
-  </footer>
-<!-- A: Benefits Auto-open + Highlight (JS) -->
-<script id="benefits-autoopen-js">
+<footer>
+  <a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a>
+</footer>
+
+<!-- Benefits Auto-open (A) -->
+<script>
 (function(){
-  var hash = (location.hash || "").toLowerCase();
-  if (!hash) return;
-
-  var isBenefits = hash.includes('benefits');
-  if (!isBenefits) return;
-
-  // Zielkarte finden (DE/EN)
-  var benefitsCard =
-      document.getElementById('card-benefits') ||
-      document.getElementById('card-benefits-en');
-
-  if (!benefitsCard) return;
-
-  // Accordion automatisch öffnen, falls vorhanden
-  var details = benefitsCard.querySelector('details');
-  if (details && !details.open) { details.open = true; }
-
-  // Falls nur "#benefits" verlinkt wurde, auf die konkrete ID umschreiben,
-  // damit :target greift (Highlight + korrektes Scrollen).
-  if (hash === '#benefits') {
-    history.replaceState(null, '', '#' + benefitsCard.id);
-  }
+  var hash=(location.hash||"").toLowerCase();
+  if(!hash.includes('benefits')) return;
+  var card=document.getElementById('card-benefits')||document.getElementById('card-benefits-en');
+  if(!card) return;
+  var d=card.querySelector('details'); if(d && !d.open) d.open=true;
+  if(hash==='#benefits'){ history.replaceState(null,'','#'+card.id); }
 })();
 </script>
-
 </body>
 </html>
