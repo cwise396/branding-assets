@@ -11,27 +11,21 @@
   <style>
     /* --- DARK-ONLY HOME --- */
     :root{
-      --page-bg:#0B1220;           /* Backdrop dunkel */
+      --page-bg:#0B1220;
       --hero-color:#9FB8D8;
-      --text:#E5E7EB;
-      --muted:#9AA4B2;
-      --border:#243041;
+      --text:#E5E7EB; --muted:#9AA4B2; --border:#243041;
 
-      /* Kartenfarben (exakt) */
-      --color-sd: rgb(12,108,72);   /* SlackDigest Grün */
-      --color-ts: rgb(185,14,19);   /* TaskSieve Rot   */
-      --color-cw: rgb(14,57,96);    /* ChangeWise Blau */
+      /* Markenfarben exakt */
+      --color-sd: rgb(12,108,72);
+      --color-ts: rgb(185,14,19);
+      --color-cw: rgb(14,57,96);
 
-      /* Logo-Ring auf Home (weiß, 5px) */
-      --badge-ring-color:#FFFFFF;
-      --badge-ring-width:5px;
-      --badge-size:120px;
+      /* Logo-Ring (weiß, 5px) */
+      --badge-ring-color:#FFFFFF; --badge-ring-width:5px; --badge-size:120px;
 
-      /* Buttons: weißer Button mit Produktfarbe */
-      --btn-bg:#FFFFFF;
-      --btn-fg-default:#0C3960;     /* Fallback, pro Kachel überschrieben */
-      --btn-border:rgba(255,255,255,.22);
-      --btn-bg-hover:rgba(255,255,255,.92);
+      /* CTA-Buttons */
+      --btn-bg:#FFFFFF; --btn-fg-default:#0C3960;
+      --btn-border:rgba(255,255,255,.22); --btn-bg-hover:rgba(255,255,255,.92);
       --btn-pad-y:8px; --btn-pad-x:12px; --btn-font:.9rem;
 
       /* I18N Toggle */
@@ -47,7 +41,7 @@
       font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif }
     .container{width:min(1160px,92%); margin:0 auto}
 
-    /* Language Switch (oben rechts) */
+    /* Language Switch */
     .i18n-toggle{
       position:fixed; right:14px; top:14px; z-index:99;
       padding:8px 12px; border-radius:999px;
@@ -65,7 +59,7 @@
     .tiles{display:grid;gap:22px;grid-template-columns:1fr;margin:14px 0 44px}
     @media (min-width:860px){.tiles{grid-template-columns:repeat(3,1fr)}}
 
-    /* Karten */
+    /* Kachel */
     .tile{
       position:relative; overflow:hidden; min-height:390px; border-radius:20px;
       text-decoration:none; color:#fff; box-shadow:var(--card-shadow);
@@ -77,17 +71,15 @@
     .tile.ts{ background-color:var(--color-ts) !important; --btn-fg:var(--color-ts) }
     .tile.cw{ background-color:var(--color-cw) !important; --btn-fg:var(--color-cw) }
 
-    /* Logo-Ring (weiß, 5px) */
+    /* Logo-Ring */
     .logo-wrap{
       position:absolute; right:14px; top:14px; z-index:1;
       width:var(--badge-size); height:var(--badge-size);
       display:grid; place-items:center; border-radius:50%;
-      background:transparent;
     }
     .logo-wrap::before{
       content:""; position:absolute; inset:calc(-1 * var(--badge-ring-width));
-      border-radius:50%;
-      border:var(--badge-ring-width) solid var(--badge-ring-color);
+      border-radius:50%; border:var(--badge-ring-width) solid var(--badge-ring-color);
     }
     .logo-inner{ width:100%; height:100%; border-radius:50%; display:grid; place-items:center; overflow:hidden }
     .logo{ width:100%; height:100%; object-fit:contain; display:block }
@@ -99,11 +91,11 @@
     .micro{margin:0 0 14px;padding-left:1.1rem;font-size:.92rem;line-height:1.35;opacity:.98}
     .micro li{margin:2px 0}
 
-    /* Dezenter „Vorteile zeigen“-Textlink */
+    /* „Vorteile zeigen“ – separater LI-Eintrag, eigener Click-Handler */
     .micro .goto-benefits{
       display:inline-block; margin-top:4px;
       text-decoration:underline; text-underline-offset:2px;
-      cursor:pointer; font-weight:600;
+      cursor:pointer; font-weight:600; position:relative; z-index:5;
     }
     .micro .goto-benefits:hover{ filter:brightness(1.1) }
 
@@ -116,13 +108,6 @@
       text-decoration:none; backdrop-filter:saturate(140%) blur(2px)
     }
     .btn:hover{ background:var(--btn-bg-hover) }
-
-    /* Footer */
-    footer{border-top:1px solid var(--border); padding:20px 0; color:var(--muted)}
-    .footbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-    .footbar .legal{display:flex;gap:12px}
-    .footbar a{color:inherit;text-decoration:none}
-    .footbar a:hover{text-decoration:underline}
   </style>
 </head>
 <body>
@@ -139,7 +124,7 @@
       <!-- SlackDigest -->
       <a class="tile sd" href="/products/slackdigest/">
         <div class="logo-wrap"><div class="logo-inner">
-          <img class="logo" src="/assets/brand/slackdigest_logo.svg?v=8" alt="SlackDigest Logo"
+          <img class="logo" src="/assets/brand/slackdigest_logo.svg?v=9" alt="SlackDigest Logo"
                onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}">
           <span class="logo-fallback" aria-hidden="true">SD</span>
         </div></div>
@@ -148,10 +133,13 @@
         <ul class="micro">
           <li>Wichtiges zuerst – weniger Slack-Lärm.</li>
           <li>Ein Blick, ein Link – erledigt.</li>
-          <span class="goto-benefits" role="link" tabindex="0"
-            onclick="event.stopPropagation(); location.href='/products/slackdigest/#card-benefits';">
-            Vorteile zeigen
-          </span>
+          <li>
+            <span class="goto-benefits" role="link" tabindex="0"
+              onclick="event.preventDefault(); event.stopPropagation(); location.href='/products/slackdigest/#card-benefits';"
+              onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); event.stopPropagation(); location.href='/products/slackdigest/#card-benefits';}">
+              Vorteile zeigen
+            </span>
+          </li>
         </ul>
         <span class="btn">Zur Produktseite</span>
       </a>
@@ -159,7 +147,7 @@
       <!-- TaskSieve -->
       <a class="tile ts" href="/products/tasksieve/">
         <div class="logo-wrap"><div class="logo-inner">
-          <img class="logo" src="/assets/brand/tasksieve_logo.svg?v=8" alt="TaskSieve Logo"
+          <img class="logo" src="/assets/brand/tasksieve_logo.svg?v=9" alt="TaskSieve Logo"
                onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}">
           <span class="logo-fallback" aria-hidden="true">TS</span>
         </div></div>
@@ -168,10 +156,13 @@
         <ul class="micro">
           <li>Eine Inbox für E-Mail, Notizen & Slack.</li>
           <li>Auto-Sortierung mit manueller Feinsteuerung.</li>
-          <span class="goto-benefits" role="link" tabindex="0"
-            onclick="event.stopPropagation(); location.href='/products/tasksieve/#card-benefits';">
-            Vorteile zeigen
-          </span>
+          <li>
+            <span class="goto-benefits" role="link" tabindex="0"
+              onclick="event.preventDefault(); event.stopPropagation(); location.href='/products/tasksieve/#card-benefits';"
+              onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); event.stopPropagation(); location.href='/products/tasksieve/#card-benefits';}">
+              Vorteile zeigen
+            </span>
+          </li>
         </ul>
         <span class="btn">Zur Produktseite</span>
       </a>
@@ -179,7 +170,7 @@
       <!-- ChangeWise -->
       <a class="tile cw" href="/products/changewise/">
         <div class="logo-wrap"><div class="logo-inner">
-          <img class="logo" src="/assets/brand/changewise_logo.svg?v=8" alt="ChangeWise Logo"
+          <img class="logo" src="/assets/brand/changewise_logo.svg?v=9" alt="ChangeWise Logo"
                onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}">
           <span class="logo-fallback" aria-hidden="true">CW</span>
         </div></div>
@@ -188,10 +179,13 @@
         <ul class="micro">
           <li>Kernbotschaft & Ton – eine klare Linie.</li>
           <li>Vorlagen & Playbooks beschleunigen Output.</li>
-          <span class="goto-benefits" role="link" tabindex="0"
-            onclick="event.stopPropagation(); location.href='/products/changewise/#card-benefits';">
-            Vorteile zeigen
-          </span>
+          <li>
+            <span class="goto-benefits" role="link" tabindex="0"
+              onclick="event.preventDefault(); event.stopPropagation(); location.href='/products/changewise/#card-benefits';"
+              onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); event.stopPropagation(); location.href='/products/changewise/#card-benefits';}">
+              Vorteile zeigen
+            </span>
+          </li>
         </ul>
         <span class="btn">Zur Produktseite</span>
       </a>
@@ -199,11 +193,11 @@
   </section>
 </main>
 
-<footer>
-  <div class="container footbar">
-    <div class="legal">
-      <a href="/impressum.html">Impressum</a>
-      <a href="/datenschutz.html">Datenschutz</a>
+<footer style="border-top:1px solid var(--border); padding:20px 0; color:var(--muted)">
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+    <div class="legal" style="display:flex;gap:12px">
+      <a href="/impressum.html" style="color:inherit;text-decoration:none">Impressum</a>
+      <a href="/datenschutz.html" style="color:inherit;text-decoration:none">Datenschutz</a>
     </div>
     <small>© ChangeWise • SlackDigest • TaskSieve</small>
   </div>
