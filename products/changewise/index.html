@@ -26,6 +26,19 @@
       --btn-bg:#FFFFFF;
       --btn-fg:#0E3960;
     }
+<!-- A: Benefits Auto-open + Highlight (CSS) -->
+<style id="benefits-autoopen-css">
+  /* Beim Sprung nicht unter die rote Navbar rutschen */
+  #card-benefits, #card-benefits-en { scroll-margin-top: 14mm; }
+
+  /* Zielkarte sichtbar hervorheben */
+  .card:target{
+    outline:3px solid rgba(255,255,255,.75);
+    box-shadow:
+      0 0 0 4px rgba(255,255,255,.25),
+      0 12px 28px rgba(0,0,0,.45);
+  }
+</style>
 
     *{ box-sizing:border-box }
     html,body{ height:100% }
@@ -277,5 +290,33 @@
   <footer>
     <a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a>
   </footer>
+<!-- A: Benefits Auto-open + Highlight (JS) -->
+<script id="benefits-autoopen-js">
+(function(){
+  var hash = (location.hash || "").toLowerCase();
+  if (!hash) return;
+
+  var isBenefits = hash.includes('benefits');
+  if (!isBenefits) return;
+
+  // Zielkarte finden (DE/EN)
+  var benefitsCard =
+      document.getElementById('card-benefits') ||
+      document.getElementById('card-benefits-en');
+
+  if (!benefitsCard) return;
+
+  // Accordion automatisch öffnen, falls vorhanden
+  var details = benefitsCard.querySelector('details');
+  if (details && !details.open) { details.open = true; }
+
+  // Falls nur "#benefits" verlinkt wurde, auf die konkrete ID umschreiben,
+  // damit :target greift (Highlight + korrektes Scrollen).
+  if (hash === '#benefits') {
+    history.replaceState(null, '', '#' + benefitsCard.id);
+  }
+})();
+</script>
+
 </body>
 </html>
