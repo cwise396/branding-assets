@@ -137,6 +137,7 @@ function cwDiagnose(ev){
       <p><strong>In 3 Schritten:</strong> Kanäle wählen → Takt (täglich/wöchentlich) → Zustellung (E-Mail/Slack). Ein Blick, ein Link – erledigt.</p>
       <form action="https://formspree.io/f/xvgwqanb" method="POST">
          <input type="hidden" name="_next" value="/contact/?success=1#slackdigest">
+      <input type="hidden" name="lang" value="de">
        <input type="text" name="_gotcha" style="display:none">
         <label>Name
           <input type="text" name="name" required>
@@ -166,6 +167,8 @@ function cwDiagnose(ev){
         <button class="btn" type="submit">Test-Digest anfordern</button>
         <input type="hidden" name="_subject" value="[Website] SlackDigest Test-Digest">
         <input type="hidden" name="_redirect" value="/contact/?success=1#slackdigest">
+       <script>this.closest('form').addEventListener('submit',e=>{const b=e.target.querySelector('button[type="submit"]'); b&&(b.disabled=true);});</script>
+
       </form>
     </section>
 
@@ -175,6 +178,8 @@ function cwDiagnose(ev){
       <p><strong>Ohne Import starten:</strong> Demo-Inbox laden und Priorisierung live erleben. Eigene Quellen kannst du danach verbinden.</p>
       <form action="https://formspree.io/f/xvgwqanb" method="POST">
          <input type="hidden" name="_next" value="/contact/?success=1#tasksieve">
+      <input type="hidden" name="lang" value="de">
+
        <input type="text" name="_gotcha" style="display:none">
         <label>Name
           <input type="text" name="name" required>
@@ -201,6 +206,8 @@ function cwDiagnose(ev){
         <button class="btn" type="submit">Demo-Inbox anfordern</button>
         <input type="hidden" name="_subject" value="[Website] TaskSieve Demo">
         <input type="hidden" name="_redirect" value="/contact/?success=1#tasksieve">
+      <script>this.closest('form').addEventListener('submit',e=>{const b=e.target.querySelector('button[type="submit"]'); b&&(b.disabled=true);});</script>
+
       </form>
     </section>
 
@@ -230,6 +237,8 @@ function cwDiagnose(ev){
           </fieldset>
         </div>
         <button class="btn" type="submit">Ergebnis ansehen</button>
+      <script>this.closest('form').addEventListener('submit',e=>{const b=e.target.querySelector('button[type="submit"]'); b&&(b.disabled=true);});</script>
+
       </form>
 
       <div id="cwResult" class="card" style="margin-top:12px" class="hide"></div>
@@ -238,6 +247,7 @@ function cwDiagnose(ev){
 
       <form action="https://formspree.io/f/xvgwqanb" method="POST">
         <input type="hidden" name="_next" value="/contact/?success=1#changewise">
+<input type="hidden" name="lang" value="de">
 
         <input type="hidden" id="cw_rec" name="diagnosis" value="">
         <input type="text" name="_gotcha" style="display:none">
