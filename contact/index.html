@@ -136,8 +136,8 @@ function cwDiagnose(ev){
       <h2>SlackDigest – Test-Digest anfordern</h2>
       <p><strong>In 3 Schritten:</strong> Kanäle wählen → Takt (täglich/wöchentlich) → Zustellung (E-Mail/Slack). Ein Blick, ein Link – erledigt.</p>
       <form action="https://formspree.io/f/xvgwqanb" method="POST">
-        <input type="hidden" name="product" value="slackdigest">
-        <input type="text" name="_gotcha" style="display:none">
+         <input type="hidden" name="_next" value="/contact/?success=1#slackdigest">
+       <input type="text" name="_gotcha" style="display:none">
         <label>Name
           <input type="text" name="name" required>
         </label>
@@ -174,8 +174,8 @@ function cwDiagnose(ev){
       <h2>TaskSieve – Schnell testen</h2>
       <p><strong>Ohne Import starten:</strong> Demo-Inbox laden und Priorisierung live erleben. Eigene Quellen kannst du danach verbinden.</p>
       <form action="https://formspree.io/f/xvgwqanb" method="POST">
-        <input type="hidden" name="product" value="tasksieve">
-        <input type="text" name="_gotcha" style="display:none">
+         <input type="hidden" name="_next" value="/contact/?success=1#tasksieve">
+       <input type="text" name="_gotcha" style="display:none">
         <label>Name
           <input type="text" name="name" required>
         </label>
@@ -237,7 +237,8 @@ function cwDiagnose(ev){
       <hr class="sep">
 
       <form action="https://formspree.io/f/xvgwqanb" method="POST">
-        <input type="hidden" name="product" value="changewise">
+        <input type="hidden" name="_next" value="/contact/?success=1#changewise">
+
         <input type="hidden" id="cw_rec" name="diagnosis" value="">
         <input type="text" name="_gotcha" style="display:none">
         <label>Name
