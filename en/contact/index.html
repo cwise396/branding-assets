@@ -134,6 +134,7 @@ function cwDiagnose(ev){
       <p><strong>3 steps:</strong> choose channels → cadence (daily/weekly) → delivery (email/Slack). One glance, one link — done.</p>
       <form action="https://formspree.io/f/xzzjvvwv" method="POST">
         <input type="hidden" name="_next" value="/en/contact/?success=1#slackdigest">
+      <input type="hidden" name="lang" value="en">
 
         <input type="text" name="_gotcha" style="display:none">
         <label>Name
@@ -164,6 +165,8 @@ function cwDiagnose(ev){
         <button class="btn" type="submit">Request test digest</button>
         <input type="hidden" name="_subject" value="[Website] SlackDigest Test Digest">
         <input type="hidden" name="_redirect" value="/en/contact/?success=1#slackdigest">
+      <script>this.closest('form').addEventListener('submit',e=>{const b=e.target.querySelector('button[type="submit"]'); b&&(b.disabled=true);});</script>
+
       </form>
     </section>
 
@@ -173,6 +176,7 @@ function cwDiagnose(ev){
       <p><strong>Start without import:</strong> load a demo inbox and see prioritization live. Connect your sources afterwards.</p>
       <form action="https://formspree.io/f/xzzjvvwv" method="POST">
         <input type="hidden" name="_next" value="/en/contact/?success=1#tasksieve">
+      <input type="hidden" name="lang" value="en">
 
         <input type="text" name="_gotcha" style="display:none">
         <label>Name
@@ -200,6 +204,8 @@ function cwDiagnose(ev){
         <button class="btn" type="submit">Request demo inbox</button>
         <input type="hidden" name="_subject" value="[Website] TaskSieve Demo">
         <input type="hidden" name="_redirect" value="/en/contact/?success=1#tasksieve">
+      <script>this.closest('form').addEventListener('submit',e=>{const b=e.target.querySelector('button[type="submit"]'); b&&(b.disabled=true);});</script>
+
       </form>
     </section>
 
@@ -229,6 +235,8 @@ function cwDiagnose(ev){
           </fieldset>
         </div>
         <button class="btn" type="submit">See result</button>
+      <script>this.closest('form').addEventListener('submit',e=>{const b=e.target.querySelector('button[type="submit"]'); b&&(b.disabled=true);});</script>
+
       </form>
 
       <div id="cwResult" class="card" style="margin-top:12px" class="hide"></div>
@@ -238,6 +246,7 @@ function cwDiagnose(ev){
       <form action="https://formspree.io/f/xzzjvvwv" method="POST">
 
          <input type="hidden" name="_next" value="/en/contact/?success=1#changewise">
+      <input type="hidden" name="lang" value="en">
 
         <input type="hidden" id="cw_rec" name="diagnosis" value="">
         <input type="text" name="_gotcha" style="display:none">
