@@ -96,6 +96,14 @@ function cwDiagnose(ev){
   out.classList.remove('hide');
 }
 </script>
+<style>
+  .flash{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:10px;
+    background:#E7F6EF;color:#096D48;border:1px solid #BFE7D2;box-shadow:0 3px 12px rgba(0,0,0,.06);
+    opacity:0;transform:translateY(-6px);transition:opacity .2s ease, transform .2s ease}
+  .flash.show{opacity:1;transform:translateY(0)}
+  .flash small{display:block;font-size:12px;color:#64748B;margin-top:4px}
+</style>
+
 </head>
 <body>
 <header class="site-header">
@@ -284,5 +292,54 @@ function cwDiagnose(ev){
     var ok=document.getElementById('okMsg'); if(ok) ok.style.display='block';
   }
 </script>
+<script>
+(function(){
+  // 1) Danke-Hinweis genau am Ziel-Formular einblenden
+  try{
+    var sp = new URLSearchParams(location.search);
+    if (sp.get('success') === '1') {
+      var hash = location.hash || '';
+      var target = hash ? document.querySelector(hash) : null;
+      var host = (target && target.querySelector('form')) ? target : document.querySelector('main, body');
+      if (host){
+        var box = document.createElement('div');
+        // Text: DE/EN automatisch nach Pfad
+        var isEN = location.pathname.indexOf('/en/') === 0;
+        box.className = 'flash';
+        box.innerHTML = isEN
+          ? 'Thanks — your message has been received.<small>We’ll get back shortly with the next step.</small>'
+          : 'Danke — deine Nachricht ist eingegangen.<small>Wir melden uns zeitnah mit dem nächsten Schritt.</small>';
+        var firstForm = host.querySelector('form');
+        if (firstForm) firstForm.parentNode.insertBefore(box, firstForm);
+        setTimeout(function(){ box.classList.add('show'); }, 60);
+        setTimeout(function(){ if(box && box.parentNode) box.parentNode.removeChild(box); }, 8000);
+      }
+    }
+  }catch(e){}
+
+  // 2) Doppel-Klick-Schutz + „Senden…/Sending…“ Label
+  try{
+    document.addEventListener('submit', function(e){
+      var f = e.target;
+      if (!f || f.tagName !== 'FORM') return;
+      var btn = f.querySelector('button[type="submit"]');
+      if (btn && !btn.disabled) {
+        btn.disabled = true;
+        btn.setAttribute('aria-disabled','true');
+        btn.dataset._label = btn.textContent;
+        var isEN = location.pathname.indexOf('/en/') === 0;
+        btn.textContent = isEN ? 'Sending…' : 'Senden…';
+      }
+    }, {capture:true});
+  }catch(e){}
+
+  // 3) Autocomplete-Hinweise (Name/Email) – falls im Markup fehlen
+  try{
+    document.querySelectorAll('input[name="name"]').forEach(function(i){ i.setAttribute('autocomplete','name'); });
+    document.querySelectorAll('input[name="email"]').forEach(function(i){ i.setAttribute('autocomplete','email'); });
+  }catch(e){}
+})();
+</script>
+
 </body>
 </html>
