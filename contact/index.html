@@ -105,6 +105,22 @@ function cwDiagnose(ev){
     opacity:0;transform:translateY(-6px);transition:opacity .2s ease, transform .2s ease}
   .flash.show{opacity:1;transform:translateY(0)}
   .flash small{display:block;font-size:12px;color:#64748B;margin-top:4px}
+<style>
+  /* Tabs oben */
+  .form-tabs{display:flex;gap:8px;margin:0 0 12px;flex-wrap:wrap}
+  .form-tabs a{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.22);
+    text-decoration:none;color:inherit;opacity:.9}
+  .form-tabs a.active{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.35);opacity:1}
+  /* Sichtbarkeit der Sektionen (nur 1 sichtbar) */
+  .section{display:none}
+  .section.show{display:block}
+  /* Consent-Checkbox & Label näher zusammen */
+  .section .consent{display:flex;align-items:flex-start;gap:.5rem;margin-top:.6rem}
+  .section .consent input[type="checkbox"]{margin-top:.2rem;flex-shrink:0}
+  .section .consent label{margin:0}
+  /* Test-Theme (optional): ?theme=cw → Changewise-Blau */
+  .theme-cw body{ background:#0E3960; }
+  .theme-cw .card, .theme-cw .section{ background:rgba(255,255,255,.04); }
 </style>
 
 </head>
@@ -127,7 +143,8 @@ function cwDiagnose(ev){
 <main>
   <section class="hero">
     <h1>Start ohne Termin</h1>
-    <p>Beantworte <strong>nur das Nötige</strong> – du erhältst sofort ein Ergebnis oder eine Bestätigung.</p>
+    <p><strong>Beantworte nur das Nötigste – du erhältst sofort das Ergebnis und eine Bestätigung per E-Mail.</p>
+
     <details>
       <summary>Optional: 90-Sekunden-Video ansehen</summary>
       <div class="video" style="margin-top:10px">
@@ -139,7 +156,13 @@ function cwDiagnose(ev){
   </section>
 
   <div class="grid">
-    <!-- SlackDigest -->
+   <nav class="form-tabs" aria-label="Tools">
+  <a href="#slackdigest" data-target="sec-sd" class="active">SlackDigest</a>
+  <a href="#tasksieve" data-target="sec-ts">TaskSieve</a>
+  <a href="#changewise" data-target="sec-cw">ChangeWise</a>
+</nav>
+
+   <!-- SlackDigest -->
     <section id="sec-sd" class="card section">
       <h2>SlackDigest – Test-Digest anfordern</h2>
       <p><strong>In 3 Schritten:</strong> Kanäle wählen → Takt (täglich/wöchentlich) → Zustellung (E-Mail/Slack). Ein Blick, ein Link – erledigt.</p>
@@ -183,7 +206,8 @@ function cwDiagnose(ev){
     <!-- TaskSieve -->
     <section id="sec-ts" class="card section">
       <h2>TaskSieve – Schnell testen</h2>
-      <p><strong>Ohne Import starten:</strong> Demo-Inbox laden und Priorisierung live erleben. Eigene Quellen kannst du danach verbinden.</p>
+      <p><strong>Ohne Import starten: Demo-Inbox laden und Priorisierung live erleben.
+</p>
       <form action="https://formspree.io/f/xvgwqanb" method="POST">
          <input type="hidden" name="_next" value="/contact/?success=1#tasksieve">
       <input type="hidden" name="lang" value="de">
@@ -222,7 +246,8 @@ function cwDiagnose(ev){
     <!-- ChangeWise -->
     <section id="sec-cw" class="card section">
       <h2>ChangeWise – Kurz-Briefing & Mini-Diagnose</h2>
-      <p><strong>3–4 Antworten</strong> → Sofort-Ergebnis mit konkreten Empfehlungen. Auf Wunsch mitsenden.</p>
+      <p><strong>3–4 Antworten → Sofort-Ergebnis mit konkreten Empfehlungen.
+</p>
       <form onsubmit="cwDiagnose(event)">
         <div class="row" style="grid-template-columns:1fr 1fr">
           <label>Teamgröße
@@ -340,7 +365,42 @@ function cwDiagnose(ev){
     document.querySelectorAll('input[name="email"]').forEach(function(i){ i.setAttribute('autocomplete','email'); });
   }catch(e){}
 })();
+<script>
+(function(){
+  // Optional: Theme-Schalter via ?theme=cw (Changewise-Blau)
+  try{
+    var theme = new URLSearchParams(location.search).get('theme');
+    if (theme === 'cw') document.documentElement.classList.add('theme-cw');
+  }catch(e){}
+
+  // Tabs/Filter: immer nur eine Sektion zeigen, Hash-Deeplinks respektieren
+  function mapHashToId(){
+    var h = (location.hash||'').replace('#','');
+    if (h==='tasksieve') return 'sec-ts';
+    if (h==='changewise') return 'sec-cw';
+    return 'sec-sd'; // default
+  }
+  function showSection(id){
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('show'));
+    var el = document.getElementById(id); if (el) el.classList.add('show');
+    document.querySelectorAll('.form-tabs a').forEach(a=>{
+      a.classList.toggle('active', a.getAttribute('data-target')===id);
+    });
+  }
+  try{
+    document.querySelectorAll('.form-tabs a').forEach(a=>{
+      a.addEventListener('click', function(ev){
+        ev.preventDefault();
+        var hash = this.getAttribute('href');
+        history.pushState(null,'',hash);
+        showSection(this.dataset.target);
+      });
+    });
+    window.addEventListener('hashchange', ()=>showSection(mapHashToId()));
+    showSection(mapHashToId());
+  }catch(e){}
+})();
 </script>
 
-</body>
+ </body>
 </html>
