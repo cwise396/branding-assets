@@ -1,348 +1,210 @@
  <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Contact • ChangeWise / SlackDigest / TaskSieve</title>
-<meta name="description" content="No-call onboarding: request a test digest, load a demo inbox, or fill a quick brief. Instant result and automatic confirmation.">
-<meta name="theme-color" content="#0B1220">
-<style>
-:root{
-  --container:1100px;
-  --bg:#0B1220; --fg:#FFFFFF; --muted:#CBD5E1;
-  --nav-red:#AE0F12;
-  --btn-bg:#FFFFFF; --btn-fg:#0E3960;
-  --card:#0F1A2A; --card-bd:rgba(255,255,255,.14);
-  --link:#FFFFFF;
-}
-*{box-sizing:border-box}
-html,body{height:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
-a{color:var(--link);text-decoration:none}
-.site-header{position:sticky;top:0;z-index:50;width:100%;background:var(--nav-red)}
-.nav-inner{max-width:var(--container);margin:0 auto;padding:0 1rem;height:12mm;display:flex;align-items:center;justify-content:space-between}
-.brand{color:#fff;font-weight:800}
-.nav-links{list-style:none;display:flex;gap:1rem;margin:0;padding:0}
-.nav-links a{color:#fff}
-.nav-toggle{display:none}
-@media (max-width:980px){
-  .nav-inner{position:relative;height:auto;min-height:12mm;padding-block:.4rem}
-  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--nav-red);padding:1rem;flex-direction:column}
-  .nav-links.open{display:flex}
-  .nav-toggle{display:inline-block;background:none;border:0;color:#fff;font-size:1.2rem}
-}
-main{max-width:var(--container);margin:0 auto;padding:0 1rem 2.4rem}
-.hero{padding:18px 0 6px}
-.hero h1{margin:0 0 4px;font-size:clamp(1.6rem,1.2rem + 2vw,2.2rem)}
-.hero p{margin:0 0 10px;color:var(--muted)}
-.grid{display:grid;gap:16px;margin-top:12px}
-@media (min-width:980px){.grid{grid-template-columns:repeat(12,1fr)}}
-.card{background:var(--card);border:1px solid var(--card-bd);border-radius:14px;padding:16px}
-.card h2{margin:0 0 8px}
-.card p{margin:0 0 8px}
-.video{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;border:1px solid var(--card-bd)}
-.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.section{grid-column:span 12}
-.btn{display:inline-block;padding:.7rem 1rem;border-radius:12px;border:1px solid #fff;background:#fff;color:#0E3960;font-weight:800}
-form{display:grid;gap:10px;margin-top:8px}
-input,textarea,select{width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--card-bd);background:#0B1220;color:#fff}
-label{font-weight:700}
-small.hint{color:var(--muted)}
-.consent{display:flex;gap:8px;align-items:flex-start}
-.alert{background:#132032;border:1px solid var(--card-bd);border-radius:10px;padding:10px;margin:8px 0;color:var(--muted);font-size:.9rem}
-hr.sep{border:0;border-top:1px solid var(--card-bd);margin:12px 0}
-footer{max-width:var(--container);margin:2rem auto;padding:0 1rem 2rem;color:#fff}
-footer a{color:#fff}
-details summary{cursor:pointer;font-weight:800}
-.badge{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid var(--card-bd);color:var(--muted);font-size:.8rem}
-.hide{display:none !important}
-</style>
-<script>
-function toggleNav(){var l=document.getElementById('navLinks'); if(!l) return; var o=l.classList.toggle('open'); document.getElementById('navToggle').setAttribute('aria-expanded',o?'true':'false');}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Contact – ChangeWise • SlackDigest • TaskSieve</title>
+  <meta name="description" content="Contact & quick start: SlackDigest test digest, TaskSieve demo inbox, ChangeWise quick brief. Result & confirmation by email.">
 
-// Product context from hash
-function setProductContext(){
-  var hash=(location.hash||'').toLowerCase();
-  var p='general';
-  if(hash.includes('tasksieve')) p='tasksieve';
-  else if(hash.includes('changewise')) p='changewise';
-  else if(hash.includes('slackdigest')) p='slackdigest';
-  document.querySelectorAll('input[name="product"]').forEach(el=>el.value=p);
+  <style>
+    .form-tabs{display:flex;gap:8px;margin:0 0 12px;flex-wrap:wrap}
+    .form-tabs a{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.22);
+      text-decoration:none;color:inherit;opacity:.9}
+    .form-tabs a.active{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.35);opacity:1}
 
-  if(p==='slackdigest'){ location.hash='#slackdigest'; document.getElementById('sec-sd')?.scrollIntoView({behavior:'smooth',block:'start'}); }
-  if(p==='tasksieve'){ location.hash='#tasksieve'; document.getElementById('sec-ts')?.scrollIntoView({behavior:'smooth',block:'start'}); }
-  if(p==='changewise'){ location.hash='#changewise'; document.getElementById('sec-cw')?.scrollIntoView({behavior:'smooth',block:'start'}); }
-}
-document.addEventListener('DOMContentLoaded', setProductContext);
+    .section{display:none}
+    .section.show{display:block !important}
 
-// Mini diagnosis (ChangeWise)
-function cwDiagnose(ev){
-  ev.preventDefault();
-  var team = document.querySelector('#cw-team')?.value || 'small';
-  var kit  = document.querySelector('input[name="cw-kit"]:checked')?.value || 'no';
-  var goal = document.querySelector('#cw-goal')?.value || 'consistency';
+    .anchor-fix{position:relative;display:block;height:0;margin:0;top:-80px;visibility:hidden}
 
-  var rec=[];
-  if(kit==='no') rec.push('Create a brand kit (logo, colors, type) as a single source of truth.');
-  if(goal==='consistency') rec.push('Prioritize guidelines & templates to make outputs consistent.');
-  if(goal==='speed') rec.push('Use playbooks & templates for faster delivery — fewer review loops.');
-  if(team==='mid') rec.push('Self-serve enablement: micro-videos & checklists for the team.');
+    .section .consent{display:flex;align-items:flex-start;gap:.5rem;margin-top:.6rem}
+    .section .consent input[type="checkbox"]{margin-top:.2rem;flex-shrink:0}
+    .section .consent label{margin:0}
 
-  if(rec.length===0) rec.push('Polish tone of voice & review gates.');
+    .flash{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:10px;
+      background:#E7F6EF;color:#096D48;border:1px solid #BFE7D2;box-shadow:0 3px 12px rgba(0,0,0,.06);
+      opacity:0;transform:translateY(-6px);transition:opacity .2s ease, transform .2s ease}
+    .flash.show{opacity:1;transform:translateY(0)}
+    .flash small{display:block;font-size:12px;color:#64748B;margin-top:4px}
 
-  var out=document.getElementById('cwResult');
-  out.innerHTML = '<h3>Your result</h3><ul>'+rec.map(r=>'<li>'+r+'</li>').join('')+'</ul><p><span class="badge">You can attach this to the message — it will be sent with the form.</span></p>';
-  document.getElementById('cw_rec').value = rec.join(' | ');
-  out.classList.remove('hide');
-}
-</script>
-<style>
-  .flash{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:10px;
-    background:#E7F6EF;color:#096D48;border:1px solid #BFE7D2;box-shadow:0 3px 12px rgba(0,0,0,.06);
-    opacity:0;transform:translateY(-6px);transition:opacity .2s ease, transform .2s ease}
-  .flash.show{opacity:1;transform:translateY(0)}
-  .flash small{display:block;font-size:12px;color:#64748B;margin-top:4px}
-<style>
-  /* Tabs oben */
-  .form-tabs{display:flex;gap:8px;margin:0 0 12px;flex-wrap:wrap}
-  .form-tabs a{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.22);
-    text-decoration:none;color:inherit;opacity:.9}
-  .form-tabs a.active{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.35);opacity:1}
-  /* Sichtbarkeit der Sektionen (nur 1 sichtbar) */
-  .section{display:none}
-  .section.show{display:block}
-  /* Consent-Checkbox & Label näher zusammen */
-  .section .consent{display:flex;align-items:flex-start;gap:.5rem;margin-top:.6rem}
-  .section .consent input[type="checkbox"]{margin-top:.2rem;flex-shrink:0}
-  .section .consent label{margin:0}
-  /* Test-Theme (optional): ?theme=cw → Changewise-Blau */
-  .theme-cw body{ background:#0E3960; }
-  .theme-cw .card, .theme-cw .section{ background:rgba(255,255,255,.04); }
-</style>
-
- </head>
+    html.theme-cw, html.theme-cw body{ background:#0E3960 !important; }
+    html.theme-cw .card, html.theme-cw .section{ background:rgba(255,255,255,.06) !important; }
+  </style>
+  <noscript><style>.section{display:block !important}</style></noscript>
+</head>
 <body>
-<header class="site-header">
-  <nav>
-    <div class="nav-inner">
-      <a class="brand" href="/en/">Home</a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="/products/changewise/en/">ChangeWise</a></li>
-        <li><a href="/products/slackdigest/en/">SlackDigest</a></li>
-        <li><a href="/products/tasksieve/en/">TaskSieve</a></li>
-        <li class="lang"><a href="/contact/">DE</a> | <span class="active">EN</span></li>
-      </ul>
-      <button id="navToggle" class="nav-toggle" aria-expanded="false" onclick="toggleNav()">☰</button>
-    </div>
-  </nav>
-</header>
 
-<main>
-  <section class="hero">
-    <h1>No-call onboarding</h1>
-    <p>Answer only what’s necessary — you’ll instantly get the result and a confirmation by email.
-</p>
-    <details>
-      <summary>Optional: watch a 90-second video</summary>
-      <div class="video" style="margin-top:10px">
-        <iframe src="https://www.youtube-nocookie.com/embed/YOUTUBE_ID_INTRO?rel=0"
-                title="Quick overview" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen loading="lazy"></iframe>
+<main class="container">
+  <h1>Start without a call</h1>
+  <p>Answer only what’s necessary — you’ll instantly get the result <strong>and</strong> a confirmation by email.</p>
+  <p><a href="#slackdigest">SlackDigest</a> · <a href="#tasksieve">TaskSieve</a> · <a href="#changewise">ChangeWise</a></p>
+
+  <nav class="form-tabs" aria-label="Tools">
+    <a href="#slackdigest" data-target="sec-sd" class="active">SlackDigest</a>
+    <a href="#tasksieve" data-target="sec-ts">TaskSieve</a>
+    <a href="#changewise" data-target="sec-cw">ChangeWise</a>
+  </nav>
+
+  <!-- SlackDigest -->
+  <section id="sec-sd" class="card section show">
+    <span id="slackdigest" class="anchor-fix" aria-hidden="true"></span>
+    <h2>SlackDigest — request a test digest</h2>
+    <p><strong>3 steps:</strong> pick channels → cadence (daily/weekly) → delivery (email/slack). One glance, one link — done.</p>
+
+    <form action="https://formspree.io/f/xzzjvvwv"method="POST">
+      <input type="hidden" name="product" value="slackdigest">
+      <input type="hidden" name="lang" value="en">
+      <input type="text" name="_gotcha" style="display:none">
+
+      <label>Name
+        <input type="text" name="name" autocomplete="name" required>
+      </label>
+      <label>Email
+        <input type="email" name="email" autocomplete="email" required>
+      </label>
+      <label>Channels
+        <input type="text" name="channels" placeholder="#sales, #support, email inbox …" required>
+      </label>
+      <label>Cadence
+        <select name="cadence" required>
+          <option value="daily">Daily</option>
+          <option value="weekly">Weekly</option>
+        </select>
+      </label>
+      <label>Delivery
+        <select name="delivery" required>
+          <option value="email">Email</option>
+          <option value="slack">Slack</option>
+        </select>
+      </label>
+
+      <div class="consent">
+        <input id="c1e" type="checkbox" name="consent" required>
+        <label for="c1e">I agree to processing as per <a href="/en/privacy">privacy</a>.</label>
       </div>
-    </details>
+
+      <button class="btn" type="submit">Request test digest</button>
+      <input type="hidden" name="_subject" value="[Website] SlackDigest test digest">
+      <input type="hidden" name="_next" value="/en/contact/?success=1#slackdigest">
+    </form>
   </section>
 
-  <div class="grid">
-   <nav class="form-tabs" aria-label="Tools">
-  <a href="#slackdigest" data-target="sec-sd" class="active">SlackDigest</a>
-  <a href="#tasksieve" data-target="sec-ts">TaskSieve</a>
-  <a href="#changewise" data-target="sec-cw">ChangeWise</a>
-</nav>
+  <!-- TaskSieve -->
+  <section id="sec-ts" class="card section">
+    <span id="tasksieve" class="anchor-fix" aria-hidden="true"></span>
+    <h2>TaskSieve — quick test</h2>
+    <p>Start without import: load a demo inbox and see prioritization live.</p>
 
-   <!-- SlackDigest -->
-    <section id="sec-sd" class="card section show">
-      <h2>SlackDigest — Request a test digest</h2>
-      <p><strong>3 steps:</strong> choose channels → cadence (daily/weekly) → delivery (email/Slack). One glance, one link — done.</p>
-      <form action="https://formspree.io/f/xzzjvvwv" method="POST">
-        <input type="hidden" name="_next" value="/en/contact/?success=1#slackdigest">
+    <form action="https://formspree.io/f/xzzjvvwv" method="POST">
+      <input type="hidden" name="product" value="tasksieve">
       <input type="hidden" name="lang" value="en">
+      <input type="text" name="_gotcha" style="display:none">
 
-        <input type="text" name="_gotcha" style="display:none">
-        <label>Name
-          <input type="text" name="name" required>
-        </label>
-        <label>Email
-          <input type="email" name="email" required>
-        </label>
-        <label>Channels
-          <input type="text" name="channels" placeholder="#sales, #support, mailbox …" required>
-        </label>
-        <label>Cadence
-          <select name="cadence" required>
-            <option value="daily">Daily</option>
-            <option value="weekly">Weekly</option>
-          </select>
-        </label>
-        <label>Delivery
-          <select name="delivery" required>
-            <option value="email">Email</option>
-            <option value="slack">Slack</option>
-          </select>
-        </label>
-        <div class="consent">
-          <input id="e1" type="checkbox" name="consent" required>
-          <label for="e1">I agree to the processing of my data according to the <a href="/en/privacy">privacy policy</a>.</label>
-        </div>
-        <button class="btn" type="submit">Request test digest</button>
-        <input type="hidden" name="_subject" value="[Website] SlackDigest Test Digest">
-        <input type="hidden" name="_redirect" value="/en/contact/?success=1#slackdigest">
-      <script>this.closest('form').addEventListener('submit',e=>{const b=e.target.querySelector('button[type="submit"]'); b&&(b.disabled=true);});</script>
+      <label>Name
+        <input type="text" name="name" autocomplete="name" required>
+      </label>
+      <label>Email
+        <input type="email" name="email" autocomplete="email" required>
+      </label>
+      <label>Mode
+        <select name="mode" required>
+          <option value="demo">Demo inbox</option>
+          <option value="live">Connect own sources later</option>
+        </select>
+      </label>
+      <label>Sources (optional)
+        <input type="text" name="sources" placeholder="Email, notes, Slack">
+      </label>
 
-      </form>
-    </section>
+      <div class="consent">
+        <input id="c2e" type="checkbox" name="consent" required>
+        <label for="c2e">I agree to processing as per <a href="/en/privacy">privacy</a>.</label>
+      </div>
 
-    <!-- TaskSieve -->
-    <section id="sec-ts" class="card section">
-      <h2>TaskSieve — Try it quickly</h2>
-      <p><strong>Start without import: load a demo inbox and see prioritization live.
-</p>
-      <form action="https://formspree.io/f/xzzjvvwv" method="POST">
-        <input type="hidden" name="_next" value="/en/contact/?success=1#tasksieve">
+      <button class="btn" type="submit">Start demo</button>
+      <input type="hidden" name="_subject" value="[Website] TaskSieve demo">
+      <input type="hidden" name="_next" value="/en/contact/?success=1#tasksieve">
+    </form>
+  </section>
+
+  <!-- ChangeWise -->
+  <section id="sec-cw" class="card section">
+    <span id="changewise" class="anchor-fix" aria-hidden="true"></span>
+    <h2>ChangeWise — quick brief & mini diagnosis</h2>
+    <p>3–4 answers → instant result with concrete recommendations.</p>
+
+    <form action="https://formspree.io/f/xzzjvvwv" method="POST">
+      <input type="hidden" name="product" value="changewise">
       <input type="hidden" name="lang" value="en">
+      <input type="text" name="_gotcha" style="display:none">
 
-        <input type="text" name="_gotcha" style="display:none">
-        <label>Name
-          <input type="text" name="name" required>
-        </label>
-        <label>Email
-          <input type="email" name="email" required>
-        </label>
-        <label>Mode
-          <select name="mode" required>
-            <option value="demo">Load demo inbox</option>
-            <option value="connect-later">Connect sources later</option>
-          </select>
-        </label>
-        <fieldset>
-          <legend>Sources (optional)</legend>
-          <label><input type="checkbox" name="sources" value="email"> Email</label>
-          <label><input type="checkbox" name="sources" value="notes"> Notes</label>
-          <label><input type="checkbox" name="sources" value="slack"> Slack</label>
-        </fieldset>
-        <div class="consent">
-          <input id="e2" type="checkbox" name="consent" required>
-          <label for="e2">I agree to the processing of my data according to the <a href="/en/privacy">privacy policy</a>.</label>
-        </div>
-        <button class="btn" type="submit">Request demo inbox</button>
-        <input type="hidden" name="_subject" value="[Website] TaskSieve Demo">
-        <input type="hidden" name="_redirect" value="/en/contact/?success=1#tasksieve">
-      <script>this.closest('form').addEventListener('submit',e=>{const b=e.target.querySelector('button[type="submit"]'); b&&(b.disabled=true);});</script>
+      <label>Diagnosis
+        <textarea name="diagnosis" rows="4" placeholder="e.g., inconsistent messaging; need core narrative & templates." required></textarea>
+      </label>
+      <label>Optional: link to brand docs
+        <input type="url" name="asset_url" placeholder="https://…/brandkit.pdf">
+        <small>PDF/URL — reviewed confidentially; your result will reflect it.</small>
+      </label>
+      <label>Name
+        <input type="text" name="name" autocomplete="name" required>
+      </label>
+      <label>Email
+        <input type="email" name="email" autocomplete="email" required>
+      </label>
 
-      </form>
-    </section>
+      <div class="consent">
+        <input id="c3e" type="checkbox" name="consent" required>
+        <label for="c3e">I agree to processing as per <a href="/en/privacy">privacy</a>.</label>
+      </div>
 
-    <!-- ChangeWise -->
-    <section id="sec-cw" class="card section">
-      <h2>ChangeWise — Quick brief & mini diagnosis</h2>
-      <p><strong>3–4 answers → instant result with concrete recommendations.
-</p>
-      <form onsubmit="cwDiagnose(event)">
-        <div class="row" style="grid-template-columns:1fr 1fr">
-          <label>Team size
-            <select id="cw-team">
-              <option value="small">1–5</option>
-              <option value="mid">6–20</option>
-              <option value="large">21+</option>
-            </select>
-          </label>
-          <label>Main goal
-            <select id="cw-goal">
-              <option value="consistency">Consistency</option>
-              <option value="speed">Speed</option>
-            </select>
-          </label>
-          <fieldset>
-            <legend>Brand kit available?</legend>
-            <label><input type="radio" name="cw-kit" value="yes"> Yes</label>
-            <label><input type="radio" name="cw-kit" value="no" checked> No</label>
-          </fieldset>
-        </div>
-        <button class="btn" type="submit">See result</button>
-      <script>this.closest('form').addEventListener('submit',e=>{const b=e.target.querySelector('button[type="submit"]'); b&&(b.disabled=true);});</script>
+      <button class="btn" type="submit">Send brief</button>
+      <input type="hidden" name="_subject" value="[Website] ChangeWise quick brief">
+      <input type="hidden" name="_next" value="/en/contact/?success=1#changewise">
+    </form>
+  </section>
 
-      </form>
-
-      <div id="cwResult" class="card" style="margin-top:12px" class="hide"></div>
-
-      <hr class="sep">
-
-      <form action="https://formspree.io/f/xzzjvvwv" method="POST">
-
-         <input type="hidden" name="_next" value="/en/contact/?success=1#changewise">
-      <input type="hidden" name="lang" value="en">
-
-        <input type="hidden" id="cw_rec" name="diagnosis" value="">
-        <input type="text" name="_gotcha" style="display:none">
-        <label>Your name
-          <input type="text" name="name" required>
-        </label>
-        <label>Email
-          <input type="email" name="email" required>
-        </label>
-        <label>Optional: link to brand materials
-          <input type="url" name="asset_url" placeholder="https://…">
-        </label>
-        <div class="consent">
-          <input id="e3" type="checkbox" name="consent" required>
-          <label for="e3">I agree to the processing of my data according to the <a href="/en/privacy">privacy policy</a>.</label>
-        </div>
-        <button class="btn" type="submit">Join waitlist</button>
-        <input type="hidden" name="_subject" value="[Website] ChangeWise Interest">
-        <input type="hidden" name="_redirect" value="/en/contact/?success=1#changewise">
-      </form>
-    </section>
-  </div>
-
-  <div class="alert" role="status" aria-live="polite" style="display:none" id="okMsg">
-    Thanks! Your message has been received.
-  </div>
+  <footer style="margin-top:24px">
+    <a href="/en/imprint">Imprint</a> · <a href="/en/privacy">Privacy</a>
+  </footer>
 </main>
 
-<footer>
-  <a href="/en/impressum">Imprint</a> · <a href="/en/privacy">Privacy</a>
-</footer>
-
-<script>
-  if (new URLSearchParams(location.search).get('success')==='1') {
-    var ok=document.getElementById('okMsg'); if(ok) ok.style.display='block';
-  }
-</script>
 <script>
 (function(){
-  // 1) Danke-Hinweis genau am Ziel-Formular einblenden
+  // Optional blue theme via ?theme=cw
+  try{
+    var qs = new URLSearchParams(location.search);
+    if (qs.get('theme') === 'cw'){
+      document.documentElement.classList.add('theme-cw');
+      if (!document.getElementById('cwTheme')){
+        var st = document.createElement('style');
+        st.id = 'cwTheme';
+        st.textContent = 'html.theme-cw,html.theme-cw body{background:#0E3960 !important;}html.theme-cw .card,html.theme-cw .section{background:rgba(255,255,255,.06) !important;}';
+        document.head.appendChild(st);
+      }
+    }
+  }catch(e){}
+
+  // Inline success notice
   try{
     var sp = new URLSearchParams(location.search);
     if (sp.get('success') === '1') {
-      var hash = location.hash || '';
-      var target = hash ? document.querySelector(hash) : null;
-      var host = (target && target.querySelector('form')) ? target : document.querySelector('main, body');
+      var h = (location.hash||'');
+      var target = h ? document.querySelector(h) : null;
+      var host = (target && target.closest('.section')) ? target.closest('.section') : document.getElementById('sec-sd');
       if (host){
         var box = document.createElement('div');
-        // Text: DE/EN automatisch nach Pfad
-        var isEN = location.pathname.indexOf('/en/') === 0;
         box.className = 'flash';
-        box.innerHTML = isEN
-          ? 'Thanks — your message has been received.<small>We’ll get back shortly with the next step.</small>'
-          : 'Danke — deine Nachricht ist eingegangen.<small>Wir melden uns zeitnah mit dem nächsten Schritt.</small>';
-        var firstForm = host.querySelector('form');
-        if (firstForm) firstForm.parentNode.insertBefore(box, firstForm);
+        box.innerHTML = 'Thanks — your message has been received.<small>We’ll get back shortly with the next step.</small>';
+        var f = host.querySelector('form');
+        if (f) f.parentNode.insertBefore(box, f);
         setTimeout(function(){ box.classList.add('show'); }, 60);
         setTimeout(function(){ if(box && box.parentNode) box.parentNode.removeChild(box); }, 8000);
       }
     }
   }catch(e){}
 
-  // 2) Doppel-Klick-Schutz + „Senden…/Sending…“ Label
+  // Submit double-click guard
   try{
     document.addEventListener('submit', function(e){
       var f = e.target;
@@ -352,90 +214,53 @@ function cwDiagnose(ev){
         btn.disabled = true;
         btn.setAttribute('aria-disabled','true');
         btn.dataset._label = btn.textContent;
-        var isEN = location.pathname.indexOf('/en/') === 0;
-        btn.textContent = isEN ? 'Sending…' : 'Senden…';
+        btn.textContent = 'Sending…';
       }
     }, {capture:true});
   }catch(e){}
 
-  // 3) Autocomplete-Hinweise (Name/Email) – falls im Markup fehlen
-  try{
-    document.querySelectorAll('input[name="name"]').forEach(function(i){ i.setAttribute('autocomplete','name'); });
-    document.querySelectorAll('input[name="email"]').forEach(function(i){ i.setAttribute('autocomplete','email'); });
-  }catch(e){}
-})();
- <script>
-(function(){
-  // Optional: Theme-Schalter via ?theme=cw (Changewise-Blau)
-  try{
-    var theme = new URLSearchParams(location.search).get('theme');
-    if (theme === 'cw') document.documentElement.classList.add('theme-cw');
-  }catch(e){}
-
-  // Hash -> Section-ID
-  function mapHashToId(){
-    try{
-      var h = (location.hash || '').replace('#','').toLowerCase();
-      if (h === 'tasksieve')   return 'sec-ts';
-      if (h === 'changewise')  return 'sec-cw';
-    }catch(e){}
-    return 'sec-sd'; // Default: SlackDigest
+  // Tabs
+  function targetIdFromHash(){
+    var h = (location.hash||'').replace('#','').toLowerCase();
+    if (h === 'tasksieve' || h === 'sec-ts')   return 'sec-ts';
+    if (h === 'changewise' || h === 'sec-cw')  return 'sec-cw';
+    return 'sec-sd';
   }
-
-  // Sichtbarkeit umschalten + Tab aktiv markieren
-  function showSection(id){
+  function setActive(id){
     try{
       document.querySelectorAll('.section').forEach(function(s){ s.classList.remove('show'); });
-      var el = document.getElementById(id);
-      if (el) el.classList.add('show');
+      var el = document.getElementById(id); if (el) el.classList.add('show');
       document.querySelectorAll('.form-tabs a').forEach(function(a){
         a.classList.toggle('active', a.getAttribute('data-target') === id);
       });
     }catch(e){}
   }
-
-  // Initialisieren + zum Anker scrollen (falls vorhanden)
-  function activateFromHash(){
-    showSection(mapHashToId());
-    try{
-      var anchor = document.querySelector(location.hash);
-      if (anchor) anchor.scrollIntoView({behavior:'smooth', block:'start'});
-    }catch(e){}
-  }
-
-  // Klicks auf die Tabs abfangen
-  try{
-    document.querySelectorAll('.form-tabs a').forEach(function(a){
-      a.addEventListener('click', function(ev){
-        ev.preventDefault();
-        var hash = this.getAttribute('href'); // #slackdigest / #tasksieve / #changewise
-        history.pushState(null,'',hash);
-        activateFromHash();
-      });
-    });
-  }catch(e){}
-
-  // Klicks auf andere interne #Links (Fallback)
-  document.addEventListener('click', function(e){
-    var a = e.target.closest('a[href^="#"]');
-    if (!a) return;
-    var h = (a.getAttribute('href')||'').toLowerCase();
-    if (!/#(slackdigest|tasksieve|changewise)$/.test(h)) return;
+  function onTabClick(e){
     e.preventDefault();
-    history.pushState(null,'',h);
-    activateFromHash();
-  }, true);
-
-  // Hash-Änderungen + erster Aufruf
-  window.addEventListener('hashchange', activateFromHash);
-  document.addEventListener('DOMContentLoaded', activateFromHash);
+    var t = this.getAttribute('data-target');
+    if (!t) return;
+    var hash = '#' + (t==='sec-sd' ? 'slackdigest' : t==='sec-ts' ? 'tasksieve' : 'changewise');
+    history.pushState(null,'',hash);
+    setActive(t);
+    var anchor = document.querySelector(hash);
+    if (anchor) try{ anchor.scrollIntoView({behavior:'instant', block:'start'}); }catch(e){}
+  }
+  function initTabs(){
+    try{
+      document.querySelectorAll('.form-tabs a').forEach(function(a){
+        a.removeEventListener('click', onTabClick);
+        a.addEventListener('click', onTabClick);
+      });
+    }catch(e){}
+    setActive(targetIdFromHash());
+  }
+  window.addEventListener('hashchange', function(){ setActive(targetIdFromHash()); });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTabs);
+  } else {
+    initTabs();
+  }
 })();
 </script>
-
-
-  }catch(e){}
-})();
-</script>
-
- </body>
+</body>
 </html>
