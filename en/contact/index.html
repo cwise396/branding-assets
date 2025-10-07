@@ -102,9 +102,25 @@ function cwDiagnose(ev){
     opacity:0;transform:translateY(-6px);transition:opacity .2s ease, transform .2s ease}
   .flash.show{opacity:1;transform:translateY(0)}
   .flash small{display:block;font-size:12px;color:#64748B;margin-top:4px}
+<style>
+  /* Tabs oben */
+  .form-tabs{display:flex;gap:8px;margin:0 0 12px;flex-wrap:wrap}
+  .form-tabs a{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.22);
+    text-decoration:none;color:inherit;opacity:.9}
+  .form-tabs a.active{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.35);opacity:1}
+  /* Sichtbarkeit der Sektionen (nur 1 sichtbar) */
+  .section{display:none}
+  .section.show{display:block}
+  /* Consent-Checkbox & Label näher zusammen */
+  .section .consent{display:flex;align-items:flex-start;gap:.5rem;margin-top:.6rem}
+  .section .consent input[type="checkbox"]{margin-top:.2rem;flex-shrink:0}
+  .section .consent label{margin:0}
+  /* Test-Theme (optional): ?theme=cw → Changewise-Blau */
+  .theme-cw body{ background:#0E3960; }
+  .theme-cw .card, .theme-cw .section{ background:rgba(255,255,255,.04); }
 </style>
 
-</head>
+ </head>
 <body>
 <header class="site-header">
   <nav>
@@ -124,7 +140,8 @@ function cwDiagnose(ev){
 <main>
   <section class="hero">
     <h1>No-call onboarding</h1>
-    <p>Answer <strong>only what’s needed</strong> — get an instant result or confirmation.</p>
+    <p>Answer only what’s necessary — you’ll instantly get the result and a confirmation by email.
+</p>
     <details>
       <summary>Optional: watch a 90-second video</summary>
       <div class="video" style="margin-top:10px">
@@ -136,7 +153,13 @@ function cwDiagnose(ev){
   </section>
 
   <div class="grid">
-    <!-- SlackDigest -->
+   <nav class="form-tabs" aria-label="Tools">
+  <a href="#slackdigest" data-target="sec-sd" class="active">SlackDigest</a>
+  <a href="#tasksieve" data-target="sec-ts">TaskSieve</a>
+  <a href="#changewise" data-target="sec-cw">ChangeWise</a>
+</nav>
+
+   <!-- SlackDigest -->
     <section id="sec-sd" class="card section">
       <h2>SlackDigest — Request a test digest</h2>
       <p><strong>3 steps:</strong> choose channels → cadence (daily/weekly) → delivery (email/Slack). One glance, one link — done.</p>
@@ -181,7 +204,8 @@ function cwDiagnose(ev){
     <!-- TaskSieve -->
     <section id="sec-ts" class="card section">
       <h2>TaskSieve — Try it quickly</h2>
-      <p><strong>Start without import:</strong> load a demo inbox and see prioritization live. Connect your sources afterwards.</p>
+      <p><strong>Start without import: load a demo inbox and see prioritization live.
+</p>
       <form action="https://formspree.io/f/xzzjvvwv" method="POST">
         <input type="hidden" name="_next" value="/en/contact/?success=1#tasksieve">
       <input type="hidden" name="lang" value="en">
@@ -220,7 +244,8 @@ function cwDiagnose(ev){
     <!-- ChangeWise -->
     <section id="sec-cw" class="card section">
       <h2>ChangeWise — Quick brief & mini diagnosis</h2>
-      <p><strong>3–4 answers</strong> → instant result with concrete recommendations. You can submit it along with your message.</p>
+      <p><strong>3–4 answers → instant result with concrete recommendations.
+</p>
       <form onsubmit="cwDiagnose(event)">
         <div class="row" style="grid-template-columns:1fr 1fr">
           <label>Team size
@@ -339,7 +364,42 @@ function cwDiagnose(ev){
     document.querySelectorAll('input[name="email"]').forEach(function(i){ i.setAttribute('autocomplete','email'); });
   }catch(e){}
 })();
+<script>
+(function(){
+  // Optional: Theme-Schalter via ?theme=cw (Changewise-Blau)
+  try{
+    var theme = new URLSearchParams(location.search).get('theme');
+    if (theme === 'cw') document.documentElement.classList.add('theme-cw');
+  }catch(e){}
+
+  // Tabs/Filter: immer nur eine Sektion zeigen, Hash-Deeplinks respektieren
+  function mapHashToId(){
+    var h = (location.hash||'').replace('#','');
+    if (h==='tasksieve') return 'sec-ts';
+    if (h==='changewise') return 'sec-cw';
+    return 'sec-sd'; // default
+  }
+  function showSection(id){
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('show'));
+    var el = document.getElementById(id); if (el) el.classList.add('show');
+    document.querySelectorAll('.form-tabs a').forEach(a=>{
+      a.classList.toggle('active', a.getAttribute('data-target')===id);
+    });
+  }
+  try{
+    document.querySelectorAll('.form-tabs a').forEach(a=>{
+      a.addEventListener('click', function(ev){
+        ev.preventDefault();
+        var hash = this.getAttribute('href');
+        history.pushState(null,'',hash);
+        showSection(this.dataset.target);
+      });
+    });
+    window.addEventListener('hashchange', ()=>showSection(mapHashToId()));
+    showSection(mapHashToId());
+  }catch(e){}
+})();
 </script>
 
-</body>
+ </body>
 </html>
