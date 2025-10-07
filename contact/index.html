@@ -163,8 +163,8 @@ function cwDiagnose(ev){
 </nav>
 
    <!-- SlackDigest -->
-    <section id="sec-sd" class="card section">
-      <h2>SlackDigest – Test-Digest anfordern</h2>
+    <section id="sec-sd" class="card section show">
+     <h2>SlackDigest – Test-Digest anfordern</h2>
       <p><strong>In 3 Schritten:</strong> Kanäle wählen → Takt (täglich/wöchentlich) → Zustellung (E-Mail/Slack). Ein Blick, ein Link – erledigt.</p>
       <form action="https://formspree.io/f/xvgwqanb" method="POST">
          <input type="hidden" name="_next" value="/contact/?success=1#slackdigest">
@@ -365,7 +365,7 @@ function cwDiagnose(ev){
     document.querySelectorAll('input[name="email"]').forEach(function(i){ i.setAttribute('autocomplete','email'); });
   }catch(e){}
 })();
-<script>
+ <script>
 (function(){
   // Optional: Theme-Schalter via ?theme=cw (Changewise-Blau)
   try{
@@ -373,31 +373,77 @@ function cwDiagnose(ev){
     if (theme === 'cw') document.documentElement.classList.add('theme-cw');
   }catch(e){}
 
-  // Tabs/Filter: immer nur eine Sektion zeigen, Hash-Deeplinks respektieren
+  // Hash -> Section-ID
   function mapHashToId(){
-    var h = (location.hash||'').replace('#','');
-    if (h==='tasksieve') return 'sec-ts';
-    if (h==='changewise') return 'sec-cw';
-    return 'sec-sd'; // default
+    try{
+      var h = (location.hash || '').replace('#','').toLowerCase();
+      if (h === 'tasksieve')   return 'sec-ts';
+      if (h === 'changewise')  return 'sec-cw';
+    }catch(e){}
+    return 'sec-sd'; // Default: SlackDigest
   }
+
+  // Sichtbarkeit umschalten + Tab aktiv markieren
   function showSection(id){
-    document.querySelectorAll('.section').forEach(s=>s.classList.remove('show'));
-    var el = document.getElementById(id); if (el) el.classList.add('show');
-    document.querySelectorAll('.form-tabs a').forEach(a=>{
-      a.classList.toggle('active', a.getAttribute('data-target')===id);
-    });
+    try{
+      document.querySelectorAll('.section').forEach(function(s){ s.classList.remove('show'); });
+      var el = document.getElementById(id);
+      if (el) el.classList.add('show');
+      document.querySelectorAll('.form-tabs a').forEach(function(a){
+        a.classList.toggle('active', a.getAttribute('data-target') === id);
+      });
+    }catch(e){}
   }
+
+  // Initialisieren + zum Anker scrollen (falls vorhanden)
+  function activateFromHash(){
+    showSection(mapHashToId());
+    try{
+      var anchor = document.querySelector(location.hash);
+      if (anchor) anchor.scrollIntoView({behavior:'smooth', block:'start'});
+    }catch(e){}
+  }
+
+  // Klicks auf die Tabs abfangen
   try{
-    document.querySelectorAll('.form-tabs a').forEach(a=>{
+    document.querySelectorAll('.form-tabs a').forEach(function(a){
       a.addEventListener('click', function(ev){
         ev.preventDefault();
-        var hash = this.getAttribute('href');
+        var hash = this.getAttribute('href'); // #slackdigest / #tasksieve / #changewise
         history.pushState(null,'',hash);
-        showSection(this.dataset.target);
+        activateFromHash();
       });
     });
-    window.addEventListener('hashchange', ()=>showSection(mapHashToId()));
-    showSection(mapHashToId());
+  }catch(e){}
+
+  // Klicks auf andere interne #Links (Fallback)
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var h = (a.getAttribute('href')||'').toLowerCase();
+    if (!/#(slackdigest|tasksieve|changewise)$/.test(h)) return;
+    e.preventDefault();
+    history.pushState(null,'',h);
+    activateFromHash();
+  }, true);
+
+  // Hash-Änderungen + erster Aufruf
+  window.addEventListener('hashchange', activateFromHash);
+  document.addEventListener('DOMContentLoaded', activateFromHash);
+})();
+</script>
+
+    // Robust initialisieren + auf Hash-Wechsel reagieren (+ sauber zum Anker scrollen)
+function activateFromHash(){
+  showSection(mapHashToId());
+  try{
+    var anchor = document.querySelector(location.hash);
+    if (anchor) anchor.scrollIntoView({behavior:'smooth', block:'start'});
+  }catch(e){}
+}
+window.addEventListener('hashchange', activateFromHash);
+document.addEventListener('DOMContentLoaded', activateFromHash);
+
   }catch(e){}
 })();
 </script>
