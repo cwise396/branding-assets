@@ -8,19 +8,49 @@
   <meta name="description" content="Contact & quick start: SlackDigest test digest, TaskSieve demo inbox, ChangeWise quick brief. Result & confirmation by email.">
 
   <style>
-    .form-tabs{display:flex;gap:8px;margin:0 0 12px;flex-wrap:wrap}
+    :root{
+      --page-bg:#0B1220;
+      --text:#E5E7EB; --muted:#94A3B8; --border:#253047;
+      --card-bg:rgba(255,255,255,.04); --card-bd:rgba(255,255,255,.12);
+      --input-bg:rgba(13,20,34,.7); --input-bd:rgba(255,255,255,.16);
+      --btn-bg:#ffffff; --btn-fg:#0E3960; --btn-bd:rgba(255,255,255,.24);
+      --btn-bg-h:#F7F7F7;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--page-bg);color:var(--text);
+      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+    .container{width:min(980px,92%);margin:24px auto}
+
+    h1{margin:.2rem 0 1rem;font-size:clamp(1.4rem,1.1rem + 1.2vw,2rem)}
+    p.lead{margin:.25rem 0 1rem;color:var(--muted)}
+
+    .form-tabs{display:flex;gap:8px;margin:0 0 14px;flex-wrap:wrap}
     .form-tabs a{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.22);
       text-decoration:none;color:inherit;opacity:.9}
     .form-tabs a.active{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.35);opacity:1}
 
     .section{display:none}
     .section.show{display:block !important}
-
+    .card{background:var(--card-bg);border:1px solid var(--card-bd);border-radius:14px;
+      padding:18px 16px;box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06);margin-bottom:16px}
+    .card h2{margin:.2rem 0 .6rem;font-size:1.2rem}
     .anchor-fix{position:relative;display:block;height:0;margin:0;top:-80px;visibility:hidden}
 
-    .section .consent{display:flex;align-items:flex-start;gap:.5rem;margin-top:.6rem}
-    .section .consent input[type="checkbox"]{margin-top:.2rem;flex-shrink:0}
-    .section .consent label{margin:0}
+    form{display:grid;gap:10px}
+    label{display:block;font-weight:600}
+    input[type="text"], input[type="email"], input[type="url"], select, textarea{
+      width:100%;margin-top:6px;padding:10px 12px;border-radius:10px;border:1px solid var(--input-bd);
+      background:var(--input-bg);color:var(--text)}
+    input::placeholder, textarea::placeholder{color:#A3AEC2}
+    textarea{resize:vertical}
+    .consent{display:flex;align-items:flex-start;gap:.5rem;margin-top:.2rem}
+    .consent input[type="checkbox"]{margin-top:.2rem;flex-shrink:0}
+    .consent a{color:inherit}
+
+    .btn{display:inline-block;align-self:start;padding:.7rem 1rem;border-radius:12px;
+      border:1px solid var(--btn-bd);background:var(--btn-bg);color:var(--btn-fg);font-weight:800;text-decoration:none}
+    .btn:hover{background:var(--btn-bg-h)}
 
     .flash{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:10px;
       background:#E7F6EF;color:#096D48;border:1px solid #BFE7D2;box-shadow:0 3px 12px rgba(0,0,0,.06);
@@ -34,11 +64,9 @@
   <noscript><style>.section{display:block !important}</style></noscript>
 </head>
 <body>
-
 <main class="container">
   <h1>Start without a call</h1>
-  <p>Answer only what’s necessary — you’ll instantly get the result <strong>and</strong> a confirmation by email.</p>
-  <p><a href="#slackdigest">SlackDigest</a> · <a href="#tasksieve">TaskSieve</a> · <a href="#changewise">ChangeWise</a></p>
+  <p class="lead">Answer only what’s necessary — you’ll instantly get the result <strong>and</strong> a confirmation by email.</p>
 
   <nav class="form-tabs" aria-label="Tools">
     <a href="#slackdigest" data-target="sec-sd" class="active">SlackDigest</a>
@@ -52,7 +80,7 @@
     <h2>SlackDigest — request a test digest</h2>
     <p><strong>3 steps:</strong> pick channels → cadence (daily/weekly) → delivery (email/slack). One glance, one link — done.</p>
 
-    <form action="https://formspree.io/f/xzzjvvwv"method="POST">
+    <form action="https://formspree.io/f/xzzjvvwv" method="POST">
       <input type="hidden" name="product" value="slackdigest">
       <input type="hidden" name="lang" value="en">
       <input type="text" name="_gotcha" style="display:none">
@@ -164,8 +192,8 @@
     </form>
   </section>
 
-  <footer style="margin-top:24px">
-    <a href="/en/imprint">Imprint</a> · <a href="/en/privacy">Privacy</a>
+  <footer style="margin-top:24px;color:var(--muted)">
+    <a href="/en/imprint" style="color:inherit">Imprint</a> · <a href="/en/privacy" style="color:inherit">Privacy</a>
   </footer>
 </main>
 
@@ -211,55 +239,45 @@
       if (!f || f.tagName !== 'FORM') return;
       var btn = f.querySelector('button[type="submit"]');
       if (btn && !btn.disabled) {
-        btn.disabled = true;
-        btn.setAttribute('aria-disabled','true');
-        btn.dataset._label = btn.textContent;
-        btn.textContent = 'Sending…';
+        btn.disabled = true; btn.setAttribute('aria-disabled','true');
+        btn.dataset._label = btn.textContent; btn.textContent = 'Sending…';
       }
     }, {capture:true});
   }catch(e){}
 
-  // Tabs
+  // Tabs / hash routing
   function targetIdFromHash(){
     var h = (location.hash||'').replace('#','').toLowerCase();
-    if (h === 'tasksieve' || h === 'sec-ts')   return 'sec-ts';
-    if (h === 'changewise' || h === 'sec-cw')  return 'sec-cw';
+    if (h==='tasksieve' || h==='sec-ts') return 'sec-ts';
+    if (h==='changewise'|| h==='sec-cw') return 'sec-cw';
     return 'sec-sd';
   }
   function setActive(id){
-    try{
-      document.querySelectorAll('.section').forEach(function(s){ s.classList.remove('show'); });
-      var el = document.getElementById(id); if (el) el.classList.add('show');
-      document.querySelectorAll('.form-tabs a').forEach(function(a){
-        a.classList.toggle('active', a.getAttribute('data-target') === id);
-      });
-    }catch(e){}
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('show'));
+    var el = document.getElementById(id); if (el) el.classList.add('show');
+    document.querySelectorAll('.form-tabs a').forEach(a=>{
+      a.classList.toggle('active', a.getAttribute('data-target')===id);
+    });
   }
   function onTabClick(e){
     e.preventDefault();
     var t = this.getAttribute('data-target');
     if (!t) return;
-    var hash = '#' + (t==='sec-sd' ? 'slackdigest' : t==='sec-ts' ? 'tasksieve' : 'changewise');
+    var hash = '#' + (t==='sec-sd'?'slackdigest':t==='sec-ts'?'tasksieve':'changewise');
     history.pushState(null,'',hash);
     setActive(t);
     var anchor = document.querySelector(hash);
-    if (anchor) try{ anchor.scrollIntoView({behavior:'instant', block:'start'}); }catch(e){}
+    if (anchor) try{ anchor.scrollIntoView({behavior:'instant', block:'start'});}catch(e){}
   }
   function initTabs(){
-    try{
-      document.querySelectorAll('.form-tabs a').forEach(function(a){
-        a.removeEventListener('click', onTabClick);
-        a.addEventListener('click', onTabClick);
-      });
-    }catch(e){}
+    document.querySelectorAll('.form-tabs a').forEach(a=>{
+      a.removeEventListener('click', onTabClick);
+      a.addEventListener('click', onTabClick);
+    });
     setActive(targetIdFromHash());
   }
-  window.addEventListener('hashchange', function(){ setActive(targetIdFromHash()); });
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initTabs);
-  } else {
-    initTabs();
-  }
+  window.addEventListener('hashchange', ()=>setActive(targetIdFromHash()));
+  if (document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', initTabs); } else { initTabs(); }
 })();
 </script>
 </body>
