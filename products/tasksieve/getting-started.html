@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TaskSieve – Getting Started</title>
+  <meta name="description" content="TaskSieve – in wenigen Minuten starten: Demo-Inbox laden, Priorisierung verstehen, eigene Quellen verbinden.">
+  <meta name="color-scheme" content="dark">
+  <style>
+    :root{
+      --container: 1100px;
+      --nav-red:#AE0F12;              /* Nav-Leiste */
+      --bg-dark:#0B1220;              /* Seitenhintergrund dunkel */
+      --fg-dark:#FFFFFF;              /* Text auf dunkel */
+      --card-red:#B90E13;             /* Karten-Hintergrund (TaskSieve Rot sRGB 185,14,19) */
+      --card-bd:rgba(255,255,255,.22);
+      --muted:#C7CBD3;
+      --btn-fg:#B90E13;               /* rote Schrift auf weißem Button */
+      --badge-ring:#FFFFFF;           /* weißer Ring ums Logo */
+      --badge-ring-w:5px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg-dark);color:var(--fg-dark);
+         font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+
+    /* Header/Nav – volle Breite rot (ca. 12mm) */
+    .site-header{position:sticky;top:0;z-index:50;width:100%;background:var(--nav-red)}
+    .nav-inner{max-width:var(--container);margin:0 auto;padding:0 1rem;height:12mm;
+               display:flex;align-items:center;justify-content:space-between}
+    .brand{color:#fff;font-weight:800;text-decoration:none;white-space:nowrap}
+    .nav-links{list-style:none;display:flex;gap:1rem;margin:0;padding:0;align-items:center}
+    .nav-links a{color:#fff;text-decoration:none}
+    .nav-toggle{display:none;background:none;border:0;color:#fff;font-size:1.2rem}
+    @media (max-width:980px){
+      .nav-inner{position:relative}
+      .nav-links{display:none;position:absolute;top:12mm;left:0;right:0;background:var(--nav-red);
+                 padding:1rem;margin:0;flex-direction:column;gap:.6rem}
+      .nav-links.open{display:flex}
+      .nav-toggle{display:inline-block}
+    }
+
+    /* Hero */
+    .hero{padding-top:14mm;color:#fff}
+    .hero-header{max-width:var(--container);margin:0 auto;padding:0 1rem;
+                 display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;align-items:end}
+    .hero-text{grid-column:1/9}
+    .hero h1{margin:0 0 .2rem;font-size:clamp(1.8rem,4vw,3rem);line-height:1.1}
+    .hero p.lead{margin:0;opacity:.95;font-weight:700;font-size:clamp(1.1rem,2.4vw,1.35rem)}
+    .logo-col{grid-column:9/13;justify-self:start;display:flex;align-items:center}
+    .logo-badge{position:relative;width:98px;height:98px}
+    .logo-badge .ring{position:absolute;inset:0}
+    .logo-badge .ring svg{display:block;width:100%;height:100%}
+    .logo-badge img{position:absolute;top:5px;left:5px;width:88px;height:88px;border-radius:50%;display:block}
+
+    @media (max-width:640px){
+      .hero-header{grid-template-columns:1fr;text-align:center}
+      .hero-text{grid-column:1/-1}
+      .logo-col{grid-column:1/-1;justify-self:center}
+    }
+
+    /* Sections / Cards */
+    .wrap{max-width:var(--container);margin:0 auto;padding:0 1rem 2.4rem}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;margin-top:1rem}
+    .card{grid-column:span 6;background:var(--card-red);color:#fff;border-radius:14px;padding:1.05rem 1rem;
+          border:1px solid var(--card-bd);box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06)}
+    .card h2{margin:.2rem 0 .5rem;font-size:1.35rem}
+    .card p,.card li{margin:.35rem 0}
+    .card ul{padding-left:1.2rem}
+    .card a{color:#fff;text-decoration:underline;text-underline-offset:2px}
+    @media (max-width:960px){.card{grid-column:span 12}}
+
+    /* White CTA button with red text */
+    .btn{display:inline-block;padding:.7rem 1rem;border-radius:12px;border:1px solid #fff;
+         text-decoration:none;font-weight:800;background:#fff;color:var(--btn-fg) !important;
+         -webkit-text-fill-color:var(--btn-fg) !important}
+
+    .muted{color:var(--muted)}
+
+    footer{max-width:var(--container);margin:2.2rem auto;padding:0 1rem 2.4rem}
+    footer a{color:#fff;text-decoration:none}
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-inner">
+    <a class="brand" href="https://www.changewise.net/">Home</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="https://www.changewise.net/products/changewise/">ChangeWise</a></li>
+      <li><a href="https://www.changewise.net/products/slackdigest/">SlackDigest</a></li>
+      <li><a href="https://www.changewise.net/products/tasksieve/">TaskSieve</a></li>
+      <li><a href="https://www.changewise.net/en/products/tasksieve/getting-started.html">EN</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-controls="navLinks" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main class="hero">
+  <div class="hero-header">
+    <div class="hero-text">
+      <h1>TaskSieve – Getting Started</h1>
+      <p class="lead">In wenigen Minuten startklar: Demo-Inbox, Priorisierung verstehen, eigene Quellen verbinden.</p>
+    </div>
+    <div class="logo-col">
+      <div class="logo-badge" aria-hidden="true">
+        <span class="ring">
+          <svg viewBox="0 0 100 100" fill="none">
+            <circle cx="50" cy="50" r="47.5" stroke="#FFFFFF" stroke-width="5"/>
+          </svg>
+        </span>
+        <img src="/assets/brand/tasksieve_logo.svg" alt="TaskSieve Logo" width="88" height="88" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </div>
+
+  <section class="wrap">
+    <div class="grid">
+      <!-- 1: Schnellstart -->
+      <article class="card">
+        <h2>1) Schnellstart (2–3 Minuten)</h2>
+        <ol>
+          <li>Öffne die <a href="https://www.changewise.net/products/tasksieve/">TaskSieve-Seite</a> und klicke <em>Demo starten</em>.</li>
+          <li>Lade die <strong>Demo-Inbox</strong> (Beispiel-E-Mails, Notizen, Slack-Snippets).</li>
+          <li>Sieh dir die <strong>Priorisierung</strong> an: Wirkung • Dringlichkeit • Aufwand → <em>Nächste Aktion</em>.</li>
+        </ol>
+        <p class="muted">Kein Import nötig. Eigene Quellen kannst du später verbinden.</p>
+      </article>
+
+      <!-- 2: Eigene Quellen -->
+      <article class="card">
+        <h2>2) Eigene Quellen verbinden</h2>
+        <ul>
+          <li><strong>E-Mail:</strong> IMAP/Google Workspace (Leserechte genügen)</li>
+          <li><strong>Notizen:</strong> Markdown/Notes-Export</li>
+          <li><strong>Slack:</strong> Kanal-Leserechte</li>
+        </ul>
+        <p><a class="btn" href="https://www.changewise.net/contact/#tasksieve">Kontakt aufnehmen</a></p>
+      </article>
+
+      <!-- 3: Arbeiten mit TaskSieve -->
+      <article class="card">
+        <h2>3) So arbeitest du mit TaskSieve</h2>
+        <ul>
+          <li><strong>Next Action first:</strong> Die obersten 3 zuerst umsetzen.</li>
+          <li><strong>Fokus-Blöcke (2×25 Min):</strong> Batching reduziert Kontextwechsel.</li>
+          <li><strong>Feinschliff:</strong> Gewichtungen bei Bedarf anpassen.</li>
+        </ul>
+      </article>
+
+      <!-- 4: Tipps & Best Practices -->
+      <article class="card">
+        <h2>Tipps & Best Practices</h2>
+        <ul>
+          <li>„Heute“ markieren → sichtbarer Fortschritt.</li>
+          <li>Wöchentlicher Review (10 Min): Quellen prüfen, Regeln justieren.</li>
+          <li>Teamstart: klein anfangen, dann skalieren.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+    <div>
+      <a href="https://www.changewise.net/impressum.html">Impressum</a> ·
+      <a href="https://www.changewise.net/datenschutz.html">Datenschutz</a>
+    </div>
+    <small>© ChangeWise • SlackDigest • TaskSieve</small>
+  </div>
+</footer>
+
+<script>
+  // Mobile Nav
+  (function(){
+    const t=document.getElementById('navToggle'), l=document.getElementById('navLinks');
+    if (t&&l) t.addEventListener('click', ()=>{ const o=l.classList.toggle('open'); t.setAttribute('aria-expanded', o?'true':'false'); });
+  })();
+</script>
+</body>
+</html>
