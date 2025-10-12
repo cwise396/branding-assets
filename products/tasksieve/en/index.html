@@ -177,11 +177,18 @@ function __toggleNav(){var l=document.getElementById('navLinks');if(!l)return;va
   </section>
 </main>
 
-<footer>
-  <a href="/en/impressum">Imprint</a> · <a href="/en/privacy">Privacy</a>
+ <footer>
+  <div class="container footbar">
+    <nav class="legal" aria-label="Footer">
+      <a href="/en/imprint/">Imprint</a><span class="sep" aria-hidden="true"> · </span>
+      <a href="/en/privacy/">Privacy</a>
+    </nav>
+    <small>© ChangeWise • SlackDigest • TaskSieve</small>
+  </div>
 </footer>
 
-<script>
+
+ <script>
 (function(){
   var hash=(location.hash||"").toLowerCase();
   if(!hash.includes('benefits')) return;
