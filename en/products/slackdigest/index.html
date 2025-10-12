@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SlackDigest – Updates that move things forward.</title>
+  <meta name="description" content="SlackDigest condenses signals from Slack & Email into actionable updates — one glance, one link, done.">
+  <meta name="color-scheme" content="dark">
+  <style>
+    :root{
+      --container: 1100px;
+
+      /* Dark theme */
+      --bg-dark:#0B1220;
+      --fg-dark:#FFFFFF;
+
+      /* Brand colors */
+      --nav-red:#AE0F12;               /* Navbar red */
+      --card-green:#0C6C48;            /* SlackDigest green (sRGB 12,108,72) */
+      --btn-green-text:#096D48;        /* Button text green, robust override */
+      --card-border:rgba(255,255,255,.28);
+
+      /* Logo ring */
+      --ring-size:98px;
+      --ring-stroke:#FFFFFF;
+      --ring-stroke-width:5px;
+      --logo-size:88px;
+    }
+
+    *{ box-sizing:border-box }
+    html,body{ height:100% }
+    body{
+      margin:0;
+      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+      background:var(--bg-dark);
+      color:var(--fg-dark);
+    }
+    a{ color:#FFFFFF; text-decoration:none }
+
+    /* Header/Nav – full width red */
+    .site-header{ position:sticky; top:0; z-index:50; width:100%; background:var(--nav-red) }
+    .nav{ background:var(--nav-red) }
+    .nav-inner{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:.9rem 1rem;              /* ~12mm height achieved with padding + line height */
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .brand{ color:#FFFFFF; font-weight:800; white-space:nowrap }
+    .nav-links{
+      list-style:none; display:flex; gap:1rem; margin:0; padding:0; align-items:center;
+    }
+    .nav-links a{ color:#FFFFFF }
+    .nav-toggle{ display:none; background:none; border:0; color:#FFFFFF; font-size:1.2rem }
+    @media (max-width:980px){
+      .nav-inner{ position:relative }
+      .nav-links{
+        display:none; position:absolute; top:56px; left:0; right:0;
+        background:var(--nav-red); padding:1rem; margin:0; flex-direction:column; gap:.6rem;
+      }
+      .nav-links.open{ display:flex }
+      .nav-toggle{ display:inline-block }
+    }
+
+    /* Hero */
+    .hero{ color:#FFFFFF; padding-top:11mm } /* 11mm so that “more” on card 6 is visible without scroll */
+    .hero-header{
+      max-width:var(--container); margin:0 auto; padding:0 1rem;
+      display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; align-items:end;
+    }
+    .hero-text{ grid-column:1 / 9 }
+    .hero h1{ margin:0 0 .2rem; font-size:clamp(1.8rem,4vw,3rem); line-height:1.1 }
+    .hero p.lead{ margin:0; font-size:clamp(1.1rem,2.4vw,1.35rem); font-weight:700; opacity:.95 }
+    .logo-col{ grid-column:9 / 13; justify-self:start; display:flex; align-items:center }
+
+    /* Logo with white ring (inline SVG, unbreakable) */
+    .product-logo{ position:relative; width:var(--ring-size); height:var(--ring-size) }
+    .product-logo .logo-ring{ position:absolute; inset:0; width:var(--ring-size); height:var(--ring-size); z-index:2; pointer-events:none; display:block }
+    .product-logo .logo-ring svg{ width:100%; height:100%; display:block }
+    .product-logo .logo-img{
+      position:absolute; top:5px; left:5px; width:var(--logo-size); height:var(--logo-size);
+      display:block; border-radius:50%; z-index:1; background:transparent;
+    }
+    @media (max-width:640px){
+      .hero-header{ grid-template-columns:1fr; text-align:center }
+      .hero-text{ grid-column:1 / -1 }
+      .logo-col{ grid-column:1 / -1; justify-self:center }
+    }
+
+    /* Cards Grid */
+    .section-cards{ max-width:var(--container); margin:0 auto; padding:0 1rem 2.4rem }
+    .grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; margin-top:1rem }
+    .card{
+      grid-column:span 4;
+      background:var(--card-green) !important; color:#FFFFFF !important;
+      border-radius:14px; padding:1.05rem 1rem;
+      border:1px solid var(--card-border);
+      box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06);
+    }
+    .card h3{ margin:0 0 .4rem }
+    .card p, .card li{ margin:.35rem 0 }
+    .card ul{ list-style:disc; padding-left:1.2rem }
+    .card a{ text-decoration:underline; text-underline-offset:2px; color:#FFFFFF }
+
+    @media (max-width:960px){ .card{ grid-column:span 6 } }
+    @media (max-width:640px){ .card{ grid-column:span 12 } }
+
+    /* CTA: white button with green text (hard override incl. Safari) */
+    .btn{
+      display:inline-block; padding:.7rem 1rem; border-radius:12px;
+      border:1px solid #FFFFFF; text-decoration:none; font-weight:800; background:#FFFFFF;
+    }
+    .btn--inverse{
+      background:#FFFFFF;
+      color:var(--btn-green-text) !important;
+      -webkit-text-fill-color:var(--btn-green-text) !important; /* Safari override */
+    }
+    .btn--inverse:hover{ filter:brightness(.96) }
+
+    /* Accordion */
+    details{ border:0 }
+    details summary{ cursor:pointer; font-weight:800 }
+
+    /* Footer */
+    footer{ max-width:var(--container); margin:2.2rem auto; padding:0 1rem 2.4rem; color:#FFFFFF }
+    footer a{ color:#FFFFFF }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" role="navigation" aria-label="Main">
+      <div class="nav-inner">
+        <a class="brand" href="/en/">Home</a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="/en/products/changewise/">ChangeWise</a></li>
+          <li><a href="/en/products/slackdigest/">SlackDigest</a></li>
+          <li><a href="/en/products/tasksieve/">TaskSieve</a></li>
+          <li>DE | <strong>EN</strong></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="hero">
+    <div class="hero-header">
+      <div class="hero-text">
+        <h1>SlackDigest</h1>
+        <p class="lead">Updates that move things forward.</p>
+      </div>
+      <div class="logo-col">
+        <div class="product-logo" aria-hidden="true">
+          <span class="logo-ring">
+            <svg viewBox="0 0 100 100" focusable="false" aria-hidden="true">
+              <circle cx="50" cy="50" r="47.5" fill="none" stroke="var(--ring-stroke)" stroke-width="5"></circle>
+            </svg>
+          </span>
+          <img class="logo-img" src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo" width="88" height="88" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </div>
+
+    <section class="section-cards">
+      <section class="grid" aria-label="Key features & info">
+        <article class="card">
+          <h3>To the point</h3>
+          <p>One glance, one link — done.</p>
+        </article>
+
+        <article class="card">
+          <h3>How it works</h3>
+          <ul>
+            <li>Connect Slack &amp; email</li>
+            <li>Auto-condense signals</li>
+            <li>Deliver digest (glance → link → done)</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>What it delivers</h3>
+          <ul>
+            <li>Less noise, more signal → relevant first.</li>
+            <li>Faster decisions → compact digest with deep links.</li>
+            <li>Transparency → owner &amp; next step visible.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Status &amp; contact</h3>
+          <p>Status: <strong>Open</strong> — try it.</p>
+          <p>Contact: <a href="/en/contact/#slackdigest">Contact form</a></p>
+          <p><a class="btn btn--inverse" href="/en/contact/#slackdigest">Request test digest</a></p>
+
+          <details style="margin-top:.6rem">
+            <summary>FAQ</summary>
+            <ul>
+              <li>Admin access needed? Reader access is enough.</li>
+              <li>Setup time? Minutes.</li>
+            </ul>
+          </details>
+        </article>
+
+        <article class="card">
+          <h3>Integrations</h3>
+          <p>Slack, email.</p>
+        </article>
+
+        <article class="card">
+          <h3>Benefits</h3>
+          <ul>
+            <li>Fast overview → digest beats scrolling feeds.</li>
+            <li>User-friendly &amp; reliable → dependable delivery.</li>
+            <li>Context on tap → deep link back.</li>
+          </ul>
+          <details style="margin-top:.4rem">
+            <summary>more</summary>
+            <ul>
+              <li>Reduces interruptions → async overview replaces pings &amp; ad-hoc calls.</li>
+              <li>Findable knowledge → every update links back to context.</li>
+              <li>Clear ownership → updates list owner &amp; next step.</li>
+              <li>Quick implementation → minutes to connect, safe by design.</li>
+              <li>Scales with your team → channels &amp; filters per audience.</li>
+            </ul>
+          </details>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <a href="/en/impressum.html">Imprint</a> · <a href="/en/datenschutz.html">Privacy</a>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    (function(){
+      var t=document.getElementById('navToggle'), l=document.getElementById('navLinks');
+      if(t && l){ t.addEventListener('click', function(){
+        var open = l.classList.toggle('open');
+        t.setAttribute('aria-expanded', open?'true':'false');
+      });}
+    })();
+  </script>
+</body>
+</html>
