@@ -90,6 +90,10 @@
 
     html.theme-cw, html.theme-cw body{ background:#0E3960 !important; }
     html.theme-cw .card, html.theme-cw .section{ background:rgba(255,255,255,.06) !important; }
+  .footbar { display:flex; justify-content:space-between; align-items:center; gap:.8rem; flex-wrap:wrap; }
+.legal a { margin-right:.6rem; }
+.sep { margin:0 .3rem; opacity:.85; }
+
   </style>
   <noscript><style>.section{display:block !important}</style></noscript>
 </head>
@@ -270,9 +274,16 @@
     </form>
   </section>
 
-  <footer style="margin:24px 0;color:var(--muted)">
-    <a href="/en/imprint" style="color:inherit">Imprint</a> · <a href="/en/privacy" style="color:inherit">Privacy</a>
-  </footer>
+   <footer>
+  <div class="container footbar">
+    <nav class="legal" aria-label="Footer">
+      <a href="/en/imprint/">Imprint</a><span class="sep" aria-hidden="true"> · </span>
+      <a href="/en/privacy/">Privacy</a>
+    </nav>
+    <small>© ChangeWise • SlackDigest • TaskSieve</small>
+  </div>
+</footer>
+
 </main>
 
 <script>
