@@ -1,8 +1,33 @@
-  <!doctype html>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Impressum</title>
-<body style="font-family:system-ui;margin:40px;max-width:900px;line-height:1.5">
+ <!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Impressum</title>
+
+  <!-- Dark Theme -->
+  <meta name="color-scheme" content="dark">
+  <style>
+    :root{
+      --container:1100px; --bg-dark:#0B1220; --fg-dark:#FFFFFF;
+    }
+    *{ box-sizing:border-box } html,body{ height:100% }
+    body{
+      margin:0; font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+      background:var(--bg-dark); color:var(--fg-dark)
+    }
+    a{ color:#FFFFFF; text-decoration:none }
+    main{ max-width:var(--container); margin:0 auto; padding:1.4rem 1rem 2.4rem }
+    h1{ margin:.4rem 0 1rem; font-size:clamp(1.6rem,3.2vw,2.2rem) }
+    h2{ margin:1.2rem 0 .4rem; font-size:clamp(1.2rem,2.4vw,1.5rem) }
+    p{ margin:.35rem 0 }
+    .btn{ display:inline-block; padding:.7rem 1rem; border-radius:12px; border:1px solid #FFFFFF;
+          text-decoration:none; font-weight:800; background:#FFFFFF; color:#096D48; -webkit-text-fill-color:#096D48 }
+  </style>
+</head>
+<body>
+<main>
+
 <h1>Impressum</h1>
 
 <h2>Anbieterkennzeichnung (§ 5 TMG)</h2>
@@ -42,6 +67,23 @@
   Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes
   bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
 </p>
+<p style="margin:0 0 1rem">
+  <a href="/" style="
+    display:inline-block;padding:.7rem 1rem;border-radius:12px;
+    border:1px solid #FFFFFF;text-decoration:none;font-weight:800;background:#FFFFFF;
+    color:#096D48;-webkit-text-fill-color:#096D48">Startseite</a>
+</p>
 
-<p><a href="./index.html">Zur Startseite</a></p>
+<footer role="contentinfo">
+  <div class="container footbar">
+    <nav class="legal" aria-label="Footer">
+      <a href="/impressum.html">Impressum</a><span class="sep" aria-hidden="true"> · </span>
+      <a href="/datenschutz.html">Datenschutz</a>
+    </nav>
+    <small>© ChangeWise • SlackDigest • TaskSieve</small>
+  </div>
+</footer>
+
+</main>
 </body>
+</html>
