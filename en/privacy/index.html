@@ -47,25 +47,68 @@ footer a{color:#FFFFFF}
 </div>
 </nav>
 </header>
-
-
 <main>
-<h1>Privacy Policy</h1>
-<p>We take the protection of your personal data very seriously. This policy explains what personal data we collect when you visit this website and how we use it.</p>
+  <h1>Privacy Policy</h1>
+  <p>We take the protection of your personal data very seriously. This policy explains what personal data we collect when you visit this website and how we use it.</p>
 
+  <h2>1. Controller</h2>
+  <p>
+    ChangeWise / SlackDigest / TaskSieve – Jürgen Nonnenmacher<br>
+    Am Klettenberg 32, 69242 Muehlhausen, Germany<br>
+    E-mail: <a href="mailto:info@slackdigest.org">info@slackdigest.org</a>
+  </p>
 
-<h2>1. Controller</h2>
-<p>
-ChangeWise / SlackDigest / TaskSieve – Jürgen Nonnenmacher<br>
-[Street & No.], [Postal Code] [City], Germany<br>
-E‑mail: <a href="mailto:info@slackdigest.org">info@slackdigest.org</a>
-</p>
+  <h2>2. Data we process</h2>
+  <ul>
+    <li><strong>Server logs:</strong> technical data (IP address, time, URL) stored temporarily for security and troubleshooting.</li>
+    <li><strong>Contact requests:</strong> data you submit (e.g., name, e-mail, message) when using the contact form.</li>
+    <li><strong>Cookies/Tracking:</strong> We currently do <em>not</em> use analytics or third-party tracking.</li>
+  </ul>
 
+  <h2>3. Legal bases</h2>
+  <p>We process personal data on the following legal bases under Art. 6(1) GDPR:
+    (a) consent, where applicable;
+    (b) performance of a contract or steps prior to entering into a contract (e.g., responding to requests);
+    (f) our legitimate interests in operating a secure and reliable website.</p>
 
-<h2>2. Data we process</h2>
-<ul>
-<li><strong>Server logs:</strong> technical data (IP address, time, URL) stored temporarily for security and troubleshooting.</li>
-<li><strong>Contact requests:</strong> data you submit (e.g., name, e‑mail, message) when using the contact form.</li>
-<li><strong>Cookies/Tracking:</strong> We currently do <em>not</em> use analytics or third‑party tracking.</li>
-</ul>
+  <h2>4. Recipients and processing</h2>
+  <p>We use service providers (processors) for hosting and related services who may have access to personal data strictly as necessary to provide those services.</p>
+
+  <h2>5. Transfers to third countries</h2>
+  <p>If data is transferred outside the EU/EEA, we use appropriate safeguards (e.g., Standard Contractual Clauses). Details are available on request.</p>
+
+  <h2>6. Storage periods</h2>
+  <p>Server log files are retained only for a short period for security and troubleshooting. Contact requests are retained as necessary to process and document the request and then deleted.</p>
+
+  <h2>7. Your rights</h2>
+  <p>You have the rights of access, rectification, erasure, restriction, data portability, and to object to processing, and the right to withdraw consent at any time with effect for the future. You also have the right to lodge a complaint with a data protection authority.</p>
+
+  <h2>8. Updates to this policy</h2>
+  <p>We may update this policy to reflect changes in processing or legal requirements. <span class="muted">Last updated: 13 October 2025.</span></p>
+</main>
+
+<footer role="contentinfo">
+  <div class="container footbar">
+    <nav class="legal" aria-label="Footer">
+      <a href="/en/imprint/">Imprint</a><span class="sep" aria-hidden="true"> · </span>
+      <a href="/en/privacy/">Privacy</a>
+    </nav>
+    <small>© ChangeWise • SlackDigest • TaskSieve</small>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle (nur aktiv, wenn es #navToggle und #navLinks gibt)
+  (function(){
+    var btn = document.getElementById('navToggle');
+    var list = document.getElementById('navLinks');
+    if (!btn || !list) return;
+    btn.addEventListener('click', function(){
+      var open = list.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  })();
+</script>
+</body>
 </html>
+
