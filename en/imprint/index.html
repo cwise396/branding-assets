@@ -49,13 +49,55 @@ footer a{color:#FFFFFF}
 </nav>
 </header>
 
+  <main>
+  <h1>Imprint</h1>
+  <p class="muted">Provider identification according to § 5 TMG (Germany)</p>
 
-<main>
-<h1>Imprint</h1>
-<p class="muted">Provider identification according to § 5 TMG (Germany)</p>
+  <h2>Responsible entity (provider)</h2>
+  <p>
+    ChangeWise / SlackDigest / TaskSieve<br>
+    Jürgen Nonnenmacher<br>
+    Am Klettenberg 32 <br>
+    69242 Muehlhausen, Germany<br>
+    E-mail: <a href="mailto:info@slackdigest.org">info@slackdigest.org</a>
+  </p>
 
+   <h2>Editorial responsibility (Sec. 18(2) MStV)</h2>
+  <p>Jürgen Nonnenmacher, address as above.</p>
 
-<h2>Responsible entity</h2>
-<p>
-ChangeWise / SlackDigest / TaskSieve<br>
+  <h2>Disclaimer</h2>
+  <p>
+    The contents of this website have been created with the utmost care. However, we cannot guarantee the
+    accuracy, completeness, or timeliness of the contents. Our site contains links to external third-party websites
+    over whose contents we have no control; therefore we cannot accept any liability for these external contents.
+    The respective provider or operator of the sites is always responsible for the contents of the linked sites.
+  </p>
+
+  <p class="muted">Last updated: 13 October 2025</p>
+</main>
+
+<footer role="contentinfo">
+  <div class="container footbar">
+    <nav class="legal" aria-label="Footer">
+      <a href="/en/imprint/">Imprint</a><span class="sep" aria-hidden="true"> · </span>
+      <a href="/en/privacy/">Privacy</a>
+    </nav>
+    <small>© ChangeWise • SlackDigest • TaskSieve</small>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle (optional; nur nutzen, wenn im Header ein Button mit id="navToggle" existiert)
+  (function(){
+    var btn = document.getElementById('navToggle');
+    var list = document.getElementById('navLinks');
+    if (!btn || !list) return;
+    btn.addEventListener('click', function(){
+      var open = list.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  })();
+</script>
+</body>
 </html>
+
