@@ -1,6 +1,165 @@
  <!doctype html>
-<meta charset="utf-8">
-<meta http-equiv="refresh" content="0; url=/contact/">
-<link rel="canonical" href="/contact/">
-<title>Redirecting…</title>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Kontakt – ChangeWise / SlackDigest / TaskSieve</title>
+  <meta name="description" content="Kontakt für ChangeWise, SlackDigest und TaskSieve. Anfrage senden oder Test anfordern.">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="/contact.html">
+  <style>
+    :root{ --container:1100px; --bg-dark:#0B1220; --fg-dark:#FFFFFF; --accent:#FFFFFF; --btn-text:#096D48; }
+    *{ box-sizing:border-box } html,body{ height:100% }
+    body{
+      margin:0; font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+      background:var(--bg-dark); color:var(--fg-dark)
+    }
+    a{ color:#FFFFFF; text-decoration:none }
+    main{ max-width:var(--container); margin:0 auto; padding:1.4rem 1rem 2.4rem }
+    h1{ margin:.4rem 0 1rem; font-size:clamp(1.6rem,3.2vw,2.2rem) }
+    h2{ margin:1.2rem 0 .4rem; font-size:clamp(1.2rem,2.4vw,1.5rem) }
+    p{ margin:.35rem 0 }
+    .grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; margin-top:1rem }
+    .card{
+      grid-column:span 12; background:#0C6C48; color:#FFFFFF;
+      border-radius:14px; padding:1.05rem 1rem; border:1px solid rgba(255,255,255,.28);
+      box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06);
+    }
+    @media (min-width:860px){ .card{ grid-column:span 6 } }
+    label{ display:block; font-weight:700; margin:.6rem 0 .2rem }
+    input, textarea{
+      width:100%; padding:.6rem .7rem; border-radius:10px; border:1px solid rgba(255,255,255,.28);
+      background:rgba(255,255,255,.06); color:#FFFFFF
+    }
+    textarea{ min-height:110px; resize:vertical }
+    .row{ display:flex; gap:.8rem; flex-wrap:wrap }
+    .row > div{ flex:1 1 220px }
+    .btn{
+      display:inline-block; padding:.7rem 1rem; border-radius:12px; border:1px solid var(--accent);
+      text-decoration:none; font-weight:800; background:#FFFFFF; color:var(--btn-text); -webkit-text-fill-color:var(--btn-text)
+    }
+    .btn-ghost{ border:1px solid #FFFFFF; background:transparent; color:#FFFFFF; -webkit-text-fill-color:#FFFFFF }
+    .muted{ opacity:.85 }
+    footer{ max-width:var(--container); margin:2.2rem auto; padding:0 1rem 2.4rem; color:#FFFFFF }
+    .footbar{ display:flex; justify-content:space-between; align-items:center; gap:.8rem; flex-wrap:wrap }
+    .legal a{ margin-right:.6rem }
+    .sep{ margin:0 .3rem; opacity:.85 }
+    form{ margin-top:.6rem }
+    small.help{ display:block; margin-top:.3rem; opacity:.85 }
+  </style>
+</head>
+<body>
+<main>
 
+  <!-- Startseite-Button oben -->
+  <p style="margin:0 0 1rem"><a class="btn" href="/">Startseite</a></p>
+
+  <h1>Kontakt</h1>
+  <p class="muted">Wähle unten dein Thema – Nachricht senden oder Test anfordern. Alternativ: <a href="mailto:info@slackdigest.org">info@slackdigest.org</a></p>
+
+  <section class="grid">
+
+    <!-- SlackDigest -->
+    <article class="card" id="slackdigest">
+      <h2>SlackDigest</h2>
+      <p>Kurz &amp; klar: tägliche/wöchentliche Digests mit Deep Links – „ein Blick, ein Link, erledigt“.</p>
+
+      <form action="mailto:info@slackdigest.org" method="post" enctype="text/plain">
+        <div class="row">
+          <div>
+            <label for="sd-name">Name</label>
+            <input id="sd-name" name="Name" autocomplete="name" required>
+          </div>
+          <div>
+            <label for="sd-email">E-Mail</label>
+            <input id="sd-email" name="Email" type="email" autocomplete="email" required>
+          </div>
+        </div>
+        <label for="sd-msg">Nachricht / Kanal(e) / Zielgruppe</label>
+        <textarea id="sd-msg" name="Message" placeholder="Worum geht es? Für wen ist der Digest?"></textarea>
+
+        <p class="row" style="margin-top:.8rem">
+          <button class="btn" type="submit">Anfrage senden</button>
+          <a class="btn btn-ghost" href="mailto:info@slackdigest.org?subject=SlackDigest%20Testanfrage&body=Name:%0AUnternehmen:%0ASlack-Workspaces/Kan%C3%A4le:%0AZielgruppe:%0A">Per E-Mail öffnen</a>
+        </p>
+        <small class="help">Hinweis: Das obenstehende Formular nutzt dein lokales Mail-Programm (mailto). Falls das nicht klappt, nutze „Per E-Mail öffnen“.</small>
+      </form>
+    </article>
+
+    <!-- ChangeWise -->
+    <article class="card" id="changewise">
+      <h2>ChangeWise</h2>
+      <p>Change-Kommunikation strukturiert &amp; messbar – Updates, die wirklich ankommen.</p>
+
+      <form action="mailto:info@slackdigest.org" method="post" enctype="text/plain">
+        <div class="row">
+          <div>
+            <label for="cw-name">Name</label>
+            <input id="cw-name" name="Name" autocomplete="name" required>
+          </div>
+          <div>
+            <label for="cw-email">E-Mail</label>
+            <input id="cw-email" name="Email" type="email" autocomplete="email" required>
+          </div>
+        </div>
+        <label for="cw-msg">Nachricht / Kontext</label>
+        <textarea id="cw-msg" name="Message" placeholder="Kurzbeschreibung deines Vorhabens/Teams"></textarea>
+
+        <p class="row" style="margin-top:.8rem">
+          <button class="btn" type="submit">Anfrage senden</button>
+          <a class="btn btn-ghost" href="mailto:info@slackdigest.org?subject=ChangeWise%20Anfrage&body=Name:%0AUnternehmen:%0AKontext:%0AZeitfenster%20f%C3%BCr%20Austausch:">Per E-Mail öffnen</a>
+        </p>
+      </form>
+    </article>
+
+    <!-- TaskSieve -->
+    <article class="card" id="tasksieve">
+      <h2>TaskSieve</h2>
+      <p>Aufgaben auf den Punkt – Sichten, filtern, ins Ziel bringen.</p>
+
+      <form action="mailto:info@slackdigest.org" method="post" enctype="text/plain">
+        <div class="row">
+          <div>
+            <label for="ts-name">Name</label>
+            <input id="ts-name" name="Name" autocomplete="name" required>
+          </div>
+          <div>
+            <label for="ts-email">E-Mail</label>
+            <input id="ts-email" name="Email" type="email" autocomplete="email" required>
+          </div>
+        </div>
+        <label for="ts-msg">Nachricht / Systeme</label>
+        <textarea id="ts-msg" name="Message" placeholder="Welche Tools/Listen? Was soll gefiltert werden?"></textarea>
+
+        <p class="row" style="margin-top:.8rem">
+          <button class="btn" type="submit">Anfrage senden</button>
+          <a class="btn btn-ghost" href="mailto:info@slackdigest.org?subject=TaskSieve%20Anfrage&body=Name:%0AUnternehmen:%0ASysteme/Listen:%0AZiel:">Per E-Mail öffnen</a>
+        </p>
+      </form>
+    </article>
+
+  </section>
+
+</main>
+
+<footer role="contentinfo">
+  <div class="container footbar">
+    <nav class="legal" aria-label="Footer">
+      <a href="/impressum.html">Impressum</a><span class="sep" aria-hidden="true"> · </span>
+      <a href="/datenschutz.html">Datenschutz</a>
+    </nav>
+    <small>© ChangeWise • SlackDigest • TaskSieve</small>
+  </div>
+</footer>
+
+<script>
+  // Scrollt automatisch zu #slackdigest/#changewise/#tasksieve, falls per Anker aufgerufen
+  (function(){
+    var h = (location.hash||"").toLowerCase();
+    if(!h) return;
+    var el = document.querySelector(h);
+    if(el && el.scrollIntoView){ el.scrollIntoView({behavior:"smooth", block:"start"}); }
+  })();
+</script>
+</body>
+</html>
