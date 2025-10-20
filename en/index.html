@@ -1,230 +1,74 @@
-  <!doctype html>
-<meta charset="utf-8">
-<meta http-equiv="refresh" content="0; url=/en/products/slackdigest/">
-<link rel="canonical" href="/en/products/slackdigest/">
-<title>Redirecting…</title>
-<script>location.replace("/en/products/slackdigest/");</script>
-<noscript>
-  <meta http-equiv="refresh" content="0; url=/en/products/slackdigest/">
-  <a href="/en/products/slackdigest/">Click here if you are not redirected.</a>
-</noscript>
-
- <style>
-    /* --- DARK-ONLY THEME --- */
-    :root{
-      --page-bg:#0B1220;           /* dark background */
-      --hero-color:#9FB8D8;        /* soft blue for headings */
-      --text:#E5E7EB;
-      --muted:#9AA4B2;
-      --border:#243041;
-
-      /* Card brand colors (exact) */
-      --color-sd:#0C6C48;          /* SlackDigest green */
-      --color-ts:#B90E13;          /* TaskSieve red   */
-      --color-cw:#0E3960;          /* ChangeWise blue */
-
-      /* Logo badge */
-      --badge-size:120px;
-      --badge-ring-color:#fff;     /* white outer ring */
-      --badge-ring-width:5px;
-      --badge-inner-color:#B80E13; /* red sRGB(184,14,19) */
-
-      /* Logos (original colors) */
-      --logo-filter:none;
-      --logo-shadow:0 1px 2px rgba(0,0,0,.6);
-
-      /* Buttons: white, product-colored text, ~25% smaller */
-      --btn-bg:#ffffff;
-      --btn-fg:#0C3960;            /* fallback, overridden per tile */
-      --btn-border:rgba(255,255,255,.22);
-      --btn-bg-hover:rgba(255,255,255,.9);
-      --btn-pad-y:8px;
-      --btn-pad-x:10px;
-      --btn-font:.9rem;
-
-      /* I18N Toggle */
-      --i18n-bg:#141A2A; --i18n-fg:#E5E7EB; --i18n-bd:#2A3548;
-
-      /* Shadows */
-      --card-shadow:0 12px 32px rgba(0,0,0,.50);
-      --card-shadow-hover:0 18px 40px rgba(0,0,0,.60);
-    }
-
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ChangeWise • SlackDigest • TaskSieve</title>
+  <meta name="description" content="Overview of products: ChangeWise (brand & change), SlackDigest (compact updates), TaskSieve (prioritized tasks).">
+  <meta name="color-scheme" content="dark">
+  <style>
+    :root{ --bg:#0B1220; --fg:#FFFFFF; --muted:#9AA4B2; --nav:#AE0F12; --border:#2A3548; --container:1100px }
     *{box-sizing:border-box}
-    html,body{height:100%; background:var(--page-bg)}
-    body{
-      margin:0; color:var(--text);
-      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-    }
-    .container{width:min(1160px,92%); margin:0 auto}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+    a{color:#fff;text-decoration:none}
 
-    /* Language Switch (top-right) */
-    .i18n-toggle{
-      position:fixed; right:14px; top:14px; z-index:99;
-      padding:8px 12px; border-radius:999px;
-      background:var(--i18n-bg); color:var(--i18n-fg);
-      border:1px solid var(--i18n-bd); text-decoration:none; font-weight:700;
-    }
-    .i18n-toggle:hover{ filter:brightness(1.06) }
+    .nav{background:var(--nav)}
+    .nav-inner{max-width:var(--container);margin:0 auto;padding:.9rem 1rem;display:flex;justify-content:space-between;align-items:center}
+    .brand{font-weight:800}
+    .links{display:flex;gap:1rem;flex-wrap:wrap}
 
-    /* Hero */
-    .hero{padding:36px 0 12px}
-    .hero h1{font-size:clamp(1.6rem,1.1rem + 2vw,2.4rem);margin:0 0 6px;color:var(--hero-color)}
-    .hero p.lead{margin:0 0 22px;color:var(--hero-color)}
-
-    /* Grid */
-    .tiles{display:grid;gap:22px;grid-template-columns:1fr;margin:14px 0 44px}
-    @media (min-width:860px){.tiles{grid-template-columns:repeat(3,1fr)}}
-
-    /* Cards */
-    .tile{
-      position:relative; overflow:hidden; min-height:390px; border-radius:20px;
-      text-decoration:none; color:#fff; box-shadow:var(--card-shadow);
-      transition:transform .18s ease, box-shadow .18s ease;
-      display:flex; flex-direction:column; justify-content:flex-end; padding:22px; isolation:isolate;
-    }
-    .tile:hover{ transform:translateY(-3px); box-shadow:var(--card-shadow-hover) }
-    .tile.sd{ background-color:var(--color-sd) !important; --btn-fg:var(--color-sd) }
-    .tile.ts{ background-color:var(--color-ts) !important; --btn-fg:var(--color-ts) }
-    .tile.cw{ background-color:var(--color-cw) !important; --btn-fg:var(--color-cw) }
-
-    /* Logo badge (white ring + red inner circle) */
-    .logo-wrap{
-      position:absolute; right:14px; top:14px; z-index:1;
-      width:var(--badge-size); height:var(--badge-size);
-      display:grid; place-items:center; border-radius:50%;
-      background:var(--badge-ring-color); box-shadow:0 2px 10px rgba(0,0,0,.25);
-    }
-    .logo-inner{
-      width:calc(var(--badge-size) - 2 * var(--badge-ring-width));
-      height:calc(var(--badge-size) - 2 * var(--badge-ring-width));
-      border-radius:50%;
-      background:var(--badge-inner-color);
-      display:grid; place-items:center; overflow:hidden;
-    }
-    .logo{
-      width:100%; height:100%;
-      object-fit:contain; display:block;
-      filter:var(--logo-filter); -webkit-filter:var(--logo-filter);
-      box-shadow:var(--logo-shadow);
-    }
-    .logo-fallback{
-      width:100%; height:100%;
-      display:none; place-items:center; color:#fff; font-weight:800; font-size:34px;
-      text-shadow:0 1px 2px rgba(0,0,0,.35);
-    }
-
-    /* Text & micro-benefits */
-    .tile h2{margin:0 0 8px;font-size:1.35rem;position:relative;z-index:0}
-    .tile p.sub{margin:0 0 10px;opacity:.98;position:relative;z-index:0}
-    .micro{margin:0 0 14px;padding-left:1.1rem;font-size:.92rem;line-height:1.35;opacity:.98}
-    .micro li{margin:2px 0}
-
-    /* Button */
-    .btn{
-      align-self:flex-start; position:relative; z-index:0;
-      padding:var(--btn-pad-y) var(--btn-pad-x); border-radius:12px;
-      border:1px solid var(--btn-border); background:var(--btn-bg);
-      color:var(--btn-fg); font-weight:700; font-size:var(--btn-font);
-      text-decoration:none; backdrop-filter:saturate(140%) blur(2px)
-    }
-    .btn:hover{ background:var(--btn-bg-hover) }
-
-    /* Footer */
-    footer{border-top:1px solid var(--border); padding:20px 0; color:var(--muted)}
-    .footbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-    .footbar .legal{display:flex;gap:12px}
-    .footbar a{color:inherit;text-decoration:none}
-    .footbar a:hover{text-decoration:underline}
-  /* Mini-Link in der Kachel – führt direkt zu #benefits */
-.more-link{
-  display:inline-block; margin:2px 0 10px 0;
-  color:#fff; text-decoration:underline; text-underline-offset:3px; cursor:pointer;
-}
-.more-link:hover{ opacity:.9 }
-
+    .wrap{max-width:var(--container);margin:0 auto;padding:1.2rem 1rem}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
+    .card{grid-column:span 4;background:#0F1728;border:1px solid var(--border);border-radius:14px;padding:1rem}
+    @media (max-width:960px){ .card{grid-column:span 6} }
+    @media (max-width:640px){ .card{grid-column:span 12} }
+    .muted{color:var(--muted)}
+    .more{display:inline-block;margin-top:.6rem;text-decoration:underline;text-underline-offset:2px}
+    footer{max-width:var(--container);margin:2rem auto;padding:0 1rem 2rem}
+    footer a{color:#fff;text-decoration:none}
   </style>
 </head>
 <body>
-
-<!-- DE Switch -->
-<a class="i18n-toggle" href="/" hreflang="de" aria-label="Switch to German (DE)">DE</a>
-
-<main class="container">
-  <section class="hero">
-    <h1>A compact portfolio for clear communication, priorities & change.</h1>
-    <p class="lead">Three tools that fit together — and deliver fast results.</p>
-
-    <div class="tiles">
-     
-       <!-- SlackDigest -->
- <a class="tile sd" href="/en/products/slackdigest/#benefits">
-
-  <div class="logo-wrap"><div class="logo-inner">
-    <img class="logo" src="/assets/brand/slackdigest_logo.svg?v=7" alt="SlackDigest Logo"
-         onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}">
-    <span class="logo-fallback" aria-hidden="true">SD</span>
-  </div></div>
-  <h2>SlackDigest</h2>
-  <p class="sub">Relevant from Slack—compact, at the right time.</p>
-  <ul class="micro"><li>Signals, not noise—digest with links to context.</li></ul>
-  <span class="more-link"
-        onclick="event.stopPropagation();event.preventDefault();location.href="/en/products/slackdigest/#benefits">
-    See benefits
-  </span>
-  <span class="btn">Go to product</span>
-</a>
-
-
-       
-       <!-- TaskSieve -->
-<a class="tile ts" href="/products/tasksieve/en/">
-  <div class="logo-wrap"><div class="logo-inner">
-    <img class="logo" src="/assets/brand/tasksieve_logo.svg?v=7" alt="TaskSieve Logo"
-         onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}">
-    <span class="logo-fallback" aria-hidden="true">TS</span>
-  </div></div>
-  <h2>TaskSieve</h2>
-  <p class="sub">Put important tasks first—with a system.</p>
-  <ul class="micro"><li>One tasks inbox across email, notes &amp; Slack—prioritized.</li></ul>
-  <span class="more-link"
-        onclick="event.stopPropagation();event.preventDefault();location.href='/products/tasksieve/en/#benefits'">
-    See benefits
-  </span>
-  <span class="btn">Go to product</span>
-</a>
-
-
-       <!-- ChangeWise -->
-<a class="tile cw" href="/products/changewise/en/">
-  <div class="logo-wrap"><div class="logo-inner">
-    <img class="logo" src="/assets/brand/changewise_logo.svg?v=7" alt="ChangeWise Logo"
-         onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}">
-    <span class="logo-fallback" aria-hidden="true">CW</span>
-  </div></div>
-  <h2>ChangeWise</h2>
-  <p class="sub">Brand &amp; change communications—clear, consistent, ready.</p>
-  <ul class="micro"><li>One brand kit—consistent communication at scale.</li></ul>
-  <span class="more-link"
-        onclick="event.stopPropagation();event.preventDefault();location.href='/products/changewise/en/#benefits'">
-    See benefits
-  </span>
-  <span class="btn">Go to product</span>
-</a>
-
+  <header class="nav">
+    <div class="nav-inner">
+      <span class="brand">Home</span>
+      <nav class="links">
+        <a href="/en/products/changewise/">ChangeWise</a>
+        <a href="/en/products/slackdigest/">SlackDigest</a>
+        <a href="/en/products/tasksieve/">TaskSieve</a>
+        <a href="/">DE</a>
+      </nav>
     </div>
-  </section>
-</main>
+  </header>
 
-<footer>
-   <div class="container footbar">
-  <nav class="legal" aria-label="Footer">
-    <a href="/en/imprint/">Imprint</a><span class="sep" aria-hidden="true"> · </span>
-    <a href="/en/privacy/">Privacy</a>
-  </nav>
-  <small>© ChangeWise • SlackDigest • TaskSieve</small>
-</div>
+  <main class="wrap">
+    <h1>Products</h1>
+    <p class="muted">Quick overview & links.</p>
 
-</footer>
+    <section class="grid" aria-label="Products">
+      <article class="card">
+        <h2>SlackDigest</h2>
+        <p>Compact, actionable updates from Slack & email — one glance, one link, done.</p>
+        <a class="more" href="/en/products/slackdigest/">Open product page →</a>
+      </article>
+
+      <article class="card">
+        <h2>TaskSieve</h2>
+        <p>One inbox for tasks — automatically prioritized by impact, urgency, effort.</p>
+        <a class="more" href="/en/products/tasksieve/">Open product page →</a>
+      </article>
+
+      <article class="card">
+        <h2>ChangeWise</h2>
+        <p>Brand & change communication — clear story, consistent assets, ready to ship.</p>
+        <a class="more" href="/en/products/changewise/">Open product page →</a>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <a href="/en/imprint/">Imprint</a> · <a href="/en/privacy/">Privacy</a>
+  </footer>
 </body>
 </html>
