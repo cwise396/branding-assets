@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Home — ChangeWise • SlackDigest • TaskSieve</title>
+  <meta name="description" content="Overview of ChangeWise, SlackDigest, and TaskSieve.">
+  <meta name="color-scheme" content="dark">
+  <style>
+    :root{--container:1100px;--bg:#0B1220;--fg:#fff;--muted:#9AA4B2;--nav:#AE0F12;}
+    *{box-sizing:border-box} html,body{height:100%} body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+    .nav{background:var(--nav)} .nav-inner{max-width:var(--container);margin:0 auto;padding:.9rem 1rem;display:flex;justify-content:space-between;align-items:center}
+    a{color:#fff;text-decoration:none} ul{list-style:none;margin:0;padding:0;display:flex;gap:1rem}
+    .wrap{max-width:var(--container);margin:0 auto;padding:1.2rem 1rem}
+    .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+    .tile{border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:1rem;background:#111827}
+    .muted{color:var(--muted)}
+  </style>
+</head>
+<body>
+  <nav class="nav" role="navigation" aria-label="Main">
+    <div class="nav-inner">
+      <a class="brand" href="/en/home/">Home</a>
+      <ul>
+        <li><a href="/en/products/changewise/">ChangeWise</a></li>
+        <li><a href="/en/products/slackdigest/">SlackDigest</a></li>
+        <li><a href="/en/products/tasksieve/">TaskSieve</a></li>
+        <li><a href="/products/changewise/">DE</a> | <strong>EN</strong></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <h1>Welcome</h1>
+    <p class="muted">Choose a product:</p>
+    <section class="tiles">
+      <a class="tile" href="/en/products/slackdigest/"><strong>SlackDigest</strong><br><span class="muted">Updates that move things forward.</span></a>
+      <a class="tile" href="/en/products/tasksieve/"><strong>TaskSieve</strong><br><span class="muted">Prioritize what has impact.</span></a>
+      <a class="tile" href="/en/products/changewise/"><strong>ChangeWise</strong><br><span class="muted">Brand & change comms.</span></a>
+    </section>
+  </main>
+</body>
+</html>
