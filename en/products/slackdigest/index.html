@@ -101,6 +101,11 @@
     .card p, .card li{ margin:.35rem 0 }
     .card ul{ list-style:disc; padding-left:1.2rem }
     .card a{ text-decoration:underline; text-underline-offset:2px; color:#FFFFFF }
+    /* Highlight the targeted card when jumping to #card-benefits */
+    .card:target{
+  outline:3px solid rgba(255,255,255,.75);
+  box-shadow:0 0 0 4px rgba(255,255,255,.25), 0 12px 28px rgba(0,0,0,.45);
+}
     #card-benefits, #card-benefits-en { scroll-margin-top:14mm; }
 
     @media (max-width:960px){ .card{ grid-column:span 6 } }
