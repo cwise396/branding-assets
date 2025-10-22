@@ -51,6 +51,11 @@ a{color:#FFFFFF;text-decoration:none}
 details{border:0} details summary{cursor:pointer;font-weight:800}
 footer{max-width:var(--container);margin:2.2rem auto;padding:0 1rem 2.4rem;color:#FFFFFF}
 footer a{color:#FFFFFF}
+/* Highlight the targeted card when jumping to #card-benefits */
+.card:target{
+  outline:3px solid rgba(255,255,255,.75);
+  box-shadow:0 0 0 4px rgba(255,255,255,.25), 0 12px 28px rgba(0,0,0,.45);
+}
 #card-benefits,#card-benefits-en{scroll-margin-top:14mm}
 .card:target{outline:3px solid rgba(255,255,255,.75);box-shadow:0 0 0 4px rgba(255,255,255,.25),0 12px 28px rgba(0,0,0,.45)}
 #bg-overlay{display:none!important}
