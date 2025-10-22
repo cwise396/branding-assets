@@ -58,8 +58,7 @@ footer a{color:#FFFFFF}
 }
  <article class="card" id="card-benefits">
 {scroll-margin-top:14mm}
-.card:target{outline:3px solid rgba(255,255,255,.75);box-shadow:0 0 0 4px rgba(255,255,255,.25),0 12px 28px rgba(0,0,0,.45)}
-#bg-overlay{display:none!important}
+ #bg-overlay{display:none!important}
 </style>
 <script>
 function __toggleNav(){var l=document.getElementById('navLinks');if(!l)return;var o=l.classList.toggle('open');document.getElementById('navToggle').setAttribute('aria-expanded',o?'true':'false');}
@@ -216,8 +215,7 @@ function __toggleNav(){var l=document.getElementById('navLinks');if(!l)return;va
   if(hash==='#benefits'){
     history.replaceState(null,'','#'+card.id);
   }
-
-  card.scrollIntoView({behavior:"instant", block:"center"});
+   card.scrollIntoView({behavior:"instant", block:"center"});
 })();
 </script>
 
