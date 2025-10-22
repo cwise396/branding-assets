@@ -231,16 +231,25 @@
   <a href="/en/imprint/">Imprint</a> · <a href="/en/privacy/">Privacy</a>
 </footer>
 
-    <script>
+     <script>
 (function(){
   var hash=(location.hash||"").toLowerCase();
   if(!hash.includes('benefits')) return;
-  var card=document.getElementById('card-benefits')||document.getElementById('card-benefits-en');
+  var card=document.getElementById('card-benefits-en')||document.getElementById('card-benefits');
   if(!card) return;
   var d=card.querySelector('details'); 
-  if(d && !d.open) d.open = true;
+  if(d && !d.open) d.open=true;
+  if(hash==='#benefits'){ history.replaceState(null,'','#'+card.id); }
 })();
 </script>
+<script>
+function __toggleNav(){
+  var l=document.getElementById('navLinks'); if(!l) return;
+  var open=l.classList.toggle('open');
+  var t=document.getElementById('navToggle'); if(t) t.setAttribute('aria-expanded', open?'true':'false');
+}
+</script>
+
 
 </body>
 </html>
