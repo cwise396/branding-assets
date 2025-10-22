@@ -101,6 +101,7 @@
     .card p, .card li{ margin:.35rem 0 }
     .card ul{ list-style:disc; padding-left:1.2rem }
     .card a{ text-decoration:underline; text-underline-offset:2px; color:#FFFFFF }
+    #card-benefits, #card-benefits-en { scroll-margin-top:14mm; }
 
     @media (max-width:960px){ .card{ grid-column:span 6 } }
     @media (max-width:640px){ .card{ grid-column:span 12 } }
@@ -231,14 +232,24 @@
   <a href="/en/imprint/">Imprint</a> · <a href="/en/privacy/">Privacy</a>
 </footer>
 
-     <script>
+      <script>
 (function(){
   var hash=(location.hash||"").toLowerCase();
   if(!hash.includes('benefits')) return;
   var card=document.getElementById('card-benefits-en')||document.getElementById('card-benefits');
   if(!card) return;
-  var d=card.querySelector('details'); 
+
+  // Details aufklappen
+  var d=card.querySelector('details');
   if(d && !d.open) d.open=true;
+
+  // Browser erst den Anker springen lassen, dann mittig scrollen
+  setTimeout(function(){
+    try { card.scrollIntoView({behavior:'instant', block:'center'}); }
+    catch(e){ try { card.scrollIntoView({behavior:'smooth', block:'center'}); } catch(_){} }
+  }, 0);
+
+  // Optional: #benefits → auf tatsächliche ID normalisieren
   if(hash==='#benefits'){ history.replaceState(null,'','#'+card.id); }
 })();
 </script>
@@ -249,7 +260,5 @@ function __toggleNav(){
   var t=document.getElementById('navToggle'); if(t) t.setAttribute('aria-expanded', open?'true':'false');
 }
 </script>
-
-
 </body>
 </html>
