@@ -185,23 +185,37 @@ function __toggleNav(){var l=document.getElementById('navLinks');if(!l)return;va
 </main>
  <script>
 (function(){
-  var hash=(location.hash||"").toLowerCase();
-  if(!hash.includes('benefits')) return;
+  function run(){
+    var hash=(location.hash||"").toLowerCase();
+    // Nur reagieren, wenn #benefits ODER #card-benefits angefordert ist
+    if(!hash || (hash!=='#benefits' && hash!=='#card-benefits')) return;
 
-  // exakt wie DE: immer #card-benefits verwenden
-  var card=document.getElementById('card-benefits');
-  if(!card) return;
+    // Karte finden (Standard-ID; optional Fallback, falls noch -en existiert)
+    var card=document.getElementById('card-benefits') || document.getElementById('card-benefits-en');
+    if(!card) return;
 
-  var d=card.querySelector('details');
-  if(d && !d.open) d.open=true;
+    // Details in der Karte öffnen
+    var d=card.querySelector('details');
+    if(d && !d.open) d.open=true;
 
-  // mittig scrollen
-  card.scrollIntoView({behavior:"instant", block:"center"});
+    // :target sicher aktivieren (weiße Outline) -> Hash auf tatsächliche ID der Karte setzen
+    var targetId = card.id; // 'card-benefits' (oder evtl. noch '-en')
+    if(location.hash !== '#'+targetId){
+      history.replaceState(null,'','#'+targetId);
+    }
 
-  // WICHTIG: hash NICHT umschreiben (kein history.replaceState),
-  // damit :target aktiv bleibt und die weiße Outline sichtbar ist.
+    // Karte mittig scrollen
+    card.scrollIntoView({behavior:'instant', block:'center'});
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
 })();
 </script>
+
 <script>
 function __toggleNav(){
   var l=document.getElementById('navLinks'); if(!l) return;
