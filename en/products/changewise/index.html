@@ -200,22 +200,34 @@ function __toggleNav(){var l=document.getElementById('navLinks');if(!l)return;va
 
   <script>
 (function(){
-  var hash=(location.hash||"").toLowerCase();
-  if(!hash.includes('benefits')) return;
+  function run(){
+    var hash=(location.hash||"").toLowerCase();
+    // Nur reagieren, wenn #benefits ODER #card-benefits angefordert ist
+    if(!hash || (hash!=='#benefits' && hash!=='#card-benefits')) return;
 
-  var card=document.getElementById('card-benefits');
-  if(!card) return;
+    // Karte finden (Standard-ID; optional Fallback, falls noch -en existiert)
+    var card=document.getElementById('card-benefits') || document.getElementById('card-benefits-en');
+    if(!card) return;
 
-  // Details öffnen
-  var d=card.querySelector('details'); 
-  if(d && !d.open) d.open=true;
+    // Details in der Karte öffnen
+    var d=card.querySelector('details');
+    if(d && !d.open) d.open=true;
 
-  // Falls nur #benefits übergeben wurde, URL auf #card-benefits umschreiben,
-  // damit :target aktiv ist (weiße Outline) und mittig scrollen.
-  if(hash==='#benefits'){
-    history.replaceState(null,'','#'+card.id);
+    // :target sicher aktivieren (weiße Outline) -> Hash auf tatsächliche ID der Karte setzen
+    var targetId = card.id; // 'card-benefits' (oder evtl. noch '-en')
+    if(location.hash !== '#'+targetId){
+      history.replaceState(null,'','#'+targetId);
+    }
+
+    // Karte mittig scrollen
+    card.scrollIntoView({behavior:'instant', block:'center'});
   }
-   card.scrollIntoView({behavior:"instant", block:"center"});
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
 })();
 </script>
 
