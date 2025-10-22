@@ -56,7 +56,8 @@ footer a{color:#FFFFFF}
   outline:3px solid rgba(255,255,255,.75);
   box-shadow:0 0 0 4px rgba(255,255,255,.25), 0 12px 28px rgba(0,0,0,.45);
 }
- #card-benefits,#card-benefits-en{scroll-margin-top:14mm}
+  <article class="card" id="card-benefits">
+{scroll-margin-top:14mm}
 .card:target{outline:3px solid rgba(255,255,255,.75);box-shadow:0 0 0 4px rgba(255,255,255,.25),0 12px 28px rgba(0,0,0,.45)}
 #bg-overlay{display:none!important}
 </style>
@@ -183,24 +184,23 @@ function __toggleNav(){var l=document.getElementById('navLinks');if(!l)return;va
     </section>
   </section>
 </main>
-<script>
+ <script>
 (function(){
   var hash=(location.hash||"").toLowerCase();
   if(!hash.includes('benefits')) return;
-  var card=document.getElementById('card-benefits-en')||document.getElementById('card-benefits');
+
+  // exakt wie DE: immer #card-benefits verwenden
+  var card=document.getElementById('card-benefits');
   if(!card) return;
 
-  // Details aufklappen
   var d=card.querySelector('details');
   if(d && !d.open) d.open=true;
 
-  // danach Karte mittig in den Viewport scrollen
-  setTimeout(function(){
-    try { card.scrollIntoView({behavior:'instant', block:'center'}); }
-    catch(e){ try { card.scrollIntoView({behavior:'smooth', block:'center'}); } catch(_){} }
-  }, 0);
+  // mittig scrollen
+  card.scrollIntoView({behavior:"instant", block:"center"});
 
-  if(hash==='#benefits'){ history.replaceState(null,'','#'+card.id); }
+  // WICHTIG: hash NICHT umschreiben (kein history.replaceState),
+  // damit :target aktiv bleibt und die weiße Outline sichtbar ist.
 })();
 </script>
 <script>
