@@ -193,16 +193,33 @@ function __toggleNav(){var l=document.getElementById('navLinks');if(!l)return;va
   </div>
 </footer>
 
-<script>
+ <script>
 (function(){
   var hash=(location.hash||"").toLowerCase();
   if(!hash.includes('benefits')) return;
   var card=document.getElementById('card-benefits-en')||document.getElementById('card-benefits');
   if(!card) return;
-  var d=card.querySelector('details'); if(d && !d.open) d.open=true;
+
+  // Details aufklappen
+  var d=card.querySelector('details');
+  if(d && !d.open) d.open=true;
+
+  // danach Karte mittig in den Viewport scrollen
+  setTimeout(function(){
+    try { card.scrollIntoView({behavior:'instant', block:'center'}); }
+    catch(e){ try { card.scrollIntoView({behavior:'smooth', block:'center'}); } catch(_){} }
+  }, 0);
+
   if(hash==='#benefits'){ history.replaceState(null,'','#'+card.id); }
 })();
 </script>
-<script>function __toggleNav(){var l=document.getElementById('navLinks');if(!l)return;var o=l.classList.toggle('open');document.getElementById('navToggle').setAttribute('aria-expanded',o?'true':'false');}</script>
+<script>
+function __toggleNav(){
+  var l=document.getElementById('navLinks'); if(!l) return;
+  var open=l.classList.toggle('open');
+  var t=document.getElementById('navToggle'); if(t) t.setAttribute('aria-expanded', open?'true':'false');
+}
+</script>
+
 </body>
 </html>
