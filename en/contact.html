@@ -158,52 +158,54 @@
 
 
   <!-- SlackDigest -->
-  <section id="sec-sd" class="card section show">
-    <span id="slackdigest" class="anchor-fix" aria-hidden="true"></span>
-    <h2>SlackDigest — request a test digest</h2>
-    <p><strong>3 steps:</strong> pick channels → cadence (daily/weekly) → delivery (email/slack). One glance, one link — done.</p>
+<section id="sec-sd" class="card section show">
+<span id="slackdigest" class="anchor-fix" aria-hidden="true"></span>
+<h2>SlackDigest — request a test digest</h2>
+<p><strong>3 steps:</strong> pick channels → cadence (daily/weekly) → delivery (email/slack). One glance, one link — done.</p>
 
-    <form action="https://formspree.io/f/xovkkann" method="POST" autocomplete="on">
-      <input type="hidden" name="product" value="slackdigest">
-      <input type="hidden" name="lang" value="en">
-      <input type="text" name="_gotcha" style="display:none">
 
-      <label>Name
-        <input type="text" name="name" autocomplete="name" required>
-      </label>
-      <label>Email
-        <input type="email" name="email" autocomplete="email" required>
-      </label>
-      <label>Channels
-        <input type="text" name="channels" placeholder="#sales, #support, email inbox …" required>
-      </label>
-      <label>Cadence
-        <select name="cadence" required>
-          <option value="daily">Daily</option>
-          <option value="weekly">Weekly</option>
-        </select>
-      </label>
-      <label>Delivery
-        <select name="delivery" required>
-          <option value="email">Email</option>
-           <option value="slack">Slack DM</option>
-        </select>
-      </label>
+<form action="https://formspree.io/f/xovkkann" method="POST" autocomplete="on">
+<input type="hidden" name="product" value="slackdigest">
+<input type="hidden" name="lang" value="en">
+<input type="text" name="_gotcha" style="display:none">
 
-      <button type="submit" class="btn">Request test digest</button>
-     </form>
-    </section>
-      <div class="consent">
-        <input id="c1e" type="checkbox" name="consent" required>
-        <label for="c1e">I agree to processing as per <a href="/en/privacy/">privacy</a>.</label>
-      </div>
 
-      <button class="btn" type="submit">Request test digest</button>
-      <input type="hidden" name="_subject" value="[Website] SlackDigest test digest">
-      <input type="hidden" name="_next" value="/en/contact/?success=1#slackdigest">
-    </form>
-  </section>
+<label>Name
+<input type="text" name="name" autocomplete="name" required>
+</label>
+<label>Email
+<input type="email" name="email" autocomplete="email" required>
+</label>
+<label>Channels
+<input type="text" name="channels" placeholder="#sales, #support, email inbox …" required>
+</label>
+<label>Cadence
+<select name="cadence" required>
+<option value="daily">Daily</option>
+<option value="weekly">Weekly</option>
+</select>
+</label>
+<label>Delivery
+<select name="delivery" required>
+<option value="email">Email</option>
+<option value="slack">Slack DM</option>
+</select>
+</label>
 
+
+<div class="consent">
+<input id="c1e" type="checkbox" name="consent" required>
+<label for="c1e">I agree to processing as per <a href="/en/privacy/">privacy</a>.</label>
+</div>
+
+
+<input type="hidden" name="_subject" value="[Website] SlackDigest test digest">
+<input type="hidden" name="_next" value="/en/contact/?success=1#slackdigest">
+
+
+<button type="submit" class="btn">Request test digest</button>
+</form>
+</section>
   <!-- TaskSieve -->
   <section id="sec-ts" class="card section">
     <span id="tasksieve" class="anchor-fix" aria-hidden="true"></span>
