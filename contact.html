@@ -146,8 +146,10 @@
   <section id="sec-sd" class="card section show">
     <span id="slackdigest" class="anchor-fix" aria-hidden="true"></span>
     <h2>SlackDigest – Test-Digest anfordern</h2>
-    <p><strong>In 3 Schritten:</strong> Kanäle wählen → Takt (täglich/wöchentlich) → Zustellung (E-Mail/Slack). Ein Blick, ein Link – erledigt.</p>
-    <form action="https://formspree.io/f/manppwbn" method="POST" autocomplete="on">
+    <p class="muted" style="margin:.2rem 0 1rem">
+  In 3 Schritten: Kanäle wählen → Takt (täglich/wöchentlich) → Zustellung (E-Mail/Slack).
+</p>
+      <form action="https://formspree.io/f/manppwbn" method="POST" autocomplete="on">
       <input type="hidden" name="product" value="slackdigest"><input type="hidden" name="lang" value="de">
       <input type="text" name="_gotcha" style="display:none">
       <label>Name <input type="text" name="name" autocomplete="name" required></label>
@@ -163,7 +165,27 @@
         <input id="c1" type="checkbox" name="consent" required>
         <label for="c1">Ich stimme der Verarbeitung gemäß <a href="/datenschutz.html">Datenschutz</a> zu.</label>
       </div>
-      <button class="btn" type="submit">Test-Digest anfordern</button>
+       <!-- Aktionen -->
+    <div class="form-actions" style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.8rem">
+    <button type="submit" class="btn" style="background:#fff;color:#096D48;border:1px solid #fff;border-radius:12px;padding:.6rem .9rem;font-weight:800">
+      Test-Digest anfordern
+    </button>
+    <a class="btn" href="/products/slackdigest/" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:12px;padding:.6rem .9rem;font-weight:800;text-decoration:none">
+      Zur Produktseite
+    </a>
+  </div>
+
+  <!-- Kleiner Hinweis -->
+  <p class="muted" style="margin:.6rem 0 0">
+    Wir melden uns kurz mit einem Beispiel-Digest und den nächsten Schritten. Keine Newsletter.
+  </p>
+
+  <!-- (optional) Formspree Meta -->
+  <input type="hidden" name="_subject" value="[SlackDigest] Test-Digest (DE)">
+  <!-- Nach dem Absenden auf Danke-Seite leiten (falls vorhanden) -->
+  <input type="hidden" name="_next" value="/contact/thanks/?p=slackdigest&lang=de">
+
+       <button class="btn" type="submit">Test-Digest anfordern</button>
       <input type="hidden" name="_subject" value="[Website] SlackDigest Test-Digest">
       <input type="hidden" name="_next" value="/contact.html?success=1#slackdigest">
     </form>
@@ -278,5 +300,24 @@
   if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initTabs);}else{initTabs();}
 })();
 </script>
+<script>
+(function(){
+  var anchor = (location.hash||"").slice(1).toLowerCase();
+  var map = { slackdigest: "SlackDigest" };
+  var form = document.querySelector('form[action^="https://"]') || document.querySelector('form');
+  if(!form) return;
+
+  var input = form.querySelector('input[name="product"]');
+  if(!input){
+    input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'product';
+    input.value = 'General';
+    form.appendChild(input);
+  }
+  if (map[anchor]) input.value = map[anchor];
+})();
+</script>
+
 </body>
 </html>
