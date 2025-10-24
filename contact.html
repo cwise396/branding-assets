@@ -78,9 +78,58 @@
     .consent a{color:inherit}
 
     /* Buttons */
-    .btn{display:inline-block;align-self:start;padding:.7rem 1rem;border-radius:12px;
-      border:1px solid var(--btn-bd);background:var(--btn-bg);color:var(--btn-fg);font-weight:800;text-decoration:none}
-    .btn:hover{background:var(--btn-bg-h)}
+   .btn{
+  display:inline-block;
+  align-self:start;
+  padding:.7rem 1rem;
+  border-radius:12px;
+  border:1px solid var(--btn-bd);
+  background:var(--btn-bg);
+  color:var(--btn-fg);
+  font-weight:800;
+  text-decoration:none
+}
+.btn:hover{
+  background:var(--btn-bg-h)
+}
+
+/* SlackDigest: primärer Vertrauens-CTA im Formular */
+.btn--inverse{
+  background:#FFFFFF;
+  border:1px solid #FFFFFF;
+  color:#0C6C48 !important;               /* SlackDigest-Grün */
+  -webkit-text-fill-color:#0C6C48 !important;
+  border-radius:12px;
+  font-weight:800;
+  text-decoration:none;
+  display:inline-block;
+  text-align:left;
+  padding:0.7rem 1rem;
+  line-height:1.3;
+}
+
+/* Beide Zeilen (Hauptzeile + Microcopy) im Button grün rendern */
+.btn--inverse span{
+  color:#0C6C48 !important;
+  -webkit-text-fill-color:#0C6C48 !important;
+  display:block;
+}
+
+/* Success flash */
+.flash{
+  position:relative;
+  margin:8px 0 14px;
+  padding:12px 14px;
+  border-radius:10px;
+  background:#E7F6EF;
+  color:#096D48;
+  border:1px solid #BFE7D2;
+  box-shadow:0 3px 12px rgba(0,0,0,.06);
+  opacity:0;
+  transform:translateY(-6px);
+  transition:opacity .2s ease, transform .2s ease
+}
+
 
     /* Success flash */
     .flash{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:10px;
@@ -163,7 +212,15 @@
         <input id="c1" type="checkbox" name="consent" required>
         <label for="c1">Ich stimme der Verarbeitung gemäß <a href="/datenschutz.html">Datenschutz</a> zu.</label>
       </div>
-      <button class="btn" type="submit">Test-Digest anfordern</button>
+      <button class="btn btn--inverse" type="submit">
+  <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
+    Test-Digest anfordern
+  </span>
+  <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
+    Demo-Digest &amp; nächste Schritte folgen gleich. Kein Spam, kein Newsletter.
+  </span>
+</button>
+
       <input type="hidden" name="_subject" value="[Website] SlackDigest Test-Digest">
       <input type="hidden" name="_next" value="/contact.html?success=1#slackdigest">
     </form>
