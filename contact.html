@@ -143,53 +143,39 @@
   </nav>
 
   <!-- SlackDigest -->
-  <section id="sec-sd" class="card section show">
-    <span id="slackdigest" class="anchor-fix" aria-hidden="true"></span>
-    <h2>SlackDigest – Test-Digest anfordern</h2>
-    <p class="muted" style="margin:.2rem 0 1rem">
-  In 3 Schritten: Kanäle wählen → Takt (täglich/wöchentlich) → Zustellung (E-Mail/Slack).
-</p>
-      <form action="https://formspree.io/f/manppwbn" method="POST" autocomplete="on">
-      <input type="hidden" name="product" value="slackdigest"><input type="hidden" name="lang" value="de">
-      <input type="text" name="_gotcha" style="display:none">
-      <label>Name <input type="text" name="name" autocomplete="name" required></label>
-      <label>E-Mail <input type="email" name="email" autocomplete="email" required></label>
-      <label>Welche Kanäle? <input type="text" name="channels" placeholder="#sales, #support, E-Mail-Postfach …" required></label>
-      <label>Takt
-        <select name="cadence" required><option value="daily">Täglich</option><option value="weekly">Wöchentlich</option></select>
-      </label>
-      <label>Zustellung
-        <select name="delivery" required><option value="email">E-Mail</option><option value="slack">Slack</option></select>
-      </label>
-      <div class="consent">
-        <input id="c1" type="checkbox" name="consent" required>
-        <label for="c1">Ich stimme der Verarbeitung gemäß <a href="/datenschutz.html">Datenschutz</a> zu.</label>
-      </div>
-       <!-- Aktionen -->
-    <div class="form-actions" style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.8rem">
-    <button type="submit" class="btn" style="background:#fff;color:#096D48;border:1px solid #fff;border-radius:12px;padding:.6rem .9rem;font-weight:800">
-      Test-Digest anfordern
-    </button>
-    <a class="btn" href="/products/slackdigest/" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:12px;padding:.6rem .9rem;font-weight:800;text-decoration:none">
-      Zur Produktseite
-    </a>
-  </div>
+   <section id="sec-sd" class="card section show">
+  <span id="slackdigest" class="anchor-fix" aria-hidden="true"></span>
 
-  <!-- Kleiner Hinweis -->
-  <p class="muted" style="margin:.6rem 0 0">
-    Wir melden uns kurz mit einem Beispiel-Digest und den nächsten Schritten. Keine Newsletter.
+  <h2>SlackDigest – Test-Digest anfordern</h2>
+  <p><strong>So läuft es ab:</strong> Du nennst uns die Kanäle, den Takt (täglich / wöchentlich) und wohin der Digest soll (E-Mail oder Slack-DM). Wir schicken dir ein kompaktes Beispiel – ein Blick, ein Link, erledigt.</p>
+
+  <p>
+    <a class="btn btn--inverse" href="/contact/#slackdigest">
+      <span style="display:block;font-size:1.1rem;font-weight:800;color:#0C6C48;line-height:1.2;">
+        Test-Digest anfordern
+      </span>
+      <span style="display:block;font-size:0.85rem;font-weight:500;color:#0C6C48;opacity:.85;line-height:1.3;">
+        Demo-Digest &amp; nächste Schritte folgen gleich. Kein Spam, kein Newsletter.
+      </span>
+    </a>
   </p>
 
-  <!-- (optional) Formspree Meta -->
-  <input type="hidden" name="_subject" value="[SlackDigest] Test-Digest (DE)">
-  <!-- Nach dem Absenden auf Danke-Seite leiten (falls vorhanden) -->
-  <input type="hidden" name="_next" value="/contact/thanks/?p=slackdigest&lang=de">
+  <details style="margin-top:.6rem">
+    <summary>FAQ</summary>
+    <ul>
+      <li><strong>Braucht ihr Admin-Rechte?</strong> Nein. Leserechte genügen.</li>
+      <li><strong>Setup?</strong> Minuten – Kanäle wählen, Takt &amp; Filter setzen.</li>
+      <li><strong>Format?</strong> E-Mail oder Slack-DM.</li>
+      <li><strong>Kontext?</strong> Jeder Eintrag hat einen Link zurück in den Thread/Kanal.</li>
+      <li><strong>Verantwortung?</strong> Optional mit „Owner“ &amp; „Nächster Schritt“.</li>
+      <li><strong>Sicherheit?</strong> Least-Privilege, nur Lesen.</li>
+      <li><strong>Skalierung?</strong> Beliebig viele Kanäle / Teams.</li>
+      <li><strong>Support?</strong> Auf Wunsch SLA.</li>
+      <li><strong>Daten?</strong> Kein Weiterverkauf, kein Werbetracking.</li>
+    </ul>
+  </details>
+</section>
 
-       <button class="btn" type="submit">Test-Digest anfordern</button>
-      <input type="hidden" name="_subject" value="[Website] SlackDigest Test-Digest">
-      <input type="hidden" name="_next" value="/contact.html?success=1#slackdigest">
-    </form>
-  </section>
 
   <!-- TaskSieve -->
   <section id="sec-ts" class="card section">
