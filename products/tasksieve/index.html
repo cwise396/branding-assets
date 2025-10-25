@@ -18,7 +18,7 @@
   --nav-red:#AE0F12;
 
   --card-ts-bg: rgb(186, 15, 18);      /* Kartenhintergrund */
-  --card-ts-cta-bg: rgb(160, 12, 14);  /* moderat dunkler CTA-Button-Hintergrund */
+  --card-ts-cta-bg: rgb(151, 12, 15);  /* moderat dunkler CTA-Button-Hintergrund */
  
   --card-border: rgba(255,255,255,.28);
 
@@ -246,7 +246,7 @@ details summary{
    - zweizeilig, Safari-safe
 */
  .btn--inverse-ts-card{
-  background:var(--card-ts-cta-bg);
+  background:rgb(160, 12, 14); /* explicit for Safari */
   border:1px solid rgba(255,255,255,.6);
   border-radius:12px;
   text-align:left;
@@ -263,9 +263,8 @@ details summary{
   -webkit-text-fill-color:#FFFFFF !important;
 }
 
-
-/* Footer */
-footer{
+/* Footer *
+ footer{
   max-width:var(--container);
   margin:2.2rem auto;
   padding:0 1rem 2.4rem;
