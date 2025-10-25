@@ -314,7 +314,7 @@
         <input id="c1" type="checkbox" name="consent" required>
         <label for="c1">Ich stimme der Verarbeitung gemäß <a href="/datenschutz.html">Datenschutz</a> zu.</label>
       </div>
-      <button class="btn btn--inverse" type="submit">
+       <button type="submit" class="btn btn--inverse-sd">
   <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
     Test-Digest anfordern
   </span>
@@ -323,79 +323,111 @@
   </span>
 </button>
 
-      <input type="hidden" name="_subject" value="[Website] SlackDigest Test-Digest">
+       <input type="hidden" name="_subject" value="[Website] SlackDigest Test-Digest">
       <input type="hidden" name="_next" value="/contact.html?success=1#slackdigest">
     </form>
   </section>
 
   <!-- TaskSieve -->
-  <section id="sec-ts" class="card section">
-    <span id="tasksieve" class="anchor-fix" aria-hidden="true"></span>
-    <h2>TaskSieve – Schnell testen</h2>
-    <p>Ohne Import starten: Demo-Inbox laden und Priorisierung live erleben.</p>
-    <form action="https://formspree.io/f/mnnggabe" method="POST" autocomplete="on">
-      <input type="hidden" name="product" value="tasksieve"><input type="hidden" name="lang" value="de">
-      <input type="text" name="_gotcha" style="display:none">
-      <label>Name <input type="text" name="name" autocomplete="name" required></label>
-      <label>E-Mail <input type="email" name="email" autocomplete="email" required></label>
-      <label>Modus
-        <select name="mode" required><option value="demo">Demo-Inbox</option><option value="live">Später eigene Quellen verbinden</option></select>
-      </label>
-      <label>Quellen (optional) <input type="text" name="sources" placeholder="E-Mail, Notizen, Slack"></label>
-      <div class="consent">
-        <input id="c2" type="checkbox" name="consent" required>
-        <label for="c2">Ich stimme der Verarbeitung gemäß <a href="/datenschutz.html">Datenschutz</a> zu.</label>
-      </div>
-      <button class="btn btn--inverse-ts" type="submit">
-  <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
-    Demo starten
-  </span>
-  <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
-    Demo-Beispiel &amp; nächste Schritte folgen gleich. Kein Spam, kein Newsletter.
-  </span>
-</button>
+<section id="sec-ts" class="card section">
+  <span id="tasksieve" class="anchor-fix" aria-hidden="true"></span>
+  <h2>TaskSieve – Schnell testen</h2>
+  <p>Ohne Import starten: Demo-Inbox laden und Priorisierung live erleben.</p>
 
-      <input type="hidden" name="_subject" value="[Website] TaskSieve Demo">
-      <input type="hidden" name="_next" value="/contact.html?success=1#tasksieve">
-    </form>
-  </section>
+  <p style="font-size:.8rem;opacity:.7;margin-top:-4px;">
+    Auch verfügbar auf
+    <a href="/en/contact.html#tasksieve" style="color:inherit;text-decoration:underline;">
+      English
+    </a>.
+  </p>
+
+  <form action="https://formspree.io/f/mnnggabe" method="POST" autocomplete="on">
+    <input type="hidden" name="product" value="tasksieve"><input type="hidden" name="lang" value="de">
+    <input type="text" name="_gotcha" style="display:none">
+
+    <label>Name <input type="text" name="name" autocomplete="name" required></label>
+    <label>E-Mail <input type="email" name="email" autocomplete="email" required></label>
+
+    <label>Modus
+      <select name="mode" required>
+        <option value="demo">Demo-Inbox</option>
+        <option value="live">Später eigene Quellen verbinden</option>
+      </select>
+    </label>
+
+    <label>Quellen (optional)
+      <input type="text" name="sources" placeholder="E-Mail, Notizen, Slack">
+    </label>
+
+    <div class="consent">
+      <input id="c2" type="checkbox" name="consent" required>
+      <label for="c2">Ich stimme der Verarbeitung gemäß <a href="/datenschutz.html">Datenschutz</a> zu.</label>
+    </div>
+
+    <button class="btn btn--inverse-ts" type="submit">
+      <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
+        Demo starten
+      </span>
+      <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
+        Demo-Beispiel &amp; nächste Schritte folgen gleich. Kein Spam, kein Newsletter.
+      </span>
+    </button>
+
+    <input type="hidden" name="_subject" value="[Website] TaskSieve Demo">
+    <input type="hidden" name="_next" value="/contact.html?success=1#tasksieve">
+  </form>
+</section>
 
   <!-- ChangeWise -->
-  <section id="sec-cw" class="card section">
-    <span id="changewise" class="anchor-fix" aria-hidden="true"></span>
-    <h2>ChangeWise – Kurz-Briefing & Mini-Diagnose</h2>
-    <p>3–4 Angaben → Sofort-Ergebnis mit konkreten Empfehlungen.</p>
-    <form action="https://formspree.io/f/xjkaawkr" method="POST" autocomplete="on">
-      <input type="hidden" name="product" value="changewise"><input type="hidden" name="lang" value="de">
-      <input type="text" name="_gotcha" style="display:none">
-      <label>Name <input type="text" name="name" autocomplete="name" required></label>
-      <label>E-Mail <input type="email" name="email" autocomplete="email" required></label>
-      <label>Mini-Diagnose
-        <textarea name="diagnosis" rows="4" placeholder="z. B. Uneinheitliche Botschaften; brauchen Kernnarrativ & Vorlagen." required></textarea>
-      </label>
-      <label>Optional: Link zu Brand-Dokumenten
-        <input type="url" name="asset_url" placeholder="https://…/brandkit.pdf">
-        <small>PDF/URL – wird vertraulich geprüft; das Ergebnis bezieht sich darauf.</small>
-      </label>
-      <div class="consent">
-        <input id="c3" type="checkbox" name="consent" required>
-        <label for="c3">Ich stimme der Verarbeitung gemäß <a href="/datenschutz.html">Datenschutz</a> zu.</label>
-      </div>
-       <button class="btn btn--inverse-cw" type="submit">
-  <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
-    Briefing &amp; Mini-Diagnose
-  </span>
-  <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
-    Ergebnis &amp; nächste Schritte folgen gleich. Kein Spam, kein Newsletter.
-  </span>
-</button>
+<section id="sec-cw" class="card section">
+  <span id="changewise" class="anchor-fix" aria-hidden="true"></span>
+  <h2>ChangeWise – Kurz-Briefing &amp; Mini-Diagnose</h2>
+  <p>3–4 Angaben → Sofort-Ergebnis mit konkreten Empfehlungen.</p>
 
-      <input type="hidden" name="_subject" value="[Website] ChangeWise Kurz-Briefing">
-      <input type="hidden" name="_next" value="/contact.html?success=1#changewise">
-    </form>
-  </section>
+  <p style="font-size:.8rem;opacity:.7;margin-top:-4px;">
+    Auch verfügbar auf
+    <a href="/en/contact.html#changewise" style="color:inherit;text-decoration:underline;">
+      English
+    </a>.
+  </p>
 
-  <footer>
+  <form action="https://formspree.io/f/xjkaawkr" method="POST" autocomplete="on">
+    <input type="hidden" name="product" value="changewise"><input type="hidden" name="lang" value="de">
+    <input type="text" name="_gotcha" style="display:none">
+
+    <label>Name <input type="text" name="name" autocomplete="name" required></label>
+
+    <label>E-Mail <input type="email" name="email" autocomplete="email" required></label>
+
+    <label>Mini-Diagnose
+      <textarea name="diagnosis" rows="4" placeholder="z. B. Uneinheitliche Botschaften; brauchen Kernnarrativ &amp; Vorlagen." required></textarea>
+    </label>
+
+    <label>Optional: Link zu Brand-Dokumenten
+      <input type="url" name="asset_url" placeholder="https://…/brandkit.pdf">
+      <small>PDF/URL – wird vertraulich geprüft; das Ergebnis bezieht sich darauf.</small>
+    </label>
+
+    <div class="consent">
+      <input id="c3" type="checkbox" name="consent" required>
+      <label for="c3">Ich stimme der Verarbeitung gemäß <a href="/datenschutz.html">Datenschutz</a> zu.</label>
+    </div>
+
+    <button class="btn btn--inverse-cw" type="submit">
+      <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
+        Briefing &amp; Mini-Diagnose
+      </span>
+      <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
+        Ergebnis &amp; nächste Schritte folgen gleich. Kein Spam, kein Newsletter.
+      </span>
+    </button>
+
+    <input type="hidden" name="_subject" value="[Website] ChangeWise Kurz-Briefing">
+    <input type="hidden" name="_next" value="/contact.html?success=1#changewise">
+  </form>
+</section>
+
+    <footer>
     <div class="container footbar">
       <nav class="legal" aria-label="Footer">
         <a href="/impressum.html">Impressum</a><span class="sep" aria-hidden="true"> · </span>
