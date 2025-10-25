@@ -213,9 +213,10 @@
         <li><a href="/en/products/changewise/">ChangeWise</a></li>
         <li><a href="/en/products/slackdigest/">SlackDigest</a></li>
         <li><a href="/en/products/tasksieve/">TaskSieve</a></li>
-        <li><a href="/contact.html#slackdigest">DE</a> | <strong>EN</strong></li>
-
-      </ul>
+        <li>
+  <a id="langSwitchLink" href="/contact.html#slackdigest">DE</a> | <strong>EN</strong>
+</li>
+    </ul>
       <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false">☰</button>
     </div>
   </nav>
@@ -444,12 +445,17 @@
 
 </main>
 
-<script>
+ <script>
 (function(){
   // Nav Toggle
   (function(){
     var t=document.getElementById('navToggle'), l=document.getElementById('navLinks');
-    if(t&&l){ t.addEventListener('click',function(){ var o=l.classList.toggle('open'); t.setAttribute('aria-expanded',o?'true':'false'); }); }
+    if(t&&l){
+      t.addEventListener('click',function(){
+        var o=l.classList.toggle('open');
+        t.setAttribute('aria-expanded',o?'true':'false');
+      });
+    }
   })();
 
   // Optional blue theme via ?theme=cw
@@ -469,14 +475,18 @@
   try{
     var sp = new URLSearchParams(location.search);
     if (sp.get('success') === '1') {
-      var h=(location.hash||''); var target=h?document.querySelector(h):null;
+      var h=(location.hash||'');
+      var target=h?document.querySelector(h):null;
       var host=(target && target.closest('.section'))?target.closest('.section'):document.getElementById('sec-sd');
       if(host){
         var box=document.createElement('div'); box.className='flash';
         box.innerHTML='Thanks — your message has been received.<small>We’ll get back shortly with the next step.</small>';
-        var f=host.querySelector('form'); if(f) f.parentNode.insertBefore(box,f);
+        var f=host.querySelector('form');
+        if(f) f.parentNode.insertBefore(box,f);
         setTimeout(function(){ box.classList.add('show'); }, 60);
-        setTimeout(function(){ if(box&&box.parentNode) box.parentNode.removeChild(box); }, 8000);
+        setTimeout(function(){
+          if(box&&box.parentNode) box.parentNode.removeChild(box);
+        }, 8000);
       }
     }
   }catch(e){}
@@ -486,9 +496,34 @@
     document.addEventListener('submit', function(e){
       var f=e.target; if(!f||f.tagName!=='FORM') return;
       var btn=f.querySelector('button[type="submit"]');
-      if(btn && !btn.disabled){ btn.disabled=true; btn.setAttribute('aria-disabled','true'); btn.dataset._label=btn.textContent; btn.textContent='Sending…'; }
+      if(btn && !btn.disabled){
+        btn.disabled=true;
+        btn.setAttribute('aria-disabled','true');
+        btn.dataset._label=btn.textContent;
+        btn.textContent='Sending…';
+      }
     }, {capture:true});
   }catch(e){}
+
+  // --- Language switch updater ---
+  function updateLangSwitch(activeId){
+    // activeId is e.g. 'sec-sd' / 'sec-ts' / 'sec-cw'
+    // Map section IDs → proper hash in DE
+    var map = {
+      'sec-sd':'slackdigest',
+      'sec-ts':'tasksieve',
+      'sec-cw':'changewise'
+    };
+    var hash = map[activeId] || 'slackdigest';
+
+    // Find the link in the header:
+    var langLink = document.getElementById('langSwitchLink');
+    if(!langLink) return;
+
+    // We're on EN page. The lang switch should point to DE.
+    // So we rewrite its href to include the right hash.
+    langLink.setAttribute('href', '/contact.html#'+hash);
+  }
 
   // Tabs / Hash + Hero update
   function targetIdFromHash(){
@@ -497,6 +532,7 @@
     if(h==='changewise'||h==='sec-cw') return 'sec-cw';
     return 'sec-sd';
   }
+
   function setHero(aEl){
     try{
       var title=aEl.getAttribute('data-title')||'Contact';
@@ -507,33 +543,60 @@
       if(logo) document.getElementById('heroLogo').setAttribute('src',logo);
     }catch(e){}
   }
+
   function setActive(id){
-    document.querySelectorAll('.section').forEach(s=>s.classList.remove('show'));
-    var el=document.getElementById(id); if(el) el.classList.add('show');
-    document.querySelectorAll('.form-tabs a').forEach(a=>{
-      var on=a.getAttribute('data-target')===id;
+    // Show correct section
+    document.querySelectorAll('.section').forEach(function(s){
+      s.classList.remove('show');
+    });
+    var el=document.getElementById(id);
+    if(el) el.classList.add('show');
+
+    // Style correct tab + update hero
+    document.querySelectorAll('.form-tabs a').forEach(function(a){
+      var on = (a.getAttribute('data-target')===id);
       a.classList.toggle('active', on);
       if(on) setHero(a);
     });
+
+    // Update language switch target based on active tab
+    updateLangSwitch(id);
   }
+
   function onTabClick(e){
     e.preventDefault();
-    var t=this.getAttribute('data-target'); if(!t) return;
+    var t=this.getAttribute('data-target');
+    if(!t) return;
     var hash='#'+(t==='sec-sd'?'slackdigest':t==='sec-ts'?'tasksieve':'changewise');
     history.pushState(null,'',hash);
     setActive(t);
-    var anchor=document.querySelector(hash); if(anchor) try{ anchor.scrollIntoView({behavior:'instant', block:'start'});}catch(e){}
+    var anchor=document.querySelector(hash);
+    if(anchor){
+      try{ anchor.scrollIntoView({behavior:'instant', block:'start'}); }catch(e){}
+    }
   }
+
   function initTabs(){
-    document.querySelectorAll('.form-tabs a').forEach(a=>{
+    document.querySelectorAll('.form-tabs a').forEach(function(a){
       a.removeEventListener('click', onTabClick);
       a.addEventListener('click', onTabClick);
     });
-    setActive(targetIdFromHash());
+
+    var firstId = targetIdFromHash();
+    setActive(firstId);
   }
-  window.addEventListener('hashchange', ()=>setActive(targetIdFromHash()));
-  if (document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', initTabs); } else { initTabs(); }
+
+  window.addEventListener('hashchange', function(){
+    setActive(targetIdFromHash());
+  });
+
+  if (document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded', initTabs);
+  } else {
+    initTabs();
+  }
 })();
 </script>
+
 </body>
 </html>
