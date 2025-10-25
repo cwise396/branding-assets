@@ -81,13 +81,19 @@
     .btn{display:inline-block;align-self:start;padding:.7rem 1rem;border-radius:12px;
       border:1px solid var(--btn-bd);background:var(--btn-bg);color:var(--btn-fg);font-weight:800;text-decoration:none}
     .btn:hover{background:var(--btn-bg-h)}
-/* Primary CTA variant for SlackDigest (2-line, green text, Safari-safe) */
-.btn--inverse{
+ /* Brand colors for product CTAs and tabs */
+:root{
+  --sd-green:#0C6C48;   /* SlackDigest */
+  --ts-red:#AE0F12;     /* TaskSieve (gleich wie nav-red) */
+  --cw-blue:#0E3960;    /* ChangeWise */
+}
+
+/* Unified CTA base style (white pill, left-aligned, 2-line, Safari safe) */
+.btn--inverse-sd,
+.btn--inverse-ts,
+.btn--inverse-cw{
   background:#FFFFFF;
   border:1px solid #FFFFFF;
-  /* Text color fallback: first try CSS var, otherwise SlackDigest green */
-  color:var(--btn-green-text, #0C6C48) !important;
-  -webkit-text-fill-color:var(--btn-green-text, #0C6C48) !important;
   border-radius:12px;
   font-weight:800;
   text-decoration:none;
@@ -96,13 +102,91 @@
   padding:0.7rem 1rem;
   line-height:1.3;
 }
-
-/* force each line inside the button to be its own block and green */
-.btn--inverse span{
+.btn--inverse-sd span,
+.btn--inverse-ts span,
+.btn--inverse-cw span{
   display:block;
-  color:var(--btn-green-text, #0C6C48) !important;
-  -webkit-text-fill-color:var(--btn-green-text, #0C6C48) !important;
+  font-weight:inherit;
+  line-height:inherit;
 }
+
+/* SlackDigest CTA (green text) */
+.btn--inverse-sd{
+  color:var(--sd-green) !important;
+  -webkit-text-fill-color:var(--sd-green) !important;
+}
+.btn--inverse-sd span{
+  color:var(--sd-green) !important;
+  -webkit-text-fill-color:var(--sd-green) !important;
+}
+
+/* TaskSieve CTA (red text) */
+.btn--inverse-ts{
+  color:var(--ts-red) !important;
+  -webkit-text-fill-color:var(--ts-red) !important;
+}
+.btn--inverse-ts span{
+  color:var(--ts-red) !important;
+  -webkit-text-fill-color:var(--ts-red) !important;
+}
+
+/* ChangeWise CTA (blue text) */
+.btn--inverse-cw{
+  color:var(--cw-blue) !important;
+  -webkit-text-fill-color:var(--cw-blue) !important;
+}
+.btn--inverse-cw span{
+  color:var(--cw-blue) !important;
+  -webkit-text-fill-color:var(--cw-blue) !important;
+}
+
+/* Tabs base layout override (we'll color active tabs per product) */
+.form-tabs{
+  display:flex;
+  gap:8px;
+  margin:8px 0 14px;
+  flex-wrap:wrap;
+}
+
+.form-tabs a{
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.22);
+  text-decoration:none;
+  color:inherit;
+  opacity:.9;
+  background:transparent;
+  font-weight:600;
+  line-height:1.2;
+}
+
+/* Active tab: SlackDigest = white pill with green text */
+.form-tabs a.active.tab-sd{
+  background:#FFFFFF;
+  border-color:#FFFFFF;
+  color:var(--sd-green) !important;
+  -webkit-text-fill-color:var(--sd-green) !important;
+  opacity:1;
+}
+
+/* Active tab: TaskSieve = white pill with red text */
+.form-tabs a.active.tab-ts{
+  background:#FFFFFF;
+  border-color:#FFFFFF;
+  color:var(--ts-red) !important;
+  -webkit-text-fill-color:var(--ts-red) !important;
+  opacity:1;
+}
+
+/* Active tab: ChangeWise = white pill with blue text */
+.form-tabs a.active.tab-cw{
+  background:#FFFFFF;
+  border-color:#FFFFFF;
+  color:var(--cw-blue) !important;
+  -webkit-text-fill-color:var(--cw-blue) !important;
+  opacity:1;
+}
+
 
     .flash{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:10px;
       background:#E7F6EF;color:#096D48;border:1px solid #BFE7D2;box-shadow:0 3px 12px rgba(0,0,0,.06);
@@ -129,7 +213,7 @@
         <li><a href="/en/products/changewise/">ChangeWise</a></li>
         <li><a href="/en/products/slackdigest/">SlackDigest</a></li>
         <li><a href="/en/products/tasksieve/">TaskSieve</a></li>
-        <li><a href="/contact/">DE</a> | <strong>EN</strong></li>
+        <li><a href="/contact.html#slackdigest">DE</a> | <strong>EN</strong></li>
 
       </ul>
       <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false">☰</button>
@@ -159,27 +243,30 @@
      data-title="SlackDigest"
      data-sub="Test digest: pick channels, cadence, delivery."
      data-logo="/assets/brand/slackdigest_logo.svg"
-     class="active"
-     aria-label="Contact for SlackDigest">Contact: SlackDigest</a>
+     class="tab-sd active">
+     Contact: SlackDigest
+  </a>
 
   <a href="#tasksieve"
      data-target="sec-ts"
      data-title="TaskSieve"
      data-sub="Start demo: choose mode, optionally list sources."
      data-logo="/assets/brand/tasksieve_logo.svg"
-     aria-label="Contact for TaskSieve">Contact: TaskSieve</a>
+     class="tab-ts">
+     Contact: TaskSieve
+  </a>
 
   <a href="#changewise"
      data-target="sec-cw"
      data-title="ChangeWise"
      data-sub="Quick brief &amp; mini diagnosis — result in minutes (3–4 inputs)."
      data-logo="/assets/brand/changewise_logo.svg"
-     aria-label="Contact for ChangeWise">Contact: ChangeWise</a>
+     class="tab-cw">
+     Contact: ChangeWise
+  </a>
 </nav>
 
-
-
-  <!-- SlackDigest -->
+   <!-- SlackDigest -->
 <section id="sec-sd" class="card section show">
 <span id="slackdigest" class="anchor-fix" aria-hidden="true"></span>
 <h2>SlackDigest — request a test digest</h2>
@@ -268,7 +355,15 @@
         <label for="c2e">I agree to processing as per <a href="/en/privacy/">privacy</a>.</label>
       </div>
 
-      <button class="btn" type="submit">Start demo</button>
+       <button class="btn btn--inverse-ts" type="submit">
+  <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
+    Start demo
+  </span>
+  <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
+    Demo preview &amp; next steps will follow shortly. No spam, no newsletter.
+  </span>
+</button>
+
       <input type="hidden" name="_subject" value="[Website] TaskSieve demo">
       <input type="hidden" name="_next" value="/en/contact/?success=1#tasksieve">
     </form>
@@ -304,7 +399,15 @@
         <label for="c3e">I agree to processing as per <a href="/en/privacy/">privacy</a>.</label>
       </div>
 
-      <button class="btn" type="submit">Send brief</button>
+      <button class="btn btn--inverse-cw" type="submit">
+  <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
+    Briefing &amp; mini diagnosis
+  </span>
+  <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
+    Result &amp; next steps will follow shortly. No spam, no newsletter.
+  </span>
+</button>
+
       <input type="hidden" name="_subject" value="[Website] ChangeWise quick brief">
       <input type="hidden" name="_next" value="/en/contact/?success=1#changewise">
     </form>
