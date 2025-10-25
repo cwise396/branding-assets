@@ -17,13 +17,13 @@
   --muted:#CBD5E1;
 
   /* Navbar / Brand-Red */
-  --nav-red:#AE0F12;
+  --nav-red:#AE0F12; /* bleibt Navigation */
 
-  /* Kartenfarbe für TaskSieve (rot/dunkelrot) */
-  --card-ts:red; /* Fallback, wird unten überschrieben */
-  --card-border:rgba(255,255,255,.28);
+  /* Kartenfarbe für TaskSieve Cards */
+  --card-ts-bg: rgb(186, 15, 18); /* dein Messwert */
+  --card-border: rgba(255,255,255,.28);
 
-  /* CTA Farben */
+  /* CTA Farben / Branding */
   --ts-red:#AE0F12;
 }
 
@@ -181,12 +181,11 @@ a{ color:#FFFFFF; text-decoration:none }
 }
 
 /* TaskSieve Card Style:
-   dunkles Rot statt Grün.
-   (Passe Hintergrund hier an dein echtes TaskSieve-Rot an.)
+   jetzt mit deinem sRGB(186,15,18)
 */
 .card{
   grid-column:span 4;
-  background:#4B0C0E !important; /* dunkles, leicht entsättigtes Rot-Braun */
+  background:var(--card-ts-bg) !important;
   color:#FFFFFF !important;
   border-radius:14px;
   padding:1.05rem 1rem;
@@ -219,7 +218,7 @@ a{ color:#FFFFFF; text-decoration:none }
   .card{ grid-column:span 12; }
 }
 
-/* Details (FAQ etc.) */
+/* Details / FAQ */
 details{ border:0 }
 details summary{
   cursor:pointer;
@@ -239,14 +238,14 @@ details summary{
   line-height:1.3;
   border:1px solid #FFFFFF;
   background:#FFFFFF;
-  color:#000; /* default fallback, wird gleich überschrieben */
+  color:#000; /* Fallback, wird gleich überschrieben */
 }
 
 /* Produktseiten-Variante für TaskSieve:
-   - in roten Cards
+   - sitzt auf roter Card
    - weiße Schrift
    - leicht transparente Kapsel
-   - 2 Zeilen, Safari-safe
+   - zweizeilig, Safari-safe
 */
 .btn--inverse-ts-card{
   background:rgba(255,255,255,.08);
@@ -273,7 +272,7 @@ footer a{
   color:#FFFFFF;
 }
 
-/* Optional: highlight specific card via hash (#benefits etc.) */
+/* Optional: highlight via #benefits */
 .card:target{
   outline:3px solid rgba(255,255,255,.75);
   box-shadow:
