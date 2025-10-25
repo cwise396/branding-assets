@@ -324,96 +324,116 @@
 </form>
 </section>
   <!-- TaskSieve -->
-  <section id="sec-ts" class="card section">
-    <span id="tasksieve" class="anchor-fix" aria-hidden="true"></span>
-    <h2>TaskSieve — quick test</h2>
-    <p>Start without import: load a demo inbox and see prioritization live.</p>
+<section id="sec-ts" class="card section">
+  <span id="tasksieve" class="anchor-fix" aria-hidden="true"></span>
+  <h2>TaskSieve — quick test</h2>
+  <p>Start without import: load a demo inbox and see prioritization live.</p>
 
-    <form action="https://formspree.io/f/xeorrjrz" method="POST" autocomplete="on">
-      <input type="hidden" name="product" value="tasksieve">
-      <input type="hidden" name="lang" value="en">
-      <input type="text" name="_gotcha" style="display:none">
+  <p style="font-size:.8rem;opacity:.7;margin-top:-4px;">
+    Also available in
+    <a href="/contact.html#tasksieve" style="color:inherit;text-decoration:underline;">
+      German
+    </a>.
+  </p>
 
-      <label>Name
-        <input type="text" name="name" autocomplete="name" required>
-      </label>
-      <label>Email
-        <input type="email" name="email" autocomplete="email" required>
-      </label>
-      <label>Mode
-        <select name="mode" required>
-          <option value="demo">Demo inbox</option>
-          <option value="live">Connect own sources later</option>
-        </select>
-      </label>
-      <label>Sources (optional)
-        <input type="text" name="sources" placeholder="Email, notes, Slack">
-      </label>
+  <form action="https://formspree.io/f/xeorrjrz" method="POST" autocomplete="on">
+    <input type="hidden" name="product" value="tasksieve">
+    <input type="hidden" name="lang" value="en">
+    <input type="text" name="_gotcha" style="display:none">
 
-      <div class="consent">
-        <input id="c2e" type="checkbox" name="consent" required>
-        <label for="c2e">I agree to processing as per <a href="/en/privacy/">privacy</a>.</label>
-      </div>
+    <label>Name
+      <input type="text" name="name" autocomplete="name" required>
+    </label>
 
-       <button class="btn btn--inverse-ts" type="submit">
-  <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
-    Start demo
-  </span>
-  <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
-    Demo preview &amp; next steps will follow shortly. No spam, no newsletter.
-  </span>
-</button>
+    <label>Email
+      <input type="email" name="email" autocomplete="email" required>
+    </label>
 
-      <input type="hidden" name="_subject" value="[Website] TaskSieve demo">
-      <input type="hidden" name="_next" value="/en/contact/?success=1#tasksieve">
-    </form>
-  </section>
+    <label>Mode
+      <select name="mode" required>
+        <option value="demo">Demo inbox</option>
+        <option value="live">Connect own sources later</option>
+      </select>
+    </label>
 
-  <!-- ChangeWise -->
-  <section id="sec-cw" class="card section">
-    <span id="changewise" class="anchor-fix" aria-hidden="true"></span>
-    <h2>ChangeWise — quick brief & mini diagnosis</h2>
-     <p>3–4 inputs — instant result with concrete recommendations.</p>
+    <label>Sources (optional)
+      <input type="text" name="sources" placeholder="Email, notes, Slack">
+    </label>
 
-     <form action="https://formspree.io/f/xgvnnkvj" method="POST" autocomplete="on">
-      <input type="hidden" name="product" value="changewise">
-      <input type="hidden" name="lang" value="en">
-      <input type="text" name="_gotcha" style="display:none">
+    <div class="consent">
+      <input id="c2e" type="checkbox" name="consent" required>
+      <label for="c2e">I agree to processing as per <a href="/en/privacy/">privacy</a>.</label>
+    </div>
 
-      <label>Name
-        <input type="text" name="name" autocomplete="name" required>
-      </label>
-      <label>Email
-        <input type="email" name="email" autocomplete="email" required>
-      </label>
-      <label>Diagnosis
-        <textarea name="diagnosis" rows="4" placeholder="e.g., inconsistent messaging; need core narrative & templates." required></textarea>
-      </label>
-      <label>Optional: link to brand docs
-        <input type="url" name="asset_url" placeholder="https://…/brandkit.pdf">
-        <small>PDF/URL — reviewed confidentially; your result will reflect it.</small>
-      </label>
+    <button class="btn btn--inverse-ts" type="submit">
+      <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
+        Start demo
+      </span>
+      <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
+        Demo preview &amp; next steps will follow shortly. No spam, no newsletter.
+      </span>
+    </button>
 
-      <div class="consent">
-        <input id="c3e" type="checkbox" name="consent" required>
-        <label for="c3e">I agree to processing as per <a href="/en/privacy/">privacy</a>.</label>
-      </div>
+    <input type="hidden" name="_subject" value="[Website] TaskSieve demo">
+    <input type="hidden" name="_next" value="/en/contact/?success=1#tasksieve">
+  </form>
+</section>
 
-      <button class="btn btn--inverse-cw" type="submit">
-  <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
-    Briefing &amp; mini diagnosis
-  </span>
-  <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
-    Result &amp; next steps will follow shortly. No spam, no newsletter.
-  </span>
-</button>
+   <!-- ChangeWise -->
+<section id="sec-cw" class="card section">
+  <span id="changewise" class="anchor-fix" aria-hidden="true"></span>
+  <h2>ChangeWise — quick brief &amp; mini diagnosis</h2>
+  <p>3–4 inputs — instant result with concrete recommendations.</p>
 
-      <input type="hidden" name="_subject" value="[Website] ChangeWise quick brief">
-      <input type="hidden" name="_next" value="/en/contact/?success=1#changewise">
-    </form>
-  </section>
+  <p style="font-size:.8rem;opacity:.7;margin-top:-4px;">
+    Also available in
+    <a href="/contact.html#changewise" style="color:inherit;text-decoration:underline;">
+      German
+    </a>.
+  </p>
 
-   <footer>
+  <form action="https://formspree.io/f/xgvnnkvj" method="POST" autocomplete="on">
+    <input type="hidden" name="product" value="changewise">
+    <input type="hidden" name="lang" value="en">
+    <input type="text" name="_gotcha" style="display:none">
+
+    <label>Name
+      <input type="text" name="name" autocomplete="name" required>
+    </label>
+
+    <label>Email
+      <input type="email" name="email" autocomplete="email" required>
+    </label>
+
+    <label>Diagnosis
+      <textarea name="diagnosis" rows="4" placeholder="e.g., inconsistent messaging; need core narrative &amp; templates." required></textarea>
+    </label>
+
+    <label>Optional: link to brand docs
+      <input type="url" name="asset_url" placeholder="https://…/brandkit.pdf">
+      <small>PDF/URL — reviewed confidentially; your result will reflect it.</small>
+    </label>
+
+    <div class="consent">
+      <input id="c3e" type="checkbox" name="consent" required>
+      <label for="c3e">I agree to processing as per <a href="/en/privacy/">privacy</a>.</label>
+    </div>
+
+    <button class="btn btn--inverse-cw" type="submit">
+      <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
+        Briefing &amp; mini diagnosis
+      </span>
+      <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
+        Result &amp; next steps will follow shortly. No spam, no newsletter.
+      </span>
+    </button>
+
+    <input type="hidden" name="_subject" value="[Website] ChangeWise quick brief">
+    <input type="hidden" name="_next" value="/en/contact/?success=1#changewise">
+  </form>
+</section>
+  
+ <footer>
   <div class="container footbar">
     <nav class="legal" aria-label="Footer">
       <a href="/en/imprint/">Imprint</a><span class="sep" aria-hidden="true"> · </span>
