@@ -243,8 +243,10 @@
         <li><a href="/products/changewise/">ChangeWise</a></li>
         <li><a href="/products/slackdigest/">SlackDigest</a></li>
         <li><a href="/products/tasksieve/">TaskSieve</a></li>
-          <li><strong>DE</strong> | <a href="/en/contact.html#slackdigest">EN</a></li>
-       </ul>
+           <li>
+  <strong>DE</strong> | <a id="langSwitchLink" href="/en/contact.html#slackdigest">EN</a>
+</li>
+   </ul>
       <button class="nav-toggle" id="navToggle" aria-label="Menü" aria-controls="navLinks" aria-expanded="false">☰</button>
     </div>
   </nav>
@@ -438,52 +440,186 @@
   </footer>
 </main>
 
-<script>
+ <script>
 (function(){
   // Nav Toggle
-  (function(){var t=document.getElementById('navToggle'), l=document.getElementById('navLinks');
-    if(t&&l){ t.addEventListener('click',function(){ var o=l.classList.toggle('open'); t.setAttribute('aria-expanded',o?'true':'false'); }); }})();
+  (function(){
+    var t=document.getElementById('navToggle'),
+        l=document.getElementById('navLinks');
+    if(t && l){
+      t.addEventListener('click', function(){
+        var o = l.classList.toggle('open');
+        t.setAttribute('aria-expanded', o ? 'true' : 'false');
+      });
+    }
+  })();
 
   // Optional Blau-Theme via ?theme=cw
-  try{var qs=new URLSearchParams(location.search);
-    if(qs.get('theme')==='cw'){document.documentElement.classList.add('theme-cw');
-      if(!document.getElementById('cwTheme')){var st=document.createElement('style');st.id='cwTheme';
-        st.textContent='html.theme-cw,html.theme-cw body{background:#0E3960 !important;}html.theme-cw .card,html.theme-cw .section{background:rgba(255,255,255,.06) !important;}';
-        document.head.appendChild(st);}}}catch(e){}
+  try{
+    var qs = new URLSearchParams(location.search);
+    if(qs.get('theme') === 'cw'){
+      document.documentElement.classList.add('theme-cw');
+      if(!document.getElementById('cwTheme')){
+        var st = document.createElement('style');
+        st.id = 'cwTheme';
+        st.textContent = 'html.theme-cw,html.theme-cw body{background:#0E3960 !important;}html.theme-cw .card,html.theme-cw .section{background:rgba(255,255,255,.06) !important;}';
+        document.head.appendChild(st);
+      }
+    }
+  }catch(e){}
 
-  // Inline Success
-  try{var sp=new URLSearchParams(location.search);
-    if(sp.get('success')==='1'){var h=(location.hash||''), target=h?document.querySelector(h):null;
-      var host=(target&&target.closest('.section'))?target.closest('.section'):document.getElementById('sec-sd');
-      if(host){var box=document.createElement('div'); box.className='flash';
-        box.innerHTML='Danke — deine Nachricht ist eingegangen.<small>Wir melden uns zeitnah mit dem nächsten Schritt.</small>';
-        var f=host.querySelector('form'); if(f) f.parentNode.insertBefore(box,f);
-        setTimeout(function(){ box.classList.add('show'); },60);
-        setTimeout(function(){ if(box&&box.parentNode) box.parentNode.removeChild(box); },8000);}}}catch(e){}
+  // Inline Success (grüner Flash nach Submit)
+  try{
+    var sp = new URLSearchParams(location.search);
+    if(sp.get('success') === '1'){
+      var h = (location.hash || '');
+      var target = h ? document.querySelector(h) : null;
+      var host = (target && target.closest('.section'))
+        ? target.closest('.section')
+        : document.getElementById('sec-sd'); // Fallback SlackDigest
+      if(host){
+        var box = document.createElement('div');
+        box.className = 'flash';
+        box.innerHTML = 'Danke — deine Nachricht ist eingegangen.<small>Wir melden uns zeitnah mit dem nächsten Schritt.</small>';
+        var f = host.querySelector('form');
+        if(f) f.parentNode.insertBefore(box, f);
+        setTimeout(function(){ box.classList.add('show'); }, 60);
+        setTimeout(function(){
+          if(box && box.parentNode) box.parentNode.removeChild(box);
+        }, 8000);
+      }
+    }
+  }catch(e){}
 
   // Submit: Double-Click Guard
-  try{document.addEventListener('submit',function(e){var f=e.target;if(!f||f.tagName!=='FORM')return;
-    var btn=f.querySelector('button[type="submit"]'); if(btn&&!btn.disabled){btn.disabled=true;btn.setAttribute('aria-disabled','true');btn.dataset._label=btn.textContent;btn.textContent='Senden…';}},
-    {capture:true});}catch(e){}
+  try{
+    document.addEventListener('submit', function(e){
+      var f = e.target;
+      if(!f || f.tagName !== 'FORM') return;
+      var btn = f.querySelector('button[type="submit"]');
+      if(btn && !btn.disabled){
+        btn.disabled = true;
+        btn.setAttribute('aria-disabled','true');
+        btn.dataset._label = btn.textContent;
+        btn.textContent = 'Senden…';
+      }
+    }, {capture:true});
+  }catch(e){}
 
-  // Tabs / Hash + Hero
-  function targetIdFromHash(){var h=(location.hash||'').replace('#','').toLowerCase();
-    if(h==='tasksieve'||h==='sec-ts')return 'sec-ts'; if(h==='changewise'||h==='sec-cw')return 'sec-cw'; return 'sec-sd';}
-  function setHero(a){try{
-    var title=a.getAttribute('data-title')||'Kontakt', sub=a.getAttribute('data-sub')||'', logo=a.getAttribute('data-logo')||'';
-    document.getElementById('heroTitle').textContent=title; document.getElementById('heroSub').textContent=sub;
-    if(logo) document.getElementById('heroLogo').setAttribute('src',logo);}catch(e){}}
-  function setActive(id){document.querySelectorAll('.section').forEach(s=>s.classList.remove('show'));
-    var el=document.getElementById(id); if(el) el.classList.add('show');
-    document.querySelectorAll('.form-tabs a').forEach(a=>{var on=a.getAttribute('data-target')===id; a.classList.toggle('active',on); if(on) setHero(a);});}
-  function onTabClick(e){e.preventDefault();var t=this.getAttribute('data-target'); if(!t) return;
-    var hash='#'+(t==='sec-sd'?'slackdigest':t==='sec-ts'?'tasksieve':'changewise'); history.pushState(null,'',hash);
-    setActive(t); var anchor=document.querySelector(hash); if(anchor) try{anchor.scrollIntoView({behavior:'instant',block:'start'});}catch(e){}}
-  function initTabs(){document.querySelectorAll('.form-tabs a').forEach(a=>{a.removeEventListener('click',onTabClick);a.addEventListener('click',onTabClick);});
-    setActive(targetIdFromHash());}
-  window.addEventListener('hashchange',()=>setActive(targetIdFromHash()));
-  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initTabs);}else{initTabs();}
+  // --- Dynamische Sprachumschaltung (DE -> EN) ---
+  // Wir schauen, welcher Tab aktiv ist (SlackDigest / TaskSieve / ChangeWise),
+  // und setzen dann den EN-Link im Header auf die passende Sektion der EN-Seite.
+  function updateLangSwitch(activeId){
+    // activeId entspricht unserer Section-ID:
+    //   'sec-sd'  (SlackDigest)
+    //   'sec-ts'  (TaskSieve)
+    //   'sec-cw'  (ChangeWise)
+    // Wir mappen das auf den gewünschten Hash in der englischen Seite.
+    var map = {
+      'sec-sd': 'slackdigest',
+      'sec-ts': 'tasksieve',
+      'sec-cw': 'changewise'
+    };
+    var hash = map[activeId] || 'slackdigest';
+
+    var langLink = document.getElementById('langSwitchLink');
+    if(!langLink) return;
+
+    // Wir sind auf DE. Der Sprachlink soll zur EN-Version der Kontaktseite,
+    // aber in den gleichen Tab per Hash.
+    langLink.setAttribute('href', '/en/contact.html#' + hash);
+  }
+
+  // Tabs / Hash + Hero update
+  // (gleiches Grundprinzip wie vorher, aber wir rufen jetzt auch updateLangSwitch)
+  function targetIdFromHash(){
+    var h = (location.hash || '').replace('#','').toLowerCase();
+    if(h === 'tasksieve' || h === 'sec-ts') return 'sec-ts';
+    if(h === 'changewise' || h === 'sec-cw') return 'sec-cw';
+    return 'sec-sd'; // default SlackDigest
+  }
+
+  function setHero(aEl){
+    try{
+      var title = aEl.getAttribute('data-title') || 'Kontakt';
+      var sub   = aEl.getAttribute('data-sub')   || '';
+      var logo  = aEl.getAttribute('data-logo')  || '';
+      document.getElementById('heroTitle').textContent = title;
+      document.getElementById('heroSub').textContent   = sub;
+      if(logo){
+        document.getElementById('heroLogo').setAttribute('src', logo);
+      }
+    }catch(e){}
+  }
+
+  function setActive(id){
+    // Sichtbarkeit der Sections steuern
+    document.querySelectorAll('.section').forEach(function(s){
+      s.classList.remove('show');
+    });
+    var el = document.getElementById(id);
+    if(el) el.classList.add('show');
+
+    // Aktiven Tab markieren, Hero anpassen
+    document.querySelectorAll('.form-tabs a').forEach(function(a){
+      var on = (a.getAttribute('data-target') === id);
+      a.classList.toggle('active', on);
+      if(on) setHero(a);
+    });
+
+    // Sprachumschalter aktualisieren
+    updateLangSwitch(id);
+  }
+
+  function onTabClick(e){
+    e.preventDefault();
+    var t = this.getAttribute('data-target');
+    if(!t) return;
+    // Hash in URL aktualisieren (für Deep-Link / Reload)
+    var hash = '#' + (
+      t === 'sec-sd'
+        ? 'slackdigest'
+        : (t === 'sec-ts'
+            ? 'tasksieve'
+            : 'changewise')
+    );
+    history.pushState(null,'',hash);
+    setActive(t);
+
+    // sanft scrollen zum Anker
+    var anchor = document.querySelector(hash);
+    if(anchor){
+      try{
+        anchor.scrollIntoView({behavior:'instant', block:'start'});
+      }catch(e){}
+    }
+  }
+
+  function initTabs(){
+    // Tab-Klick-Handler setzen
+    document.querySelectorAll('.form-tabs a').forEach(function(a){
+      a.removeEventListener('click', onTabClick);
+      a.addEventListener('click', onTabClick);
+    });
+
+    // Initial aktiven Tab anhand URL-Hash setzen
+    var firstId = targetIdFromHash();
+    setActive(firstId);
+  }
+
+  // Wechsel per Browser-Hash (Back/Forward Navigation)
+  window.addEventListener('hashchange', function(){
+    setActive(targetIdFromHash());
+  });
+
+  // Init jetzt / nach DOM load
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initTabs);
+  }else{
+    initTabs();
+  }
 })();
 </script>
+
 </body>
 </html>
