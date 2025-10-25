@@ -1,82 +1,299 @@
 <!doctype html>
 <html lang="en">
 <head>
- <meta charset="utf-8">
- <link rel="canonical" href="/en/products/tasksieve/">
-<title>Redirecting…</title>
-<meta name="description" content="TaskSieve unifies tasks from email, notes & Slack into one inbox — automatically prioritized." />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TaskSieve – Focus on what moves the needle first.</title>
+<meta name="description" content="TaskSieve pulls email, notes & Slack into one inbox, removes duplicates, clusters topics and ranks by impact, urgency and effort. Less firefighting, more progress.">
 <meta name="theme-color" content="#0B1220" />
+
 <style>
 :root{
   --container:1100px;
-  --bg-dark:#0B1220; --fg-dark:#FFFFFF;
+
+  /* Dark-only page */
+  --bg-dark:#0B1220;
+  --fg-dark:#FFFFFF;
+  --muted:#CBD5E1;
+
+  /* Navbar brand red */
   --nav-red:#AE0F12;
-  --card-red:rgb(185,14,19); --card-border:rgba(255,255,255,.28);
-  --btn-inverse-bg:#FFFFFF; --btn-inverse-fg:#B90E13;
-  --ring:#FFFFFF; --ring-w:5px;
+
+  /* Card background and border */
+  --card-ts-bg: rgb(186, 15, 18);      /* same as DE cards */
+  --card-border: rgba(255,255,255,.28);
+
+  /* Accent / brand vars if needed later */
+  --ts-red:#AE0F12;
 }
-*{box-sizing:border-box}
-html,body{height:100%}
-body{margin:0;font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;background:var(--bg-dark);color:var(--fg-dark)}
-a{color:#FFFFFF;text-decoration:none}
-.site-header{position:sticky;top:0;z-index:50;width:100%;background:var(--nav-red)}
-.nav{background:var(--nav-red)}
-.nav-inner{max-width:var(--container);margin:0 auto;padding:0 1rem;display:flex;align-items:center;justify-content:space-between;height:12mm}
-.brand{color:#FFFFFF;font-weight:800;white-space:nowrap}
-.nav-links{list-style:none;display:flex;gap:1rem;margin:0;padding:0;align-items:center}
-.nav-links a{color:#FFFFFF}
-.nav-toggle{display:none;background:none;border:0;color:#FFFFFF;font-size:1.2rem}
-@media (max-width:980px){.nav-inner{position:relative;height:auto;min-height:12mm;padding-block:.4rem}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--nav-red);padding:1rem;margin:0;flex-direction:column;gap:.6rem}.nav-links.open{display:flex}.nav-toggle{display:inline-block}}
-.hero{color:#FFFFFF;padding-top:11mm}
-.hero-header{max-width:var(--container);margin:0 auto;padding:0 1rem;display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;align-items:end}
-.hero-text{grid-column:1 / 9}
-.hero h1{margin:0 0 .2rem;font-size:clamp(1.8rem,4vw,3rem);line-height:1.1}
-.hero p.lead{margin:0;font-size:clamp(1.1rem,2.4vw,1.35rem);font-weight:700;opacity:.95}
-.logo-col{grid-column:9 / 13;justify-self:start;display:flex;align-items:center}
-.product-logo{position:relative;width:98px;height:98px}
-.product-logo .logo-ring{position:absolute;inset:0;width:98px;height:98px;z-index:2;pointer-events:none;display:block}
-.product-logo .logo-ring svg{width:100%;height:100%;display:block}
-.product-logo .logo-img{position:absolute;top:5px;left:5px;width:88px;height:88px;display:block;border-radius:50%;z-index:1;background:transparent}
-.section-cards{max-width:var(--container);margin:0 auto;padding:0 1rem 2.4rem}
-.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;margin-top:1rem}
-.card{grid-column:span 4;background:var(--card-red)!important;color:#FFFFFF!important;border-radius:14px;padding:1.05rem 1rem;border:1px solid var(--card-border);box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06)}
-.card h3{margin:0 0 .4rem}.card p,.card li{margin:.35rem 0}
-.card ul{list-style:disc;padding-left:1.2rem}
-.card a{text-decoration:underline;text-underline-offset:2px;color:#FFFFFF}
-@media (max-width:960px){.card{grid-column:span 6}}
-@media (max-width:640px){.card{grid-column:span 12}}
-.btn{display:inline-block;padding:.7rem 1rem;border-radius:12px;border:1px solid #FFFFFF;text-decoration:none;font-weight:800;background:transparent}
-.btn--inverse{background:var(--btn-inverse-bg)}
-.card a.btn.btn--inverse,.card a.btn.btn--inverse:link,.card a.btn.btn--inverse:visited,.card a.btn.btn--inverse:hover,.card a.btn.btn--inverse:active{color:var(--btn-inverse-fg)!important;-webkit-text-fill-color:var(--btn-inverse-fg)!important}
-details{border:0} details summary{cursor:pointer;font-weight:800}
-footer{max-width:var(--container);margin:2.2rem auto;padding:0 1rem 2.4rem;color:#FFFFFF}
-footer a{color:#FFFFFF}
-/* Highlight the targeted card when jumping to #card-benefits */
+
+*{ box-sizing:border-box }
+html,body{ height:100% }
+body{
+  margin:0;
+  font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+  background:var(--bg-dark);
+  color:var(--fg-dark);
+}
+a{ color:#FFFFFF; text-decoration:none }
+
+/* Header/Nav */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  width:100%;
+  background:var(--nav-red);
+}
+.nav{ background:var(--nav-red) }
+.nav-inner{
+  max-width:var(--container);
+  margin:0 auto;
+  padding:0 1rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:12mm;
+}
+.brand{
+  color:#FFFFFF;
+  font-weight:800;
+  white-space:nowrap;
+}
+.nav-links{
+  list-style:none;
+  display:flex;
+  gap:1rem;
+  margin:0;
+  padding:0;
+  align-items:center;
+}
+.nav-links a{ color:#FFFFFF }
+.nav-toggle{
+  display:none;
+  background:none;
+  border:0;
+  color:#FFFFFF;
+  font-size:1.2rem;
+}
+
+@media (max-width:980px){
+  .nav-inner{
+    position:relative;
+    height:auto;
+    min-height:12mm;
+    padding-block:.4rem;
+  }
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+    background:var(--nav-red);
+    padding:1rem;
+    margin:0;
+    flex-direction:column;
+    gap:.6rem;
+  }
+  .nav-links.open{ display:flex }
+  .nav-toggle{ display:inline-block }
+}
+
+/* Hero */
+.hero{
+  color:#FFFFFF;
+  padding-top:11mm;
+}
+.hero-header{
+  max-width:var(--container);
+  margin:0 auto;
+  padding:0 1rem;
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:1rem;
+  align-items:end;
+}
+.hero-text{
+  grid-column:1 / 9;
+}
+.hero h1{
+  margin:0 0 .2rem;
+  font-size:clamp(1.8rem,4vw,3rem);
+  line-height:1.1;
+}
+.hero p.lead{
+  margin:0;
+  font-size:clamp(1.1rem,2.4vw,1.35rem);
+  font-weight:700;
+  opacity:.95;
+}
+
+/* Logo column */
+.logo-col{
+  grid-column:9 / 13;
+  justify-self:start;
+  display:flex;
+  align-items:center;
+}
+.product-logo{
+  position:relative;
+  width:98px;
+  height:98px;
+}
+.product-logo .logo-ring{
+  position:absolute;
+  inset:0;
+  width:98px;
+  height:98px;
+  z-index:2;
+  pointer-events:none;
+  display:block;
+}
+.product-logo .logo-ring svg{
+  width:100%;
+  height:100%;
+  display:block;
+}
+.product-logo .logo-img{
+  position:absolute;
+  top:5px;
+  left:5px;
+  width:88px;
+  height:88px;
+  display:block;
+  border-radius:50%;
+  z-index:1;
+  background:transparent;
+}
+
+/* Cards grid */
+.section-cards{
+  max-width:var(--container);
+  margin:0 auto;
+  padding:0 1rem 2.4rem;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:1rem;
+  margin-top:1rem;
+}
+
+/* Card styling for TaskSieve */
+.card{
+  grid-column:span 4;
+  background:var(--card-ts-bg) !important;
+  color:#FFFFFF !important;
+  border-radius:14px;
+  padding:1.05rem 1rem;
+  border:1px solid var(--card-border);
+  box-shadow:
+    0 10px 24px rgba(0,0,0,.25),
+    inset 0 1px 0 rgba(255,255,255,.06);
+}
+.card h3{
+  margin:0 0 .4rem;
+}
+.card p,
+.card li{
+  margin:.35rem 0;
+}
+.card ul{
+  list-style:disc;
+  padding-left:1.2rem;
+}
+.card a{
+  text-decoration:underline;
+  text-underline-offset:2px;
+  color:#FFFFFF;
+}
+
+@media (max-width:960px){
+  .card{ grid-column:span 6; }
+}
+@media (max-width:640px){
+  .card{ grid-column:span 12; }
+}
+
+/* details/summary for FAQ etc. */
+details{ border:0; }
+details summary{
+  cursor:pointer;
+  font-weight:800;
+}
+
+/* CTA button on the red card:
+   - solid slightly darker tone than card
+   - same tone as DE final: rgb(151, 12, 15)
+   - white text, 2-line, left-aligned
+   - Safari-safe (no variable indirection)
+*/
+.btn{
+  display:inline-block;
+  border-radius:12px;
+  font-weight:800;
+  text-decoration:none;
+  text-align:left;
+  padding:0.7rem 1rem;
+  line-height:1.3;
+  border:1px solid rgba(255,255,255,.6);
+  background:rgb(151, 12, 15);
+  color:#FFFFFF !important;
+  -webkit-text-fill-color:#FFFFFF !important;
+}
+.btn span{
+  display:block;
+  font-weight:inherit;
+  line-height:inherit;
+  color:#FFFFFF !important;
+  -webkit-text-fill-color:#FFFFFF !important;
+}
+
+/* Footer */
+footer{
+  max-width:var(--container);
+  margin:2.2rem auto;
+  padding:0 1rem 2.4rem;
+  color:#FFFFFF;
+}
+footer a{
+  color:#FFFFFF;
+}
+
+/* Optional highlight when deep-linking (#benefits etc.) */
 .card:target{
   outline:3px solid rgba(255,255,255,.75);
-  box-shadow:0 0 0 4px rgba(255,255,255,.25), 0 12px 28px rgba(0,0,0,.45);
+  box-shadow:
+    0 0 0 4px rgba(255,255,255,.25),
+    0 12px 28px rgba(0,0,0,.45);
+  scroll-margin-top:14mm;
 }
-  <article class="card" id="card-benefits">
-{scroll-margin-top:14mm}
- #bg-overlay{display:none!important}
 </style>
+
 <script>
-function __toggleNav(){var l=document.getElementById('navLinks');if(!l)return;var o=l.classList.toggle('open');document.getElementById('navToggle').setAttribute('aria-expanded',o?'true':'false');}
+function __toggleNav(){
+  var l=document.getElementById('navLinks');
+  if(!l) return;
+  var o=l.classList.toggle('open');
+  document.getElementById('navToggle')
+    .setAttribute('aria-expanded', o?'true':'false');
+}
 </script>
 </head>
+
 <body>
 <header class="site-header">
   <nav class="nav">
     <div class="nav-inner">
       <a class="brand" href="/en/home/">Home</a>
-        <ul class="nav-links" id="navLinks">
-  <li><a href="/en/products/changewise/">ChangeWise</a></li>
-  <li><a href="/en/products/slackdigest/">SlackDigest</a></li>
-  <li><a href="/en/products/tasksieve/">TaskSieve</a></li>
-  <li><a href="/products/tasksieve/">DE</a> | <strong>EN</strong></li>
-</ul>
-
-       <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false" onclick="__toggleNav()">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/en/products/changewise/">ChangeWise</a></li>
+        <li><a href="/en/products/slackdigest/">SlackDigest</a></li>
+        <li><a href="/en/products/tasksieve/">TaskSieve</a></li>
+        <li><a href="/products/tasksieve/">DE</a> | <strong>EN</strong></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false" onclick="__toggleNav()">☰</button>
     </div>
   </nav>
 </header>
@@ -85,155 +302,141 @@ function __toggleNav(){var l=document.getElementById('navLinks');if(!l)return;va
   <div class="hero-header">
     <div class="hero-text">
       <h1>TaskSieve</h1>
-      <p class="lead">Important tasks first — with a system.</p>
+      <p class="lead">Focus on what moves the needle first.</p>
     </div>
+
     <div class="logo-col">
       <div class="product-logo">
-        <span class="logo-ring" aria-hidden="true"><svg viewBox="0 0 100 100" width="98" height="98"><circle cx="50" cy="50" r="47.5" fill="none" stroke="#FFFFFF" stroke-width="5"/></svg></span>
-        <img class="logo-img" src="/assets/brand/tasksieve_logo.svg" alt="TaskSieve logo" width="88" height="88" loading="lazy" decoding="async" />
+        <span class="logo-ring" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="98" height="98" focusable="false" aria-hidden="true">
+            <circle cx="50" cy="50" r="47.5" fill="none" stroke="#FFFFFF" stroke-width="5" />
+          </svg>
+        </span>
+        <img class="logo-img"
+             src="/assets/brand/tasksieve_logo.svg"
+             alt="TaskSieve Logo"
+             width="88"
+             height="88"
+             loading="lazy"
+             decoding="async" />
       </div>
     </div>
   </div>
 
   <section class="section-cards">
     <section class="grid" aria-label="Key Features">
+      <!-- Card 1 -->
       <article class="card">
-        <h3>To the point</h3>
-        <p>One inbox for email, notes & Slack — automatically prioritized.</p>
+        <h3>On point</h3>
+        <p>One inbox for email, notes &amp; Slack — automatically prioritised.</p>
       </article>
 
+      <!-- Card 2 -->
       <article class="card">
         <h3>How it works</h3>
         <ul>
-          <li>Connect sources (email, notes, Slack)</li>
-          <li>Auto-dedupe & clustering</li>
-          <li>Impact/Urgency/Effort scoring</li>
+          <li>Connect your sources (email, notes, Slack)</li>
+          <li>Automatic dedupe &amp; clustering</li>
+          <li>Scoring by impact / urgency / effort</li>
         </ul>
       </article>
 
+      <!-- Card 3 -->
       <article class="card">
-        <h3>What it delivers</h3>
+        <h3>What you get</h3>
         <ul>
-          <li><strong>Next action surfaced</strong> — without list grooming.</li>
-          <li><strong>Higher throughput</strong> — focus blocks & batching.</li>
-          <li><strong>Fewer context switches</strong> — grouped by theme.</li>
+          <li><strong>Next action is visible</strong> — no manual list grooming.</li>
+          <li><strong>More throughput</strong> — focus blocks &amp; batching.</li>
+          <li><strong>Less context switching</strong> — work stays grouped by topic.</li>
         </ul>
         <details style="margin-top:.4rem">
           <summary>more</summary>
           <ul>
-            <li>Single inbox instead of many places.</li>
-            <li>Duplicates out, clusters in.</li>
-            <li>Manual fine-tuning anytime.</li>
-            <li>Lightweight, no vendor lock-in.</li>
-            <li>Team-ready — small to mid-size.</li>
-            <li>Reliable in daily use.</li>
+            <li>Firefighting becomes planned, not reactive chaos.</li>
+            <li>Team commitments become visible and trackable.</li>
+            <li>Duplicates and noise get actively suppressed.</li>
           </ul>
         </details>
       </article>
 
+      <!-- Card 4: Status & Contact -->
       <article class="card">
-         <h3>Status &amp; contact</h3>
-<p>Status: <strong>Waitlist open</strong> — launching in 2–3 weeks.</p>
-<p> Contact: <a href="/en/contact/#tasksieve">Contact form</a>
-</p>
-<p>
-  <a class="btn btn--inverse" href="/en/contact/#tasksieve">Join waitlist</a>
-</p>
-<details style="margin-top:.6rem">
-  <summary>FAQ</summary>
-  <ul>
-    <li><strong>Sources?</strong> Email, notes, Slack.</li>
-    <li><strong>Auto vs manual?</strong> Auto-sort with manual tuning.</li>
-    <li><strong>Scoring?</strong> Impact/Urgency/Effort.</li>
-    <li><strong>Team size?</strong> Solo to mid-size.</li>
-    <li><strong>Setup?</strong> Minutes; reader access is enough.</li>
-    <li><strong>Privacy?</strong> Minimal permissions.</li>
-    <li><strong>Exports?</strong> On request; open to standards.</li>
-    <li><strong>Support?</strong> Email; SLA on request.</li>
-    <li><strong>Pricing?</strong> Early access — tbd.</li>
-  </ul>
-</details>
+        <h3>Status &amp; contact</h3>
+        <p>Status: <strong>Live test</strong> — you’ll get direct access to the demo inbox.</p>
 
+        <button class="btn" type="button" onclick="location.href='/en/contact.html#tasksieve'">
+          <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
+            Start demo
+          </span>
+          <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
+            The prioritisation is based on clear criteria and continuously refined with AI.
+          </span>
+        </button>
+
+        <details style="margin-top:.6rem">
+          <summary>FAQ</summary>
+          <ul>
+            <li><strong>Do I need to import everything?</strong> No — the demo inbox is enough to start.</li>
+            <li><strong>My own sources?</strong> You can hook them in later (email, notes, Slack).</li>
+            <li><strong>Reliable?</strong> Scoring follows defined logic, not “gut feel”.</li>
+            <li><strong>Transparent?</strong> Every priority can be explained.</li>
+            <li><strong>Security?</strong> Least privilege: read-only access where possible.</li>
+          </ul>
+        </details>
       </article>
 
+      <!-- Card 5 -->
       <article class="card">
         <h3>Integrations</h3>
         <p>Email, notes, Slack.</p>
       </article>
 
-      <article class="card" id="card-benefits-en">
+      <!-- Card 6 -->
+      <article class="card" id="card-benefits-ts-en">
         <h3>Benefits</h3>
         <ul>
-          <li><strong>Quick start</strong> — setup in minutes.</li>
-          <li><strong>User-friendly & stable</strong> — reliable day-to-day.</li>
-          <li><strong>Less grooming</strong> — auto-dedupe & clustering.</li>
+          <li><strong>Fast start</strong> — setup in minutes.</li>
+          <li><strong>Usable &amp; stable</strong> — works in real life, not just in a slide deck.</li>
+          <li><strong>Less maintenance</strong> — auto dedupe &amp; clustering.</li>
         </ul>
         <details style="margin-top:.4rem">
           <summary>more</summary>
           <ul>
-            <li>Scoring that matters (impact/urgency/effort).</li>
-            <li>Manual fine-tuning whenever needed.</li>
-            <li>Focus blocks for deep work.</li>
-            <li>Batching reduces context switches.</li>
-            <li>Lightweight — no lock-in.</li>
-            <li>Scales with the team.</li>
+            <li>Less “status pings”, more actual progress.</li>
+            <li>Fewer parallel fires.</li>
+            <li>Priorities you can defend to stakeholders.</li>
           </ul>
         </details>
       </article>
+
     </section>
   </section>
 </main>
- <script>
-(function(){
-  function run(){
-    var hash=(location.hash||"").toLowerCase();
-    // Nur reagieren, wenn #benefits ODER #card-benefits angefordert ist
-    if(!hash || (hash!=='#benefits' && hash!=='#card-benefits')) return;
 
-    // Karte finden (Standard-ID; optional Fallback, falls noch -en existiert)
-    var card=document.getElementById('card-benefits') || document.getElementById('card-benefits-en');
-    if(!card) return;
-
-    // Details in der Karte öffnen
-    var d=card.querySelector('details');
-    if(d && !d.open) d.open=true;
-
-    // :target sicher aktivieren (weiße Outline) -> Hash auf tatsächliche ID der Karte setzen
-    var targetId = card.id; // 'card-benefits' (oder evtl. noch '-en')
-    if(location.hash !== '#'+targetId){
-      history.replaceState(null,'','#'+targetId);
-    }
-
-    // Karte mittig scrollen
-    card.scrollIntoView({behavior:'instant', block:'center'});
-  }
-
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', run);
-  } else {
-    run();
-  }
-})();
-</script>
+<footer>
+  <a href="/en/imprint/">Imprint</a> · <a href="/en/privacy/">Privacy</a>
+</footer>
 
 <script>
 function __toggleNav(){
-  var l=document.getElementById('navLinks'); if(!l) return;
-  var open=l.classList.toggle('open');
-  var t=document.getElementById('navToggle'); if(t) t.setAttribute('aria-expanded', open?'true':'false');
+  var l=document.getElementById('navLinks');
+  if(!l) return;
+  var o=l.classList.toggle('open');
+  document.getElementById('navToggle')
+    .setAttribute('aria-expanded', o?'true':'false');
 }
-</script>
 
- <footer role="contentinfo">
-  <div class="container footbar">
-    <nav class="legal" aria-label="Footer">
-      <a href="/en/imprint/">Imprint</a><span class="sep" aria-hidden="true"> · </span>
-      <a href="/en/privacy/">Privacy</a>
-    </nav>
-    <small>© ChangeWise • SlackDigest • TaskSieve</small>
-  </div>
-</footer>
+/* optional: auto-open details if we ever deep link to #benefits */
+(function(){
+  var hash=(location.hash||"").toLowerCase();
+  if(!hash.includes('benefits')) return;
+  var card=document.getElementById('card-benefits-ts-en');
+  if(!card) return;
+  var d=card.querySelector('details');
+  if(d && !d.open) d.open=true;
+  if(hash==='#benefits'){ history.replaceState(null,'','#'+card.id); }
+})();
+</script>
 
 </body>
 </html>
-
