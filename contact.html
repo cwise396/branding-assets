@@ -92,13 +92,19 @@
 .btn:hover{
   background:var(--btn-bg-h)
 }
+/* Brand colors for product CTAs and tabs */
+:root{
+  --sd-green:#0C6C48;   /* SlackDigest */
+  --ts-red:#AE0F12;     /* TaskSieve (gleich wie nav-red) */
+  --cw-blue:#0E3960;    /* ChangeWise */
+}
 
-/* SlackDigest: primärer Vertrauens-CTA im Formular */
-.btn--inverse{
+/* Unified CTA base style (white pill, left-aligned, 2-line, Safari safe) */
+.btn--inverse-sd,
+.btn--inverse-ts,
+.btn--inverse-cw{
   background:#FFFFFF;
   border:1px solid #FFFFFF;
-  color:#0C6C48 !important;               /* SlackDigest-Grün */
-  -webkit-text-fill-color:#0C6C48 !important;
   border-radius:12px;
   font-weight:800;
   text-decoration:none;
@@ -107,13 +113,92 @@
   padding:0.7rem 1rem;
   line-height:1.3;
 }
-
-/* Beide Zeilen (Hauptzeile + Microcopy) im Button grün rendern */
-.btn--inverse span{
-  color:#0C6C48 !important;
-  -webkit-text-fill-color:#0C6C48 !important;
+.btn--inverse-sd span,
+.btn--inverse-ts span,
+.btn--inverse-cw span{
   display:block;
+  font-weight:inherit;
+  line-height:inherit;
 }
+
+/* SlackDigest CTA (green text) */
+.btn--inverse-sd{
+  color:var(--sd-green) !important;
+  -webkit-text-fill-color:var(--sd-green) !important;
+}
+.btn--inverse-sd span{
+  color:var(--sd-green) !important;
+  -webkit-text-fill-color:var(--sd-green) !important;
+}
+
+/* TaskSieve CTA (red text) */
+.btn--inverse-ts{
+  color:var(--ts-red) !important;
+  -webkit-text-fill-color:var(--ts-red) !important;
+}
+.btn--inverse-ts span{
+  color:var(--ts-red) !important;
+  -webkit-text-fill-color:var(--ts-red) !important;
+}
+
+/* ChangeWise CTA (blue text) */
+.btn--inverse-cw{
+  color:var(--cw-blue) !important;
+  -webkit-text-fill-color:var(--cw-blue) !important;
+}
+.btn--inverse-cw span{
+  color:var(--cw-blue) !important;
+  -webkit-text-fill-color:var(--cw-blue) !important;
+}
+
+/* Tabs base layout override (we'll color active tabs per product) */
+.form-tabs{
+  display:flex;
+  gap:8px;
+  margin:8px 0 14px;
+  flex-wrap:wrap;
+}
+
+.form-tabs a{
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.22);
+  text-decoration:none;
+  color:inherit;
+  opacity:.9;
+  background:transparent;
+  font-weight:600;
+  line-height:1.2;
+}
+
+/* Active tab: SlackDigest = white pill with green text */
+.form-tabs a.active.tab-sd{
+  background:#FFFFFF;
+  border-color:#FFFFFF;
+  color:var(--sd-green) !important;
+  -webkit-text-fill-color:var(--sd-green) !important;
+  opacity:1;
+}
+
+/* Active tab: TaskSieve = white pill with red text */
+.form-tabs a.active.tab-ts{
+  background:#FFFFFF;
+  border-color:#FFFFFF;
+  color:var(--ts-red) !important;
+  -webkit-text-fill-color:var(--ts-red) !important;
+  opacity:1;
+}
+
+/* Active tab: ChangeWise = white pill with blue text */
+.form-tabs a.active.tab-cw{
+  background:#FFFFFF;
+  border-color:#FFFFFF;
+  color:var(--cw-blue) !important;
+  -webkit-text-fill-color:var(--cw-blue) !important;
+  opacity:1;
+}
+
+ 
 
 /* Success flash */
 .flash{
@@ -153,13 +238,13 @@
 <header class="site-header">
   <nav class="nav">
     <div class="nav-inner">
-      <a class="brand" href="/">Startseite</a>
+      <a class="brand" href="/">Home</a>
       <ul class="nav-links" id="navLinks">
         <li><a href="/products/changewise/">ChangeWise</a></li>
         <li><a href="/products/slackdigest/">SlackDigest</a></li>
         <li><a href="/products/tasksieve/">TaskSieve</a></li>
-         <li><strong>DE</strong> | <a href="/en/contact/">EN</a></li>
-      </ul>
+          <li><strong>DE</strong> | <a href="/en/contact.html#slackdigest">EN</a></li>
+       </ul>
       <button class="nav-toggle" id="navToggle" aria-label="Menü" aria-controls="navLinks" aria-expanded="false">☰</button>
     </div>
   </nav>
@@ -180,16 +265,33 @@
   </section>
 
   <nav class="form-tabs" aria-label="Kontakt – Tools">
-    <a href="#slackdigest" data-target="sec-sd" data-title="SlackDigest"
-       data-sub="Test-Digest: Kanäle wählen, Takt festlegen, Zustellung auswählen."
-       data-logo="/assets/brand/slackdigest_logo.svg" class="active">Kontakt: SlackDigest</a>
-    <a href="#tasksieve" data-target="sec-ts" data-title="TaskSieve"
-       data-sub="Demo starten: Modus wählen, optional Quellen angeben."
-       data-logo="/assets/brand/tasksieve_logo.svg">Kontakt: TaskSieve</a>
-    <a href="#changewise" data-target="sec-cw" data-title="ChangeWise"
-       data-sub="Kurz-Briefing &amp; Mini-Diagnose – Ergebnis in Minuten (3–4 Angaben)."
-       data-logo="/assets/brand/changewise_logo.svg">Kontakt: ChangeWise</a>
-  </nav>
+  <a href="#slackdigest"
+     data-target="sec-sd"
+     data-title="SlackDigest"
+     data-sub="Test-Digest: Kanäle wählen, Takt festlegen, Zustellung auswählen."
+     data-logo="/assets/brand/slackdigest_logo.svg"
+     class="tab-sd active">
+     Kontakt: SlackDigest
+  </a>
+
+  <a href="#tasksieve"
+     data-target="sec-ts"
+     data-title="TaskSieve"
+     data-sub="Demo starten: Modus wählen, optional Quellen angeben."
+     data-logo="/assets/brand/tasksieve_logo.svg"
+     class="tab-ts">
+     Kontakt: TaskSieve
+  </a>
+
+  <a href="#changewise"
+     data-target="sec-cw"
+     data-title="ChangeWise"
+     data-sub="Kurz-Briefing &amp; Mini-Diagnose – Ergebnis in Minuten (3–4 Angaben)."
+     data-logo="/assets/brand/changewise_logo.svg"
+     class="tab-cw">
+     Kontakt: ChangeWise
+  </a>
+</nav>
 
   <!-- SlackDigest -->
   <section id="sec-sd" class="card section show">
@@ -244,7 +346,15 @@
         <input id="c2" type="checkbox" name="consent" required>
         <label for="c2">Ich stimme der Verarbeitung gemäß <a href="/datenschutz.html">Datenschutz</a> zu.</label>
       </div>
-      <button class="btn" type="submit">Demo starten</button>
+      <button class="btn btn--inverse-ts" type="submit">
+  <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
+    Demo starten
+  </span>
+  <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
+    Demo-Beispiel &amp; nächste Schritte folgen gleich. Kein Spam, kein Newsletter.
+  </span>
+</button>
+
       <input type="hidden" name="_subject" value="[Website] TaskSieve Demo">
       <input type="hidden" name="_next" value="/contact.html?success=1#tasksieve">
     </form>
@@ -271,7 +381,15 @@
         <input id="c3" type="checkbox" name="consent" required>
         <label for="c3">Ich stimme der Verarbeitung gemäß <a href="/datenschutz.html">Datenschutz</a> zu.</label>
       </div>
-      <button class="btn" type="submit">Briefing senden</button>
+       <button class="btn btn--inverse-cw" type="submit">
+  <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
+    Briefing &amp; Mini-Diagnose
+  </span>
+  <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
+    Ergebnis &amp; nächste Schritte folgen gleich. Kein Spam, kein Newsletter.
+  </span>
+</button>
+
       <input type="hidden" name="_subject" value="[Website] ChangeWise Kurz-Briefing">
       <input type="hidden" name="_next" value="/contact.html?success=1#changewise">
     </form>
