@@ -232,6 +232,27 @@ a{
   color:#FFFFFF !important;
   -webkit-text-fill-color:#FFFFFF !important;
 }
+/* ChangeWise CTA: weißer Button, blaue Schrift (Safari-safe) */
+.btn--inverse-cw{
+  background:#FFFFFF;
+  border:1px solid #FFFFFF;
+  border-radius:12px;
+  display:inline-block;
+  text-align:left;
+  padding:0.7rem 1rem;
+  line-height:1.3;
+  font-weight:800;
+  text-decoration:none;
+
+  /* ChangeWise Blau */
+  color:#0E3960 !important;
+  -webkit-text-fill-color:#0E3960 !important;
+}
+.btn--inverse-cw span{
+  display:block;
+  color:#0E3960 !important;
+  -webkit-text-fill-color:#0E3960 !important;
+}
 
 /* DETAILS / FAQ */
 details{border:0}
@@ -361,14 +382,14 @@ function __toggleNav(){
   <h3>Status &amp; Kontakt</h3>
   <p><strong>Bereit zum Start.</strong> Ideal, wenn du für kommende Projekte oder interne Abstimmungen klare Botschaften und Richtung suchst – ohne lange Vorarbeit.</p>
 
-  <button class="btn" type="button" onclick="location.href='/contact.html#changewise'">
-    <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
-      Briefing &amp; Mini-Diagnose
-    </span>
-    <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
-      Du bekommst eine verdichtete Kernbotschaft und konkrete Empfehlungen für die nächsten Schritte – vertraulich &amp; direkt nutzbar im Team.
-    </span>
-  </button>
+   <button class="btn btn--inverse-cw" type="button" onclick="location.href='/contact.html#changewise'">
+  <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
+    Briefing &amp; Mini-Diagnose
+  </span>
+  <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
+    Du bekommst eine verdichtete Kernbotschaft und konkrete Empfehlungen für die nächsten Schritte – vertraulich &amp; direkt nutzbar im Team.
+  </span>
+</button>
 
   <details style="margin-top:.6rem">
     <summary>FAQ</summary>
