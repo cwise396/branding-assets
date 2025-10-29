@@ -43,6 +43,14 @@
     .hero h1{margin:0 0 4px;font-size:clamp(1.6rem,1.1rem + 2vw,2.2rem)}
     .hero .sub{margin:0;color:var(--muted)}
     @media (max-width:640px){ .hero-grid{grid-template-columns:1fr} }
+/* Hero subline unified styling – brighter, larger, pure white */
+.hero .sub {
+  font-size: 1.15rem !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  opacity: 0.96 !important;
+  font-weight: 500;
+}
 
     /* Badge */
     .badge{position:relative;width:var(--badge);height:var(--badge)}
@@ -266,7 +274,7 @@
     </div>
   </section>
 
-   <nav class="form-tabs" aria-label="Kontakt – Tools">
+    <nav class="form-tabs" aria-label="Kontakt – Tools">
   <a href="#slackdigest"
      data-target="sec-sd"
      data-title="SlackDigest"
@@ -274,10 +282,10 @@
      data-logo="/assets/brand/slackdigest_logo.svg"
      class="tab-sd active">
      Kontakt: SlackDigest
-    </a>
-  </nav>
+  </a>
+</nav>
 
-  <nav class="form-tabs" aria-label="Kontakt – Tools">
+<nav class="form-tabs" aria-label="Kontakt – Tools">
   <a href="#tasksieve"
      data-target="sec-ts"
      data-title="TaskSieve"
