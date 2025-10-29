@@ -1,244 +1,305 @@
- <!doctype html>
-<html lang="de" class="theme-cw">
+<!doctype html>
+<html lang="de">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <title>Kontakt – ChangeWise • SlackDigest • TaskSieve</title>
-  <meta name="description" content="Kontakt & Schnellstart: SlackDigest Test-Digest, TaskSieve Demo-Inbox, ChangeWise Kurz-Briefing. Ergebnis & Bestätigung per E-Mail.">
+  <title>Kontakt – SlackDigest</title>
+  <meta name="description" content="SlackDigest Test-Digest anfordern: Kanäle wählen, Takt festlegen, Zustellung auswählen. Ergebnis in Minuten per E-Mail.">
+
   <style>
     :root{
-      --nav-red:#AE0F12; --page-bg:#0B1220; --text:#E5E7EB; --muted:#9FB0C3;
-      --card-bg:rgba(255,255,255,.04); --card-bd:rgba(255,255,255,.12);
-      --input-bg:rgba(13,20,34,.7); --input-bd:rgba(255,255,255,.16);
-      --btn-bg:#ffffff; --btn-fg:#0E3960; --btn-bd:rgba(255,255,255,.24); --btn-bg-h:#F7F7F7;
-      --container: 980px; --badge: 84px; --ring:5px; --inner-red:#B80E13;
-    }
-    *{box-sizing:border-box} html,body{height:100%}
-    body{margin:0;background:var(--page-bg);color:var(--text);
-      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+      --nav-red:#AE0F12;
+      --page-bg:#0B1220;
+      --text:#E5E7EB;
+      --muted:#9FB0C3;
 
-    /* NAV */
+      --card-bg:rgba(255,255,255,.04);
+      --card-bd:rgba(255,255,255,.12);
+
+      --input-bg:rgba(13,20,34,.7);
+      --input-bd:rgba(255,255,255,.16);
+
+      --btn-bg:#ffffff;
+      --btn-fg:#0C6C48; /* SlackDigest Grün */
+      --btn-bd:rgba(255,255,255,.24);
+      --btn-bg-h:#F7F7F7;
+
+      --container:980px;
+      --badge:84px;
+      --ring:5px;
+      --inner-red:#B80E13;
+
+      --sd-green:#0C6C48;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--page-bg);
+      color:var(--text);
+      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+    }
+
+    /* HEADER / NAV */
     .site-header{position:sticky;top:0;z-index:50;width:100%;background:var(--nav-red)}
     .nav{background:var(--nav-red)}
-    .nav-inner{max-width:var(--container);margin:0 auto;padding:12px 16px;min-height:46px;
-      display:flex;align-items:center;justify-content:space-between}
-    .brand{color:#fff;font-weight:800;text-decoration:none;white-space:nowrap}
-    .nav-links{list-style:none;display:flex;gap:14px;margin:0;padding:0;align-items:center}
-    .nav-links a{color:#fff;text-decoration:none}
-    .nav-toggle{display:none;background:none;border:0;color:#fff;font-size:1.2rem}
+    .nav-inner{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:12px 16px;
+      min-height:46px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .brand{
+      color:#fff;
+      font-weight:800;
+      text-decoration:none;
+      white-space:nowrap;
+    }
+    .nav-links{
+      list-style:none;
+      display:flex;
+      gap:14px;
+      margin:0;
+      padding:0;
+      align-items:center;
+    }
+    .nav-links a{
+      color:#fff;
+      text-decoration:none;
+    }
+    .nav-toggle{
+      display:none;
+      background:none;
+      border:0;
+      color:#fff;
+      font-size:1.2rem;
+    }
     @media (max-width:980px){
       .nav-inner{position:relative}
-      .nav-links{display:none;position:absolute;top:56px;left:0;right:0;background:var(--nav-red);
-        padding:12px;margin:0;flex-direction:column;gap:.6rem}
+      .nav-links{
+        display:none;
+        position:absolute;
+        top:56px;
+        left:0;
+        right:0;
+        background:var(--nav-red);
+        padding:12px;
+        margin:0;
+        flex-direction:column;
+        gap:.6rem;
+      }
       .nav-links.open{display:flex}
       .nav-toggle{display:inline-block}
     }
 
-    .container{width:min(var(--container),92%);margin:0 auto}
+    .container{
+      width:min(var(--container),92%);
+      margin:0 auto;
+    }
 
     /* HERO */
-    .hero{color:#fff;padding:18px 0 10px}
-    .hero-grid{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center}
-    .hero h1{margin:0 0 4px;font-size:clamp(1.6rem,1.1rem + 2vw,2.2rem)}
-    .hero .sub{margin:0;color:var(--muted)}
-    @media (max-width:640px){ .hero-grid{grid-template-columns:1fr} }
-/* Hero subline unified styling – brighter, larger, pure white */
-.hero .sub {
-  font-size: 1.15rem !important;
-  color: #FFFFFF !important;
-  -webkit-text-fill-color: #FFFFFF !important;
-  opacity: 0.96 !important;
-  font-weight: 500;
-}
+    .hero{
+      color:#fff;
+      padding:18px 0 10px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:14px;
+      align-items:center;
+    }
+    .hero h1{
+      margin:0 0 4px;
+      font-size:clamp(1.6rem,1.1rem + 2vw,2.2rem);
+    }
 
-    /* Badge */
-    .badge{position:relative;width:var(--badge);height:var(--badge)}
-    .badge .ring{position:absolute;inset:0;background:#fff;border-radius:50%;box-shadow:0 2px 10px rgba(0,0,0,.25)}
-    .badge .inner{position:absolute;left:var(--ring);top:var(--ring);
-      width:calc(var(--badge) - 2*var(--ring));height:calc(var(--badge) - 2*var(--ring));
-      background:var(--inner-red);border-radius:50%;display:grid;place-items:center;overflow:hidden}
-    .badge img{width:80%;height:80%;object-fit:contain;display:block}
+    /* subline nice + in Weiß */
+    .hero .sub{
+      margin:0;
+      font-size:1.15rem;
+      font-weight:500;
+      color:#FFFFFF !important;
+      -webkit-text-fill-color:#FFFFFF !important;
+      opacity:.96;
+    }
 
-    /* Tabs & Cards */
-    .form-tabs{display:flex;gap:8px;margin:8px 0 14px;flex-wrap:wrap}
-    .form-tabs a{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.22);
-      text-decoration:none;color:inherit;opacity:.9}
-    .form-tabs a.active{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.35);opacity:1}
+    @media (max-width:640px){
+      .hero-grid{grid-template-columns:1fr}
+    }
 
-    .section{display:none}
-    .section.show{display:block !important}
-    .card{background:var(--card-bg);border:1px solid var(--card-bd);border-radius:14px;
-      padding:18px 16px;box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06);margin-bottom:16px}
-    .card h2{margin:.2rem 0 .6rem;font-size:1.2rem}
-    .anchor-fix{position:relative;display:block;height:0;margin:0;top:-96px;visibility:hidden}
+    /* Badge / Logo circle */
+    .badge{
+      position:relative;
+      width:var(--badge);
+      height:var(--badge);
+    }
+    .badge .ring{
+      position:absolute;
+      inset:0;
+      background:#fff;
+      border-radius:50%;
+      box-shadow:0 2px 10px rgba(0,0,0,.25);
+    }
+    .badge .inner{
+      position:absolute;
+      left:var(--ring);
+      top:var(--ring);
+      width:calc(var(--badge) - 2*var(--ring));
+      height:calc(var(--badge) - 2*var(--ring));
+      background:var(--inner-red);
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+    }
+    .badge img{
+      width:80%;
+      height:80%;
+      object-fit:contain;
+      display:block;
+    }
 
-    /* Forms */
-    form{display:grid;gap:10px}
-    label{display:block;font-weight:600}
-    input[type="text"], input[type="email"], input[type="url"], select, textarea{
-      width:100%;margin-top:6px;padding:10px 12px;border-radius:10px;border:1px solid var(--input-bd);
-      background:var(--input-bg);color:var(--text)}
-    input::placeholder, textarea::placeholder{color:#A3AEC2}
+    /* CARD / FORM */
+    .card{
+      background:var(--card-bg);
+      border:1px solid var(--card-bd);
+      border-radius:14px;
+      padding:18px 16px;
+      box-shadow:0 10px 24px rgba(0,0,0,.25),
+                 inset 0 1px 0 rgba(255,255,255,.06);
+      margin-bottom:16px;
+      color:#fff;
+    }
+    .card h2{
+      margin:.2rem 0 .6rem;
+      font-size:1.2rem;
+      color:#fff;
+    }
+    .card p{
+      color:#fff;
+      margin:.4rem 0 1rem;
+    }
+
+    form{
+      display:grid;
+      gap:10px;
+    }
+    label{
+      display:block;
+      font-weight:600;
+      color:#fff;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    select,
+    textarea{
+      width:100%;
+      margin-top:6px;
+      padding:10px 12px;
+      border-radius:10px;
+      border:1px solid var(--input-bd);
+      background:var(--input-bg);
+      color:var(--text);
+    }
+    input::placeholder,
+    textarea::placeholder{
+      color:#A3AEC2;
+    }
     textarea{resize:vertical}
-    .consent{display:flex;align-items:flex-start;gap:.5rem;margin-top:.2rem}
-    .consent input[type="checkbox"]{margin-top:.2rem;flex-shrink:0}
-    .consent a{color:inherit}
 
-    /* Buttons */
-   .btn{
-  display:inline-block;
-  align-self:start;
-  padding:.7rem 1rem;
-  border-radius:12px;
-  border:1px solid var(--btn-bd);
-  background:var(--btn-bg);
-  color:var(--btn-fg);
-  font-weight:800;
-  text-decoration:none
-}
-.btn:hover{
-  background:var(--btn-bg-h)
-}
-/* Brand colors for product CTAs and tabs */
-:root{
-  --sd-green:#0C6C48;   /* SlackDigest */
-  --ts-red:#AE0F12;     /* TaskSieve (gleich wie nav-red) */
-  --cw-blue:#0E3960;    /* ChangeWise */
-}
+    .consent{
+      display:flex;
+      align-items:flex-start;
+      gap:.5rem;
+      margin-top:.2rem;
+      color:#fff;
+    }
+    .consent input[type="checkbox"]{
+      margin-top:.2rem;
+      flex-shrink:0;
+    }
+    .consent a{
+      color:inherit;
+    }
 
-/* Unified CTA base style (white pill, left-aligned, 2-line, Safari safe) */
-.btn--inverse-sd,
-.btn--inverse-ts,
-.btn--inverse-cw{
-  background:#FFFFFF;
-  border:1px solid #FFFFFF;
-  border-radius:12px;
-  font-weight:800;
-  text-decoration:none;
-  display:inline-block;
-  text-align:left;
-  padding:0.7rem 1rem;
-  line-height:1.3;
-}
-.btn--inverse-sd span,
-.btn--inverse-ts span,
-.btn--inverse-cw span{
-  display:block;
-  font-weight:inherit;
-  line-height:inherit;
-}
+    /* CTA Button: Weißer Pill-Button, grüne Schrift */
+    .btn{
+      display:inline-block;
+      align-self:start;
+      padding:.7rem 1rem;
+      border-radius:12px;
+      border:1px solid #FFFFFF;
+      background:#FFFFFF;
+      font-weight:800;
+      text-decoration:none;
+      text-align:left;
+      line-height:1.3;
+    }
+    .btn--inverse-sd{
+      /* Textfarbe SlackDigest-Grün erzwingen, Safari-safe */
+      color:var(--sd-green) !important;
+      -webkit-text-fill-color:var(--sd-green) !important;
+    }
+    .btn--inverse-sd span{
+      display:block;
+      color:var(--sd-green) !important;
+      -webkit-text-fill-color:var(--sd-green) !important;
+    }
 
-/* SlackDigest CTA (green text) */
-.btn--inverse-sd{
-  color:var(--sd-green) !important;
-  -webkit-text-fill-color:var(--sd-green) !important;
-}
-.btn--inverse-sd span{
-  color:var(--sd-green) !important;
-  -webkit-text-fill-color:var(--sd-green) !important;
-}
+    /* Success flash nach Submit */
+    .flash{
+      position:relative;
+      margin:8px 0 14px;
+      padding:12px 14px;
+      border-radius:10px;
+      background:#E7F6EF;
+      color:#096D48;
+      border:1px solid #BFE7D2;
+      box-shadow:0 3px 12px rgba(0,0,0,.06);
+      opacity:0;
+      transform:translateY(-6px);
+      transition:opacity .2s ease, transform .2s ease;
+    }
+    .flash.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+    .flash small{
+      display:block;
+      font-size:12px;
+      color:#64748B;
+      margin-top:4px;
+    }
 
-/* TaskSieve CTA (red text) */
-.btn--inverse-ts{
-  color:var(--ts-red) !important;
-  -webkit-text-fill-color:var(--ts-red) !important;
-}
-.btn--inverse-ts span{
-  color:var(--ts-red) !important;
-  -webkit-text-fill-color:var(--ts-red) !important;
-}
-
-/* ChangeWise CTA (blue text) */
-.btn--inverse-cw{
-  color:var(--cw-blue) !important;
-  -webkit-text-fill-color:var(--cw-blue) !important;
-}
-.btn--inverse-cw span{
-  color:var(--cw-blue) !important;
-  -webkit-text-fill-color:var(--cw-blue) !important;
-}
-
-/* Tabs base layout override (we'll color active tabs per product) */
-.form-tabs{
-  display:flex;
-  gap:8px;
-  margin:8px 0 14px;
-  flex-wrap:wrap;
-}
-
-.form-tabs a{
-  padding:8px 12px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.22);
-  text-decoration:none;
-  color:inherit;
-  opacity:.9;
-  background:transparent;
-  font-weight:600;
-  line-height:1.2;
-}
-
-/* Active tab: SlackDigest = white pill with green text */
-.form-tabs a.active.tab-sd{
-  background:#FFFFFF;
-  border-color:#FFFFFF;
-  color:var(--sd-green) !important;
-  -webkit-text-fill-color:var(--sd-green) !important;
-  opacity:1;
-}
-
-/* Active tab: TaskSieve = white pill with red text */
-.form-tabs a.active.tab-ts{
-  background:#FFFFFF;
-  border-color:#FFFFFF;
-  color:var(--ts-red) !important;
-  -webkit-text-fill-color:var(--ts-red) !important;
-  opacity:1;
-}
-
-/* Active tab: ChangeWise = white pill with blue text */
-.form-tabs a.active.tab-cw{
-  background:#FFFFFF;
-  border-color:#FFFFFF;
-  color:var(--cw-blue) !important;
-  -webkit-text-fill-color:var(--cw-blue) !important;
-  opacity:1;
-}
-
- 
-
-/* Success flash */
-.flash{
-  position:relative;
-  margin:8px 0 14px;
-  padding:12px 14px;
-  border-radius:10px;
-  background:#E7F6EF;
-  color:#096D48;
-  border:1px solid #BFE7D2;
-  box-shadow:0 3px 12px rgba(0,0,0,.06);
-  opacity:0;
-  transform:translateY(-6px);
-  transition:opacity .2s ease, transform .2s ease
-}
-
-
-    /* Success flash */
-    .flash{position:relative;margin:8px 0 14px;padding:12px 14px;border-radius:10px;
-      background:#E7F6EF;color:#096D48;border:1px solid #BFE7D2;box-shadow:0 3px 12px rgba(0,0,0,.06);
-      opacity:0;transform:translateY(-6px);transition:opacity .2s ease, transform .2s ease}
-    .flash.show{opacity:1;transform:translateY(0)}
-    .flash small{display:block;font-size:12px;color:#64748B;margin-top:4px}
-
-    /* Optional Changewise-Blau */
-    html.theme-cw, html.theme-cw body{ background:#0E3960 !important; }
-    html.theme-cw .card, html.theme-cw .section{ background:rgba(255,255,255,.06) !important; }
     /* Footer */
-    .footbar { display:flex; justify-content:space-between; align-items:center; gap:.8rem; flex-wrap:wrap; }
-    .legal a { margin-right:.6rem; }
-    .sep { margin:0 .3rem; opacity:.85; }
+    .footbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:.8rem;
+      flex-wrap:wrap;
+    }
+    .legal a{
+      margin-right:.6rem;
+      color:#fff;
+      text-decoration:none;
+    }
+    .sep{
+      margin:0 .3rem;
+      opacity:.85;
+      color:#fff;
+    }
+    footer small{
+      color:#fff;
+    }
   </style>
+
   <noscript><style>.section{display:block !important}</style></noscript>
 </head>
 <body>
@@ -251,358 +312,148 @@
         <li><a href="/products/changewise/">ChangeWise</a></li>
         <li><a href="/products/slackdigest/">SlackDigest</a></li>
         <li><a href="/products/tasksieve/">TaskSieve</a></li>
-           <li>
-  <strong>DE</strong> | <a id="langSwitchLink" href="/en/contact.html#slackdigest">EN</a>
-</li>
-   </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Menü" aria-controls="navLinks" aria-expanded="false">☰</button>
+        <li><strong>DE</strong> | <a href="/en/contact.html">EN</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle"
+        aria-label="Menü"
+        aria-controls="navLinks"
+        aria-expanded="false">☰</button>
     </div>
   </nav>
 </header>
 
 <main class="container">
-   <section class="hero" id="hero">
-  <div class="hero-grid">
-    <div class="hero-text">
-      <h1 id="heroTitle">SlackDigest</h1>
-      <p class="sub" id="heroSub">
-        Test-Digest: Du wählst Kanäle &amp; Takt – wir liefern die relevanten Updates.
-      </p>
-    </div>
-    <div class="badge" aria-hidden="true">
-      <span class="ring"></span>
-      <span class="inner">
-        <img id="heroLogo" src="/assets/brand/slackdigest_logo.svg" alt="">
-      </span>
-    </div>
-  </div>
-</section>
 
+  <!-- HERO: SlackDigest -->
+  <section class="hero" id="hero">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <h1>SlackDigest</h1>
+        <p class="sub">
+          Test-Digest: Du wählst Kanäle &amp; Takt – wir liefern die relevanten Updates.
+        </p>
+      </div>
+      <div class="badge" aria-hidden="true">
+        <span class="ring"></span>
+        <span class="inner">
+          <img src="/assets/brand/slackdigest_logo.svg" alt="">
+        </span>
+      </div>
+    </div>
+  </section>
 
-     <!-- SlackDigest -->
-  <section id="sec-sd" class="card section show">
-    <span id="slackdigest" class="anchor-fix" aria-hidden="true"></span>
+  <!-- FORM: SlackDigest -->
+  <section class="card section">
     <h2>SlackDigest – Test-Digest anfordern</h2>
     <p><strong>In 3 Schritten:</strong> Kanäle wählen → Takt (täglich/wöchentlich) → Zustellung (E-Mail/Slack). Ein Blick, ein Link – erledigt.</p>
+
     <form action="https://formspree.io/f/manppwbn" method="POST" autocomplete="on">
-      <input type="hidden" name="product" value="slackdigest"><input type="hidden" name="lang" value="de">
+      <input type="hidden" name="product" value="slackdigest">
+      <input type="hidden" name="lang" value="de">
       <input type="text" name="_gotcha" style="display:none">
-      <label>Name <input type="text" name="name" autocomplete="name" required></label>
-      <label>E-Mail <input type="email" name="email" autocomplete="email" required></label>
-      <label>Welche Kanäle? <input type="text" name="channels" placeholder="#sales, #support, E-Mail-Postfach …" required></label>
+
+      <label>Name
+        <input type="text" name="name" autocomplete="name" required>
+      </label>
+
+      <label>E-Mail
+        <input type="email" name="email" autocomplete="email" required>
+      </label>
+
+      <label>Welche Kanäle?
+        <input type="text" name="channels" placeholder="#sales, #support, E-Mail-Postfach …" required>
+      </label>
+
       <label>Takt
-        <select name="cadence" required><option value="daily">Täglich</option><option value="weekly">Wöchentlich</option></select>
+        <select name="cadence" required>
+          <option value="daily">Täglich</option>
+          <option value="weekly">Wöchentlich</option>
+        </select>
       </label>
+
       <label>Zustellung
-        <select name="delivery" required><option value="email">E-Mail</option><option value="slack">Slack</option></select>
+        <select name="delivery" required>
+          <option value="email">E-Mail</option>
+          <option value="slack">Slack</option>
+        </select>
       </label>
+
       <div class="consent">
         <input id="c1" type="checkbox" name="consent" required>
         <label for="c1">Ich stimme der Verarbeitung gemäß <a href="/datenschutz.html">Datenschutz</a> zu.</label>
       </div>
-       <button type="submit" class="btn btn--inverse-sd">
-  <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
-    Test-Digest anfordern
-  </span>
-  <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
-    Demo-Digest &amp; nächste Schritte folgen gleich. Kein Spam, kein Newsletter.
-  </span>
-</button>
 
-       <input type="hidden" name="_subject" value="[Website] SlackDigest Test-Digest">
-      <input type="hidden" name="_next" value="/contact.html?success=1#slackdigest">
+      <button type="submit" class="btn btn--inverse-sd">
+        <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
+          Test-Digest anfordern
+        </span>
+        <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
+          Demo-Digest &amp; nächste Schritte folgen gleich. Kein Spam, kein Newsletter.
+        </span>
+      </button>
+
+      <input type="hidden" name="_subject" value="[Website] SlackDigest Test-Digest">
+      <input type="hidden" name="_next" value="/contact.html?success=1">
     </form>
   </section>
 
-  <!-- TaskSieve -->
-<section id="sec-ts" class="card section">
-  <span id="tasksieve" class="anchor-fix" aria-hidden="true"></span>
-  <h2>TaskSieve – Schnell testen</h2>
-  <p>Ohne Import starten: Demo-Inbox laden und Priorisierung live erleben.</p>
-
-  <p style="font-size:.8rem;opacity:.7;margin-top:-4px;">
-    Auch verfügbar auf
-    <a href="/en/contact.html#tasksieve" style="color:inherit;text-decoration:underline;">
-      English
-    </a>.
-  </p>
-
-  <form action="https://formspree.io/f/mnnggabe" method="POST" autocomplete="on">
-    <input type="hidden" name="product" value="tasksieve"><input type="hidden" name="lang" value="de">
-    <input type="text" name="_gotcha" style="display:none">
-
-    <label>Name <input type="text" name="name" autocomplete="name" required></label>
-    <label>E-Mail <input type="email" name="email" autocomplete="email" required></label>
-
-    <label>Modus
-      <select name="mode" required>
-        <option value="demo">Demo-Inbox</option>
-        <option value="live">Später eigene Quellen verbinden</option>
-      </select>
-    </label>
-
-    <label>Quellen (optional)
-      <input type="text" name="sources" placeholder="E-Mail, Notizen, Slack">
-    </label>
-
-    <div class="consent">
-      <input id="c2" type="checkbox" name="consent" required>
-      <label for="c2">Ich stimme der Verarbeitung gemäß <a href="/datenschutz.html">Datenschutz</a> zu.</label>
-    </div>
-
-    <button class="btn btn--inverse-ts" type="submit">
-  <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
-    Demo starten
-  </span>
-  <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
-    Demo-Beispiel &amp; weitere Infos kommen direkt zu dir. Kein Spam, kein Newsletter.
-  </span>
-</button>
-
-    <input type="hidden" name="_subject" value="[Website] TaskSieve Demo">
-    <input type="hidden" name="_next" value="/contact.html?success=1#tasksieve">
-  </form>
-</section>
-
-  <!-- ChangeWise -->
-<section id="sec-cw" class="card section">
-  <span id="changewise" class="anchor-fix" aria-hidden="true"></span>
-  <h2>ChangeWise – Kurz-Briefing &amp; Mini-Diagnose</h2>
-  <p>3–4 Angaben → Sofort-Ergebnis mit konkreten Empfehlungen.</p>
-
-  <p style="font-size:.8rem;opacity:.7;margin-top:-4px;">
-    Auch verfügbar auf
-    <a href="/en/contact.html#changewise" style="color:inherit;text-decoration:underline;">
-      English
-    </a>.
-  </p>
-
-  <form action="https://formspree.io/f/xjkaawkr" method="POST" autocomplete="on">
-    <input type="hidden" name="product" value="changewise"><input type="hidden" name="lang" value="de">
-    <input type="text" name="_gotcha" style="display:none">
-
-    <label>Name <input type="text" name="name" autocomplete="name" required></label>
-
-    <label>E-Mail <input type="email" name="email" autocomplete="email" required></label>
-
-    <label>Mini-Diagnose
-      <textarea name="diagnosis" rows="4" placeholder="z. B. Uneinheitliche Botschaften; brauchen Kernnarrativ &amp; Vorlagen." required></textarea>
-    </label>
-
-    <label>Optional: Link zu Brand-Dokumenten
-      <input type="url" name="asset_url" placeholder="https://…/brandkit.pdf">
-      <small>PDF/URL – wird vertraulich geprüft; das Ergebnis bezieht sich darauf.</small>
-    </label>
-
-    <div class="consent">
-      <input id="c3" type="checkbox" name="consent" required>
-      <label for="c3">Ich stimme der Verarbeitung gemäß <a href="/datenschutz.html">Datenschutz</a> zu.</label>
-    </div>
-
-     <button class="btn btn--inverse-cw" type="submit">
-  <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
-    Briefing &amp; Mini-Diagnose
-  </span>
-  <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
-    Deine Angaben werden KI-gestützt ausgewertet. Du bekommst eine klare Kernbotschaft
-    &amp; nächste Schritte – vertraulich. Kein Spam, kein Newsletter.
-  </span>
-</button>
-
-    <input type="hidden" name="_subject" value="[Website] ChangeWise Kurz-Briefing">
-    <input type="hidden" name="_next" value="/contact.html?success=1#changewise">
-  </form>
-</section>
-
-    <footer>
-    <div class="container footbar">
-      <nav class="legal" aria-label="Footer">
-        <a href="/impressum.html">Impressum</a><span class="sep" aria-hidden="true"> · </span>
-        <a href="/datenschutz.html">Datenschutz</a>
-      </nav>
-      <small>© ChangeWise • SlackDigest • TaskSieve</small>
-    </div>
-  </footer>
 </main>
 
- <script>
+<footer>
+  <div class="container footbar">
+    <nav class="legal" aria-label="Footer">
+      <a href="/impressum.html">Impressum</a><span class="sep" aria-hidden="true"> · </span>
+      <a href="/datenschutz.html">Datenschutz</a>
+    </nav>
+    <small>© ChangeWise • SlackDigest • TaskSieve</small>
+  </div>
+</footer>
+
+<script>
 (function(){
-  // Nav Toggle
-  (function(){
-    var t=document.getElementById('navToggle'),
-        l=document.getElementById('navLinks');
-    if(t && l){
-      t.addEventListener('click', function(){
-        var o = l.classList.toggle('open');
-        t.setAttribute('aria-expanded', o ? 'true' : 'false');
-      });
-    }
-  })();
+  // Burger-Menü
+  var t=document.getElementById('navToggle'),
+      l=document.getElementById('navLinks');
+  if(t && l){
+    t.addEventListener('click',function(){
+      var o=l.classList.toggle('open');
+      t.setAttribute('aria-expanded',o?'true':'false');
+    });
+  }
 
-  // Optional Blau-Theme via ?theme=cw
+  // Success Flash nach Submit (?success=1)
   try{
-    var qs = new URLSearchParams(location.search);
-    if(qs.get('theme') === 'cw'){
-      document.documentElement.classList.add('theme-cw');
-      if(!document.getElementById('cwTheme')){
-        var st = document.createElement('style');
-        st.id = 'cwTheme';
-        st.textContent = 'html.theme-cw,html.theme-cw body{background:#0E3960 !important;}html.theme-cw .card,html.theme-cw .section{background:rgba(255,255,255,.06) !important;}';
-        document.head.appendChild(st);
-      }
-    }
-  }catch(e){}
-
-  // Inline Success (grüner Flash nach Submit)
-  try{
-    var sp = new URLSearchParams(location.search);
-    if(sp.get('success') === '1'){
-      var h = (location.hash || '');
-      var target = h ? document.querySelector(h) : null;
-      var host = (target && target.closest('.section'))
-        ? target.closest('.section')
-        : document.getElementById('sec-sd'); // Fallback SlackDigest
+    var sp=new URLSearchParams(location.search);
+    if(sp.get('success')==='1'){
+      var host=document.querySelector('.card.section');
       if(host){
-        var box = document.createElement('div');
-        box.className = 'flash';
-        box.innerHTML = 'Danke — deine Nachricht ist eingegangen.<small>Wir melden uns zeitnah mit dem nächsten Schritt.</small>';
-        var f = host.querySelector('form');
-        if(f) f.parentNode.insertBefore(box, f);
-        setTimeout(function(){ box.classList.add('show'); }, 60);
+        var box=document.createElement('div');
+        box.className='flash';
+        box.innerHTML='Danke — deine Nachricht ist eingegangen.<small>Wir melden uns zeitnah mit dem nächsten Schritt.</small>';
+        var f=host.querySelector('form');
+        if(f) f.parentNode.insertBefore(box,f);
+        setTimeout(function(){ box.classList.add('show'); },60);
         setTimeout(function(){
-          if(box && box.parentNode) box.parentNode.removeChild(box);
-        }, 8000);
+          if(box&&box.parentNode) box.parentNode.removeChild(box);
+        },8000);
       }
     }
   }catch(e){}
 
-  // Submit: Double-Click Guard
+  // Double-Click Guard beim Senden
   try{
-    document.addEventListener('submit', function(e){
-      var f = e.target;
-      if(!f || f.tagName !== 'FORM') return;
-      var btn = f.querySelector('button[type="submit"]');
+    document.addEventListener('submit',function(e){
+      var f=e.target;
+      if(!f||f.tagName!=='FORM') return;
+      var btn=f.querySelector('button[type="submit"]');
       if(btn && !btn.disabled){
-        btn.disabled = true;
+        btn.disabled=true;
         btn.setAttribute('aria-disabled','true');
-        btn.dataset._label = btn.textContent;
-        btn.textContent = 'Senden…';
+        btn.dataset._label=btn.textContent;
+        btn.textContent='Senden…';
       }
-    }, {capture:true});
+    },{capture:true});
   }catch(e){}
-
-  // --- Dynamische Sprachumschaltung (DE -> EN) ---
-  // Wir schauen, welcher Tab aktiv ist (SlackDigest / TaskSieve / ChangeWise),
-  // und setzen dann den EN-Link im Header auf die passende Sektion der EN-Seite.
-  function updateLangSwitch(activeId){
-    // activeId entspricht unserer Section-ID:
-    //   'sec-sd'  (SlackDigest)
-    //   'sec-ts'  (TaskSieve)
-    //   'sec-cw'  (ChangeWise)
-    // Wir mappen das auf den gewünschten Hash in der englischen Seite.
-    var map = {
-      'sec-sd': 'slackdigest',
-      'sec-ts': 'tasksieve',
-      'sec-cw': 'changewise'
-    };
-    var hash = map[activeId] || 'slackdigest';
-
-    var langLink = document.getElementById('langSwitchLink');
-    if(!langLink) return;
-
-    // Wir sind auf DE. Der Sprachlink soll zur EN-Version der Kontaktseite,
-    // aber in den gleichen Tab per Hash.
-    langLink.setAttribute('href', '/en/contact.html#' + hash);
-  }
-
-  // Tabs / Hash + Hero update
-  // (gleiches Grundprinzip wie vorher, aber wir rufen jetzt auch updateLangSwitch)
-  function targetIdFromHash(){
-    var h = (location.hash || '').replace('#','').toLowerCase();
-    if(h === 'tasksieve' || h === 'sec-ts') return 'sec-ts';
-    if(h === 'changewise' || h === 'sec-cw') return 'sec-cw';
-    return 'sec-sd'; // default SlackDigest
-  }
-
-  function setHero(aEl){
-    try{
-      var title = aEl.getAttribute('data-title') || 'Kontakt';
-      var sub   = aEl.getAttribute('data-sub')   || '';
-      var logo  = aEl.getAttribute('data-logo')  || '';
-      document.getElementById('heroTitle').textContent = title;
-      document.getElementById('heroSub').textContent   = sub;
-      if(logo){
-        document.getElementById('heroLogo').setAttribute('src', logo);
-      }
-    }catch(e){}
-  }
-
-  function setActive(id){
-    // Sichtbarkeit der Sections steuern
-    document.querySelectorAll('.section').forEach(function(s){
-      s.classList.remove('show');
-    });
-    var el = document.getElementById(id);
-    if(el) el.classList.add('show');
-
-    // Aktiven Tab markieren, Hero anpassen
-    document.querySelectorAll('.form-tabs a').forEach(function(a){
-      var on = (a.getAttribute('data-target') === id);
-      a.classList.toggle('active', on);
-      if(on) setHero(a);
-    });
-
-    // Sprachumschalter aktualisieren
-    updateLangSwitch(id);
-  }
-
-  function onTabClick(e){
-    e.preventDefault();
-    var t = this.getAttribute('data-target');
-    if(!t) return;
-    // Hash in URL aktualisieren (für Deep-Link / Reload)
-    var hash = '#' + (
-      t === 'sec-sd'
-        ? 'slackdigest'
-        : (t === 'sec-ts'
-            ? 'tasksieve'
-            : 'changewise')
-    );
-    history.pushState(null,'',hash);
-    setActive(t);
-
-    // sanft scrollen zum Anker
-    var anchor = document.querySelector(hash);
-    if(anchor){
-      try{
-        anchor.scrollIntoView({behavior:'instant', block:'start'});
-      }catch(e){}
-    }
-  }
-
-  function initTabs(){
-    // Tab-Klick-Handler setzen
-    document.querySelectorAll('.form-tabs a').forEach(function(a){
-      a.removeEventListener('click', onTabClick);
-      a.addEventListener('click', onTabClick);
-    });
-
-    // Initial aktiven Tab anhand URL-Hash setzen
-    var firstId = targetIdFromHash();
-    setActive(firstId);
-  }
-
-  // Wechsel per Browser-Hash (Back/Forward Navigation)
-  window.addEventListener('hashchange', function(){
-    setActive(targetIdFromHash());
-  });
-
-  // Init jetzt / nach DOM load
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', initTabs);
-  }else{
-    initTabs();
-  }
 })();
 </script>
 
