@@ -124,18 +124,18 @@
     border-radius:50%;
     box-shadow:0 2px 10px rgba(0,0,0,.35);
   }
-  .badge .inner{
-    position:absolute;
-    left:5px;
-    top:5px;
-    width:calc(var(--badge) - 10px);
-    height:calc(var(--badge) - 10px);
-    background:#0C6C48; /* jetzt grün, kein Rot-Erbe */
-    border-radius:50%;
-    display:grid;
-    place-items:center;
-    overflow:hidden;
-  }
+   .badge .inner{
+  position:absolute;
+  left:5px;
+  top:5px;
+  width:calc(var(--badge) - 10px);
+  height:calc(var(--badge) - 10px);
+  background:transparent; /* kein farbiger Hintergrund mehr */
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+}
    .badge img{
   width:100%;        /* statt 80% */
   height:100%;       /* statt 80% */
