@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Contact – ChangeWise</title>
+  <meta name="description" content="ChangeWise: quick brief & mini diagnosis. 3–4 inputs, you get a focused core message and next-step recommendations – confidential.">
+
+  <style>
+    :root{
+      --page-bg:#0E3960; /* ChangeWise blue */
+      --text:#FFFFFF;
+
+      --nav-red:#AE0F12; /* shared nav red */
+
+      --card-bg:rgba(255,255,255,.06);
+      --card-bd:rgba(255,255,255,.28);
+
+      --input-bg:rgba(0,0,0,.35);
+      --input-bd:rgba(255,255,255,.4);
+
+      --btn-bg:#FFFFFF;
+      --btn-bd:#FFFFFF;
+      --btn-bg-h:#F7F7F7;
+
+      --cw-blue:#0E3960; /* CTA text color on white button */
+
+      --container:980px;
+      --badge:84px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--page-bg);
+      color:var(--text);
+      font:16px/1.55 system-ui,-apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+    }
+
+    /* NAV */
+    .site-header{position:sticky;top:0;z-index:50;width:100%;background:var(--nav-red)}
+    .nav{background:var(--nav-red)}
+    .nav-inner{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:12px 16px;
+      min-height:46px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .brand{color:#fff;font-weight:800;text-decoration:none;white-space:nowrap}
+    .nav-links{
+      list-style:none;
+      display:flex;
+      gap:14px;
+      margin:0;
+      padding:0;
+      align-items:center;
+      color:#fff;
+    }
+    .nav-links a{color:#fff;text-decoration:none}
+    .nav-toggle{display:none;background:none;border:0;color:#fff;font-size:1.2rem}
+    @media (max-width:980px){
+      .nav-inner{position:relative}
+      .nav-links{
+        display:none;
+        position:absolute;
+        top:56px;
+        left:0;right:0;
+        background:var(--nav-red);
+        padding:12px;
+        margin:0;
+        flex-direction:column;
+        gap:.6rem
+      }
+      .nav-links.open{display:flex}
+      .nav-toggle{display:inline-block}
+    }
+
+    .container{
+      width:min(var(--container),92%);
+      margin:0 auto;
+    }
+
+    /* HERO */
+    .hero{color:#fff;padding:18px 0 10px}
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:14px;
+      align-items:center;
+    }
+    .hero h1{
+      margin:0 0 4px;
+      font-size:clamp(1.6rem,1.1rem + 2vw,2.2rem);
+      line-height:1.2;
+    }
+    .hero .sub{
+      margin:0;
+      font-size:1.15rem;
+      font-weight:500;
+      color:#FFFFFF;
+      -webkit-text-fill-color:#FFFFFF;
+      opacity:.96;
+      line-height:1.4;
+    }
+    @media (max-width:640px){
+      .hero-grid{grid-template-columns:1fr}
+    }
+
+    /* BADGE */
+    .badge{
+      position:relative;
+      width:var(--badge);
+      height:var(--badge);
+    }
+    .badge .ring{
+      position:absolute;
+      inset:0;
+      background:#fff;
+      border-radius:50%;
+      box-shadow:0 2px 10px rgba(0,0,0,.35);
+    }
+    .badge .inner{
+      position:absolute;
+      left:5px;
+      top:5px;
+      width:calc(var(--badge) - 10px);
+      height:calc(var(--badge) - 10px);
+      background:#0E3960;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+    }
+    .badge img{
+      width:80%;
+      height:80%;
+      object-fit:contain;
+      display:block;
+    }
+
+    /* CARD */
+    .card{
+      background:var(--card-bg);
+      border:1px solid var(--card-bd);
+      border-radius:14px;
+      padding:18px 16px;
+      box-shadow:0 10px 24px rgba(0,0,0,.4),
+                 inset 0 1px 0 rgba(255,255,255,.06);
+      margin-bottom:16px;
+      color:#fff;
+    }
+    .card h2{
+      margin:.2rem 0 .6rem;
+      font-size:1.2rem;
+      color:#fff;
+    }
+    .card p{margin:.4rem 0 .8rem;color:#fff}
+
+    /* FORM */
+    form{display:grid;gap:10px}
+    label{display:block;font-weight:600;color:#fff}
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    textarea{
+      width:100%;
+      margin-top:6px;
+      padding:10px 12px;
+      border-radius:10px;
+      border:1px solid var(--input-bd);
+      background:var(--input-bg);
+      color:#fff;
+    }
+    input::placeholder,
+    textarea::placeholder{
+      color:rgba(255,255,255,.7)
+    }
+    textarea{resize:vertical}
+
+    .consent{
+      display:flex;
+      align-items:flex-start;
+      gap:.5rem;
+      margin-top:.2rem;
+      color:#fff;
+      font-size:.9rem;
+      line-height:1.4;
+    }
+    .consent input[type="checkbox"]{
+      margin-top:.2rem;
+      flex-shrink:0;
+    }
+    .consent a{color:#fff;text-decoration:underline}
+
+    /* CTA button (white pill w/ blue text) */
+    .btn{
+      display:inline-block;
+      padding:.7rem 1rem;
+      border-radius:12px;
+      border:1px solid var(--btn-bd);
+      background:var(--btn-bg);
+      text-decoration:none;
+      font-weight:800;
+      text-align:left;
+      line-height:1.3;
+    }
+    .btn:hover{background:var(--btn-bg-h)}
+
+    .btn--inverse-cw{
+      color:var(--cw-blue) !important;
+      -webkit-text-fill-color:var(--cw-blue) !important;
+    }
+    .btn--inverse-cw span{
+      display:block;
+      color:var(--cw-blue) !important;
+      -webkit-text-fill-color:var(--cw-blue) !important;
+    }
+
+    /* FLASH */
+    .flash{
+      position:relative;
+      margin:8px 0 14px;
+      padding:12px 14px;
+      border-radius:10px;
+      background:#fff;
+      color:#000;
+      border:1px solid rgba(255,255,255,.6);
+      box-shadow:0 3px 12px rgba(0,0,0,.4);
+      opacity:0;
+      transform:translateY(-6px);
+      transition:opacity .2s ease, transform .2s ease;
+    }
+    .flash.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+    .flash small{
+      display:block;
+      font-size:12px;
+      color:#333;
+      margin-top:4px;
+    }
+
+    /* FOOTER */
+    footer{
+      margin:24px 0 40px;
+      color:#fff;
+      font-size:.9rem;
+      line-height:1.4;
+    }
+    footer a{
+      color:#fff;
+      text-decoration:none;
+    }
+    .footbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:.8rem;
+      flex-wrap:wrap;
+    }
+    .legal a{margin-right:.6rem}
+    .sep{margin:0 .3rem;opacity:.85}
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="/en/home/">Home</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/en/products/changewise/">ChangeWise</a></li>
+        <li><a href="/en/products/slackdigest/">SlackDigest</a></li>
+        <li><a href="/en/products/tasksieve/">TaskSieve</a></li>
+        <li><strong>EN</strong> | <a href="/contact_changewise.html">DE</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle"
+        aria-label="Menu"
+        aria-controls="navLinks"
+        aria-expanded="false">☰</button>
+    </div>
+  </nav>
+</header>
+
+<main class="container">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <h1>ChangeWise</h1>
+        <p class="sub">
+          Quick brief &amp; mini diagnosis: 3–4 inputs are enough — you get clarity, core message, and next steps.
+        </p>
+      </div>
+      <div class="badge" aria-hidden="true">
+        <span class="ring"></span>
+        <span class="inner">
+          <img src="/assets/brand/changewise_logo.svg" alt="">
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM CARD -->
+  <section class="card">
+    <h2>ChangeWise — quick brief &amp; mini diagnosis</h2>
+    <p>3–4 inputs → instant summary with concrete recommendations.</p>
+
+    <form action="https://formspree.io/f/xgvnnkvj" method="POST" autocomplete="on">
+      <input type="hidden" name="product" value="changewise">
+      <input type="hidden" name="lang" value="en">
+      <input type="text" name="_gotcha" style="display:none">
+
+      <label>Name
+        <input type="text" name="name" autocomplete="name" required>
+      </label>
+
+      <label>Email
+        <input type="email" name="email" autocomplete="email" required>
+      </label>
+
+      <label>Diagnosis
+        <textarea name="diagnosis" rows="4" placeholder="e.g., inconsistent messaging; need core narrative &amp; templates." required></textarea>
+      </label>
+
+      <label>Optional: link to brand docs
+        <input type="url" name="asset_url" placeholder="https://…/brandkit.pdf">
+        <small>PDF/URL — reviewed confidentially; your result will reflect it.</small>
+      </label>
+
+      <div class="consent">
+        <input id="c3e" type="checkbox" name="consent" required>
+        <label for="c3e">
+          I agree to processing as per <a href="/en/privacy/">privacy</a>.
+        </label>
+      </div>
+
+      <button class="btn btn--inverse-cw" type="submit">
+        <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
+          Briefing &amp; mini diagnosis
+        </span>
+        <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
+          Your input is evaluated with AI support. You’ll get a focused core message
+          &amp; next steps – confidential. No spam, no newsletter.
+        </span>
+      </button>
+
+      <input type="hidden" name="_subject" value="[Website] ChangeWise quick brief">
+      <input type="hidden" name="_next" value="/en/contact_changewise.html?success=1">
+    </form>
+  </section>
+
+  <footer>
+    <div class="footbar">
+      <nav class="legal" aria-label="Footer">
+        <a href="/en/imprint/">Imprint</a><span class="sep" aria-hidden="true"> · </span>
+        <a href="/en/privacy/">Privacy</a>
+      </nav>
+      <small>© ChangeWise • SlackDigest • TaskSieve</small>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+(function(){
+  // mobile nav
+  var t=document.getElementById('navToggle'),
+      l=document.getElementById('navLinks');
+  if(t&&l){
+    t.addEventListener('click',function(){
+      var o=l.classList.toggle('open');
+      t.setAttribute('aria-expanded',o?'true':'false');
+    });
+  }
+
+  // success flash
+  try{
+    var sp=new URLSearchParams(location.search);
+    if(sp.get('success')==='1'){
+      var host=document.querySelector('.card');
+      if(host){
+        var box=document.createElement('div');
+        box.className='flash';
+        box.innerHTML='Thanks — your message has been received.<small>We’ll get back shortly with the next step.</small>';
+        var f=host.querySelector('form');
+        if(f) f.parentNode.insertBefore(box,f);
+        setTimeout(function(){box.classList.add('show');},60);
+        setTimeout(function(){
+          if(box&&box.parentNode) box.parentNode.removeChild(box);
+        },8000);
+      }
+    }
+  }catch(e){}
+
+  // prevent double submit
+  try{
+    document.addEventListener('submit',function(e){
+      var f=e.target;
+      if(!f||f.tagName!=='FORM')return;
+      var btn=f.querySelector('button[type="submit"]');
+      if(btn&&!btn.disabled){
+        btn.disabled=true;
+        btn.setAttribute('aria-disabled','true');
+        btn.textContent='Sending…';
+      }
+    },{capture:true});
+  }catch(e){}
+})();
+</script>
+
+</body>
+</html>
