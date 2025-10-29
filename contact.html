@@ -262,7 +262,25 @@
   }
   .legal a{margin-right:.6rem}
   .sep{margin:0 .3rem;opacity:.85}
-</style>
+/* SlackDigest (DE) – freundlichere Feldfarbe */
+#sec-sd input[type="text"],
+#sec-sd input[type="email"],
+#sec-sd input[type="url"],
+#sec-sd select,
+#sec-sd textarea{
+  background: rgba(9,108,72,.16);
+  border-color: rgba(9,108,72,.45);
+}
+
+#sec-sd input:focus,
+#sec-sd select:focus,
+#sec-sd textarea:focus{
+  outline: none;
+  border-color: rgba(9,108,72,.8);
+  box-shadow: 0 0 0 3px rgba(9,108,72,.30);
+}
+
+  </style>
 
 </head>
 <body>
