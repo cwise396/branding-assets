@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Kontakt – TaskSieve</title>
+  <meta name="description" content="TaskSieve Demo starten: Demo-Inbox laden, Priorisierung live sehen. Sofort Klarheit nach Wirkung & Dringlichkeit.">
+
+  <style>
+    :root{
+      --nav-red:#AE0F12;
+      --page-bg:#0B1220;
+      --text:#E5E7EB;
+      --muted:#9FB0C3;
+
+      --card-bg:rgba(255,255,255,.04);
+      --card-bd:rgba(255,255,255,.12);
+
+      --input-bg:rgba(13,20,34,.7);
+      --input-bd:rgba(255,255,255,.16);
+
+      /* TaskSieve Button-Stil:
+         Weißer Button mit ROTER Schrift */
+      --ts-red:#AE0F12;
+      --btn-bg:#FFFFFF;
+      --btn-bd:#FFFFFF;
+
+      --container:980px;
+      --badge:84px;
+      --ring:5px;
+      --inner-red:#B80E13;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--page-bg);
+      color:var(--text);
+      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+    }
+
+    /* NAV */
+    .site-header{position:sticky;top:0;z-index:50;width:100%;background:var(--nav-red)}
+    .nav{background:var(--nav-red)}
+    .nav-inner{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:12px 16px;
+      min-height:46px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .brand{
+      color:#fff;
+      font-weight:800;
+      text-decoration:none;
+      white-space:nowrap;
+    }
+    .nav-links{
+      list-style:none;
+      display:flex;
+      gap:14px;
+      margin:0;
+      padding:0;
+      align-items:center;
+    }
+    .nav-links a{
+      color:#fff;
+      text-decoration:none;
+    }
+    .nav-toggle{
+      display:none;
+      background:none;
+      border:0;
+      color:#fff;
+      font-size:1.2rem;
+    }
+    @media(max-width:980px){
+      .nav-inner{position:relative}
+      .nav-links{
+        display:none;
+        position:absolute;
+        top:56px;
+        left:0;
+        right:0;
+        background:var(--nav-red);
+        padding:12px;
+        margin:0;
+        flex-direction:column;
+        gap:.6rem;
+      }
+      .nav-links.open{display:flex}
+      .nav-toggle{display:inline-block}
+    }
+
+    .container{
+      width:min(var(--container),92%);
+      margin:0 auto;
+    }
+
+    /* HERO */
+    .hero{
+      color:#fff;
+      padding:18px 0 10px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:14px;
+      align-items:center;
+    }
+    .hero h1{
+      margin:0 0 4px;
+      font-size:clamp(1.6rem,1.1rem + 2vw,2.2rem);
+    }
+    .hero .sub{
+      margin:0;
+      font-size:1.15rem;
+      font-weight:500;
+      color:#FFFFFF !important;
+      -webkit-text-fill-color:#FFFFFF !important;
+      opacity:.96;
+    }
+    @media(max-width:640px){
+      .hero-grid{grid-template-columns:1fr}
+    }
+
+    /* Badge */
+    .badge{
+      position:relative;
+      width:var(--badge);
+      height:var(--badge);
+    }
+    .badge .ring{
+      position:absolute;
+      inset:0;
+      background:#fff;
+      border-radius:50%;
+      box-shadow:0 2px 10px rgba(0,0,0,.25);
+    }
+    .badge .inner{
+      position:absolute;
+      left:var(--ring);
+      top:var(--ring);
+      width:calc(var(--badge) - 2*var(--ring));
+      height:calc(var(--badge) - 2*var(--ring));
+      background:var(--inner-red);
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+    }
+    .badge img{
+      width:80%;
+      height:80%;
+      object-fit:contain;
+      display:block;
+    }
+
+    /* CARD / FORM */
+    .card{
+      background:var(--card-bg);
+      border:1px solid var(--card-bd);
+      border-radius:14px;
+      padding:18px 16px;
+      box-shadow:0 10px 24px rgba(0,0,0,.25),
+                 inset 0 1px 0 rgba(255,255,255,.06);
+      margin-bottom:16px;
+      color:#fff;
+    }
+    .card h2{
+      margin:.2rem 0 .6rem;
+      font-size:1.2rem;
+      color:#fff;
+    }
+    .card p{
+      color:#fff;
+      margin:.4rem 0 1rem;
+    }
+
+    form{
+      display:grid;
+      gap:10px;
+    }
+    label{
+      display:block;
+      font-weight:600;
+      color:#fff;
+    }
+    input[type="text"],
+    input[type="email"],
+    select{
+      width:100%;
+      margin-top:6px;
+      padding:10px 12px;
+      border-radius:10px;
+      border:1px solid var(--input-bd);
+      background:var(--input-bg);
+      color:var(--text);
+    }
+    input::placeholder{
+      color:#A3AEC2;
+    }
+
+    .consent{
+      display:flex;
+      align-items:flex-start;
+      gap:.5rem;
+      margin-top:.2rem;
+      color:#fff;
+    }
+    .consent input[type="checkbox"]{
+      margin-top:.2rem;
+      flex-shrink:0;
+    }
+    .consent a{
+      color:inherit;
+    }
+
+    /* CTA Button: Weißer Button mit roter Schrift (TaskSieve) */
+    .btn{
+      display:inline-block;
+      align-self:start;
+      padding:.7rem 1rem;
+      border-radius:12px;
+      border:1px solid var(--btn-bd,#FFFFFF);
+      background:var(--btn-bg,#FFFFFF);
+      font-weight:800;
+      text-decoration:none;
+      text-align:left;
+      line-height:1.3;
+    }
+    .btn--inverse-ts{
+      color:var(--ts-red) !important;
+      -webkit-text-fill-color:var(--ts-red) !important;
+    }
+    .btn--inverse-ts span{
+      display:block;
+      color:var(--ts-red) !important;
+      -webkit-text-fill-color:var(--ts-red) !important;
+    }
+
+    /* Success flash */
+    .flash{
+      position:relative;
+      margin:8px 0 14px;
+      padding:12px 14px;
+      border-radius:10px;
+      background:#E7F6EF;
+      color:#096D48;
+      border:1px solid #BFE7D2;
+      box-shadow:0 3px 12px rgba(0,0,0,.06);
+      opacity:0;
+      transform:translateY(-6px);
+      transition:opacity .2s ease, transform .2s ease;
+    }
+    .flash.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+    .flash small{
+      display:block;
+      font-size:12px;
+      color:#64748B;
+      margin-top:4px;
+    }
+
+    /* Footer */
+    .footbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:.8rem;
+      flex-wrap:wrap;
+    }
+    .legal a{
+      margin-right:.6rem;
+      color:#fff;
+      text-decoration:none;
+    }
+    .sep{
+      margin:0 .3rem;
+      opacity:.85;
+      color:#fff;
+    }
+    footer small{
+      color:#fff;
+    }
+  </style>
+
+  <noscript><style>.section{display:block !important}</style></noscript>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="/">Home</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/products/changewise/">ChangeWise</a></li>
+        <li><a href="/products/slackdigest/">SlackDigest</a></li>
+        <li><a href="/products/tasksieve/">TaskSieve</a></li>
+        <li><strong>DE</strong> | <a href="/en/contact_tasksieve.html">EN</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle"
+        aria-label="Menü"
+        aria-controls="navLinks"
+        aria-expanded="false">☰</button>
+    </div>
+  </nav>
+</header>
+
+<main class="container">
+
+  <!-- HERO: TaskSieve -->
+  <section class="hero" id="hero">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <h1>TaskSieve</h1>
+        <p class="sub">
+          Demo starten: Du wählst Modus &amp; Quellen – wir ordnen die Aufgaben nach Wirkung &amp; Dringlichkeit.
+        </p>
+      </div>
+      <div class="badge" aria-hidden="true">
+        <span class="ring"></span>
+        <span class="inner">
+          <img src="/assets/brand/tasksieve_logo.svg" alt="">
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM: TaskSieve -->
+  <section class="card section">
+    <h2>TaskSieve – Schnell testen</h2>
+    <p>Ohne Import starten: Demo-Inbox laden und Priorisierung live erleben.</p>
+
+    <form action="https://formspree.io/f/mnnggabe" method="POST" autocomplete="on">
+      <input type="hidden" name="product" value="tasksieve">
+      <input type="hidden" name="lang" value="de">
+      <input type="text" name="_gotcha" style="display:none">
+
+      <label>Name
+        <input type="text" name="name" autocomplete="name" required>
+      </label>
+
+      <label>E-Mail
+        <input type="email" name="email" autocomplete="email" required>
+      </label>
+
+      <label>Modus
+        <select name="mode" required>
+          <option value="demo">Demo-Inbox</option>
+          <option value="live">Später eigene Quellen verbinden</option>
+        </select>
+      </label>
+
+      <label>Quellen (optional)
+        <input type="text" name="sources" placeholder="E-Mail, Notizen, Slack">
+      </label>
+
+      <div class="consent">
+        <input id="c2" type="checkbox" name="consent" required>
+        <label for="c2">Ich stimme der Verarbeitung gemäß <a href="/datenschutz.html">Datenschutz</a> zu.</label>
+      </div>
+
+      <button class="btn btn--inverse-ts" type="submit">
+        <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
+          Demo starten
+        </span>
+        <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
+          Demo-Beispiel &amp; weitere Infos kommen direkt zu dir. Kein Spam, kein Newsletter.
+        </span>
+      </button>
+
+      <input type="hidden" name="_subject" value="[Website] TaskSieve Demo">
+      <input type="hidden" name="_next" value="/contact_tasksieve.html?success=1">
+    </form>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footbar">
+    <nav class="legal" aria-label="Footer">
+      <a href="/impressum.html">Impressum</a><span class="sep" aria-hidden="true"> · </span>
+      <a href="/datenschutz.html">Datenschutz</a>
+    </nav>
+    <small>© ChangeWise • SlackDigest • TaskSieve</small>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Burger-Menü
+  var t=document.getElementById('navToggle'),
+      l=document.getElementById('navLinks');
+  if(t && l){
+    t.addEventListener('click',function(){
+      var o=l.classList.toggle('open');
+      t.setAttribute('aria-expanded',o?'true':'false');
+    });
+  }
+
+  // Success Flash (?success=1)
+  try{
+    var sp=new URLSearchParams(location.search);
+    if(sp.get('success')==='1'){
+      var host=document.querySelector('.card.section');
+      if(host){
+        var box=document.createElement('div');
+        box.className='flash';
+        box.innerHTML='Danke — deine Nachricht ist eingegangen.<small>Wir melden uns zeitnah mit dem nächsten Schritt.</small>';
+        var f=host.querySelector('form');
+        if(f) f.parentNode.insertBefore(box,f);
+        setTimeout(function(){ box.classList.add('show'); },60);
+        setTimeout(function(){
+          if(box&&box.parentNode) box.parentNode.removeChild(box);
+        },8000);
+      }
+    }
+  }catch(e){}
+
+  // Double-Click Guard
+  try{
+    document.addEventListener('submit',function(e){
+      var f=e.target;
+      if(!f||f.tagName!=='FORM') return;
+      var btn=f.querySelector('button[type="submit"]');
+      if(btn && !btn.disabled){
+        btn.disabled=true;
+        btn.setAttribute('aria-disabled','true');
+        btn.dataset._label=btn.textContent;
+        btn.textContent='Senden…';
+      }
+    },{capture:true});
+  }catch(e){}
+})();
+</script>
+
+</body>
+</html>
