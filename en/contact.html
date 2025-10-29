@@ -262,6 +262,20 @@
     }
     .legal a{margin-right:.6rem}
     .sep{margin:0 .3rem;opacity:.85}
+  /* SlackDigest (EN) – remove inner green halo in logo badge */
+.badge .inner{
+  background: #FFFFFF !important;   /* was #0C6C48 */
+}
+
+.badge img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  /* if a hairline remains due to SVG padding, uncomment the next two lines:
+  transform: scale(1.02);
+  */
+}
   </style>
 </head>
 <body>
