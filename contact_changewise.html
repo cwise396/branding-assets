@@ -1,30 +1,32 @@
-<!doctype html>
-<html lang="de" class="theme-cw">
+ <!doctype html>
+<html lang="de">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
   <title>Kontakt – ChangeWise</title>
-  <meta name="description" content="ChangeWise Kurz-Briefing & Mini-Diagnose: 3–4 Angaben, sofort klare Botschaft & nächste Schritte. Vertraulich.">
-
+  <meta name="description" content="ChangeWise Kurz-Briefing & Mini-Diagnose: 3–4 Angaben, sofort klare Kernbotschaft & priorisierte nächste Schritte – vertraulich.">
   <style>
     :root{
-      --nav-red:#AE0F12;
-      --page-bg:#0E3960;      /* blaues Theme */
+      --page-bg:#0E3960; /* dein ChangeWise Blau */
       --text:#FFFFFF;
-      --muted:#CBD5E1;
+
+      --nav-red:#AE0F12; /* Header bleibt rot (Brand Spine) */
 
       --card-bg:rgba(255,255,255,.06);
       --card-bd:rgba(255,255,255,.28);
 
-      --input-bg:rgba(13,20,34,.3);
+      --input-bg:rgba(0,0,0,.35);
       --input-bd:rgba(255,255,255,.4);
 
-      --cw-blue:#0E3960;
+      --btn-bg:#FFFFFF;
+      --btn-bd:#FFFFFF;
+      --btn-bg-h:#F7F7F7;
+
+      --cw-blue:#0E3960; /* Button-Textfarbe auf weißem Button */
 
       --container:980px;
       --badge:84px;
-      --ring:5px;
     }
 
     *{box-sizing:border-box}
@@ -36,7 +38,6 @@
       font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
     }
 
-    /* NAV */
     .site-header{position:sticky;top:0;z-index:50;width:100%;background:var(--nav-red)}
     .nav{background:var(--nav-red)}
     .nav-inner{
@@ -48,12 +49,7 @@
       align-items:center;
       justify-content:space-between;
     }
-    .brand{
-      color:#fff;
-      font-weight:800;
-      text-decoration:none;
-      white-space:nowrap;
-    }
+    .brand{color:#fff;font-weight:800;text-decoration:none;white-space:nowrap}
     .nav-links{
       list-style:none;
       display:flex;
@@ -61,31 +57,22 @@
       margin:0;
       padding:0;
       align-items:center;
-    }
-    .nav-links a{
       color:#fff;
-      text-decoration:none;
     }
-    .nav-toggle{
-      display:none;
-      background:none;
-      border:0;
-      color:#fff;
-      font-size:1.2rem;
-    }
-    @media(max-width:980px){
+    .nav-links a{color:#fff;text-decoration:none}
+    .nav-toggle{display:none;background:none;border:0;color:#fff;font-size:1.2rem}
+    @media (max-width:980px){
       .nav-inner{position:relative}
       .nav-links{
         display:none;
         position:absolute;
         top:56px;
-        left:0;
-        right:0;
+        left:0;right:0;
         background:var(--nav-red);
         padding:12px;
         margin:0;
         flex-direction:column;
-        gap:.6rem;
+        gap:.6rem
       }
       .nav-links.open{display:flex}
       .nav-toggle{display:inline-block}
@@ -96,11 +83,8 @@
       margin:0 auto;
     }
 
-    /* HERO */
-    .hero{
-      color:#fff;
-      padding:18px 0 10px;
-    }
+    /* Hero */
+    .hero{color:#fff;padding:18px 0 10px}
     .hero-grid{
       display:grid;
       grid-template-columns:1fr auto;
@@ -110,16 +94,18 @@
     .hero h1{
       margin:0 0 4px;
       font-size:clamp(1.6rem,1.1rem + 2vw,2.2rem);
+      line-height:1.2;
     }
     .hero .sub{
       margin:0;
       font-size:1.15rem;
       font-weight:500;
-      color:#FFFFFF !important;
-      -webkit-text-fill-color:#FFFFFF !important;
+      color:#FFFFFF;
+      -webkit-text-fill-color:#FFFFFF;
       opacity:.96;
+      line-height:1.4;
     }
-    @media(max-width:640px){
+    @media (max-width:640px){
       .hero-grid{grid-template-columns:1fr}
     }
 
@@ -134,14 +120,14 @@
       inset:0;
       background:#fff;
       border-radius:50%;
-      box-shadow:0 2px 10px rgba(0,0,0,.25);
+      box-shadow:0 2px 10px rgba(0,0,0,.35);
     }
     .badge .inner{
       position:absolute;
-      left:var(--ring);
-      top:var(--ring);
-      width:calc(var(--badge) - 2*var(--ring));
-      height:calc(var(--badge) - 2*var(--ring));
+      left:5px;
+      top:5px;
+      width:calc(var(--badge) - 10px);
+      height:calc(var(--badge) - 10px);
       background:#0E3960;
       border-radius:50%;
       display:grid;
@@ -155,13 +141,12 @@
       display:block;
     }
 
-    /* CARD / FORM */
     .card{
       background:var(--card-bg);
       border:1px solid var(--card-bd);
       border-radius:14px;
       padding:18px 16px;
-      box-shadow:0 10px 24px rgba(0,0,0,.25),
+      box-shadow:0 10px 24px rgba(0,0,0,.4),
                  inset 0 1px 0 rgba(255,255,255,.06);
       margin-bottom:16px;
       color:#fff;
@@ -171,20 +156,10 @@
       font-size:1.2rem;
       color:#fff;
     }
-    .card p{
-      color:#fff;
-      margin:.4rem 0 1rem;
-    }
+    .card p{margin:.4rem 0 .8rem;color:#fff}
 
-    form{
-      display:grid;
-      gap:10px;
-    }
-    label{
-      display:block;
-      font-weight:600;
-      color:#fff;
-    }
+    form{display:grid;gap:10px}
+    label{display:block;font-weight:600;color:#fff}
     input[type="text"],
     input[type="email"],
     input[type="url"],
@@ -198,9 +173,7 @@
       color:#fff;
     }
     input::placeholder,
-    textarea::placeholder{
-      color:rgba(255,255,255,.7);
-    }
+    textarea::placeholder{color:rgba(255,255,255,.7)}
     textarea{resize:vertical}
 
     .consent{
@@ -209,28 +182,29 @@
       gap:.5rem;
       margin-top:.2rem;
       color:#fff;
+      font-size:.9rem;
+      line-height:1.4;
     }
     .consent input[type="checkbox"]{
       margin-top:.2rem;
       flex-shrink:0;
     }
-    .consent a{
-      color:inherit;
-    }
+    .consent a{color:#fff;text-decoration:underline}
 
-    /* CTA Button: Weißer Button mit BLAUER Schrift (ChangeWise) */
+    /* CTA Button (weiß pill / blaue Schrift) */
     .btn{
       display:inline-block;
-      align-self:start;
       padding:.7rem 1rem;
       border-radius:12px;
-      border:1px solid #FFFFFF;
-      background:#FFFFFF;
-      font-weight:800;
+      border:1px solid var(--btn-bd);
+      background:var(--btn-bg);
       text-decoration:none;
+      font-weight:800;
       text-align:left;
       line-height:1.3;
     }
+    .btn:hover{background:var(--btn-bg-h)}
+
     .btn--inverse-cw{
       color:#0E3960 !important;
       -webkit-text-fill-color:#0E3960 !important;
@@ -241,16 +215,15 @@
       -webkit-text-fill-color:#0E3960 !important;
     }
 
-    /* Success flash */
     .flash{
       position:relative;
       margin:8px 0 14px;
       padding:12px 14px;
       border-radius:10px;
-      background:#E7F6EF;
-      color:#096D48;
-      border:1px solid #BFE7D2;
-      box-shadow:0 3px 12px rgba(0,0,0,.06);
+      background:#fff;
+      color:#000;
+      border:1px solid rgba(255,255,255,.6);
+      box-shadow:0 3px 12px rgba(0,0,0,.4);
       opacity:0;
       transform:translateY(-6px);
       transition:opacity .2s ease, transform .2s ease;
@@ -262,11 +235,20 @@
     .flash small{
       display:block;
       font-size:12px;
-      color:#64748B;
+      color:#333;
       margin-top:4px;
     }
 
-    /* Footer */
+    footer{
+      margin:24px 0 40px;
+      color:#fff;
+      font-size:.9rem;
+      line-height:1.4;
+    }
+    footer a{
+      color:#fff;
+      text-decoration:none;
+    }
     .footbar{
       display:flex;
       justify-content:space-between;
@@ -274,22 +256,9 @@
       gap:.8rem;
       flex-wrap:wrap;
     }
-    .legal a{
-      margin-right:.6rem;
-      color:#fff;
-      text-decoration:none;
-    }
-    .sep{
-      margin:0 .3rem;
-      opacity:.85;
-      color:#fff;
-    }
-    footer small{
-      color:#fff;
-    }
+    .legal a{margin-right:.6rem}
+    .sep{margin:0 .3rem;opacity:.85}
   </style>
-
-  <noscript><style>.section{display:block !important}</style></noscript>
 </head>
 <body>
 
@@ -303,26 +272,23 @@
         <li><a href="/products/tasksieve/">TaskSieve</a></li>
         <li><strong>DE</strong> | <a href="/en/contact_changewise.html">EN</a></li>
       </ul>
-      <button class="nav-toggle" id="navToggle"
-        aria-label="Menü"
-        aria-controls="navLinks"
-        aria-expanded="false">☰</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Menü" aria-controls="navLinks" aria-expanded="false">☰</button>
     </div>
   </nav>
 </header>
 
 <main class="container">
 
-  <!-- HERO: ChangeWise -->
-  <section class="hero" id="hero">
+  <!-- HERO -->
+  <section class="hero">
     <div class="hero-grid">
       <div class="hero-text">
         <h1>ChangeWise</h1>
         <p class="sub">
-          Kurz-Briefing &amp; Mini-Diagnose: 3–4 Angaben genügen – du bekommst in Minuten Fokus, Kernbotschaft &amp; klare nächste Schritte.
+          Kurz-Briefing &amp; Mini-Diagnose: 3–4 Angaben genügen – du bekommst Fokus, Kernbotschaft &amp; konkrete nächste Schritte.
         </p>
       </div>
-      <div class="badge" aria-hidden="true">
+     <div class="badge" aria-hidden="true">
         <span class="ring"></span>
         <span class="inner">
           <img src="/assets/brand/changewise_logo.svg" alt="">
@@ -331,8 +297,8 @@
     </div>
   </section>
 
-  <!-- FORM: ChangeWise -->
-  <section class="card section">
+  <!-- FORM CARD -->
+  <section class="card">
     <h2>ChangeWise – Kurz-Briefing &amp; Mini-Diagnose</h2>
     <p>3–4 Angaben → Sofort-Ergebnis mit konkreten Empfehlungen.</p>
 
@@ -360,7 +326,9 @@
 
       <div class="consent">
         <input id="c3" type="checkbox" name="consent" required>
-        <label for="c3">Ich stimme der Verarbeitung gemäß <a href="/datenschutz.html">Datenschutz</a> zu.</label>
+        <label for="c3">
+          Ich stimme der Verarbeitung gemäß <a href="/datenschutz.html">Datenschutz</a> zu.
+        </label>
       </div>
 
       <button class="btn btn--inverse-cw" type="submit">
@@ -378,42 +346,41 @@
     </form>
   </section>
 
-</main>
+  <footer>
+    <div class="footbar">
+      <nav class="legal" aria-label="Footer">
+        <a href="/impressum.html">Impressum</a><span class="sep" aria-hidden="true"> · </span>
+        <a href="/datenschutz.html">Datenschutz</a>
+      </nav>
+      <small>© ChangeWise • SlackDigest • TaskSieve</small>
+    </div>
+  </footer>
 
-<footer>
-  <div class="container footbar">
-    <nav class="legal" aria-label="Footer">
-      <a href="/impressum.html">Impressum</a><span class="sep" aria-hidden="true"> · </span>
-      <a href="/datenschutz.html">Datenschutz</a>
-    </nav>
-    <small>© ChangeWise • SlackDigest • TaskSieve</small>
-  </div>
-</footer>
+</main>
 
 <script>
 (function(){
-  // Burger-Menü
   var t=document.getElementById('navToggle'),
       l=document.getElementById('navLinks');
-  if(t && l){
+  if(t&&l){
     t.addEventListener('click',function(){
       var o=l.classList.toggle('open');
       t.setAttribute('aria-expanded',o?'true':'false');
     });
   }
 
-  // Success Flash (?success=1)
+  // success flash
   try{
     var sp=new URLSearchParams(location.search);
     if(sp.get('success')==='1'){
-      var host=document.querySelector('.card.section');
+      var host=document.querySelector('.card');
       if(host){
         var box=document.createElement('div');
         box.className='flash';
         box.innerHTML='Danke — deine Nachricht ist eingegangen.<small>Wir melden uns zeitnah mit dem nächsten Schritt.</small>';
         var f=host.querySelector('form');
         if(f) f.parentNode.insertBefore(box,f);
-        setTimeout(function(){ box.classList.add('show'); },60);
+        setTimeout(function(){box.classList.add('show');},60);
         setTimeout(function(){
           if(box&&box.parentNode) box.parentNode.removeChild(box);
         },8000);
@@ -421,16 +388,15 @@
     }
   }catch(e){}
 
-  // Double-Click Guard
+  // prevent double submit
   try{
     document.addEventListener('submit',function(e){
       var f=e.target;
-      if(!f||f.tagName!=='FORM') return;
+      if(!f||f.tagName!=='FORM')return;
       var btn=f.querySelector('button[type="submit"]');
-      if(btn && !btn.disabled){
+      if(btn&&!btn.disabled){
         btn.disabled=true;
         btn.setAttribute('aria-disabled','true');
-        btn.dataset._label=btn.textContent;
         btn.textContent='Senden…';
       }
     },{capture:true});
