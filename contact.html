@@ -124,18 +124,18 @@
     border-radius:50%;
     box-shadow:0 2px 10px rgba(0,0,0,.35);
   }
-   .badge .inner{
-  position:absolute;
-  left:5px;
-  top:5px;
-  width:calc(var(--badge) - 10px);
-  height:calc(var(--badge) - 10px);
-  background:transparent; /* kein farbiger Hintergrund mehr */
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  overflow:hidden;
-}
+  .badge .inner{
+    position:absolute;
+    left:5px;
+    top:5px;
+    width:calc(var(--badge) - 10px);
+    height:calc(var(--badge) - 10px);
+    background:#0C6C48; /* jetzt grün, kein Rot-Erbe */
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    overflow:hidden;
+  }
    .badge img{
   width:100%;        /* statt 80% */
   height:100%;       /* statt 80% */
@@ -262,43 +262,7 @@
   }
   .legal a{margin-right:.6rem}
   .sep{margin:0 .3rem;opacity:.85}
-/* SlackDigest (DE) – freundlichere Feldfarbe */
-#sec-sd input[type="text"],
-#sec-sd input[type="email"],
-#sec-sd input[type="url"],
-#sec-sd select,
-#sec-sd textarea{
-  background: rgba(9,108,72,.16);
-  border-color: rgba(9,108,72,.45);
-}
-
-#sec-sd input:focus,
-#sec-sd select:focus,
-#sec-sd textarea:focus{
-  outline: none;
-  border-color: rgba(9,108,72,.8);
-  box-shadow: 0 0 0 3px rgba(9,108,72,.30);
-}
-/* SlackDigest (DE) – form fields tint (single-tool page) */
-.card form input[type="text"],
-.card form input[type="email"],
-.card form input[type="url"],
-.card form select,
-.card form textarea{
-  background: rgba(9,108,72,.16) !important;
-  border-color: rgba(9,108,72,.45) !important;
-  color: #FFFFFF;
-}
-
-.card form input:focus,
-.card form select:focus,
-.card form textarea:focus{
-  outline: none;
-  border-color: rgba(9,108,72,.8) !important;
-  box-shadow: 0 0 0 3px rgba(9,108,72,.30);
-}
-
-  </style>
+</style>
 
 </head>
 <body>
