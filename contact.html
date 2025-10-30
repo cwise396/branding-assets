@@ -179,6 +179,7 @@
   textarea::placeholder{color:rgba(255,255,255,.7)}
   textarea{resize:vertical}
 /* SlackDigest – Safari-Fix für Takt/Zustellung (DE+EN angeglichen) */
+ /* SlackDigest – Safari-Fix für Takt/Zustellung (DE+EN angeglichen) */
 input[type="text"],
 input[type="email"],
 input[type="url"],
@@ -186,24 +187,30 @@ textarea,
 select{
   -webkit-appearance:none;
   appearance:none;
-  background:rgb(12,99,48) !important;              /* dein Grün */
+  background:rgb(12,108,72) !important;             /* neues Grün */
   border:1px solid rgba(255,255,255,.35) !important;
-  min-height:42px;                                  /* gleiche Höhe wie Chrome */
+  min-height:42px;
   border-radius:10px;
   color:#FFFFFF;
   font:inherit;
 }
 
-/* Platzhalter sauber halten */
+/* Platzhalter */
 input::placeholder,
 textarea::placeholder{
   color:rgba(229,231,235,.85);
 }
 
-/* select-Pfeil nicht stören lassen */
+/* select-Pfeil */
 select{
   background-position:right 10px center;
   background-repeat:no-repeat;
+}
+
+/* falls Safari die Card-Regeln stärker zieht */
+.card input,
+.card select{
+  background:rgb(12,108,72) !important;
 }
 
   .consent{
