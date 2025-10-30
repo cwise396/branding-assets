@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SlackDigest – Getting Started</title>
-  <meta name="description" content="See a sample digest, start in 2 minutes, and define channels, cadence and delivery. SlackDigest is built to respond instantly – no support needed.">
+  <meta name="description" content="See a sample digest, start in 2 minutes, and define channels, cadence and delivery. Built to react instantly – no support needed.">
   <meta name="color-scheme" content="dark">
   <style>
     :root{
       --container:1100px;
-      --page-bg:#0C6C48;       /* SlackDigest green – like contact */
+      --page-bg:#0C6C48;       /* SlackDigest green */
       --text:#FFFFFF;
       --muted:rgba(229,231,235,.82);
       --nav-red:#AE0F12;
@@ -17,7 +17,6 @@
       --card-bd:rgba(255,255,255,.22);
       --btn-bg:#FFFFFF;
       --btn-fg:#0C6C48;
-      --ring:#FFFFFF; --ring-w:5px;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -29,7 +28,7 @@
     }
     a{color:#FFFFFF;text-decoration:none}
 
-    /* Header / Nav (same spine as products) */
+    /* Header / Nav */
     .site-header{position:sticky;top:0;z-index:50;width:100%;background:var(--nav-red)}
     .nav{background:var(--nav-red)}
     .nav-inner{
@@ -102,9 +101,9 @@
       inset:0;
       width:98px;
       height:98px;
-      z-index:2;
-      pointer-events:none;
       display:block;
+      pointer-events:none;
+      z-index:2;
     }
     .product-logo .logo-ring svg{
       width:100%;
@@ -117,13 +116,13 @@
       left:5px;
       width:88px;
       height:88px;
-      display:block;
       border-radius:50%;
-      z-index:1;
+      display:block;
       background:transparent;
+      z-index:1;
     }
 
-    /* Cards Grid */
+    /* Cards */
     .section-cards{
       max-width:var(--container);
       margin:0 auto;
@@ -140,26 +139,19 @@
       background:var(--card-bg);
       border:1px solid var(--card-bd);
       border-radius:14px;
-      padding:1.05rem 1rem 1.05rem;
+      padding:1.05rem 1rem;
       box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06);
       color:#FFFFFF;
     }
-    .card h2,
-    .card h3{
-      margin:0 0 .4rem;
-      font-size:1.1rem;
-    }
-    .card p,
-    .card li{
-      margin:.35rem 0;
-    }
-    .card small{opacity:.7}
+    .card h2,.card h3{margin:0 0 .4rem;font-size:1.1rem}
+    .card p,.card li{margin:.35rem 0}
     .card ul{list-style:disc;padding-left:1.2rem}
+    .card small{opacity:.75}
     .card code{
       background:rgba(0,0,0,.25);
-      padding:.08rem .4rem;
+      padding:.1rem .4rem;
       border-radius:999px;
-      font-size:.72rem;
+      font-size:.7rem;
     }
 
     @media (max-width:1024px){
@@ -169,7 +161,7 @@
       .card{grid-column:span 12}
     }
 
-    /* CTA button – aligned with contact SlackDigest */
+    /* CTA */
     .btn{
       display:inline-block;
       padding:.7rem 1rem;
@@ -231,9 +223,8 @@
     <div class="hero-text">
       <h1>SlackDigest – Getting Started</h1>
       <p class="lead">See a sample, start in 2 minutes, activate “important first”.</p>
-      <p class="meta">Built to react instantly – no support, no call, no onboarding slot.</p>
+      <p class="meta">No call, no support ticket – product responds immediately.</p>
     </div>
-
     <div class="logo-col">
       <div class="product-logo">
         <span class="logo-ring" aria-hidden="true">
@@ -241,23 +232,17 @@
             <circle cx="50" cy="50" r="47.5" fill="none" stroke="#FFFFFF" stroke-width="5" />
           </svg>
         </span>
-        <img class="logo-img"
-             src="/assets/brand/slackdigest_logo.svg"
-             alt="SlackDigest Logo"
-             width="88"
-             height="88"
-             loading="lazy"
-             decoding="async" />
+        <img class="logo-img" src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo" loading="lazy" decoding="async">
       </div>
     </div>
   </div>
 
   <section class="section-cards" aria-label="SlackDigest – Getting started steps">
     <div class="grid">
-      <!-- Card 1: Sample -->
+      <!-- 1 -->
       <article class="card">
         <h3>1) Sample digest</h3>
-        <p>This is what users get: compact, high-signal, action-first.</p>
+        <p>What users get in real projects:</p>
         <ul>
           <li>[Project X] Launch blocker resolved → <strong>Next:</strong> QA at 15:00</li>
           <li>[Sales] Deal ACME +22k → <strong>Next:</strong> get signature</li>
@@ -266,36 +251,36 @@
         <p><small>One glance, one link – done.</small></p>
       </article>
 
-      <!-- Card 2: Quick start -->
+      <!-- 2 -->
       <article class="card">
         <h3>2) Quick start (2 min)</h3>
-        <p>Just tell the system what to watch.</p>
+        <p>Same flow as on the contact page:</p>
         <ol style="margin:.35rem 0 .6rem;padding-left:1.1rem">
-          <li>Pick channels (e.g. <code>#sales</code>, <code>#support</code>)</li>
+          <li>Pick channels (<code>#sales</code>, <code>#support</code> …)</li>
           <li>Choose cadence: daily / weekly</li>
-          <li>Select delivery: email / Slack DM</li>
+          <li>Select delivery: email or Slack</li>
         </ol>
-        <p><small>That’s the same flow as on the contact page → consistent.</small></p>
+        <p><small>Everything is prestructured → no support needed.</small></p>
       </article>
 
-      <!-- Card 3: Important first -->
+      <!-- 3 -->
       <article class="card">
         <h3>3) “Important first”</h3>
-        <p>What the user actually experiences:</p>
+        <p>Why this feels intelligent:</p>
         <ul>
           <li>Decisions & blockers on top</li>
-          <li>Owner + next step for each entry</li>
+          <li>Owner + next step per item</li>
           <li>Link back to original context</li>
           <li>Filters for channels / teams / keywords</li>
         </ul>
-        <p><small>Result: no follow-up mails needed.</small></p>
+        <p><small>Product demonstrates competence – not explanation.</small></p>
       </article>
 
-      <!-- Card 4: Delivery & CTA -->
+      <!-- 4 -->
       <article class="card">
         <h3>4) Delivery & start now</h3>
-        <p>Delivery: Slack or email, cadence: daily, 2×/week or weekly.</p>
-        <p>All automated, no manual review step, no waiting.</p>
+        <p>Delivery: Slack or email, cadence: daily, 2×/week, weekly.</p>
+        <p>All automated, no manual review.</p>
         <button class="btn" type="button" onclick="location.href='/en/contact_slackdigest.html'">
           <span>Request test digest</span>
           <small>Demo digest & next steps will follow right away. No spam, no newsletter.</small>
@@ -306,8 +291,7 @@
 </main>
 
 <footer>
-  <a href="/en/imprint/">Imprint</a> · <a href="/en/privacy/">Privacy</a>
-  <br>
+  <a href="/en/imprint/">Imprint</a> · <a href="/en/privacy/">Privacy</a><br>
   <small>© ChangeWise • SlackDigest • TaskSieve</small>
 </footer>
 
