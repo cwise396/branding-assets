@@ -2,182 +2,85 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>SlackDigest – Getting Started</title>
-  <meta name="description" content="See a sample, start in 2 minutes, and turn on “Important first” – SlackDigest Getting Started.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
+  <title>SlackDigest – Getting Started</title>
+  <meta name="description" content="SlackDigest – see a live sample and start your own test digest in 2 minutes. Important items first, one glance, one link — done.">
   <style>
     :root{
-      --container:1100px;
+      --page-bg:#0C6C48; /* SlackDigest green */
+      --text:#FFFFFF;
+      --muted:#D0E5D7;
       --nav-red:#AE0F12;
-      --bg:#0B1220; --fg:#FFFFFF; --muted:#C7CBD3;
-      --card:#0C6C48;               /* SlackDigest green */
-      --card-bd:rgba(255,255,255,.24);
-      --btn-fg:#0C6C48;
-      --ring:#FFFFFF; --ring-w:5px; --badge:98px; --logo:88px;
+      --container:960px;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;background:var(--bg);color:var(--fg);
-      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
-
-    /* NAV */
-    .site-header{position:sticky;top:0;z-index:50;width:100%;background:var(--nav-red)}
-    .nav-inner{max-width:var(--container);margin:0 auto;padding:.9rem 1rem;
-      display:flex;align-items:center;justify-content:space-between}
-    .brand{color:#fff;font-weight:800;text-decoration:none;white-space:nowrap}
-    .nav-links{list-style:none;display:flex;gap:1rem;margin:0;padding:0;align-items:center}
-    .nav-links a{color:#fff;text-decoration:none}
-    .nav-toggle{display:none;background:none;border:0;color:#fff;font-size:1.2rem}
-    @media (max-width:980px){
-      .nav-inner{position:relative}
-      .nav-links{display:none;position:absolute;top:56px;left:0;right:0;background:var(--nav-red);
-        padding:1rem;margin:0;flex-direction:column;gap:.6rem}
-      .nav-links.open{display:flex}
-      .nav-toggle{display:inline-block}
+    body{
+      margin:0;
+      background:var(--page-bg);
+      color:var(--text);
+      font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
     }
-
-    /* HERO */
-    .hero{padding-top:14mm}
-    .hero-header{max-width:var(--container);margin:0 auto;padding:0 1rem;
-      display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;align-items:end}
-    .hero-text{grid-column:1/9}
-    .hero h1{margin:0 0 .2rem;font-size:clamp(1.8rem,4vw,3rem);line-height:1.1}
-    .hero p.lead{margin:0;opacity:.95;font-weight:700;font-size:clamp(1.1rem,2.4vw,1.35rem)}
-    .logo-col{grid-column:9/13;justify-self:start;display:flex;align-items:center}
-    .badge{position:relative;width:var(--badge);height:var(--badge)}
-    .badge .ring{position:absolute;inset:0}
-    .badge .ring svg{display:block;width:100%;height:100%}
-    .badge img{position:absolute;top:5px;left:5px;width:var(--logo);height:var(--logo);border-radius:50%;display:block}
-
-    @media (max-width:640px){
-      .hero-header{grid-template-columns:1fr;text-align:center}
-      .hero-text{grid-column:1/-1}
-      .logo-col{grid-column:1/-1;justify-self:center}
+    .container{width:min(var(--container),92%);margin:0 auto;padding:1.4rem 0;}
+    h1{font-size:clamp(1.8rem,1.2rem + 2vw,2.6rem);margin-bottom:.4rem;}
+    h2{margin-top:1.8rem;font-size:1.3rem;}
+    p,li{color:var(--muted);}
+    ul{margin:.4rem 0 1rem 1.2rem;}
+    a{color:#fff;text-decoration:underline;text-underline-offset:3px;}
+    button{
+      margin-top:1.4rem;
+      background:#fff;
+      color:#0C6C48;
+      border:1px solid #fff;
+      border-radius:12px;
+      padding:.75rem 1rem;
+      font-weight:800;
+      font-size:1.05rem;
+      cursor:pointer;
     }
-
-    /* GRID / CARDS */
-    .wrap{max-width:var(--container);margin:0 auto;padding:0 1rem 2.4rem}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;margin-top:1rem}
-    .card{grid-column:span 6;background:var(--card);color:#fff;border-radius:14px;padding:1.05rem 1rem;
-      border:1px solid var(--card-bd);box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06)}
-    .card h2{margin:.2rem 0 .5rem;font-size:1.35rem}
-    .card p,.card li{margin:.35rem 0}
-    .card ul{padding-left:1.2rem}
-    .card a{color:#fff;text-decoration:underline;text-underline-offset:2px}
-    @media (max-width:960px){.card{grid-column:span 12}}
-
-    /* CTA */
-    .btn{display:inline-block;padding:.7rem 1rem;border-radius:12px;border:1px solid #fff;
-      text-decoration:none;font-weight:800;background:#fff;color:var(--btn-fg) !important;
-      -webkit-text-fill-color:var(--btn-fg) !important}
-    .muted{color:var(--muted)}
-
-    footer{max-width:var(--container);margin:2.2rem auto;padding:0 1rem 2.4rem}
-    footer a{color:#fff;text-decoration:none}
+    button:hover{background:#F7F7F7;}
+    footer{margin-top:2rem;font-size:.9rem;color:var(--muted);}
   </style>
 </head>
 <body>
-<header class="site-header">
-  <div class="nav-inner">
-    <a class="brand" href="/en/home/">Home</a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="/en/products/changewise/">ChangeWise</a></li>
-      <li><a href="/en/products/slackdigest/">SlackDigest</a></li>
-      <li><a href="/en/products/tasksieve/">TaskSieve</a></li>
-       <li><a href="/products/slackdigest/getting-started.html">DE</a></li>
-     </ul>
-    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">☰</button>
-  </div>
-</header>
+  <main class="container">
+    <h1>SlackDigest – Getting Started</h1>
+    <p><strong>Experience it — no setup, no wait, no support ticket.</strong></p>
 
-<main class="hero">
-  <div class="hero-header">
-    <div class="hero-text">
-      <h1>SlackDigest – Getting Started</h1>
-      <p class="lead">See a sample · start in 2 minutes · turn on “Important first”</p>
-    </div>
-    <div class="logo-col">
-      <div class="badge" aria-hidden="true">
-        <span class="ring">
-          <svg viewBox="0 0 100 100" fill="none">
-            <circle cx="50" cy="50" r="47.5" stroke="#FFFFFF" stroke-width="5"/>
-          </svg>
-        </span>
-        <img src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo" width="88" height="88" loading="lazy" decoding="async">
-      </div>
-    </div>
-  </div>
+    <h2>1) See a live sample</h2>
+    <p>This is what a compact digest looks like — important items first, each entry linking back to its Slack or email context:</p>
+    <ul>
+      <li>[Project X] Launch blocker resolved — <em>Maria</em> → Next: QA check at 15 : 00</li>
+      <li>[Sales] Deal ACME +22 k — <em>Ben</em> → Next: get signature</li>
+      <li>[Support] Top topic: SSO — 5 tickets → Next: update FAQ</li>
+    </ul>
+    <p><em>One glance, one link — done.</em></p>
 
-  <section class="wrap">
-    <div class="grid">
-      <!-- 1: Sample -->
-      <article class="card">
-        <h2>1) Sample digest</h2>
-        <p>This is what a compact digest looks like: important items first, each entry links back to context.</p>
-        <pre style="white-space:pre-wrap;background:rgba(0,0,0,.15);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:.8rem">
-• [Project X] Launch blocker resolved — &lt;Owner: Maria&gt; → Next: QA check at 15:00
-• [Sales] Deal ACME +22k — &lt;Owner: Ben&gt; → Next: get signature
-• [Support] Top topic: SSO — 5 tickets → Next: update FAQ
-        </pre>
-        <p class="muted">One glance, one link — done.</p>
-      </article>
+    <h2>2) Start your own digest (2 minutes)</h2>
+    <ul>
+      <li>Pick channels (e.g. #sales, #support)</li>
+      <li>Choose cadence (daily or weekly)</li>
+      <li>Select delivery (email or Slack)</li>
+    </ul>
+    <p>Click below — a test digest is prepared and sent to you right away.</p>
 
-      <!-- 2: Quick start -->
-      <article class="card">
-        <h2>2) Quick start (2 minutes)</h2>
-        <ol>
-          <li>Pick channels (e.g., <code>#sales</code>, <code>#support</code>).</li>
-          <li>Choose cadence (daily or weekly).</li>
-          <li>Select delivery (email or Slack).</li>
-        </ol>
-        <p><a class="btn" href="/en/contact/#slackdigest">Request test digest</a></p>
-        <p class="muted">Note: The button opens the contact page with SlackDigest preselected.</p>
-      </article>
+    <button onclick="location.href='/en/contact.html#slackdigest'">
+      Request test digest
+    </button>
 
-      <!-- 3: Important first -->
-      <article class="card">
-        <h2>3) “Important first” — how it works</h2>
-        <p class="muted" style="margin-top:.2rem">
-         This puts decisions and blockers on top while condensing everything else.
-        </p>
-          <ul>
-          <li>Decisions & blockers on top, the rest condensed</li>
-          <li>Owner + next step per item</li>
-          <li>Links back to context</li>
-          <li>Filters for channels/teams/keywords</li>
-        </ul>
-      </article>
+    <h2>3) “Important first” mode</h2>
+    <ul>
+      <li>Decisions and blockers on top — noise condensed</li>
+      <li>Owner + next step visible for each item</li>
+      <li>Filters for channels, teams and keywords</li>
+    </ul>
 
-      <!-- 4: Delivery & filters -->
-      <article class="card">
-        <h2>4) Delivery & filters</h2>
-        <ul>
-          <li><strong>Delivery:</strong> Slack or email</li>
-          <li><strong>Filters:</strong> channels, people, keywords</li>
-          <li><strong>Cadence:</strong> daily, 2×/week, or weekly</li>
-        </ul>
-      </article>
-    </div>
-  </section>
-</main>
+    <h2>4) Delivery & filters</h2>
+    <p>Slack or email delivery, daily or weekly cadence — filters by team or topic for signal only.</p>
 
-<footer>
-  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-    <div>
-      <a href="/en/imprint/">Imprint</a> ·
-      <a href="/en/privacy/">Privacy</a>
-    </div>
-    <small>© ChangeWise • SlackDigest • TaskSieve</small>
-  </div>
-</footer>
-
-<script>
-  // Mobile Nav
-  (function(){
-    const t=document.getElementById('navToggle'), l=document.getElementById('navLinks');
-    if (t&&l) t.addEventListener('click', ()=>{ const o=l.classList.toggle('open'); t.setAttribute('aria-expanded', o?'true':'false'); });
-  })();
-</script>
+    <footer>
+      <a href="/en/imprint.html">Imprint</a> · <a href="/en/privacy.html">Privacy</a><br>
+      © ChangeWise • SlackDigest • TaskSieve
+    </footer>
+  </main>
 </body>
 </html>
