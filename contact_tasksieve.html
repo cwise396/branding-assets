@@ -170,6 +170,24 @@
     color:#fff;
   }
   input::placeholder{color:rgba(255,255,255,.7)}
+/* Safari-/Height-Align für DE (Modus + Quellen) */
+input[type="text"],
+input[type="email"],
+input[type="url"],
+select,
+textarea{
+  -webkit-appearance:none;
+  appearance:none;
+  background:rgb(136,12,12) !important;           /* gleiche Farbe wie oben DE */
+  border:1px solid rgba(255,255,255,.4) !important;
+  min-height:42px;                                 /* gleiche Höhe wie Chrome */
+  font:inherit;
+}
+
+select{
+  background-position:right 10px center;
+  background-repeat:no-repeat;
+}
 
   .consent{
     display:flex;
