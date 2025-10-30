@@ -177,6 +177,33 @@
     }
     input::placeholder{color:rgba(255,255,255,.7)}
     select{color:#fff;background:var(--input-bg)}
+/* SlackDigest – Safari-Fix für Takt/Zustellung (DE+EN angeglichen) */
+input[type="text"],
+input[type="email"],
+input[type="url"],
+textarea,
+select{
+  -webkit-appearance:none;
+  appearance:none;
+  background:rgb(12,99,48) !important;              /* dein Grün */
+  border:1px solid rgba(255,255,255,.35) !important;
+  min-height:42px;                                  /* gleiche Höhe wie Chrome */
+  border-radius:10px;
+  color:#FFFFFF;
+  font:inherit;
+}
+
+/* Platzhalter sauber halten */
+input::placeholder,
+textarea::placeholder{
+  color:rgba(229,231,235,.85);
+}
+
+/* select-Pfeil nicht stören lassen */
+select{
+  background-position:right 10px center;
+  background-repeat:no-repeat;
+}
 
     .consent{
       display:flex;
