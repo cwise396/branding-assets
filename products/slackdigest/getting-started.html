@@ -1,183 +1,299 @@
 <!doctype html>
-<html lang="de">
+<html lang="de" class="theme-cw">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SlackDigest – Getting Started</title>
-  <meta name="description" content="Beispiel ansehen, in 2 Minuten loslegen und „Wichtiges zuerst“ aktivieren – SlackDigest Getting Started.">
+  <meta name="description" content="Beispiel-Digest ansehen, in 2 Minuten starten, Kanäle & Takt definieren. Sofort Ergebnis, kein Support nötig.">
   <meta name="color-scheme" content="dark">
   <style>
     :root{
       --container:1100px;
+      --page-bg:#0C6C48;       /* SlackDigest Grün */
+      --text:#FFFFFF;
+      --muted:rgba(229,231,235,.82);
       --nav-red:#AE0F12;
-      --bg:#0B1220; --fg:#FFFFFF; --muted:#C7CBD3;
-      --card:#0C6C48;               /* SlackDigest Grün */
-      --card-bd:rgba(255,255,255,.24);
-      --btn-fg:#0C6C48;             /* grüne Schrift auf weißem Button */
-      --ring:#FFFFFF; --ring-w:5px; --badge:98px; --logo:88px;
+      --card-bg:rgba(0,0,0,.12);
+      --card-bd:rgba(255,255,255,.22);
+      --btn-bg:#FFFFFF;
+      --btn-fg:#0C6C48;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;background:var(--bg);color:var(--fg);
-      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+    body{
+      margin:0;
+      background:var(--page-bg);
+      color:var(--text);
+      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+    }
+    a{color:#FFFFFF;text-decoration:none}
 
-    /* NAV */
+    /* Header / Nav – wie bei den Produktseiten */
     .site-header{position:sticky;top:0;z-index:50;width:100%;background:var(--nav-red)}
-    .nav-inner{max-width:var(--container);margin:0 auto;padding:.9rem 1rem;
-      display:flex;align-items:center;justify-content:space-between}
-    .brand{color:#fff;font-weight:800;text-decoration:none;white-space:nowrap}
+    .nav{background:var(--nav-red)}
+    .nav-inner{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:0 1rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      height:12mm;
+    }
+    .brand{color:#FFFFFF;font-weight:800;white-space:nowrap}
     .nav-links{list-style:none;display:flex;gap:1rem;margin:0;padding:0;align-items:center}
-    .nav-links a{color:#fff;text-decoration:none}
-    .nav-toggle{display:none;background:none;border:0;color:#fff;font-size:1.2rem}
+    .nav-links a{color:#FFFFFF}
+    .nav-toggle{display:none;background:none;border:0;color:#FFFFFF;font-size:1.2rem}
     @media (max-width:980px){
-      .nav-inner{position:relative}
-      .nav-links{display:none;position:absolute;top:56px;left:0;right:0;background:var(--nav-red);
-        padding:1rem;margin:0;flex-direction:column;gap:.6rem}
+      .nav-inner{position:relative;height:auto;min-height:12mm;padding-block:.4rem}
+      .nav-links{
+        display:none;position:absolute;top:100%;left:0;right:0;
+        background:var(--nav-red);padding:1rem;margin:0;flex-direction:column;gap:.6rem;
+      }
       .nav-links.open{display:flex}
       .nav-toggle{display:inline-block}
     }
 
-    /* HERO */
-    .hero{padding-top:14mm}
-    .hero-header{max-width:var(--container);margin:0 auto;padding:0 1rem;
-      display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;align-items:end}
-    .hero-text{grid-column:1/9}
-    .hero h1{margin:0 0 .2rem;font-size:clamp(1.8rem,4vw,3rem);line-height:1.1}
-    .hero p.lead{margin:0;opacity:.95;font-weight:700;font-size:clamp(1.1rem,2.4vw,1.35rem)}
-    .logo-col{grid-column:9/13;justify-self:start;display:flex;align-items:center}
-    .badge{position:relative;width:var(--badge);height:var(--badge)}
-    .badge .ring{position:absolute;inset:0}
-    .badge .ring svg{display:block;width:100%;height:100%}
-    .badge img{position:absolute;top:5px;left:5px;width:var(--logo);height:var(--logo);border-radius:50%;display:block}
-
-    @media (max-width:640px){
-      .hero-header{grid-template-columns:1fr;text-align:center}
-      .hero-text{grid-column:1/-1}
-      .logo-col{grid-column:1/-1;justify-self:center}
+    /* Hero */
+    .hero{color:#FFFFFF;padding-top:11mm}
+    .hero-header{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:0 1rem;
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:1rem;
+      align-items:end;
+    }
+    .hero-text{grid-column:1 / 9}
+    .hero h1{
+      margin:0 0 .2rem;
+      font-size:clamp(1.8rem,4vw,3rem);
+      line-height:1.1;
+    }
+    .hero p.lead{
+      margin:0;
+      font-size:clamp(1.05rem,2.4vw,1.3rem);
+      font-weight:600;
+      opacity:.95;
+      max-width:34rem;
+    }
+    .hero p.meta{
+      margin:.3rem 0 0;
+      color:var(--muted);
+      font-size:.9rem;
     }
 
-    /* GRID / CARDS */
-    .wrap{max-width:var(--container);margin:0 auto;padding:0 1rem 2.4rem}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;margin-top:1rem}
-    .card{grid-column:span 6;background:var(--card);color:#fff;border-radius:14px;padding:1.05rem 1rem;
-      border:1px solid var(--card-bd);box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06)}
-    .card h2{margin:.2rem 0 .5rem;font-size:1.35rem}
+    /* Logo rechts */
+    .logo-col{
+      grid-column:9 / 13;
+      justify-self:start;
+      display:flex;
+      align-items:center;
+    }
+    .product-logo{
+      position:relative;
+      width:98px;
+      height:98px;
+    }
+    .product-logo .logo-ring{
+      position:absolute;
+      inset:0;
+      width:98px;
+      height:98px;
+      display:block;
+      pointer-events:none;
+      z-index:2;
+    }
+    .product-logo .logo-ring svg{
+      width:100%;
+      height:100%;
+      display:block;
+    }
+    .product-logo .logo-img{
+      position:absolute;
+      top:5px;
+      left:5px;
+      width:88px;
+      height:88px;
+      border-radius:50%;
+      display:block;
+      background:transparent;
+      z-index:1;
+    }
+
+    /* Cards – 4-Spalter wie EN */
+    .section-cards{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:0 1rem 2.6rem;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:1rem;
+      margin-top:1rem;
+    }
+    .card{
+      grid-column:span 3;
+      background:var(--card-bg);
+      border:1px solid var(--card-bd);
+      border-radius:14px;
+      padding:1.05rem 1rem;
+      box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06);
+      color:#FFFFFF;
+    }
+    .card h2,.card h3{margin:0 0 .4rem;font-size:1.1rem}
     .card p,.card li{margin:.35rem 0}
-    .card ul{padding-left:1.2rem}
-    .card a{color:#fff;text-decoration:underline;text-underline-offset:2px}
-    @media (max-width:960px){.card{grid-column:span 12}}
+    .card ul{list-style:disc;padding-left:1.2rem}
+    .card small{opacity:.75}
+    .card code{
+      background:rgba(0,0,0,.25);
+      padding:.1rem .4rem;
+      border-radius:999px;
+      font-size:.7rem;
+    }
+
+    @media (max-width:1024px){
+      .card{grid-column:span 6}
+    }
+    @media (max-width:640px){
+      .card{grid-column:span 12}
+    }
 
     /* CTA */
-    .btn{display:inline-block;padding:.7rem 1rem;border-radius:12px;border:1px solid #fff;
-      text-decoration:none;font-weight:800;background:#fff;color:var(--btn-fg) !important;
-      -webkit-text-fill-color:var(--btn-fg) !important}
-    .muted{color:var(--muted)}
+    .btn{
+      display:inline-block;
+      padding:.7rem 1rem;
+      border-radius:12px;
+      border:1px solid #FFFFFF;
+      background:#FFFFFF;
+      text-decoration:none;
+      font-weight:800;
+      text-align:left;
+      line-height:1.3;
+      color:var(--btn-fg) !important;
+      -webkit-text-fill-color:var(--btn-fg) !important;
+    }
+    .btn span{display:block}
+    .btn small{
+      font-weight:500;
+      opacity:.85;
+      font-size:.78rem;
+      line-height:1.2;
+    }
 
-    footer{max-width:var(--container);margin:2.2rem auto;padding:0 1rem 2.4rem}
-    footer a{color:#fff;text-decoration:none}
+    footer{
+      max-width:var(--container);
+      margin:2.2rem auto 2.6rem;
+      padding:0 1rem;
+      color:#FFFFFF;
+    }
+    footer a{color:#FFFFFF}
   </style>
+  <script>
+    function __toggleNav(){
+      var l=document.getElementById('navLinks');
+      if(!l) return;
+      var o=l.classList.toggle('open');
+      document.getElementById('navToggle')
+        .setAttribute('aria-expanded', o ? 'true' : 'false');
+    }
+  </script>
 </head>
 <body>
+
 <header class="site-header">
-  <div class="nav-inner">
-    <a class="brand" href="/">Home</a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="/products/changewise/">ChangeWise</a></li>
-      <li><a href="/products/slackdigest/">SlackDigest</a></li>
-      <li><a href="/products/tasksieve/">TaskSieve</a></li>
-     <li><a href="/en/products/slackdigest/getting-started.html">EN</a></li>
-   </ul>
-    <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-controls="navLinks" aria-expanded="false">☰</button>
-  </div>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="/">Home</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/products/changewise/">ChangeWise</a></li>
+        <li><a href="/products/slackdigest/">SlackDigest</a></li>
+        <li><a href="/products/tasksieve/">TaskSieve</a></li>
+        <li><a href="/contact_slackdigest.html">Kontakt</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" onclick="__toggleNav()" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+    </div>
+  </nav>
 </header>
 
 <main class="hero">
   <div class="hero-header">
     <div class="hero-text">
       <h1>SlackDigest – Getting Started</h1>
-      <p class="lead">Beispiel ansehen · in 2&nbsp;Minuten loslegen · „Wichtiges zuerst“ aktivieren</p>
+      <p class="lead">Beispiel ansehen, in 2 Minuten starten, „Wichtig zuerst“ aktivieren.</p>
+      <p class="meta">Kein Call, kein Support-Ticket – das Produkt reagiert sofort.</p>
     </div>
     <div class="logo-col">
-      <div class="badge" aria-hidden="true">
-        <span class="ring">
-          <svg viewBox="0 0 100 100" fill="none">
-            <circle cx="50" cy="50" r="47.5" stroke="#FFFFFF" stroke-width="5"/>
+      <div class="product-logo">
+        <span class="logo-ring" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="98" height="98" focusable="false" aria-hidden="true">
+            <circle cx="50" cy="50" r="47.5" fill="none" stroke="#FFFFFF" stroke-width="5" />
           </svg>
         </span>
-        <img src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo" width="88" height="88" loading="lazy" decoding="async">
+        <img class="logo-img" src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo" loading="lazy" decoding="async">
       </div>
     </div>
   </div>
 
-  <section class="wrap">
+  <section class="section-cards" aria-label="SlackDigest – Getting started Schritte">
     <div class="grid">
-      <!-- 1: Sample -->
+      <!-- 1 -->
       <article class="card">
-        <h2>1) Beispiel-Digest</h2>
-        <p>So sieht ein kompakter Digest aus: Wichtiges zuerst, jeder Punkt mit Link zurück zum Kontext.</p>
-        <pre style="white-space:pre-wrap;background:rgba(0,0,0,.15);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:.8rem">
-• [Projekt X] Launch-Blocker gelöst — &lt;Owner: Maria&gt; → Nächster Schritt: QA-Check um 15:00
-• [Sales] Deal ACME +22k — &lt;Owner: Ben&gt; → Nächster Schritt: Unterschrift einholen
-• [Support] Top-Thema: SSO — 5 Tickets → Nächster Schritt: FAQ aktualisieren
-        </pre>
-        <p class="muted">Ein Blick, ein Link – erledigt.</p>
+        <h3>1) Beispiel-Digest</h3>
+        <p>So sieht ein kompaktes Digest aus:</p>
+        <ul>
+          <li>[Projekt X] Launch-Blocker gelöst → <strong>Nächster Schritt:</strong> QA um 15:00</li>
+          <li>[Sales] Deal ACME +22k → <strong>Nächster Schritt:</strong> Unterschrift einholen</li>
+          <li>[Support] Top-Thema: SSO (5 Tickets) → <strong>Nächster Schritt:</strong> FAQ updaten</li>
+        </ul>
+        <p><small>Ein Blick, ein Link – erledigt.</small></p>
       </article>
 
-      <!-- 2: Quick start -->
+      <!-- 2 -->
       <article class="card">
-        <h2>2) Quick-Start (2 Minuten)</h2>
-        <ol>
-          <li>Kanäle wählen (z.&nbsp;B. <code>#sales</code>, <code>#support</code>).</li>
-          <li>Takt festlegen (täglich oder wöchentlich).</li>
-          <li>Zustellung wählen (E-Mail oder Slack).</li>
+        <h3>2) Schnellstart (2 Min.)</h3>
+        <p>Gleicher Flow wie auf der Kontaktseite:</p>
+        <ol style="margin:.35rem 0 .6rem;padding-left:1.1rem">
+          <li>Kanäle wählen (<code>#sales</code>, <code>#support</code> …)</li>
+          <li>Takt wählen: täglich / wöchentlich</li>
+          <li>Zustellung wählen: E-Mail oder Slack</li>
         </ol>
-        <p><a class="btn" href="/contact/#slackdigest">Test-Digest anfordern</a></p>
-        <p class="muted">Hinweis: Der Button führt zur Kontaktseite mit vorausgewähltem SlackDigest.</p>
+        <p><small>Alles ist vorstrukturiert → kein Support nötig.</small></p>
       </article>
 
-      <!-- 3: Important first -->
+      <!-- 3 -->
       <article class="card">
-        <h2>3) „Wichtiges zuerst“ – so funktioniert’s</h2>
-        <p class="muted" style="margin-top:.2rem">
-       So priorisiert SlackDigest Entscheidungen &amp; Blocker nach oben; alles Weitere wird kompakt gebündelt.
-       </p>
+        <h3>3) „Wichtig zuerst“</h3>
+        <p>Darum wirkt es kompetent:</p>
         <ul>
-          <li>Entscheidungen & Blocker oben, Rest komprimiert</li>
+          <li>Entscheidungen & Blocker ganz oben</li>
           <li>Owner + nächster Schritt pro Eintrag</li>
-          <li>Links zurück zum Kontext</li>
-          <li>Filter für Kanäle/Teams/Keywords</li>
+          <li>Link zurück zum Original-Kontext</li>
+          <li>Filter für Teams / Kanäle / Keywords</li>
         </ul>
+        <p><small>Das Tool erklärt sich, statt erklärt zu werden.</small></p>
       </article>
 
-      <!-- 4: Delivery & Filters -->
+      <!-- 4 -->
       <article class="card">
-        <h2>4) Zustellung & Filter</h2>
-        <ul>
-          <li><strong>Zustellung:</strong> Slack oder E-Mail</li>
-          <li><strong>Filter:</strong> Kanäle, Personen, Keywords</li>
-          <li><strong>Cadence:</strong> täglich, 2×/Woche oder wöchentlich</li>
-        </ul>
+        <h3>4) Zustellung & jetzt starten</h3>
+        <p>Zustellung: Slack oder E-Mail, Takt: täglich, 2×/Woche, wöchentlich.</p>
+        <p>Alles automatisiert, keine manuelle Freigabe.</p>
+        <button class="btn" type="button" onclick="location.href='/contact_slackdigest.html'">
+          <span>Test-Digest anfordern</span>
+          <small>Demo-Digest & nächste Schritte folgen sofort. Kein Spam, kein Newsletter.</small>
+        </button>
       </article>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-    <div>
-      <a href="/impressum">Impressum</a> ·
-      <a href="/datenschutz">Datenschutz</a>
-    </div>
-    <small>© ChangeWise • SlackDigest • TaskSieve</small>
-  </div>
+  <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a><br>
+  <small>© ChangeWise • SlackDigest • TaskSieve</small>
 </footer>
 
-<script>
-  // Mobile Nav
-  (function(){
-    const t=document.getElementById('navToggle'), l=document.getElementById('navLinks');
-    if (t&&l) t.addEventListener('click', ()=>{ const o=l.classList.toggle('open'); t.setAttribute('aria-expanded', o?'true':'false'); });
-  })();
-</script>
 </body>
 </html>
