@@ -1,86 +1,315 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="theme-cw">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="dark">
   <title>SlackDigest – Getting Started</title>
-  <meta name="description" content="SlackDigest – see a live sample and start your own test digest in 2 minutes. Important items first, one glance, one link — done.">
+  <meta name="description" content="See a sample digest, start in 2 minutes, and define channels, cadence and delivery. SlackDigest is built to respond instantly – no support needed.">
+  <meta name="color-scheme" content="dark">
   <style>
     :root{
-      --page-bg:#0C6C48; /* SlackDigest green */
+      --container:1100px;
+      --page-bg:#0C6C48;       /* SlackDigest green – like contact */
       --text:#FFFFFF;
-      --muted:#D0E5D7;
+      --muted:rgba(229,231,235,.82);
       --nav-red:#AE0F12;
-      --container:960px;
+      --card-bg:rgba(0,0,0,.12);
+      --card-bd:rgba(255,255,255,.22);
+      --btn-bg:#FFFFFF;
+      --btn-fg:#0C6C48;
+      --ring:#FFFFFF; --ring-w:5px;
     }
+    *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
       background:var(--page-bg);
       color:var(--text);
-      font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
     }
-    .container{width:min(var(--container),92%);margin:0 auto;padding:1.4rem 0;}
-    h1{font-size:clamp(1.8rem,1.2rem + 2vw,2.6rem);margin-bottom:.4rem;}
-    h2{margin-top:1.8rem;font-size:1.3rem;}
-    p,li{color:var(--muted);}
-    ul{margin:.4rem 0 1rem 1.2rem;}
-    a{color:#fff;text-decoration:underline;text-underline-offset:3px;}
-    button{
-      margin-top:1.4rem;
-      background:#fff;
-      color:#0C6C48;
-      border:1px solid #fff;
+    a{color:#FFFFFF;text-decoration:none}
+
+    /* Header / Nav (same spine as products) */
+    .site-header{position:sticky;top:0;z-index:50;width:100%;background:var(--nav-red)}
+    .nav{background:var(--nav-red)}
+    .nav-inner{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:0 1rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      height:12mm;
+    }
+    .brand{color:#FFFFFF;font-weight:800;white-space:nowrap}
+    .nav-links{list-style:none;display:flex;gap:1rem;margin:0;padding:0;align-items:center}
+    .nav-links a{color:#FFFFFF}
+    .nav-toggle{display:none;background:none;border:0;color:#FFFFFF;font-size:1.2rem}
+    @media (max-width:980px){
+      .nav-inner{position:relative;height:auto;min-height:12mm;padding-block:.4rem}
+      .nav-links{
+        display:none;position:absolute;top:100%;left:0;right:0;
+        background:var(--nav-red);padding:1rem;margin:0;flex-direction:column;gap:.6rem;
+      }
+      .nav-links.open{display:flex}
+      .nav-toggle{display:inline-block}
+    }
+
+    /* Hero */
+    .hero{color:#FFFFFF;padding-top:11mm}
+    .hero-header{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:0 1rem;
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:1rem;
+      align-items:end;
+    }
+    .hero-text{grid-column:1 / 9}
+    .hero h1{
+      margin:0 0 .2rem;
+      font-size:clamp(1.8rem,4vw,3rem);
+      line-height:1.1;
+    }
+    .hero p.lead{
+      margin:0;
+      font-size:clamp(1.05rem,2.4vw,1.3rem);
+      font-weight:600;
+      opacity:.95;
+      max-width:34rem;
+    }
+    .hero p.meta{
+      margin:.3rem 0 0;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    /* Logo right */
+    .logo-col{
+      grid-column:9 / 13;
+      justify-self:start;
+      display:flex;
+      align-items:center;
+    }
+    .product-logo{
+      position:relative;
+      width:98px;
+      height:98px;
+    }
+    .product-logo .logo-ring{
+      position:absolute;
+      inset:0;
+      width:98px;
+      height:98px;
+      z-index:2;
+      pointer-events:none;
+      display:block;
+    }
+    .product-logo .logo-ring svg{
+      width:100%;
+      height:100%;
+      display:block;
+    }
+    .product-logo .logo-img{
+      position:absolute;
+      top:5px;
+      left:5px;
+      width:88px;
+      height:88px;
+      display:block;
+      border-radius:50%;
+      z-index:1;
+      background:transparent;
+    }
+
+    /* Cards Grid */
+    .section-cards{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:0 1rem 2.6rem;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:1rem;
+      margin-top:1rem;
+    }
+    .card{
+      grid-column:span 3;
+      background:var(--card-bg);
+      border:1px solid var(--card-bd);
+      border-radius:14px;
+      padding:1.05rem 1rem 1.05rem;
+      box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06);
+      color:#FFFFFF;
+    }
+    .card h2,
+    .card h3{
+      margin:0 0 .4rem;
+      font-size:1.1rem;
+    }
+    .card p,
+    .card li{
+      margin:.35rem 0;
+    }
+    .card small{opacity:.7}
+    .card ul{list-style:disc;padding-left:1.2rem}
+    .card code{
+      background:rgba(0,0,0,.25);
+      padding:.08rem .4rem;
+      border-radius:999px;
+      font-size:.72rem;
+    }
+
+    @media (max-width:1024px){
+      .card{grid-column:span 6}
+    }
+    @media (max-width:640px){
+      .card{grid-column:span 12}
+    }
+
+    /* CTA button – aligned with contact SlackDigest */
+    .btn{
+      display:inline-block;
+      padding:.7rem 1rem;
       border-radius:12px;
-      padding:.75rem 1rem;
+      border:1px solid #FFFFFF;
+      background:#FFFFFF;
+      text-decoration:none;
       font-weight:800;
-      font-size:1.05rem;
-      cursor:pointer;
+      text-align:left;
+      line-height:1.3;
+      color:var(--btn-fg) !important;
+      -webkit-text-fill-color:var(--btn-fg) !important;
     }
-    button:hover{background:#F7F7F7;}
-    footer{margin-top:2rem;font-size:.9rem;color:var(--muted);}
+    .btn span{display:block}
+    .btn small{
+      font-weight:500;
+      opacity:.85;
+      font-size:.78rem;
+      line-height:1.2;
+    }
+
+    footer{
+      max-width:var(--container);
+      margin:2.2rem auto 2.6rem;
+      padding:0 1rem;
+      color:#FFFFFF;
+    }
+    footer a{color:#FFFFFF}
   </style>
+  <script>
+    function __toggleNav(){
+      var l=document.getElementById('navLinks');
+      if(!l) return;
+      var o=l.classList.toggle('open');
+      document.getElementById('navToggle')
+        .setAttribute('aria-expanded', o ? 'true' : 'false');
+    }
+  </script>
 </head>
 <body>
-  <main class="container">
-    <h1>SlackDigest – Getting Started</h1>
-    <p><strong>Experience it — no setup, no wait, no support ticket.</strong></p>
 
-    <h2>1) See a live sample</h2>
-    <p>This is what a compact digest looks like — important items first, each entry linking back to its Slack or email context:</p>
-    <ul>
-      <li>[Project X] Launch blocker resolved — <em>Maria</em> → Next: QA check at 15 : 00</li>
-      <li>[Sales] Deal ACME +22 k — <em>Ben</em> → Next: get signature</li>
-      <li>[Support] Top topic: SSO — 5 tickets → Next: update FAQ</li>
-    </ul>
-    <p><em>One glance, one link — done.</em></p>
+<header class="site-header">
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="/en/home/">Home</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/en/products/changewise/">ChangeWise</a></li>
+        <li><a href="/en/products/slackdigest/">SlackDigest</a></li>
+        <li><a href="/en/products/tasksieve/">TaskSieve</a></li>
+        <li><a href="/en/contact_slackdigest.html">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" onclick="__toggleNav()" aria-label="Open menu" aria-expanded="false">☰</button>
+    </div>
+  </nav>
+</header>
 
-    <h2>2) Start your own digest (2 minutes)</h2>
-    <ul>
-      <li>Pick channels (e.g. #sales, #support)</li>
-      <li>Choose cadence (daily or weekly)</li>
-      <li>Select delivery (email or Slack)</li>
-    </ul>
-    <p>Click below — a test digest is prepared and sent to you right away.</p>
+<main class="hero">
+  <div class="hero-header">
+    <div class="hero-text">
+      <h1>SlackDigest – Getting Started</h1>
+      <p class="lead">See a sample, start in 2 minutes, activate “important first”.</p>
+      <p class="meta">Built to react instantly – no support, no call, no onboarding slot.</p>
+    </div>
 
-    <button onclick="location.href='/en/contact.html#slackdigest'">
-      Request test digest
-    </button>
+    <div class="logo-col">
+      <div class="product-logo">
+        <span class="logo-ring" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="98" height="98" focusable="false" aria-hidden="true">
+            <circle cx="50" cy="50" r="47.5" fill="none" stroke="#FFFFFF" stroke-width="5" />
+          </svg>
+        </span>
+        <img class="logo-img"
+             src="/assets/brand/slackdigest_logo.svg"
+             alt="SlackDigest Logo"
+             width="88"
+             height="88"
+             loading="lazy"
+             decoding="async" />
+      </div>
+    </div>
+  </div>
 
-    <h2>3) “Important first” mode</h2>
-    <ul>
-      <li>Decisions and blockers on top — noise condensed</li>
-      <li>Owner + next step visible for each item</li>
-      <li>Filters for channels, teams and keywords</li>
-    </ul>
+  <section class="section-cards" aria-label="SlackDigest – Getting started steps">
+    <div class="grid">
+      <!-- Card 1: Sample -->
+      <article class="card">
+        <h3>1) Sample digest</h3>
+        <p>This is what users get: compact, high-signal, action-first.</p>
+        <ul>
+          <li>[Project X] Launch blocker resolved → <strong>Next:</strong> QA at 15:00</li>
+          <li>[Sales] Deal ACME +22k → <strong>Next:</strong> get signature</li>
+          <li>[Support] Top topic: SSO (5 tickets) → <strong>Next:</strong> update FAQ</li>
+        </ul>
+        <p><small>One glance, one link – done.</small></p>
+      </article>
 
-    <h2>4) Delivery & filters</h2>
-    <p>Slack or email delivery, daily or weekly cadence — filters by team or topic for signal only.</p>
+      <!-- Card 2: Quick start -->
+      <article class="card">
+        <h3>2) Quick start (2 min)</h3>
+        <p>Just tell the system what to watch.</p>
+        <ol style="margin:.35rem 0 .6rem;padding-left:1.1rem">
+          <li>Pick channels (e.g. <code>#sales</code>, <code>#support</code>)</li>
+          <li>Choose cadence: daily / weekly</li>
+          <li>Select delivery: email / Slack DM</li>
+        </ol>
+        <p><small>That’s the same flow as on the contact page → consistent.</small></p>
+      </article>
 
-    <footer>
-      <a href="/en/imprint.html">Imprint</a> · <a href="/en/privacy.html">Privacy</a><br>
-      © ChangeWise • SlackDigest • TaskSieve
-    </footer>
-  </main>
+      <!-- Card 3: Important first -->
+      <article class="card">
+        <h3>3) “Important first”</h3>
+        <p>What the user actually experiences:</p>
+        <ul>
+          <li>Decisions & blockers on top</li>
+          <li>Owner + next step for each entry</li>
+          <li>Link back to original context</li>
+          <li>Filters for channels / teams / keywords</li>
+        </ul>
+        <p><small>Result: no follow-up mails needed.</small></p>
+      </article>
+
+      <!-- Card 4: Delivery & CTA -->
+      <article class="card">
+        <h3>4) Delivery & start now</h3>
+        <p>Delivery: Slack or email, cadence: daily, 2×/week or weekly.</p>
+        <p>All automated, no manual review step, no waiting.</p>
+        <button class="btn" type="button" onclick="location.href='/en/contact_slackdigest.html'">
+          <span>Request test digest</span>
+          <small>Demo digest & next steps will follow right away. No spam, no newsletter.</small>
+        </button>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <a href="/en/imprint/">Imprint</a> · <a href="/en/privacy/">Privacy</a>
+  <br>
+  <small>© ChangeWise • SlackDigest • TaskSieve</small>
+</footer>
+
 </body>
 </html>
