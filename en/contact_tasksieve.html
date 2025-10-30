@@ -157,50 +157,64 @@
     }
     .card p{margin:.4rem 0 .8rem;color:#fff}
 
-    /* FORM */
-    form{display:grid;gap:10px}
-    label{display:block;font-weight:600;color:#fff}
-    /* unify TaskSieve EN input backgrounds with DE */
+     /* FORM */
+form{display:grid;gap:10px}
+label{display:block;font-weight:600;color:#fff}
+
+/* Basis-Inputs (bestehend) */
 input[type="text"],
 input[type="email"],
 input[type="url"],
 select,
 textarea{
-  background:rgb(136,12,12) !important;
-  border:1px solid rgba(255,255,255,.4) !important;
+  width:100%;
+  margin-top:6px;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid var(--input-bd);
+  background:var(--input-bg);
+  color:#fff;
 }
 input::placeholder,
 textarea::placeholder{
-  color:rgba(255,255,255,.75);
+  color:rgba(255,255,255,.7);
 }
 
-   input[type="text"],
-    input[type="email"],
-    select{
-      width:100%;
-      margin-top:6px;
-      padding:10px 12px;
-      border-radius:10px;
-      border:1px solid var(--input-bd);
-      background:var(--input-bg);
-      color:#fff;
-    }
-    input::placeholder{color:rgba(255,255,255,.7)}
+/* ⬇️ Safari / EN-Angleich – MUSS nach den obigen Regeln stehen */
+input[type="text"],
+input[type="email"],
+input[type="url"],
+textarea,
+select{
+  -webkit-appearance:none;
+  appearance:none;
+  background:rgb(136,12,12) !important;           /* wie DE */
+  border:1px solid rgba(255,255,255,.4) !important;
+  min-height:42px;                                 /* gleiche Höhe wie Chrome */
+  font:inherit;
+}
 
-    .consent{
-      display:flex;
-      align-items:flex-start;
-      gap:.5rem;
-      margin-top:.2rem;
-      color:#fff;
-      font-size:.9rem;
-      line-height:1.4;
-    }
-    .consent input[type="checkbox"]{
-      margin-top:.2rem;
-      flex-shrink:0;
-    }
-    .consent a{color:#fff;text-decoration:underline}
+select{
+  background-position:right 10px center;
+  background-repeat:no-repeat;
+}
+
+/* Rest wie gehabt */
+.consent{
+  display:flex;
+  align-items:flex-start;
+  gap:.5rem;
+  margin-top:.2rem;
+  color:#fff;
+  font-size:.9rem;
+  line-height:1.4;
+}
+.consent input[type="checkbox"]{
+  margin-top:.2rem;
+  flex-shrink:0;
+}
+.consent a{color:#fff;text-decoration:underline}
+
 
     /* CTA button (white pill / red text – same as DE) */
     .btn{
