@@ -423,7 +423,13 @@ select{
       if(host){
         var box=document.createElement('div');
         box.className='flash';
-        box.innerHTML='Danke — deine Nachricht ist eingegangen.<small>Wir melden uns zeitnah mit dem nächsten Schritt.</small>';
+        box.innerHTML = `
+  Danke — dein Test-Digest wird vorbereitet.
+  <small>Währenddessen kannst du dir ansehen, wie ein Digest aussieht:
+    <a href="/products/slackdigest/getting-started.html"
+       style="color:#0C6C48;text-decoration:underline;">Beispiel ansehen</a>.
+  </small>`;
+
         var f=host.querySelector('form');
         if(f) f.parentNode.insertBefore(box,f);
         setTimeout(function(){box.classList.add('show');},60);
