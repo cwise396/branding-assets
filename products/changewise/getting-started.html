@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="de" class="theme-cw">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ChangeWise – Getting Started</title>
+  <meta name="description" content="Kurz-Briefing & Mini-Diagnose: 3–4 Angaben, direkt einsetzbare Kernbotschaft, nächste Schritte und Storyline-Vorschläge – ohne Call, ohne Wartezeit.">
+  <meta name="color-scheme" content="dark">
+  <style>
+    :root{
+      --container:1100px;
+      --page-bg:#0E3960;     /* ChangeWise Blau */
+      --text:#FFFFFF;
+      --muted:rgba(229,231,235,.82);
+      --nav-red:#AE0F12;
+      --card-bg:rgba(0,0,0,.1);
+      --card-bd:rgba(255,255,255,.22);
+      --btn-bg:#FFFFFF;
+      --btn-fg:#0E3960;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--page-bg);
+      color:var(--text);
+      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+    }
+    a{color:#FFFFFF;text-decoration:none}
+
+    /* Header / Nav */
+    .site-header{position:sticky;top:0;z-index:50;width:100%;background:var(--nav-red)}
+    .nav{background:var(--nav-red)}
+    .nav-inner{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:0 1rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      height:12mm;
+    }
+    .brand{color:#FFFFFF;font-weight:800;white-space:nowrap}
+    .nav-links{list-style:none;display:flex;gap:1rem;margin:0;padding:0;align-items:center}
+    .nav-links a{color:#FFFFFF}
+    .nav-toggle{display:none;background:none;border:0;color:#FFFFFF;font-size:1.2rem}
+    @media (max-width:980px){
+      .nav-inner{position:relative;height:auto;min-height:12mm;padding-block:.4rem}
+      .nav-links{
+        display:none;position:absolute;top:100%;left:0;right:0;
+        background:var(--nav-red);padding:1rem;margin:0;flex-direction:column;gap:.6rem;
+      }
+      .nav-links.open{display:flex}
+      .nav-toggle{display:inline-block}
+    }
+
+    /* Hero */
+    .hero{color:#FFFFFF;padding-top:11mm}
+    .hero-header{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:0 1rem;
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:1rem;
+      align-items:end;
+    }
+    .hero-text{grid-column:1 / 9}
+    .hero h1{
+      margin:0 0 .2rem;
+      font-size:clamp(1.8rem,4vw,3rem);
+      line-height:1.1;
+    }
+    .hero p.lead{
+      margin:0;
+      font-size:clamp(1.05rem,2.4vw,1.3rem);
+      font-weight:600;
+      opacity:.96;
+      max-width:38rem;
+    }
+    .hero p.meta{
+      margin:.3rem 0 0;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    /* Logo right */
+    .logo-col{
+      grid-column:9 / 13;
+      justify-self:start;
+      display:flex;
+      align-items:center;
+    }
+    .product-logo{
+      position:relative;
+      width:98px;
+      height:98px;
+    }
+    .product-logo .logo-ring{
+      position:absolute;
+      inset:0;
+      width:98px;
+      height:98px;
+      display:block;
+      pointer-events:none;
+      z-index:2;
+    }
+    .product-logo .logo-ring svg{
+      width:100%;
+      height:100%;
+      display:block;
+    }
+    .product-logo .logo-img{
+      position:absolute;
+      top:5px;
+      left:5px;
+      width:88px;
+      height:88px;
+      border-radius:50%;
+      display:block;
+      background:transparent;
+      z-index:1;
+    }
+
+    /* Cards */
+    .section-cards{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:0 1rem 2.6rem;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:1rem;
+      margin-top:1rem;
+    }
+    .card{
+      grid-column:span 3;
+      background:var(--card-bg);
+      border:1px solid var(--card-bd);
+      border-radius:14px;
+      padding:1.05rem 1rem;
+      box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06);
+      color:#FFFFFF;
+    }
+    .card h2,.card h3{margin:0 0 .4rem;font-size:1.1rem}
+    .card p,.card li{margin:.35rem 0}
+    .card ul{list-style:disc;padding-left:1.2rem}
+    .card small{opacity:.75}
+    .card code{
+      background:rgba(0,0,0,.25);
+      padding:.1rem .4rem;
+      border-radius:999px;
+      font-size:.7rem;
+    }
+
+    @media (max-width:1024px){
+      .card{grid-column:span 6}
+    }
+    @media (max-width:640px){
+      .card{grid-column:span 12}
+    }
+
+    /* CTA */
+    .btn{
+      display:inline-block;
+      padding:.7rem 1rem;
+      border-radius:12px;
+      border:1px solid #FFFFFF;
+      background:#FFFFFF;
+      text-decoration:none;
+      font-weight:800;
+      text-align:left;
+      line-height:1.3;
+      color:var(--btn-fg) !important;
+      -webkit-text-fill-color:var(--btn-fg) !important;
+    }
+    .btn span{display:block}
+    .btn small{
+      font-weight:500;
+      opacity:.85;
+      font-size:.78rem;
+      line-height:1.2;
+    }
+
+    footer{
+      max-width:var(--container);
+      margin:2.2rem auto 2.6rem;
+      padding:0 1rem;
+      color:#FFFFFF;
+    }
+    footer a{color:#FFFFFF}
+  </style>
+  <script>
+    function __toggleNav(){
+      var l=document.getElementById('navLinks');
+      if(!l) return;
+      var o=l.classList.toggle('open');
+      document.getElementById('navToggle')
+        .setAttribute('aria-expanded', o ? 'true' : 'false');
+    }
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="/">Home</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/products/changewise/">ChangeWise</a></li>
+        <li><a href="/products/slackdigest/">SlackDigest</a></li>
+        <li><a href="/products/tasksieve/">TaskSieve</a></li>
+        <li><strong>DE</strong> | <a href="/en/products/changewise/getting-started.html">EN</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" onclick="__toggleNav()" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+    </div>
+  </nav>
+</header>
+
+<main class="hero">
+  <div class="hero-header">
+    <div class="hero-text">
+      <h1>ChangeWise – Getting Started</h1>
+      <p class="lead">Ergebnis ansehen, dann eigenes Briefing abschicken – das System reagiert sofort.</p>
+      <p class="meta">Kein Call, keine Rücksprache, kein Onboarding-Termin. „Kompetenz ohne Erklärungspflicht.“</p>
+    </div>
+    <div class="logo-col">
+      <div class="product-logo">
+        <span class="logo-ring" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="98" height="98" focusable="false" aria-hidden="true">
+            <circle cx="50" cy="50" r="47.5" fill="none" stroke="#FFFFFF" stroke-width="5" />
+          </svg>
+        </span>
+        <img class="logo-img" src="/assets/brand/changewise_logo.svg" alt="ChangeWise Logo" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </div>
+
+  <section class="section-cards" aria-label="ChangeWise – Getting Started Schritte">
+    <div class="grid">
+      <!-- 1 -->
+      <article class="card">
+        <h3>1) Was ChangeWise liefert</h3>
+        <p>Du bekommst kein „Wir melden uns“, sondern ein <strong>sofort nutzbares Ergebnis</strong>:</p>
+        <ul>
+          <li>Verdichtete Kernbotschaft</li>
+          <li>2–4 priorisierte nächste Schritte</li>
+          <li>Storylines / Formulierungen für Team & Stakeholder</li>
+        </ul>
+        <p><small>Fokus: Wandel, interne Kommunikation, Produkt-/Feature-Kommunikation.</small></p>
+      </article>
+
+      <!-- 2 -->
+      <article class="card">
+        <h3>2) So wenig Input wie möglich</h3>
+        <p>3–4 Angaben reichen völlig:</p>
+        <ol style="margin:.35rem 0 .6rem;padding-left:1.1rem">
+          <li>Was steht an? (Projekt, Change, Launch …)</li>
+          <li>Wo hakt es? (Uneinheitliche Botschaften, Stakeholder, Zeit)</li>
+          <li>Für wen ist es? (Team, Management, Kunden)</li>
+          <li>Optional: Link zu Brand-/Strategie-PDF</li>
+        </ol>
+        <p><small>Das System zieht sich aus deinem Kontext die klare Linie.</small></p>
+      </article>
+
+      <!-- 3 -->
+      <article class="card">
+        <h3>3) KI-gestützt, aber erklärbar</h3>
+        <p>Kein Blackbox-Text, sondern nachvollziehbare Struktur:</p>
+        <ul>
+          <li>Problem → Wirkung → Botschaft</li>
+          <li>Empfehlung → nächste Aktion</li>
+          <li>Optional: Varianten für Tonalität</li>
+        </ul>
+        <p><small>Wir signalisieren Kompetenz, nicht Automatik.</small></p>
+      </article>
+
+      <!-- 4 -->
+      <article class="card">
+        <h3>4) Jetzt eigenes Briefing senden</h3>
+        <p>Du kannst sofort loslegen – ohne Rückfragen.</p>
+        <button class="btn" type="button" onclick="location.href='/contact_changewise.html'">
+          <span>Briefing &amp; Mini-Diagnose senden</span>
+          <small>Auswertung erfolgt KI-gestützt. Ergebnis &amp; Empfehlungen kommen direkt. Kein Spam, kein Newsletter.</small>
+        </button>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a><br>
+  <small>© ChangeWise • SlackDigest • TaskSieve</small>
+</footer>
+
+</body>
+</html>
