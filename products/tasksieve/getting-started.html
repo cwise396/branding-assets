@@ -1,22 +1,20 @@
 <!doctype html>
-<html lang="de">
+<html lang="de" class="theme-ts">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TaskSieve – Getting Started</title>
-  <meta name="description" content="In 2 Minuten zur Demo-Inbox: Modus wählen, Quellen nennen, Priorisierung live sehen. Ohne Rückfrage, ohne Call.">
-  <meta name="theme-color" content="#0B1220" />
+  <meta name="description" content="Ergebnis ansehen, in 2 Minuten eigene Demo-Inbox aktivieren, Quellen später verbinden – ohne Rückfragen, ohne Call.">
+  <meta name="color-scheme" content="dark">
   <style>
     :root{
       --container:1100px;
-      --page-bg:#0B1220;
+      --page-bg:rgb(151,12,15);
       --text:#FFFFFF;
-      --muted:rgba(229,231,235,.78);
-
+      --muted:rgba(229,231,235,.85);
       --nav-red:#AE0F12;
-      --card-bg:rgba(151,12,15,.95);   /* wie Kontakt/Produkt */
+      --card-bg:rgba(0,0,0,.15);
       --card-bd:rgba(255,255,255,.22);
-
       --btn-bg:#FFFFFF;
       --btn-fg:#AE0F12;
     }
@@ -29,186 +27,61 @@
       font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
     }
     a{color:#FFFFFF;text-decoration:none}
-
-    /* NAV (wie bei SlackDigest-Getting-Started) */
-    .site-header{position:sticky;top:0;z-index:50;width:100%;background:var(--nav-red)}
-    .nav{background:var(--nav-red)}
-    .nav-inner{
-      max-width:var(--container);
-      margin:0 auto;
-      padding:0 1rem;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      height:15mm;
-    }
-    .brand{color:#FFFFFF;font-weight:800;white-space:nowrap}
-    .nav-links{list-style:none;display:flex;gap:1rem;margin:0;padding:0;align-items:center}
-    .nav-links a{color:#FFFFFF}
-    .nav-toggle{display:none;background:none;border:0;color:#FFFFFF;font-size:1.2rem}
-    @media (max-width:980px){
-      .nav-inner{position:relative;height:auto;min-height:12mm;padding-block:.4rem}
-      .nav-links{
-        display:none;position:absolute;top:100%;left:0;right:0;
-        background:var(--nav-red);padding:1rem;margin:0;flex-direction:column;gap:.6rem;
-      }
-      .nav-links.open{display:flex}
-      .nav-toggle{display:inline-block}
-    }
-
-    /* HERO */
-    .hero{color:#FFFFFF;padding-top:11mm}
-    .hero-header{
-      max-width:var(--container);
-      margin:0 auto;
-      padding:0 1rem;
-      display:grid;
-      grid-template-columns:repeat(12,1fr);
-      gap:1rem;
-      align-items:end;
-    }
-    .hero-text{grid-column:1 / 9}
-    .hero h1{
-      margin:0 0 .2rem;
-      font-size:clamp(1.8rem,4vw,3rem);
-      line-height:1.1;
-    }
-    .hero p.lead{
-      margin:0;
-      font-size:clamp(1.05rem,2.4vw,1.3rem);
-      font-weight:600;
-      opacity:.95;
-      max-width:34rem;
-    }
-    .hero p.meta{
-      margin:.3rem 0 0;
-      color:var(--muted);
-      font-size:.9rem;
-    }
-
-    /* LOGO rechts */
-    .logo-col{
-      grid-column:9 / 13;
-      justify-self:start;
-      display:flex;
-      align-items:center;
-    }
-    .product-logo{
-      position:relative;
-      width:98px;
-      height:98px;
-    }
-    .product-logo .logo-ring{
-      position:absolute;
-      inset:0;
-      width:98px;
-      height:98px;
-      display:block;
-      pointer-events:none;
-      z-index:2;
-    }
-    .product-logo .logo-ring svg{
-      width:100%;
-      height:100%;
-      display:block;
-    }
-    .product-logo .logo-img{
-      position:absolute;
-      top:5px;
-      left:5px;
-      width:88px;
-      height:88px;
-      display:block;
-      border-radius:50%;
-      background:transparent;
-      z-index:1;
-    }
-
-    /* CARDS */
-    .section-cards{
-      max-width:var(--container);
-      margin:0 auto;
-      padding:0 1rem 2.6rem;
-    }
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(12,1fr);
-      gap:1rem;
-      margin-top:1rem;
-    }
+    .site-header{position:sticky;top:0;z-index:50;background:var(--nav-red)}
+    .nav-inner{max-width:var(--container);margin:0 auto;padding:0 1rem;height:12mm;display:flex;align-items:center;justify-content:space-between}
+    .hero{color:#fff;padding-top:11mm}
+    .hero-header{max-width:var(--container);margin:0 auto;padding:0 1rem;display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;align-items:end}
+    .hero-text{grid-column:1/9}
+    .hero h1{margin:0 0 .25rem;font-size:clamp(1.8rem,4vw,3rem)}
+    .hero p.lead{margin:0;font-size:1.05rem;font-weight:600;max-width:36rem}
+    .hero p.meta{margin:.4rem 0 0;color:var(--muted);font-size:.9rem}
+    .logo-col{grid-column:9/13;display:flex;align-items:center}
+    .product-logo{position:relative;width:98px;height:98px}
+    .product-logo .logo-ring{position:absolute;inset:0}
+    .product-logo .logo-img{position:absolute;top:5px;left:5px;width:88px;height:88px}
+    .section-cards{max-width:var(--container);margin:0 auto;padding:0 1rem 2.6rem}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;margin-top:1rem}
     .card{
       grid-column:span 3;
       background:var(--card-bg);
       border:1px solid var(--card-bd);
       border-radius:14px;
       padding:1.05rem 1rem;
-      box-shadow:0 10px 24px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.04);
+      box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.04);
     }
-    .card h2,.card h3{margin:0 0 .4rem;font-size:1.1rem}
+    .card h3{margin:0 0 .5rem}
     .card p,.card li{margin:.35rem 0}
     .card ul{list-style:disc;padding-left:1.2rem}
-    .card small{opacity:.78}
-
-    @media (max-width:1024px){
-      .card{grid-column:span 6}
-    }
-    @media (max-width:640px){
-      .card{grid-column:span 12}
-    }
-
-    /* CTA */
     .btn{
       display:inline-block;
-      padding:.7rem 1rem;
-      border-radius:12px;
-      border:1px solid #FFFFFF;
       background:#FFFFFF;
-      text-decoration:none;
-      font-weight:800;
+      border:1px solid #FFFFFF;
+      border-radius:12px;
+      padding:.7rem 1rem;
       text-align:left;
+      font-weight:800;
+      color:#AE0F12 !important;
+      -webkit-text-fill-color:#AE0F12 !important;
       line-height:1.3;
-      color:var(--btn-fg) !important;
-      -webkit-text-fill-color:var(--btn-fg) !important;
     }
     .btn span{display:block}
-    .btn small{
-      font-weight:500;
-      opacity:.85;
-      font-size:.78rem;
-      line-height:1.2;
-    }
-
-    footer{
-      max-width:var(--container);
-      margin:2.2rem auto 2.6rem;
-      padding:0 1rem;
-      color:#FFFFFF;
-    }
-    footer a{color:#FFFFFF}
+    footer{max-width:var(--container);margin:2.4rem auto 2.8rem;padding:0 1rem}
+    @media (max-width:1024px){ .card{grid-column:span 6} }
+    @media (max-width:640px){ .card{grid-column:span 12} }
   </style>
-  <script>
-    function __toggleNav(){
-      var l=document.getElementById('navLinks');
-      if(!l) return;
-      var o=l.classList.toggle('open');
-      document.getElementById('navToggle')
-        .setAttribute('aria-expanded', o ? 'true' : 'false');
-    }
-  </script>
 </head>
 <body>
 
 <header class="site-header">
-  <nav class="nav">
+  <nav>
     <div class="nav-inner">
       <a class="brand" href="/">Home</a>
-      <ul class="nav-links" id="navLinks">
+      <ul class="nav-links" style="list-style:none;display:flex;gap:1rem;margin:0;padding:0;align-items:center">
         <li><a href="/products/changewise/">ChangeWise</a></li>
         <li><a href="/products/slackdigest/">SlackDigest</a></li>
         <li><a href="/products/tasksieve/">TaskSieve</a></li>
         <li><strong>DE</strong> | <a href="/en/products/tasksieve/getting-started.html">EN</a></li>
       </ul>
-      <button class="nav-toggle" id="navToggle" onclick="__toggleNav()" aria-label="Menü" aria-expanded="false">☰</button>
     </div>
   </nav>
 </header>
@@ -217,66 +90,58 @@
   <div class="hero-header">
     <div class="hero-text">
       <h1>TaskSieve – Getting Started</h1>
-      <p class="lead">Demo starten: Modus wählen, Quellen nennen – Priorisierung sofort sehen.</p>
-      <p class="meta">Keine Rücksprache, kein Call, kein Support-Ticket.</p>
+      <p class="lead">Ergebnis ansehen, danach eigene Inbox aktivieren. Kein Call, keine Rückfrage, kein Onboarding-Termin.</p>
+      <p class="meta">Produkt reagiert sofort – „Kompetenz ohne Erklärungspflicht“.</p>
     </div>
     <div class="logo-col">
       <div class="product-logo">
         <span class="logo-ring" aria-hidden="true">
-          <svg viewBox="0 0 100 100" width="98" height="98" focusable="false" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="98" height="98">
             <circle cx="50" cy="50" r="47.5" fill="none" stroke="#FFFFFF" stroke-width="5" />
           </svg>
         </span>
-        <img class="logo-img" src="/assets/brand/tasksieve_logo.svg" alt="TaskSieve Logo" loading="lazy" decoding="async">
+        <img class="logo-img" src="/assets/brand/tasksieve_logo.svg" alt="TaskSieve Logo">
       </div>
     </div>
   </div>
 
-  <section class="section-cards" aria-label="TaskSieve – Getting started steps">
+  <section class="section-cards" aria-label="TaskSieve – Einstieg">
     <div class="grid">
-      <!-- 1 -->
       <article class="card">
-        <h3>1) So sieht es aus</h3>
-        <p>Demo-Inbox mit echten Prioritäten:</p>
+        <h3>1) Ergebnis ansehen</h3>
+        <p>So sieht eine priorisierte Inbox aus:</p>
         <ul>
-          <li>[Mail] Angebot beantworten → <strong>Wirkung hoch</strong></li>
-          <li>[Slack] Rückfrage zu Kunde A → <strong>Dringlich</strong></li>
-          <li>[Notiz] Ideensammlung → <strong>Später</strong></li>
+          <li>[Inbox] 4 Themen mit hoher Wirkung</li>
+          <li>Duplikate zusammengefasst</li>
+          <li>Nächste Schritte klar benannt</li>
         </ul>
-        <p><small>Du siehst sofort, was zuerst dran ist.</small></p>
+        <p><small>Du siehst zuerst, was zählt – nicht alles.</small></p>
       </article>
-
-      <!-- 2 -->
       <article class="card">
-        <h3>2) Schnellstart (2 Min.)</h3>
-        <p>Genau derselbe Flow wie im Kontakt:</p>
-        <ol style="margin:.35rem 0 .6rem;padding-left:1.1rem">
-          <li>Modus wählen (Demo-Inbox oder später eigene Quellen)</li>
-          <li>Quellen angeben (E-Mail, Notizen, Slack)</li>
-          <li>Absenden – Ergebnis kommt direkt</li>
+        <h3>2) In 2 Min. starten</h3>
+        <ol style="margin:.35rem 0 .6rem;padding-left:1.2rem">
+          <li>Modus wählen (Demo / später eigene Quellen)</li>
+          <li>Optional Quellen nennen (E-Mail, Notizen, Slack)</li>
+          <li>Kontakt absenden → Demo kommt direkt</li>
         </ol>
-        <p><small>Kein Onboarding, kein „Wir melden uns“.</small></p>
+        <p><small>Kein „Wir melden uns“, sondern sofortiges Ergebnis.</small></p>
       </article>
-
-      <!-- 3 -->
       <article class="card">
-        <h3>3) Wie priorisiert wird</h3>
-        <p>TaskSieve nutzt dein Schema:</p>
+        <h3>3) Scoring verstehen</h3>
+        <p>Priorisierung basiert auf:</p>
         <ul>
-          <li>Wirkung → was bringt spürbares Ergebnis</li>
-          <li>Dringlichkeit → was darf nicht liegen bleiben</li>
-          <li>Aufwand → was schnell machbar ist</li>
+          <li>Wirkung (Impact)</li>
+          <li>Dringlichkeit</li>
+          <li>Aufwand</li>
         </ul>
-        <p><small>KI-gestützt, aber erklärbar – kein Blackbox-Feeling.</small></p>
+        <p><small>KI-gestützt, aber erklärbar – kein Blackbox-Output.</small></p>
       </article>
-
-      <!-- 4 -->
       <article class="card">
-        <h3>4) Jetzt starten</h3>
-        <p>Du bekommst Demo-Beispiel & nächste Schritte direkt per Mail.</p>
+        <h3>4) Jetzt eigene Inbox aktivieren</h3>
+        <p>Demo-Inbox + weitere Infos gehen direkt an dich.</p>
         <button class="btn" type="button" onclick="location.href='/contact_tasksieve.html'">
-          <span>Demo starten</span>
-          <small>Kommt sofort zu dir. Kein Spam, kein Newsletter.</small>
+          <span>Eigene Inbox aktivieren</span>
+          <span style="font-weight:500;font-size:.78rem;opacity:.9;">Demo-Beispiel & nächste Schritte kommen sofort. Kein Spam, kein Newsletter.</span>
         </button>
       </article>
     </div>
@@ -284,8 +149,8 @@
 </main>
 
 <footer>
-  <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a><br>
-  <small>© ChangeWise • SlackDigest • TaskSieve</small>
+  <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
+  <br><small>© ChangeWise • SlackDigest • TaskSieve</small>
 </footer>
 
 </body>
