@@ -4,16 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ChangeWise – Getting Started</title>
-  <meta name="description" content="Quick brief & mini diagnosis: 3–4 inputs, instantly usable core message, next steps and storylines – no call, no back-and-forth.">
+  <meta name="description" content="3–4 inputs, evaluated instantly – ChangeWise returns focus, core message and next steps. No call, no onboarding.">
   <meta name="color-scheme" content="dark">
   <style>
     :root{
       --container:1100px;
-      --page-bg:#0E3960;
+      --page-bg:#0E3960;     /* ChangeWise blue */
       --text:#FFFFFF;
-      --muted:rgba(229,231,235,.82);
+      --muted:rgba(229,231,235,.75);
       --nav-red:#AE0F12;
-      --card-bg:rgba(0,0,0,.1);
+      --card-bg:rgba(255,255,255,.05);
       --card-bd:rgba(255,255,255,.22);
       --btn-bg:#FFFFFF;
       --btn-fg:#0E3960;
@@ -28,6 +28,7 @@
     }
     a{color:#FFFFFF;text-decoration:none}
 
+    /* Header / Nav */
     .site-header{position:sticky;top:0;z-index:50;width:100%;background:var(--nav-red)}
     .nav{background:var(--nav-red)}
     .nav-inner{
@@ -53,6 +54,7 @@
       .nav-toggle{display:inline-block}
     }
 
+    /* Hero */
     .hero{color:#FFFFFF;padding-top:11mm}
     .hero-header{
       max-width:var(--container);
@@ -73,16 +75,16 @@
       margin:0;
       font-size:clamp(1.05rem,2.4vw,1.3rem);
       font-weight:600;
-      opacity:.96;
-      max-width:38rem;
+      opacity:.98;
+      max-width:36rem;
     }
     .hero p.meta{
-  margin:.35rem 0 0;
-  font-size:.9rem;
-  opacity:.8;
-  color:rgba(229,231,235,.82);
-}
+      margin:.35rem 0 0;
+      color:var(--muted);
+      font-size:.88rem;
+    }
 
+    /* Logo right */
     .logo-col{
       grid-column:9 / 13;
       justify-self:start;
@@ -120,6 +122,7 @@
       z-index:1;
     }
 
+    /* Cards */
     .section-cards{
       max-width:var(--container);
       margin:0 auto;
@@ -136,14 +139,19 @@
       background:var(--card-bg);
       border:1px solid var(--card-bd);
       border-radius:14px;
-      padding:1.05rem 1rem;
-      box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06);
+      padding:1.05rem 1rem 1.15rem;
+      box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.04);
       color:#FFFFFF;
     }
     .card h2,.card h3{margin:0 0 .4rem;font-size:1.1rem}
     .card p,.card li{margin:.35rem 0}
     .card ul{list-style:disc;padding-left:1.2rem}
-    .card small{opacity:.75}
+    /* small footer lines under cards – same look for card 1/2/3 */
+    .card-foot{
+      margin-top:.5rem;
+      font-size:.78rem;
+      color:rgba(229,231,235,.75);
+    }
 
     @media (max-width:1024px){
       .card{grid-column:span 6}
@@ -152,6 +160,7 @@
       .card{grid-column:span 12}
     }
 
+    /* CTA button */
     .btn{
       display:inline-block;
       padding:.7rem 1rem;
@@ -201,7 +210,7 @@
         <li><a href="/en/products/changewise/">ChangeWise</a></li>
         <li><a href="/en/products/slackdigest/">SlackDigest</a></li>
         <li><a href="/en/products/tasksieve/">TaskSieve</a></li>
-        <li><strong>EN</strong> | <a href="/products/changewise/getting-started.html">DE</a></li>
+        <li><a href="/products/changewise/getting-started.html">DE</a> | <strong>EN</strong></li>
       </ul>
       <button class="nav-toggle" id="navToggle" onclick="__toggleNav()" aria-label="Open menu" aria-expanded="false">☰</button>
     </div>
@@ -211,14 +220,10 @@
 <main class="hero">
   <div class="hero-header">
     <div class="hero-text">
-       <h1>ChangeWise – Getting Started</h1>
-<p class="lead">
-  3–4 inputs, processed instantly – the system returns focus &amp; next steps.
-</p>
-<p class="meta">
-  No call, no onboarding.
-</p>
-  </div>
+      <h1>ChangeWise – Getting Started</h1>
+      <p class="lead">3–4 inputs, instantly evaluated – the system returns focus & next steps.</p>
+      <p class="meta">No call, no onboarding.</p>
+    </div>
     <div class="logo-col">
       <div class="product-logo">
         <span class="logo-ring" aria-hidden="true">
@@ -231,51 +236,41 @@
     </div>
   </div>
 
-  <section class="section-cards" aria-label="ChangeWise – Getting Started steps">
+  <section class="section-cards" aria-label="ChangeWise – Getting started steps">
     <div class="grid">
       <!-- 1 -->
       <article class="card">
-        <h3>1) What ChangeWise delivers</h3>
-        <p>You don’t get “we received your message”, you get a <strong>usable</strong> outcome:</p>
-        <ul>
-          <li>Condensed core message</li>
-          <li>2–4 prioritized next steps</li>
-          <li>Storylines / phrasing for team & stakeholders</li>
-        </ul>
-        <p><small>For change, internal comms, launches, strategy reviews.</small></p>
+        <h3>1) What ChangeWise is for</h3>
+        <p>Change & internal communication</p>
+        <p>Product / feature communication</p>
+        <p>Getting stakeholders onto one narrative quickly</p>
+        <p class="card-foot">Focus: change, internal comms, product/feature messaging.</p>
       </article>
 
       <!-- 2 -->
       <article class="card">
         <h3>2) Minimal input</h3>
-        <p>3–4 fields are enough:</p>
-        <ol style="margin:.35rem 0 .6rem;padding-left:1.1rem">
-          <li>What’s happening? (change, launch, message)</li>
-          <li>Where it’s stuck (clarity, alignment, time)</li>
-          <li>Audience (team, management, customers)</li>
-          <li>Optional: link to brand/strategy PDF</li>
-        </ol>
-        <p><small>System aligns output to your context.</small></p>
+        <p>What’s happening? (change, launch, message)</p>
+        <p>Where it’s stuck (clarity, alignment, time)</p>
+        <p>Audience (team, leadership, customers)</p>
+        <p>Plus: link to brand / strategy PDF (if available)</p>
+        <p class="card-foot">Result comes back right away – no call, no back and forth.</p>
       </article>
 
       <!-- 3 -->
-       <article class="card">
-  <h3>3) Clear logic, not a black box</h3>
-  <p>Results are based on <strong>transparent communication principles</strong> – instantly usable, no explanations needed.</p>
-  <ul>
-    <li>Problem / context → clearly defined</li>
-    <li>Impact / stakeholders → made visible</li>
-    <li>Core message → distilled into one line</li>
-    <li>Next step → directly actionable</li>
-    <li>With tonal variants – adapted to each use case</li>
-  </ul>
-  <p><strong>Turning data into dialogue – understandable, team-ready and immediately useful.</strong></p>
-</article>
+      <article class="card">
+        <h3>3) Clear logic, not a black box</h3>
+        <p>Problem → impact → message</p>
+        <p>Recommendation → next action</p>
+        <p>With tonal variants – adapted to the use case</p>
+        <p class="card-foot">This turns data into dialogue – understandable, team-ready and immediately useful.</p>
+      </article>
 
       <!-- 4 -->
       <article class="card">
-        <h3>4) Send your brief now</h3>
-        <p>Ready to go – same flow as on the contact page.</p>
+        <h3>4) Send your brief</h3>
+        <p>Outcome & recommendations return in the same flow as on the contact page.</p>
+        <p class="card-foot">3–4 inputs – instantly usable in the team.</p>
         <button class="btn" type="button" onclick="location.href='/en/contact_changewise.html'">
           <span>Send brief & mini diagnosis</span>
           <small>Your input will be AI-assisted and returned with recommendations. No spam, no newsletter.</small>
