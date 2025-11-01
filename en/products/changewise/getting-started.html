@@ -9,7 +9,7 @@
   <style>
     :root{
       --container:1100px;
-      --page-bg:#0E3960;     /* ChangeWise blue */
+      --page-bg:#0E3960;
       --text:#FFFFFF;
       --muted:rgba(229,231,235,.75);
       --nav-red:#AE0F12;
@@ -28,7 +28,6 @@
     }
     a{color:#FFFFFF;text-decoration:none}
 
-    /* Header / Nav */
     .site-header{position:sticky;top:0;z-index:50;width:100%;background:var(--nav-red)}
     .nav{background:var(--nav-red)}
     .nav-inner{
@@ -54,7 +53,6 @@
       .nav-toggle{display:inline-block}
     }
 
-    /* Hero */
     .hero{color:#FFFFFF;padding-top:11mm}
     .hero-header{
       max-width:var(--container);
@@ -84,7 +82,6 @@
       font-size:.88rem;
     }
 
-    /* Logo right */
     .logo-col{
       grid-column:9 / 13;
       justify-self:start;
@@ -122,7 +119,6 @@
       z-index:1;
     }
 
-    /* Cards */
     .section-cards{
       max-width:var(--container);
       margin:0 auto;
@@ -146,7 +142,6 @@
     .card h2,.card h3{margin:0 0 .4rem;font-size:1.1rem}
     .card p,.card li{margin:.35rem 0}
     .card ul{list-style:disc;padding-left:1.2rem}
-    /* small footer lines under cards – same look for card 1/2/3 */
     .card-foot{
       margin-top:.5rem;
       font-size:.78rem;
@@ -160,7 +155,6 @@
       .card{grid-column:span 12}
     }
 
-    /* CTA button */
     .btn{
       display:inline-block;
       padding:.7rem 1rem;
@@ -241,9 +235,11 @@
       <!-- 1 -->
       <article class="card">
         <h3>1) What ChangeWise is for</h3>
-        <p>Change & internal communication</p>
-        <p>Product / feature communication</p>
-        <p>Getting stakeholders onto one narrative quickly</p>
+        <ul>
+          <li>Change & internal communication</li>
+          <li>Product / feature communication</li>
+          <li>Getting stakeholders onto one narrative fast</li>
+        </ul>
         <p class="card-foot">Focus: change, internal comms, product/feature messaging.</p>
       </article>
 
@@ -260,20 +256,24 @@
       <!-- 3 -->
       <article class="card">
         <h3>3) Clear logic, not a black box</h3>
-        <p>Problem → impact → message</p>
-        <p>Recommendation → next action</p>
-        <p>With tonal variants – adapted to the use case</p>
+        <ul>
+          <li>Problem → impact → message</li>
+          <li>Recommendation → next action</li>
+          <li>With tonal variants – adapted to the use case</li>
+        </ul>
         <p class="card-foot">This turns data into dialogue – understandable, team-ready and immediately useful.</p>
       </article>
 
       <!-- 4 -->
       <article class="card">
         <h3>4) Send your brief</h3>
-        <p>Outcome & recommendations return in the same flow as on the contact page.</p>
-        <p class="card-foot">3–4 inputs – instantly usable in the team.</p>
+        <ol style="margin:.4rem 0 .75rem; padding-left:1.1rem;">
+          <li>Outcome & recommendations return in the same flow as on the contact page.</li>
+          <li>3–4 inputs – instantly usable in the team.</li>
+        </ol>
         <button class="btn" type="button" onclick="location.href='/en/contact_changewise.html'">
-          <span>Send brief & mini diagnosis</span>
-          <small>Your input will be AI-assisted and returned with recommendations. No spam, no newsletter.</small>
+          <span>Start brief &amp; mini diagnosis</span>
+          <small>AI-assisted, sent back right away. No spam, no newsletter.</small>
         </button>
       </article>
     </div>
