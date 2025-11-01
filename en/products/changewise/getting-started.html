@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ChangeWise – Getting Started</title>
-  <meta name="description" content="3–4 inputs, evaluated instantly – ChangeWise returns focus, core message and next steps. No call, no onboarding.">
+  <meta name="description" content="3–4 inputs, evaluated instantly – the system returns focus, core message and next steps. No call, no onboarding.">
   <meta name="color-scheme" content="dark">
   <style>
     :root{
@@ -13,7 +13,8 @@
       --text:#FFFFFF;
       --muted:rgba(229,231,235,.75);
       --nav-red:#AE0F12;
-      --card-bg:rgba(255,255,255,.05);
+      /* NEW: card color in sRGB(12,51,87) */
+      --card-bg:rgb(12,51,87);
       --card-bd:rgba(255,255,255,.22);
       --btn-bg:#FFFFFF;
       --btn-fg:#0E3960;
@@ -132,20 +133,20 @@
     }
     .card{
       grid-column:span 3;
-      background:var(--card-bg);
+      background:var(--card-bg);               /* now #0C3357 */
       border:1px solid var(--card-bd);
       border-radius:14px;
       padding:1.05rem 1rem 1.15rem;
       box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.04);
       color:#FFFFFF;
     }
-    .card h2,.card h3{margin:0 0 .4rem;font-size:1.1rem}
+    .card h2,.card h3{margin:0 0 .45rem;font-size:1.1rem}
     .card p,.card li{margin:.35rem 0}
     .card ul{list-style:disc;padding-left:1.2rem}
     .card-foot{
       margin-top:.5rem;
       font-size:.78rem;
-      color:rgba(229,231,235,.75);
+      color:rgba(229,231,235,.78);
     }
 
     @media (max-width:1024px){
@@ -243,13 +244,15 @@
         <p class="card-foot">Focus: change, internal comms, product/feature messaging.</p>
       </article>
 
-      <!-- 2 -->
+      <!-- 2 (now numbered) -->
       <article class="card">
         <h3>2) Minimal input</h3>
-        <p>What’s happening? (change, launch, message)</p>
-        <p>Where it’s stuck (clarity, alignment, time)</p>
-        <p>Audience (team, leadership, customers)</p>
-        <p>Plus: link to brand / strategy PDF (if available)</p>
+        <ol style="margin:.35rem 0 .6rem; padding-left:1.1rem;">
+          <li>What’s happening? (change, launch, message)</li>
+          <li>Where it’s stuck (clarity, alignment, time)</li>
+          <li>Audience (team, leadership, customers)</li>
+          <li>Plus: link to brand / strategy PDF (if available)</li>
+        </ol>
         <p class="card-foot">Result comes back right away – no call, no back and forth.</p>
       </article>
 
@@ -264,13 +267,11 @@
         <p class="card-foot">This turns data into dialogue – understandable, team-ready and immediately useful.</p>
       </article>
 
-      <!-- 4 -->
+      <!-- 4 (no numbers) -->
       <article class="card">
         <h3>4) Send your brief</h3>
-        <ol style="margin:.4rem 0 .75rem; padding-left:1.1rem;">
-          <li>Outcome & recommendations return in the same flow as on the contact page.</li>
-          <li>3–4 inputs – instantly usable in the team.</li>
-        </ol>
+        <p>Outcome & recommendations return in the same flow as the contact page.</p>
+        <p>3–4 inputs – instantly usable in the team.</p>
         <button class="btn" type="button" onclick="location.href='/en/contact_changewise.html'">
           <span>Start brief &amp; mini diagnosis</span>
           <small>AI-assisted, sent back right away. No spam, no newsletter.</small>
