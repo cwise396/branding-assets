@@ -4,22 +4,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TaskSieve – Wichtige Aufgaben zuerst.</title>
-  <meta name="description" content="TaskSieve bündelt E-Mail, Notizen und Slack in einer Inbox, entfernt Duplikate und priorisiert nach Wirkung, Dringlichkeit und Aufwand.">
+  <meta name="description" content="TaskSieve bündelt E-Mail, Notizen & Slack in einer Inbox, entfernt Duplikate und priorisiert nach Wirkung, Dringlichkeit und Aufwand.">
   <meta name="theme-color" content="#0B1220" />
   <style>
     :root{
       --container:1100px;
-
       --bg-dark:#0B1220;
       --fg-dark:#FFFFFF;
-
       --nav-red:#AE0F12;
 
-      --card-ts-bg: rgb(186, 15, 18);
+      --card-ts-bg: rgb(186, 15, 18);   /* dein TS-Rot */
       --card-border: rgba(255,255,255,.28);
-
-      --btn-bg:#FFFFFF;
-      --btn-fg:#AE0F12;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -31,15 +26,8 @@
     }
     a{color:#FFFFFF;text-decoration:none}
 
-    /* Header / Nav */
-    .site-header{
-      position:sticky;
-      top:0;
-      z-index:50;
-      background:var(--nav-red);
-      width:100%;
-    }
-    .nav{background:var(--nav-red)}
+    /* NAV */
+    .site-header{position:sticky;top:0;z-index:50;background:var(--nav-red)}
     .nav-inner{
       max-width:var(--container);
       margin:0 auto;
@@ -49,124 +37,22 @@
       height:12mm;
       padding:0 1rem;
     }
-    .brand{color:#FFFFFF;font-weight:800;white-space:nowrap}
-    .nav-links{
-      list-style:none;
-      display:flex;
-      gap:1rem;
-      margin:0;
-      padding:0;
-      align-items:center;
-    }
-    .nav-links a{color:#FFFFFF}
-    .nav-toggle{display:none}
+    .brand{font-weight:800;color:#fff;white-space:nowrap}
+    .nav-links{list-style:none;display:flex;gap:1rem;margin:0;padding:0;align-items:center}
+    .nav-links a{color:#fff}
 
-    @media (max-width:980px){
-      .nav-inner{
-        position:relative;
-        height:auto;
-        min-height:12mm;
-        padding-block:.4rem;
-      }
-      .nav-links{
-        display:none;
-        position:absolute;
-        top:100%;
-        left:0;
-        right:0;
-        background:var(--nav-red);
-        padding:1rem;
-        margin:0;
-        flex-direction:column;
-        gap:.6rem;
-      }
-      .nav-links.open{display:flex}
-      .nav-toggle{
-        display:inline-block;
-        background:none;
-        border:0;
-        color:#FFFFFF;
-        font-size:1.2rem;
-      }
-    }
-
-    /* Hero */
-    .hero{
-      color:#FFFFFF;
-      padding-top:11mm;
-    }
-    .hero-header{
+    /* PAGE (statt Hero) */
+    main.page{
       max-width:var(--container);
       margin:0 auto;
-      padding:0 1rem;
-      display:grid;
-      grid-template-columns:repeat(12,1fr);
-      gap:1rem;
-      align-items:end;
-    }
-    .hero-text{grid-column:1 / 9}
-    .hero h1{
-      margin:0 0 .2rem;
-      font-size:clamp(1.8rem,4vw,3rem);
-      line-height:1.1;
-    }
-    .hero p.lead{
-      margin:0;
-      font-size:1.05rem;
-      font-weight:650;
-      max-width:32rem;
-    }
-    .hero p.sub{
-      margin:.35rem 0 0;
-      opacity:.92;
-      max-width:32rem;
+      padding:1.2rem 1rem 2.4rem;    /* nur kleiner Abstand nach Navi */
     }
 
-    /* Logo rechts */
-    .logo-col{
-      grid-column:9 / 13;
-      display:flex;
-      align-items:center;
-    }
-    .product-logo{
-      position:relative;
-      width:98px;
-      height:98px;
-    }
-    .product-logo .logo-ring{
-      position:absolute;
-      inset:0;
-      width:98px;
-      height:98px;
-      z-index:2;
-      pointer-events:none;
-      display:block;
-    }
-    .product-logo .logo-ring svg{
-      width:100%;
-      height:100%;
-      display:block;
-    }
-    .product-logo .logo-img{
-      position:absolute;
-      top:5px;
-      left:5px;
-      width:88px;
-      height:88px;
-      display:block;
-    }
-
-    /* Cards */
-    .section-cards{
-      max-width:var(--container);
-      margin:0 auto;
-      padding:0 1rem 2.4rem;
-    }
+    /* GRID / CARDS */
     .grid{
       display:grid;
       grid-template-columns:repeat(12,1fr);
       gap:1rem;
-      margin-top:1rem;
     }
     .card{
       grid-column:span 4;
@@ -174,15 +60,11 @@
       border:1px solid var(--card-border);
       border-radius:14px;
       padding:1.05rem 1rem;
-      box-shadow:0 10px 24px rgba(0,0,0,.25),
-                 inset 0 1px 0 rgba(255,255,255,.06);
-      color:#FFFFFF;
+      box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06);
     }
     .card h3{margin:0 0 .4rem}
-    .card p,.card li{margin:.35rem 0}
-    .card ul{list-style:disc;padding-left:1.2rem}
 
-    /* Button – weiß, rote Schrift (wie bei SlackDigest/TaskSieve zuvor) */
+    /* Button wie besprochen: weiß, rote Schrift, groß */
     .btn{
       display:inline-block;
       border-radius:12px;
@@ -196,7 +78,7 @@
       color:#AE0F12 !important;
       -webkit-text-fill-color:#AE0F12 !important;
     }
-    .btn span{display:block}
+    .btn span{display:block;}
     .btn small{
       display:block;
       font-size:.8rem;
@@ -208,19 +90,13 @@
       margin-top:.2rem;
     }
 
-    /* Footer */
     footer{
       max-width:var(--container);
       margin:2.2rem auto 2.6rem;
       padding:0 1rem;
-      color:#FFFFFF;
+      color:#fff;
     }
-    footer a{color:#FFFFFF}
-
-    /* Zielkarte nicht zu weit unten anzeigen */
-    #card-benefits-ts-de{
-      scroll-margin-top:14mm;
-    }
+    footer a{color:#fff}
 
     @media (max-width:960px){
       .card{grid-column:span 6}
@@ -229,15 +105,6 @@
       .card{grid-column:span 12}
     }
   </style>
-  <script>
-  function __toggleNav(){
-    var l=document.getElementById('navLinks');
-    if(!l) return;
-    var open=l.classList.toggle('open');
-    var t=document.getElementById('navToggle');
-    if(t) t.setAttribute('aria-expanded', open?'true':'false');
-  }
-  </script>
 </head>
 <body>
 <header class="site-header">
@@ -250,105 +117,59 @@
         <li><a href="/products/tasksieve/">TaskSieve</a></li>
         <li><strong>DE</strong> | <a href="/en/products/tasksieve/">EN</a></li>
       </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Menü" aria-controls="navLinks" aria-expanded="false" onclick="__toggleNav()">☰</button>
     </div>
   </nav>
 </header>
 
-<main class="hero">
-  <div class="hero-header">
-    <div class="hero-text">
-      <h1>TaskSieve</h1>
-      <p class="lead">Deine Aufgaben, sortiert nach Wirkung – nicht nach Eingang.</p>
-      <p class="sub">E-Mail, Notizen, Slack: gebündelt, entdoppelt, priorisiert. Du siehst nur, was wirklich zählt.</p>
-    </div>
-    <div class="logo-col">
-      <div class="product-logo">
-        <span class="logo-ring" aria-hidden="true">
-          <svg viewBox="0 0 100 100" width="98" height="98">
-            <circle cx="50" cy="50" r="47.5" fill="none" stroke="#FFFFFF" stroke-width="5" />
-          </svg>
-        </span>
-        <img class="logo-img" src="/assets/brand/tasksieve_logo.svg" alt="TaskSieve Logo" loading="lazy" decoding="async" />
-      </div>
-    </div>
+<main class="page">
+  <div class="grid">
+    <!-- 1: Status & Kontakt -->
+    <article class="card">
+      <h3>Status &amp; Kontakt</h3>
+      <p>Status: <strong>Live-Test</strong> – du bekommst direkten Zugriff auf die Demo-Inbox.</p>
+      <button class="btn" type="button" onclick="location.href='/products/tasksieve/getting-started.html'">
+        <span>Ergebnis ansehen</span>
+        <small>Vorher sehen, dann eigene Inbox aktivieren.</small>
+      </button>
+    </article>
+
+    <!-- 2: Integrationen -->
+    <article class="card">
+      <h3>Integrationen</h3>
+      <p>E-Mail, Notizen, Slack.</p>
+    </article>
+
+    <!-- 3: Vorteile -->
+    <article class="card" id="card-benefits-ts-de">
+      <h3>Vorteile</h3>
+      <ul>
+        <li><strong>Schneller Start</strong> – Minuten statt Tage.</li>
+        <li><strong>Erklärbare Priorisierung</strong>.</li>
+        <li><strong>Wenig Pflege</strong> im Alltag.</li>
+      </ul>
+      <details style="margin-top:.4rem">
+        <summary>mehr</summary>
+        <ul>
+          <li>Weniger Kontextwechsel.</li>
+          <li>Team-Zusagen bleiben sichtbar.</li>
+          <li>„Feuer löschen“ wird planbar.</li>
+        </ul>
+      </details>
+    </article>
   </div>
-
-  <section class="section-cards">
-    <div class="grid">
-      <!-- 1 -->
-      <article class="card">
-        <h3>Eine Inbox</h3>
-        <p>Zieht aus E-Mail, Notizen &amp; Slack – ein Ort, kein Suchen.</p>
-      </article>
-
-      <!-- 2 -->
-      <article class="card">
-        <h3>So funktioniert’s</h3>
-        <ul>
-          <li>Quellen verbinden</li>
-          <li>Automatisches Dedupe &amp; Clustering</li>
-          <li>Scoring nach Wirkung / Dringlichkeit / Aufwand</li>
-        </ul>
-      </article>
-
-      <!-- 3 -->
-      <article class="card">
-        <h3>Was es liefert</h3>
-        <p>Sichtbare Next Actions, weniger „Wie ist der Stand?“, erklärbare Prioritäten.</p>
-      </article>
-
-      <!-- 4: Status & Kontakt -->
-      <article class="card">
-        <h3>Status &amp; Kontakt</h3>
-        <p>Status: <strong>Live-Test</strong> – du bekommst direkten Zugriff auf die Demo-Inbox.</p>
-        <button class="btn" type="button" onclick="location.href='/products/tasksieve/getting-started.html'">
-          <span>Ergebnis ansehen</span>
-          <small>Zuerst sehen, dann eigene Inbox aktivieren.</small>
-        </button>
-      </article>
-
-      <!-- 5 -->
-      <article class="card">
-        <h3>Integrationen</h3>
-        <p>E-Mail, Notizen, Slack.</p>
-      </article>
-
-      <!-- 6 -->
-      <article class="card" id="card-benefits-ts-de">
-        <h3>Vorteile</h3>
-        <ul>
-          <li>Schneller Start – Minuten statt Tage.</li>
-          <li>Erklärbare Priorisierung.</li>
-          <li>Wenig Pflege im Alltag.</li>
-        </ul>
-        <details style="margin-top:.4rem">
-          <summary>mehr</summary>
-          <ul>
-            <li>Weniger Kontextwechsel.</li>
-            <li>Team-Zusagen bleiben sichtbar.</li>
-            <li>„Feuer löschen“ wird planbar.</li>
-          </ul>
-        </details>
-      </article>
-    </div>
-  </section>
 </main>
 
 <footer>
   <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
 </footer>
 
-<!-- einziges Deep-Link-Skript: nur Vorteile öffnen + leicht hochscrollen -->
- <script>
+<script>
 (function(){
-  // 1. Nur reagieren, wenn WIRKLICH ein Hash dran ist
+  // nur wenn wir WIRKLICH über #vorteile o.ä. kommen
   var raw = location.hash;
   if (!raw || raw === "#" || raw === "#!") return;
-
   var hash = raw.toLowerCase();
 
-  // 2. Nur diese Hashes akzeptieren
   var wanted = [
     "#vorteile",
     "#benefits",
@@ -358,13 +179,10 @@
   ];
   if (wanted.indexOf(hash) === -1) return;
 
-  // 3. Ziel-Karte finden (deutsche ID zuerst, dann generisch)
   var card = document.getElementById("card-benefits-ts-de") ||
              document.getElementById("card-benefits");
   if (!card) return;
 
-  // 4. Alle Karten im selben Grid holen und ALLES ausblenden,
-  //    was oberhalb der Vorteilskarte liegt
   var grid = card.closest(".grid");
   if (grid) {
     Array.from(grid.children).forEach(function(node){
@@ -374,19 +192,19 @@
     });
   }
 
-  // 5. Details aufklappen
+  // Details aufklappen
   var det = card.querySelector("details");
   if (det && !det.open) det.open = true;
 
-  // 6. Hash auf die tatsächliche ID setzen
+  // Hash „bereinigen“
   if (location.hash !== "#" + card.id) {
     history.replaceState(null, "", "#" + card.id);
   }
 
-  // 7. Schön nach oben scrollen
-  card.scrollIntoView({behavior: "instant", block: "start"});
-  try { window.scrollBy(0, -20); } catch (e) {}
+  card.scrollIntoView({behavior:"instant", block:"start"});
+  try { window.scrollBy(0, -16); } catch(e){}
 })();
 </script>
+
 </body>
 </html>
