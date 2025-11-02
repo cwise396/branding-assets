@@ -283,18 +283,7 @@ footer a{color:#FFFFFF}
 
 /* turn off any legacy overlay if present */
 #bg-overlay{display:none !important}
-/* Benefits-Only-Modus – wenn per #card-benefits aufgerufen */
-body.cw-benefits-only .hero,
-body.cw-benefits-only .cw-top,
-body.cw-benefits-only .cw-intro {
-  display:none !important;
-}
-
-body.cw-benefits-only .section-cards,
-body.cw-benefits-only #card-benefits {
-  margin-top:1.4rem !important;
-}
-
+ 
 </style>
 
   <script>
@@ -501,6 +490,37 @@ function __toggleNav(){
       }, 50);
     }
   }
+})();
+</script>
+<script>
+(function(){
+  // nur reagieren, wenn wir wirklich über "Vorteile zeigen" gekommen sind
+  if (location.hash !== '#card-benefits') return;
+
+  // Ziel-Element holen
+  var target = document.getElementById('card-benefits');
+  if (!target) return;
+
+  // Wir nehmen den <main>-Container als Arbeitsbereich
+  var main = target.closest('main') || document.querySelector('main');
+  if (main) {
+    // alle direkten Kinder von <main> durchgehen
+    Array.from(main.children).forEach(function(node){
+      // das Element, das die Benefits enthält, lassen wir stehen
+      if (node.contains(target)) return;
+      // alles andere im Main ausblenden
+      node.style.display = 'none';
+    });
+  }
+
+  // kurz warten, dann zum Block springen
+  setTimeout(function(){
+    try {
+      target.scrollIntoView({behavior:'instant', block:'start'});
+    } catch(e) {
+      target.scrollIntoView();
+    }
+  }, 40);
 })();
 </script>
 
