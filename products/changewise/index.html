@@ -449,12 +449,8 @@ function __toggleNav(){
     </section>
   </section>
 </main>
-
-<footer>
-  <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
  </footer>
 
-<!-- Nav-Toggle bleibt -->
 <script>
 function __toggleNav(){
   var l = document.getElementById('navLinks');
@@ -465,51 +461,54 @@ function __toggleNav(){
 }
 </script>
 
-<!-- NEU: nur hinspringen + Details öffnen, nichts ausblenden -->
 <script>
 (function(){
-  function run(){
-    var hash = (location.hash || "").toLowerCase();
-    // Nur reagieren, wenn wirklich "Vorteile" gemeint ist
-    if (
-      !hash ||
-      (hash !== '#benefits' &&
-       hash !== '#card-benefits' &&
-       hash !== '#vorteile' &&
-       hash !== '#benefits-changewise')
-    ){
-      return;
-    }
+  // aktuelles Hash holen, z. B. #card-benefits-cw-de
+  var hash = (location.hash || "").toLowerCase();
+  if (!hash) return;
 
-    // Karte finden (DE-IDs zuerst)
-    var card =
-      document.getElementById('card-benefits') ||
-      document.getElementById('benefits-changewise') ||
-      document.getElementById('card-benefits-en');
+  // wir akzeptieren mehrere Schreibweisen
+  var wanted = [
+    '#card-benefits-cw-de',
+    '#card-benefits',
+    '#benefits-changewise',
+    '#benefits',
+    '#vorteile'
+  ];
 
-    if (!card) return;
+  if (wanted.indexOf(hash) === -1) return;
 
-    // Details aufklappen
-    var d = card.querySelector('details');
-    if (d && !d.open) d.open = true;
+  // Ziel-Karte holen (reihenfolge: deine DE-ID → generische ID)
+  var card =
+    document.getElementById('card-benefits-cw-de') ||
+    document.getElementById('card-benefits') ||
+    document.getElementById('benefits-changewise');
 
-    // Hash auf die echte ID setzen, damit :target greift
-    if (location.hash !== '#' + card.id) {
-      history.replaceState(null, '', '#' + card.id);
-    }
+  if (!card) return;
 
-    // hinscrollen
-    card.scrollIntoView({behavior:'instant', block:'center'});
+  // alles andere im <main> ausblenden, damit NUR der Vorteil-Block sichtbar ist
+  var main = card.closest('main') || document.querySelector('main');
+  if (main){
+    Array.from(main.children).forEach(function(node){
+      if (!node.contains(card)) {
+        node.style.display = 'none';
+      }
+    });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', run);
-  } else {
-    run();
+  // falls in der Vorteil-Karte ein <details> ist → öffnen
+  var det = card.querySelector('details');
+  if (det && !det.open) det.open = true;
+
+  // nach oben scrollen
+  try {
+    card.scrollIntoView({behavior:'instant', block:'start'});
+  } catch(e) {
+    card.scrollIntoView();
   }
 })();
 </script>
 
 </body>
-
 </html>
+
