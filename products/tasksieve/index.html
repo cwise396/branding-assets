@@ -342,7 +342,13 @@
 <!-- einziges Deep-Link-Skript: nur Vorteile öffnen + leicht hochscrollen -->
  <script>
 (function(){
-  var hash = (location.hash || "").toLowerCase();
+  // 1. Nur reagieren, wenn WIRKLICH ein Hash dran ist
+  var raw = location.hash;
+  if (!raw || raw === "#" || raw === "#!") return;
+
+  var hash = raw.toLowerCase();
+
+  // 2. Nur diese Hashes akzeptieren
   var wanted = [
     "#vorteile",
     "#benefits",
@@ -350,41 +356,37 @@
     "#card-benefits-ts-de",
     "#benefits-tasksieve"
   ];
-
-  // nur reagieren, wenn wir wirklich über "Vorteile zeigen" o.ä. gekommen sind
   if (wanted.indexOf(hash) === -1) return;
 
-  // Zielkarte holen
+  // 3. Ziel-Karte finden (deutsche ID zuerst, dann generisch)
   var card = document.getElementById("card-benefits-ts-de") ||
              document.getElementById("card-benefits");
   if (!card) return;
 
-  // alle Karten im gleichen Grid holen
+  // 4. Alle Karten im selben Grid holen und ALLES ausblenden,
+  //    was oberhalb der Vorteilskarte liegt
   var grid = card.closest(".grid");
   if (grid) {
     Array.from(grid.children).forEach(function(node){
-      // alles ausblenden, was OBERHALB der Vorteilskarte sitzt
       if (node !== card && node.offsetTop < card.offsetTop) {
         node.style.display = "none";
       }
     });
   }
 
-  // Details aufklappen
+  // 5. Details aufklappen
   var det = card.querySelector("details");
   if (det && !det.open) det.open = true;
 
-  // Hash sauber machen
+  // 6. Hash auf die tatsächliche ID setzen
   if (location.hash !== "#" + card.id) {
     history.replaceState(null, "", "#" + card.id);
   }
 
-  // nach oben scrollen, so dass wirklich NUR die untere Reihe sichtbar ist
+  // 7. Schön nach oben scrollen
   card.scrollIntoView({behavior: "instant", block: "start"});
   try { window.scrollBy(0, -20); } catch (e) {}
 })();
 </script>
-
-
 </body>
 </html>
