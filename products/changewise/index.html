@@ -463,11 +463,9 @@ function __toggleNav(){
 
 <script>
 (function(){
-  // aktuelles Hash holen, z. B. #card-benefits-cw-de
+  // Hash holen
   var hash = (location.hash || "").toLowerCase();
-  if (!hash) return;
-
-  // alle Varianten erlauben, die aus "Vorteile zeigen" kommen können
+  // nur reagieren, wenn wir wirklich über "Vorteile zeigen" kamen
   var wanted = [
     '#card-benefits-cw-de',
     '#card-benefits',
@@ -477,45 +475,47 @@ function __toggleNav(){
   ];
   if (wanted.indexOf(hash) === -1) return;
 
-  // Ziel-Karte holen (DE zuerst, dann generisch)
-  var card =
+  // 1) das Karten-Grid holen
+  var grid = document.querySelector('.section-cards .grid');
+  if (!grid) return;
+
+  // 2) alle Karten im Grid holen
+  var cards = grid.querySelectorAll(':scope > .card');
+  if (!cards.length) return;
+
+  // deine Struktur: 6 Karten → wir blenden die ersten 3 aus, die letzten 3 bleiben
+  cards.forEach(function(card, idx){
+    if (idx < 3) {
+      card.style.display = 'none';
+    } else {
+      card.style.display = '';
+    }
+  });
+
+  // 3) gezielt zur Vorteils-Karte scrollen
+  // wir versuchen mehrere IDs, je nachdem wie du sie genannt hast
+  var target =
     document.getElementById('card-benefits-cw-de') ||
     document.getElementById('card-benefits') ||
-    document.getElementById('benefits-changewise');
+    cards[cards.length - 1]; // notfalls letzte Karte
 
-  if (!card) return;
-
-  // nur den Bereich mit der Karte sichtbar lassen
-  var main = card.closest('main') || document.querySelector('main');
-  if (main){
-    Array.from(main.children).forEach(function(node){
-      if (!node.contains(card)) {
-        node.style.display = 'none';
-      }
-    });
-  }
-
-  // evtl. <details> öffnen
-  var det = card.querySelector('details');
-  if (det && !det.open) det.open = true;
-
-  // zuerst hinscrollen …
-  try {
-    card.scrollIntoView({behavior:'instant', block:'start'});
-  } catch(e) {
-    card.scrollIntoView();
-  }
-
-  // … und dann wegen Sticky-Header ein Stück nach oben korrigieren
-  setTimeout(function(){
+  if (target){
+    // erst hinscrollen
     try {
-      window.scrollBy(0, -90); // bei Bedarf -80 oder -100
-    } catch(e){}
-  }, 40);
+      target.scrollIntoView({behavior:'instant', block:'start'});
+    } catch(e) {
+      target.scrollIntoView();
+    }
+    // dann ein kleines Stück nach oben, damit keine halben Karten sichtbar sind
+    setTimeout(function(){
+      try { window.scrollBy(0, -80); } catch(e){}
+    }, 40);
+  }
 })();
 </script>
 
 </body>
+
 
 </html>
 
