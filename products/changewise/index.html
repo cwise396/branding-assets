@@ -463,59 +463,49 @@ function __toggleNav(){
 
 <script>
 (function(){
-  // Hash holen
-  var hash = (location.hash || "").toLowerCase();
-  // nur reagieren, wenn wir wirklich über "Vorteile zeigen" kamen
-  var wanted = [
-    '#card-benefits-cw-de',
-    '#card-benefits',
-    '#benefits-changewise',
-    '#benefits',
-    '#vorteile'
-  ];
-  if (wanted.indexOf(hash) === -1) return;
+  function run(){
+    var hash = (location.hash || "").toLowerCase();
+    // nur reagieren, wenn von „Vorteile zeigen“ o.ä. gekommen
+    if (!hash || (hash!=='#benefits' && hash!=='#card-benefits' && hash!=='#vorteile')) return;
 
-  // 1) das Karten-Grid holen
-  var grid = document.querySelector('.section-cards .grid');
-  if (!grid) return;
+    // Karte „Vorteile“ holen
+    var card = document.getElementById('card-benefits-cw-de') ||
+               document.getElementById('card-benefits');
+    if (!card) return;
 
-  // 2) alle Karten im Grid holen
-  var cards = grid.querySelectorAll(':scope > .card');
-  if (!cards.length) return;
-
-  // deine Struktur: 6 Karten → wir blenden die ersten 3 aus, die letzten 3 bleiben
-  cards.forEach(function(card, idx){
-    if (idx < 3) {
-      card.style.display = 'none';
-    } else {
-      card.style.display = '';
+    // Innerhalb des Card-Grids: nur die letzten 3 Karten stehen lassen
+    var grid = card.closest('.grid');
+    if (grid){
+      var cards = grid.querySelectorAll(':scope > .card');
+      cards.forEach(function(c,i){
+        if (i < cards.length - 3){
+          c.style.display = 'none';
+        } else {
+          c.style.display = '';
+        }
+      });
     }
-  });
 
-  // 3) gezielt zur Vorteils-Karte scrollen
-  // wir versuchen mehrere IDs, je nachdem wie du sie genannt hast
-  var target =
-    document.getElementById('card-benefits-cw-de') ||
-    document.getElementById('card-benefits') ||
-    cards[cards.length - 1]; // notfalls letzte Karte
+    // <details> in der Vorteils-Karte öffnen
+    var det = card.querySelector('details');
+    if (det && !det.open) det.open = true;
 
-  if (target){
-    // erst hinscrollen
-    try {
-      target.scrollIntoView({behavior:'instant', block:'start'});
-    } catch(e) {
-      target.scrollIntoView();
-    }
-    // dann ein kleines Stück nach oben, damit keine halben Karten sichtbar sind
+    // sanft scrollen und dann nach oben korrigieren (Sticky-Header)
+    card.scrollIntoView({behavior:'instant', block:'start'});
     setTimeout(function(){
-      try { window.scrollBy(0, -80); } catch(e){}
-    }, 40);
+      try { window.scrollBy(0, -90); } catch(e){}
+    }, 60);
+  }
+
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
   }
 })();
 </script>
 
 </body>
-
 
 </html>
 
