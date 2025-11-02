@@ -13,7 +13,7 @@
       --fg-dark:#FFFFFF;
       --nav-red:#AE0F12;
 
-      --card-ts-bg: rgb(186, 15, 18);   /* dein TS-Rot */
+      --card-ts-bg: rgb(186, 15, 18);
       --card-border: rgba(255,255,255,.28);
     }
     *{box-sizing:border-box}
@@ -41,11 +41,11 @@
     .nav-links{list-style:none;display:flex;gap:1rem;margin:0;padding:0;align-items:center}
     .nav-links a{color:#fff}
 
-    /* PAGE (statt Hero) */
+    /* PAGE (kleiner Abstand unter der Navi) */
     main.page{
       max-width:var(--container);
       margin:0 auto;
-      padding:1.2rem 1rem 2.4rem;    /* nur kleiner Abstand nach Navi */
+      padding:1.2rem 1rem 2.4rem;
     }
 
     /* GRID / CARDS */
@@ -63,6 +63,11 @@
       box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06);
     }
     .card h3{margin:0 0 .4rem}
+
+    /* Vorteile-Karte etwas stärker umranden */
+    #card-benefits-ts-de{
+      border:1px solid rgba(255,255,255,.65);
+    }
 
     /* Button wie besprochen: weiß, rote Schrift, groß */
     .btn{
@@ -123,7 +128,27 @@
 
 <main class="page">
   <div class="grid">
-    <!-- 1: Status & Kontakt -->
+    <!-- OBERER BLOCK (die 3 „fehlenden“ Karten) -->
+    <article class="card">
+      <h3>Eine Inbox</h3>
+      <p>Zieht E-Mail, Notizen &amp; Slack zusammen – kein Suchen, kein Springen.</p>
+    </article>
+
+    <article class="card">
+      <h3>So funktioniert’s</h3>
+      <ul>
+        <li>Quellen verbinden</li>
+        <li>Automatisches Dedupe &amp; Clustering</li>
+        <li>Scoring nach Wirkung / Dringlichkeit / Aufwand</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <h3>Was du bekommst</h3>
+      <p>Klare Next Actions, weniger „Was ist der Stand?“-Nachfragen, erklärbare Reihenfolge.</p>
+    </article>
+
+    <!-- UNTERER BLOCK (wie vorher) -->
     <article class="card">
       <h3>Status &amp; Kontakt</h3>
       <p>Status: <strong>Live-Test</strong> – du bekommst direkten Zugriff auf die Demo-Inbox.</p>
@@ -133,13 +158,11 @@
       </button>
     </article>
 
-    <!-- 2: Integrationen -->
     <article class="card">
       <h3>Integrationen</h3>
       <p>E-Mail, Notizen, Slack.</p>
     </article>
 
-    <!-- 3: Vorteile -->
     <article class="card" id="card-benefits-ts-de">
       <h3>Vorteile</h3>
       <ul>
@@ -165,7 +188,7 @@
 
 <script>
 (function(){
-  // nur wenn wir WIRKLICH über #vorteile o.ä. kommen
+  // nur reagieren, wenn wir wirklich über "Vorteile zeigen" kommen
   var raw = location.hash;
   if (!raw || raw === "#" || raw === "#!") return;
   var hash = raw.toLowerCase();
@@ -183,6 +206,7 @@
              document.getElementById("card-benefits");
   if (!card) return;
 
+  // alle Karten über der Vorteile-Karte ausblenden (also die oberen 3)
   var grid = card.closest(".grid");
   if (grid) {
     Array.from(grid.children).forEach(function(node){
@@ -196,11 +220,12 @@
   var det = card.querySelector("details");
   if (det && !det.open) det.open = true;
 
-  // Hash „bereinigen“
+  // Hash säubern
   if (location.hash !== "#" + card.id) {
     history.replaceState(null, "", "#" + card.id);
   }
 
+  // nach oben scrollen
   card.scrollIntoView({behavior:"instant", block:"start"});
   try { window.scrollBy(0, -16); } catch(e){}
 })();
