@@ -1,446 +1,149 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>TaskSieve – Focus on what moves the needle first.</title>
-<meta name="description" content="TaskSieve pulls email, notes & Slack into one inbox, removes duplicates, clusters topics and ranks by impact, urgency and effort. Less firefighting, more progress.">
-<meta name="theme-color" content="#0B1220" />
-
-<style>
-:root{
-  --container:1100px;
-
-  /* Dark-only page */
-  --bg-dark:#0B1220;
-  --fg-dark:#FFFFFF;
-  --muted:#CBD5E1;
-
-  /* Navbar brand red */
-  --nav-red:#AE0F12;
-
-  /* Card background and border */
-  --card-ts-bg: rgb(186, 15, 18);      /* same as DE cards */
-  --card-border: rgba(255,255,255,.28);
-
-  /* Accent / brand vars if needed later */
-  --ts-red:#AE0F12;
-}
-
-*{ box-sizing:border-box }
-html,body{ height:100% }
-body{
-  margin:0;
-  font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
-  background:var(--bg-dark);
-  color:var(--fg-dark);
-}
-a{ color:#FFFFFF; text-decoration:none }
-
-/* Header/Nav */
-.site-header{
-  position:sticky;
-  top:0;
-  z-index:50;
-  width:100%;
-  background:var(--nav-red);
-}
-.nav{ background:var(--nav-red) }
-.nav-inner{
-  max-width:var(--container);
-  margin:0 auto;
-  padding:0 1rem;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  height:12mm;
-}
-.brand{
-  color:#FFFFFF;
-  font-weight:800;
-  white-space:nowrap;
-}
-.nav-links{
-  list-style:none;
-  display:flex;
-  gap:1rem;
-  margin:0;
-  padding:0;
-  align-items:center;
-}
-.nav-links a{ color:#FFFFFF }
-.nav-toggle{
-  display:none;
-  background:none;
-  border:0;
-  color:#FFFFFF;
-  font-size:1.2rem;
-}
-
-@media (max-width:980px){
-  .nav-inner{
-    position:relative;
-    height:auto;
-    min-height:12mm;
-    padding-block:.4rem;
-  }
-  .nav-links{
-    display:none;
-    position:absolute;
-    top:100%;
-    left:0;
-    right:0;
-    background:var(--nav-red);
-    padding:1rem;
-    margin:0;
-    flex-direction:column;
-    gap:.6rem;
-  }
-  .nav-links.open{ display:flex }
-  .nav-toggle{ display:inline-block }
-}
-
-/* Hero */
-.hero{
-  color:#FFFFFF;
-  padding-top:11mm;
-}
-.hero-header{
-  max-width:var(--container);
-  margin:0 auto;
-  padding:0 1rem;
-  display:grid;
-  grid-template-columns:repeat(12,1fr);
-  gap:1rem;
-  align-items:end;
-}
-.hero-text{
-  grid-column:1 / 9;
-}
-.hero h1{
-  margin:0 0 .2rem;
-  font-size:clamp(1.8rem,4vw,3rem);
-  line-height:1.1;
-}
-.hero p.lead{
-  margin:0;
-  font-size:clamp(1.1rem,2.4vw,1.35rem);
-  font-weight:700;
-  opacity:.95;
-}
-
-/* Logo column */
-.logo-col{
-  grid-column:9 / 13;
-  justify-self:start;
-  display:flex;
-  align-items:center;
-}
-.product-logo{
-  position:relative;
-  width:98px;
-  height:98px;
-}
-.product-logo .logo-ring{
-  position:absolute;
-  inset:0;
-  width:98px;
-  height:98px;
-  z-index:2;
-  pointer-events:none;
-  display:block;
-}
-.product-logo .logo-ring svg{
-  width:100%;
-  height:100%;
-  display:block;
-}
-.product-logo .logo-img{
-  position:absolute;
-  top:5px;
-  left:5px;
-  width:88px;
-  height:88px;
-  display:block;
-  border-radius:50%;
-  z-index:1;
-  background:transparent;
-}
-
-/* Cards grid */
-.section-cards{
-  max-width:var(--container);
-  margin:0 auto;
-  padding:0 1rem 2.4rem;
-}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(12,1fr);
-  gap:1rem;
-  margin-top:1rem;
-}
-
-/* Card styling for TaskSieve */
-.card{
-  grid-column:span 4;
-  background:var(--card-ts-bg) !important;
-  color:#FFFFFF !important;
-  border-radius:14px;
-  padding:1.05rem 1rem;
-  border:1px solid var(--card-border);
-  box-shadow:
-    0 10px 24px rgba(0,0,0,.25),
-    inset 0 1px 0 rgba(255,255,255,.06);
-}
-.card h3{
-  margin:0 0 .4rem;
-}
-.card p,
-.card li{
-  margin:.35rem 0;
-}
-.card ul{
-  list-style:disc;
-  padding-left:1.2rem;
-}
-.card a{
-  text-decoration:underline;
-  text-underline-offset:2px;
-  color:#FFFFFF;
-}
-
-@media (max-width:960px){
-  .card{ grid-column:span 6; }
-}
-@media (max-width:640px){
-  .card{ grid-column:span 12; }
-}
-
-/* details/summary for FAQ etc. */
-details{ border:0; }
-details summary{
-  cursor:pointer;
-  font-weight:800;
-}
-
-/* CTA button on the red card:
-   - solid slightly darker tone than card
-   - same tone as DE final: rgb(151, 12, 15)
-   - white text, 2-line, left-aligned
-   - Safari-safe (no variable indirection)
-*/
-.btn{
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TaskSieve – Important work first.</title>
+  <meta name="description" content="TaskSieve unifies email, notes and Slack into one inbox, dedupes and prioritizes by impact, urgency and effort.">
+  <meta name="theme-color" content="#0B1220" />
+  <style>
+    :root{
+      --container:1100px;
+      --bg-dark:#0B1220;
+      --fg-dark:#FFFFFF;
+      --nav-red:#AE0F12;
+      --card-ts-bg: rgb(186, 15, 18);
+      --card-border: rgba(255,255,255,.28);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg-dark);color:var(--fg-dark);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+    a{color:#FFFFFF;text-decoration:none}
+    .site-header{position:sticky;top:0;z-index:50;background:var(--nav-red)}
+    .nav-inner{max-width:var(--container);margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:12mm;padding:0 1rem;}
+    .nav-links{list-style:none;display:flex;gap:1rem;margin:0;padding:0;align-items:center}
+    .hero{color:#fff;padding-top:11mm}
+    .hero-header{max-width:var(--container);margin:0 auto;padding:0 1rem;display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;align-items:end}
+    .hero-text{grid-column:1/9}
+    .hero h1{margin:0 0 .2rem;font-size:clamp(1.8rem,4vw,3rem)}
+    .hero p.lead{margin:0;font-size:1.05rem;font-weight:650;max-width:32rem}
+    .hero p.sub{margin:.35rem 0 0;opacity:.92;max-width:32rem}
+    .logo-col{grid-column:9/13;display:flex;align-items:center}
+    .product-logo{position:relative;width:98px;height:98px}
+    .product-logo .logo-img{position:absolute;top:5px;left:5px;width:88px;height:88px}
+    .section-cards{max-width:var(--container);margin:0 auto;padding:0 1rem 2.4rem}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;margin-top:1rem}
+    .card{grid-column:span 4;background:var(--card-ts-bg);border:1px solid var(--card-border);border-radius:14px;padding:1.05rem 1rem;box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06);}
+    .card h3{margin:0 0 .4rem}
+     .btn{
   display:inline-block;
   border-radius:12px;
-  font-weight:800;
-  text-decoration:none;
+  padding:0.8rem 1.05rem;         /* etwas mehr Höhe */
+  border:1px solid rgba(255,255,255,.65);
+  background:rgba(151,12,15,.92);
   text-align:left;
-  padding:0.7rem 1rem;
-  line-height:1.3;
-  border:1px solid rgba(255,255,255,.6);
-  background:rgb(151, 12, 15);
+  line-height:1.25;
   color:#FFFFFF !important;
   -webkit-text-fill-color:#FFFFFF !important;
+  font-weight:800;
+  font-size:1rem;                  /* nicht zu klein */
 }
 .btn span{
   display:block;
-  font-weight:inherit;
-  line-height:inherit;
-  color:#FFFFFF !important;
-  -webkit-text-fill-color:#FFFFFF !important;
+}
+.btn small{
+  display:block;
+  font-size:.8rem;
+  font-weight:500;
+  opacity:.9;
+  line-height:1.25;
+  margin-top:.2rem;
 }
 
-/* Footer */
-footer{
-  max-width:var(--container);
-  margin:2.2rem auto;
-  padding:0 1rem 2.4rem;
-  color:#FFFFFF;
-}
-footer a{
-  color:#FFFFFF;
-}
-
-/* Optional highlight when deep-linking (#benefits etc.) */
-.card:target{
-  outline:3px solid rgba(255,255,255,.75);
-  box-shadow:
-    0 0 0 4px rgba(255,255,255,.25),
-    0 12px 28px rgba(0,0,0,.45);
-  scroll-margin-top:14mm;
-}
-</style>
-
-<script>
-function __toggleNav(){
-  var l=document.getElementById('navLinks');
-  if(!l) return;
-  var o=l.classList.toggle('open');
-  document.getElementById('navToggle')
-    .setAttribute('aria-expanded', o?'true':'false');
-}
-</script>
+    footer{max-width:var(--container);margin:2.2rem auto 2.6rem;padding:0 1rem}
+    @media (max-width:960px){ .card{grid-column:span 6} }
+    @media (max-width:640px){ .card{grid-column:span 12} }
+  </style>
 </head>
-
 <body>
 <header class="site-header">
-  <nav class="nav">
+  <nav>
     <div class="nav-inner">
       <a class="brand" href="/en/home/">Home</a>
-      <ul class="nav-links" id="navLinks">
+      <ul class="nav-links">
         <li><a href="/en/products/changewise/">ChangeWise</a></li>
         <li><a href="/en/products/slackdigest/">SlackDigest</a></li>
         <li><a href="/en/products/tasksieve/">TaskSieve</a></li>
-        <li><a href="/products/tasksieve/">DE</a> | <strong>EN</strong></li>
+        <li><a href="/contact_tasksieve.html">DE</a> | <strong>EN</strong></li>
       </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false" onclick="__toggleNav()">☰</button>
     </div>
   </nav>
 </header>
 
 <main class="hero">
   <div class="hero-header">
-     <div class="hero-text">
-  <h1>TaskSieve</h1>
-  <p class="lead">Your work, ranked by impact — zero friction.</p>
-  <p class="lead-sub" style="margin:.4rem 0 0; font-size:1rem; font-weight:500; opacity:.9; max-width:32rem;">
-    Email, notes, Slack: merged, de-duped, prioritized. You see what actually matters right now.
-  </p>
-</div>
-
-   <div class="logo-col">
+    <div class="hero-text">
+      <h1>TaskSieve</h1>
+      <p class="lead">Your work, ranked by impact – not by arrival time.</p>
+      <p class="sub">Email, notes, Slack: unified, deduped, prioritized. You only see what actually matters.</p>
+    </div>
+    <div class="logo-col">
       <div class="product-logo">
         <span class="logo-ring" aria-hidden="true">
-          <svg viewBox="0 0 100 100" width="98" height="98" focusable="false" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="98" height="98">
             <circle cx="50" cy="50" r="47.5" fill="none" stroke="#FFFFFF" stroke-width="5" />
           </svg>
         </span>
-        <img class="logo-img"
-             src="/assets/brand/tasksieve_logo.svg"
-             alt="TaskSieve Logo"
-             width="88"
-             height="88"
-             loading="lazy"
-             decoding="async" />
+        <img class="logo-img" src="/assets/brand/tasksieve_logo.svg" alt="TaskSieve Logo">
       </div>
     </div>
   </div>
 
   <section class="section-cards">
-    <section class="grid" aria-label="Key Features">
-      <!-- Card 1 -->
+    <div class="grid">
       <article class="card">
-        <h3>On point</h3>
-        <p>One inbox for email, notes &amp; Slack — automatically prioritised.</p>
+        <h3>One inbox</h3>
+        <p>Pulls from email, notes, Slack – one place, no scavenging.</p>
       </article>
-
-      <!-- Card 2 -->
       <article class="card">
         <h3>How it works</h3>
         <ul>
-          <li>Connect your sources (email, notes, Slack)</li>
-          <li>Automatic dedupe &amp; clustering</li>
+          <li>Connect sources</li>
+          <li>Auto-dedupe & clustering</li>
           <li>Scoring by impact / urgency / effort</li>
         </ul>
       </article>
-
-      <!-- Card 3 -->
       <article class="card">
         <h3>What you get</h3>
-        <ul>
-          <li><strong>Next action is visible</strong> — no manual list grooming.</li>
-          <li><strong>More throughput</strong> — focus blocks &amp; batching.</li>
-          <li><strong>Less context switching</strong> — work stays grouped by topic.</li>
-        </ul>
-        <details style="margin-top:.4rem">
-          <summary>more</summary>
-          <ul>
-            <li>Firefighting becomes planned, not reactive chaos.</li>
-            <li>Team commitments become visible and trackable.</li>
-            <li>Duplicates and noise get actively suppressed.</li>
-          </ul>
-        </details>
+        <p>Clear next actions, fewer “what’s the status?” pings, explainable priority.</p>
       </article>
+       <article class="card">
+  <h3>Status &amp; contact</h3>
+  <p>Status: <strong>Live test</strong> — you get instant access to the demo inbox.</p>
+  <button class="btn" type="button" onclick="location.href='/en/products/tasksieve/getting-started.html'">
+    <span>View result</span>
+    <small>See it first, then activate your own inbox.</small>
+  </button>
+</article>
 
-      <!-- Card 4: Status & Contact -->
-      <article class="card">
-        <h3>Status &amp; contact</h3>
-        <p>Status: <strong>Live test</strong> — you’ll get direct access to the demo inbox.</p>
-
-        <button class="btn" type="button" onclick="location.href='/en/contact_tasksieve.html'">
->
-          <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
-            Start demo
-          </span>
-          <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
-            The prioritisation is based on clear criteria and continuously refined with AI.
-          </span>
-        </button>
-
-        <details style="margin-top:.6rem">
-          <summary>FAQ</summary>
-          <ul>
-            <li><strong>Do I need to import everything?</strong> No — the demo inbox is enough to start.</li>
-            <li><strong>My own sources?</strong> You can hook them in later (email, notes, Slack).</li>
-            <li><strong>Reliable?</strong> Scoring follows defined logic, not “gut feel”.</li>
-            <li><strong>Transparent?</strong> Every priority can be explained.</li>
-            <li><strong>Security?</strong> Least privilege: read-only access where possible.</li>
-          </ul>
-        </details>
-      </article>
-
-      <!-- Card 5 -->
       <article class="card">
         <h3>Integrations</h3>
         <p>Email, notes, Slack.</p>
       </article>
-
-      <!-- Card 6 -->
-      <article class="card" id="card-benefits-ts-en">
+      <article class="card">
         <h3>Benefits</h3>
         <ul>
-          <li><strong>Fast start</strong> — setup in minutes.</li>
-          <li><strong>Usable &amp; stable</strong> — works in real life, not just in a slide deck.</li>
-          <li><strong>Less maintenance</strong> — auto dedupe &amp; clustering.</li>
+          <li>Fast start – minutes, not days.</li>
+          <li>Explainable AI.</li>
+          <li>Low maintenance.</li>
         </ul>
-        <details style="margin-top:.4rem">
-          <summary>more</summary>
-          <ul>
-            <li>Less “status pings”, more actual progress.</li>
-            <li>Fewer parallel fires.</li>
-            <li>Priorities you can defend to stakeholders.</li>
-          </ul>
-        </details>
       </article>
-
-    </section>
+    </div>
   </section>
 </main>
 
 <footer>
   <a href="/en/imprint/">Imprint</a> · <a href="/en/privacy/">Privacy</a>
 </footer>
-
-<script>
-function __toggleNav(){
-  var l=document.getElementById('navLinks');
-  if(!l) return;
-  var o=l.classList.toggle('open');
-  document.getElementById('navToggle')
-    .setAttribute('aria-expanded', o?'true':'false');
-}
-
-/* optional: auto-open details if we ever deep link to #benefits */
-(function(){
-  var hash=(location.hash||"").toLowerCase();
-  if(!hash.includes('benefits')) return;
-  var card=document.getElementById('card-benefits-ts-en');
-  if(!card) return;
-  var d=card.querySelector('details');
-  if(d && !d.open) d.open=true;
-  if(hash==='#benefits'){ history.replaceState(null,'','#'+card.id); }
-})();
-</script>
-
 </body>
 </html>
