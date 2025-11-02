@@ -1,236 +1,301 @@
-<!doctype html>
+ <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <title>ChangeWise – Brand- & Change-Kommunikation</title>
-  <meta name="description" content="ChangeWise: Kernbotschaft & Ton, Brand-Kit, Vorlagen & Guidelines – eine Linie, schneller Output, höhere Adaption.">
-  <meta name="theme-color" content="#0E3960">
-  <link rel="canonical" href="/products/changewise/">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ChangeWise – Klarheit, Story, Richtung.</title>
+<meta name="description" content="ChangeWise liefert in kurzer Zeit eine klare Story, fokussierte Botschaften und konkrete nächste Schritte für Teams und Stakeholder.">
+<meta name="theme-color" content="#0B1220" />
+
   <style>
-    :root{
-      --container:1100px;
+:root{
+  --container:1100px;
 
-      --page-blue:#0E3960;
-      --text:#FFFFFF;
+  --page-blue:#0E3960;
+  --text:#FFFFFF;
 
-      --nav-red:#AE0F12;
+  --nav-red:#AE0F12;
 
-      --card-blue:#0E3960;
-      --card-border:rgba(255,255,255,.28);
+  --card-blue:#0E3960;
+  --card-border:rgba(255,255,255,.28);
 
-      --btn-bg:#FFFFFF;
-      --btn-fg:#0E3960;
+  --btn-bg:#FFFFFF;
+  --btn-fg:#0E3960;
 
-      --ring:#FFFFFF;
-      --ring-w:5px;
-    }
+  --ring:#FFFFFF;
+  --ring-w:5px;
+}
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
-      background:var(--page-blue);
-      color:var(--text);
-    }
-    a{color:#FFFFFF;text-decoration:none}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+  background:var(--page-blue);
+  color:var(--text)
+}
+a{
+  color:#FFFFFF;
+  text-decoration:none
+}
 
-    /* HEADER / NAV */
-    .site-header{position:sticky;top:0;z-index:50;width:100%;background:var(--nav-red)}
-    .nav{background:var(--nav-red)}
-    .nav-inner{
-      max-width:var(--container);
-      margin:0 auto;
-      padding:0 1rem;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      height:12mm;
-    }
-    .brand{color:#FFFFFF;font-weight:800;white-space:nowrap}
-    .nav-links{list-style:none;display:flex;gap:1rem;margin:0;padding:0;align-items:center}
-    .nav-links a{color:#FFFFFF}
-    .nav-toggle{display:none;background:none;border:0;color:#FFFFFF;font-size:1.2rem}
-    @media (max-width:980px){
-      .nav-inner{position:relative;height:auto;min-height:12mm;padding-block:.4rem}
-      .nav-links{
-        display:none;position:absolute;top:100%;left:0;right:0;
-        background:var(--nav-red);padding:1rem;margin:0;flex-direction:column;gap:.6rem;
-      }
-      .nav-links.open{display:flex}
-      .nav-toggle{display:inline-block}
-    }
+/* HEADER / NAV */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  width:100%;
+  background:var(--nav-red)
+}
+.nav{background:var(--nav-red)}
+.nav-inner{
+  max-width:var(--container);
+  margin:0 auto;
+  padding:0 1rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:12mm
+}
+.brand{
+  color:#FFFFFF;
+  font-weight:800;
+  white-space:nowrap
+}
+.nav-links{
+  list-style:none;
+  display:flex;
+  gap:1rem;
+  margin:0;
+  padding:0;
+  align-items:center
+}
+.nav-links a{color:#FFFFFF}
+.nav-toggle{
+  display:none;
+  background:none;
+  border:0;
+  color:#FFFFFF;
+  font-size:1.2rem
+}
+@media (max-width:980px){
+  .nav-inner{
+    position:relative;
+    height:auto;
+    min-height:12mm;
+    padding-block:.4rem
+  }
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+    background:var(--nav-red);
+    padding:1rem;
+    margin:0;
+    flex-direction:column;
+    gap:.6rem
+  }
+  .nav-links.open{display:flex}
+  .nav-toggle{display:inline-block}
+}
 
-    /* HERO */
-    .hero{color:#FFFFFF;padding-top:11mm}
-    .hero-header{
-      max-width:var(--container);
-      margin:0 auto;
-      padding:0 1rem;
-      display:grid;
-      grid-template-columns:repeat(12,1fr);
-      gap:1rem;
-      align-items:end;
-    }
-    .hero-text{grid-column:1 / 9}
-    .hero h1{
-      margin:0 0 .2rem;
-      font-size:clamp(1.8rem,4vw,3rem);
-      line-height:1.1;
-    }
-    .hero p.lead{
-      margin:0;
-      font-size:clamp(1.1rem,2.4vw,1.35rem);
-      font-weight:700;
-      opacity:.95;
-    }
-    .hero p.lead-sub{
-      margin:.4rem 0 0;
-      font-size:1rem;
-      font-weight:500;
-      opacity:.9;
-      max-width:32rem;
-    }
+/* HERO */
+.hero{
+  color:#FFFFFF;
+  padding-top:11mm
+}
+.hero-header{
+  max-width:var(--container);
+  margin:0 auto;
+  padding:0 1rem;
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:1rem;
+  align-items:end
+}
+.hero-text{grid-column:1 / 9}
+.hero h1{
+  margin:0 0 .2rem;
+  font-size:clamp(1.8rem,4vw,3rem);
+  line-height:1.1
+}
+.hero p.lead{
+  margin:0;
+  font-size:clamp(1.1rem,2.4vw,1.35rem);
+  font-weight:700;
+  opacity:.95
+}
+.logo-col{
+  grid-column:9 / 13;
+  justify-self:start;
+  display:flex;
+  align-items:center
+}
+.product-logo{
+  position:relative;
+  width:98px;
+  height:98px
+}
+.product-logo .logo-ring{
+  position:absolute;
+  inset:0;
+  width:98px;
+  height:98px;
+  z-index:2;
+  pointer-events:none;
+  display:block
+}
+.product-logo .logo-ring svg{
+  width:100%;
+  height:100%;
+  display:block
+}
+.product-logo .logo-img{
+  position:absolute;
+  top:5px;
+  left:5px;
+  width:88px;
+  height:88px;
+  display:block;
+  border-radius:50%;
+  z-index:1;
+  background:transparent
+}
 
-    /* Logo rechts */
-    .logo-col{
-      grid-column:9 / 13;
-      justify-self:start;
-      display:flex;
-      align-items:center;
-    }
-    .product-logo{
-      position:relative;
-      width:98px;
-      height:98px;
-    }
-    .product-logo .logo-ring{
-      position:absolute;
-      inset:0;
-      width:98px;
-      height:98px;
-      z-index:2;
-      pointer-events:none;
-      display:block;
-    }
-    .product-logo .logo-ring svg{
-      width:100%;
-      height:100%;
-      display:block;
-    }
-    .product-logo .logo-img{
-      position:absolute;
-      top:5px;
-      left:5px;
-      width:88px;
-      height:88px;
-      display:block;
-      border-radius:50%;
-      background:transparent;
-      z-index:1;
-    }
+/* CONTENT GRID */
+.section-cards{
+  max-width:var(--container);
+  margin:0 auto;
+  padding:0 1rem 2.4rem
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:1rem;
+  margin-top:1rem
+}
+.card{
+  grid-column:span 4;
+  background:var(--card-blue) !important;
+  color:#FFFFFF !important;
+  border-radius:14px;
+  padding:1.05rem 1rem;
+  border:1px solid var(--card-border);
+  box-shadow:0 10px 24px rgba(0,0,0,.25),
+             inset 0 1px 0 rgba(255,255,255,.06)
+}
+.card h3{
+  margin:0 0 .4rem
+}
+.card p,
+.card li{
+  margin:.35rem 0
+}
+.card ul{
+  list-style:disc;
+  padding-left:1.2rem
+}
+.card a{
+  text-decoration:underline;
+  text-underline-offset:2px;
+  color:#FFFFFF
+}
+@media (max-width:960px){
+  .card{grid-column:span 6}
+}
+@media (max-width:640px){
+  .card{grid-column:span 12}
+}
 
-    /* CONTENT GRID */
-    .section-cards{
-      max-width:var(--container);
-      margin:0 auto;
-      padding:0 1rem 2.4rem;
-    }
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(12,1fr);
-      gap:1rem;
-      margin-top:1rem;
-    }
-    .card{
-      grid-column:span 4;
-      background:var(--card-blue) !important;
-      color:#FFFFFF !important;
-      border-radius:14px;
-      padding:1.05rem 1rem;
-      border:1px solid var(--card-border);
-      box-shadow:0 10px 24px rgba(0,0,0,.25),
-                 inset 0 1px 0 rgba(255,255,255,.06);
-    }
-    .card h3{margin:0 0 .4rem}
-    .card p,.card li{margin:.35rem 0}
-    .card ul{list-style:disc;padding-left:1.2rem}
-    .card small{opacity:.75}
-    .subtle{
-      font-size:.85rem;
-      color:rgba(229,231,235,.8);
-      margin-top:.4rem;
-    }
+/* CTA BUTTON on dark cards */
+.btn{
+  display:inline-block;
+  padding:.7rem 1rem;
+  border-radius:12px;
+  border:1px solid #FFFFFF;
+  text-decoration:none;
+  font-weight:800;
+  background:transparent;
+  text-align:left;
+  line-height:1.3
+}
 
-    @media (max-width:960px){
-      .card{grid-column:span 6}
-    }
-    @media (max-width:640px){
-      .card{grid-column:span 12}
-    }
+.btn--inverse{
+  background:var(--btn-bg)
+}
 
-    /* CTA Button (weiß, blaue Schrift – Safari-safe) */
-    .btn{
-      display:inline-block;
-      padding:.7rem 1rem;
-      border-radius:12px;
-      border:1px solid #FFFFFF;
-      text-decoration:none;
-      font-weight:800;
-      background:transparent;
-      text-align:left;
-      line-height:1.3;
-    }
-    .btn--inverse-cw{
-      background:#FFFFFF;
-      border:1px solid #FFFFFF;
-      border-radius:12px;
-      display:inline-block;
-      text-align:left;
-      padding:0.7rem 1rem;
-      line-height:1.3;
-      font-weight:800;
-      text-decoration:none;
-      color:#0E3960 !important;
-      -webkit-text-fill-color:#0E3960 !important;
-    }
-    .btn--inverse-cw span{
-      display:block;
-      color:#0E3960 !important;
-      -webkit-text-fill-color:#0E3960 !important;
-    }
+/* Force white CTA text everywhere, including Safari/iOS */
+.btn,
+.btn span{
+  color:#FFFFFF !important;
+  -webkit-text-fill-color:#FFFFFF !important;
+}
+/* ChangeWise CTA: weißer Button, blaue Schrift (Safari-safe) */
+.btn--inverse-cw{
+  background:#FFFFFF;
+  border:1px solid #FFFFFF;
+  border-radius:12px;
+  display:inline-block;
+  text-align:left;
+  padding:0.7rem 1rem;
+  line-height:1.3;
+  font-weight:800;
+  text-decoration:none;
 
-    /* FOOTER */
-    footer{
-      max-width:var(--container);
-      margin:2.2rem auto;
-      padding:0 1rem 2.4rem;
-      color:#FFFFFF;
-    }
-    footer a{color:#FFFFFF}
+  /* ChangeWise Blau */
+  color:#0E3960 !important;
+  -webkit-text-fill-color:#0E3960 !important;
+}
+.btn--inverse-cw span{
+  display:block;
+  color:#0E3960 !important;
+  -webkit-text-fill-color:#0E3960 !important;
+}
 
-    /* Zielkarte beim Anspringen etwas nach unten rücken */
-    #card-benefits-cw-de{
-      scroll-margin-top:14mm;
-    }
-    .card:target{
-      outline:3px solid rgba(255,255,255,.75);
-      box-shadow:
-        0 0 0 4px rgba(255,255,255,.25),
-        0 12px 28px rgba(0,0,0,.45);
-    }
-  </style>
+/* DETAILS / FAQ */
+details{border:0}
+details summary{
+  cursor:pointer;
+  font-weight:800
+}
+
+/* FOOTER */
+footer{
+  max-width:var(--container);
+  margin:2.2rem auto;
+  padding:0 1rem 2.4rem;
+  color:#FFFFFF
+}
+footer a{color:#FFFFFF}
+
+/* Scroll/highlight helpers */
+#card-benefits{
+  scroll-margin-top:14mm
+}
+.card:target{
+  outline:3px solid rgba(255,255,255,.75);
+  box-shadow:
+    0 0 0 4px rgba(255,255,255,.25),
+    0 12px 28px rgba(0,0,0,.45)
+}
+
+/* turn off any legacy overlay if present */
+#bg-overlay{display:none !important}
+</style>
 
   <script>
-    function __toggleNav(){
-      var l=document.getElementById('navLinks');
-      if(!l) return;
-      var o=l.classList.toggle('open');
-      var t=document.getElementById('navToggle');
-      if(t) t.setAttribute('aria-expanded', o ? 'true' : 'false');
-    }
-  </script>
+function __toggleNav(){
+  var l=document.getElementById('navLinks');
+  if(!l) return;
+  var o=l.classList.toggle('open');
+  document.getElementById('navToggle')
+    .setAttribute('aria-expanded', o?'true':'false');
+}
+</script>
 </head>
+
 <body>
 <header class="site-header">
   <nav class="nav">
@@ -242,55 +307,62 @@
         <li><a href="/products/tasksieve/">TaskSieve</a></li>
         <li><strong>DE</strong> | <a href="/en/products/changewise/">EN</a></li>
       </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Menü" aria-controls="navLinks" aria-expanded="false" onclick="__toggleNav()">☰</button>
+      <button class="nav-toggle" id="navToggle"
+        aria-label="Menü öffnen"
+        aria-controls="navLinks"
+        aria-expanded="false"
+        onclick="__toggleNav()">☰</button>
     </div>
   </nav>
 </header>
 
 <main class="hero">
   <div class="hero-header">
-    <div class="hero-text">
-      <h1>ChangeWise</h1>
-      <p class="lead">Ein kurzes Briefing genügt – das Ergebnis kommt sofort zurück.</p>
-      <p class="lead-sub">
-        Du bekommst eine klare Kernbotschaft, priorisierte nächste Schritte und Storylines, die dein Team sofort nutzen kann.
-      </p>
-    </div>
-    <div class="logo-col">
+     <div class="hero-text">
+  <h1>ChangeWise</h1>
+  <p class="lead">Ein kurzes Briefing genügt – das Ergebnis kommt sofort zurück.</p>
+  <p class="lead-sub" style="margin:.4rem 0 0; font-size:1rem; font-weight:500; opacity:.9; max-width:32rem;">
+    Du bekommst eine klare Kernbotschaft, priorisierte nächste Schritte und Storylines, die dein Team sofort nutzen kann.
+  </p>
+</div>
+
+   <div class="logo-col">
       <div class="product-logo">
         <span class="logo-ring" aria-hidden="true">
-          <svg viewBox="0 0 100 100" width="98" height="98">
+          <svg viewBox="0 0 100 100" width="98" height="98" focusable="false" aria-hidden="true">
             <circle cx="50" cy="50" r="47.5" fill="none" stroke="#FFFFFF" stroke-width="5" />
           </svg>
         </span>
-        <img class="logo-img" src="/assets/brand/changewise_logo.svg" alt="ChangeWise Logo" width="88" height="88" loading="lazy" decoding="async">
+        <img class="logo-img"
+             src="/assets/brand/changewise_logo.svg"
+             alt="ChangeWise Logo"
+             width="88"
+             height="88"
+             loading="lazy"
+             decoding="async" />
       </div>
     </div>
   </div>
 
   <section class="section-cards">
-    <section class="grid" aria-label="Kernfunktionen ChangeWise">
-
+    <section class="grid" aria-label="Key Features">
+      <!-- Card 1 -->
       <article class="card">
         <h3>Wofür es da ist</h3>
-        <ul>
-          <li>Wandel & interne Kommunikation</li>
-          <li>Produkt- / Feature-Kommunikation</li>
-          <li>Stakeholder schnell auf eine Linie bringen</li>
-        </ul>
-        <p class="subtle">Fokus: Wandel, interne Kommunikation, Produkt-/Feature-Kommunikation.</p>
+        <p>Eine klare Story, die intern trägt – nicht nur Folien für außen.</p>
       </article>
 
+      <!-- Card 2 -->
       <article class="card">
         <h3>Was passiert konkret</h3>
         <ul>
           <li>Kurz-Briefing (3–4 Inputs)</li>
           <li>Mini-Diagnose: wo hakt es wirklich?</li>
-          <li>Kernbotschaft + empfohlene nächste Schritte</li>
+          <li>Kernbotschaft + empfohlene Nächste Schritte</li>
         </ul>
-        <p class="subtle">Ergebnis kommt sofort zurück – kein Call, keine Rückfrage.</p>
       </article>
 
+      <!-- Card 3 -->
       <article class="card">
         <h3>Was du bekommst</h3>
         <ul>
@@ -301,48 +373,45 @@
         <details style="margin-top:.4rem">
           <summary>mehr</summary>
           <ul>
-            <li>Reduziert Reibung zwischen Teams.</li>
-            <li>Erhöht Konsistenz in Messaging & Entscheidungen.</li>
-            <li>Schafft ein „So reden wir darüber jetzt“-Narrativ.</li>
+            <li>Kein Buzzword-Deck, sondern Umsetzungs-Fokus.</li>
+            <li>Verwendung intern (Alignment) und extern (Storytelling).</li>
+            <li>Kann direkt in Enablement / Templates überführt werden.</li>
           </ul>
         </details>
       </article>
 
+      <!-- Card 4: Status & Kontakt -->
       <article class="card">
-        <h3>Status &amp; Kontakt</h3>
-        <p><strong>Bereit zum Start.</strong> Ideal, wenn du für kommende Projekte oder interne Abstimmungen klare Botschaften und Richtung suchst – ohne lange Vorarbeit.</p>
-        <button
-          class="btn--inverse-cw"
-          type="button"
-          onclick="location.href='/products/changewise/getting-started.html'">
-          <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
-            Briefing starten
-          </span>
-          <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
-            3–4 Angaben – Ergebnis &amp; nächste Schritte kommen sofort zurück.
-          </span>
-        </button>
+  <h3>Status &amp; Kontakt</h3>
+  <p><strong>Bereit zum Start.</strong> Ideal, wenn du für kommende Projekte oder interne Abstimmungen klare Botschaften und Richtung suchst – ohne lange Vorarbeit.</p>
 
-        <details style="margin-top:.6rem">
-          <summary>FAQ</summary>
-          <ul>
-            <li><strong>Wie viel Arbeit für mich?</strong> 3–4 kurze Angaben.</li>
-            <li><strong>Vertraulich?</strong> Ja, wird intern behandelt.</li>
-            <li><strong>Auch für interne Kommunikation?</strong> Genau dafür.</li>
-          </ul>
-        </details>
-      </article>
+   <button class="btn btn--inverse-cw" type="button" onclick="location.href='/contact_changewise.html'">
+  <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
+    Briefing &amp; Mini-Diagnose
+  </span>
+  <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
+    Du bekommst eine verdichtete Kernbotschaft und konkrete Empfehlungen für die nächsten Schritte – vertraulich &amp; direkt nutzbar im Team.
+  </span>
+</button>
 
+  <details style="margin-top:.6rem">
+    <summary>FAQ</summary>
+    <ul>
+      <li><strong>Wie viel Aufwand?</strong> 3–4 kurze Angaben von dir reichen.</li>
+      <li><strong>Welche Tiefe?</strong> Fokus auf Klarheit, nicht PowerPoint-Perfektion.</li>
+      <li><strong>Vertraulich?</strong> Ja. Nichts davon geht nach außen.</li>
+      <li><strong>Kann man das intern weiterverwenden?</strong> Ja – es wird explizit dafür gebaut.</li>
+    </ul>
+  </details>
+</article>
+
+  <!-- Card 5 -->
       <article class="card">
         <h3>Wo es wirkt</h3>
-        <ul>
-          <li>Leadership-Alignment</li>
-          <li>Messaging / Go-to-market</li>
-          <li>Interne Kommunikation</li>
-          <li>Produkt-/Feature-Story</li>
-        </ul>
+        <p>Leadership-Alignment, Messaging, Go-to-market, interne Kommunikation, Produkt-/Feature-Story.</p>
       </article>
 
+      <!-- Card 6 -->
       <article class="card" id="card-benefits-cw-de">
         <h3>Vorteile</h3>
         <ul>
@@ -365,55 +434,28 @@
 </main>
 
 <footer>
-  <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
-    <div class="legal" style="display:flex;gap:12px">
-      <a href="/impressum.html" style="color:inherit;text-decoration:none">Impressum</a>
-      <a href="/datenschutz.html" style="color:inherit;text-decoration:none">Datenschutz</a>
-    </div>
-    <small>© ChangeWise • SlackDigest • TaskSieve</small>
-  </div>
+  <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
 </footer>
-
-<!-- nur öffnen & hinscrollen – nichts ausblenden -->
-<script>
-(function(){
-  var hash = (location.hash || "").toLowerCase();
-  if (!hash) return;
-
-  var accepted = [
-    '#vorteile',
-    '#benefits',
-    '#card-benefits',
-    '#benefits-changewise'
-  ];
-  if (accepted.indexOf(hash) === -1) return;
-
-  var card =
-    document.getElementById('card-benefits-cw-de') ||
-    document.getElementById('card-benefits');
-
-  if (!card) return;
-
-  // details auf
-  var d = card.querySelector('details');
-  if (d && !d.open) d.open = true;
-
-  // hash auf echte ID setzen (wie EN)
-  if (location.hash !== '#' + card.id){
-    history.replaceState(null, '', '#' + card.id);
-  }
-
-  // sauber scrollen
-  card.scrollIntoView({behavior:'instant', block:'center'});
-})();
-</script>
 
 <script>
 function __toggleNav(){
-  var l=document.getElementById('navLinks'); if(!l) return;
+  var l=document.getElementById('navLinks');
+  if(!l) return;
   var o=l.classList.toggle('open');
-  var t=document.getElementById('navToggle'); if(t) t.setAttribute('aria-expanded', o ? 'true' : 'false');
+  document.getElementById('navToggle')
+    .setAttribute('aria-expanded', o?'true':'false');
 }
+
+/* optional deep-link auto-open */
+(function(){
+  var hash=(location.hash||"").toLowerCase();
+  if(!hash.includes('benefits')) return;
+  var card=document.getElementById('card-benefits-cw-de');
+  if(!card) return;
+  var d=card.querySelector('details');
+  if(d && !d.open) d.open=true;
+  if(hash==='#benefits'){ history.replaceState(null,'','#'+card.id); }
+})();
 </script>
 
 </body>
