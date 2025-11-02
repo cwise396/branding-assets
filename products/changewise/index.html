@@ -1,13 +1,13 @@
- <!doctype html>
+<!doctype html>
 <html lang="de">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ChangeWise – Klarheit, Story, Richtung.</title>
 <meta name="description" content="ChangeWise liefert in kurzer Zeit eine klare Story, fokussierte Botschaften und konkrete nächste Schritte für Teams und Stakeholder.">
-<meta name="theme-color" content="#0B1220" />
+<meta name="theme-color" content="#0E3960" />
 
-  <style>
+<style>
 :root{
   --container:1100px;
 
@@ -32,11 +32,11 @@ body{
   margin:0;
   font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
   background:var(--page-blue);
-  color:var(--text)
+  color:var(--text);
 }
 a{
   color:#FFFFFF;
-  text-decoration:none
+  text-decoration:none;
 }
 
 /* HEADER / NAV */
@@ -45,7 +45,7 @@ a{
   top:0;
   z-index:50;
   width:100%;
-  background:var(--nav-red)
+  background:var(--nav-red);
 }
 .nav{background:var(--nav-red)}
 .nav-inner{
@@ -55,12 +55,12 @@ a{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  height:12mm
+  height:12mm;
 }
 .brand{
   color:#FFFFFF;
   font-weight:800;
-  white-space:nowrap
+  white-space:nowrap;
 }
 .nav-links{
   list-style:none;
@@ -68,7 +68,7 @@ a{
   gap:1rem;
   margin:0;
   padding:0;
-  align-items:center
+  align-items:center;
 }
 .nav-links a{color:#FFFFFF}
 .nav-toggle{
@@ -76,14 +76,14 @@ a{
   background:none;
   border:0;
   color:#FFFFFF;
-  font-size:1.2rem
+  font-size:1.2rem;
 }
 @media (max-width:980px){
   .nav-inner{
     position:relative;
     height:auto;
     min-height:12mm;
-    padding-block:.4rem
+    padding-block:.4rem;
   }
   .nav-links{
     display:none;
@@ -95,7 +95,7 @@ a{
     padding:1rem;
     margin:0;
     flex-direction:column;
-    gap:.6rem
+    gap:.6rem;
   }
   .nav-links.open{display:flex}
   .nav-toggle{display:inline-block}
@@ -104,7 +104,7 @@ a{
 /* HERO */
 .hero{
   color:#FFFFFF;
-  padding-top:11mm
+  padding-top:11mm;
 }
 .hero-header{
   max-width:var(--container);
@@ -113,30 +113,39 @@ a{
   display:grid;
   grid-template-columns:repeat(12,1fr);
   gap:1rem;
-  align-items:end
+  align-items:end;
 }
 .hero-text{grid-column:1 / 9}
 .hero h1{
   margin:0 0 .2rem;
   font-size:clamp(1.8rem,4vw,3rem);
-  line-height:1.1
+  line-height:1.1;
 }
 .hero p.lead{
   margin:0;
   font-size:clamp(1.1rem,2.4vw,1.35rem);
   font-weight:700;
-  opacity:.95
+  opacity:.95;
 }
+.hero p.lead-sub{
+  margin:.4rem 0 0;
+  font-size:1rem;
+  font-weight:500;
+  opacity:.9;
+  max-width:32rem;
+}
+
+/* LOGO rechts */
 .logo-col{
   grid-column:9 / 13;
   justify-self:start;
   display:flex;
-  align-items:center
+  align-items:center;
 }
 .product-logo{
   position:relative;
   width:98px;
-  height:98px
+  height:98px;
 }
 .product-logo .logo-ring{
   position:absolute;
@@ -145,12 +154,12 @@ a{
   height:98px;
   z-index:2;
   pointer-events:none;
-  display:block
+  display:block;
 }
 .product-logo .logo-ring svg{
   width:100%;
   height:100%;
-  display:block
+  display:block;
 }
 .product-logo .logo-img{
   position:absolute;
@@ -161,20 +170,20 @@ a{
   display:block;
   border-radius:50%;
   z-index:1;
-  background:transparent
+  background:transparent;
 }
 
 /* CONTENT GRID */
 .section-cards{
   max-width:var(--container);
   margin:0 auto;
-  padding:0 1rem 2.4rem
+  padding:0 1rem 2.4rem;
 }
 .grid{
   display:grid;
   grid-template-columns:repeat(12,1fr);
   gap:1rem;
-  margin-top:1rem
+  margin-top:1rem;
 }
 .card{
   grid-column:span 4;
@@ -183,24 +192,25 @@ a{
   border-radius:14px;
   padding:1.05rem 1rem;
   border:1px solid var(--card-border);
-  box-shadow:0 10px 24px rgba(0,0,0,.25),
-             inset 0 1px 0 rgba(255,255,255,.06)
+  box-shadow:
+    0 10px 24px rgba(0,0,0,.25),
+    inset 0 1px 0 rgba(255,255,255,.06);
 }
 .card h3{
-  margin:0 0 .4rem
+  margin:0 0 .4rem;
 }
 .card p,
 .card li{
-  margin:.35rem 0
+  margin:.35rem 0;
 }
 .card ul{
   list-style:disc;
-  padding-left:1.2rem
+  padding-left:1.2rem;
 }
 .card a{
   text-decoration:underline;
   text-underline-offset:2px;
-  color:#FFFFFF
+  color:#FFFFFF;
 }
 @media (max-width:960px){
   .card{grid-column:span 6}
@@ -209,7 +219,7 @@ a{
   .card{grid-column:span 12}
 }
 
-/* CTA BUTTON on dark cards */
+/* CTA BUTTON (weiß, blaue Schrift) */
 .btn{
   display:inline-block;
   padding:.7rem 1rem;
@@ -219,20 +229,8 @@ a{
   font-weight:800;
   background:transparent;
   text-align:left;
-  line-height:1.3
+  line-height:1.3;
 }
-
-.btn--inverse{
-  background:var(--btn-bg)
-}
-
-/* Force white CTA text everywhere, including Safari/iOS */
-.btn,
-.btn span{
-  color:#FFFFFF !important;
-  -webkit-text-fill-color:#FFFFFF !important;
-}
-/* ChangeWise CTA: weißer Button, blaue Schrift (Safari-safe) */
 .btn--inverse-cw{
   background:#FFFFFF;
   border:1px solid #FFFFFF;
@@ -243,8 +241,6 @@ a{
   line-height:1.3;
   font-weight:800;
   text-decoration:none;
-
-  /* ChangeWise Blau */
   color:#0E3960 !important;
   -webkit-text-fill-color:#0E3960 !important;
 }
@@ -254,44 +250,36 @@ a{
   -webkit-text-fill-color:#0E3960 !important;
 }
 
-/* DETAILS / FAQ */
-details{border:0}
-details summary{
-  cursor:pointer;
-  font-weight:800
-}
-
 /* FOOTER */
 footer{
   max-width:var(--container);
   margin:2.2rem auto;
   padding:0 1rem 2.4rem;
-  color:#FFFFFF
+  color:#FFFFFF;
 }
 footer a{color:#FFFFFF}
 
-/* Scroll/highlight helpers */
-#card-benefits{
-  scroll-margin-top:14mm
+/* Zielkarte etwas nach unten rücken */
+#card-benefits-cw-de{
+  scroll-margin-top:14mm;
 }
 .card:target{
   outline:3px solid rgba(255,255,255,.75);
   box-shadow:
     0 0 0 4px rgba(255,255,255,.25),
-    0 12px 28px rgba(0,0,0,.45)
+    0 12px 28px rgba(0,0,0,.45);
 }
 
-/* turn off any legacy overlay if present */
+/* falls irgendwo noch ein altes Overlay existiert: aus */
 #bg-overlay{display:none !important}
 </style>
-
-  <script>
+<script>
 function __toggleNav(){
   var l=document.getElementById('navLinks');
   if(!l) return;
   var o=l.classList.toggle('open');
-  document.getElementById('navToggle')
-    .setAttribute('aria-expanded', o?'true':'false');
+  var t=document.getElementById('navToggle');
+  if(t) t.setAttribute('aria-expanded', o ? 'true':'false');
 }
 </script>
 </head>
@@ -318,15 +306,15 @@ function __toggleNav(){
 
 <main class="hero">
   <div class="hero-header">
-     <div class="hero-text">
-  <h1>ChangeWise</h1>
-  <p class="lead">Ein kurzes Briefing genügt – das Ergebnis kommt sofort zurück.</p>
-  <p class="lead-sub" style="margin:.4rem 0 0; font-size:1rem; font-weight:500; opacity:.9; max-width:32rem;">
-    Du bekommst eine klare Kernbotschaft, priorisierte nächste Schritte und Storylines, die dein Team sofort nutzen kann.
-  </p>
-</div>
+    <div class="hero-text">
+      <h1>ChangeWise</h1>
+      <p class="lead">Ein kurzes Briefing genügt – das Ergebnis kommt sofort zurück.</p>
+      <p class="lead-sub">
+        Du bekommst eine klare Kernbotschaft, priorisierte nächste Schritte und Storylines, die dein Team sofort nutzen kann.
+      </p>
+    </div>
 
-   <div class="logo-col">
+    <div class="logo-col">
       <div class="product-logo">
         <span class="logo-ring" aria-hidden="true">
           <svg viewBox="0 0 100 100" width="98" height="98" focusable="false" aria-hidden="true">
@@ -358,7 +346,7 @@ function __toggleNav(){
         <ul>
           <li>Kurz-Briefing (3–4 Inputs)</li>
           <li>Mini-Diagnose: wo hakt es wirklich?</li>
-          <li>Kernbotschaft + empfohlene Nächste Schritte</li>
+          <li>Kernbotschaft + empfohlene nächste Schritte</li>
         </ul>
       </article>
 
@@ -382,30 +370,34 @@ function __toggleNav(){
 
       <!-- Card 4: Status & Kontakt -->
       <article class="card">
-  <h3>Status &amp; Kontakt</h3>
-  <p><strong>Bereit zum Start.</strong> Ideal, wenn du für kommende Projekte oder interne Abstimmungen klare Botschaften und Richtung suchst – ohne lange Vorarbeit.</p>
+        <h3>Status &amp; Kontakt</h3>
+        <p><strong>Bereit zum Start.</strong> Ideal, wenn du für kommende Projekte oder interne Abstimmungen klare Botschaften und Richtung suchst – ohne lange Vorarbeit.</p>
 
-   <button class="btn btn--inverse-cw" type="button" onclick="location.href='/contact_changewise.html'">
-  <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
-    Briefing &amp; Mini-Diagnose
-  </span>
-  <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
-    Du bekommst eine verdichtete Kernbotschaft und konkrete Empfehlungen für die nächsten Schritte – vertraulich &amp; direkt nutzbar im Team.
-  </span>
-</button>
+        <!-- HIER geändert: geht jetzt auf Getting-Started -->
+        <button
+          class="btn btn--inverse-cw"
+          type="button"
+          onclick="location.href='/products/changewise/getting-started.html'">
+          <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
+            Briefing starten
+          </span>
+          <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
+            3–4 Angaben – Ergebnis &amp; nächste Schritte kommen sofort zurück.
+          </span>
+        </button>
 
-  <details style="margin-top:.6rem">
-    <summary>FAQ</summary>
-    <ul>
-      <li><strong>Wie viel Aufwand?</strong> 3–4 kurze Angaben von dir reichen.</li>
-      <li><strong>Welche Tiefe?</strong> Fokus auf Klarheit, nicht PowerPoint-Perfektion.</li>
-      <li><strong>Vertraulich?</strong> Ja. Nichts davon geht nach außen.</li>
-      <li><strong>Kann man das intern weiterverwenden?</strong> Ja – es wird explizit dafür gebaut.</li>
-    </ul>
-  </details>
-</article>
+        <details style="margin-top:.6rem">
+          <summary>FAQ</summary>
+          <ul>
+            <li><strong>Wie viel Aufwand?</strong> 3–4 kurze Angaben von dir reichen.</li>
+            <li><strong>Welche Tiefe?</strong> Fokus auf Klarheit, nicht PowerPoint-Perfektion.</li>
+            <li><strong>Vertraulich?</strong> Ja. Nichts davon geht nach außen.</li>
+            <li><strong>Kann man das intern weiterverwenden?</strong> Ja – es wird explizit dafür gebaut.</li>
+          </ul>
+        </details>
+      </article>
 
-  <!-- Card 5 -->
+      <!-- Card 5 -->
       <article class="card">
         <h3>Wo es wirkt</h3>
         <p>Leadership-Alignment, Messaging, Go-to-market, interne Kommunikation, Produkt-/Feature-Story.</p>
@@ -437,25 +429,49 @@ function __toggleNav(){
   <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
 </footer>
 
+<!-- einziges Deep-Link-Skript: öffnet nur Vorteile + scrollt etwas höher -->
+<script>
+(function(){
+  var hash = (location.hash || "").toLowerCase();
+  if (!hash) return;
+
+  var wanted = [
+    "#vorteile",
+    "#benefits",
+    "#card-benefits",
+    "#benefits-changewise",
+    "#card-benefits-cw-de"
+  ];
+  if (wanted.indexOf(hash) === -1) return;
+
+  var card =
+    document.getElementById("card-benefits-cw-de") ||
+    document.getElementById("card-benefits");
+  if (!card) return;
+
+  // Details in der Karte öffnen
+  var det = card.querySelector("details");
+  if (det && !det.open) det.open = true;
+
+  // Hash auf die echte ID normalisieren
+  if (location.hash !== "#" + card.id) {
+    history.replaceState(null, "", "#" + card.id);
+  }
+
+  // scrollbar machen, aber nicht zu tief → erst zentrieren, dann leicht hoch
+  card.scrollIntoView({behavior:"instant", block:"center"});
+  try {
+    window.scrollBy(0, -42);
+  } catch(e){}
+})();
+</script>
+
 <script>
 function __toggleNav(){
-  var l=document.getElementById('navLinks');
-  if(!l) return;
-  var o=l.classList.toggle('open');
-  document.getElementById('navToggle')
-    .setAttribute('aria-expanded', o?'true':'false');
+  var l=document.getElementById('navLinks'); if(!l) return;
+  var open=l.classList.toggle('open');
+  var t=document.getElementById('navToggle'); if(t) t.setAttribute('aria-expanded', open?'true':'false');
 }
-
-/* optional deep-link auto-open */
-(function(){
-  var hash=(location.hash||"").toLowerCase();
-  if(!hash.includes('benefits')) return;
-  var card=document.getElementById('card-benefits-cw-de');
-  if(!card) return;
-  var d=card.querySelector('details');
-  if(d && !d.open) d.open=true;
-  if(hash==='#benefits'){ history.replaceState(null,'','#'+card.id); }
-})();
 </script>
 
 </body>
