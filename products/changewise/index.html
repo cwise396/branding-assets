@@ -449,7 +449,51 @@ function __toggleNav(){
     </section>
   </section>
 </main>
- </footer>
+  </footer>
+
+<script>
+(function(){
+  function run(){
+    var hash = (location.hash || "").toLowerCase();
+
+    // nur reagieren, wenn wirklich von "Vorteile zeigen" o.ä. gekommen
+    if (
+      !hash ||
+      (hash !== '#vorteile' &&
+       hash !== '#benefits' &&
+       hash !== '#card-benefits')
+    ) {
+      return;
+    }
+
+    // zuerst unsere DE-ID probieren, dann generische
+    var card =
+      document.getElementById('card-benefits-cw-de') ||
+      document.getElementById('card-benefits');
+
+    if (!card) return;
+
+    // Details in der Karte öffnen – so wie EN
+    var d = card.querySelector('details');
+    if (d && !d.open) d.open = true;
+
+    // Hash ggf. auf die echte ID normalisieren (wie EN)
+    var targetId = card.id;
+    if (location.hash !== '#' + targetId) {
+      history.replaceState(null, '', '#' + targetId);
+    }
+
+    // dahin scrollen – mittig, nicht nach unten gedrückt
+    card.scrollIntoView({behavior: 'instant', block: 'center'});
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
+})();
+</script>
 
 <script>
 function __toggleNav(){
@@ -461,51 +505,8 @@ function __toggleNav(){
 }
 </script>
 
-<script>
-(function(){
-  function run(){
-    var hash = (location.hash || "").toLowerCase();
-    // nur reagieren, wenn von „Vorteile zeigen“ o.ä. gekommen
-    if (!hash || (hash!=='#benefits' && hash!=='#card-benefits' && hash!=='#vorteile')) return;
-
-    // Karte „Vorteile“ holen
-    var card = document.getElementById('card-benefits-cw-de') ||
-               document.getElementById('card-benefits');
-    if (!card) return;
-
-    // Innerhalb des Card-Grids: nur die letzten 3 Karten stehen lassen
-    var grid = card.closest('.grid');
-    if (grid){
-      var cards = grid.querySelectorAll(':scope > .card');
-      cards.forEach(function(c,i){
-        if (i < cards.length - 3){
-          c.style.display = 'none';
-        } else {
-          c.style.display = '';
-        }
-      });
-    }
-
-    // <details> in der Vorteils-Karte öffnen
-    var det = card.querySelector('details');
-    if (det && !det.open) det.open = true;
-
-    // sanft scrollen und dann nach oben korrigieren (Sticky-Header)
-    card.scrollIntoView({behavior:'instant', block:'start'});
-    setTimeout(function(){
-      try { window.scrollBy(0, -90); } catch(e){}
-    }, 60);
-  }
-
-  if (document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', run);
-  } else {
-    run();
-  }
-})();
-</script>
-
 </body>
+
 
 </html>
 
