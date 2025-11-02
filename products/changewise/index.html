@@ -283,6 +283,18 @@ footer a{color:#FFFFFF}
 
 /* turn off any legacy overlay if present */
 #bg-overlay{display:none !important}
+/* Benefits-Only-Modus – wenn per #card-benefits aufgerufen */
+body.cw-benefits-only .hero,
+body.cw-benefits-only .cw-top,
+body.cw-benefits-only .cw-intro {
+  display:none !important;
+}
+
+body.cw-benefits-only .section-cards,
+body.cw-benefits-only #card-benefits {
+  margin-top:1.4rem !important;
+}
+
 </style>
 
   <script>
@@ -471,6 +483,24 @@ function __toggleNav(){
   var d=card.querySelector('details');
   if(d && !d.open) d.open=true;
   if(hash==='#benefits'){ history.replaceState(null,'','#'+card.id); }
+})();
+</script>
+<script>
+(function(){
+  // nur reagieren, wenn wir wirklich über #card-benefits gekommen sind
+  if (location.hash === '#card-benefits') {
+    // Body in "nur Vorteile"-Modus
+    document.body.classList.add('cw-benefits-only');
+
+    // zum Kartenblock springen
+    var el = document.getElementById('card-benefits');
+    if (el) {
+      // kleines Delay, damit CSS greift
+      setTimeout(function(){
+        el.scrollIntoView({behavior:'instant', block:'start'});
+      }, 50);
+    }
+  }
 })();
 </script>
 
