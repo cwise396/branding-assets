@@ -467,7 +467,7 @@ function __toggleNav(){
   var hash = (location.hash || "").toLowerCase();
   if (!hash) return;
 
-  // wir akzeptieren mehrere Schreibweisen
+  // alle Varianten erlauben, die aus "Vorteile zeigen" kommen können
   var wanted = [
     '#card-benefits-cw-de',
     '#card-benefits',
@@ -475,10 +475,9 @@ function __toggleNav(){
     '#benefits',
     '#vorteile'
   ];
-
   if (wanted.indexOf(hash) === -1) return;
 
-  // Ziel-Karte holen (reihenfolge: deine DE-ID → generische ID)
+  // Ziel-Karte holen (DE zuerst, dann generisch)
   var card =
     document.getElementById('card-benefits-cw-de') ||
     document.getElementById('card-benefits') ||
@@ -486,7 +485,7 @@ function __toggleNav(){
 
   if (!card) return;
 
-  // alles andere im <main> ausblenden, damit NUR der Vorteil-Block sichtbar ist
+  // nur den Bereich mit der Karte sichtbar lassen
   var main = card.closest('main') || document.querySelector('main');
   if (main){
     Array.from(main.children).forEach(function(node){
@@ -496,19 +495,27 @@ function __toggleNav(){
     });
   }
 
-  // falls in der Vorteil-Karte ein <details> ist → öffnen
+  // evtl. <details> öffnen
   var det = card.querySelector('details');
   if (det && !det.open) det.open = true;
 
-  // nach oben scrollen
+  // zuerst hinscrollen …
   try {
     card.scrollIntoView({behavior:'instant', block:'start'});
   } catch(e) {
     card.scrollIntoView();
   }
+
+  // … und dann wegen Sticky-Header ein Stück nach oben korrigieren
+  setTimeout(function(){
+    try {
+      window.scrollBy(0, -90); // bei Bedarf -80 oder -100
+    } catch(e){}
+  }, 40);
 })();
 </script>
 
 </body>
+
 </html>
 
