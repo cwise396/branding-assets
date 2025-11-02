@@ -340,11 +340,9 @@
 </footer>
 
 <!-- einziges Deep-Link-Skript: nur Vorteile öffnen + leicht hochscrollen -->
-<script>
+ <script>
 (function(){
   var hash = (location.hash || "").toLowerCase();
-  if (!hash) return;
-
   var wanted = [
     "#vorteile",
     "#benefits",
@@ -352,27 +350,41 @@
     "#card-benefits-ts-de",
     "#benefits-tasksieve"
   ];
+
+  // nur reagieren, wenn wir wirklich über "Vorteile zeigen" o.ä. gekommen sind
   if (wanted.indexOf(hash) === -1) return;
 
-  var card =
-    document.getElementById("card-benefits-ts-de") ||
-    document.getElementById("card-benefits");
+  // Zielkarte holen
+  var card = document.getElementById("card-benefits-ts-de") ||
+             document.getElementById("card-benefits");
   if (!card) return;
 
-  // Details auf
+  // alle Karten im gleichen Grid holen
+  var grid = card.closest(".grid");
+  if (grid) {
+    Array.from(grid.children).forEach(function(node){
+      // alles ausblenden, was OBERHALB der Vorteilskarte sitzt
+      if (node !== card && node.offsetTop < card.offsetTop) {
+        node.style.display = "none";
+      }
+    });
+  }
+
+  // Details aufklappen
   var det = card.querySelector("details");
   if (det && !det.open) det.open = true;
 
-  // Hash normalisieren
+  // Hash sauber machen
   if (location.hash !== "#" + card.id) {
     history.replaceState(null, "", "#" + card.id);
   }
 
-  // Zentrieren + bisschen nach oben
-  card.scrollIntoView({behavior:"instant", block:"center"});
-  try { window.scrollBy(0, -42); } catch(e){}
+  // nach oben scrollen, so dass wirklich NUR die untere Reihe sichtbar ist
+  card.scrollIntoView({behavior: "instant", block: "start"});
+  try { window.scrollBy(0, -20); } catch (e) {}
 })();
 </script>
+
 
 </body>
 </html>
