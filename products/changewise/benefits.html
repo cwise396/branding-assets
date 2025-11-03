@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ChangeWise – Vorteile</title>
+<meta name="theme-color" content="#0E3960" />
+
+<style>
+:root{
+  --container:1100px;
+  --page-blue:#0E3960;
+  --text:#FFFFFF;
+  --nav-red:#AE0F12;
+  --card-blue:#0E3960;
+  --card-border:rgba(255,255,255,.28);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--page-blue);color:var(--text);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+a{color:#FFFFFF;text-decoration:none}
+
+/* Header/Nav */
+.site-header{position:sticky;top:0;z-index:50;background:var(--nav-red)}
+.nav{background:var(--nav-red)}
+.nav-inner{max-width:var(--container);margin:0 auto;padding:0 1rem;display:flex;align-items:center;justify-content:space-between;height:12mm}
+.brand{color:#FFFFFF;font-weight:800;white-space:nowrap}
+.nav-links{list-style:none;display:flex;gap:1rem;margin:0;padding:0;align-items:center}
+.nav-links a{color:#FFFFFF}
+.nav-toggle{display:none;background:none;border:0;color:#FFFFFF;font-size:1.2rem}
+@media (max-width:980px){
+  .nav-inner{position:relative;height:auto;min-height:12mm;padding-block:.4rem}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--nav-red);padding:1rem;margin:0;flex-direction:column;gap:.6rem}
+  .nav-links.open{display:flex}
+  .nav-toggle{display:inline-block}
+}
+
+/* Content */
+main{padding-top:calc(12mm + 16px)}
+.section-cards{max-width:var(--container);margin:0 auto;padding:0 1rem 2.4rem}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
+.card{
+  grid-column:span 4;
+  background:var(--card-blue);
+  color:#FFFFFF;
+  border-radius:14px;
+  padding:1.05rem 1rem;
+  border:1px solid var(--card-border);
+  box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.card h3{margin:0 0 .4rem}
+.card p,.card li{margin:.35rem 0}
+.card ul{list-style:disc;padding-left:1.2rem}
+@media (max-width:960px){.card{grid-column:span 6}}
+@media (max-width:640px){.card{grid-column:span 12}}
+
+/* Weißer Button, blaue Schrift */
+.btn{
+  display:inline-block;padding:.7rem 1rem;border-radius:12px;border:1px solid #FFFFFF;
+  text-decoration:none;font-weight:800;background:#FFFFFF;text-align:left;line-height:1.3;
+  color:#0E3960 !important; -webkit-text-fill-color:#0E3960 !important;
+}
+.btn span{display:block}
+.btn small{display:block;opacity:.85;font-size:.78rem;line-height:1.2}
+
+/* Footer */
+footer{max-width:var(--container);margin:2.2rem auto 2.6rem;padding:0 1rem}
+footer a{color:#FFFFFF}
+</style>
+
+<script>
+function __toggleNav(){
+  var l=document.getElementById('navLinks'); if(!l) return;
+  var o=l.classList.toggle('open');
+  document.getElementById('navToggle')?.setAttribute('aria-expanded', o?'true':'false');
+}
+</script>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="/">Home</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/products/changewise/">ChangeWise</a></li>
+        <li><a href="/products/slackdigest/">SlackDigest</a></li>
+        <li><a href="/products/tasksieve/">TaskSieve</a></li>
+        <li><strong>DE</strong> | <a href="/en/products/changewise/benefits.html">EN</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-controls="navLinks" aria-expanded="false" onclick="__toggleNav()">☰</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="section-cards">
+    <div class="grid">
+      <!-- Card 4: Status & Kontakt -->
+      <article class="card">
+        <h3>Status &amp; Kontakt</h3>
+        <p><strong>Bereit zum Start.</strong> Ideal, wenn du für kommende Projekte oder interne Abstimmungen klare Botschaften und Richtung suchst – ohne lange Vorarbeit.</p>
+        <a class="btn" href="/products/changewise/getting-started.html">
+          <span>Briefing starten</span>
+          <small>3–4 Angaben – Ergebnis &amp; nächste Schritte kommen sofort zurück.</small>
+        </a>
+      </article>
+
+      <!-- Card 5: Wo es wirkt -->
+      <article class="card">
+        <h3>Wo es wirkt</h3>
+        <p>Leadership-Alignment, Messaging, Go-to-market, interne Kommunikation, Produkt-/Feature-Story.</p>
+      </article>
+
+      <!-- Card 6: Vorteile (aufgeklappt) -->
+      <article class="card" id="card-benefits-cw-de">
+        <h3>Vorteile</h3>
+        <ul>
+          <li><strong>Sehr schnell fokussiert</strong> — kein 6-Wochen-Deck.</li>
+          <li><strong>Handlungsorientiert</strong> — du bekommst konkrete nächste Schritte.</li>
+          <li><strong>Verständlich für alle</strong> — nicht nur für Marketing oder Führung.</li>
+        </ul>
+        <details open style="margin-top:.4rem">
+          <summary>mehr</summary>
+          <ul>
+            <li>Reduziert Reibung zwischen Teams.</li>
+            <li>Erhöht Konsistenz in Messaging &amp; Entscheidungen.</li>
+            <li>Schafft ein „So reden wir darüber jetzt“-Narrativ.</li>
+          </ul>
+        </details>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
+</footer>
+</body>
+</html>
