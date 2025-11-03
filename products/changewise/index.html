@@ -7,21 +7,16 @@
 <meta name="description" content="ChangeWise liefert in kurzer Zeit eine klare Story, fokussierte Botschaften und konkrete nächste Schritte für Teams und Stakeholder.">
 <meta name="theme-color" content="#0E3960" />
 
-<style>
+ <style>
 :root{
   --container:1100px;
-
   --page-blue:#0E3960;
   --text:#FFFFFF;
-
   --nav-red:#AE0F12;
-
   --card-blue:#0E3960;
   --card-border:rgba(255,255,255,.28);
-
   --btn-bg:#FFFFFF;
   --btn-fg:#0E3960;
-
   --ring:#FFFFFF;
   --ring-w:5px;
 }
@@ -34,265 +29,96 @@ body{
   background:var(--page-blue);
   color:var(--text);
 }
-a{
-  color:#FFFFFF;
-  text-decoration:none;
-}
+a{ color:#FFFFFF; text-decoration:none }
 
 /* HEADER / NAV */
-.site-header{
-  position:sticky;
-  top:0;
-  z-index:50;
-  width:100%;
-  background:var(--nav-red);
-}
-.nav{background:var(--nav-red)}
+.site-header{ position:sticky; top:0; z-index:50; width:100%; background:var(--nav-red) }
+.nav{ background:var(--nav-red) }
 .nav-inner{
-  max-width:var(--container);
-  margin:0 auto;
-  padding:0 1rem;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  height:12mm;
+  max-width:var(--container); margin:0 auto; padding:0 1rem;
+  display:flex; align-items:center; justify-content:space-between; height:12mm;
 }
-.brand{
-  color:#FFFFFF;
-  font-weight:800;
-  white-space:nowrap;
-}
-.nav-links{
-  list-style:none;
-  display:flex;
-  gap:1rem;
-  margin:0;
-  padding:0;
-  align-items:center;
-}
-.nav-links a{color:#FFFFFF}
-.nav-toggle{
-  display:none;
-  background:none;
-  border:0;
-  color:#FFFFFF;
-  font-size:1.2rem;
-}
+.brand{ color:#FFFFFF; font-weight:800; white-space:nowrap }
+.nav-links{ list-style:none; display:flex; gap:1rem; margin:0; padding:0; align-items:center }
+.nav-links a{ color:#FFFFFF }
+.nav-toggle{ display:none; background:none; border:0; color:#FFFFFF; font-size:1.2rem }
 @media (max-width:980px){
-  .nav-inner{
-    position:relative;
-    height:auto;
-    min-height:12mm;
-    padding-block:.4rem;
-  }
+  .nav-inner{ position:relative; height:auto; min-height:12mm; padding-block:.4rem }
   .nav-links{
-    display:none;
-    position:absolute;
-    top:100%;
-    left:0;
-    right:0;
-    background:var(--nav-red);
-    padding:1rem;
-    margin:0;
-    flex-direction:column;
-    gap:.6rem;
+    display:none; position:absolute; top:100%; left:0; right:0; background:var(--nav-red);
+    padding:1rem; margin:0; flex-direction:column; gap:.6rem;
   }
-  .nav-links.open{display:flex}
-  .nav-toggle{display:inline-block}
+  .nav-links.open{ display:flex }
+  .nav-toggle{ display:inline-block }
 }
 
 /* HERO */
-.hero{
-  color:#FFFFFF;
-  padding-top:11mm;
-}
+.hero{ color:#FFFFFF; padding-top:11mm }
 .hero-header{
-  max-width:var(--container);
-  margin:0 auto;
-  padding:0 1rem;
-  display:grid;
-  grid-template-columns:repeat(12,1fr);
-  gap:1rem;
-  align-items:end;
+  max-width:var(--container); margin:0 auto; padding:0 1rem;
+  display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; align-items:end;
 }
-.hero-text{grid-column:1 / 9}
-.hero h1{
-  margin:0 0 .2rem;
-  font-size:clamp(1.8rem,4vw,3rem);
-  line-height:1.1;
-}
-.hero p.lead{
-  margin:0;
-  font-size:clamp(1.1rem,2.4vw,1.35rem);
-  font-weight:700;
-  opacity:.95;
-}
-.hero p.lead-sub{
-  margin:.4rem 0 0;
-  font-size:1rem;
-  font-weight:500;
-  opacity:.9;
-  max-width:32rem;
-}
+.hero-text{ grid-column:1 / 9 }
+.hero h1{ margin:0 0 .2rem; font-size:clamp(1.8rem,4vw,3rem); line-height:1.1 }
+.hero p.lead{ margin:0; font-size:clamp(1.1rem,2.4vw,1.35rem); font-weight:700; opacity:.95 }
+.hero p.lead-sub{ margin:.4rem 0 0; font-size:1rem; font-weight:500; opacity:.9; max-width:32rem }
 
 /* LOGO rechts */
-.logo-col{
-  grid-column:9 / 13;
-  justify-self:start;
-  display:flex;
-  align-items:center;
-}
-.product-logo{
-  position:relative;
-  width:98px;
-  height:98px;
-}
-.product-logo .logo-ring{
-  position:absolute;
-  inset:0;
-  width:98px;
-  height:98px;
-  z-index:2;
-  pointer-events:none;
-  display:block;
-}
-.product-logo .logo-ring svg{
-  width:100%;
-  height:100%;
-  display:block;
-}
-.product-logo .logo-img{
-  position:absolute;
-  top:5px;
-  left:5px;
-  width:88px;
-  height:88px;
-  display:block;
-  border-radius:50%;
-  z-index:1;
-  background:transparent;
-}
+.logo-col{ grid-column:9 / 13; justify-self:start; display:flex; align-items:center }
+.product-logo{ position:relative; width:98px; height:98px }
+.product-logo .logo-ring{ position:absolute; inset:0; width:98px; height:98px; z-index:2; pointer-events:none; display:block }
+.product-logo .logo-ring svg{ width:100%; height:100%; display:block }
+.product-logo .logo-img{ position:absolute; top:5px; left:5px; width:88px; height:88px; display:block; border-radius:50%; z-index:1; background:transparent }
 
 /* CONTENT GRID */
-.section-cards{
-  max-width:var(--container);
-  margin:0 auto;
-  padding:0 1rem 2.4rem;
-}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(12,1fr);
-  gap:1rem;
-  margin-top:1rem;
-}
+.section-cards{ max-width:var(--container); margin:0 auto; padding:0 1rem 2.4rem }
+.grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; margin-top:1rem }
 .card{
-  grid-column:span 4;
-  background:var(--card-blue) !important;
-  color:#FFFFFF !important;
-  border-radius:14px;
-  padding:1.05rem 1rem;
-  border:1px solid var(--card-border);
-  box-shadow:
-    0 10px 24px rgba(0,0,0,.25),
-    inset 0 1px 0 rgba(255,255,255,.06);
+  grid-column:span 4; background:var(--card-blue) !important; color:#FFFFFF !important;
+  border-radius:14px; padding:1.05rem 1rem; border:1px solid var(--card-border);
+  box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06);
 }
-.card h3{
-  margin:0 0 .4rem;
-}
-.card p,
-.card li{
-  margin:.35rem 0;
-}
-.card ul{
-  list-style:disc;
-  padding-left:1.2rem;
-}
-.card a{
-  text-decoration:underline;
-  text-underline-offset:2px;
-  color:#FFFFFF;
-}
-@media (max-width:960px){
-  .card{grid-column:span 6}
-}
-@media (max-width:640px){
-  .card{grid-column:span 12}
-}
+.card h3{ margin:0 0 .4rem }
+.card p, .card li{ margin:.35rem 0 }
+.card ul{ list-style:disc; padding-left:1.2rem }
+.card a{ text-decoration:underline; text-underline-offset:2px; color:#FFFFFF }
+@media (max-width:960px){ .card{ grid-column:span 6 } }
+@media (max-width:640px){ .card{ grid-column:span 12 } }
 
 /* CTA BUTTON (weiß, blaue Schrift) */
 .btn{
-  display:inline-block;
-  padding:.7rem 1rem;
-  border-radius:12px;
-  border:1px solid #FFFFFF;
-  text-decoration:none;
-  font-weight:800;
-  background:transparent;
-  text-align:left;
-  line-height:1.3;
+  display:inline-block; padding:.7rem 1rem; border-radius:12px; border:1px solid #FFFFFF;
+  text-decoration:none; font-weight:800; background:transparent; text-align:left; line-height:1.3;
 }
 .btn--inverse-cw{
-  background:#FFFFFF;
-  border:1px solid #FFFFFF;
-  border-radius:12px;
-  display:inline-block;
-  text-align:left;
-  padding:0.7rem 1rem;
-  line-height:1.3;
-  font-weight:800;
-  text-decoration:none;
-  color:#0E3960 !important;
-  -webkit-text-fill-color:#0E3960 !important;
+  background:#FFFFFF; border:1px solid #FFFFFF; border-radius:12px; display:inline-block;
+  text-align:left; padding:0.7rem 1rem; line-height:1.3; font-weight:800; text-decoration:none;
+  color:#0E3960 !important; -webkit-text-fill-color:#0E3960 !important;
 }
-.btn--inverse-cw span{
-  display:block;
-  color:#0E3960 !important;
-  -webkit-text-fill-color:#0E3960 !important;
-}
+.btn--inverse-cw span{ display:block; color:#0E3960 !important; -webkit-text-fill-color:#0E3960 !important }
 
 /* FOOTER */
-footer{
-  max-width:var(--container);
-  margin:2.2rem auto;
-  padding:0 1rem 2.4rem;
-  color:#FFFFFF;
-}
-footer a{color:#FFFFFF}
+footer{ max-width:var(--container); margin:2.2rem auto; padding:0 1rem 2.4rem; color:#FFFFFF }
+footer a{ color:#FFFFFF }
 
-/* Zielkarte etwas nach unten rücken */
-#card-benefits-cw-de{
-  scroll-margin-top:14mm;
-}
-.card:target{
-  outline:3px solid rgba(255,255,255,.75);
-  box-shadow:
-    0 0 0 4px rgba(255,255,255,.25),
-    0 12px 28px rgba(0,0,0,.45);
-}
-
-/* falls irgendwo noch ein altes Overlay existiert: aus */
-#bg-overlay{display:none !important}
-/* Benefits-only mode (Home → Vorteile zeigen) */
- /* --- Benefits-only (ChangeWise DE) — SAFE -------------------------------- */
-
-/* Hero-Kopf ausblenden, wenn wir explizit in den Vorteile-Modus gehen */
+/* --- Benefits-only (ChangeWise DE) — minimal & safe --- */
 .cw-benefits-only .hero-header { display: none; }
 
-/* Scroll-Puffer unter Sticky-Navi */
 #card-benefits-cw-de,
 #card-benefits { scroll-margin-top: 14mm; }
 
-/* Visuelles Highlight & Rand im Vorteile-Modus */
 .cw-benefits-only #card-benefits-cw-de,
-.cw-benefits-only #card-benefits {
-  outline: 3px solid rgba(255,255,255,.75);
-  box-shadow: 0 0 0 4px rgba(255,255,255,.25), 0 12px 28px rgba(0,0,0,.45);
-  border: 1px solid rgba(255,255,255,.28);
-  border-radius: 14px;
+.cw-benefits-only #card-benefits{
+  outline:3px solid rgba(255,255,255,.75);
+  box-shadow:0 0 0 4px rgba(255,255,255,.25), 0 12px 28px rgba(0,0,0,.45);
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:14px;
 }
 
- /* Legacy-Overlay sicher deaktivieren (falls noch vorhanden) */
-#bg-overlay { display: none !important; }
+/* Legacy-Overlay sicher deaktivieren (falls noch vorhanden) */
+#bg-overlay { display:none !important; }
+</style>
+
 
 <script>
 function __toggleNav(){
