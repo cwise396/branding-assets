@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TaskSieve – Wichtige Aufgaben zuerst.</title>
-  <meta name="description" content="TaskSieve bündelt E-Mail, Notizen & Slack in einer Inbox, entfernt Duplikate und priorisiert nach Wirkung, Dringlichkeit und Aufwand." />
+  <meta name="description" content="TaskSieve bündelt E-Mail, Notizen und Slack in einer Inbox, entdoppelt und priorisiert nach Wirkung, Dringlichkeit und Aufwand." />
   <meta name="theme-color" content="#0B1220" />
   <style>
     :root{
@@ -24,10 +24,10 @@
       color:var(--fg-dark);
       font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
     }
-    a{color:#FFFFFF;text-decoration:none}
+    a{color:#FFFFFF; text-decoration:none}
 
     /* NAV */
-    .site-header{position:sticky;top:0;z-index:50;background:var(--nav-red)}
+    .site-header{position:sticky; top:0; z-index:50; background:var(--nav-red)}
     .nav-inner{
       max-width:var(--container);
       margin:0 auto;
@@ -54,7 +54,6 @@
     .hero-text{grid-column:1/9}
     .hero h1{
       margin:0 0 .2rem;
-      /* größer ~ Logo-Höhe (98px Logo; 3.0–3.2rem ≈ 48–51px) */
       font-size:clamp(2.2rem, 5vw, 3.2rem);
       line-height:1.05;
       letter-spacing:.2px;
@@ -69,15 +68,9 @@
       display:flex;
       align-items:center;
     }
-    .product-logo{
-      position:relative;
-      width:98px;
-      height:98px;
-    }
-    .product-logo .logo-ring{
-      position:absolute; inset:0;
-    }
-    .product-logo .logo-ring svg{width:100%;height:100%;display:block}
+    .product-logo{position:relative; width:98px; height:98px}
+    .product-logo .logo-ring{position:absolute; inset:0;}
+    .product-logo .logo-ring svg{width:100%; height:100%; display:block}
     .product-logo .logo-img{
       position:absolute; top:5px; left:5px;
       width:88px; height:88px; border-radius:50%;
@@ -107,11 +100,10 @@
     }
     .card h3{margin:0 0 .4rem}
 
-    /* Karte 3: wie EN „What it delivers“ */
     .card-delivers ul{list-style:disc; padding-left:1.2rem; margin:.35rem 0}
     .card-delivers details{margin-top:.4rem}
 
-    /* Vorteile-Karte: breiterer weißer Rand */
+    /* Vorteile-Karte: breiter weißer Rand */
     #card-benefits-ts-de{
       border:2px solid rgba(255,255,255,.85);
       box-shadow:
@@ -119,17 +111,17 @@
         inset 0 1px 0 rgba(255,255,255,.06);
     }
 
-    /* Button (weiß + rot) */
+    /* Weißer Button / rote Schrift (Safari-safe) */
     .btn{
       display:inline-block;
       border-radius:12px;
-      padding:0.9rem 1.1rem;             /* etwas größer */
+      padding:0.9rem 1.1rem;
       border:1px solid #FFFFFF;
       background:#FFFFFF;
       text-align:left;
       line-height:1.25;
       font-weight:800;
-      font-size:1.05rem;                 /* etwas größer */
+      font-size:1.05rem;
       color:#AE0F12 !important;
       -webkit-text-fill-color:#AE0F12 !important;
     }
@@ -167,7 +159,7 @@
 <header class="site-header">
   <nav>
     <div class="nav-inner">
-      <a class="brand" href="/">Home</a>
+      <a class="brand" href="/home/">Home</a>
       <ul class="nav-links" id="navLinks">
         <li><a href="/products/changewise/">ChangeWise</a></li>
         <li><a href="/products/slackdigest/">SlackDigest</a></li>
@@ -198,17 +190,17 @@
 
 <main class="page">
   <div class="grid" id="ts-grid">
-    <!-- obere 3 Karten -->
+    <!-- Obere 3 Karten -->
     <article class="card">
       <h3>Eine Inbox</h3>
-      <p>Zieht E-Mail, Notizen &amp; Slack zusammen – kein Suchen, kein Springen.</p>
+      <p>Zieht aus E-Mail, Notizen & Slack – ein Ort, kein Springen.</p>
     </article>
 
     <article class="card">
       <h3>So funktioniert’s</h3>
       <ul>
         <li>Quellen verbinden</li>
-        <li>Automatisches Dedupe &amp; Clustering</li>
+        <li>Auto-Dedupe & Clustering</li>
         <li>Scoring nach Wirkung / Dringlichkeit / Aufwand</li>
       </ul>
     </article>
@@ -216,39 +208,61 @@
     <article class="card card-delivers">
       <h3>Was es liefert</h3>
       <ul>
-        <li><strong>Nächste Aktion sichtbar</strong> – ohne Listenpflege.</li>
-        <li><strong>Mehr Durchsatz</strong> – Fokus-Blöcke &amp; Batching.</li>
+        <li><strong>Next Action sichtbar</strong> – ohne Listenpflege.</li>
+        <li><strong>Mehr Durchsatz</strong> – Fokus-Blöcke & Batching.</li>
         <li><strong>Weniger Kontextwechsel</strong> – thematisch gebündelt.</li>
       </ul>
       <details>
         <summary>mehr</summary>
         <ul>
-          <li>Prioritäten sind erklärbar (Impact/Dringlichkeit/Aufwand).</li>
-          <li>Klare Sichtbarkeit von Verantwortlichkeiten.</li>
-          <li>Weniger „Was ist der Stand?“-Pings.</li>
+          <li>Erklärbare Priorisierung (Wirkung/Dringlichkeit/Aufwand).</li>
+          <li>Sichtbare Verantwortlichkeiten.</li>
+          <li>Weniger „Was ist der Stand?“-Nachfragen.</li>
         </ul>
       </details>
     </article>
 
-    <!-- untere 3 Karten -->
-     <article class="card">
-  <h3>Status &amp; Kontakt</h3>
-  <p>Status: <strong>Live-Test</strong> – du bekommst direkten Zugriff auf die Demo-Inbox.</p>
-  <button class="btn" type="button" onclick="location.href='/products/tasksieve/getting-started.html'">
-    <span>Ergebnis ansehen</span>
-    <small>Vorher sehen, dann eigene Inbox aktivieren.</small>
-  </button>
-  <details style="margin-top:.6rem">
-    <summary>FAQ</summary>
-    <ul>
-      <li><strong>Import nötig?</strong> Nein – Demo-Inbox reicht für den Start.</li>
-      <li><strong>Eigene Quellen?</strong> Später verbindbar (E-Mail, Notizen, Slack).</li>
-      <li><strong>Verlässlichkeit?</strong> Erklärbares Scoring statt Bauchgefühl.</li>
-      <li><strong>Sicherheit?</strong> Least-Privilege, nur notwendige Leserechte.</li>
-    </ul>
-  </details>
-</article>
- </div>
+    <!-- Untere 3 Karten -->
+    <article class="card">
+      <h3>Status &amp; Kontakt</h3>
+      <p>Status: <strong>Live-Test</strong> – du bekommst direkten Zugriff auf die Demo-Inbox.</p>
+      <button class="btn" type="button" onclick="location.href='/products/tasksieve/getting-started.html'">
+        <span>Ergebnis ansehen</span>
+        <small>Vorher sehen, dann eigene Inbox aktivieren.</small>
+      </button>
+      <details style="margin-top:.6rem">
+        <summary>FAQ</summary>
+        <ul>
+          <li><strong>Import nötig?</strong> Nein – Demo-Inbox reicht für den Start.</li>
+          <li><strong>Eigene Quellen?</strong> Später verbindbar (E-Mail, Notizen, Slack).</li>
+          <li><strong>Verlässlichkeit?</strong> Erklärbares Scoring statt Bauchgefühl.</li>
+          <li><strong>Sicherheit?</strong> Least-Privilege, nur notwendige Leserechte.</li>
+        </ul>
+      </details>
+    </article>
+
+    <article class="card">
+      <h3>Integrationen</h3>
+      <p>E-Mail, Notizen, Slack.</p>
+    </article>
+
+    <article class="card" id="card-benefits-ts-de">
+      <h3>Vorteile</h3>
+      <ul>
+        <li><strong>Schneller Start</strong> – Minuten statt Tage.</li>
+        <li><strong>Erklärbare Priorisierung</strong>.</li>
+        <li><strong>Wenig Pflege</strong> im Alltag.</li>
+      </ul>
+      <details style="margin-top:.4rem">
+        <summary>mehr</summary>
+        <ul>
+          <li>Weniger Kontextwechsel.</li>
+          <li>Team-Zusagen bleiben sichtbar.</li>
+          <li>„Feuer löschen“ wird planbar.</li>
+        </ul>
+      </details>
+    </article>
+  </div>
 </main>
 
 <footer>
@@ -256,18 +270,18 @@
 </footer>
 
 <script>
+/* Deep-link „Vorteile zeigen“: nur untere 3 Karten zeigen, Hero ausblenden */
 (function(){
-  // Deep-link „Vorteile zeigen“: nur die unteren 3 Karten anzeigen
   var raw = location.hash;
   if (!raw || raw === "#" || raw === "#!") return;
   var hash = raw.toLowerCase();
 
   var wanted = [
-    "#vorteile",
-    "#benefits",
-    "#card-benefits",
-    "#card-benefits-ts-de",
-    "#benefits-tasksieve"
+    "#benefits",              // generisch
+    "#card-benefits",         // generisch
+    "#card-benefits-ts-de",   // diese Seite
+    "#benefits-tasksieve",    // alternativ
+    "#show-benefits"          // alternativ
   ];
   if (wanted.indexOf(hash) === -1) return;
 
@@ -275,11 +289,11 @@
              document.getElementById("card-benefits");
   if (!card) return;
 
-  // Hero vollständig ausblenden
+  // Hero verstecken
   var hero = document.getElementById("ts-hero");
   if (hero) hero.style.display = "none";
 
-  // In der Grid nur die unteren Karten lassen (alles oberhalb der Benefits-Karte ausblenden)
+  // Im Grid alle Elemente ausblenden, die oberhalb der Vorteile-Karte liegen
   var grid = document.getElementById("ts-grid");
   if (grid){
     Array.from(grid.children).forEach(function(node){
@@ -293,7 +307,7 @@
   var det = card.querySelector("details");
   if (det && !det.open) det.open = true;
 
-  // Hash auf tatsächliche ID setzen & nach oben scrollen
+  // Hash auf die tatsächliche ID der Karte normalisieren & scrollen
   if (location.hash !== "#" + card.id) {
     history.replaceState(null, "", "#" + card.id);
   }
