@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TaskSieve – Wichtige Aufgaben zuerst.</title>
-  <meta name="description" content="TaskSieve bündelt E-Mail, Notizen & Slack in einer Inbox, entfernt Duplikate und priorisiert nach Wirkung, Dringlichkeit und Aufwand.">
+  <meta name="description" content="TaskSieve bündelt E-Mail, Notizen & Slack in einer Inbox, entfernt Duplikate und priorisiert nach Wirkung, Dringlichkeit und Aufwand." />
   <meta name="theme-color" content="#0B1220" />
   <style>
     :root{
@@ -54,8 +54,10 @@
     .hero-text{grid-column:1/9}
     .hero h1{
       margin:0 0 .2rem;
-      font-size:clamp(1.7rem,4vw,2.4rem);
-      line-height:1.1;
+      /* größer ~ Logo-Höhe (98px Logo; 3.0–3.2rem ≈ 48–51px) */
+      font-size:clamp(2.2rem, 5vw, 3.2rem);
+      line-height:1.05;
+      letter-spacing:.2px;
     }
     .hero p.sub{
       margin:0;
@@ -73,30 +75,20 @@
       height:98px;
     }
     .product-logo .logo-ring{
-      position:absolute;
-      inset:0;
+      position:absolute; inset:0;
     }
-    .product-logo .logo-ring svg{
-      width:100%;
-      height:100%;
-      display:block;
-    }
+    .product-logo .logo-ring svg{width:100%;height:100%;display:block}
     .product-logo .logo-img{
-      position:absolute;
-      top:5px;
-      left:5px;
-      width:88px;
-      height:88px;
-      display:block;
-      border-radius:50%;
-      background:transparent;
+      position:absolute; top:5px; left:5px;
+      width:88px; height:88px; border-radius:50%;
+      background:transparent; display:block;
     }
 
     /* PAGE */
     main.page{
       max-width:var(--container);
       margin:0 auto;
-      padding:.5rem 1rem 2.4rem;  /* .5, weil der Hero schon Abstand macht */
+      padding:.5rem 1rem 2.4rem;
     }
 
     /* GRID / CARDS */
@@ -115,29 +107,36 @@
     }
     .card h3{margin:0 0 .4rem}
 
-    /* Vorteile-Karte stärker umranden */
+    /* Karte 3: wie EN „What it delivers“ */
+    .card-delivers ul{list-style:disc; padding-left:1.2rem; margin:.35rem 0}
+    .card-delivers details{margin-top:.4rem}
+
+    /* Vorteile-Karte: breiterer weißer Rand */
     #card-benefits-ts-de{
-      border:1px solid rgba(255,255,255,.65);
+      border:2px solid rgba(255,255,255,.85);
+      box-shadow:
+        0 10px 24px rgba(0,0,0,.28),
+        inset 0 1px 0 rgba(255,255,255,.06);
     }
 
     /* Button (weiß + rot) */
     .btn{
       display:inline-block;
       border-radius:12px;
-      padding:0.8rem 1.05rem;
+      padding:0.9rem 1.1rem;             /* etwas größer */
       border:1px solid #FFFFFF;
       background:#FFFFFF;
       text-align:left;
       line-height:1.25;
       font-weight:800;
-      font-size:1rem;
+      font-size:1.05rem;                 /* etwas größer */
       color:#AE0F12 !important;
       -webkit-text-fill-color:#AE0F12 !important;
     }
     .btn span{display:block;}
     .btn small{
       display:block;
-      font-size:.8rem;
+      font-size:.82rem;
       font-weight:500;
       opacity:.9;
       line-height:1.25;
@@ -179,8 +178,8 @@
   </nav>
 </header>
 
-<!-- HERO oben drüber -->
-<section class="hero">
+<!-- HERO -->
+<section class="hero" id="ts-hero">
   <div class="hero-text">
     <h1>TaskSieve</h1>
     <p class="sub">Wichtige Aufgaben zuerst – mit System.</p>
@@ -198,7 +197,7 @@
 </section>
 
 <main class="page">
-  <div class="grid">
+  <div class="grid" id="ts-grid">
     <!-- obere 3 Karten -->
     <article class="card">
       <h3>Eine Inbox</h3>
@@ -214,9 +213,21 @@
       </ul>
     </article>
 
-    <article class="card">
-      <h3>Was du bekommst</h3>
-      <p>Klare Next Actions, weniger „Was ist der Stand?“-Nachfragen, erklärbare Reihenfolge.</p>
+    <article class="card card-delivers">
+      <h3>Was es liefert</h3>
+      <ul>
+        <li><strong>Nächste Aktion sichtbar</strong> – ohne Listenpflege.</li>
+        <li><strong>Mehr Durchsatz</strong> – Fokus-Blöcke &amp; Batching.</li>
+        <li><strong>Weniger Kontextwechsel</strong> – thematisch gebündelt.</li>
+      </ul>
+      <details>
+        <summary>mehr</summary>
+        <ul>
+          <li>Prioritäten sind erklärbar (Impact/Dringlichkeit/Aufwand).</li>
+          <li>Klare Sichtbarkeit von Verantwortlichkeiten.</li>
+          <li>Weniger „Was ist der Stand?“-Pings.</li>
+        </ul>
+      </details>
     </article>
 
     <!-- untere 3 Karten -->
@@ -259,7 +270,7 @@
 
 <script>
 (function(){
-  // nur reagieren, wenn wir wirklich über "Vorteile zeigen" o.ä. kommen
+  // Deep-link „Vorteile zeigen“: nur die unteren 3 Karten anzeigen
   var raw = location.hash;
   if (!raw || raw === "#" || raw === "#!") return;
   var hash = raw.toLowerCase();
@@ -277,8 +288,13 @@
              document.getElementById("card-benefits");
   if (!card) return;
 
-  var grid = card.closest(".grid");
-  if (grid) {
+  // Hero vollständig ausblenden
+  var hero = document.getElementById("ts-hero");
+  if (hero) hero.style.display = "none";
+
+  // In der Grid nur die unteren Karten lassen (alles oberhalb der Benefits-Karte ausblenden)
+  var grid = document.getElementById("ts-grid");
+  if (grid){
     Array.from(grid.children).forEach(function(node){
       if (node !== card && node.offsetTop < card.offsetTop) {
         node.style.display = "none";
@@ -286,17 +302,17 @@
     });
   }
 
+  // Details aufklappen
   var det = card.querySelector("details");
   if (det && !det.open) det.open = true;
 
+  // Hash auf tatsächliche ID setzen & nach oben scrollen
   if (location.hash !== "#" + card.id) {
     history.replaceState(null, "", "#" + card.id);
   }
-
   card.scrollIntoView({behavior:"instant", block:"start"});
   try { window.scrollBy(0, -16); } catch(e){}
 })();
 </script>
-
 </body>
 </html>
