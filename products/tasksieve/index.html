@@ -41,11 +41,62 @@
     .nav-links{list-style:none;display:flex;gap:1rem;margin:0;padding:0;align-items:center}
     .nav-links a{color:#fff}
 
-    /* PAGE (kleiner Abstand unter der Navi) */
+    /* HERO (kompakt) */
+    .hero{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:1.2rem 1rem .5rem;
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:1rem;
+      align-items:end;
+    }
+    .hero-text{grid-column:1/9}
+    .hero h1{
+      margin:0 0 .2rem;
+      font-size:clamp(1.7rem,4vw,2.4rem);
+      line-height:1.1;
+    }
+    .hero p.sub{
+      margin:0;
+      max-width:34rem;
+      opacity:.92;
+    }
+    .logo-col{
+      grid-column:9/13;
+      display:flex;
+      align-items:center;
+    }
+    .product-logo{
+      position:relative;
+      width:98px;
+      height:98px;
+    }
+    .product-logo .logo-ring{
+      position:absolute;
+      inset:0;
+    }
+    .product-logo .logo-ring svg{
+      width:100%;
+      height:100%;
+      display:block;
+    }
+    .product-logo .logo-img{
+      position:absolute;
+      top:5px;
+      left:5px;
+      width:88px;
+      height:88px;
+      display:block;
+      border-radius:50%;
+      background:transparent;
+    }
+
+    /* PAGE */
     main.page{
       max-width:var(--container);
       margin:0 auto;
-      padding:1.2rem 1rem 2.4rem;
+      padding:.5rem 1rem 2.4rem;  /* .5, weil der Hero schon Abstand macht */
     }
 
     /* GRID / CARDS */
@@ -64,12 +115,12 @@
     }
     .card h3{margin:0 0 .4rem}
 
-    /* Vorteile-Karte etwas stärker umranden */
+    /* Vorteile-Karte stärker umranden */
     #card-benefits-ts-de{
       border:1px solid rgba(255,255,255,.65);
     }
 
-    /* Button wie besprochen: weiß, rote Schrift, groß */
+    /* Button (weiß + rot) */
     .btn{
       display:inline-block;
       border-radius:12px;
@@ -104,6 +155,8 @@
     footer a{color:#fff}
 
     @media (max-width:960px){
+      .hero{grid-template-columns:1fr}
+      .logo-col{grid-column:1/2;justify-content:flex-start;margin-top:.5rem}
       .card{grid-column:span 6}
     }
     @media (max-width:640px){
@@ -126,9 +179,27 @@
   </nav>
 </header>
 
+<!-- HERO oben drüber -->
+<section class="hero">
+  <div class="hero-text">
+    <h1>TaskSieve</h1>
+    <p class="sub">Wichtige Aufgaben zuerst – mit System.</p>
+  </div>
+  <div class="logo-col">
+    <div class="product-logo" aria-hidden="true">
+      <span class="logo-ring">
+        <svg viewBox="0 0 100 100" width="98" height="98" focusable="false">
+          <circle cx="50" cy="50" r="47.5" fill="none" stroke="#FFFFFF" stroke-width="5" />
+        </svg>
+      </span>
+      <img class="logo-img" src="/assets/brand/tasksieve_logo.svg" alt="">
+    </div>
+  </div>
+</section>
+
 <main class="page">
   <div class="grid">
-    <!-- OBERER BLOCK (die 3 „fehlenden“ Karten) -->
+    <!-- obere 3 Karten -->
     <article class="card">
       <h3>Eine Inbox</h3>
       <p>Zieht E-Mail, Notizen &amp; Slack zusammen – kein Suchen, kein Springen.</p>
@@ -148,7 +219,7 @@
       <p>Klare Next Actions, weniger „Was ist der Stand?“-Nachfragen, erklärbare Reihenfolge.</p>
     </article>
 
-    <!-- UNTERER BLOCK (wie vorher) -->
+    <!-- untere 3 Karten -->
     <article class="card">
       <h3>Status &amp; Kontakt</h3>
       <p>Status: <strong>Live-Test</strong> – du bekommst direkten Zugriff auf die Demo-Inbox.</p>
@@ -188,7 +259,7 @@
 
 <script>
 (function(){
-  // nur reagieren, wenn wir wirklich über "Vorteile zeigen" kommen
+  // nur reagieren, wenn wir wirklich über "Vorteile zeigen" o.ä. kommen
   var raw = location.hash;
   if (!raw || raw === "#" || raw === "#!") return;
   var hash = raw.toLowerCase();
@@ -206,7 +277,6 @@
              document.getElementById("card-benefits");
   if (!card) return;
 
-  // alle Karten über der Vorteile-Karte ausblenden (also die oberen 3)
   var grid = card.closest(".grid");
   if (grid) {
     Array.from(grid.children).forEach(function(node){
@@ -216,16 +286,13 @@
     });
   }
 
-  // Details aufklappen
   var det = card.querySelector("details");
   if (det && !det.open) det.open = true;
 
-  // Hash säubern
   if (location.hash !== "#" + card.id) {
     history.replaceState(null, "", "#" + card.id);
   }
 
-  // nach oben scrollen
   card.scrollIntoView({behavior:"instant", block:"start"});
   try { window.scrollBy(0, -16); } catch(e){}
 })();
