@@ -289,6 +289,26 @@ footer a{color:#FFFFFF}
   border:1px solid rgba(255,255,255,.28);
   border-radius:14px;
 }
+/* --- Benefits-only Ansicht (DE) --- */
+.cw-benefits-only .hero-header{ display:none; }
+
+/* standardmäßig alle Karten ausblenden */
+.cw-benefits-only .section-cards .grid > .card{ display:none; }
+
+/* nur die unteren 3 Karten zeigen (Status & Kontakt, Wo es wirkt, Vorteile) */
+.cw-benefits-only .section-cards .grid > .card:nth-last-of-type(-n+3){ display:block; }
+
+/* in der Benefits-Ansicht: den Vorteile-Block etwas hervorheben */
+.cw-benefits-only #card-benefits-cw-de{
+  outline:3px solid rgba(255,255,255,.75);
+  box-shadow:
+    0 0 0 4px rgba(255,255,255,.25),
+    0 12px 28px rgba(0,0,0,.45);
+}
+
+/* sauberes Anspringen unterhalb der Nav */
+#card-benefits-cw-de{ scroll-margin-top:14mm; }
+
 </style>
 <script>
 function __toggleNav(){
@@ -447,7 +467,7 @@ function __toggleNav(){
 </footer>
 
 <!-- einziges Deep-Link-Skript: öffnet nur Vorteile + scrollt etwas höher -->
- <script>
+  <script>
 (function(){
   var hash=(location.hash||"").toLowerCase();
   // akzeptierte Hashes: #benefits, #card-benefits, #benefits-changewise, #vorteile
@@ -464,7 +484,7 @@ function __toggleNav(){
   // Only-benefits-Modus aktivieren
   document.body.classList.add('cw-benefits-only');
 
-  // Details öffnen
+  // Details öffnen (falls vorhanden)
   var det = card.querySelector('details');
   if(det && !det.open) det.open = true;
 
