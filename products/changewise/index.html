@@ -272,6 +272,23 @@ footer a{color:#FFFFFF}
 
 /* falls irgendwo noch ein altes Overlay existiert: aus */
 #bg-overlay{display:none !important}
+/* Benefits-only mode (Home → Vorteile zeigen) */
+.cw-benefits-only .hero-header{display:none}
+.cw-benefits-only .section-cards .grid > .card{display:none}
+.cw-benefits-only #card-benefits,
+.cw-benefits-only #card-benefits-cw-de{display:block}
+
+/* saubere Positionierung, kein Überhang, auch im Vollbild */
+.cw-benefits-only main.hero{padding-top:calc(12mm + 16px)}
+#card-benefits,
+#card-benefits-cw-de{scroll-margin-top:14mm}
+
+/* (optional) Rand wie bei den anderen Tools */
+.cw-benefits-only #card-benefits,
+.cw-benefits-only #card-benefits-cw-de{
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:14px;
+}
 </style>
 <script>
 function __toggleNav(){
@@ -430,39 +447,35 @@ function __toggleNav(){
 </footer>
 
 <!-- einziges Deep-Link-Skript: öffnet nur Vorteile + scrollt etwas höher -->
-<script>
+ <script>
 (function(){
-  var hash = (location.hash || "").toLowerCase();
-  if (!hash) return;
-
-  var wanted = [
-    "#vorteile",
-    "#benefits",
-    "#card-benefits",
-    "#benefits-changewise",
-    "#card-benefits-cw-de"
-  ];
+  var hash=(location.hash||"").toLowerCase();
+  // akzeptierte Hashes: #benefits, #card-benefits, #benefits-changewise, #vorteile
+  if(!hash) return;
+  var wanted = ['#benefits','#card-benefits','#benefits-changewise','#vorteile'];
   if (wanted.indexOf(hash) === -1) return;
 
-  var card =
-    document.getElementById("card-benefits-cw-de") ||
-    document.getElementById("card-benefits");
-  if (!card) return;
+  // Zielkarte auflösen (DE hat oft #card-benefits-cw-de)
+  var card = document.getElementById('card-benefits-cw-de')
+         || document.getElementById('card-benefits');
 
-  // Details in der Karte öffnen
-  var det = card.querySelector("details");
-  if (det && !det.open) det.open = true;
+  if(!card) return;
 
-  // Hash auf die echte ID normalisieren
-  if (location.hash !== "#" + card.id) {
-    history.replaceState(null, "", "#" + card.id);
+  // Only-benefits-Modus aktivieren
+  document.body.classList.add('cw-benefits-only');
+
+  // Details öffnen
+  var det = card.querySelector('details');
+  if(det && !det.open) det.open = true;
+
+  // Hash auf die echte ID setzen (aktiviert :target-Styles sicher)
+  if (location.hash !== '#'+card.id){
+    history.replaceState(null,'','#'+card.id);
   }
 
-  // scrollbar machen, aber nicht zu tief → erst zentrieren, dann leicht hoch
-  card.scrollIntoView({behavior:"instant", block:"center"});
-  try {
-    window.scrollBy(0, -42);
-  } catch(e){}
+  // Kartenblock sauber in View bringen
+  try{ card.scrollIntoView({behavior:'instant', block:'start'}); }
+  catch(e){ card.scrollIntoView(); }
 })();
 </script>
 
