@@ -273,43 +273,35 @@ footer a{color:#FFFFFF}
 /* falls irgendwo noch ein altes Overlay existiert: aus */
 #bg-overlay{display:none !important}
 /* Benefits-only mode (Home → Vorteile zeigen) */
-.cw-benefits-only .hero-header{display:none}
-.cw-benefits-only .section-cards .grid > .card{display:none}
-.cw-benefits-only #card-benefits,
-.cw-benefits-only #card-benefits-cw-de{display:block}
+ /* --- Benefits-only (ChangeWise DE) ---------------------------------- */
 
-/* saubere Positionierung, kein Überhang, auch im Vollbild */
-.cw-benefits-only main.hero{padding-top:calc(12mm + 16px)}
-#card-benefits,
-#card-benefits-cw-de{scroll-margin-top:14mm}
+/* 1) Hero-Kopf ausblenden, wenn nur Vorteile gezeigt werden */
+.cw-benefits-only .hero-header { display: none; }
 
-/* (optional) Rand wie bei den anderen Tools */
-.cw-benefits-only #card-benefits,
-.cw-benefits-only #card-benefits-cw-de{
-  border:1px solid rgba(255,255,255,.28);
-  border-radius:14px;
-}
-/* --- Benefits-only Ansicht (DE) --- */
-.cw-benefits-only .hero-header{ display:none; }
+/* 2) In diesem Modus: erst alle Karten verstecken … */
+.cw-benefits-only .section-cards .grid > .card { display: none; }
 
-/* standardmäßig alle Karten ausblenden */
-.cw-benefits-only .section-cards .grid > .card{ display:none; }
+/* … und per JS gezielt wieder anzeigen (Benefits + Vorgänger) */
 
-/* nur die unteren 3 Karten zeigen (Status & Kontakt, Wo es wirkt, Vorteile) */
-.cw-benefits-only .section-cards .grid > .card:nth-last-of-type(-n+3){ display:block; }
+/* 3) Sauberes Anspringen unterhalb der Sticky-Navigation */
+#card-benefits-cw-de,
+#card-benefits { scroll-margin-top: 14mm; }
 
-/* in der Benefits-Ansicht: den Vorteile-Block etwas hervorheben */
-.cw-benefits-only #card-benefits-cw-de{
-  outline:3px solid rgba(255,255,255,.75);
+/* 4) Visuelles Highlight + Rand wie bei anderen Tools */
+.cw-benefits-only #card-benefits-cw-de,
+.cw-benefits-only #card-benefits {
+  display: block; /* Fallback, falls JS nichts überschreibt */
+  outline: 3px solid rgba(255,255,255,.75);
   box-shadow:
     0 0 0 4px rgba(255,255,255,.25),
     0 12px 28px rgba(0,0,0,.45);
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 14px;
 }
 
-/* sauberes Anspringen unterhalb der Nav */
-#card-benefits-cw-de{ scroll-margin-top:14mm; }
+/* Legacy-Overlay sicher deaktivieren (falls noch vorhanden) */
+#bg-overlay { display: none !important; }
 
-</style>
 <script>
 function __toggleNav(){
   var l=document.getElementById('navLinks');
@@ -467,37 +459,50 @@ function __toggleNav(){
 </footer>
 
 <!-- einziges Deep-Link-Skript: öffnet nur Vorteile + scrollt etwas höher -->
-  <script>
+ <script>
 (function(){
   var hash=(location.hash||"").toLowerCase();
-  // akzeptierte Hashes: #benefits, #card-benefits, #benefits-changewise, #vorteile
-  if(!hash) return;
-  var wanted = ['#benefits','#card-benefits','#benefits-changewise','#vorteile'];
-  if (wanted.indexOf(hash) === -1) return;
+  var wanted=['#benefits','#card-benefits','#benefits-changewise','#vorteile'];
+  if(!hash || wanted.indexOf(hash)===-1) return;
 
-  // Zielkarte auflösen (DE hat oft #card-benefits-cw-de)
-  var card = document.getElementById('card-benefits-cw-de')
-         || document.getElementById('card-benefits');
+  var grid=document.querySelector('.section-cards .grid');
+  if(!grid) return;
 
-  if(!card) return;
+  // Vorteile-Karte robust finden (DE-ID, generische ID, notfalls Fallback)
+  var benefits =
+      document.getElementById('card-benefits-cw-de') ||
+      document.getElementById('card-benefits') ||
+      grid.querySelector('[id*="benefits"]');
+  if(!benefits) return;
 
-  // Only-benefits-Modus aktivieren
+  // Alle Karten ausblenden …
+  grid.querySelectorAll('.card').forEach(function(c){ c.style.display='none'; });
+
+  // … und nur Vorteile + zwei direkte Vorgänger (falls vorhanden) anzeigen
+  var toShow=[benefits];
+  var prev=benefits.previousElementSibling;
+  while(prev && toShow.length<3){
+    if(prev.classList && prev.classList.contains('card')) toShow.push(prev);
+    prev=prev.previousElementSibling;
+  }
+  toShow.forEach(function(c){ c.style.display='block'; });
+
+  // Details in Vorteile öffnen
+  var det=benefits.querySelector('details');
+  if(det && !det.open) det.open=true;
+
+  // Modus & Hash pflegen
   document.body.classList.add('cw-benefits-only');
-
-  // Details öffnen (falls vorhanden)
-  var det = card.querySelector('details');
-  if(det && !det.open) det.open = true;
-
-  // Hash auf die echte ID setzen (aktiviert :target-Styles sicher)
-  if (location.hash !== '#'+card.id){
-    history.replaceState(null,'','#'+card.id);
+  if(location.hash !== '#'+benefits.id){
+    history.replaceState(null,'','#'+benefits.id);
   }
 
-  // Kartenblock sauber in View bringen
-  try{ card.scrollIntoView({behavior:'instant', block:'start'}); }
-  catch(e){ card.scrollIntoView(); }
+  // Sauber unter der Nav positionieren
+  try{ benefits.scrollIntoView({behavior:'instant', block:'start'}); }
+  catch(e){ benefits.scrollIntoView(); }
 })();
 </script>
+
 
 <script>
 function __toggleNav(){
