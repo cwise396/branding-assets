@@ -297,14 +297,19 @@ function __toggleNav(){
 </footer>
 
 <!-- Benefits Auto-open (A) -->
-<script>
+ <script>
 (function(){
-  var hash=(location.hash||"").toLowerCase();
-  if(!hash.includes('benefits')) return;
-  var card=document.getElementById('card-benefits')||document.getElementById('card-benefits-en');
+  var hash = (location.hash||"").toLowerCase();
+  if(!hash || (hash!=='#benefits' && hash!=='#card-benefits')) return;
+
+  var card = document.getElementById('card-benefits');
   if(!card) return;
-  var d=card.querySelector('details'); if(d && !d.open) d.open=true;
-  if(hash==='#benefits'){ history.replaceState(null,'','#'+card.id); }
+
+  var det = card.querySelector('details');
+  if(det && !det.open) det.open = true;
+
+  try { card.scrollIntoView({behavior:'instant', block:'start'}); }
+  catch(e){ card.scrollIntoView(); }
 })();
 </script>
 </body>
