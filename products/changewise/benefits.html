@@ -82,8 +82,8 @@ function __toggleNav(){
 </script>
 </head>
 <body>
-<header class="site-header">
-  <nav class="nav">
+ <header class="site-header">
+  <nav class="nav" aria-label="Hauptnavigation">
     <div class="nav-inner">
       <a class="brand" href="/">Home</a>
       <ul class="nav-links" id="navLinks">
@@ -91,12 +91,13 @@ function __toggleNav(){
         <li><a href="/products/slackdigest/">SlackDigest</a></li>
         <li><a href="/products/tasksieve/">TaskSieve</a></li>
         <li><strong>DE</strong> | <a href="/en/products/changewise/benefits.html">EN</a></li>
-        </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-controls="navLinks" aria-expanded="false" onclick="__toggleNav()">☰</button>
+      </ul>
+      <button class="nav-toggle" id="navToggle"
+        aria-label="Menü öffnen" aria-controls="navLinks" aria-expanded="false"
+        onclick="__toggleNav()">☰</button>
     </div>
   </nav>
 </header>
-
 <main>
   <section class="section-cards">
     <div class="grid">
