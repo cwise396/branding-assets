@@ -99,6 +99,29 @@ a{
   .nav-links.open{display:flex}
   .nav-toggle{display:inline-block}
 }
+.hero-header{
+  max-width:var(--container);
+  margin:0 auto;
+  padding:0 1rem;
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:1rem;
+  align-items:end;        /* baseline-aligns logo with text */
+}
+
+.hero-text{ grid-column:1 / 9; }
+
+.logo-col{
+  grid-column:9 / 13;
+  justify-self:start;     /* as before; use end if you want it flush right */
+  align-self:end;
+}
+
+/* On small screens, stack under the text */
+@media (max-width:980px){
+  .hero-text{ grid-column:1 / -1; }
+  .logo-col{ grid-column:1 / -1; justify-self:start; margin-top:.5rem; }
+}
 
 /* HERO */
 .hero{
@@ -315,22 +338,25 @@ function __toggleNav(){var l=document.getElementById('navLinks');if(!l)return;va
   </nav>
 </header>
 
-<main class="hero">
-   <div class="hero-text">
-  <h1>ChangeWise</h1>
-  <p class="lead">Clarity in minutes — dramatically shortens alignment cycles.</p>
-  <p class="lead-sub" style="margin:.4rem 0 0; font-size:1rem; font-weight:500; opacity:.9; max-width:32rem;">
-    A short brief is enough: you get focus, tone and direction — immediately usable by the team.
-  </p>
-</div>
+ <div class="hero-header">
+  <div class="hero-text">
+    <h1>ChangeWise</h1>
+    <p class="lead">Clarity in minutes — dramatically shortens alignment cycles.</p>
+    <p class="lead-sub" style="margin:.4rem 0 0; font-size:1rem; font-weight:500; opacity:.9; max-width:32rem;">
+      A short brief is enough: you get focus, tone and direction — immediately usable by the team.
+    </p>
+  </div>
 
-   <div class="logo-col">
-      <div class="product-logo">
-        <span class="logo-ring" aria-hidden="true"><svg viewBox="0 0 100 100" width="98" height="98"><circle cx="50" cy="50" r="47.5" fill="none" stroke="#FFFFFF" stroke-width="5"/></svg></span>
-        <img class="logo-img" src="/assets/brand/changewise_logo.svg" alt="ChangeWise logo" width="88" height="88" loading="lazy" decoding="async" />
-      </div>
+  <div class="logo-col">
+    <div class="product-logo">
+      <span class="logo-ring" aria-hidden="true">
+        <svg viewBox="0 0 100 100" width="98" height="98"><circle cx="50" cy="50" r="47.5" fill="none" stroke="#FFFFFF" stroke-width="5"/></svg>
+      </span>
+      <img class="logo-img" src="/assets/brand/changewise_logo.svg" alt="ChangeWise logo" width="88" height="88" loading="lazy" decoding="async" />
     </div>
   </div>
+</div>
+
 
   <section class="section-cards">
     <section class="grid" aria-label="Key Features">
