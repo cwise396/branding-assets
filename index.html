@@ -108,6 +108,37 @@
       text-decoration:none; backdrop-filter:saturate(140%) blur(2px)
     }
     .btn:hover{ background:var(--btn-bg-hover) }
+ /* --- Mobile polish: Badge verkleinern & Text rechts freihalten --- */
+
+/* Ab ~680px: Logo etwas kleiner, rechte Textseite freihalten */
+@media (max-width: 680px){
+  :root{
+    --badge-size: 100px;         /* vorher 120px */
+  }
+  .tile{
+    min-height: 360px;
+    padding: 18px;
+  }
+  /* Headline, Subline, Liste nicht unter das Badge laufen lassen */
+  .tile :is(h2, p.sub, ul.micro){
+    padding-right: calc(var(--badge-size) + 12px);
+  }
+}
+
+/* Ab ~420px: nochmals kompakter */
+@media (max-width: 420px){
+  :root{
+    --badge-size: 88px;          /* noch etwas kleiner */
+  }
+  .tile{
+    min-height: 340px;
+    padding: 16px;
+  }
+  .tile :is(h2, p.sub, ul.micro){
+    padding-right: calc(var(--badge-size) + 10px);
+  }
+}
+
   </style>
 </head>
 <body>
