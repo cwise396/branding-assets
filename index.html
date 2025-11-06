@@ -148,6 +148,9 @@
   :root{ --badge-size: 96px; }  /* Logo-Ring wird etwas kleiner */
   .tile.cw { padding-right: calc(var(--badge-size) + 20px); }
 }
+/* Verhindert, dass Text unter den Logo-Badge läuft (nur CW-Kachel) */
+.tile.cw .sub,
+.tile.cw .micro { padding-right: calc(var(--badge-size) + 16px); }
 
   </style>
 </head>
@@ -230,6 +233,16 @@ aria-label="Switch to English">EN</a>
     </div>
   </div>
 
+  <!-- ChangeWise -->
+<a class="tile cw" href="/products/changewise/">
+  <div class="logo-wrap">
+    <div class="logo-inner">
+      <img class="logo" src="/assets/brand/changewise_logo.svg?v=9" alt="ChangeWise Logo"
+           onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}">
+      <span class="logo-fallback" aria-hidden="true">CW</span>
+    </div>
+  </div>
+
   <h2>ChangeWise</h2>
   <p class="sub">Ideal, wenn du für Projekte oder Abstimmungen klare Botschaften und Richtung brauchst – ohne lange Vorarbeit.</p>
 
@@ -247,7 +260,6 @@ aria-label="Switch to English">EN</a>
 
   <span class="btn">Zur Produktseite</span>
 </a>
-
 
    </div>
   </section>
