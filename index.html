@@ -108,7 +108,10 @@
       text-decoration:none; backdrop-filter:saturate(140%) blur(2px)
     }
     .btn:hover{ background:var(--btn-bg-hover) }
-  </style>
+  /* verhindert, dass Text unter den runden Logo-Badge läuft (nur CW-Kachel) */
+.tile.cw .sub,
+.tile.cw .micro { padding-right: calc(var(--badge-size) + 16px); }
+ </style>
 </head>
 <body>
 
