@@ -108,50 +108,6 @@
       text-decoration:none; backdrop-filter:saturate(140%) blur(2px)
     }
     .btn:hover{ background:var(--btn-bg-hover) }
- /* --- Mobile polish: Badge verkleinern & Text rechts freihalten --- */
-
-/* Ab ~680px: Logo etwas kleiner, rechte Textseite freihalten */
-@media (max-width: 680px){
-  :root{
-    --badge-size: 100px;         /* vorher 120px */
-  }
-  .tile{
-    min-height: 360px;
-    padding: 18px;
-  }
-  /* Headline, Subline, Liste nicht unter das Badge laufen lassen */
-  .tile :is(h2, p.sub, ul.micro){
-    padding-right: calc(var(--badge-size) + 12px);
-  }
-}
-
-/* Ab ~420px: nochmals kompakter */
-@media (max-width: 420px){
-  :root{
-    --badge-size: 88px;          /* noch etwas kleiner */
-  }
-  .tile{
-    min-height: 340px;
-    padding: 16px;
-  }
-  .tile :is(h2, p.sub, ul.micro){
-    padding-right: calc(var(--badge-size) + 10px);
-  }
-}
-/* ChangeWise-Kachel: rechts Platz für das runde Logo reservieren */
-.tile.cw { 
-  padding-right: calc(var(--badge-size) + 28px);
-}
-
-/* Auf kleineren Screens: Logo kleiner + weniger rechter Puffer */
-@media (max-width: 480px){
-  :root{ --badge-size: 96px; }  /* Logo-Ring wird etwas kleiner */
-  .tile.cw { padding-right: calc(var(--badge-size) + 20px); }
-}
-/* Verhindert, dass Text unter den Logo-Badge läuft (nur CW-Kachel) */
-.tile.cw .sub,
-.tile.cw .micro { padding-right: calc(var(--badge-size) + 16px); }
-
   </style>
 </head>
 <body>
@@ -222,44 +178,22 @@ aria-label="Switch to English">EN</a>
       <span class="logo-fallback" aria-hidden="true">CW</span>
     </div>
   </div>
-
-  <!-- ChangeWise -->
-<a class="tile cw" href="/products/changewise/">
-  <div class="logo-wrap">
-    <div class="logo-inner">
-      <img class="logo" src="/assets/brand/changewise_logo.svg?v=9" alt="ChangeWise Logo"
-           onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}">
-      <span class="logo-fallback" aria-hidden="true">CW</span>
-    </div>
-  </div>
-
-  <!-- ChangeWise -->
-<a class="tile cw" href="/products/changewise/">
-  <div class="logo-wrap">
-    <div class="logo-inner">
-      <img class="logo" src="/assets/brand/changewise_logo.svg?v=9" alt="ChangeWise Logo"
-           onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}">
-      <span class="logo-fallback" aria-hidden="true">CW</span>
-    </div>
-  </div>
-
   <h2>ChangeWise</h2>
-  <p class="sub">Ideal, wenn du für Projekte oder Abstimmungen klare Botschaften und Richtung brauchst – ohne lange Vorarbeit.</p>
-
+  <p class="sub">Ein Brand-Kit – konsistente Kommunikation aus einem Guss.</p>
   <ul class="micro">
-    <li>Kernbotschaft &amp; Ton – klarer Rahmen.</li>
-    <li>Vorlagen &amp; Playbooks – konsistente Qualität.</li>
+    <li>Kernbotschaft &amp; Ton – eine klare Linie.</li>
+    <li>Vorlagen &amp; Playbooks beschleunigen Output.</li>
     <li>
-      <span class="goto-benefits" role="link" tabindex="0"
-        onclick="event.preventDefault(); event.stopPropagation(); location.href='/products/changewise/benefits.html#card-benefits-cw-de';"
-        onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); event.stopPropagation(); location.href='/products/changewise/benefits.html#card-benefits-cw-de';}">
-        Vorteile zeigen
-      </span>
+ <span class="goto-benefits" role="link" tabindex="0"
+  onclick="event.preventDefault(); event.stopPropagation(); location.href='/products/changewise/benefits.html#card-benefits-cw-de';"
+  onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); event.stopPropagation(); location.href='/products/changewise/benefits.html#card-benefits-cw-de';}">
+  Vorteile zeigen
+</span>
     </li>
   </ul>
-
   <span class="btn">Zur Produktseite</span>
 </a>
+
 
    </div>
   </section>
