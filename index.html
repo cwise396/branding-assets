@@ -152,6 +152,33 @@ aria-label="Switch to English">EN</a>
       onclick="event.preventDefault(); event.stopPropagation(); location.href='/products/slackdigest/#card-benefits';"
       onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); event.stopPropagation(); location.href='/products/slackdigest/#card-benefits';}">
       Vorteile zeigen
+   /* --- Kein Text unter dem runden Logo-Badge --- */
+.tile h2,
+.tile p.sub,
+.tile .micro{
+  padding-right: calc(var(--badge-size) + 20px);
+}
+
+/* Tablet: Badge etwas kleiner, Puffer anpassen */
+@media (max-width: 860px){
+  :root{ --badge-size: 96px; }
+  .tile h2,
+  .tile p.sub,
+  .tile .micro{
+    padding-right: calc(var(--badge-size) + 16px);
+  }
+}
+
+/* Small phones: noch kompakter */
+@media (max-width: 420px){
+  :root{ --badge-size: 84px; }
+  .tile h2,
+  .tile p.sub,
+  .tile .micro{
+    padding-right: calc(var(--badge-size) + 12px);
+  }
+}
+
     </span>
   </li>
 </ul>
