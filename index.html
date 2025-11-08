@@ -141,6 +141,35 @@
     padding-right: calc(var(--badge-size) + 12px);
   }
 }
+/* Suite- / About-Abschnitt unter den Kacheln */
+.suite-explainer{
+  margin:32px 0 40px;
+  padding-top:24px;
+  border-top:1px solid var(--border);
+  max-width:720px;
+}
+
+.suite-explainer h2{
+  margin:0 0 8px;
+  font-size:1.05rem;
+  color:var(--hero-color);
+}
+
+.suite-explainer p{
+  margin:0 0 8px;
+  color:var(--muted);
+}
+
+.suite-explainer ul{
+  margin:8px 0 0;
+  padding-left:1.1rem;
+  font-size:.92rem;
+  color:var(--text);
+}
+
+.suite-explainer li{
+  margin:2px 0;
+}
 
   </style>
 </head>
@@ -234,9 +263,21 @@ aria-label="Switch to English">EN</a>
 
     <span class="btn">Zur Produktseite</span>
 </a>
-
-    </div>
-  </section>
+     </div>
+      <section class="suite-explainer" aria-label="Überblick Produkt-Suite">
+      <h2>Drei eigenständige Tools – ein gemeinsames Prinzip: Klarheit und Wirkung.</h2>
+      <p>
+        Jedes Tool steht für sich. Zusammen decken sie Kommunikation, Prioritäten und Wandel im Alltag ab.
+      </p>
+      <ul>
+        <li><strong>SlackDigest</strong> – Überblick in der Kommunikation.</li>
+        <li><strong>TaskSieve</strong> – Fokus in Aufgaben und Prioritäten.</li>
+        <li><strong>ChangeWise</strong> – Richtung in Story und Wandel.</li>
+      </ul>
+      <p style="margin-top:8px;color:var(--muted);font-size:.88rem;">
+        Du kannst jedes Tool einzeln nutzen – sie folgen nur derselben Logik.
+      </p>
+     </section>
 </main>
  
 <footer style="border-top:1px solid var(--border); padding:20px 0; color:var(--muted)">
