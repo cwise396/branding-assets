@@ -115,38 +115,40 @@
 .tile.cw .micro li{
   white-space: nowrap;
 }
- /* --- Kein Text unter dem runden Logo-Badge (SlackDigest/TaskSieve/ChangeWise) --- */
+ /* --- Kein Text unter dem runden Logo-Badge --- */
 .tile h2,
 .tile p.sub,
-.tile .micro{
-  padding-right: calc(var(--badge-size) + 20px);
-}
-/* kleine Rollen-Zeile unter dem Toolnamen */
+.tile .micro,
 .tile .tool-role{
-  margin:0 0 6px;
-  font-size:.9rem;
-  color:var(--muted);
+  padding-right: calc(var(--badge-size) + 20px);
 }
 
 /* Tablet: Badge etwas kleiner, Puffer anpassen */
 @media (max-width: 860px){
-  :root{ --badge-size: 96px; }
+  :root{
+    --badge-size: 96px;
+  }
   .tile h2,
   .tile p.sub,
-  .tile .micro{
+  .tile .micro,
+  .tile .tool-role{
     padding-right: calc(var(--badge-size) + 16px);
   }
 }
 
 /* Small phones: noch kompakter */
 @media (max-width: 420px){
-  :root{ --badge-size: 84px; }
+  :root{
+    --badge-size: 84px;
+  }
   .tile h2,
   .tile p.sub,
-  .tile .micro{
+  .tile .micro,
+  .tile .tool-role{
     padding-right: calc(var(--badge-size) + 12px);
   }
 }
+
  .suite{
   margin: 12px 0 40px;
   color: var(--muted);
@@ -271,20 +273,14 @@ aria-label="Switch to English">EN</a>
      </div>
      <section class="suite">
   <h2>Drei eigenständige Tools – ein gemeinsames Prinzip: Klarheit und Wirkung.</h2>
-
   <p>
     Jedes Tool erfüllt einen klaren Zweck – in Kommunikation, Prioritäten und Wandel.
   </p>
-
   <p>
     Du kannst sie einzeln nutzen oder, je nach Bedarf, perfekt kombinieren.
   </p>
 
-  <p>
-    SlackDigest für Überblick in der Kommunikation, TaskSieve für Fokus in Aufgaben &amp; Prioritäten,
-    ChangeWise für Richtung in Story &amp; Wandel.
-  </p>
-</section>
+  </section>
 
 </main>
  
