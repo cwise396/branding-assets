@@ -121,6 +121,12 @@
 .tile .micro{
   padding-right: calc(var(--badge-size) + 20px);
 }
+/* kleine Rollen-Zeile unter dem Toolnamen */
+.tile .tool-role{
+  margin:0 0 6px;
+  font-size:.9rem;
+  color:var(--muted);
+}
 
 /* Tablet: Badge etwas kleiner, Puffer anpassen */
 @media (max-width: 860px){
@@ -179,6 +185,7 @@ aria-label="Switch to English">EN</a>
     <div class="tiles">
      <!-- SlackDigest -->
  <!-- SlackDigest -->
+ <!-- SlackDigest -->
 <a class="tile sd" href="/products/slackdigest/">
   <div class="logo-wrap">
     <div class="logo-inner">
@@ -189,10 +196,12 @@ aria-label="Switch to English">EN</a>
   </div>
 
   <h2>SlackDigest</h2>
+  <p class="tool-role">Überblick in der&nbsp;Kommunikation</p>
   <p class="sub">
     So wird Slack übersichtlich – das Wichtige kommt zuerst.<br>
     <span style="opacity:.95">Übersicht behalten. Relevantes sehen. Einfach entscheiden.</span>
   </p>
+
   <ul class="micro">
     <li>Wichtiges zuerst – damit Fokus einfach bleibt.</li>
     <li>Ein Blick, ein Link – erledigt.</li>
@@ -204,8 +213,10 @@ aria-label="Switch to English">EN</a>
       </span>
     </li>
   </ul>
+
   <span class="btn">Zur Produktseite</span>
 </a>
+
 
     <!-- TaskSieve -->
       <a class="tile ts" href="/products/tasksieve/">
@@ -214,9 +225,10 @@ aria-label="Switch to English">EN</a>
                onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}">
           <span class="logo-fallback" aria-hidden="true">TS</span>
         </div></div>
-        <h2>TaskSieve</h2>
-        <p class="sub">Eine Aufgaben-Inbox über E-Mail, Notizen & Slack — priorisiert.</p>
-        <ul class="micro">
+         <h2>TaskSieve</h2>
+      <p class="tool-role">Fokus in Aufgaben &amp; Prioritäten</p>
+      <p class="sub">Eine Aufgaben-Inbox über E-Mail, Notizen &amp; Slack — priorisiert.</p>
+       <ul class="micro">
           <li>Eine Inbox für E-Mail, Notizen & Slack.</li>
           <li>Auto-Sortierung mit manueller Feinsteuerung.</li>
           <li>
@@ -239,7 +251,12 @@ aria-label="Switch to English">EN</a>
       <span class="logo-fallback" aria-hidden="true">CW</span>
     </div>
   </div>
-  <h2>ChangeWise</h2>
+   <h2>ChangeWise</h2>
+<p class="tool-role">Richtung in Story &amp; Wandel</p>
+<p class="sub">
+  Ein Brand-Kit – konsistente Kommunikation aus einem Guss.
+</p>
+
   <p class="sub">Ideal, wenn du für Projekte oder interne Abstimmungen klare Botschaften und Richtung brauchst – ohne lange Vorarbeit.</p>
     <ul class="micro">
   <li>Kernbotschaft &amp; Ton – ein klarer Rahmen.</li>
