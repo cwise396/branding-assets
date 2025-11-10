@@ -149,7 +149,28 @@
   font-weight: 600;
   margin: 0 0 4px;
 }
-.suite-body{
+/* Suite block under the tiles */
+.suite {
+  margin: 8px 0 40px;
+  color: var(--muted, #9AA4B2);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.suite-title {
+  font-weight: 600;
+  margin: 0 0 6px;
+  font-size: 1.05rem; /* etwas größer, wie auf DE */
+}
+
+.suite-body {
+  margin: 0;
+  max-width: 64rem;
+  font-size: 0.92rem;
+}
+
+    .suite-body{
   margin: 0;
   max-width: 64rem;
 }
@@ -286,15 +307,14 @@
     </a>
   </div> <!-- /tiles -->
 
-  <section class="suite">
-    <p class="suite-title">
-      Three standalone tools – one shared principle: clarity and impact.
-    </p>
-    <p class="suite-body">
-      Each tool serves a clear purpose – in communication, priorities and change. You can use them on their own or combine them as needed.
-    </p>
-  </section>
-
+ <section class="suite">
+  <p class="suite-title">
+    Three standalone tools – one shared principle: clarity and impact.
+  </p>
+  <p class="suite-body">
+    Each tool serves a clear purpose – in communication, priorities and change.
+    You can use them on their own or combine them as needed.
+  </p>
 </section>
 </main>
 
