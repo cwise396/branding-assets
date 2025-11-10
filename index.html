@@ -152,6 +152,26 @@
     padding-right: calc(var(--badge-size) + 12px);
   }
 }
+/* Suite block under the tiles */
+.suite {
+  margin: 8px 0 40px;
+  color: var(--muted, #9AA4B2);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.suite-title {
+  font-weight: 600;
+  margin: 0 0 6px;
+  font-size: 1.05rem; /* etwas größer, wie auf DE */
+}
+
+.suite-body {
+  margin: 0;
+  max-width: 64rem;
+  font-size: 0.92rem;
+}
 
  .suite{
   margin: 12px 0 40px;
@@ -299,15 +319,14 @@ aria-label="Switch to English">EN</a>
 </a>
      </div>
      <section class="suite">
-  <h2>Drei eigenständige Tools – ein gemeinsames Prinzip: Klarheit und Wirkung.</h2>
-  <p>
-    Jedes Tool erfüllt einen klaren Zweck – in Kommunikation, Prioritäten und Wandel.
+  <p class="suite-title">
+    Drei eigenständige Tools – ein gemeinsames Prinzip: Klarheit und Wirkung.
   </p>
-  <p>
+  <p class="suite-body">
+    Jedes Tool erfüllt einen klaren Zweck – in Kommunikation, Prioritäten und Wandel.
     Du kannst sie einzeln nutzen oder, je nach Bedarf, perfekt kombinieren.
   </p>
-
-  </section>
+</section>
 
 </main>
  
