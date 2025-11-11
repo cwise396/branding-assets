@@ -190,6 +190,19 @@
   margin: 0;
   max-width: 64rem;
 }
+/* SlackDigest EN: core lines bigger in landscape */
+.sd .sd-sub-hero,
+.sd .sd-micro-hero{
+  font-weight:600;
+  white-space:nowrap;
+}
+
+/* Landscape: leichte Vergrößerung wie bei DE */
+@media (orientation: landscape) and (min-width: 600px){
+  .sd .sd-sub-hero,
+  .sd .sd-micro-hero{
+    font-size:1.05rem;
+  }
 
   </style>
 </head>
@@ -205,7 +218,7 @@
   – three tools that deliver fast results.
 </h1>
     <div class="tiles">
-   <!-- SlackDigest -->
+  <!-- SlackDigest -->
 <a class="tile sd" href="/en/products/slackdigest/">
   <div class="logo-wrap">
     <div class="logo-inner">
@@ -226,9 +239,7 @@
 
   <!-- Subblock -->
   <p class="sub">
-    <span style="white-space:nowrap;display:inline-block;">
-      Makes Slack clear at a glance.
-    </span><br>
+    <span class="sd-sub-hero">Makes Slack clear at a glance.</span><br>
     The important comes first.<br><br>
     See what matters.<br>
     Decide faster.
@@ -236,7 +247,7 @@
 
   <ul class="micro">
     <li>
-      <span style="white-space:nowrap;display:inline-block;">
+      <span class="sd-micro-hero">
         One glance, one link — done.
       </span>
     </li>
@@ -252,7 +263,7 @@
   <span class="btn">Go to product</span>
 </a>
 
-       <!-- TaskSieve -->
+         <!-- TaskSieve -->
       <a class="tile ts" href="/en/products/tasksieve/">
         <div class="logo-wrap">
           <div class="logo-inner">
