@@ -188,9 +188,21 @@
   margin:4px 0;
   max-width:60rem;
 }
+  /* Suite- / About-Abschnitt unter den Kacheln */
+/* SlackDigest: Kernzeilen im Querformat etwas größer */
+.sd .sd-sub-hero,
+.sd .sd-micro-hero{
+  font-weight:600;
+  white-space:nowrap; /* hält die Sätze in einer Zeile, soweit Platz da ist */
+}
 
-
-   /* Suite- / About-Abschnitt unter den Kacheln */
+/* Querformat / breitere Screens: leicht größere Schrift für die Kernzeilen */
+@media (orientation: landscape) and (min-width: 600px){
+  .sd .sd-sub-hero,
+  .sd .sd-micro-hero{
+    font-size:1.05rem;
+  }
+ 
   </style>
 </head>
 <body>
@@ -208,7 +220,7 @@ aria-label="Switch to English">EN</a>
 </section>
 
       <div class="tiles">
-       <!-- SlackDigest -->
+ <!-- SlackDigest -->
 <a class="tile sd" href="/products/slackdigest/">
   <div class="logo-wrap">
     <div class="logo-inner">
@@ -226,9 +238,7 @@ aria-label="Switch to English">EN</a>
   </p>
 
   <p class="sub">
-    <span style="font-weight:600;display:inline-block;">
-      So wird Slack übersichtlich.
-    </span><br>
+    <span class="sd-sub-hero">So wird Slack übersichtlich.</span><br>
     Wichtiges kommt zuerst.
   </p>
 
@@ -239,7 +249,7 @@ aria-label="Switch to English">EN</a>
 
   <ul class="micro">
     <li>
-      <span style="white-space:nowrap;display:inline-block;font-weight:600;">
+      <span class="sd-micro-hero">
         Ein Blick, ein Link – erledigt.
       </span>
     </li>
@@ -255,7 +265,7 @@ aria-label="Switch to English">EN</a>
   <span class="btn">Zur Produktseite</span>
 </a>
 
-           <!-- TaskSieve -->
+         <!-- TaskSieve -->
       <a class="tile ts" href="/products/tasksieve/">
         <div class="logo-wrap">
           <div class="logo-inner">
