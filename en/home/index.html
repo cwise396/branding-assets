@@ -130,6 +130,19 @@
   :root{
     --badge-size: 88px;          /* noch etwas kleiner */
   }
+ @media (max-width: 420px){
+  /* Text in den Kacheln leicht verkleinern, damit mehr sichtbar ist */
+  .tile p.sub,
+  .tile .micro{
+    font-size:0.86rem;
+    line-height:1.35;
+  }
+
+  /* Die Abstände etwas kompakter, damit nicht unnötig Höhe verloren geht */
+  .tile p.sub{ margin-bottom:8px; }
+  .micro{ margin-bottom:10px; }
+}
+
   .tile{
     min-height: 340px;
     padding: 16px;
