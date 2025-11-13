@@ -8,214 +8,367 @@
   <meta name="description" content="Drei fokussierte Tools: SlackDigest, TaskSieve, ChangeWise. Klarheit, Prioritäten, konsistente Kommunikation.">
   <link rel="canonical" href="/products/changewise/benefits.html">
 <title>ChangeWise – Vorteile</title>
-  <style>
-    /* --- DARK-ONLY HOME --- */
-    :root{
-      --page-bg:#0B1220;
-      --hero-color:#9FB8D8;
-      --text:#E5E7EB; --muted:#9AA4B2; --border:#243041;
+  <!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>ChangeWise • SlackDigest • TaskSieve</title>
+  <meta name="description" content="Drei fokussierte Tools: SlackDigest, TaskSieve, ChangeWise. Klarheit, Prioritäten, konsistente Kommunikation.">
+  <link rel="canonical" href="/products/changewise/benefits.html">
+<title>ChangeWise – Vorteile</title>
+ <style>
+ /* --- DARK-ONLY HOME --- */
+ :root{
+   --page-bg:#0B1220;
+   --hero-color:#9FB8D8;
+   --text:#E5E7EB; --muted:#9AA4B2; --border:#243041;
 
-      /* Markenfarben exakt */
-      --color-sd: rgb(12,108,72);
-      --color-ts: rgb(185,14,19);
-      --color-cw: rgb(14,57,96);
+   /* Markenfarben exakt */
+   --color-sd: rgb(12,108,72);
+   --color-ts: rgb(185,14,19);
+   --color-cw: rgb(14,57,96);
 
-      /* Logo-Ring (weiß, 5px) */
-      --badge-ring-color:#FFFFFF; --badge-ring-width:5px; --badge-size:120px;
+   /* Logo-Ring (weiß, 5px) */
+   --badge-ring-color:#FFFFFF; --badge-ring-width:5px; --badge-size:120px;
 
-      /* CTA-Buttons */
-      --btn-bg:#FFFFFF; --btn-fg-default:#0C3960;
-      --btn-border:rgba(255,255,255,.22); --btn-bg-hover:rgba(255,255,255,.92);
-      --btn-pad-y:8px; --btn-pad-x:12px; --btn-font:.9rem;
+   /* CTA-Buttons */
+   --btn-bg:#FFFFFF; --btn-fg-default:#0C3960;
+   --btn-border:rgba(255,255,255,.22); --btn-bg-hover:rgba(255,255,255,.92);
+   --btn-pad-y:8px; --btn-pad-x:12px; --btn-font:.9rem;
 
-      /* I18N Toggle */
-      --i18n-bg:#141A2A; --i18n-fg:#E5E7EB; --i18n-bd:#2A3548;
+   /* I18N Toggle */
+   --i18n-bg:#141A2A; --i18n-fg:#E5E7EB; --i18n-bd:#2A3548;
 
-      --card-shadow:0 12px 32px rgba(0,0,0,.50);
-      --card-shadow-hover:0 18px 40px rgba(0,0,0,.60);
-    }
+   --card-shadow:0 12px 32px rgba(0,0,0,.50);
+   --card-shadow-hover:0 18px 40px rgba(0,0,0,.60);
+ }
 
-    *{box-sizing:border-box}
-    html,body{height:100%; background:var(--page-bg)}
-    body{ margin:0; color:var(--text);
-      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif }
-    .container{width:min(1160px,92%); margin:0 auto}
+ *{box-sizing:border-box}
+ html,body{height:100%; background:var(--page-bg)}
+ body{
+   margin:0; color:var(--text);
+   font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif
+ }
+ .container{width:min(1160px,92%); margin:0 auto}
 
-    /* Language Switch */
-    .i18n-toggle{
-      position:fixed; right:14px; top:14px; z-index:99;
-      padding:8px 12px; border-radius:999px;
-      background:var(--i18n-bg); color:var(--i18n-fg);
-      border:1px solid var(--i18n-bd); text-decoration:none; font-weight:700;
-    }
-    .i18n-toggle:hover{ filter:brightness(1.06) }
+ /* Language Switch */
+ .i18n-toggle{
+   position:fixed; right:14px; top:14px; z-index:99;
+   padding:8px 12px; border-radius:999px;
+   background:var(--i18n-bg); color:var(--i18n-fg);
+   border:1px solid var(--i18n-bd); text-decoration:none; font-weight:700;
+ }
+ .i18n-toggle:hover{ filter:brightness(1.06) }
 
-    /* Hero */
-    .hero{padding:36px 0 12px}
-     .hero h1{
-  font-size:clamp(1.4rem, 1rem + 2vw, 2.1rem);
-  margin:0 0 6px;
-  color:var(--hero-color);
-}
-   .hero p.lead{margin:0 0 22px;color:var(--hero-color)}
+ /* Hero */
+ .hero{padding:36px 0 12px}
+ .hero h1{
+   font-size:clamp(1.4rem, 1rem + 2vw, 2.1rem);
+   margin:0 0 6px;
+   color:var(--hero-color);
+ }
+ .hero p.lead{margin:0 0 22px;color:var(--hero-color)}
 
-    /* Grid */
-    .tiles{display:grid;gap:22px;grid-template-columns:1fr;margin:14px 0 44px}
-    @media (min-width:860px){.tiles{grid-template-columns:repeat(3,1fr)}}
+ /* Grid */
+ .tiles{display:grid;gap:22px;grid-template-columns:1fr;margin:14px 0 44px}
+ @media (min-width:860px){.tiles{grid-template-columns:repeat(3,1fr)}}
 
-    /* Kachel */
-    .tile{
-      position:relative; overflow:hidden; min-height:390px; border-radius:20px;
-      text-decoration:none; color:#fff; box-shadow:var(--card-shadow);
-      transition:transform .18s ease, box-shadow .18s ease;
-      display:flex; flex-direction:column; justify-content:flex-end; padding:22px; isolation:isolate;
-    }
-    .tile:hover{ transform:translateY(-3px); box-shadow:var(--card-shadow-hover) }
-    .tile.sd{ background-color:var(--color-sd) !important; --btn-fg:var(--color-sd) }
-    .tile.ts{ background-color:var(--color-ts) !important; --btn-fg:var(--color-ts) }
-    .tile.cw{ background-color:var(--color-cw) !important; --btn-fg:var(--color-cw) }
+ /* Kachel */
+ .tile{
+   position:relative; overflow:hidden; min-height:390px; border-radius:20px;
+   text-decoration:none; color:#fff; box-shadow:var(--card-shadow);
+   transition:transform .18s ease, box-shadow .18s ease;
+   display:flex; flex-direction:column; justify-content:flex-end; padding:22px; isolation:isolate;
+ }
+ .tile:hover{ transform:translateY(-3px); box-shadow:var(--card-shadow-hover) }
+ .tile.sd{ background-color:var(--color-sd) !important; --btn-fg:var(--color-sd) }
+ .tile.ts{ background-color:var(--color-ts) !important; --btn-fg:var(--color-ts) }
+ .tile.cw{ background-color:var(--color-cw) !important; --btn-fg:var(--color-cw) }
 
-    /* Logo-Ring */
-    .logo-wrap{
-      position:absolute; right:14px; top:14px; z-index:1;
-      width:var(--badge-size); height:var(--badge-size);
-      display:grid; place-items:center; border-radius:50%;
-    }
-    .logo-wrap::before{
-      content:""; position:absolute; inset:calc(-1 * var(--badge-ring-width));
-      border-radius:50%; border:var(--badge-ring-width) solid var(--badge-ring-color);
-    }
-    .logo-inner{ width:100%; height:100%; border-radius:50%; display:grid; place-items:center; overflow:hidden }
-    .logo{ width:100%; height:100%; object-fit:contain; display:block }
-    .logo-fallback{ display:none; }
+ /* Logo-Ring */
+ .logo-wrap{
+   position:absolute; right:14px; top:14px; z-index:1;
+   width:var(--badge-size); height:var(--badge-size);
+   display:grid; place-items:center; border-radius:50%;
+ }
+ .logo-wrap::before{
+   content:""; position:absolute; inset:calc(-1 * var(--badge-ring-width));
+   border-radius:50%; border:var(--badge-ring-width) solid var(--badge-ring-color);
+ }
+ .logo-inner{ width:100%; height:100%; border-radius:50%; display:grid; place-items:center; overflow:hidden }
+ .logo{ width:100%; height:100%; object-fit:contain; display:block }
+ .logo-fallback{ display:none; }
 
-    /* Texte */
-    .tile h2{margin:0 0 8px;font-size:1.35rem}
-    .tile p.sub{margin:0 0 10px;opacity:.98}
-    .micro{margin:0 0 14px;padding-left:1.1rem;font-size:.92rem;line-height:1.35;opacity:.98}
-    .micro li{margin:2px 0}
+ /* Texte */
+ .tile h2{margin:0 0 8px;font-size:1.35rem}
+ .tile p.sub{margin:0 0 10px;opacity:.98}
+ .micro{margin:0 0 14px;padding-left:1.1rem;font-size:.92rem;line-height:1.35;opacity:.98}
+ .micro li{margin:2px 0}
 
-    /* „Vorteile zeigen“ – separater LI-Eintrag, eigener Click-Handler */
-    .micro .goto-benefits{
-      display:inline-block; margin-top:4px;
-      text-decoration:underline; text-underline-offset:2px;
-      cursor:pointer; font-weight:600; position:relative; z-index:5;
-    }
-    .micro .goto-benefits:hover{ filter:brightness(1.1) }
+ /* „Vorteile zeigen“ – separater LI-Eintrag, eigener Click-Handler */
+ .micro .goto-benefits{
+   display:inline-block; margin-top:4px;
+   text-decoration:underline; text-underline-offset:2px;
+   cursor:pointer; font-weight:600; position:relative; z-index:5;
+ }
+ .micro .goto-benefits:hover{ filter:brightness(1.1) }
 
-    /* CTA-Button */
-    .btn{
-      align-self:flex-start; position:relative; z-index:0;
-      padding:var(--btn-pad-y) var(--btn-pad-x); border-radius:12px;
-      border:1px solid var(--btn-border); background:var(--btn-bg);
-      color:var(--btn-fg, var(--btn-fg-default)); font-weight:800; font-size:var(--btn-font);
-      text-decoration:none; backdrop-filter:saturate(140%) blur(2px)
-    }
-    .btn:hover{ background:var(--btn-bg-hover) }
-  /* verhindert, dass Text unter den runden Logo-Badge läuft (nur CW-Kachel) */
-.tile.cw .sub,
-.tile.cw .micro { padding-right: calc(var(--badge-size) + 16px); }
- /* CW Home-Kachel: Bullets einzeilig halten */
-.tile.cw .micro li{
-  white-space: nowrap;
-}
- /* --- Kein Text unter dem runden Logo-Badge --- */
-.tile h2,
-.tile p.sub,
-.tile .micro,
-.tile .tool-role{
-  padding-right: calc(var(--badge-size) + 20px);
-}
+ /* CTA-Button */
+ .btn{
+   align-self:flex-start; position:relative; z-index:0;
+   padding:var(--btn-pad-y) var(--btn-pad-x); border-radius:12px;
+   border:1px solid var(--btn-border); background:var(--btn-bg);
+   color:var(--btn-fg, var(--btn-fg-default)); font-weight:800; font-size:var(--btn-font);
+   text-decoration:none; backdrop-filter:saturate(140%) blur(2px)
+ }
+ .btn:hover{ background:var(--btn-bg-hover) }
 
-/* Tablet: Badge etwas kleiner, Puffer anpassen */
-@media (max-width: 860px){
-  :root{
-    --badge-size: 96px;
-  }
-  .tile h2,
-  .tile p.sub,
-  .tile .micro,
-  .tile .tool-role{
-    padding-right: calc(var(--badge-size) + 16px);
-  }
-}
+ /* verhindert, dass Text unter den runden Logo-Badge läuft */
+ .tile h2,
+ .tile p.sub,
+ .tile .micro,
+ .tile .tool-role{
+   padding-right: calc(var(--badge-size) + 20px);
+ }
 
-/* Small phones: noch kompakter */
-@media (max-width: 420px){
-  :root{
-    --badge-size: 84px;
-  }
-  .tile h2,
-  .tile p.sub,
-  .tile .micro,
-  .tile .tool-role{
-    padding-right: calc(var(--badge-size) + 12px);
-  }
-/* Mobile-only Zeilenumbrüche in Tiles */
-.br-mobile{ display:none; }
-@media (max-width: 680px){
-  .br-mobile{ display:inline; }
-}
+ /* Tablet: Badge etwas kleiner, Puffer anpassen */
+ @media (max-width: 860px){
+   :root{
+     --badge-size: 96px;
+   }
+   .tile h2,
+   .tile p.sub,
+   .tile .micro,
+   .tile .tool-role{
+     padding-right: calc(var(--badge-size) + 16px);
+   }
+ }
 
-}
-/* Suite block under the tiles */
-.suite {
-  margin: 8px 0 40px;
-  color: var(--muted, #9AA4B2);
-  font-size: 0.92rem;
-  line-height: 1.5;
-  text-align: left;
-}
+ /* Small phones: noch kompakter */
+ @media (max-width: 420px){
+   :root{
+     --badge-size: 84px;
+   }
+   .tile h2,
+   .tile p.sub,
+   .tile .micro,
+   .tile .tool-role{
+     padding-right: calc(var(--badge-size) + 12px);
+   }
+ }
 
-.suite-title {
-  font-weight: 600;
-  margin: 0 0 6px;
-  font-size: 1.05rem; /* etwas größer, wie auf DE */
-}
+ /* Mobile-only Zeilenumbrüche in Tiles (falls du .br-mobile nutzt) */
+ .br-mobile{ display:none; }
+ @media (max-width: 680px){
+   .br-mobile{ display:inline; }
+ }
 
-.suite-body {
-  margin: 0;
-  max-width: 64rem;
-  font-size: 0.92rem;
-}
-
+ /* Suite block under the tiles */
  .suite{
-  margin: 12px 0 40px;
-  color: var(--muted);
-  font-size: .95rem;
-}
-.suite h2{
-  margin:0 0 6px;
-  font-size:1.05rem;
-  font-weight:600;
-  color:var(--muted);
-}
-.suite p{
-  margin:4px 0;
-  max-width:60rem;
-}
-  /* Suite- / About-Abschnitt unter den Kacheln */
-/* SlackDigest: Kernzeilen im Querformat etwas größer */
-.sd .sd-sub-hero,
-.sd .sd-micro-hero{
-  font-weight:600;
-  white-space:nowrap; /* hält die Sätze in einer Zeile, soweit Platz da ist */
-}
+   margin:12px 0 40px;
+   color:var(--muted);
+   font-size:.95rem;
+ }
+ .suite-title{
+   font-weight:600;
+   margin:0 0 6px;
+   font-size:1.05rem;
+ }
+ .suite-body{
+   margin:4px 0;
+   max-width:60rem;
+   font-size:.92rem;
+ }
 
-/* Querformat / breitere Screens: leicht größere Schrift für die Kernzeilen */
-@media (orientation: landscape) and (min-width: 600px){
-  .sd .sd-sub-hero,
-  .sd .sd-micro-hero{
-    font-size:1.05rem;
-  }
- /* ChangeWise DE – Subline immer zeilenweise (Desktop & Mobile) */
-.cw .cw-sub { margin-bottom: 8px; }
-.cw .cw-sub .mbr { display: block; }
-/* ChangeWise DE – feste Zeilenumbrüche in der Subline, device-übergreifend */
-.tile.cw .cw-sub { margin-bottom: 8px; }
-.tile.cw .cw-sub .mbr { display: block; }
+ /* SlackDigest: Kernzeilen im Querformat etwas größer */
+ .sd .sd-sub-hero,
+ .sd .sd-micro-hero{
+   font-weight:600;
+   white-space:nowrap;
+ }
+ @media (orientation: landscape) and (min-width: 600px){
+   .sd .sd-sub-hero,
+   .sd .sd-micro-hero{
+     font-size:1.05rem;
+   }
+ }
 
-  </style>
+ /* ChangeWise: Kachel-Subline mit festen Zeilenumbrüchen */
+ .tile.cw .tile-text{
+   margin-bottom:10px;
+ }
+ .tile.cw .tile-head{
+   display:block;
+   margin-bottom:0.4rem;
+   line-height:1.25;
+ }
+ .tile.cw .tile-head .line{
+   display:block;
+   white-space:nowrap;
+ }
+ .tile.cw .tile-head .line.sub{
+   margin-top:-2px;
+   opacity:.85;
+ }
+ .tile.cw .tile-body{
+   font-size:.95rem;
+   line-height:1.4;
+   margin-top:8px;
+ }
+</style>
+
+</head>
+<body>
+
+<!-- EN-Switch -->
+ <a class="i18n-toggle" href="/en/home/" hreflang="en"
+aria-label="Switch to English">EN</a>
+
+<main class="container">
+  <section class="hero">
+  <h1>
+    Ein kompaktes Portfolio für klare Kommunikation, Prioritäten &amp; Wandel –
+    drei Tools, die schnell Ergebnisse liefern.
+  </h1>
+</section>
+
+      <div class="tiles">
+ <!-- SlackDigest -->
+<a class="tile sd" href="/products/slackdigest/">
+  <div class="logo-wrap">
+    <div class="logo-inner">
+      <img class="logo" src="/assets/brand/slackdigest_logo.svg?v=9" alt="SlackDigest Logo"
+           onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}">
+      <span class="logo-fallback" aria-hidden="true">SD</span>
+    </div>
+  </div>
+
+  <h2>SlackDigest</h2>
+
+  <p class="tool-role">
+    Überblick<br>
+    in der Kommunikation.
+  </p>
+
+  <p class="sub">
+    <span class="sd-sub-hero">So wird Slack übersichtlich.</span><br>
+    Wichtiges kommt zuerst.
+  </p>
+
+  <p class="sub">
+    Relevantes sehen.<br>
+    Einfach entscheiden.
+  </p>
+
+  <ul class="micro">
+    <li>
+      <span class="sd-micro-hero">
+        Ein Blick, ein Link – erledigt.
+      </span>
+    </li>
+    <li>
+      <span class="goto-benefits" role="link" tabindex="0"
+        onclick="event.preventDefault(); event.stopPropagation(); location.href='/products/slackdigest/#card-benefits';"
+        onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); event.stopPropagation(); location.href='/products/slackdigest/#card-benefits';}">
+        Vorteile zeigen
+      </span>
+    </li>
+  </ul>
+
+  <span class="btn">Zur Produktseite</span>
+</a>
+
+         <!-- TaskSieve -->
+      <a class="tile ts" href="/products/tasksieve/">
+        <div class="logo-wrap">
+          <div class="logo-inner">
+            <img class="logo" src="/assets/brand/tasksieve_logo.svg?v=9" alt="TaskSieve Logo"
+                 onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}">
+            <span class="logo-fallback" aria-hidden="true">TS</span>
+          </div>
+        </div>
+
+        <h2>TaskSieve</h2>
+
+        <p class="sub">
+          Fokus<br>
+          in Aufgaben &amp; Prioritäten.<br><br>
+          Eine Inbox für E-Mail, Notizen &amp; Slack – automatisch sortiert.<br>
+          Kontrolle bleibt bei dir.
+        </p>
+
+        <ul class="micro">
+          <li>Auto-Sortierung mit manueller Feinsteuerung.</li>
+          <li>
+            <span class="goto-benefits" role="link" tabindex="0"
+              onclick="event.preventDefault(); event.stopPropagation(); location.href='/products/tasksieve/#card-benefits';"
+              onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); event.stopPropagation(); location.href='/products/tasksieve/#card-benefits';}">
+              Vorteile zeigen
+            </span>
+          </li>
+        </ul>
+
+        <span class="btn">Zur Produktseite</span>
+      </a>
+
+       <!-- ChangeWise -->
+      <a class="tile cw" href="/products/changewise/">
+        <div class="logo-wrap">
+          <div class="logo-inner">
+            <img class="logo" src="/assets/brand/changewise_logo.svg?v=9" alt="ChangeWise Logo"
+                 onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}">
+            <span class="logo-fallback" aria-hidden="true">CW</span>
+          </div>
+        </div>
+
+        <div class="tile-text">
+          <div class="tile-head">
+            <span class="line">Kernbotschaft &amp; Ton</span>
+            <span class="line sub">– ein klarer Rahmen.</span>
+          </div>
+
+          <div class="tile-head">
+            <span class="line">Vorlagen &amp; Playbooks</span>
+            <span class="line sub">– konsistente Qualität.</span>
+          </div>
+
+          <div class="tile-body">
+            Ideal, wenn du für Projekte<br>
+            oder interne Abstimmungen<br>
+            klare Botschaften<br>
+            und Richtung brauchst<br>
+            ohne lange Vorarbeit.
+          </div>
+        </div>
+
+        <span class="btn">Zur Produktseite</span>
+      </a>
+
+     </div>
+     <section class="suite">
+  <p class="suite-title">
+    Drei eigenständige Tools – ein gemeinsames Prinzip: Klarheit und Wirkung.
+  </p>
+  <p class="suite-body" style="white-space: nowrap;">
+    Jedes Tool erfüllt einen klaren Zweck – in Kommunikation, Prioritäten und Wandel.
+    Du kannst sie einzeln nutzen oder, je nach Bedarf, perfekt kombinieren.
+  </p>
+</section>
+</main>
+ 
+<footer style="border-top:1px solid var(--border); padding:20px 0; color:var(--muted)">
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+    <div class="legal" style="display:flex;gap:12px">
+      <a href="/impressum.html" style="color:inherit;text-decoration:none">Impressum</a>
+      <a href="/datenschutz.html" style="color:inherit;text-decoration:none">Datenschutz</a>
+    </div>
+    <small>© ChangeWise • SlackDigest • TaskSieve</small>
+  </div>
+</footer>
+</body>
+</html>
 </head>
 <body>
 
