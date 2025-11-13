@@ -311,7 +311,7 @@ aria-label="Switch to English">EN</a>
       </a>
 
        <!-- ChangeWise -->
-<a class="tile cw" href="/products/changewise/">
+ <a class="tile cw" href="/products/changewise/">
   <div class="logo-wrap">
     <div class="logo-inner">
       <img class="logo" src="/assets/brand/changewise_logo.svg?v=9" alt="ChangeWise Logo"
@@ -319,31 +319,43 @@ aria-label="Switch to English">EN</a>
       <span class="logo-fallback" aria-hidden="true">CW</span>
     </div>
   </div>
-   <h2>ChangeWise</h2>
- <p class="tool-role tool-role--cw">
-  Richtung<br>
-  in Story &amp; Wandel.
- <p class="sub cw-sub" style="margin:0 0 10px;">
-  <span style="display:block">Ideal, wenn du für Projekte</span>
-  <span style="display:block">oder interne Abstimmungen</span>
-  <span style="display:block">klare Botschaften</span>
-  <span style="display:block">und Richtung brauchst</span>
-  <span style="display:block">ohne lange Vorarbeit.</span>
-</p>
 
-    <ul class="micro">
-  <li>Kernbotschaft &amp; Ton<br>– ein klarer Rahmen.</li>
-  <li>Vorlagen &amp; Playbooks<br>– konsistente Qualität.</li>
-  <li>
-    <span class="goto-benefits" role="link" tabindex="0"
-      onclick="event.preventDefault(); event.stopPropagation(); location.href='/products/changewise/benefits.html#card-benefits-cw-de';"
-      onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); event.stopPropagation(); location.href='/products/changewise/benefits.html#card-benefits-cw-de';}">
-      Vorteile zeigen
-    </span>
-  </li>
-</ul>
+  <div class="tile-text">
+    <div class="tile-head">
+      <span class="line">Kernbotschaft &amp; Ton</span>
+      <span class="line sub">– ein klarer Rahmen.</span>
+    </div>
 
-    <span class="btn">Zur Produktseite</span>
+    <div class="tile-head">
+      <span class="line">Vorlagen &amp; Playbooks</span>
+      <span class="line sub">– konsistente Qualität.</span>
+    </div>
+
+    <div class="tile-body">
+      Ideal, wenn du für Projekte<br>
+      oder interne Abstimmungen<br>
+      klare Botschaften<br>
+      und Richtung brauchst<br>
+      ohne lange Vorarbeit.
+    </div>
+  </div>
+ .tile-text .tile-head {
+  display: block;
+  margin-bottom: 0.4rem;
+  line-height: 1.25;
+}
+
+.tile-text .line {
+  display: block;
+  white-space: nowrap;
+}
+
+.tile-text .line.sub {
+  margin-top: -2px;
+  opacity: .85;
+}
+
+   <span class="btn">Zur Produktseite</span>
 </a>
      </div>
      <section class="suite">
