@@ -217,7 +217,11 @@
    line-height:1.4;
    margin-top:8px;
  }
-/* ChangeWise: Bullets sollen feste Zeilenumbrüche behalten (auch mobil) */
+.tile :is(h2, p.sub, ul.micro){
+  padding-right: calc(var(--badge-size) + 12px);
+}
+
+  /* ChangeWise: Bullets sollen feste Zeilenumbrüche behalten (auch mobil) */
  /* ChangeWise: Bullets mit festen Zeilenumbrüchen (auch mobil) */
 .tile.cw .micro li{
   white-space: normal;
@@ -355,29 +359,22 @@ aria-label="Switch to English">EN</a>
   </div>
 
    <!-- Bullet-Blöcke -->
-  <ul class="micro">
-    <li style="white-space: normal; line-height: 1.34;">
-      Kernbotschaft &amp; Ton<br>
-      – ein klarer Rahmen.
-    </li>
-    <li style="white-space: normal; line-height: 1.34;">
-      Vorlagen &amp; Playbooks<br>
-      – konsistente Qualität.
-    </li>
-    <li>
-      <span class="goto-benefits" role="link" tabindex="0"
-        onclick="event.preventDefault(); event.stopPropagation(); location.href='/products/changewise/#card-benefits';"
-        onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); event.stopPropagation(); location.href='/products/changewise/#card-benefits';}">
-        Vorteile zeigen
-      </span>
-    </li>
-  </ul>
-
-
+ <ul class="micro">
+  <li style="white-space: normal; line-height: 1.34;">
+    Kernbotschaft &amp; Ton<br>
+    – ein klarer Rahmen.
+  </li>
+  <li style="white-space: normal; line-height: 1.34;">
+    Vorlagen &amp; Playbooks<br>
+    – konsistente Qualität.
+  </li>
+  <li>
+    <span class="goto-benefits">Vorteile zeigen</span>
+  </li>
+</ul>
   <span class="btn">Zur Produktseite</span>
-</a>
-
-     </div>
+ </a>
+</div>
      <section class="suite">
   <p class="suite-title">
     Drei eigenständige Tools – ein gemeinsames Prinzip: Klarheit und Wirkung.
