@@ -25,35 +25,63 @@
       font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
     }
     a{color:#FFFFFF; text-decoration:none}
-
-    /* NAV */
-    .site-header{ position:sticky; top:0; z-index:50; width:100%; background:var(--nav-red) }
+ /* NAV */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  width:100%;
+  background:var(--nav-red);
+}
 .nav{ background:var(--nav-red) }
 .nav-inner{
   max-width:var(--container);
   margin:0 auto;
   padding:.9rem 1rem;
-  display:flex; align-items:center; justify-content:space-between;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
-.brand{ color:#FFFFFF; font-weight:800; white-space:nowrap }
+.brand{
+  color:#FFFFFF;
+  font-weight:800;
+  white-space:nowrap;
+}
 .nav-links{
-  list-style:none; display:flex; gap:1rem; margin:0; padding:0; align-items:center;
+  list-style:none;
+  display:flex;
+  gap:1rem;
+  margin:0;
+  padding:0;
+  align-items:center;
 }
 .nav-links a{ color:#FFFFFF }
-.nav-toggle{ display:none; background:none; border:0; color:#FFFFFF; font-size:1.2rem }
+.nav-toggle{
+  display:none;
+  background:none;
+  border:0;
+  color:#FFFFFF;
+  font-size:1.2rem;
+}
 
 @media (max-width:980px){
   .nav-inner{ position:relative }
   .nav-links{
-    display:none; position:absolute; top:56px; left:0; right:0;
-    background:var(--nav-red); padding:1rem; margin:0;
-    flex-direction:column; gap:.6rem;
+    display:none;
+    position:absolute;
+    top:56px;
+    left:0;
+    right:0;
+    background:var(--nav-red);
+    padding:1rem;
+    margin:0;
+    flex-direction:column;
+    gap:.6rem;
   }
   .nav-links.open{ display:flex }
   .nav-toggle{ display:inline-block }
 }
 
-    }
     .brand{font-weight:800;color:#fff;white-space:nowrap}
     .nav-links{list-style:none;display:flex;gap:1rem;margin:0;padding:0;align-items:center}
     .nav-links a{color:#fff}
@@ -162,14 +190,14 @@
     }
     footer a{color:#fff}
 
-    @media (max-width:960px){
-      .hero{grid-template-columns:1fr}
-      .logo-col{grid-column:1/2;justify-content:flex-start;margin-top:.5rem}
-      .card{grid-column:span 6}
-    }
-    @media (max-width:640px){
-      .card{grid-column:span 12}
-    }
+     @media (max-width:960px){
+  .card{grid-column:span 6}
+}
+
+@media (max-width:640px){
+  .card{grid-column:span 12}
+}
+
   </style>
 </head>
 <body>
