@@ -148,19 +148,26 @@ a{
   gap:1rem;
   align-items:end
 }
-.hero-text{grid-column:1 / 9}
+ .hero-text{ grid-column:1 / 9; }
 .hero h1{
   margin:0 0 .2rem;
   font-size:clamp(1.8rem,4vw,3rem);
-  line-height:1.1
+  line-height:1.1;
 }
 .hero p.lead{
   margin:0;
   font-size:clamp(1.1rem,2.4vw,1.35rem);
   font-weight:700;
-  opacity:.95
+  opacity:.95;
 }
-.logo-col{
+.hero p.lead-sub{
+  margin:.4rem 0 0;
+  font-size:1rem;
+  font-weight:500;
+  opacity:.9;
+  max-width:32rem;
+}
+  .logo-col{
   grid-column:9 / 13;
   justify-self:start;
   display:flex;
@@ -354,7 +361,7 @@ function __toggleNav(){var l=document.getElementById('navLinks');if(!l)return;va
 
   <div class="hero-text">
     <h1>ChangeWise</h1>
-      <p class="hero-headline">
+       <p class="lead">
   Clarity in minutes — alignment without delays.
 </p>
     <p class="lead-sub" style="margin:.4rem 0 0; font-size:1rem; font-weight:500; opacity:.9; max-width:32rem;">
