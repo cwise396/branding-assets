@@ -106,43 +106,42 @@
       max-width:34rem;
       opacity:.92;
     }
-     .logo-col{
+       .logo-col{
       grid-column:9/13;
       display:flex;
       align-items:center;
-      justify-content:flex-end;
+      justify-content:flex-start; /* Logo links im Grid-Zellenbereich */
     }
 
-    /* Hero-Logo wie auf der Startseite: Ring per Border, Logo zentriert */
+    /* Hero-Logo: weißer Ring direkt per Border, Logo 100% rund */
     .hero-logo-wrap{
       position:relative;
       width:104px;
       height:104px;
       border-radius:50%;
-      display:grid;
-      place-items:center;
+      border:5px solid #FFFFFF;    /* Weißer Ring */
+      box-sizing:border-box;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      aspect-ratio:1/1;            /* sicher kein Oval */
     }
-    .hero-logo-wrap::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      border-radius:50%;
-      border:5px solid #FFFFFF;  /* weißer Ring */
-    }
+
     .hero-logo-inner{
-      width:88px;
-      height:88px;
+      width:100%;
+      height:100%;
       border-radius:50%;
       overflow:hidden;
-      display:grid;
-      place-items:center;
+      aspect-ratio:1/1;
     }
+
     .hero-logo{
       width:100%;
       height:100%;
       object-fit:contain;
       display:block;
     }
+
 
      /* PAGE */
     main.page{
@@ -246,23 +245,25 @@
   </header>
 
   <!-- HERO -->
-    <section class="hero" id="ts-hero">
-    <div class="hero-text">
-      <h1>TaskSieve</h1>
-      <p class="sub">Wichtige Aufgaben zuerst – mit System.</p>
-    </div>
-    <div class="logo-col">
-      <div class="hero-logo-wrap" aria-hidden="true">
-        <div class="hero-logo-inner">
-          <img
-            src="/assets/brand/tasksieve_logo.svg"
-            alt="TaskSieve Logo"
-            class="hero-logo"
-          >
-        </div>
+   <section class="hero" id="ts-hero">
+  <div class="hero-text">
+    <h1>TaskSieve</h1>
+    <p class="sub">Wichtige Aufgaben zuerst – mit System.</p>
+  </div>
+
+  <div class="logo-col">
+    <div class="hero-logo-wrap" aria-hidden="true">
+      <div class="hero-logo-inner">
+        <img
+          src="/assets/brand/tasksieve_logo.svg"
+          alt="TaskSieve Logo"
+          class="hero-logo"
+        >
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <main class="page">
     <div class="grid" id="ts-grid">
