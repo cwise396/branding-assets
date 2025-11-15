@@ -16,6 +16,7 @@
       --card-ts-bg: rgb(186, 15, 18);
       --card-border: rgba(255,255,255,.28);
     }
+
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
@@ -25,68 +26,65 @@
       font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
     }
     a{color:#FFFFFF; text-decoration:none}
- /* NAV */
-.site-header{
-  position:sticky;
-  top:0;
-  z-index:50;
-  width:100%;
-  background:var(--nav-red);
-}
-.nav{ background:var(--nav-red) }
-.nav-inner{
-  max-width:var(--container);
-  margin:0 auto;
-  padding:.9rem 1rem;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-.brand{
-  color:#FFFFFF;
-  font-weight:800;
-  white-space:nowrap;
-}
-.nav-links{
-  list-style:none;
-  display:flex;
-  gap:1rem;
-  margin:0;
-  padding:0;
-  align-items:center;
-}
-.nav-links a{ color:#FFFFFF }
-.nav-toggle{
-  display:none;
-  background:none;
-  border:0;
-  color:#FFFFFF;
-  font-size:1.2rem;
-}
 
-@media (max-width:980px){
-  .nav-inner{ position:relative }
-  .nav-links{
-    display:none;
-    position:absolute;
-    top:56px;
-    left:0;
-    right:0;
-    background:var(--nav-red);
-    padding:1rem;
-    margin:0;
-    flex-direction:column;
-    gap:.6rem;
-  }
-  .nav-links.open{ display:flex }
-  .nav-toggle{ display:inline-block }
-}
+    /* NAV */
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      width:100%;
+      background:var(--nav-red);
+    }
+    .nav{ background:var(--nav-red) }
+    .nav-inner{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:.9rem 1rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .brand{
+      color:#FFFFFF;
+      font-weight:800;
+      white-space:nowrap;
+    }
+    .nav-links{
+      list-style:none;
+      display:flex;
+      gap:1rem;
+      margin:0;
+      padding:0;
+      align-items:center;
+    }
+    .nav-links a{ color:#FFFFFF }
+    .nav-toggle{
+      display:none;
+      background:none;
+      border:0;
+      color:#FFFFFF;
+      font-size:1.2rem;
+    }
 
-    .brand{font-weight:800;color:#fff;white-space:nowrap}
-    .nav-links{list-style:none;display:flex;gap:1rem;margin:0;padding:0;align-items:center}
-    .nav-links a{color:#fff}
+    @media (max-width:980px){
+      .nav-inner{ position:relative }
+      .nav-links{
+        display:none;
+        position:absolute;
+        top:56px;
+        left:0;
+        right:0;
+        background:var(--nav-red);
+        padding:1rem;
+        margin:0;
+        flex-direction:column;
+        gap:.6rem;
+      }
+      .nav-links.open{ display:flex }
+      .nav-toggle{ display:inline-block }
+    }
 
-    /* HERO (kompakt) */
+    /* HERO */
     .hero{
       max-width:var(--container);
       margin:0 auto;
@@ -190,193 +188,187 @@
     }
     footer a{color:#fff}
 
-     @media (max-width:960px){
-  .card{grid-column:span 6}
-}
-
-@media (max-width:640px){
-  .card{grid-column:span 12}
-}
-
+    @media (max-width:960px){
+      .card{grid-column:span 6}
+    }
+    @media (max-width:640px){
+      .card{grid-column:span 12}
+    }
   </style>
 </head>
 <body>
- <header class="site-header">
-  <nav class="nav" role="navigation" aria-label="Main">
-    <div class="nav-inner">
-      <a class="brand" href="/">Home</a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="/products/changewise/">ChangeWise</a></li>
-        <li><a href="/products/slackdigest/">SlackDigest</a></li>
-        <li><a href="/products/tasksieve/">TaskSieve</a></li>
-        <li><strong>DE</strong> | <a href="/en/products/tasksieve/">EN</a></li>
-      </ul>
-      <button
-        class="nav-toggle"
-        id="navToggle"
-        aria-label="Menü öffnen"
-        aria-controls="navLinks"
-        aria-expanded="false"
-        onclick="__toggleNav()"
-      >
-        ☰
-      </button>
+  <header class="site-header">
+    <nav class="nav" role="navigation" aria-label="Main">
+      <div class="nav-inner">
+        <a class="brand" href="/">Home</a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="/products/changewise/">ChangeWise</a></li>
+          <li><a href="/products/slackdigest/">SlackDigest</a></li>
+          <li><a href="/products/tasksieve/">TaskSieve</a></li>
+          <li><strong>DE</strong> | <a href="/en/products/tasksieve/">EN</a></li>
+        </ul>
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Menü öffnen"
+          aria-controls="navLinks"
+          aria-expanded="false"
+          onclick="__toggleNav()"
+        >
+          ☰
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="ts-hero">
+    <div class="hero-text">
+      <h1>TaskSieve</h1>
+      <p class="sub">Wichtige Aufgaben zuerst – mit System.</p>
     </div>
-  </nav>
-</header>
-
-
-<!-- HERO -->
-<section class="hero" id="ts-hero">
-  <div class="hero-text">
-    <h1>TaskSieve</h1>
-    <p class="sub">Wichtige Aufgaben zuerst – mit System.</p>
-  </div>
-  <div class="logo-col">
-    <div class="product-logo" aria-hidden="true">
-      <span class="logo-ring">
-        <svg viewBox="0 0 100 100" width="98" height="98" focusable="false">
-          <circle cx="50" cy="50" r="47.5" fill="none" stroke="#FFFFFF" stroke-width="5" />
-        </svg>
-      </span>
-      <img class="logo-img" src="/assets/brand/tasksieve_logo.svg" alt="">
+    <div class="logo-col">
+      <div class="product-logo" aria-hidden="true">
+        <span class="logo-ring">
+          <svg viewBox="0 0 100 100" width="98" height="98" focusable="false">
+            <circle cx="50" cy="50" r="47.5" fill="none" stroke="#FFFFFF" stroke-width="5" />
+          </svg>
+        </span>
+        <img class="logo-img" src="/assets/brand/tasksieve_logo.svg" alt="TaskSieve Logo">
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<main class="page">
-  <div class="grid" id="ts-grid">
-    <!-- Obere 3 Karten -->
-    <article class="card">
-      <h3>Eine Inbox</h3>
-      <p>Zieht aus E-Mail, Notizen & Slack – ein Ort, kein Springen.</p>
-    </article>
+  <main class="page">
+    <div class="grid" id="ts-grid">
+      <!-- Obere 3 Karten -->
+      <article class="card">
+        <h3>Eine Inbox</h3>
+        <p>Zieht aus E-Mail, Notizen & Slack – ein Ort, kein Springen.</p>
+      </article>
 
-    <article class="card">
-      <h3>So funktioniert’s</h3>
-      <ul>
-        <li>Quellen verbinden</li>
-        <li>Auto-Dedupe & Clustering</li>
-        <li>Scoring nach Wirkung / Dringlichkeit / Aufwand</li>
-      </ul>
-    </article>
-
-    <article class="card card-delivers">
-      <h3>Was es liefert</h3>
-      <ul>
-        <li><strong>Next Action sichtbar</strong> – ohne Listenpflege.</li>
-        <li><strong>Mehr Durchsatz</strong> – Fokus-Blöcke & Batching.</li>
-        <li><strong>Weniger Kontextwechsel</strong> – thematisch gebündelt.</li>
-      </ul>
-      <details>
-        <summary>mehr</summary>
+      <article class="card">
+        <h3>So funktioniert’s</h3>
         <ul>
-          <li>Erklärbare Priorisierung (Wirkung/Dringlichkeit/Aufwand).</li>
-          <li>Sichtbare Verantwortlichkeiten.</li>
-          <li>Weniger „Was ist der Stand?“-Nachfragen.</li>
+          <li>Quellen verbinden</li>
+          <li>Auto-Dedupe &amp; Clustering</li>
+          <li>Scoring nach Wirkung / Dringlichkeit / Aufwand</li>
         </ul>
-      </details>
-    </article>
+      </article>
 
-    <!-- Untere 3 Karten -->
-    <article class="card">
-      <h3>Status &amp; Kontakt</h3>
-      <p>Status: <strong>Live-Test</strong> – du bekommst direkten Zugriff auf die Demo-Inbox.</p>
-      <button class="btn" type="button" onclick="location.href='/products/tasksieve/getting-started.html'">
-        <span>Ergebnis ansehen</span>
-        <small>Vorher sehen, dann eigene Inbox aktivieren.</small>
-      </button>
-      <details style="margin-top:.6rem">
-        <summary>FAQ</summary>
+      <article class="card card-delivers">
+        <h3>Was es liefert</h3>
         <ul>
-          <li><strong>Import nötig?</strong> Nein – Demo-Inbox reicht für den Start.</li>
-          <li><strong>Eigene Quellen?</strong> Später verbindbar (E-Mail, Notizen, Slack).</li>
-          <li><strong>Verlässlichkeit?</strong> Erklärbares Scoring statt Bauchgefühl.</li>
-          <li><strong>Sicherheit?</strong> Least-Privilege, nur notwendige Leserechte.</li>
+          <li><strong>Next Action sichtbar</strong> – ohne Listenpflege.</li>
+          <li><strong>Mehr Durchsatz</strong> – Fokus-Blöcke &amp; Batching.</li>
+          <li><strong>Weniger Kontextwechsel</strong> – thematisch gebündelt.</li>
         </ul>
-      </details>
-    </article>
+        <details>
+          <summary>mehr</summary>
+          <ul>
+            <li>Erklärbare Priorisierung (Wirkung/Dringlichkeit/Aufwand).</li>
+            <li>Sichtbare Verantwortlichkeiten.</li>
+            <li>Weniger „Was ist der Stand?“-Nachfragen.</li>
+          </ul>
+        </details>
+      </article>
 
-    <article class="card">
-      <h3>Integrationen</h3>
-      <p>E-Mail, Notizen, Slack.</p>
-    </article>
+      <!-- Untere 3 Karten -->
+      <article class="card">
+        <h3>Status &amp; Kontakt</h3>
+        <p>Status: <strong>Live-Test</strong> – du bekommst direkten Zugriff auf die Demo-Inbox.</p>
+        <button class="btn" type="button" onclick="location.href='/products/tasksieve/getting-started.html'">
+          <span>Ergebnis ansehen</span>
+          <small>Vorher sehen, dann eigene Inbox aktivieren.</small>
+        </button>
+        <details style="margin-top:.6rem">
+          <summary>FAQ</summary>
+          <ul>
+            <li><strong>Import nötig?</strong> Nein – Demo-Inbox reicht für den Start.</li>
+            <li><strong>Eigene Quellen?</strong> Später verbindbar (E-Mail, Notizen, Slack).</li>
+            <li><strong>Verlässlichkeit?</strong> Erklärbares Scoring statt Bauchgefühl.</li>
+            <li><strong>Sicherheit?</strong> Least-Privilege, nur notwendige Leserechte.</li>
+          </ul>
+        </details>
+      </article>
 
-    <article class="card" id="card-benefits-ts-de">
-      <h3>Vorteile</h3>
-      <ul>
-        <li><strong>Schneller Start</strong> – Minuten statt Tage.</li>
-        <li><strong>Erklärbare Priorisierung</strong>.</li>
-        <li><strong>Wenig Pflege</strong> im Alltag.</li>
-      </ul>
-      <details style="margin-top:.4rem">
-        <summary>mehr</summary>
+      <article class="card">
+        <h3>Integrationen</h3>
+        <p>E-Mail, Notizen, Slack.</p>
+      </article>
+
+      <article class="card" id="card-benefits-ts-de">
+        <h3>Vorteile</h3>
         <ul>
-          <li>Weniger Kontextwechsel.</li>
-          <li>Team-Zusagen bleiben sichtbar.</li>
-          <li>„Feuer löschen“ wird planbar.</li>
+          <li><strong>Schneller Start</strong> – Minuten statt Tage.</li>
+          <li><strong>Erklärbare Priorisierung</strong>.</li>
+          <li><strong>Wenig Pflege</strong> im Alltag.</li>
         </ul>
-      </details>
-    </article>
-  </div>
-</main>
+        <details style="margin-top:.4rem">
+          <summary>mehr</summary>
+          <ul>
+            <li>Weniger Kontextwechsel.</li>
+            <li>Team-Zusagen bleiben sichtbar.</li>
+            <li>„Feuer löschen“ wird planbar.</li>
+          </ul>
+        </details>
+      </article>
+    </div>
+  </main>
 
-<footer>
-  <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
-</footer>
+  <footer>
+    <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
+  </footer>
 
-<script>
-/* Deep-link „Vorteile zeigen“: nur untere 3 Karten zeigen, Hero ausblenden */
-(function(){
-  var raw = location.hash;
-  if (!raw || raw === "#" || raw === "#!") return;
-  var hash = raw.toLowerCase();
+  <script>
+  /* Deep-link „Vorteile zeigen“: nur untere 3 Karten zeigen, Hero ausblenden */
+  (function(){
+    var raw = location.hash;
+    if (!raw || raw === "#" || raw === "#!") return;
+    var hash = raw.toLowerCase();
 
-  var wanted = [
-    "#benefits",              // generisch
-    "#card-benefits",         // generisch
-    "#card-benefits-ts-de",   // diese Seite
-    "#benefits-tasksieve",    // alternativ
-    "#show-benefits"          // alternativ
-  ];
-  if (wanted.indexOf(hash) === -1) return;
+    var wanted = [
+      "#benefits",
+      "#card-benefits",
+      "#card-benefits-ts-de",
+      "#benefits-tasksieve",
+      "#show-benefits"
+    ];
+    if (wanted.indexOf(hash) === -1) return;
 
-  var card = document.getElementById("card-benefits-ts-de") ||
-             document.getElementById("card-benefits");
-  if (!card) return;
+    var card = document.getElementById("card-benefits-ts-de") ||
+               document.getElementById("card-benefits");
+    if (!card) return;
 
-  // Hero verstecken
-  var hero = document.getElementById("ts-hero");
-  if (hero) hero.style.display = "none";
+    var hero = document.getElementById("ts-hero");
+    if (hero) hero.style.display = "none";
 
-  // Im Grid alle Elemente ausblenden, die oberhalb der Vorteile-Karte liegen
-  var grid = document.getElementById("ts-grid");
-  if (grid){
-    Array.from(grid.children).forEach(function(node){
-      if (node !== card && node.offsetTop < card.offsetTop) {
-        node.style.display = "none";
-      }
-    });
+    var grid = document.getElementById("ts-grid");
+    if (grid){
+      Array.from(grid.children).forEach(function(node){
+        if (node !== card && node.offsetTop < card.offsetTop) {
+          node.style.display = "none";
+        }
+      });
+    }
+
+    var det = card.querySelector("details");
+    if (det && !det.open) det.open = true;
+
+    if (location.hash !== "#" + card.id) {
+      history.replaceState(null, "", "#" + card.id);
+    }
+    card.scrollIntoView({behavior:"instant", block:"start"});
+    try { window.scrollBy(0, -16); } catch(e){}
+  })();
+  </script>
+
+  <script>
+  function __toggleNav(){
+    var l=document.getElementById('navLinks'); if(!l) return;
+    var open=l.classList.toggle('open');
+    var t=document.getElementById('navToggle'); if(t) t.setAttribute('aria-expanded', open?'true':'false');
   }
-
-  // Details aufklappen
-  var det = card.querySelector("details");
-  if (det && !det.open) det.open = true;
-
-  // Hash auf die tatsächliche ID der Karte normalisieren & scrollen
-  if (location.hash !== "#" + card.id) {
-    history.replaceState(null, "", "#" + card.id);
-  }
-  card.scrollIntoView({behavior:"instant", block:"start"});
-  try { window.scrollBy(0, -16); } catch(e){}
-})();
-</script>
-<script>
-function __toggleNav(){
-  var l=document.getElementById('navLinks'); if(!l) return;
-  var open=l.classList.toggle('open');
-  var t=document.getElementById('navToggle'); if(t) t.setAttribute('aria-expanded', open?'true':'false');
-}
-</script>
+  </script>
 </body>
 </html>
