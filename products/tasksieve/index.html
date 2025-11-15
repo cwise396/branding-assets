@@ -27,15 +27,32 @@
     a{color:#FFFFFF; text-decoration:none}
 
     /* NAV */
-    .site-header{position:sticky; top:0; z-index:50; background:var(--nav-red)}
-    .nav-inner{
-      max-width:var(--container);
-      margin:0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      height:12mm;
-      padding:0 1rem;
+    .site-header{ position:sticky; top:0; z-index:50; width:100%; background:var(--nav-red) }
+.nav{ background:var(--nav-red) }
+.nav-inner{
+  max-width:var(--container);
+  margin:0 auto;
+  padding:.9rem 1rem;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.brand{ color:#FFFFFF; font-weight:800; white-space:nowrap }
+.nav-links{
+  list-style:none; display:flex; gap:1rem; margin:0; padding:0; align-items:center;
+}
+.nav-links a{ color:#FFFFFF }
+.nav-toggle{ display:none; background:none; border:0; color:#FFFFFF; font-size:1.2rem }
+
+@media (max-width:980px){
+  .nav-inner{ position:relative }
+  .nav-links{
+    display:none; position:absolute; top:56px; left:0; right:0;
+    background:var(--nav-red); padding:1rem; margin:0;
+    flex-direction:column; gap:.6rem;
+  }
+  .nav-links.open{ display:flex }
+  .nav-toggle{ display:inline-block }
+}
+
     }
     .brand{font-weight:800;color:#fff;white-space:nowrap}
     .nav-links{list-style:none;display:flex;gap:1rem;margin:0;padding:0;align-items:center}
@@ -156,19 +173,30 @@
   </style>
 </head>
 <body>
-<header class="site-header">
-  <nav>
+ <header class="site-header">
+  <nav class="nav" role="navigation" aria-label="Main">
     <div class="nav-inner">
-       <a class="brand" href="/">Home</a>
-       <ul class="nav-links" id="navLinks">
+      <a class="brand" href="/">Home</a>
+      <ul class="nav-links" id="navLinks">
         <li><a href="/products/changewise/">ChangeWise</a></li>
         <li><a href="/products/slackdigest/">SlackDigest</a></li>
         <li><a href="/products/tasksieve/">TaskSieve</a></li>
         <li><strong>DE</strong> | <a href="/en/products/tasksieve/">EN</a></li>
       </ul>
+      <button
+        class="nav-toggle"
+        id="navToggle"
+        aria-label="Menü öffnen"
+        aria-controls="navLinks"
+        aria-expanded="false"
+        onclick="__toggleNav()"
+      >
+        ☰
+      </button>
     </div>
   </nav>
 </header>
+
 
 <!-- HERO -->
 <section class="hero" id="ts-hero">
@@ -314,6 +342,13 @@
   card.scrollIntoView({behavior:"instant", block:"start"});
   try { window.scrollBy(0, -16); } catch(e){}
 })();
+</script>
+<script>
+function __toggleNav(){
+  var l=document.getElementById('navLinks'); if(!l) return;
+  var open=l.classList.toggle('open');
+  var t=document.getElementById('navToggle'); if(t) t.setAttribute('aria-expanded', open?'true':'false');
+}
 </script>
 </body>
 </html>
