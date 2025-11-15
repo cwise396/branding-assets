@@ -111,16 +111,32 @@
       display:flex;
       align-items:center;
     }
-    .product-logo{position:relative; width:98px; height:98px}
-    .product-logo .logo-ring{position:absolute; inset:0;}
-    .product-logo .logo-ring svg{width:100%; height:100%; display:block}
-    .product-logo .logo-img{
-      position:absolute; top:5px; left:5px;
-      width:88px; height:88px; border-radius:50%;
-      background:transparent; display:block;
-    }
+     .product-logo{
+  position:relative;
+  width:104px;
+  height:104px;
+}
+.product-logo .logo-ring{
+  position:absolute;
+  inset:0;
+}
+.product-logo .logo-ring svg{
+  width:100%;
+  height:100%;
+  display:block;
+}
+.product-logo .logo-img{
+  position:absolute;
+  top:8px;
+  left:8px;
+  width:88px;
+  height:88px;
+  border-radius:50%;
+  background:transparent;
+  display:block;
+}
 
-    /* PAGE */
+     /* PAGE */
     main.page{
       max-width:var(--container);
       margin:0 auto;
@@ -228,15 +244,14 @@
       <p class="sub">Wichtige Aufgaben zuerst – mit System.</p>
     </div>
     <div class="logo-col">
-      <div class="product-logo" aria-hidden="true">
-         <span class="logo-ring">
-  <svg viewBox="-2 -2 104 104" width="98" height="98" focusable="false">
-    <circle cx="50" cy="50" r="47.5" fill="none" stroke="#FFFFFF" stroke-width="5" />
-  </svg>
-</span>
-       <img class="logo-img" src="/assets/brand/tasksieve_logo.svg" alt="TaskSieve Logo">
-      </div>
-    </div>
+     <div class="product-logo" aria-hidden="true">
+  <span class="logo-ring">
+    <svg viewBox="0 0 100 100" width="104" height="104" focusable="false">
+      <circle cx="50" cy="50" r="45" fill="none" stroke="#FFFFFF" stroke-width="5" />
+    </svg>
+  </span>
+  <img class="logo-img" src="/assets/brand/tasksieve_logo.svg" alt="TaskSieve Logo">
+</div>
   </section>
 
   <main class="page">
