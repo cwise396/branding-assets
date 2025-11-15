@@ -106,42 +106,43 @@
       max-width:34rem;
       opacity:.92;
     }
-  .logo-col{
-  grid-column:9/13;
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-}
+     .logo-col{
+      grid-column:9/13;
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+    }
 
-/* Weißer Ring direkt per CSS – kein SVG nötig */
-.product-logo{
-  width:104px;
-  height:104px;
-  border-radius:50%;
-  border:5px solid #FFFFFF;
-  box-sizing:border-box;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.product-logo .logo-img{
-  width:88px;
-  height:88px;
-  border-radius:50%;
-  display:block;
-}
-
-.product-logo .logo-img{
-  position:absolute;
-  top:8px;
-  left:8px;
-  width:88px;
-  height:88px;
-  border-radius:50%;
-  background:transparent;
-  display:block;
-}
+    /* Hero-Logo wie auf der Startseite: Ring per Border, Logo zentriert */
+    .hero-logo-wrap{
+      position:relative;
+      width:104px;
+      height:104px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+    }
+    .hero-logo-wrap::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:50%;
+      border:5px solid #FFFFFF;  /* weißer Ring */
+    }
+    .hero-logo-inner{
+      width:88px;
+      height:88px;
+      border-radius:50%;
+      overflow:hidden;
+      display:grid;
+      place-items:center;
+    }
+    .hero-logo{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+    }
 
      /* PAGE */
     main.page{
@@ -245,16 +246,24 @@
   </header>
 
   <!-- HERO -->
-  <section class="hero" id="ts-hero">
+    <section class="hero" id="ts-hero">
     <div class="hero-text">
       <h1>TaskSieve</h1>
       <p class="sub">Wichtige Aufgaben zuerst – mit System.</p>
     </div>
     <div class="logo-col">
-  <div class="product-logo" aria-hidden="true">
-    <img class="logo-img" src="/assets/brand/slackdigest_logo.svg" alt="TaskSieve Logo">
- </div>
-</section>
+      <div class="hero-logo-wrap" aria-hidden="true">
+        <div class="hero-logo-inner">
+          <img
+            src="/assets/brand/tasksieve_logo.svg"
+            alt="TaskSieve Logo"
+            class="hero-logo"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
   <main class="page">
     <div class="grid" id="ts-grid">
       <!-- Obere 3 Karten -->
