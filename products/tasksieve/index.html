@@ -106,7 +106,13 @@
       max-width:34rem;
       opacity:.92;
     }
-       .logo-col{
+     /* TaskSieve: erste Sub-Zeile als „Lead“ wie bei SlackDigest */
+.hero p.sub-main{
+  font-size:clamp(1.1rem, 2.4vw, 1.35rem);
+  font-weight:700;
+  opacity:.95;
+}
+    .logo-col{
       grid-column:9/13;
       display:flex;
       align-items:center;
@@ -248,7 +254,7 @@
  <section class="hero" id="ts-hero">
   <div class="hero-text">
     <h1>TaskSieve</h1>
-    <p class="sub">
+      <p class="sub sub-main">
       Deine Inbox sortiert – automatisch, klar, verlässlich.
     </p>
     <p class="sub">
