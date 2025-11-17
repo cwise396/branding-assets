@@ -6,6 +6,7 @@
   <title>TaskSieve – Puts important work first.</title>
   <meta name="description" content="TaskSieve brings email, notes and Slack into one inbox and prioritises by impact, urgency and effort – for clear focus and better throughput." />
   <meta name="theme-color" content="#0B1220" />
+  <meta name="color-scheme" content="dark" />
   <style>
     :root{
       --container:1100px;
@@ -106,7 +107,7 @@
       max-width:34rem;
       opacity:.92;
     }
-    /* TaskSieve: first sub-line as “lead” like SlackDigest */
+    /* erste Subzeile wie „Lead“ */
     .hero p.sub-main{
       font-size:clamp(1.1rem, 2.4vw, 1.35rem);
       font-weight:700;
@@ -119,7 +120,7 @@
       justify-content:flex-start;
     }
 
-    /* Hero logo: white ring via border, logo perfectly round */
+    /* Hero-Logo mit weißem Ring */
     .hero-logo-wrap{
       position:relative;
       width:104px;
@@ -174,7 +175,7 @@
     .card-delivers ul{list-style:disc; padding-left:1.2rem; margin:.35rem 0}
     .card-delivers details{margin-top:.4rem}
 
-    /* Benefits card: thicker white border */
+    /* Benefits card: stronger white border */
     #card-benefits-ts-en{
       border:2px solid rgba(255,255,255,.85);
       box-shadow:
@@ -285,7 +286,7 @@
         <h3>Central inbox – no scatter</h3>
         <p>
           Email, notes &amp; Slack are automatically brought together – for clear
-          overview, less jumping around and instantly visible next actions.
+          overview, less context hopping, and instantly visible next actions.
         </p>
       </article>
 
@@ -322,13 +323,13 @@
           <summary>more</summary>
           <ul>
             <li>
-              Prioritisation based on impact, urgency &amp; effort – not gut feeling.
+              New work items slot into place automatically — without reshuffling.
             </li>
             <li>
               Visible ownership – fewer “What’s the status?” check-ins.
             </li>
             <li>
-              Teams can use the inbox directly – without extra tool onboarding.
+              Easy for teams to adopt — no onboarding required.
             </li>
           </ul>
         </details>
@@ -394,10 +395,9 @@
               <strong>Own sources?</strong> Can be connected later (email, notes, Slack).
             </li>
             <li>
-              <strong>Reliability?</strong> Prioritisation based on clear criteria
-              (impact, urgency &amp; effort).
+              <strong>Reliability?</strong> Clear, consistent prioritisation — no surprises.
             </li>
-              <li>
+            <li>
               <strong>Security?</strong> Least privilege – only the read access that is needed.
             </li>
           </ul>
@@ -411,7 +411,7 @@
   </footer>
 
   <script>
-  /* Deep-link “Show benefits”: show the bottom cards, hide the hero if needed */
+  /* Deep-link “Show benefits”: show the benefits card, hide hero/cards above */
   (function(){
     var raw = location.hash;
     if (!raw || raw === "#" || raw === "#!") return;
