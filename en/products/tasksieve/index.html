@@ -3,10 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TaskSieve – Important tasks first.</title>
-  <meta name="description" content="TaskSieve brings email, notes and Slack into one inbox, de-duplicates and prioritises by impact, urgency and effort." />
+  <title>TaskSieve – Puts important work first.</title>
+  <meta name="description" content="TaskSieve brings email, notes and Slack into one inbox and prioritises by impact, urgency and effort – for clear focus and better throughput." />
   <meta name="theme-color" content="#0B1220" />
-  <meta name="color-scheme" content="dark" />
   <style>
     :root{
       --container:1100px;
@@ -107,7 +106,12 @@
       max-width:34rem;
       opacity:.92;
     }
-
+    /* TaskSieve: first sub-line as “lead” like SlackDigest */
+    .hero p.sub-main{
+      font-size:clamp(1.1rem, 2.4vw, 1.35rem);
+      font-weight:700;
+      opacity:.95;
+    }
     .logo-col{
       grid-column:9/13;
       display:flex;
@@ -115,13 +119,13 @@
       justify-content:flex-start;
     }
 
-    /* Hero logo with white ring, same style as DE */
+    /* Hero logo: white ring via border, logo perfectly round */
     .hero-logo-wrap{
       position:relative;
       width:104px;
       height:104px;
       border-radius:50%;
-      border:5px solid #FFFFFF;    /* white ring */
+      border:5px solid #FFFFFF;
       box-sizing:border-box;
       display:flex;
       align-items:center;
@@ -170,7 +174,7 @@
     .card-delivers ul{list-style:disc; padding-left:1.2rem; margin:.35rem 0}
     .card-delivers details{margin-top:.4rem}
 
-    /* Benefits card – slight highlight */
+    /* Benefits card: thicker white border */
     #card-benefits-ts-en{
       border:2px solid rgba(255,255,255,.85);
       box-shadow:
@@ -249,7 +253,14 @@
   <section class="hero" id="ts-hero">
     <div class="hero-text">
       <h1>TaskSieve</h1>
-      <p class="sub">Important tasks first – with structure.</p>
+      <p class="sub sub-main">
+        Your inbox sorted – automatic, clear, reliable.
+      </p>
+      <p class="sub">
+        Next actions visible.<br>
+        Fewer context switches.<br>
+        More throughput.
+      </p>
     </div>
 
     <div class="logo-col">
@@ -268,74 +279,127 @@
   <main class="page">
     <div class="grid" id="ts-grid">
       <!-- Top 3 cards -->
+
+      <!-- Card 1: Central inbox -->
       <article class="card">
-        <h3>One inbox</h3>
-        <p>Pulls from email, notes &amp; Slack – one place, no jumping between apps.</p>
+        <h3>Central inbox – no scatter</h3>
+        <p>
+          Email, notes &amp; Slack are automatically brought together – for clear
+          overview, less jumping around and instantly visible next actions.
+        </p>
       </article>
 
+      <!-- Card 2: How it works -->
       <article class="card">
         <h3>How it works</h3>
         <ul>
-          <li>Connect your sources.</li>
-          <li>Auto de-dupe &amp; clustering.</li>
-          <li>Scoring by impact / urgency / effort.</li>
+          <li>Connect your sources – select email, notes &amp; Slack.</li>
+          <li>Duplicates are removed &amp; related topics automatically grouped.</li>
+          <li>
+            The most important tasks appear at the top – ordered by impact,
+            urgency &amp; effort.
+          </li>
         </ul>
       </article>
 
+      <!-- Card 3: What it delivers -->
       <article class="card card-delivers">
         <h3>What it delivers</h3>
         <ul>
-          <li><strong>Next action visible</strong> – without manual list grooming.</li>
-          <li><strong>More throughput</strong> – focus blocks &amp; batching.</li>
-          <li><strong>Less context switching</strong> – work grouped by theme.</li>
+          <li>
+            <strong>Clear flow of work</strong> – next actions visible, no manual list
+            maintenance.
+          </li>
+          <li>
+            <strong>Higher throughput</strong> – focus blocks instead of constant
+            switching.
+          </li>
+          <li>
+            <strong>Fewer context switches</strong> – work is grouped by theme.
+          </li>
         </ul>
         <details>
           <summary>more</summary>
           <ul>
-            <li>Explainable prioritisation (impact / urgency / effort).</li>
-            <li>Clear ownership.</li>
-            <li>Fewer “What’s the status?” pings.</li>
+            <li>
+              Prioritisation based on impact, urgency &amp; effort – not gut feeling.
+            </li>
+            <li>
+              Visible ownership – fewer “What’s the status?” check-ins.
+            </li>
+            <li>
+              Teams can use the inbox directly – without extra tool onboarding.
+            </li>
           </ul>
         </details>
       </article>
 
-      <!-- Bottom 3 cards -->
-      <article class="card">
-        <h3>Status &amp; contact</h3>
-        <p>Status: <strong>Live test</strong> – you get direct access to the demo inbox.</p>
-        <button class="btn" type="button" onclick="location.href='/en/products/tasksieve/getting-started.html'">
-          <span>See result</span>
-          <small>See it first, then activate your own inbox.</small>
-        </button>
-        <details style="margin-top:.6rem">
-          <summary>FAQ</summary>
-          <ul>
-            <li><strong>Import needed?</strong> No – the demo inbox is enough to start.</li>
-            <li><strong>Own sources?</strong> Can be connected later (email, notes, Slack).</li>
-            <li><strong>Reliability?</strong> Explainable scoring instead of gut feeling.</li>
-            <li><strong>Security?</strong> Least privilege, only necessary read access.</li>
-          </ul>
-        </details>
-      </article>
+      <!-- Bottom 3 cards: Integrations, Benefits, Status & contact -->
 
+      <!-- Card 4: Integrations -->
       <article class="card">
         <h3>Integrations</h3>
-        <p>Email, notes, Slack.</p>
+        <p>
+          Email, notes &amp; Slack – connected as soon as you are ready.
+        </p>
       </article>
 
+      <!-- Card 5: Benefits -->
       <article class="card" id="card-benefits-ts-en">
         <h3>Benefits</h3>
+
         <ul>
-          <li><strong>Fast start</strong> – minutes, not days.</li>
-          <li><strong>Explainable prioritisation</strong>.</li>
-          <li><strong>Low maintenance</strong> in day-to-day use.</li>
+          <li><strong>Quick start</strong> – in minutes.</li>
+          <li>
+            <strong>Clear order based on impact, urgency &amp; effort</strong> –
+            driven by transparent criteria.
+          </li>
+          <li>
+            <strong>Low maintenance</strong> in everyday use.
+          </li>
+          <li>
+            <strong>New tasks fall into place</strong> – without disrupting focus.
+          </li>
         </ul>
+
         <details style="margin-top:.4rem">
           <summary>more</summary>
           <ul>
-            <li>Less context switching.</li>
+            <li>Fewer context switches.</li>
             <li>Team commitments stay visible.</li>
-            <li>“Firefighting” becomes manageable.</li>
+            <li>Clear flow of work – prioritised instead of overloaded.</li>
+            <li>Order that makes sense – easy to explain at any time.</li>
+          </ul>
+        </details>
+      </article>
+
+      <!-- Card 6: Status & contact -->
+      <article class="card">
+        <h3>Status &amp; contact</h3>
+        <p>
+          Status: <strong>Live test</strong> – you get direct access to the demo inbox.
+        </p>
+
+        <button class="btn" type="button"
+                onclick="location.href='/en/products/tasksieve/getting-started.html'">
+          <span>See results</span>
+          <small>Then activate your own inbox.</small>
+        </button>
+
+        <details style="margin-top:.6rem">
+          <summary>FAQ</summary>
+          <ul>
+            <li><strong>Import required?</strong> No – the demo inbox is enough to start.</li>
+            <li>
+              <strong>Own sources?</strong> Can be connected later (email, notes, Slack).
+            </li>
+            <li>
+              <strong>Reliability?</strong> Prioritisation based on clear criteria
+              (impact, urgency &amp; effort).
+            </li>
+              <li>
+              <strong>Security?</strong> Least privilege – only the read access that is needed.
+            </li>
           </ul>
         </details>
       </article>
@@ -347,7 +411,7 @@
   </footer>
 
   <script>
-  /* Deep-link “Show benefits”: focus the benefits card, hide above if needed */
+  /* Deep-link “Show benefits”: show the bottom cards, hide the hero if needed */
   (function(){
     var raw = location.hash;
     if (!raw || raw === "#" || raw === "#!") return;
