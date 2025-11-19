@@ -20,25 +20,102 @@
     }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;background:var(--page-bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+    body{
+      margin:0;
+      background:var(--page-bg);
+      color:var(--text);
+      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif
+    }
     a{color:#FFFFFF;text-decoration:none}
-    .site-header{position:sticky;top:0;z-index:50;background:var(--nav-red)}
-    .nav-inner{max-width:var(--container);margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:12mm;padding:0 1rem}
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:var(--nav-red)
+    }
+    .nav-inner{
+      max-width:var(--container);
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      height:12mm;
+      padding:0 1rem
+    }
+
     .hero{color:#fff;padding-top:11mm}
-    .hero-header{max-width:var(--container);margin:0 auto;padding:0 1rem;display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;align-items:end}
+    .hero-header{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:0 1rem;
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:1rem;
+      align-items:end
+    }
     .hero-text{grid-column:1/9}
-    .hero h1{margin:0 0 .25rem;font-size:clamp(1.8rem,4vw,3rem)}
-    .hero p.lead{margin:0;font-size:1.02rem;font-weight:600;max-width:36rem}
-    .hero p.meta{margin:.4rem 0 0;color:var(--muted);font-size:.9rem}
-    .logo-col{grid-column:9/13;display:flex;align-items:center}
-    .product-logo{position:relative;width:98px;height:98px}
-    .product-logo .logo-img{position:absolute;top:5px;left:5px;width:88px;height:88px}
-    .section-cards{max-width:var(--container);margin:0 auto;padding:0 1rem 2.6rem}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;margin-top:1rem}
-    .card{grid-column:span 3;background:var(--card-bg);border:1px solid var(--card-bd);border-radius:14px;padding:1.05rem 1rem;box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.04);}
+    .hero h1{
+      margin:0 0 .25rem;
+      font-size:clamp(1.8rem,4vw,3rem)
+    }
+    .hero p.lead{
+      margin:0;
+      font-size:1.02rem;
+      font-weight:600;
+      max-width:36rem
+    }
+    .hero p.meta{
+      margin:.4rem 0 0;
+      color:var(--muted);
+      font-size:.9rem
+    }
+    .logo-col{
+      grid-column:9/13;
+      display:flex;
+      align-items:center
+    }
+    .product-logo{
+      position:relative;
+      width:98px;
+      height:98px
+    }
+    .product-logo .logo-ring{
+      position:absolute;
+      inset:0;
+    }
+    .product-logo .logo-img{
+      position:absolute;
+      top:5px;
+      left:5px;
+      width:88px;
+      height:88px
+    }
+
+    .section-cards{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:0 1rem 2.6rem
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:1rem;
+      margin-top:1rem
+    }
+    .card{
+      grid-column:span 3;
+      background:var(--card-bg);
+      border:1px solid var(--card-bd);
+      border-radius:14px;
+      padding:1.05rem 1rem;
+      box-shadow:0 10px 24px rgba(0,0,0,.25),
+                 inset 0 1px 0 rgba(255,255,255,.04);
+    }
     .card h3{margin:0 0 .5rem}
     .card p,.card li{margin:.35rem 0}
     .card ul{list-style:disc;padding-left:1.2rem}
+
     .btn{
       display:inline-block;
       background:#FFFFFF;
@@ -52,9 +129,19 @@
       line-height:1.3;
     }
     .btn span{display:block}
-    footer{max-width:var(--container);margin:2.4rem auto 2.8rem;padding:0 1rem}
-    @media (max-width:1024px){ .card{grid-column:span 6} }
-    @media (max-width:640px){ .card{grid-column:span 12} }
+
+    footer{
+      max-width:var(--container);
+      margin:2.4rem auto 2.8rem;
+      padding:0 1rem
+    }
+
+    @media (max-width:1024px){
+      .card{grid-column:span 6}
+    }
+    @media (max-width:640px){
+      .card{grid-column:span 12}
+    }
   </style>
 </head>
 <body>
@@ -66,8 +153,8 @@
         <li><a href="/en/products/changewise/">ChangeWise</a></li>
         <li><a href="/en/products/slackdigest/">SlackDigest</a></li>
         <li><a href="/en/products/tasksieve/">TaskSieve</a></li>
-          <li><strong>EN</strong> | <a href="/products/tasksieve/getting-started.html">DE</a></li>
-     </ul>
+        <li><strong>EN</strong> | <a href="/products/tasksieve/getting-started.html">DE</a></li>
+      </ul>
     </div>
   </nav>
 </header>
@@ -75,14 +162,14 @@
 <main class="hero">
   <div class="hero-header">
     <div class="hero-text">
-       <h1>TaskSieve – Getting Started</h1>
-<p class="lead">
-  View the result first, then activate your own inbox – product responds immediately.
-</p>
-<p class="meta">
-  No call, no back-and-forth, no onboarding session.
-</p>
-     </div>
+      <h1>TaskSieve – Getting Started</h1>
+      <p class="lead">
+        View the result first, then activate your own inbox – product responds immediately.
+      </p>
+      <p class="meta">
+        No call, no back-and-forth, no onboarding session.
+      </p>
+    </div>
     <div class="logo-col">
       <div class="product-logo">
         <span class="logo-ring" aria-hidden="true">
@@ -97,6 +184,7 @@
 
   <section class="section-cards" aria-label="TaskSieve – onboarding">
     <div class="grid">
+      <!-- 1) View the result -->
       <article class="card">
         <h3>1) View the result</h3>
         <p>What a prioritized inbox looks like:</p>
@@ -105,8 +193,10 @@
           <li>Duplicates grouped</li>
           <li>Next steps visible</li>
         </ul>
-          <p><small>You see what matters first – clearly prioritised.</small></p>
-       </article>
+        <p><small>You see what matters first – clearly prioritised.</small></p>
+      </article>
+
+      <!-- 2) Start in 2 minutes -->
       <article class="card">
         <h3>2) Start in 2 minutes</h3>
         <ol style="margin:.35rem 0 .6rem;padding-left:1.2rem">
@@ -114,11 +204,13 @@
           <li>Optionally list sources</li>
           <li>Submit → demo is sent right away</li>
         </ol>
-         <p><small>Same flow as a contact form – no human in the loop.</small></p>
-       </article>
+        <p><small>Same flow as a contact form – no human in the loop.</small></p>
+      </article>
+
+      <!-- 3) How prioritisation works -->
       <article class="card">
-               <article class="card">
         <h3>3) How prioritisation works</h3>
+        <p>Scoring uses:</p>
         <ul>
           <li>Impact</li>
           <li>Urgency</li>
@@ -127,18 +219,19 @@
         <p><small>AI-assisted with clear criteria — no black box.</small></p>
       </article>
 
-    <article class="card">
-  <h3>4) Activate your inbox now</h3>
-  <p>Demo inbox and additional details arrive instantly.</p>
+      <!-- 4) Activate your inbox now -->
+      <article class="card">
+        <h3>4) Activate your inbox now</h3>
+        <p>Demo inbox and additional details arrive instantly.</p>
 
-  <button class="btn" type="button" onclick="location.href='/en/contact_tasksieve.html'">
-    <span>Activate inbox</span>
-    <span style="font-weight:500;font-size:.78rem;opacity:.9;">
-      Demo preview &amp; next steps are delivered immediately. No spam, no newsletter.
-    </span>
-  </button>
-</article>
-   </div>
+        <button class="btn" type="button" onclick="location.href='/en/contact_tasksieve.html'">
+          <span>Activate inbox</span>
+          <span style="font-weight:500;font-size:.78rem;opacity:.9;">
+            Demo preview &amp; next steps are delivered immediately. No spam, no newsletter.
+          </span>
+        </button>
+      </article>
+    </div>
   </section>
 </main>
 
@@ -146,5 +239,6 @@
   <a href="/en/imprint/">Imprint</a> · <a href="/en/privacy/">Privacy</a>
   <br><small>© ChangeWise • SlackDigest • TaskSieve</small>
 </footer>
+
 </body>
 </html>
