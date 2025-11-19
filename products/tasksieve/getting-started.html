@@ -27,31 +27,95 @@
       font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
     }
     a{color:#FFFFFF;text-decoration:none}
-    .site-header{position:sticky;top:0;z-index:50;background:var(--nav-red)}
-    .nav-inner{max-width:var(--container);margin:0 auto;padding:0 1rem;height:12mm;display:flex;align-items:center;justify-content:space-between}
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:var(--nav-red);
+    }
+    .nav-inner{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:0 1rem;
+      height:12mm;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
     .hero{color:#fff;padding-top:11mm}
-    .hero-header{max-width:var(--container);margin:0 auto;padding:0 1rem;display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;align-items:end}
+    .hero-header{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:0 1rem;
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:1rem;
+      align-items:end;
+    }
     .hero-text{grid-column:1/9}
-    .hero h1{margin:0 0 .25rem;font-size:clamp(1.8rem,4vw,3rem)}
-    .hero p.lead{margin:0;font-size:1.05rem;font-weight:600;max-width:36rem}
-    .hero p.meta{margin:.4rem 0 0;color:var(--muted);font-size:.9rem}
-    .logo-col{grid-column:9/13;display:flex;align-items:center}
-    .product-logo{position:relative;width:98px;height:98px}
-    .product-logo .logo-ring{position:absolute;inset:0}
-    .product-logo .logo-img{position:absolute;top:5px;left:5px;width:88px;height:88px}
-    .section-cards{max-width:var(--container);margin:0 auto;padding:0 1rem 2.6rem}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;margin-top:1rem}
+    .hero h1{
+      margin:0 0 .25rem;
+      font-size:clamp(1.8rem,4vw,3rem);
+    }
+    .hero p.lead{
+      margin:0;
+      font-size:1.05rem;
+      font-weight:600;
+      max-width:36rem;
+    }
+    .hero p.meta{
+      margin:.4rem 0 0;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+    .logo-col{
+      grid-column:9/13;
+      display:flex;
+      align-items:center;
+    }
+    .product-logo{
+      position:relative;
+      width:98px;
+      height:98px;
+    }
+    .product-logo .logo-ring{
+      position:absolute;
+      inset:0;
+    }
+    .product-logo .logo-img{
+      position:absolute;
+      top:5px;
+      left:5px;
+      width:88px;
+      height:88px;
+    }
+
+    .section-cards{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:0 1rem 2.6rem;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:1rem;
+      margin-top:1rem;
+    }
     .card{
       grid-column:span 3;
       background:var(--card-bg);
       border:1px solid var(--card-bd);
       border-radius:14px;
       padding:1.05rem 1rem;
-      box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.04);
+      box-shadow:0 10px 24px rgba(0,0,0,.25),
+                 inset 0 1px 0 rgba(255,255,255,.04);
     }
     .card h3{margin:0 0 .5rem}
     .card p,.card li{margin:.35rem 0}
     .card ul{list-style:disc;padding-left:1.2rem}
+
     .btn{
       display:inline-block;
       background:#FFFFFF;
@@ -65,9 +129,19 @@
       line-height:1.3;
     }
     .btn span{display:block}
-    footer{max-width:var(--container);margin:2.4rem auto 2.8rem;padding:0 1rem}
-    @media (max-width:1024px){ .card{grid-column:span 6} }
-    @media (max-width:640px){ .card{grid-column:span 12} }
+
+    footer{
+      max-width:var(--container);
+      margin:2.4rem auto 2.8rem;
+      padding:0 1rem;
+    }
+
+    @media (max-width:1024px){
+      .card{grid-column:span 6}
+    }
+    @media (max-width:640px){
+      .card{grid-column:span 12}
+    }
   </style>
 </head>
 <body>
@@ -89,14 +163,14 @@
 <main class="hero">
   <div class="hero-header">
     <div class="hero-text">
-       <h1>TaskSieve – Getting Started</h1>
- <p class="lead">
-  Ergebnis ansehen, dann eigene Inbox aktivieren – Produkt reagiert sofort.
-</p>
-<p class="meta">
-  Kein Call, keine Rückfrage, kein Onboarding-Termin.
-</p>
-   </div>
+      <h1>TaskSieve – Getting Started</h1>
+      <p class="lead">
+        Ergebnis ansehen, dann eigene Inbox aktivieren – Produkt reagiert sofort.
+      </p>
+      <p class="meta">
+        Kein Call, keine Rückfrage, kein Onboarding-Termin.
+      </p>
+    </div>
     <div class="logo-col">
       <div class="product-logo">
         <span class="logo-ring" aria-hidden="true">
@@ -111,6 +185,7 @@
 
   <section class="section-cards" aria-label="TaskSieve – Einstieg">
     <div class="grid">
+      <!-- 1) Ergebnis ansehen -->
       <article class="card">
         <h3>1) Ergebnis ansehen</h3>
         <p>So sieht eine priorisierte Inbox aus:</p>
@@ -119,8 +194,10 @@
           <li>Duplikate zusammengefasst</li>
           <li>Nächste Schritte klar benannt</li>
         </ul>
-         <p><small>Du siehst zuerst, was zählt – klar priorisiert.</small></p>
-       </article>
+        <p><small>Du siehst zuerst, was zählt – klar priorisiert.</small></p>
+      </article>
+
+      <!-- 2) In 2 Min. starten -->
       <article class="card">
         <h3>2) In 2 Min. starten</h3>
         <ol style="margin:.35rem 0 .6rem;padding-left:1.2rem">
@@ -130,24 +207,26 @@
         </ol>
         <p><small>Kein „Wir melden uns“, sondern sofortiges Ergebnis.</small></p>
       </article>
-      <article class="card">
-         <h3>3) Wie die Priorisierung entsteht</h3>
-<p>Sie folgt drei Kriterien:</p>
-<ul>
-  <li>Wirkung (Impact)</li>
-  <li>Dringlichkeit</li>
-  <li>Aufwand</li>
-</ul>
-<p><small>KI-gestützt mit klaren Kriterien – kein Blackbox-Output.</small></p>
 
-       </article>
+      <!-- 3) Wie die Priorisierung entsteht -->
+      <article class="card">
+        <h3>3) Wie die Priorisierung entsteht</h3>
+        <ul>
+          <li>Wirkung (Impact)</li>
+          <li>Dringlichkeit</li>
+          <li>Aufwand</li>
+        </ul>
+        <p><small>KI-gestützt mit klaren Kriterien – kein Blackbox-Output.</small></p>
+      </article>
+
+      <!-- 4) Jetzt eigene Inbox aktivieren -->
       <article class="card">
         <h3>4) Jetzt eigene Inbox aktivieren</h3>
-         <p>Demo-Inbox &amp; weitere Infos gehen direkt an dich.</p>
-         <button class="btn" type="button" onclick="location.href='/contact_tasksieve.html'">
+        <p>Demo-Inbox &amp; weitere Infos gehen direkt an dich.</p>
+        <button class="btn" type="button" onclick="location.href='/contact_tasksieve.html'">
           <span>Eigene Inbox aktivieren</span>
-           <span style="font-weight:500;font-size:.78rem;opacity:.9;">
-       Demo-Beispiel &amp; nächste Schritte kommen sofort. Kein Spam, kein Newsletter.
+          <span style="font-weight:500;font-size:.78rem;opacity:.9;">
+            Demo-Beispiel &amp; nächste Schritte kommen sofort. Kein Spam, kein Newsletter.
           </span>
         </button>
       </article>
