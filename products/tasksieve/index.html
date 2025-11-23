@@ -380,10 +380,16 @@
   </main>
 
   <footer>
-    <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
+    <div class="footbar">
+      <nav class="legal" aria-label="Footer">
+        <a href="/impressum.html">Impressum</a><span class="sep" aria-hidden="true"> · </span>
+        <a href="/datenschutz.html">Datenschutz</a>
+      </nav>
+      <small>© ChangeWise · SlackDigest · TaskSieve</small>
+    </div>
   </footer>
 
-  <script>
+   <script>
   /* Deep-link „Vorteile zeigen“: nur untere 3 Karten zeigen, Hero ausblenden */
   (function(){
     var raw = location.hash;
