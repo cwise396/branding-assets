@@ -322,7 +322,12 @@
           <li>Portable: email or Slack, no lock-in.</li>
         </ul>
       </details>
-    </article>
+      <p class="benefit-link">
+    <a href="/en/products/slackdigest/getting-started.html">
+      See how it works →
+    </a>
+  </p>
+</article>
 
     <!-- Status & contact – jetzt letzte Karte -->
     <article class="card">
@@ -366,36 +371,47 @@
 </footer>
 
 
-        <script>
+       <script>
+/* Deep-link “Show benefits”: only show Benefits card, hide hero & other cards */
 (function(){
-  function run(){
-    var hash=(location.hash||"").toLowerCase();
-    // Nur reagieren, wenn #benefits ODER #card-benefits angefordert ist
-    if(!hash || (hash!=='#benefits' && hash!=='#card-benefits')) return;
+  var raw = location.hash;
+  if (!raw || raw === "#" || raw === "#!") return;
+  var hash = raw.toLowerCase();
 
-    // Karte finden (Standard-ID; optional Fallback, falls noch -en existiert)
-    var card=document.getElementById('card-benefits') || document.getElementById('card-benefits-en');
-    if(!card) return;
+  var wanted = [
+    "#benefits",
+    "#card-benefits",
+    "#benefits-slackdigest",
+    "#show-benefits"
+  ];
+  if (wanted.indexOf(hash) === -1) return;
 
-    // Details in der Karte öffnen
-    var d=card.querySelector('details');
-    if(d && !d.open) d.open=true;
+  var card = document.getElementById("card-benefits");
+  if (!card) return;
 
-    // :target sicher aktivieren (weiße Outline) -> Hash auf tatsächliche ID der Karte setzen
-    var targetId = card.id; // 'card-benefits' (oder evtl. noch '-en')
-    if(location.hash !== '#'+targetId){
-      history.replaceState(null,'','#'+targetId);
+  // Hero komplett ausblenden
+  var hero = document.querySelector(".hero");
+  if (hero) hero.style.display = "none";
+
+  // Alle anderen Cards ausblenden
+  var cards = document.querySelectorAll(".card");
+  cards.forEach(function(node){
+    if (node !== card) {
+      node.style.display = "none";
     }
+  });
 
-    // Karte mittig scrollen
-    card.scrollIntoView({behavior:'instant', block:'center'});
+  // ggf. details öffnen
+  var det = card.querySelector("details");
+  if (det && !det.open) det.open = true;
+
+  // Hash auf tatsächliche ID setzen
+  if (location.hash !== "#" + card.id) {
+    history.replaceState(null, "", "#" + card.id);
   }
 
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', run);
-  } else {
-    run();
-  }
+  // Karte nach oben scrollen
+  card.scrollIntoView({behavior:"instant", block:"start"});
 })();
 </script>
 
