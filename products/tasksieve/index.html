@@ -1,4 +1,4 @@
-<!doctype html>
+a<!doctype html>
 <html lang="de">
 <head>
   <meta charset="utf-8" />
@@ -409,16 +409,16 @@
     var hero = document.getElementById("ts-hero");
     if (hero) hero.style.display = "none";
 
-    var grid = document.getElementById("ts-grid");
+        var grid = document.getElementById("ts-grid");
     if (grid){
       Array.from(grid.children).forEach(function(node){
-        if (node !== card && node.offsetTop < card.offsetTop) {
+        if (node !== card) {
           node.style.display = "none";
         }
       });
     }
 
-    var det = card.querySelector("details");
+       var det = card.querySelector("details");
     if (det && !det.open) det.open = true;
 
     if (location.hash !== "#" + card.id) {
