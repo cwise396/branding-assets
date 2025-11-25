@@ -371,56 +371,56 @@
 </footer>
 
 
-       <script>
-/* Deep-link “Show benefits”: only show Benefits card, hide hero & other cards */
-(function(){
-  var raw = location.hash;
-  if (!raw || raw === "#" || raw === "#!") return;
-  var hash = raw.toLowerCase();
-
-  var wanted = [
-    "#benefits",
-    "#card-benefits",
-    "#benefits-slackdigest",
-    "#show-benefits"
-  ];
-  if (wanted.indexOf(hash) === -1) return;
-
-  var card = document.getElementById("card-benefits");
-  if (!card) return;
-
-  // Hero komplett ausblenden
-  var hero = document.querySelector(".hero");
-  if (hero) hero.style.display = "none";
-
-  // Alle anderen Cards ausblenden
-  var cards = document.querySelectorAll(".card");
-  cards.forEach(function(node){
-    if (node !== card) {
-      node.style.display = "none";
-    }
-  });
-
-  // ggf. details öffnen
-  var det = card.querySelector("details");
-  if (det && !det.open) det.open = true;
-
-  // Hash auf tatsächliche ID setzen
-  if (location.hash !== "#" + card.id) {
-    history.replaceState(null, "", "#" + card.id);
-  }
-
-  // Karte nach oben scrollen
-  card.scrollIntoView({behavior:"instant", block:"start"});
-})();
-</script>
-
 <script>
-function __toggleNav(){
-  var l=document.getElementById('navLinks'); if(!l) return;
-  var open=l.classList.toggle('open');
-  var t=document.getElementById('navToggle'); if(t) t.setAttribute('aria-expanded', open?'true':'false');
-}
+  (function(){
+    var raw = location.hash;
+    if (!raw || raw === "#" || raw === "#!") return;
+    var hash = raw.toLowerCase();
+
+    // Erlaubte Anker
+    var wanted = [
+      "#benefits",
+      "#card-benefits",
+      "#show-benefits"
+    ];
+    if (wanted.indexOf(hash) === -1) return;
+
+    // Vorteile-Karte finden (id="card-benefits")
+    var card = document.getElementById("card-benefits");
+    if (!card) return;
+
+    // Hero ausblenden (es gibt auf der Seite nur einen .hero)
+    var hero = document.querySelector(".hero");
+    if (hero) hero.style.display = "none";
+
+    // Grid mit den Karten finden (erste .grid auf der Seite)
+    var grid = document.querySelector(".grid");
+    if (grid){
+      Array.from(grid.children).forEach(function(node){
+        if (node !== card){
+          node.style.display = "none";
+        }
+      });
+    }
+
+    // Details in der Vorteile-Karte öffnen (falls vorhanden)
+    var det = card.querySelector("details");
+    if (det && !det.open) det.open = true;
+
+    // Hash auf die tatsächliche ID korrigieren, damit :target etc. sauber sind
+    if (location.hash !== "#" + card.id){
+      history.replaceState(null, "", "#" + card.id);
+    }
+
+    // Zu der Karte scrollen
+    try{
+      card.scrollIntoView({behavior:"instant", block:"start"});
+      window.scrollBy(0, -16);
+    }catch(e){
+      card.scrollIntoView();
+    }
+  })();
 </script>
+
 </body>
 </html>
