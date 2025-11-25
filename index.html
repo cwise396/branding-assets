@@ -221,6 +221,26 @@
       max-width:60rem;
       font-size:.92rem;
     }
+ .tile-actions{
+  margin-top:.8rem;
+  display:flex;
+  flex-direction:column;
+  gap:.35rem;
+}
+
+.tile-actions .tile-link{
+  font-weight:600;
+  font-size:.95rem;
+  text-decoration:none;
+  color:#FFFFFF;
+  opacity:.96;
+}
+
+.tile-actions .tile-link:hover{
+  opacity:1;
+  text-decoration:underline;
+}
+
   </style>
 </head>
 <body>
@@ -280,7 +300,11 @@
         </li>
       </ul>
 
-      <span class="btn">Zur Produktseite</span>
+           <div class="tile-actions">
+        <span class="tile-link">Vorteile ansehen →</span>
+        <span class="tile-link">Zur Produktseite →</span>
+      </div>
+
     </a>
 
     <!-- TaskSieve -->
@@ -316,7 +340,11 @@
         </li>
       </ul>
 
-      <span class="btn">Zur Produktseite</span>
+           <div class="tile-actions">
+        <span class="tile-link">Vorteile ansehen →</span>
+        <span class="tile-link">Zur Produktseite →</span>
+      </div>
+
     </a>
      <!-- ChangeWise -->
     <a class="tile cw" href="/products/changewise/">
@@ -365,7 +393,11 @@
         </li>
       </ul>
 
-      <span class="btn">Zur Produktseite</span>
+           <div class="tile-actions">
+        <span class="tile-link">Vorteile ansehen →</span>
+        <span class="tile-link">Zur Produktseite →</span>
+      </div>
+
     </a>
  </div>
 
