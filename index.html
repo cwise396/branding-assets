@@ -118,7 +118,7 @@
     }
     .micro li{ margin:2px 0; }
 
-    /* „Vorteile zeigen“ / „Show benefits“ */
+    /* „Vorteile ansehen“ */
     .micro .goto-benefits{
       display:inline-block; margin-top:4px;
       text-decoration:underline; text-underline-offset:2px;
@@ -189,20 +189,20 @@
       }
     }
 
-    /* ChangeWise: Bullets sollen zweizeilig bleiben (auch mobil) */
+    /* ChangeWise: Bullets zweizeilig lassen */
     .tile.cw .micro li{
       white-space:normal;
       line-height:1.34;
     }
-.tile-body{
-  margin: 0 0 14px;
-  font-size: .95rem;
-  line-height: 1.4;
-}
-.tile.cw .tile-body .cw-ideal-line{
-  display:block;
-  white-space:nowrap;
-}
+    .tile-body{
+      margin: 0 0 14px;
+      font-size: .95rem;
+      line-height: 1.4;
+    }
+    .tile.cw .tile-body .cw-ideal-line{
+      display:block;
+      white-space:nowrap;
+    }
 
     /* Suite / About unter den Kacheln */
     .suite{
@@ -221,26 +221,6 @@
       max-width:60rem;
       font-size:.92rem;
     }
- .tile-actions{
-  margin-top:.8rem;
-  display:flex;
-  flex-direction:column;
-  gap:.35rem;
-}
-
-.tile-actions .tile-link{
-  font-weight:600;
-  font-size:.95rem;
-  text-decoration:none;
-  color:#FFFFFF;
-  opacity:.96;
-}
-
-.tile-actions .tile-link:hover{
-  opacity:1;
-  text-decoration:underline;
-}
-
   </style>
 </head>
 <body>
@@ -295,14 +275,12 @@
           <span class="goto-benefits" role="link" tabindex="0"
             onclick="event.preventDefault(); event.stopPropagation(); location.href='/products/slackdigest/#card-benefits';"
             onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); event.stopPropagation(); location.href='/products/slackdigest/#card-benefits';}">
-          Vorteile ansehen →  
+            Vorteile ansehen →
           </span>
         </li>
       </ul>
 
-           <span class="btn">Zur Produktseite</span>
-      </div>
-
+      <span class="btn">Zur Produktseite</span>
     </a>
 
     <!-- TaskSieve -->
@@ -338,11 +316,10 @@
         </li>
       </ul>
 
-           <span class="btn">Zur Produktseite</span>
-      </div>
-
+      <span class="btn">Zur Produktseite</span>
     </a>
-     <!-- ChangeWise -->
+
+    <!-- ChangeWise -->
     <a class="tile cw" href="/products/changewise/">
       <div class="logo-wrap">
         <div class="logo-inner">
@@ -352,16 +329,13 @@
         </div>
       </div>
 
-      <!-- Headline -->
       <h2>ChangeWise</h2>
 
-      <!-- Subline -->
       <p class="tool-role">
         Richtung<br>
         in Story &amp; Wandel.
       </p>
 
-               <!-- Ideal-Abschnitt (5 feste Zeilen, ohne Leerzeilen) -->
       <div class="tile-body">
         <span class="cw-ideal-line">Ideal, wenn du für Projekte</span>
         <span class="cw-ideal-line">oder interne Abstimmungen</span>
@@ -370,7 +344,6 @@
         <span class="cw-ideal-line">ohne lange Vorarbeit.</span>
       </div>
 
-      <!-- Bullet-Blöcke (bitte so lassen, die sind korrekt) -->
       <ul class="micro">
         <li>
           Kernbotschaft &amp; Ton<br>
@@ -384,16 +357,14 @@
           <span class="goto-benefits" role="link" tabindex="0"
             onclick="event.preventDefault(); event.stopPropagation(); location.href='/products/changewise/#card-benefits';"
             onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); event.stopPropagation(); location.href='/products/changewise/#card-benefits';}">
-           Vorteile ansehen →
+            Vorteile ansehen →
           </span>
         </li>
       </ul>
 
-        <span class="btn">Zur Produktseite</span>
-      </div>
-
+      <span class="btn">Zur Produktseite</span>
     </a>
- </div>
+  </div>
 
   <section class="suite">
     <p class="suite-title">
