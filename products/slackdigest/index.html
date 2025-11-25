@@ -253,7 +253,12 @@ function __toggleNav(){
           <li>Portabel: E-Mail oder Slack, kein Lock-in.</li>
         </ul>
       </details>
-    </article>
+      <p class="benefit-link">
+    <a href="/products/slackdigest/getting-started.html">
+      Zum Beispiel-Digest →
+    </a>
+  </p>
+</article>
 
     <!-- 4 – jetzt letzte Karte: Status & Kontakt -->
     <article class="card">
@@ -302,20 +307,49 @@ function __toggleNav(){
   </footer>
 
 <!-- Benefits Auto-open (A) -->
- <script>
+<script>
+/* Deep-link “Show benefits”: only show Benefits card, hide hero & other cards */
 (function(){
-  var hash = (location.hash||"").toLowerCase();
-  if(!hash || (hash!=='#benefits' && hash!=='#card-benefits')) return;
+  var raw = location.hash;
+  if (!raw || raw === "#" || raw === "#!") return;
+  var hash = raw.toLowerCase();
 
-  var card = document.getElementById('card-benefits');
-  if(!card) return;
+  var wanted = [
+    "#benefits",
+    "#card-benefits",
+    "#benefits-slackdigest",
+    "#show-benefits"
+  ];
+  if (wanted.indexOf(hash) === -1) return;
 
-  var det = card.querySelector('details');
-  if(det && !det.open) det.open = true;
+  var card = document.getElementById("card-benefits");
+  if (!card) return;
 
-  try { card.scrollIntoView({behavior:'instant', block:'start'}); }
-  catch(e){ card.scrollIntoView(); }
+  // Hero komplett ausblenden
+  var hero = document.querySelector(".hero");
+  if (hero) hero.style.display = "none";
+
+  // Alle anderen Cards ausblenden
+  var cards = document.querySelectorAll(".card");
+  cards.forEach(function(node){
+    if (node !== card) {
+      node.style.display = "none";
+    }
+  });
+
+  // ggf. details öffnen
+  var det = card.querySelector("details");
+  if (det && !det.open) det.open = true;
+
+  // Hash auf tatsächliche ID setzen
+  if (location.hash !== "#" + card.id) {
+    history.replaceState(null, "", "#" + card.id);
+  }
+
+  // Karte nach oben scrollen
+  card.scrollIntoView({behavior:"instant", block:"start"});
 })();
 </script>
+
 </body>
 </html>
