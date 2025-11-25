@@ -423,10 +423,10 @@
     var hero = document.getElementById("ts-hero");
     if (hero) hero.style.display = "none";
 
-    var grid = document.getElementById("ts-grid");
+       var grid = document.getElementById("ts-grid");
     if (grid){
       Array.from(grid.children).forEach(function(node){
-        if (node !== card && node.offsetTop < card.offsetTop) {
+        if (node !== card) {
           node.style.display = "none";
         }
       });
