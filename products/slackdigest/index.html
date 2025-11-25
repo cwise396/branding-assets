@@ -313,7 +313,7 @@ function __toggleNav(){
     if (!raw || raw === "#" || raw === "#!") return;
     var hash = raw.toLowerCase();
 
-    // Erlaubte Anker
+    // erlaubte Anker
     var wanted = [
       "#benefits",
       "#card-benefits",
@@ -321,18 +321,19 @@ function __toggleNav(){
     ];
     if (wanted.indexOf(hash) === -1) return;
 
-    // Vorteile-Karte finden (id="card-benefits")
+    // Vorteile-Karte finden
     var card = document.getElementById("card-benefits");
     if (!card) return;
 
-    // Hero ausblenden (es gibt auf der Seite nur einen .hero)
+    // Hero ausblenden (.hero ist das <main class="hero"> oben)
     var hero = document.querySelector(".hero");
     if (hero) hero.style.display = "none";
 
-    // Grid mit den Karten finden (erste .grid auf der Seite)
+    // Grid mit den Karten (erste .grid auf der Seite)
     var grid = document.querySelector(".grid");
     if (grid){
-      Array.from(grid.children).forEach(function(node){
+      var cards = grid.querySelectorAll(".card");
+      cards.forEach(function(node){
         if (node !== card){
           node.style.display = "none";
         }
@@ -343,7 +344,7 @@ function __toggleNav(){
     var det = card.querySelector("details");
     if (det && !det.open) det.open = true;
 
-    // Hash auf die tatsächliche ID korrigieren, damit :target etc. sauber sind
+    // Hash auf die tatsächliche ID korrigieren
     if (location.hash !== "#" + card.id){
       history.replaceState(null, "", "#" + card.id);
     }
@@ -357,7 +358,5 @@ function __toggleNav(){
     }
   })();
 </script>
-
-
 </body>
 </html>
