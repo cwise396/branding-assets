@@ -419,7 +419,7 @@ function __toggleNav(){var l=document.getElementById('navLinks');if(!l)return;va
     </article>
 
     <!-- Combined card: Where it works & what's included (EN) -->
-    <article class="card">
+    <article class="card" id="card-where-cw-en">
       <h3>Where it works &amp; what it delivers</h3>
 
       <p><strong>Where it works</strong></p>
@@ -468,8 +468,8 @@ function __toggleNav(){var l=document.getElementById('navLinks');if(!l)return;va
     </article>
 
     <!-- Status & contact – jetzt bewusst letzte Karte -->
-    <article class="card">
-      <h3>Status &amp; contact</h3>
+   <article class="card" id="card-status-cw-en">
+  <h3>Status &amp; contact</h3>
       <p>
         <strong>Ready to start.</strong>
         Perfect if you need clear messaging and direction for upcoming projects or internal alignment — with minimal prep.
@@ -521,7 +521,6 @@ function __toggleNav(){var l=document.getElementById('navLinks');if(!l)return;va
     <small>© ChangeWise • SlackDigest • TaskSieve</small>
   </div>
 </footer>
-
 <script>
   (function(){
     var raw = location.hash;
@@ -538,36 +537,38 @@ function __toggleNav(){var l=document.getElementById('navLinks');if(!l)return;va
     ];
     if (wanted.indexOf(hash) === -1) return;
 
-    // Find benefits card (ChangeWise EN)
-    var card = document.getElementById("card-benefits-cw-en") ||
-               document.getElementById("card-benefits");
-    if (!card) return;
-
     // Hide hero (first .hero on page)
     var hero = document.querySelector(".hero");
     if (hero) hero.style.display = "none";
 
-    // Inside the grid: hide all cards *above* the benefits card
+    // Only keep three cards in the grid
     var grid = document.querySelector(".grid");
-    if (grid){
-      var baseTop = card.offsetTop;
-      Array.from(grid.children).forEach(function(node){
-        if (node.offsetTop < baseTop){
-          node.style.display = "none";
-        }
-      });
-    }
+    if (!grid) return;
 
-    // Open details section in benefits card, if present
+    var keepIds = {
+      "card-where-cw-en": true,
+      "card-benefits-cw-en": true,
+      "card-status-cw-en": true
+    };
+
+    Array.from(grid.children).forEach(function(node){
+      if (!node.id || !keepIds[node.id]) {
+        node.style.display = "none";
+      }
+    });
+
+    // Focus benefits card
+    var card = document.getElementById("card-benefits-cw-en") ||
+               document.getElementById("card-benefits");
+    if (!card) return;
+
     var det = card.querySelector("details");
     if (det && !det.open) det.open = true;
 
-    // Normalize hash
     if (location.hash !== "#" + card.id){
       history.replaceState(null, "", "#" + card.id);
     }
 
-    // Scroll to the card
     try{
       card.scrollIntoView({behavior:"instant", block:"start"});
       window.scrollBy(0, -16);
@@ -576,6 +577,7 @@ function __toggleNav(){var l=document.getElementById('navLinks');if(!l)return;va
     }
   })();
 </script>
+
 
 
 <script>
