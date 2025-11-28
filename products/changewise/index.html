@@ -262,7 +262,12 @@ function __toggleNav(){
           <li>Kein Lock-in, vollständig portabel.</li>
         </ul>
       </details>
-    </article>
+      <p class="benefit-link">
+    <a href="/contact_changewise.html">
+      Kurz-Briefing &amp; Mini-Diagnose →
+    </a>
+  </p>
+</article>
 
     <!-- Card 4: Status & Kontakt – jetzt bewusst letzte Karte -->
     <article class="card">
@@ -310,54 +315,61 @@ function __toggleNav(){
     </div>
   </footer>
 
-<!-- einziges Deep-Link-Skript: öffnet nur Vorteile + scrollt etwas höher -->
- <script>
-(function(){
-  // Nur reagieren, wenn Vorteile-Hash gesetzt ist
-  var hash = (location.hash || "").toLowerCase();
-  var wanted = ['#benefits','#card-benefits','#benefits-changewise','#vorteile'];
-  if (wanted.indexOf(hash) === -1) {
-    // Sicherheitsgurt: nie im Benefits-Modus bleiben, wenn kein Hash
-    document.body.classList.remove('cw-benefits-only');
-    return;
-  }
+<script>
+  (function(){
+    var raw = location.hash;
+    if (!raw || raw === "#" || raw === "#!") return;
+    var hash = raw.toLowerCase();
 
-  var grid = document.querySelector('.section-cards .grid');
-  if (!grid) return;
+    // Erlaubte Anker von Home aus
+    var wanted = [
+      "#benefits",
+      "#card-benefits",
+      "#card-benefits-cw-de",
+      "#benefits-changewise",
+      "#show-benefits"
+    ];
+    if (wanted.indexOf(hash) === -1) return;
 
-  // Vorteile-Karte robust finden
-  var benefits =
-      document.getElementById('card-benefits-cw-de') ||
-      document.getElementById('card-benefits') ||
-      grid.querySelector('[id*="benefits"]');
-  if (!benefits) return;
+    // Vorteile-Karte finden (ChangeWise DE)
+    var card = document.getElementById("card-benefits-cw-de") ||
+               document.getElementById("card-benefits");
+    if (!card) return;
 
-  // Jetzt erst in den Modus gehen
-  document.body.classList.add('cw-benefits-only');
+    // Hero ausblenden (erste .hero auf der Seite)
+    var hero = document.querySelector(".hero");
+    if (hero) hero.style.display = "none";
 
-  // Alle Karten per JS ausblenden (CSS versteckt NICHT mehr pauschal)
-  var cards = Array.prototype.slice.call(grid.querySelectorAll('.card'));
-  cards.forEach(function(c){ c.style.display = 'none'; });
+    // Grid: nur die unteren 3 Karten (ab Vorteile) anzeigen
+    var grid = document.querySelector(".grid");
+    if (grid){
+      var baseTop = card.offsetTop;
+      Array.from(grid.children).forEach(function(node){
+        // Alles, was oberhalb der Vorteile-Karte liegt, ausblenden
+        if (node.offsetTop < baseTop){
+          node.style.display = "none";
+        }
+      });
+    }
 
-  // Nur Vorteile + zwei direkte Vorgänger anzeigen (unten 3 Karten)
-  var toShow = [benefits];
-  var prev = benefits.previousElementSibling;
-  while (prev && toShow.length < 3) {
-    if (prev.classList && prev.classList.contains('card')) toShow.unshift(prev);
-    prev = prev.previousElementSibling;
-  }
-  toShow.forEach(function(c){ c.style.display = 'block'; });
+    // Details innerhalb der Vorteile-Karte öffnen (falls vorhanden)
+    var det = card.querySelector("details");
+    if (det && !det.open) det.open = true;
 
-  // Details in Vorteile öffnen
-  var det = benefits.querySelector('details');
-  if (det && !det.open) det.open = true;
+    // Hash auf die tatsächliche ID der Vorteile-Karte normieren
+    if (location.hash !== "#" + card.id){
+      history.replaceState(null, "", "#" + card.id);
+    }
 
-  // Sauber unter der Nav positionieren
-  try { benefits.scrollIntoView({behavior:'instant', block:'start'}); }
-  catch(e){ benefits.scrollIntoView(); }
-})();
+    // Zu der Karte scrollen
+    try{
+      card.scrollIntoView({behavior:"instant", block:"start"});
+      window.scrollBy(0, -16);
+    }catch(e){
+      card.scrollIntoView();
+    }
+  })();
 </script>
-
 
 <script>
 function __toggleNav(){
