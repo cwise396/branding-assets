@@ -387,13 +387,13 @@
   </footer>
 
 <script>
-  /* Deep-link „Vorteile zeigen“: Hero + obere Karten ausblenden, untere 3 sichtbar lassen */
+  /* Deep-link „Vorteile zeigen“: Hero ausblenden, nur die 3 unteren Karten anzeigen */
   (function(){
     var raw = location.hash;
     if (!raw || raw === "#" || raw === "#!") return;
     var hash = raw.toLowerCase();
 
-    // erlaubte Anker von der Home-Kachel
+    // Erlaubte Hashes, auf die wir reagieren
     var wanted = [
       "#benefits",
       "#card-benefits",
@@ -403,27 +403,32 @@
     ];
     if (wanted.indexOf(hash) === -1) return;
 
-    // Vorteile-Karte (TaskSieve DE)
-    var card = document.getElementById("card-benefits-ts-de") ||
-               document.getElementById("card-benefits");
-    if (!card) return;
-
     // Hero ausblenden
     var hero = document.getElementById("ts-hero") || document.querySelector(".hero");
     if (hero) hero.style.display = "none";
 
-    // Grid mit allen Karten
+    // Grid mit allen Karten holen
     var grid = document.getElementById("ts-grid") || document.querySelector(".grid");
-    if (grid){
-      Array.from(grid.children).forEach(function(node){
-        // Alle Karten, die VOR der Vorteile-Karte liegen, ausblenden
-        if (node.offsetTop < card.offsetTop){
-          node.style.display = "none";
-        }
-      });
-    }
+    if (!grid) return;
 
-    // "mehr"-Details in der Vorteile-Karte öffnen
+    var cards = Array.from(grid.children);
+    var total = cards.length;
+
+    // Wenn es weniger als 3 Karten wären, machen wir nichts
+    if (total <= 3) return;
+
+    // Alle Karten außer den letzten 3 ausblenden
+    cards.forEach(function(node, idx){
+      if (idx < total - 3){
+        node.style.display = "none";
+      }
+    });
+
+    // Vorteile-Karte finden und Details öffnen
+    var card = document.getElementById("card-benefits-ts-de") ||
+               document.getElementById("card-benefits");
+    if (!card) return;
+
     var det = card.querySelector("details");
     if (det && !det.open) det.open = true;
 
@@ -432,7 +437,7 @@
       history.replaceState(null, "", "#" + card.id);
     }
 
-    // Zu der Karte scrollen
+    // Zur Karte scrollen
     try{
       card.scrollIntoView({behavior:"instant", block:"start"});
       window.scrollBy(0, -16);
@@ -441,6 +446,7 @@
     }
   })();
 </script>
+
 
 
   <script>
