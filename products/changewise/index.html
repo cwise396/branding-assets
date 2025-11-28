@@ -222,7 +222,7 @@ function __toggleNav(){
     </article>
 
     <!-- Card 5 (jetzt vorgezogen) -->
-    <article class="card">
+   <article class="card" id="card-where-cw-de">
       <h3>Wo es wirkt &amp; was es liefert</h3>
 
       <p><strong>Wo es wirkt</strong></p>
@@ -270,8 +270,8 @@ function __toggleNav(){
 </article>
 
     <!-- Card 4: Status & Kontakt – jetzt bewusst letzte Karte -->
-    <article class="card">
-      <h3>Status &amp; Kontakt</h3>
+    <article class="card" id="card-status-cw-de">
+  <h3>Status &amp; Kontakt</h3>
       <p>
         <strong>Bereit zum Start.</strong>
         Ideal, wenn du für kommende Projekte oder interne Abstimmungen klare Botschaften
@@ -321,7 +321,7 @@ function __toggleNav(){
     if (!raw || raw === "#" || raw === "#!") return;
     var hash = raw.toLowerCase();
 
-    // Erlaubte Anker von Home aus
+    // Erlaubte Anker
     var wanted = [
       "#benefits",
       "#card-benefits",
@@ -331,37 +331,42 @@ function __toggleNav(){
     ];
     if (wanted.indexOf(hash) === -1) return;
 
-    // Vorteile-Karte finden (ChangeWise DE)
+    // Hero ausblenden
+    var hero = document.querySelector(".hero");
+    if (hero) hero.style.display = "none";
+
+    // Grid holen
+    var grid = document.querySelector(".grid");
+    if (!grid) return;
+
+    // Exakt diese drei Karten behalten
+    var keepIds = {
+      "card-where-cw-de": true,
+      "card-benefits-cw-de": true,
+      "card-status-cw-de": true
+    };
+
+    Array.from(grid.children).forEach(function(node){
+      if (!node.id || !keepIds[node.id]) {
+        node.style.display = "none";
+      }
+    });
+
+    // Vorteile-Karte fokussieren
     var card = document.getElementById("card-benefits-cw-de") ||
                document.getElementById("card-benefits");
     if (!card) return;
 
-    // Hero ausblenden (erste .hero auf der Seite)
-    var hero = document.querySelector(".hero");
-    if (hero) hero.style.display = "none";
-
-    // Grid: nur die unteren 3 Karten (ab Vorteile) anzeigen
-    var grid = document.querySelector(".grid");
-    if (grid){
-      var baseTop = card.offsetTop;
-      Array.from(grid.children).forEach(function(node){
-        // Alles, was oberhalb der Vorteile-Karte liegt, ausblenden
-        if (node.offsetTop < baseTop){
-          node.style.display = "none";
-        }
-      });
-    }
-
-    // Details innerhalb der Vorteile-Karte öffnen (falls vorhanden)
+    // Details öffnen
     var det = card.querySelector("details");
     if (det && !det.open) det.open = true;
 
-    // Hash auf die tatsächliche ID der Vorteile-Karte normieren
+    // Hash normalisieren
     if (location.hash !== "#" + card.id){
       history.replaceState(null, "", "#" + card.id);
     }
 
-    // Zu der Karte scrollen
+    // Scrollen
     try{
       card.scrollIntoView({behavior:"instant", block:"start"});
       window.scrollBy(0, -16);
@@ -370,6 +375,7 @@ function __toggleNav(){
     }
   })();
 </script>
+
 
 <script>
 function __toggleNav(){
