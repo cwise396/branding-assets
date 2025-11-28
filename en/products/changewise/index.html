@@ -442,7 +442,7 @@ function __toggleNav(){var l=document.getElementById('navLinks');if(!l)return;va
     </article>
 
     <!-- Benefits -->
-    <article class="card" id="card-benefits-en">
+   <article class="card" id="card-benefits-cw-en">
       <h3>Benefits</h3>
       <ul>
         <li><strong>Quick start</strong> → workshop, prototype, rollout.</li>
@@ -460,6 +460,11 @@ function __toggleNav(){var l=document.getElementById('navLinks');if(!l)return;va
           <li>Portable, no lock-in.</li>
         </ul>
       </details>
+      <p class="benefit-link">
+    <a href="/en/contact_changewise.html">
+      Quick brief &amp; mini diagnosis →
+    </a>
+  </p>
     </article>
 
     <!-- Status & contact – jetzt bewusst letzte Karte -->
@@ -517,38 +522,61 @@ function __toggleNav(){var l=document.getElementById('navLinks');if(!l)return;va
   </div>
 </footer>
 
-  <script>
-(function(){
-  function run(){
-    var hash=(location.hash||"").toLowerCase();
-    // Nur reagieren, wenn #benefits ODER #card-benefits angefordert ist
-    if(!hash || (hash!=='#benefits' && hash!=='#card-benefits')) return;
+<script>
+  (function(){
+    var raw = location.hash;
+    if (!raw || raw === "#" || raw === "#!") return;
+    var hash = raw.toLowerCase();
 
-    // Karte finden (Standard-ID; optional Fallback, falls noch -en existiert)
-    var card=document.getElementById('card-benefits') || document.getElementById('card-benefits-en');
-    if(!card) return;
+    // Allowed anchors
+    var wanted = [
+      "#benefits",
+      "#card-benefits",
+      "#card-benefits-cw-en",
+      "#benefits-changewise",
+      "#show-benefits"
+    ];
+    if (wanted.indexOf(hash) === -1) return;
 
-    // Details in der Karte öffnen
-    var d=card.querySelector('details');
-    if(d && !d.open) d.open=true;
+    // Find benefits card (ChangeWise EN)
+    var card = document.getElementById("card-benefits-cw-en") ||
+               document.getElementById("card-benefits");
+    if (!card) return;
 
-    // :target sicher aktivieren (weiße Outline) -> Hash auf tatsächliche ID der Karte setzen
-    var targetId = card.id; // 'card-benefits' (oder evtl. noch '-en')
-    if(location.hash !== '#'+targetId){
-      history.replaceState(null,'','#'+targetId);
+    // Hide hero (first .hero on page)
+    var hero = document.querySelector(".hero");
+    if (hero) hero.style.display = "none";
+
+    // Inside the grid: hide all cards *above* the benefits card
+    var grid = document.querySelector(".grid");
+    if (grid){
+      var baseTop = card.offsetTop;
+      Array.from(grid.children).forEach(function(node){
+        if (node.offsetTop < baseTop){
+          node.style.display = "none";
+        }
+      });
     }
 
-    // Karte mittig scrollen
-    card.scrollIntoView({behavior:'instant', block:'center'});
-  }
+    // Open details section in benefits card, if present
+    var det = card.querySelector("details");
+    if (det && !det.open) det.open = true;
 
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', run);
-  } else {
-    run();
-  }
-})();
+    // Normalize hash
+    if (location.hash !== "#" + card.id){
+      history.replaceState(null, "", "#" + card.id);
+    }
+
+    // Scroll to the card
+    try{
+      card.scrollIntoView({behavior:"instant", block:"start"});
+      window.scrollBy(0, -16);
+    }catch(e){
+      card.scrollIntoView();
+    }
+  })();
 </script>
+
 
 <script>
 function __toggleNav(){
