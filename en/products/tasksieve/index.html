@@ -400,8 +400,8 @@
   <small>© ChangeWise · SlackDigest · TaskSieve</small>
 </footer>
 
-  <script>
-  /* Deep-link “Show benefits”: show the benefits card, hide hero/cards above */
+<script>
+  /* Deep-link “Show benefits”: hide hero + top cards, keep bottom 3 cards */
   (function(){
     var raw = location.hash;
     if (!raw || raw === "#" || raw === "#!") return;
@@ -416,32 +416,44 @@
     ];
     if (wanted.indexOf(hash) === -1) return;
 
+    // Benefits card (TaskSieve EN)
     var card = document.getElementById("card-benefits-ts-en") ||
                document.getElementById("card-benefits");
     if (!card) return;
 
-    var hero = document.getElementById("ts-hero");
+    // Hide hero
+    var hero = document.getElementById("ts-hero") || document.querySelector(".hero");
     if (hero) hero.style.display = "none";
 
-    var grid = document.getElementById("ts-grid");
+    // Grid with all cards
+    var grid = document.getElementById("ts-grid") || document.querySelector(".grid");
     if (grid){
       Array.from(grid.children).forEach(function(node){
-        if (node !== card && node.offsetTop < card.offsetTop) {
+        // hide cards that are visually above the benefits card
+        if (node.offsetTop < card.offsetTop){
           node.style.display = "none";
         }
       });
     }
 
+    // open details inside benefits card
     var det = card.querySelector("details");
     if (det && !det.open) det.open = true;
 
-    if (location.hash !== "#" + card.id) {
+    // normalize hash
+    if (location.hash !== "#" + card.id){
       history.replaceState(null, "", "#" + card.id);
     }
-    card.scrollIntoView({behavior:"instant", block:"start"});
-    try { window.scrollBy(0, -16); } catch(e){}
+
+    try{
+      card.scrollIntoView({behavior:"instant", block:"start"});
+      window.scrollBy(0, -16);
+    }catch(e){
+      card.scrollIntoView();
+    }
   })();
-  </script>
+</script>
+
 
   <script>
   function __toggleNav(){
