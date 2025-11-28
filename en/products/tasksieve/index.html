@@ -356,12 +356,6 @@
             <li>Order that makes sense – easy to explain at any time.</li>
           </ul>
         </details>
-       <p class="benefit-link">
-    <a href="/en/products/tasksieve/getting-started.html">
-      See prioritized inbox →
-    </a>
-  </p>
- 
       </article>
 
       <!-- Card 6: Status & contact -->
@@ -429,10 +423,10 @@
     var hero = document.getElementById("ts-hero");
     if (hero) hero.style.display = "none";
 
-       var grid = document.getElementById("ts-grid");
+    var grid = document.getElementById("ts-grid");
     if (grid){
       Array.from(grid.children).forEach(function(node){
-        if (node !== card) {
+        if (node !== card && node.offsetTop < card.offsetTop) {
           node.style.display = "none";
         }
       });
