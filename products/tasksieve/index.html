@@ -342,12 +342,6 @@
           <li>Klare Reihenfolge – jederzeit nachvollziehbar.</li>
         </ul>
       </details>
-      <p class="benefit-link">
-    <a href="/products/tasksieve/getting-started.html">
-      Priorisierte Inbox ansehen →
-    </a>
-  </p>
-
     </article>
 
     <!-- Status & Kontakt – jetzt bewusst letzte Karte -->
@@ -415,16 +409,16 @@
     var hero = document.getElementById("ts-hero");
     if (hero) hero.style.display = "none";
 
-        var grid = document.getElementById("ts-grid");
+    var grid = document.getElementById("ts-grid");
     if (grid){
       Array.from(grid.children).forEach(function(node){
-        if (node !== card) {
+        if (node !== card && node.offsetTop < card.offsetTop) {
           node.style.display = "none";
         }
       });
     }
 
-       var det = card.querySelector("details");
+    var det = card.querySelector("details");
     if (det && !det.open) det.open = true;
 
     if (location.hash !== "#" + card.id) {
