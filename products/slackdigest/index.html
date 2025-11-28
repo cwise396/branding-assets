@@ -253,12 +253,7 @@ function __toggleNav(){
           <li>Portabel: E-Mail oder Slack, kein Lock-in.</li>
         </ul>
       </details>
-      <p class="benefit-link">
-    <a href="/products/slackdigest/getting-started.html">
-      Zum Beispiel-Digest →
-    </a>
-  </p>
-</article>
+    </article>
 
     <!-- 4 – jetzt letzte Karte: Status & Kontakt -->
     <article class="card">
@@ -307,56 +302,20 @@ function __toggleNav(){
   </footer>
 
 <!-- Benefits Auto-open (A) -->
-<script>
-  (function(){
-    var raw = location.hash;
-    if (!raw || raw === "#" || raw === "#!") return;
-    var hash = raw.toLowerCase();
+ <script>
+(function(){
+  var hash = (location.hash||"").toLowerCase();
+  if(!hash || (hash!=='#benefits' && hash!=='#card-benefits')) return;
 
-    // erlaubte Anker
-    var wanted = [
-      "#benefits",
-      "#card-benefits",
-      "#show-benefits"
-    ];
-    if (wanted.indexOf(hash) === -1) return;
+  var card = document.getElementById('card-benefits');
+  if(!card) return;
 
-    // Vorteile-Karte finden
-    var card = document.getElementById("card-benefits");
-    if (!card) return;
+  var det = card.querySelector('details');
+  if(det && !det.open) det.open = true;
 
-    // Hero ausblenden (.hero ist das <main class="hero"> oben)
-    var hero = document.querySelector(".hero");
-    if (hero) hero.style.display = "none";
-
-    // Grid mit den Karten (erste .grid auf der Seite)
-    var grid = document.querySelector(".grid");
-    if (grid){
-      var cards = grid.querySelectorAll(".card");
-      cards.forEach(function(node){
-        if (node !== card){
-          node.style.display = "none";
-        }
-      });
-    }
-
-    // Details in der Vorteile-Karte öffnen (falls vorhanden)
-    var det = card.querySelector("details");
-    if (det && !det.open) det.open = true;
-
-    // Hash auf die tatsächliche ID korrigieren
-    if (location.hash !== "#" + card.id){
-      history.replaceState(null, "", "#" + card.id);
-    }
-
-    // Zu der Karte scrollen
-    try{
-      card.scrollIntoView({behavior:"instant", block:"start"});
-      window.scrollBy(0, -16);
-    }catch(e){
-      card.scrollIntoView();
-    }
-  })();
+  try { card.scrollIntoView({behavior:'instant', block:'start'}); }
+  catch(e){ card.scrollIntoView(); }
+})();
 </script>
 </body>
 </html>
