@@ -386,13 +386,14 @@
     </div>
   </footer>
 
-   <script>
-  /* Deep-link „Vorteile zeigen“: nur untere 3 Karten zeigen, Hero ausblenden */
+<script>
+  /* Deep-link „Vorteile zeigen“: Hero + obere Karten ausblenden, untere 3 sichtbar lassen */
   (function(){
     var raw = location.hash;
     if (!raw || raw === "#" || raw === "#!") return;
     var hash = raw.toLowerCase();
 
+    // erlaubte Anker von der Home-Kachel
     var wanted = [
       "#benefits",
       "#card-benefits",
@@ -402,32 +403,45 @@
     ];
     if (wanted.indexOf(hash) === -1) return;
 
+    // Vorteile-Karte (TaskSieve DE)
     var card = document.getElementById("card-benefits-ts-de") ||
                document.getElementById("card-benefits");
     if (!card) return;
 
-    var hero = document.getElementById("ts-hero");
+    // Hero ausblenden
+    var hero = document.getElementById("ts-hero") || document.querySelector(".hero");
     if (hero) hero.style.display = "none";
 
-    var grid = document.getElementById("ts-grid");
+    // Grid mit allen Karten
+    var grid = document.getElementById("ts-grid") || document.querySelector(".grid");
     if (grid){
       Array.from(grid.children).forEach(function(node){
-        if (node !== card && node.offsetTop < card.offsetTop) {
+        // Alle Karten, die VOR der Vorteile-Karte liegen, ausblenden
+        if (node.offsetTop < card.offsetTop){
           node.style.display = "none";
         }
       });
     }
 
+    // "mehr"-Details in der Vorteile-Karte öffnen
     var det = card.querySelector("details");
     if (det && !det.open) det.open = true;
 
-    if (location.hash !== "#" + card.id) {
+    // Hash auf die tatsächliche ID korrigieren
+    if (location.hash !== "#" + card.id){
       history.replaceState(null, "", "#" + card.id);
     }
-    card.scrollIntoView({behavior:"instant", block:"start"});
-    try { window.scrollBy(0, -16); } catch(e){}
+
+    // Zu der Karte scrollen
+    try{
+      card.scrollIntoView({behavior:"instant", block:"start"});
+      window.scrollBy(0, -16);
+    }catch(e){
+      card.scrollIntoView();
+    }
   })();
-  </script>
+</script>
+
 
   <script>
   function __toggleNav(){
