@@ -272,7 +272,7 @@
       <ul>
         <li>Pick your channels and cadence.</li>
         <li>SlackDigest condenses automatically.</li>
-        <li>You get what matters – done.</li>
+        <li>You get what matters first – done.</li>
       </ul>
     </article>
 
@@ -322,12 +322,7 @@
           <li>Portable: email or Slack, no lock-in.</li>
         </ul>
       </details>
-      <p class="benefit-link">
-    <a href="/en/products/slackdigest/getting-started.html">
-      See how it works →
-    </a>
-  </p>
-</article>
+    </article>
 
     <!-- Status & contact – jetzt letzte Karte -->
     <article class="card">
@@ -371,56 +366,45 @@
 </footer>
 
 
-<script>
-  (function(){
-    var raw = location.hash;
-    if (!raw || raw === "#" || raw === "#!") return;
-    var hash = raw.toLowerCase();
+        <script>
+(function(){
+  function run(){
+    var hash=(location.hash||"").toLowerCase();
+    // Nur reagieren, wenn #benefits ODER #card-benefits angefordert ist
+    if(!hash || (hash!=='#benefits' && hash!=='#card-benefits')) return;
 
-    // Erlaubte Anker
-    var wanted = [
-      "#benefits",
-      "#card-benefits",
-      "#show-benefits"
-    ];
-    if (wanted.indexOf(hash) === -1) return;
+    // Karte finden (Standard-ID; optional Fallback, falls noch -en existiert)
+    var card=document.getElementById('card-benefits') || document.getElementById('card-benefits-en');
+    if(!card) return;
 
-    // Vorteile-Karte finden (id="card-benefits")
-    var card = document.getElementById("card-benefits");
-    if (!card) return;
+    // Details in der Karte öffnen
+    var d=card.querySelector('details');
+    if(d && !d.open) d.open=true;
 
-    // Hero ausblenden (es gibt auf der Seite nur einen .hero)
-    var hero = document.querySelector(".hero");
-    if (hero) hero.style.display = "none";
-
-    // Grid mit den Karten finden (erste .grid auf der Seite)
-    var grid = document.querySelector(".grid");
-    if (grid){
-      Array.from(grid.children).forEach(function(node){
-        if (node !== card){
-          node.style.display = "none";
-        }
-      });
+    // :target sicher aktivieren (weiße Outline) -> Hash auf tatsächliche ID der Karte setzen
+    var targetId = card.id; // 'card-benefits' (oder evtl. noch '-en')
+    if(location.hash !== '#'+targetId){
+      history.replaceState(null,'','#'+targetId);
     }
 
-    // Details in der Vorteile-Karte öffnen (falls vorhanden)
-    var det = card.querySelector("details");
-    if (det && !det.open) det.open = true;
+    // Karte mittig scrollen
+    card.scrollIntoView({behavior:'instant', block:'center'});
+  }
 
-    // Hash auf die tatsächliche ID korrigieren, damit :target etc. sauber sind
-    if (location.hash !== "#" + card.id){
-      history.replaceState(null, "", "#" + card.id);
-    }
-
-    // Zu der Karte scrollen
-    try{
-      card.scrollIntoView({behavior:"instant", block:"start"});
-      window.scrollBy(0, -16);
-    }catch(e){
-      card.scrollIntoView();
-    }
-  })();
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
+})();
 </script>
 
+<script>
+function __toggleNav(){
+  var l=document.getElementById('navLinks'); if(!l) return;
+  var open=l.classList.toggle('open');
+  var t=document.getElementById('navToggle'); if(t) t.setAttribute('aria-expanded', open?'true':'false');
+}
+</script>
 </body>
 </html>
