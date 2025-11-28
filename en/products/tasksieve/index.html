@@ -401,7 +401,7 @@
 </footer>
 
 <script>
-  /* Deep-link “Show benefits”: hide hero + top cards, keep bottom 3 cards */
+  /* Deep-link “Show benefits”: hide hero, only keep the bottom 3 cards */
   (function(){
     var raw = location.hash;
     if (!raw || raw === "#" || raw === "#!") return;
@@ -416,31 +416,29 @@
     ];
     if (wanted.indexOf(hash) === -1) return;
 
-    // Benefits card (TaskSieve EN)
+    var hero = document.getElementById("ts-hero") || document.querySelector(".hero");
+    if (hero) hero.style.display = "none";
+
+    var grid = document.getElementById("ts-grid") || document.querySelector(".grid");
+    if (!grid) return;
+
+    var cards = Array.from(grid.children);
+    var total = cards.length;
+    if (total <= 3) return;
+
+    cards.forEach(function(node, idx){
+      if (idx < total - 3){
+        node.style.display = "none";
+      }
+    });
+
     var card = document.getElementById("card-benefits-ts-en") ||
                document.getElementById("card-benefits");
     if (!card) return;
 
-    // Hide hero
-    var hero = document.getElementById("ts-hero") || document.querySelector(".hero");
-    if (hero) hero.style.display = "none";
-
-    // Grid with all cards
-    var grid = document.getElementById("ts-grid") || document.querySelector(".grid");
-    if (grid){
-      Array.from(grid.children).forEach(function(node){
-        // hide cards that are visually above the benefits card
-        if (node.offsetTop < card.offsetTop){
-          node.style.display = "none";
-        }
-      });
-    }
-
-    // open details inside benefits card
     var det = card.querySelector("details");
     if (det && !det.open) det.open = true;
 
-    // normalize hash
     if (location.hash !== "#" + card.id){
       history.replaceState(null, "", "#" + card.id);
     }
@@ -453,6 +451,7 @@
     }
   })();
 </script>
+
 
 
   <script>
