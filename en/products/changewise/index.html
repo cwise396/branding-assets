@@ -572,7 +572,8 @@ if (heroHeader) heroHeader.style.display = "none";
 
     try{
   card.scrollIntoView({behavior:"instant", block:"start"});
-}catch(e){
+  window.scrollBy(0, -40);
+  }catch(e){
   card.scrollIntoView();
 }
   })();
