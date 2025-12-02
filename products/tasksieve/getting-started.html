@@ -28,12 +28,15 @@
     }
     a{color:#FFFFFF;text-decoration:none}
 
+        /* NAV mit Burger */
     .site-header{
       position:sticky;
       top:0;
       z-index:50;
+      width:100%;
       background:var(--nav-red);
     }
+    .nav{ background:var(--nav-red); }
     .nav-inner{
       max-width:var(--container);
       margin:0 auto;
@@ -42,6 +45,45 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
+    }
+    .brand{
+      color:#FFFFFF;
+      font-weight:800;
+      white-space:nowrap;
+    }
+    .nav-links{
+      list-style:none;
+      display:flex;
+      gap:1rem;
+      margin:0;
+      padding:0;
+      align-items:center;
+    }
+    .nav-links a{ color:#FFFFFF; }
+    .nav-toggle{
+      display:none;
+      background:none;
+      border:0;
+      color:#FFFFFF;
+      font-size:1.2rem;
+    }
+
+    @media (max-width:980px){
+      .nav-inner{ position:relative; height:auto; min-height:12mm; padding-block:.4rem; }
+      .nav-links{
+        display:none;
+        position:absolute;
+        top:100%;
+        left:0;
+        right:0;
+        background:var(--nav-red);
+        padding:1rem;
+        margin:0;
+        flex-direction:column;
+        gap:.6rem;
+      }
+      .nav-links.open{ display:flex; }
+      .nav-toggle{ display:inline-block; }
     }
 
     .hero{color:#fff;padding-top:11mm}
@@ -147,15 +189,24 @@
 <body>
 
 <header class="site-header">
-  <nav>
+  <nav class="nav" role="navigation" aria-label="Main">
     <div class="nav-inner">
       <a class="brand" href="/">Home</a>
-      <ul class="nav-links" style="list-style:none;display:flex;gap:1rem;margin:0;padding:0;align-items:center">
+      <ul class="nav-links" id="navLinks">
         <li><a href="/products/changewise/">ChangeWise</a></li>
         <li><a href="/products/slackdigest/">SlackDigest</a></li>
         <li><a href="/products/tasksieve/">TaskSieve</a></li>
         <li><strong>DE</strong> | <a href="/en/products/tasksieve/getting-started.html">EN</a></li>
       </ul>
+      <button
+        class="nav-toggle"
+        id="navToggle"
+        aria-label="Menü öffnen"
+        aria-controls="navLinks"
+        aria-expanded="false"
+        onclick="__toggleNav()">
+        ☰
+      </button>
     </div>
   </nav>
 </header>
@@ -235,6 +286,14 @@
   <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
   <br><small>© ChangeWise • SlackDigest • TaskSieve</small>
 </footer>
+<script>
+function __toggleNav(){
+  var l = document.getElementById('navLinks'); if(!l) return;
+  var open = l.classList.toggle('open');
+  var t = document.getElementById('navToggle');
+  if (t) t.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+</script>
 
 </body>
 </html>
