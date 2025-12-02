@@ -314,6 +314,7 @@ function __toggleNav(){
   if(det && !det.open) det.open = true;
 
   try { card.scrollIntoView({behavior:'instant', block:'start'}); }
+  window.scrollBy(0, -80);
   catch(e){ card.scrollIntoView(); }
 })();
 </script>
