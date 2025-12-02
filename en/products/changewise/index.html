@@ -1,4 +1,4 @@
- <!doctype html>
+<!doctype html>
 <html lang="en">
  <head>
   <meta charset="utf-8">
@@ -537,9 +537,10 @@ function __toggleNav(){var l=document.getElementById('navLinks');if(!l)return;va
     ];
     if (wanted.indexOf(hash) === -1) return;
 
-    // Hide hero (first .hero on page)
-    var hero = document.querySelector(".hero");
-    if (hero) hero.style.display = "none";
+    // Hide only hero header (keep cards visible)
+var heroHeader = document.querySelector(".hero-header");
+if (heroHeader) heroHeader.style.display = "none";
+
 
     // Only keep three cards in the grid
     var grid = document.querySelector(".grid");
