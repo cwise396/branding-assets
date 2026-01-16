@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Erfolgreich – SlackDigest</title>
+  <style>
+    :root{--bg:#0B1220;--text:#E5E7EB;--muted:#9FB0C3;--card:rgba(255,255,255,.04);--bd:rgba(255,255,255,.12);--input:rgba(13,20,34,.7);--btn:#fff;--btnText:#111;}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text);}
+    .wrap{max-width:820px;margin:0 auto;padding:28px 18px 60px;}
+    .card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:18px 16px;margin:14px 0;}
+    h1{margin:0 0 6px;font-size:24px;}
+    p{margin:8px 0;color:var(--muted);}
+    label{display:block;margin:12px 0 6px;color:var(--muted);font-size:13px;}
+    input,select{width:100%;padding:12px;border-radius:12px;border:1px solid var(--bd);background:var(--input);color:var(--text);}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+    @media(max-width:720px){.row{grid-template-columns:1fr;}}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 14px;border-radius:12px;background:var(--btn);color:var(--btnText);text-decoration:none;font-weight:700;border:0;cursor:pointer;}
+    .fine{margin-top:10px;font-size:13px;color:var(--muted);}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <h1>Erfolgreich aktiviert</h1>
+      <p>SlackDigest läuft. Als Nächstes stellst du kurz ein, <b>was</b> wir bündeln – und <b>wohin</b> wir liefern.</p>
+      <p class="fine">Selbsterklärend. Du kannst jederzeit selbst kündigen oder Zahlungsdaten ändern.</p>
+    </section>
+
+    <section class="card">
+      <h2 style="margin:0 0 8px;font-size:18px;">Digest einstellen</h2>
+
+      <form action="https://formspree.io/f/xgooowpk" method="POST">
+        <input type="hidden" name="product" value="slackdigest">
+        <input type="hidden" name="lang" value="de">
+
+        <label>E-Mail für Zustellung (oder Bestätigung)</label>
+        <input name="email" type="email" required placeholder="du@firma.de">
+
+        <div class="row">
+          <div>
+            <label>Takt</label>
+            <select name="cadence" required>
+              <option value="daily">täglich</option>
+              <option value="weekly">wöchentlich</option>
+            </select>
+          </div>
+          <div>
+            <label>Zustellung</label>
+            <select name="delivery" required>
+              <option value="email">E-Mail</option>
+              <option value="slack">Slack</option>
+            </select>
+          </div>
+        </div>
+
+        <label>Kanäle (Komma-separiert)</label>
+        <input name="channels" type="text" required placeholder="#support, #sales, #product">
+
+        <div style="margin-top:14px;">
+          <button class="btn" type="submit">Speichern & ersten Digest starten</button>
+        </div>
+
+        <div class="fine">Du erhältst den ersten Digest zum nächsten Takt.</div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
