@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Beispiel-Digest – SlackDigest</title>
+  <meta name="description" content="So sieht ein SlackDigest aus: Relevante Updates, klar priorisiert, auf einen Blick." />
+
+  <style>
+    :root{
+      --bg:#0B1220;
+      --card:#111827;
+      --text:#E5E7EB;
+      --muted:#9CA3AF;
+      --accent:#0C6C48;
+      --border:rgba(255,255,255,.12);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+
+    .wrap{
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 96px;
+    }
+
+    .notice{
+      font-size:14px;
+      color:var(--muted);
+      margin-bottom:32px;
+    }
+
+    h1{
+      font-size:28px;
+      margin:0 0 4px;
+    }
+    h2{
+      font-size:20px;
+      margin:40px 0 16px;
+    }
+    h3{
+      font-size:16px;
+      margin:28px 0 8px;
+    }
+
+    .digest{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:28px;
+      margin-top:24px;
+    }
+
+    .section{
+      margin-top:24px;
+    }
+
+    .impact-high{color:#F87171}
+    .impact-mid{color:#FBBF24}
+    .impact-low{color:#34D399}
+
+    ul{
+      padding-left:18px;
+      margin:8px 0 0;
+    }
+
+    .summary{
+      margin-top:32px;
+      font-size:14px;
+      color:var(--muted);
+    }
+
+    .cta{
+      margin-top:56px;
+      padding-top:32px;
+      border-top:1px solid var(--border);
+      text-align:left;
+    }
+
+    .cta h2{
+      margin-top:0;
+    }
+
+    .cta ul{
+      margin:16px 0;
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top:16px;
+      padding:12px 18px;
+      background:var(--accent);
+      color:white;
+      text-decoration:none;
+      border-radius:10px;
+      font-weight:600;
+    }
+
+    .btn:hover{
+      opacity:.9;
+    }
+
+    .fineprint{
+      margin-top:12px;
+      font-size:13px;
+      color:var(--muted);
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+
+    <!-- ruhige Bestätigung -->
+    <div class="notice">
+      ✓ Dein Test-Digest wird vorbereitet.  
+      So sieht ein SlackDigest aus.
+    </div>
+
+    <h1>Beispiel-Digest</h1>
+    <div class="notice">Vorschau – so arbeitet SlackDigest</div>
+
+    <!-- DIGEST -->
+    <section class="digest">
+
+      <div class="section">
+        <h3 class="impact-high">🔴 Wichtig · Hoher Impact</h3>
+        <strong>Support-Tickets mit Umsatzbezug</strong><br/>
+        3 neue Themen aus <code>#support</code>, die direkte Kundenwirkung haben.
+        <ul>
+          <li>→ Empfehlung: heute priorisieren.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3 class="impact-mid">🟠 Relevant · Bald klären</h3>
+        <strong>Sales-Rückfragen zu Feature X</strong><br/>
+        Mehrere ähnliche Nachfragen aus <code>#sales</code>.
+        <ul>
+          <li>→ Kurze Klarstellung spart Wiederholungen.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3 class="impact-low">🟢 Informativ · Überblick</h3>
+        <strong>Interne Updates & FYIs</strong><br/>
+        Statusmeldungen ohne Handlungsdruck.
+        <ul>
+          <li>→ Zur Kenntnis nehmen.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>📌 Nächste sinnvolle Schritte</h3>
+        <ul>
+          <li>Support-Thema priorisieren</li>
+          <li>Kurzstatement für Sales vorbereiten</li>
+          <li>Rest gesammelt lassen</li>
+        </ul>
+      </div>
+
+      <div class="summary">
+        ⏱ <strong>Zusammenfassung</strong><br/>
+        12 Kanäle geprüft · 5 Threads gebündelt · 3 Punkte relevant
+      </div>
+
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <h2>SlackDigest aktivieren</h2>
+      <p>
+        Der Digest, den du gerade gesehen hast – regelmäßig.
+      </p>
+
+      <ul>
+        <li>Relevante Updates statt Feed</li>
+        <li>Klar priorisiert</li>
+        <li>Ein Blick. Ein Link.</li>
+      </ul>
+
+      <a class="btn" href="/contact/#slackdigest">
+        SlackDigest aktivieren
+      </a>
+
+      <div class="fineprint">
+        Kein Setup. Kein Onboarding. Selbsterklärend.
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
