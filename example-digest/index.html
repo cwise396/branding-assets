@@ -79,18 +79,30 @@
 }
 
 .digest-title{
-  font-size: 34px;
-  font-weight: 900;
-  letter-spacing: -0.4px;
-  margin: 0;
+  font-size:34px;
+  font-weight:900;
+  letter-spacing:-0.4px;
+  margin:0;
+  color:#ffffff;
 }
 
 .digest-sub{
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--muted);
-  margin-top: 4px;
+  font-size:18px;
+  font-weight:700;
+  color:rgba(255,255,255,.92);
+  margin-top:4px;
 }
+
+.notice{
+  font-size:13px;
+  color:#ffffff;
+  padding:12px 14px;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:14px;
+  max-width:520px;
+}
+
 
   }
   .sub{
@@ -251,13 +263,20 @@
   <main class="wrap">
 <div class="topline">
   <div class="digest-head">
-  <div class="digest-title">SlackDigest</div>
-  <div class="digest-sub">Beispiel-Digest</div>
-</div>
+    <div class="digest-title">SlackDigest</div>
+    <div class="digest-sub">Beispiel-Digest</div>
+  </div>
+
+  <div class="notice">
+    ✓ Dein Test-Digest wird vorbereitet. So arbeitet SlackDigest.
+  </div>
 </div>
 
 <h1>Vorschau</h1>
-<p class="sub">So arbeitet SlackDigest: Relevante Updates, klar priorisiert, auf einen Blick.</p>
+<p class="sub">
+  So arbeitet SlackDigest: relevante Updates, klar priorisiert, auf einen Blick.
+</p>
+
 
      <!-- DIGEST -->
    <section class="digest">
