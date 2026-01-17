@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Example Digest – SlackDigest</title>
+
+<style>
+:root{
+  --sd-green:#0C6C48;
+}
+
+/* Layout */
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Ubuntu;
+  background:var(--sd-green);
+  color:#111827;
+}
+
+.wrap{
+  max-width:720px;
+  margin:0 auto;
+  padding:28px 16px 48px;
+}
+
+/* Head */
+.header{
+  margin-bottom:24px;
+}
+
+.header h1{
+  margin:0;
+  font-size:28px;
+  color:#ffffff;
+}
+
+.header p{
+  margin-top:6px;
+  font-size:14px;
+  color:#ffffff;
+  opacity:.9;
+}
+
+/* Digest card */
+.digest{
+  background:#ffffff;
+  border-radius:22px;
+  padding:22px;
+}
+
+/* Blocks */
+.block{
+  display:flex;
+  gap:12px;
+  margin-bottom:14px;
+  padding:14px;
+  border-radius:16px;
+  background:#ffffff;
+  box-shadow:0 6px 20px rgba(0,0,0,.06);
+}
+
+.block.red{ border-left:6px solid #DC2626; }
+.block.orange{ border-left:6px solid #F59E0B; }
+.block.green{ border-left:6px solid #16A34A; }
+.block.blue{ border-left:6px solid #2563EB; }
+
+.block .title{ font-weight:700; color:#0F172A; }
+.block .desc{ color:#111827; margin-top:2px; }
+.block .hint{ color:#374151; font-size:13px; margin-top:4px; }
+.block .kicker{ color:#6B7280; font-size:12px; }
+
+/* Summary */
+.summary{
+  margin-top:12px;
+  padding:14px;
+  border-radius:14px;
+  background:#ffffff;
+  color:#111827;
+  font-size:13px;
+}
+.summary b{ color:#0F172A; }
+
+/* CTA */
+.cta{
+  margin-top:24px;
+  padding:20px;
+  border-radius:18px;
+  background:#ffffff;
+  color:#111827;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.cta h2{ color:#0F172A; margin:0 0 6px; }
+.cta p{ margin:6px 0; }
+
+.price{
+  margin-top:10px;
+  font-size:14px;
+}
+
+/* Button */
+.btn{
+  display:inline-block;
+  margin-top:14px;
+  padding:12px 18px;
+  border-radius:999px;
+  background:var(--sd-green);
+  color:#ffffff;
+  font-weight:700;
+  text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <h1>SlackDigest</h1>
+    <p><b>Example Digest</b><br>
+    Preview – shows how SlackDigest works</p>
+  </div>
+
+  <div class="digest">
+
+    <div class="block red">
+      <div>
+        <div class="title">🔴 Important · High impact</div>
+        <div class="desc">Support tickets affecting revenue</div>
+        <div class="hint">3 new topics from #support with direct customer impact.</div>
+      </div>
+    </div>
+
+    <div class="block orange">
+      <div>
+        <div class="title">🟠 Relevant · Needs attention</div>
+        <div class="desc">Sales questions about Feature X</div>
+        <div class="hint">One clarification reduces repetition.</div>
+      </div>
+    </div>
+
+    <div class="block green">
+      <div>
+        <div class="title">🟢 Informational · FYI</div>
+        <div class="desc">Internal updates & status notes</div>
+        <div class="hint">For awareness.</div>
+      </div>
+    </div>
+
+    <div class="block blue">
+      <div>
+        <div class="title">📌 Suggested next steps</div>
+        <div class="desc">
+          Prioritize support topic<br>
+          Prepare short clarification for sales<br>
+          Keep the rest grouped
+        </div>
+      </div>
+    </div>
+
+    <div class="summary">
+      ⏱ <b>Summary</b><br>
+      12 channels scanned · 5 threads grouped · 3 items relevant
+    </div>
+
+    <div class="cta">
+      <h2>Activate SlackDigest</h2>
+      <p>The digest you just saw — delivered regularly.</p>
+
+      <p class="price">
+        Pro: <b>€21 / month</b> · per workspace<br>
+        <span style="opacity:.75;">Cancel anytime.</span>
+      </p>
+
+      <a href="/pricing/" class="btn">Activate SlackDigest</a>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
