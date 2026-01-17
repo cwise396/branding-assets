@@ -1,182 +1,316 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Example Digest – SlackDigest</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Example Digest – SlackDigest</title>
+  <meta name="description" content="Example Digest – preview of how SlackDigest works.">
 
-<style>
-:root{
-  --sd-green:#0C6C48;
-}
+  <style>
+    :root{
+      --bg:#0C6C48;           /* SlackDigest green */
+      --text:#111827;         /* dark text on white cards */
+      --muted:#ffffff;        /* on green background we use white */
+      --shadow: 0 10px 30px rgba(0,0,0,.25);
 
-/* Layout */
-body{
-  margin:0;
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Ubuntu;
-  background:var(--sd-green);
-  color:#111827;
-}
+      --red:#F87171;
+      --amber:#FBBF24;
+      --green:#34D399;
 
-.wrap{
-  max-width:720px;
-  margin:0 auto;
-  padding:28px 16px 48px;
-}
+      --cwblue:#0E3960;       /* ChangeWise blue for the steps bar */
+      --btn:#0C6C48;
+    }
 
-/* Head */
-.header{
-  margin-bottom:24px;
-}
+    *{box-sizing:border-box}
 
-.header h1{
-  margin:0;
-  font-size:28px;
-  color:#ffffff;
-}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
 
-.header p{
-  margin-top:6px;
-  font-size:14px;
-  color:#ffffff;
-  opacity:.9;
-}
+    .wrap{
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 44px 18px 88px;
+    }
 
-/* Digest card */
-.digest{
-  background:#ffffff;
-  border-radius:22px;
-  padding:22px;
-}
+    .topline{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:16px;
+      flex-wrap:wrap;
+    }
 
-/* Blocks */
-.block{
-  display:flex;
-  gap:12px;
-  margin-bottom:14px;
-  padding:14px;
-  border-radius:16px;
-  background:#ffffff;
-  box-shadow:0 6px 20px rgba(0,0,0,.06);
-}
+    .digest-head{
+      margin-bottom: 0;
+    }
 
-.block.red{ border-left:6px solid #DC2626; }
-.block.orange{ border-left:6px solid #F59E0B; }
-.block.green{ border-left:6px solid #16A34A; }
-.block.blue{ border-left:6px solid #2563EB; }
+    .digest-title{
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: -0.4px;
+      margin: 0;
+      color:#ffffff;
+    }
 
-.block .title{ font-weight:700; color:#0F172A; }
-.block .desc{ color:#111827; margin-top:2px; }
-.block .hint{ color:#374151; font-size:13px; margin-top:4px; }
-.block .kicker{ color:#6B7280; font-size:12px; }
+    .digest-sub{
+      font-size: 18px;
+      font-weight: 700;
+      color: rgba(255,255,255,.92);
+      margin-top: 4px;
+    }
 
-/* Summary */
-.summary{
-  margin-top:12px;
-  padding:14px;
-  border-radius:14px;
-  background:#ffffff;
-  color:#111827;
-  font-size:13px;
-}
-.summary b{ color:#0F172A; }
+    .notice{
+      font-size:13px;
+      color:#ffffff;
+      padding:12px 14px;
+      background:rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.28);
+      border-radius:14px;
+      max-width: 520px;
+    }
 
-/* CTA */
-.cta{
-  margin-top:24px;
-  padding:20px;
-  border-radius:18px;
-  background:#ffffff;
-  color:#111827;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
-}
+    h1{
+      font-size:30px;
+      margin:18px 0 6px;
+      letter-spacing:-.2px;
+      color:#ffffff;
+    }
 
-.cta h2{ color:#0F172A; margin:0 0 6px; }
-.cta p{ margin:6px 0; }
+    .sub{
+      color:#ffffff;          /* requested: pure white for readability */
+      margin:0 0 22px;
+      font-size:14px;
+      opacity:.92;
+    }
 
-.price{
-  margin-top:10px;
-  font-size:14px;
-}
+    .digest{
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
 
-/* Button */
-.btn{
-  display:inline-block;
-  margin-top:14px;
-  padding:12px 18px;
-  border-radius:999px;
-  background:var(--sd-green);
-  color:#ffffff;
-  font-weight:700;
-  text-decoration:none;
-}
-</style>
+    .block{
+      display:flex;
+      gap:14px;
+      padding:16px 14px;
+      border-radius:14px;
+      background:#ffffff;
+      margin-top:12px;
+      color:#111827;
+    }
+
+    .bar{
+      width:6px;
+      border-radius:999px;
+      flex:0 0 6px;
+      opacity:.95;
+    }
+    .bar.red{background:var(--red)}
+    .bar.amber{background:var(--amber)}
+    .bar.green{background:var(--green)}
+
+    .kicker{
+      font-size:13px;
+      color:#6B7280;
+      margin:0 0 6px;
+    }
+    .title{
+      margin:0 0 6px;
+      font-weight:800;
+      letter-spacing:-.1px;
+      color:#0F172A;
+    }
+    .desc{
+      margin:0 0 8px;
+      color:#111827;
+    }
+    .hint{
+      margin:0;
+      color:#374151;
+      font-size:13px;
+    }
+
+    code{
+      background: rgba(15,23,42,.08);
+      border: 1px solid rgba(15,23,42,.18);
+      padding: 2px 6px;
+      border-radius: 8px;
+      color:#0F172A;
+      font-size:12px;
+      font-weight:700;
+    }
+
+    ul{margin:10px 0 0; padding-left:18px}
+    li{margin:6px 0; color:#111827}
+
+    .steps{
+      margin-top:12px;
+      display:flex;
+      gap:14px;
+      padding:16px 14px;
+      border-radius:14px;
+      background:#ffffff;
+      color:#111827;
+    }
+    .steps .bar-blue{
+      width:6px;
+      border-radius:999px;
+      flex:0 0 6px;
+      background:var(--cwblue);
+    }
+    .steps .title{ color:#0F172A; font-weight:800; }
+
+    .summary{
+      margin-top:12px;
+      padding:14px;
+      border-radius:14px;
+      background:#ffffff;
+      color:#111827;
+      font-size:13px;
+    }
+    .summary b{ color:#0F172A; }
+
+    .cta{
+      margin-top:24px;
+      padding:20px;
+      border-radius:18px;
+      background:#ffffff;     /* requested: white card */
+      color:#111827;
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    }
+
+    .cta h2{
+      margin:0 0 8px;
+      font-size:18px;
+      color:#0F172A;
+    }
+
+    .price{
+      color:#111827;
+      font-size:13px;
+      margin:10px 0 0;
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top:14px;
+      padding:12px 16px;
+      background:var(--btn);  /* keep green button */
+      color:white;
+      text-decoration:none;
+      border-radius:12px;
+      font-weight:900;
+    }
+    .btn:hover{opacity:.92}
+
+    .fine{
+      margin-top:10px;
+      font-size:12.5px;
+      color:#374151;
+    }
+
+    @media (max-width:520px){
+      .digest-title{font-size:30px}
+      h1{font-size:26px}
+      .wrap{padding:34px 14px 72px}
+    }
+  </style>
 </head>
 
 <body>
-<div class="wrap">
+  <main class="wrap">
 
-  <div class="header">
-    <h1>SlackDigest</h1>
-    <p><b>Example Digest</b><br>
-    Preview – shows how SlackDigest works</p>
-  </div>
+    <div class="topline">
+      <div class="digest-head">
+        <div class="digest-title">SlackDigest</div>
+        <div class="digest-sub">Example Digest</div>
+      </div>
 
-  <div class="digest">
-
-    <div class="block red">
-      <div>
-        <div class="title">🔴 Important · High impact</div>
-        <div class="desc">Support tickets affecting revenue</div>
-        <div class="hint">3 new topics from #support with direct customer impact.</div>
+      <div class="notice">
+        ✓ Your test digest is being prepared. Here’s what a SlackDigest looks like.
       </div>
     </div>
 
-    <div class="block orange">
-      <div>
-        <div class="title">🟠 Relevant · Needs attention</div>
-        <div class="desc">Sales questions about Feature X</div>
-        <div class="hint">One clarification reduces repetition.</div>
-      </div>
-    </div>
+    <h1>Preview</h1>
+    <p class="sub">This is how SlackDigest works: relevant updates, clearly prioritised, at a glance.</p>
 
-    <div class="block green">
-      <div>
-        <div class="title">🟢 Informational · FYI</div>
-        <div class="desc">Internal updates & status notes</div>
-        <div class="hint">For awareness.</div>
-      </div>
-    </div>
+    <section class="digest">
 
-    <div class="block blue">
-      <div>
-        <div class="title">📌 Suggested next steps</div>
-        <div class="desc">
-          Prioritize support topic<br>
-          Prepare short clarification for sales<br>
-          Keep the rest grouped
+      <div class="block">
+        <div class="bar red" aria-hidden="true"></div>
+        <div>
+          <p class="kicker">🔴 Important · High Impact</p>
+          <p class="title">Support tickets affecting revenue</p>
+          <p class="desc">3 new topics from <code>#support</code> with direct customer impact.</p>
+          <p class="hint">→ Recommended: prioritize today.</p>
         </div>
       </div>
-    </div>
 
-    <div class="summary">
-      ⏱ <b>Summary</b><br>
-      12 channels scanned · 5 threads grouped · 3 items relevant
-    </div>
+      <div class="block">
+        <div class="bar amber" aria-hidden="true"></div>
+        <div>
+          <p class="kicker">🟠 Relevant · Needs attention</p>
+          <p class="title">Sales questions about Feature X</p>
+          <p class="desc">Similar questions across <code>#sales</code>.</p>
+          <p class="hint">→ One clarification reduces repetition.</p>
+        </div>
+      </div>
 
-    <div class="cta">
-      <h2>Activate SlackDigest</h2>
-      <p>The digest you just saw — delivered regularly.</p>
+      <div class="block">
+        <div class="bar green" aria-hidden="true"></div>
+        <div>
+          <p class="kicker">🟢 Informational · FYI</p>
+          <p class="title">Internal updates & status notes</p>
+          <p class="desc">No immediate action required.</p>
+          <p class="hint">→ For awareness.</p>
+        </div>
+      </div>
 
-      <p class="price">
-        Pro: <b>€21 / month</b> · per workspace<br>
-        <span style="opacity:.75;">Cancel anytime.</span>
-      </p>
+      <div class="steps">
+        <div class="bar-blue" aria-hidden="true"></div>
+        <div>
+          <p class="title" style="margin:0 0 8px;">📌 Suggested next steps</p>
+          <ul>
+            <li>Prioritize support topic</li>
+            <li>Prepare a short clarification for sales</li>
+            <li>Keep the rest grouped</li>
+          </ul>
+        </div>
+      </div>
 
-      <a href="/pricing/" class="btn">Activate SlackDigest</a>
-    </div>
+      <div class="summary">
+        ⏱ <b>Summary</b><br>
+        12 channels scanned · 5 threads grouped · 3 items relevant
+      </div>
 
-  </div>
-</div>
+      <div class="cta">
+        <h2>Activate SlackDigest</h2>
+        <p>
+          The digest you just saw — delivered regularly.<br>
+          Clearly prioritised. One glance. One link.
+        </p>
+
+        <a class="btn" href="/pricing/slackdigest/">Activate now</a>
+
+        <p class="price">
+          Pro: <b>€21 / month</b> · per workspace · cancel anytime<br>
+          <span style="opacity:.85;">Starter: €9 / month · cancel anytime</span>
+        </p>
+
+        <p class="fine">No setup. No onboarding. Self-explanatory.</p>
+      </div>
+
+    </section>
+
+  </main>
 </body>
 </html>
