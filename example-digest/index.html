@@ -7,7 +7,7 @@
   <meta name="description" content="So sieht ein SlackDigest aus: Relevante Updates, klar priorisiert, auf einen Blick." />
  <style>
   :root{
-    --bg:#0B1220;
+    --bg:#0C6C48; /* SlackDigest Grün */
     --panel:rgba(255,255,255,.04);
     --panel2:rgba(255,255,255,.06);
     --text:#E5E7EB;
@@ -74,6 +74,24 @@
     font-size:30px;
     margin:18px 0 6px;
     letter-spacing:-.2px;
+ .digest-head{
+  margin-bottom: 18px;
+}
+
+.digest-title{
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: -0.4px;
+  margin: 0;
+}
+
+.digest-sub{
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
   }
   .sub{
     color:var(--muted);
@@ -81,23 +99,28 @@
     font-size:14px;
   }
 
-  .digest{
-    background:var(--panel);
-    border:1px solid var(--border);
-    border-radius:18px;
-    padding:18px;
-    box-shadow: var(--shadow);
-  }
+ .digest{
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
 
-  .block{
-    display:flex;
-    gap:14px;
-    padding:16px 14px;
-    border:1px solid var(--border);
-    border-radius:16px;
-    background:rgba(255,255,255,.03);
-    margin-top:12px;
-  }
+   .block{
+  display:flex;
+  gap:14px;
+  padding:16px 14px;
+  border-radius:14px;
+  background:#ffffff;
+  margin-top:12px;
+  color:#111827; /* fast schwarz */
+}
+.block .title{ color:#0F172A; }
+.block .desc{ color:#111827; }
+.block .hint{ color:#374151; }
+.block .kicker{ color:#6B7280; }
+
   .bar{
     width:6px;
     border-radius:999px;
@@ -156,13 +179,14 @@
     font-size:13px;
   }
 
-  .cta{
-    margin-top:42px;
-    padding:20px 18px;
-    border:1px solid var(--border);
-    border-radius:18px;
-    background:linear-gradient(180deg, rgba(12,108,72,.14), rgba(255,255,255,.03));
-  }
+ .cta{
+  margin-top:42px;
+  padding:22px 20px;
+  border-radius:18px;
+  background:#0B1220;
+  color:#E5E7EB;
+}
+
 
   .cta h2{
     margin:0 0 8px;
@@ -199,13 +223,10 @@
 <body>
   <main class="wrap">
 <div class="topline">
-  <div class="brand">
-    <span class="dot" aria-hidden="true"></span>
-    <div>
-      <b>SlackDigest</b><br>
-      <span>Beispiel-Digest</span>
-    </div>
-  </div>
+  <div class="digest-head">
+  <div class="digest-title">SlackDigest</div>
+  <div class="digest-sub">Beispiel-Digest</div>
+</div>
 </div>
 
 <h1>Vorschau</h1>
