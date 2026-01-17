@@ -94,10 +94,11 @@
 
   }
   .sub{
-    color:var(--muted);
-    margin:0 0 22px;
-    font-size:14px;
-  }
+  color:#ffffff;
+  margin:0 0 22px;
+  font-size:14px;
+}
+
 
  .digest{
   background: rgba(255,255,255,.15);
@@ -152,32 +153,51 @@
   }
 
   code{
-    background:rgba(255,255,255,.06);
-    border:1px solid rgba(255,255,255,.10);
-    padding:2px 6px;
-    border-radius:8px;
-    color:#E5E7EB;
-    font-size:12px;
-  }
+  background: rgba(15,23,42,.08);
+  border: 1px solid rgba(15,23,42,.18);
+  padding: 2px 6px;
+  border-radius: 8px;
+  color:#0F172A;
+  font-size:12px;
+  font-weight:700;
+}
+
 
   ul{margin:10px 0 0; padding-left:18px}
   li{margin:6px 0}
 
   .steps{
-    margin-top:18px;
-    padding:14px;
-    border:1px dashed rgba(255,255,255,.18);
-    border-radius:16px;
-    background:rgba(255,255,255,.02);
-  }
+  margin-top:12px;
+  display:flex;
+  gap:14px;
+  padding:16px 14px;
+  border-radius:14px;
+  background:#ffffff;
+  color:#111827;
+}
+.steps .bar-blue{
+  width:6px;
+  border-radius:999px;
+  flex:0 0 6px;
+  background:#0E3960; /* ChangeWise Blau */
+}
+.steps .title{ color:#0F172A; font-weight:800; }
+.steps li{ color:#111827; }
 
-  .summary{
-    margin-top:16px;
-    padding:14px;
-    border-top:1px solid var(--border);
-    color:var(--muted);
-    font-size:13px;
-  }
+
+ .summary{
+  margin-top:12px;
+  padding:14px;
+  border-radius:14px;
+  background:#ffffff;
+  color:#111827;
+  font-size:13px;
+}
+
+.summary b{
+  color:#0F172A;
+}
+
 
  .cta{
   margin-top:42px;
@@ -265,7 +285,9 @@
     </div>
   </div>
 
-  <div class="steps">
+ <div class="steps">
+  <div class="bar-blue" aria-hidden="true"></div>
+  <div>
     <p class="title" style="margin:0 0 8px;">📌 Nächste sinnvolle Schritte</p>
     <ul>
       <li>Support-Thema priorisieren</li>
@@ -273,6 +295,8 @@
       <li>Rest gesammelt lassen</li>
     </ul>
   </div>
+</div>
+
 
   <div class="summary">
     ⏱ <b>Zusammenfassung</b><br>
