@@ -5,194 +5,283 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Beispiel-Digest – SlackDigest</title>
   <meta name="description" content="So sieht ein SlackDigest aus: Relevante Updates, klar priorisiert, auf einen Blick." />
+ <style>
+  :root{
+    --bg:#0B1220;
+    --panel:rgba(255,255,255,.04);
+    --panel2:rgba(255,255,255,.06);
+    --text:#E5E7EB;
+    --muted:#9FB0C3;
+    --border:rgba(255,255,255,.12);
+    --accent:#0C6C48;
 
-  <style>
-    :root{
-      --bg:#0B1220;
-      --card:#111827;
-      --text:#E5E7EB;
-      --muted:#9CA3AF;
-      --accent:#0C6C48;
-      --border:rgba(255,255,255,.12);
-    }
+    --red:#F87171;
+    --amber:#FBBF24;
+    --green:#34D399;
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.5;
-    }
+    --shadow: 0 10px 30px rgba(0,0,0,.35);
+  }
 
-    .wrap{
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 48px 20px 96px;
-    }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.55;
+  }
 
-    .notice{
-      font-size:14px;
-      color:var(--muted);
-      margin-bottom:32px;
-    }
+  .wrap{
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 44px 18px 88px;
+  }
 
-    h1{
-      font-size:28px;
-      margin:0 0 4px;
-    }
-    h2{
-      font-size:20px;
-      margin:40px 0 16px;
-    }
-    h3{
-      font-size:16px;
-      margin:28px 0 8px;
-    }
+  .topline{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:18px;
+  }
 
-    .digest{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:16px;
-      padding:28px;
-      margin-top:24px;
-    }
+  .brand{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 12px;
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:14px;
+  }
+  .dot{
+    width:10px;height:10px;border-radius:999px;background:var(--accent);
+    box-shadow:0 0 0 3px rgba(12,108,72,.25);
+  }
+  .brand b{letter-spacing:.2px}
+  .brand span{color:var(--muted); font-size:13px}
 
-    .section{
-      margin-top:24px;
-    }
+  .notice{
+    font-size:13px;
+    color:var(--muted);
+    padding:12px 14px;
+    background:linear-gradient(180deg, var(--panel), transparent);
+    border:1px solid var(--border);
+    border-radius:14px;
+  }
 
-    .impact-high{color:#F87171}
-    .impact-mid{color:#FBBF24}
-    .impact-low{color:#34D399}
+  h1{
+    font-size:30px;
+    margin:18px 0 6px;
+    letter-spacing:-.2px;
+  }
+  .sub{
+    color:var(--muted);
+    margin:0 0 22px;
+    font-size:14px;
+  }
 
-    ul{
-      padding-left:18px;
-      margin:8px 0 0;
-    }
+  .digest{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:18px;
+    box-shadow: var(--shadow);
+  }
 
-    .summary{
-      margin-top:32px;
-      font-size:14px;
-      color:var(--muted);
-    }
+  .block{
+    display:flex;
+    gap:14px;
+    padding:16px 14px;
+    border:1px solid var(--border);
+    border-radius:16px;
+    background:rgba(255,255,255,.03);
+    margin-top:12px;
+  }
+  .bar{
+    width:6px;
+    border-radius:999px;
+    flex:0 0 6px;
+    opacity:.95;
+  }
+  .bar.red{background:var(--red)}
+  .bar.amber{background:var(--amber)}
+  .bar.green{background:var(--green)}
 
-    .cta{
-      margin-top:56px;
-      padding-top:32px;
-      border-top:1px solid var(--border);
-      text-align:left;
-    }
+  .kicker{
+    font-size:13px;
+    color:var(--muted);
+    margin:0 0 6px;
+  }
+  .title{
+    margin:0 0 6px;
+    font-weight:800;
+    letter-spacing:-.1px;
+  }
+  .desc{
+    margin:0 0 8px;
+    color:var(--text);
+  }
+  .hint{
+    margin:0;
+    color:var(--muted);
+    font-size:13px;
+  }
 
-    .cta h2{
-      margin-top:0;
-    }
+  code{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.10);
+    padding:2px 6px;
+    border-radius:8px;
+    color:#E5E7EB;
+    font-size:12px;
+  }
 
-    .cta ul{
-      margin:16px 0;
-    }
+  ul{margin:10px 0 0; padding-left:18px}
+  li{margin:6px 0}
 
-    .btn{
-      display:inline-block;
-      margin-top:16px;
-      padding:12px 18px;
-      background:var(--accent);
-      color:white;
-      text-decoration:none;
-      border-radius:10px;
-      font-weight:600;
-    }
+  .steps{
+    margin-top:18px;
+    padding:14px;
+    border:1px dashed rgba(255,255,255,.18);
+    border-radius:16px;
+    background:rgba(255,255,255,.02);
+  }
 
-    .btn:hover{
-      opacity:.9;
-    }
+  .summary{
+    margin-top:16px;
+    padding:14px;
+    border-top:1px solid var(--border);
+    color:var(--muted);
+    font-size:13px;
+  }
 
-    .fineprint{
-      margin-top:12px;
-      font-size:13px;
-      color:var(--muted);
-    }
-  </style>
+  .cta{
+    margin-top:42px;
+    padding:20px 18px;
+    border:1px solid var(--border);
+    border-radius:18px;
+    background:linear-gradient(180deg, rgba(12,108,72,.14), rgba(255,255,255,.03));
+  }
+
+  .cta h2{
+    margin:0 0 8px;
+    font-size:18px;
+  }
+
+  .price{
+    color:var(--muted);
+    font-size:13px;
+    margin:10px 0 0;
+  }
+
+  .btn{
+    display:inline-block;
+    margin-top:14px;
+    padding:12px 16px;
+    background:var(--accent);
+    color:white;
+    text-decoration:none;
+    border-radius:12px;
+    font-weight:800;
+  }
+  .btn:hover{opacity:.92}
+
+  .fine{
+    margin-top:10px;
+    font-size:12.5px;
+    color:var(--muted);
+  }
+</style>
+
 </head>
 
 <body>
   <main class="wrap">
-
-    <!-- ruhige Bestätigung -->
-    <div class="notice">
-      ✓ Dein Test-Digest wird vorbereitet.  
-      So sieht ein SlackDigest aus.
+<div class="topline">
+  <div class="brand">
+    <span class="dot" aria-hidden="true"></span>
+    <div>
+      <b>SlackDigest</b><br>
+      <span>Beispiel-Digest</span>
     </div>
+  </div>
+</div>
 
-    <h1>Beispiel-Digest</h1>
-    <div class="notice">Vorschau – so arbeitet SlackDigest</div>
+<h1>Vorschau</h1>
+<p class="sub">So arbeitet SlackDigest: Relevante Updates, klar priorisiert, auf einen Blick.</p>
 
-    <!-- DIGEST -->
-    <section class="digest">
+     <!-- DIGEST -->
+   <section class="digest">
 
-      <div class="section">
-        <h3 class="impact-high">🔴 Wichtig · Hoher Impact</h3>
-        <strong>Support-Tickets mit Umsatzbezug</strong><br/>
-        3 neue Themen aus <code>#support</code>, die direkte Kundenwirkung haben.
-        <ul>
-          <li>→ Empfehlung: heute priorisieren.</li>
-        </ul>
-      </div>
+  <div class="block">
+    <div class="bar red" aria-hidden="true"></div>
+    <div>
+      <p class="kicker">🔴 Wichtig · Hoher Impact</p>
+      <p class="title">Support-Tickets mit Umsatzbezug</p>
+      <p class="desc">3 neue Themen aus <code>#support</code>, die direkte Kundenwirkung haben.</p>
+      <p class="hint">→ Empfehlung: heute priorisieren.</p>
+    </div>
+  </div>
 
-      <div class="section">
-        <h3 class="impact-mid">🟠 Relevant · Bald klären</h3>
-        <strong>Sales-Rückfragen zu Feature X</strong><br/>
-        Mehrere ähnliche Nachfragen aus <code>#sales</code>.
-        <ul>
-          <li>→ Kurze Klarstellung spart Wiederholungen.</li>
-        </ul>
-      </div>
+  <div class="block">
+    <div class="bar amber" aria-hidden="true"></div>
+    <div>
+      <p class="kicker">🟠 Relevant · Bald klären</p>
+      <p class="title">Sales-Rückfragen zu Feature X</p>
+      <p class="desc">Mehrere ähnliche Nachfragen aus <code>#sales</code>.</p>
+      <p class="hint">→ Kurze Klarstellung spart Wiederholungen.</p>
+    </div>
+  </div>
 
-      <div class="section">
-        <h3 class="impact-low">🟢 Informativ · Überblick</h3>
-        <strong>Interne Updates & FYIs</strong><br/>
-        Statusmeldungen ohne Handlungsdruck.
-        <ul>
-          <li>→ Zur Kenntnis nehmen.</li>
-        </ul>
-      </div>
+  <div class="block">
+    <div class="bar green" aria-hidden="true"></div>
+    <div>
+      <p class="kicker">🟢 Informativ · Überblick</p>
+      <p class="title">Interne Updates & FYIs</p>
+      <p class="desc">Statusmeldungen ohne Handlungsdruck.</p>
+      <p class="hint">→ Zur Kenntnis nehmen.</p>
+    </div>
+  </div>
 
-      <div class="section">
-        <h3>📌 Nächste sinnvolle Schritte</h3>
-        <ul>
-          <li>Support-Thema priorisieren</li>
-          <li>Kurzstatement für Sales vorbereiten</li>
-          <li>Rest gesammelt lassen</li>
-        </ul>
-      </div>
+  <div class="steps">
+    <p class="title" style="margin:0 0 8px;">📌 Nächste sinnvolle Schritte</p>
+    <ul>
+      <li>Support-Thema priorisieren</li>
+      <li>Kurzstatement für Sales vorbereiten</li>
+      <li>Rest gesammelt lassen</li>
+    </ul>
+  </div>
 
-      <div class="summary">
-        ⏱ <strong>Zusammenfassung</strong><br/>
-        12 Kanäle geprüft · 5 Threads gebündelt · 3 Punkte relevant
-      </div>
+  <div class="summary">
+    ⏱ <b>Zusammenfassung</b><br>
+    12 Kanäle geprüft · 5 Threads gebündelt · 3 Punkte relevant
+  </div>
 
-    </section>
+</section>
+
 
     <!-- CTA -->
-    <section class="cta">
-      <h2>SlackDigest aktivieren</h2>
-      <p>
-        Der Digest, den du gerade gesehen hast – regelmäßig.
-      </p>
+    <div class="cta">
+  <h2>SlackDigest aktivieren</h2>
+  <p>
+    Der Digest, den du gerade gesehen hast – regelmäßig.<br>
+    Klar priorisiert. Ein Blick. Ein Link.
+  </p>
 
-      <ul>
-        <li>Relevante Updates statt Feed</li>
-        <li>Klar priorisiert</li>
-        <li>Ein Blick. Ein Link.</li>
-      </ul>
+  <a class="btn" href="/pricing/slackdigest/">Jetzt aktivieren</a>
 
-      <a class="btn" href="/contact/#slackdigest">
-        SlackDigest aktivieren
-      </a>
+ <p class="price">
+  Pro: <b>21 € / Monat</b> · pro Workspace<br>
+  <span style="opacity:.85;">Starter: 9 € / Monat</span><br>
+  <span style="opacity:.75;">Jederzeit kündbar.</span>
+</p>
 
-      <div class="fineprint">
-        Kein Setup. Kein Onboarding. Selbsterklärend.
-      </div>
+  <p class="fine">
+    Kein Setup. Kein Onboarding. Selbsterklärend.
+  </p>
+</div>
+
     </section>
 
   </main>
