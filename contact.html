@@ -339,9 +339,25 @@ select{
   </section>
 
   <!-- FORM CARD -->
-  <section class="card">
-    <h2>SlackDigest – Test-Digest anfordern</h2>
-    <p><strong>In 3 Schritten:</strong> Kanäle wählen → Takt (täglich/wöchentlich) → Zustellung (E-Mail/Slack). Ein Blick, ein Link – erledigt.</p>
+ <section class="card">
+  <h2>SlackDigest in der Praxis</h2>
+  <p class="lead">
+    Du wählst Kanäle und Takt – SlackDigest bündelt relevante Updates automatisch.
+  </p>
+
+  <p>
+    <button type="button" class="btn btn--inverse-sd"
+      onclick="location.href='/example-digest/'">
+      <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
+        Beispiel-Digest ansehen
+      </span>
+      <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
+        Kanäle wählen · Takt festlegen · keine Einrichtung nötig
+      </span>
+    </button>
+  </p>
+
+  <form action="https://formspree.io/f/manppwbn" method="POST" autocomplete="on">
 
     <form action="https://formspree.io/f/manppwbn" method="POST" autocomplete="on">
       <input type="hidden" name="_next" value="https://slackdigest.org/example-digest/">
