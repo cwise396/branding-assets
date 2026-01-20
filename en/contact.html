@@ -251,6 +251,18 @@ select{
       color:var(--sd-green) !important;
       -webkit-text-fill-color:var(--sd-green) !important;
     }
+/* --- CTA microcopy & compact button --- */
+.btn--compact{
+  padding:10px 14px;
+  font-size:0.95rem;
+}
+
+.microcopy{
+  margin-top:6px;
+  font-size:12.5px;
+  color:#9CA3AF; /* ruhig, nicht verkäuferisch */
+  text-align:center;
+}
 
     /* FLASH (success after submit) */
     .flash{
@@ -338,9 +350,9 @@ select{
   <section class="hero">
     <div class="hero-grid">
       <div class="hero-text">
-         <h1>SlackDigest</h1>
+         <h1>SlackDigest in practice</h1>
 <p class="sub">
-  Request test digest – SlackDigest delivers it right away. No call, no onboarding, no newsletter.
+  How SlackDigest works in day-to-day work.
 </p>
 
       </div>
@@ -396,14 +408,13 @@ select{
         </label>
       </div>
 
-      <button type="submit" class="btn btn--inverse-sd">
-        <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
-          Request test digest
-        </span>
-        <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
-          Demo digest &amp; next steps will be sent to you right away. No spam, no newsletter.
-        </span>
-      </button>
+      <button class="btn btn--inverse-sd btn--compact" type="submit">
+  Request example digest
+</button>
+
+<p class="microcopy">
+  No setup · no call · no commitment
+</p>
 
       <input type="hidden" name="_subject" value="[Website] SlackDigest test digest">
     <input type="hidden" name="_next" value="https://slackdigest.org/en/example-digest/">
