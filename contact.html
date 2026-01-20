@@ -251,6 +251,17 @@ select{
     color:#0C6C48 !important;
     -webkit-text-fill-color:#0C6C48 !important;
   }
+.btn--compact{
+  padding:10px 14px;
+  font-size:0.95rem;
+}
+
+.microcopy{
+  margin-top:6px;
+  font-size:12.5px;
+  color:#9CA3AF; /* ruhig, nicht verkäuferisch */
+  text-align:center;
+}
 
   /* SUCCESS FLASH */
   .flash{
@@ -324,9 +335,9 @@ select{
   <section class="hero">
     <div class="hero-grid">
       <div class="hero-text">
-        <h1>SlackDigest</h1>
+        <h1>SlackDigest in der Praxis</h1>
         <p class="sub">
-           Test-Digest: Du wählst Kanäle & Takt – SlackDigest liefert die relevanten Updates in wenigen Minuten.
+           So funktioniert SlackDigest im Arbeitsalltag.
         </p>
       </div>
       <div class="badge" aria-hidden="true">
@@ -386,14 +397,13 @@ select{
         <label for="c1">Ich stimme der Verarbeitung gemäß <a href="/datenschutz.html">Datenschutz</a> zu.</label>
       </div>
 
-      <button type="submit" class="btn btn--inverse-sd">
-        <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
-          Beispiel-Digest ansehen
-        </span>
-        <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
-          Kanäle wählen · Takt festlegen · keine Einrichtung nötig
-        </span>
-      </button>
+      <button class="btn btn--inverse-sd btn--compact" type="submit">
+  Beispiel-Digest ansehen 
+</button>
+
+<p class="microcopy">
+  Kein Setup · kein Call · keine Verpflichtung
+</p>
 
       <input type="hidden" name="_subject" value="[Website] SlackDigest Test-Digest">
      </form>
