@@ -1,303 +1,209 @@
 <!doctype html>
-<html lang="de">
+<html lang="de" class="theme-cw">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SlackDigest – Getting Started</title>
+  <meta name="description" content="Beispiel-Digest ansehen, in 2 Minuten starten, Kanäle & Takt definieren. Sofort Ergebnis, kein Support nötig.">
   <meta name="color-scheme" content="dark">
-  <title>Kontakt – SlackDigest</title>
-  <meta name="description" content="SlackDigest Test-Digest anfordern: Kanäle wählen, Takt festlegen, Zustellung auswählen. Ergebnis in Minuten per E-Mail oder Slack.">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
   <style>
-  :root{
-    --page-bg:#0C6C48;            /* SlackDigest Grün */
-    --text:#FFFFFF;
-    --muted:#CBD5E1;
-
-    --nav-red:#AE0F12;            /* global Brand Spine */
-
-    --card-bg:rgba(0,0,0,.25);    /* leicht abgedunkeltes Panel über grün */
-    --card-bd:rgba(255,255,255,.28);
-
-    --input-bg:rgba(0,0,0,.35);
-    --input-bd:rgba(255,255,255,.4);
-
-    --btn-bg:#FFFFFF;
-    --btn-bd:#FFFFFF;
-    --btn-bg-h:#F7F7F7;
-
-    --sd-green:#0C6C48;           /* Marken-Grün für Button-Text etc. */
-
-    --container:980px;
-    --badge:84px;
-  }
-
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    margin:0;
-    background:var(--page-bg);
-    color:var(--text);
-    font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
-  }
-
-  /* NAV */
-  .site-header{position:sticky;top:0;z-index:50;width:100%;background:var(--nav-red)}
-  .nav{background:var(--nav-red)}
-  .nav-inner{
-    max-width:var(--container);
-    margin:0 auto;
-    padding:12px 16px;
-    min-height:46px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-  }
-  .brand{color:#fff;font-weight:800;text-decoration:none;white-space:nowrap}
-  .nav-links{
-    list-style:none;
-    display:flex;
-    gap:14px;
-    margin:0;
-    padding:0;
-    align-items:center;
-    color:#fff;
-  }
-  .nav-links a{color:#fff;text-decoration:none}
-  .nav-toggle{display:none;background:none;border:0;color:#fff;font-size:1.2rem}
-  @media (max-width:980px){
-    .nav-inner{position:relative}
-    .nav-links{
-      display:none;
-      position:absolute;
-      top:56px;
-      left:0;right:0;
-      background:var(--nav-red);
-      padding:12px;
-      margin:0;
-      flex-direction:column;
-      gap:.6rem
+    :root{
+      --container:1100px;
+      --page-bg:#0C6C48;       /* SlackDigest Grün */
+      --text:#FFFFFF;
+      --muted:rgba(229,231,235,.82);
+      --nav-red:#AE0F12;
+      --card-bg:rgba(0,0,0,.12);
+      --card-bd:rgba(255,255,255,.22);
+      --btn-bg:#FFFFFF;
+      --btn-fg:#0C6C48;
     }
-    .nav-links.open{display:flex}
-    .nav-toggle{display:inline-block}
-  }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--page-bg);
+      color:var(--text);
+      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+    }
+    a{color:#FFFFFF;text-decoration:none}
 
-  .container{
-    width:min(var(--container),92%);
-    margin:0 auto;
-  }
+    /* Header / Nav – wie bei den Produktseiten */
+    .site-header{position:sticky;top:0;z-index:50;width:100%;background:var(--nav-red)}
+    .nav{background:var(--nav-red)}
+    .nav-inner{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:0 1rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      height:15mm;
+    }
+    .brand{color:#FFFFFF;font-weight:800;white-space:nowrap}
+    .nav-links{list-style:none;display:flex;gap:1rem;margin:0;padding:0;align-items:center}
+    .nav-links a{color:#FFFFFF}
+    .nav-toggle{display:none;background:none;border:0;color:#FFFFFF;font-size:1.2rem}
+    @media (max-width:980px){
+      .nav-inner{position:relative;height:auto;min-height:12mm;padding-block:.4rem}
+      .nav-links{
+        display:none;position:absolute;top:100%;left:0;right:0;
+        background:var(--nav-red);padding:1rem;margin:0;flex-direction:column;gap:.6rem;
+      }
+      .nav-links.open{display:flex}
+      .nav-toggle{display:inline-block}
+    }
 
-  /* HERO */
-  .hero{color:#fff;padding:18px 0 10px}
-  .hero-grid{
-    display:grid;
-    grid-template-columns:1fr auto;
-    gap:14px;
-    align-items:center;
-  }
-  .hero h1{
-    margin:0 0 4px;
-    font-size:clamp(1.6rem,1.1rem + 2vw,2.2rem);
-    line-height:1.2;
-  }
-  .hero .sub{
-    margin:0;
-    font-size:1.15rem;
-    font-weight:500;
-    color:#FFFFFF;
-    -webkit-text-fill-color:#FFFFFF;
-    opacity:.96;
-    line-height:1.4;
-  }
-  @media (max-width:640px){
-    .hero-grid{grid-template-columns:1fr}
-  }
+    /* Hero */
+    .hero{color:#FFFFFF;padding-top:11mm}
+    .hero-header{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:0 1rem;
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:1rem;
+      align-items:end;
+    }
+    .hero-text{grid-column:1 / 9}
+    .hero h1{
+      margin:0 0 .2rem;
+      font-size:clamp(1.8rem,4vw,3rem);
+      line-height:1.1;
+    }
+    .hero p.lead{
+      margin:0;
+      font-size:clamp(1.05rem,2.4vw,1.3rem);
+      font-weight:600;
+      opacity:.95;
+      max-width:34rem;
+    }
+    .hero p.meta{
+      margin:.3rem 0 0;
+      color:var(--muted);
+      font-size:.9rem;
+    }
 
-  /* BADGE */
-  .badge{
-    position:relative;
-    width:var(--badge);
-    height:var(--badge);
-  }
-  .badge .ring{
-    position:absolute;
-    inset:0;
-    background:#fff;
-    border-radius:50%;
-    box-shadow:0 2px 10px rgba(0,0,0,.35);
-  }
-  .badge .inner{
-    position:absolute;
-    left:5px;
-    top:5px;
-    width:calc(var(--badge) - 10px);
-    height:calc(var(--badge) - 10px);
-    background:#0C6C48; /* jetzt grün, kein Rot-Erbe */
-    border-radius:50%;
-    display:grid;
-    place-items:center;
-    overflow:hidden;
-  }
-   .badge img{
-  width:100%;        /* statt 80% */
-  height:100%;       /* statt 80% */
-  object-fit:contain;
-  display:block;
-}
- /* CARD */
-  .card{
-    background:var(--card-bg);
-    border:1px solid var(--card-bd);
-    border-radius:14px;
-    padding:18px 16px;
-    box-shadow:0 10px 24px rgba(0,0,0,.4),
-               inset 0 1px 0 rgba(255,255,255,.06);
-    margin-bottom:16px;
-    color:#fff;
-  }
-  .card h2{
-    margin:.2rem 0 .6rem;
-    font-size:1.2rem;
-    color:#fff;
-  }
-  .card p{margin:.4rem 0 .8rem;color:#fff}
+    /* Logo rechts */
+    .logo-col{
+      grid-column:9 / 13;
+      justify-self:start;
+      display:flex;
+      align-items:center;
+    }
+    .product-logo{
+      position:relative;
+      width:98px;
+      height:98px;
+    }
+    .product-logo .logo-ring{
+      position:absolute;
+      inset:0;
+      width:98px;
+      height:98px;
+      display:block;
+      pointer-events:none;
+      z-index:2;
+    }
+    .product-logo .logo-ring svg{
+      width:100%;
+      height:100%;
+      display:block;
+    }
+    .product-logo .logo-img{
+      position:absolute;
+      top:5px;
+      left:5px;
+      width:88px;
+      height:88px;
+      border-radius:50%;
+      display:block;
+      background:transparent;
+      z-index:1;
+    }
 
-  /* FORM */
-  form{display:grid;gap:10px}
-  label{display:block;font-weight:600;color:#fff}
-  input[type="text"],
-  input[type="email"],
-  select,
-  textarea{
-    width:100%;
-    margin-top:6px;
-    padding:10px 12px;
-    border-radius:10px;
-    border:1px solid var(--input-bd);
-    background:var(--input-bg);
-    color:#fff;
-  }
-  input::placeholder,
-  textarea::placeholder{color:rgba(255,255,255,.7)}
-  textarea{resize:vertical}
-/* SlackDigest – Safari-Fix für Takt/Zustellung (DE+EN angeglichen) */
- /* SlackDigest – Safari-Fix für Takt/Zustellung (DE+EN angeglichen) */
-input[type="text"],
-input[type="email"],
-input[type="url"],
-textarea,
-select{
-  -webkit-appearance:none;
-  appearance:none;
-  background:rgb(12,108,72) !important;             /* neues Grün */
-  border:1px solid rgba(255,255,255,.35) !important;
-  min-height:42px;
-  border-radius:10px;
-  color:#FFFFFF;
-  font:inherit;
-}
+    /* Cards – 4-Spalter wie EN */
+    .section-cards{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:0 1rem 2.6rem;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:1rem;
+      margin-top:1rem;
+    }
+    .card{
+      grid-column:span 3;
+      background:var(--card-bg);
+      border:1px solid var(--card-bd);
+      border-radius:14px;
+      padding:1.05rem 1rem;
+      box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06);
+      color:#FFFFFF;
+    }
+    .card h2,.card h3{margin:0 0 .4rem;font-size:1.1rem}
+    .card p,.card li{margin:.35rem 0}
+    .card ul{list-style:disc;padding-left:1.2rem}
+    .card small{opacity:.75}
+    .card code{
+      background:rgba(0,0,0,.25);
+      padding:.1rem .4rem;
+      border-radius:999px;
+      font-size:.7rem;
+    }
 
-/* Platzhalter */
-input::placeholder,
-textarea::placeholder{
-  color:rgba(229,231,235,.85);
-}
+    @media (max-width:1024px){
+      .card{grid-column:span 6}
+    }
+    @media (max-width:640px){
+      .card{grid-column:span 12}
+    }
 
-/* select-Pfeil */
-select{
-  background-position:right 10px center;
-  background-repeat:no-repeat;
-}
+    /* CTA */
+    .btn{
+      display:inline-block;
+      padding:.7rem 1rem;
+      border-radius:12px;
+      border:1px solid #FFFFFF;
+      background:#FFFFFF;
+      text-decoration:none;
+      font-weight:800;
+      text-align:left;
+      line-height:1.3;
+      color:var(--btn-fg) !important;
+      -webkit-text-fill-color:var(--btn-fg) !important;
+    }
+    .btn span{display:block}
+    .btn small{
+      font-weight:500;
+      opacity:.85;
+      font-size:.78rem;
+      line-height:1.2;
+    }
 
-/* falls Safari die Card-Regeln stärker zieht */
-.card input,
-.card select{
-  background:rgb(12,108,72) !important;
-}
-
-  .consent{
-    display:flex;
-    align-items:flex-start;
-    gap:.5rem;
-    margin-top:.2rem;
-    color:#fff;
-    font-size:.9rem;
-    line-height:1.4;
-  }
-  .consent input[type="checkbox"]{
-    margin-top:.2rem;
-    flex-shrink:0;
-  }
-  .consent a{color:#fff;text-decoration:underline}
-
-  /* CTA BUTTON (weiß pill / grüne Schrift) */
-  .btn{
-    display:inline-block;
-    padding:.7rem 1rem;
-    border-radius:12px;
-    border:1px solid var(--btn-bd);
-    background:var(--btn-bg);
-    text-decoration:none;
-    font-weight:800;
-    text-align:left;
-    line-height:1.3;
-  }
-  .btn:hover{background:var(--btn-bg-h)}
-
-  .btn--inverse-sd{
-    color:#0C6C48 !important;
-    -webkit-text-fill-color:#0C6C48 !important;
-  }
-  .btn--inverse-sd span{
-    display:block;
-    color:#0C6C48 !important;
-    -webkit-text-fill-color:#0C6C48 !important;
-  }
-
-  /* SUCCESS FLASH */
-  .flash{
-    position:relative;
-    margin:8px 0 14px;
-    padding:12px 14px;
-    border-radius:10px;
-    background:#fff;
-    color:#000;
-    border:1px solid rgba(255,255,255,.6);
-    box-shadow:0 3px 12px rgba(0,0,0,.4);
-    opacity:0;
-    transform:translateY(-6px);
-    transition:opacity .2s ease, transform .2s ease;
-  }
-  .flash.show{
-    opacity:1;
-    transform:translateY(0);
-  }
-  .flash small{
-    display:block;
-    font-size:12px;
-    color:#333;
-    margin-top:4px;
-  }
-
-  footer{
-    margin:24px 0 40px;
-    color:#fff;
-    font-size:.9rem;
-    line-height:1.4;
-  }
-  footer a{
-    color:#fff;
-    text-decoration:none;
-  }
-  .footbar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:.8rem;
-    flex-wrap:wrap;
-  }
-  .legal a{margin-right:.6rem}
-  .sep{margin:0 .3rem;opacity:.85}
-</style>
-
+    footer{
+      max-width:var(--container);
+      margin:2.2rem auto 2.6rem;
+      padding:0 1rem;
+      color:#FFFFFF;
+    }
+    footer a{color:#FFFFFF}
+  </style>
+  <script>
+    function __toggleNav(){
+      var l=document.getElementById('navLinks');
+      if(!l) return;
+      var o=l.classList.toggle('open');
+      document.getElementById('navToggle')
+        .setAttribute('aria-expanded', o ? 'true' : 'false');
+    }
+  </script>
 </head>
 <body>
 
@@ -310,155 +216,110 @@ select{
         <li><a href="/products/slackdigest/">SlackDigest</a></li>
         <li><a href="/products/tasksieve/">TaskSieve</a></li>
         <li>
-          <strong>DE</strong> | <a id="langSwitchLink" href="/en/contact.html#slackdigest">EN</a>
+          <strong>DE</strong> | <a href="/en/products/slackdigest/getting-started.html">EN</a>
         </li>
       </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Menü" aria-controls="navLinks" aria-expanded="false">☰</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-controls="navLinks" aria-expanded="false" onclick="__toggleNav()">☰</button>
     </div>
   </nav>
 </header>
 
-<main class="container">
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-grid">
-      <div class="hero-text">
-        <h1>SlackDigest in der Praxis</h1>
-        <p class="sub">
-           Du wählst Kanäle und Takt – SlackDigest bündelt relevante Updates automatisch.
-        </p>
-      </div>
-      <div class="badge" aria-hidden="true">
-        <span class="ring"></span>
-        <span class="inner">
-          <img src="/assets/brand/slackdigest_logo.svg" alt="">
+<main class="hero">
+  <div class="hero-header">
+    <div class="hero-text">
+      <h1>SlackDigest – Getting Started</h1>
+       <p class="lead">
+  Beispiel ansehen, eigenen Digest aktivieren – in 2 Minuten startklar.
+</p>
+<p class="meta">
+  Kein Call, kein Support-Ticket – Setup & Zustellung: sofort.
+</p>
+ </div>
+    <div class="logo-col">
+      <div class="product-logo">
+        <span class="logo-ring" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="98" height="98" focusable="false" aria-hidden="true">
+            <circle cx="50" cy="50" r="47.5" fill="none" stroke="#FFFFFF" stroke-width="5" />
+          </svg>
         </span>
+        <img class="logo-img" src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo" loading="lazy" decoding="async">
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- FORM CARD -->
-  <section class="card">
-    <h2>SlackDigest – Test-Digest anfordern</h2>
-    <p><strong>In 3 Schritten:</strong> Kanäle wählen → Takt (täglich/wöchentlich) → Zustellung (E-Mail/Slack). Ein Blick, ein Link – erledigt.</p>
+  <section class="section-cards" aria-label="SlackDigest – Getting started Schritte">
+    <div class="grid">
+      <!-- 1 -->
+      <article class="card">
+        <h3>1) Einblick in einen SlackDigest</h3>
+        <p>Kompakt, priorisiert, mit nächstem Schritt pro Eintrag.</p>
+        <ul>
+          <li>[Projekt X] Launch-Blocker gelöst → <strong>Nächster Schritt:</strong> QA um 15:00</li>
+          <li>[Sales] Deal ACME +22k → <strong>Nächster Schritt:</strong> Unterschrift einholen</li>
+          <li>[Support] Top-Thema: SSO (5 Tickets) → <strong>Nächster Schritt:</strong> FAQ updaten</li>
+        </ul>
+        <p>Ein Blick, ein Link – erledigt.</small></p>
+      </article>
 
-    <form action="https://formspree.io/f/manppwbn" method="POST" autocomplete="on">
-      <input type="hidden" name="_next" value="https://slackdigest.org/example-digest/">
+           <!-- 2 -->
+      <article class="card">
+       <h3>2) Schnellstart (2 Minuten)</h3>
+<p>Drei kurze Schritte – direkt startklar.</p>
 
-      <input type="hidden" name="product" value="slackdigest">
-      <input type="hidden" name="lang" value="de">
-      <input type="text" name="_gotcha" style="display:none">
-      <input type="hidden" name="debug" value="redirect-v1">
+<ul>
+  <li>Kanäle auswählen (#sales, #support …)</li>
+  <li>Takt festlegen (täglich oder wöchentlich)</li>
+  <li>Zustellung wählen (E-Mail oder Slack)</li>
+</ul>
 
-      <label>Name
-        <input type="text" name="name" autocomplete="name" required>
-      </label>
+<p>Alles klar strukturiert – ohne Setup.</p>
 
-      <label>E-Mail
-        <input type="email" name="email" autocomplete="email" required>
-      </label>
+      </article>
 
-      <label>Welche Kanäle?
-        <input type="text" name="channels" placeholder="#sales, #support, E-Mail-Postfach …" required>
-      </label>
 
-      <label>Takt
-        <select name="cadence" required>
-          <option value="daily">Täglich</option>
-          <option value="weekly">Wöchentlich</option>
-        </select>
-      </label>
+      <!-- 3 -->
+            <article class="card">
+       <h3>3) Wichtig zuerst</h3>
+<p>Relevantes steht oben – alles andere bleibt im Hintergrund.</p>
 
-      <label>Zustellung
-        <select name="delivery" required>
-          <option value="email">E-Mail</option>
-          <option value="slack">Slack</option>
-        </select>
-      </label>
+<ul>
+  <li>Entscheidungen und Blocker zuerst</li>
+  <li>Owner und nächster Schritt pro Eintrag</li>
+  <li>Direkter Link zum Original-Kontext</li>
+  <li>Filter nach Teams, Kanälen oder Keywords</li>
+</ul>
 
-      <div class="consent">
-        <input id="c1" type="checkbox" name="consent" required>
-        <label for="c1">Ich stimme der Verarbeitung gemäß <a href="/datenschutz.html">Datenschutz</a> zu.</label>
-      </div>
+<p>Du erkennst sofort, wo Handlungsbedarf besteht.</p>
 
-      <button type="submit" class="btn btn--inverse-sd">
-        <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
-          Beispiel-Digest ansehen
-        </span>
-        <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
-          Kanäle wählen · Takt festlegen · keine Einrichtung nötig
-        </span>
-      </button>
+      </article>
 
-      <input type="hidden" name="_subject" value="[Website] SlackDigest Test-Digest">
-     </form>
-  </section>
 
-  <footer>
-    <div class="footbar">
-      <nav class="legal" aria-label="Footer">
-        <a href="/impressum.html">Impressum</a><span class="sep" aria-hidden="true"> · </span>
-        <a href="/datenschutz.html">Datenschutz</a>
-      </nav>
-      <small>© ChangeWise • SlackDigest • TaskSieve</small>
+      <!-- 4 -->
+           <article class="card">
+  <h3>4) Zustellung & Nutzung</h3>
+
+  <p>
+    Der Digest kommt dorthin, wo Entscheidungen getroffen werden.
+  </p>
+
+  <p class="muted">
+    Per E-Mail oder Slack – im festen Rhythmus.
+  </p>
+
+  <button class="btn" type="button" onclick="location.href='/contact.html#slackdigest'">
+    <span>SlackDigest in der Praxis ansehen</span>
+  <small>Kompakt, klar, sofort verständlich.</small>
+  </button>
+</article>
+
     </div>
-  </footer>
-
+  </section>
 </main>
 
-<script>
-(function(){
-  // burger menu
-  var t=document.getElementById('navToggle'),
-      l=document.getElementById('navLinks');
-  if(t&&l){
-    t.addEventListener('click',function(){
-      var o=l.classList.toggle('open');
-      t.setAttribute('aria-expanded',o?'true':'false');
-    });
-  }
-
-  // success flash
-  try{
-    var sp=new URLSearchParams(location.search);
-    if(sp.get('success')==='1'){
-      var host=document.querySelector('.card');
-      if(host){
-        var box=document.createElement('div');
-        box.className='flash';
-        box.innerHTML = `
-  Danke — dein Test-Digest wird vorbereitet.
-  <small>Währenddessen kannst du dir ansehen, wie ein Digest aussieht:
-    <a href="/products/slackdigest/getting-started.html"
-       style="color:#0C6C48;text-decoration:underline;">Beispiel ansehen</a>.
-  </small>`;
-
-        var f=host.querySelector('form');
-        if(f) f.parentNode.insertBefore(box,f);
-        setTimeout(function(){box.classList.add('show');},60);
-        setTimeout(function(){
-          if(box&&box.parentNode) box.parentNode.removeChild(box);
-        },8000);
-      }
-    }
-  }catch(e){}
-
-  // double-submit guard
-  try{
-    document.addEventListener('submit',function(e){
-      var f=e.target;
-      if(!f||f.tagName!=='FORM')return;
-      var btn=f.querySelector('button[type="submit"]');
-      if(btn&&!btn.disabled){
-        btn.disabled=true;
-        btn.setAttribute('aria-disabled','true');
-        btn.textContent='Senden…';
-      }
-    },{capture:true});
-  }catch(e){}
-})();
-</script>
+<footer>
+  <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a><br>
+  <small>© ChangeWise • SlackDigest • TaskSieve</small>
+</footer>
 
 </body>
 </html>
