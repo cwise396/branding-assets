@@ -198,6 +198,20 @@
     font-weight:800;
   }
   .btn:hover{opacity:.92}
+.cta-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:14px;
+}
+
+.btn--outline{
+  background:transparent !important;
+  border:1px solid rgba(12,108,72,.45) !important;
+  color:var(--btn) !important;
+  -webkit-text-fill-color:var(--btn) !important;
+}
+.btn--outline:hover{opacity:.9}
 
   .fine{
     margin-top:10px;
@@ -285,33 +299,43 @@
 
 
     <!-- CTA -->
-    <div class="cta">
+<div class="cta">
   <h2>SlackDigest aktivieren</h2>
   <p>
     Der Digest, den du gerade gesehen hast – regelmäßig.<br>
     Klar priorisiert. Ein Blick. Ein Link.
   </p>
 
- <a class="btn" href="/products/slackdigest/success/">
-  Jetzt kaufen & aktivieren
-</a>
-
-
-<p class="price">
+  <p class="price">
   <b>Pro: 21 € / Monat</b> · pro Workspace<br>
-  <span style="opacity:.8;">Für größere Teams & mehrere Kanäle</span><br><br>
+  <span style="opacity:.8;">
+    Für Teams mit mehreren aktiven Kanälen &amp; regelmäßigen Entscheidungen
+  </span><br><br>
 
   <b>Basic: 9 € / Monat</b><br>
-  <span style="opacity:.8;">Ideal für kleine Teams oder den Einstieg</span><br><br>
+  <span style="opacity:.8;">
+    Für kleinere Teams mit Fokus auf einen klaren Überblick
+  </span><br><br>
 
   <span style="opacity:.75;">Jederzeit kündbar.</span>
 </p>
 
+<div class="cta-actions">
+  <a class="btn" href="/products/slackdigest/success/?plan=pro">
+    Pro aktivieren
+  </a>
 
-  <p class="fine">
-    Kein Setup. Kein Onboarding. Selbsterklärend.
+  <a class="btn btn--secondary" href="/products/slackdigest/success/?plan=basic">
+    Basic aktivieren
+  </a>
+
+  <p class="microcopy">
+    Gleich starten · später jederzeit wechseln
   </p>
+ 
+ <p class="fine">Kein Setup. Kein Onboarding. Selbsterklärend.</p>
 </div>
+
 
     </section>
 
