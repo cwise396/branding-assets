@@ -4,18 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SlackDigest aktivieren</title>
-  <meta name="description" content="SlackDigest aktivieren – klar priorisierte Updates, regelmäßig geliefert.">
-
-  <meta name="color-scheme" content="dark">
+  <meta name="description" content="SlackDigest aktivieren – ruhig, klar, jederzeit kündbar.">
 
   <style>
     :root{
-      --bg:#0B1220;
-      --text:#E5E7EB;
-      --muted:#9CA3AF;
-      --card:rgba(255,255,255,.06);
-      --bd:rgba(255,255,255,.14);
       --sd-green:#0C6C48;
+      --bg:#0C6C48;
+      --card:#ffffff;
+      --text:#111827;
+      --muted:#6B7280;
+      --shadow:0 10px 30px rgba(0,0,0,.15);
     }
 
     *{box-sizing:border-box}
@@ -24,112 +22,107 @@
       margin:0;
       font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
       background:var(--bg);
-      color:var(--text);
+      color:#ffffff;
       line-height:1.55;
     }
 
-    main{
+    .wrap{
       max-width:720px;
       margin:0 auto;
       padding:56px 18px 88px;
     }
 
     h1{
-      margin:0 0 8px;
-      font-size:clamp(1.8rem,4vw,2.6rem);
+      margin:0 0 12px;
+      font-size:32px;
+      font-weight:900;
       letter-spacing:-.3px;
     }
 
     .sub{
-      font-size:1.05rem;
-      color:#D1D5DB;
-      margin-bottom:28px;
+      margin:0 0 28px;
+      font-size:16px;
+      opacity:.95;
     }
 
     .card{
       background:var(--card);
-      border:1px solid var(--bd);
+      color:var(--text);
       border-radius:18px;
-      padding:22px 20px;
+      padding:26px 24px;
+      box-shadow:var(--shadow);
     }
 
-    .summary{
-      font-size:0.95rem;
-      color:#E5E7EB;
-      margin-bottom:18px;
+    .lead{
+      font-size:15px;
+      margin:0 0 18px;
     }
 
     .price{
       margin:18px 0 22px;
-      font-size:0.95rem;
+      font-size:14px;
     }
 
-    .price-note{
-      display:block;
-      margin-top:6px;
-      font-size:0.85rem;
-      color:var(--muted);
+    .price b{
+      font-weight:800;
     }
 
     .btn{
       display:inline-block;
-      padding:12px 16px;
-      border-radius:14px;
       background:var(--sd-green);
-      color:white;
-      font-weight:800;
+      color:#ffffff;
       text-decoration:none;
+      padding:14px 18px;
+      border-radius:14px;
+      font-weight:900;
+      letter-spacing:.2px;
     }
 
     .btn:hover{opacity:.92}
 
-    .microcopy{
+    .trust{
       margin-top:10px;
-      font-size:12.5px;
+      font-size:13px;
       color:var(--muted);
     }
 
-    footer{
-      margin-top:42px;
-      font-size:12.5px;
-      color:var(--muted);
+    @media (max-width:520px){
+      h1{font-size:28px}
     }
   </style>
 </head>
 
 <body>
-<main>
+  <main class="wrap">
 
-  <h1>SlackDigest aktivieren</h1>
-  <p class="sub">
-    Der Digest, den du gerade gesehen hast – regelmäßig, klar priorisiert, auf einen Blick.
-  </p>
-
-  <div class="card">
-    <p class="summary">
-      Du wählst Kanäle und Takt – SlackDigest bündelt relevante Updates automatisch.
+    <h1>SlackDigest aktivieren</h1>
+    <p class="sub">
+      Der Digest, den du gerade gesehen hast – regelmäßig, klar priorisiert, auf einen Blick.
     </p>
 
-    <p class="price">
-      <b>Pro:</b> <b>21 € / Monat</b> · pro Workspace<br>
-      <b>Basic:</b> <b>9 € / Monat</b>
-      <span class="price-note">Jederzeit kündbar.</span>
-    </p>
+    <section class="card">
 
-    <a class="btn" href="/products/slackdigest/success/">
-      SlackDigest aktivieren
-    </a>
+      <p class="lead">
+        Du legst Kanäle und Takt fest (≈ 1 Minute).<br>
+        Der Digest wird automatisch erstellt.<br>
+        Die Zustellung startet im gewählten Rhythmus.
+      </p>
 
-    <div class="microcopy">
-      Kein Setup · kein Call · jederzeit kündbar
-    </div>
-  </div>
+      <p class="price">
+        <b>Pro: 21 € / Monat</b> · pro Workspace<br>
+        <b>Basic: 9 € / Monat</b>
+      </p>
 
-  <footer>
-    <a href="/impressum.html">Impressum</a> ·
-    <a href="/datenschutz.html">Datenschutz</a>
-  </footer>
+      <a class="btn" href="#">
+        Jetzt kaufen & aktivieren
+      </a>
 
-</main>
+      <p class="trust">
+        Kein Setup · kein Call · jederzeit kündbar
+      </p>
+
+    </section>
+
+  </main>
 </body>
 </html>
