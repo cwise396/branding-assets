@@ -58,87 +58,60 @@
       margin:0 0 18px;
     }
 
+    .features{
+      margin:0 0 18px;
+      padding-left:18px;
+      font-size:14px;
+    }
+    .features li{
+      margin:6px 0;
+    }
+
     .price{
       margin:18px 0 22px;
       font-size:14px;
     }
-
     .price b{
       font-weight:800;
     }
 
-    .btn{
-      display:inline-block;
+    /* scoped CTA area */
+    .cta-actions{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      margin-top:10px;
+    }
+
+    .cta-actions .btn{
+      display:block;
+      width:100%;
       background:var(--sd-green);
       color:#ffffff;
       text-decoration:none;
       padding:14px 18px;
       border-radius:14px;
       font-weight:900;
+      text-align:center;
       letter-spacing:.2px;
     }
 
-    .btn:hover{opacity:.92}
+    .cta-actions .btn--secondary{
+      background:#0F766E;
+    }
 
-    .trust{
+    .cta-actions .btn:hover{opacity:.92}
+
+    .microcopy{
       margin-top:10px;
       font-size:13px;
       color:var(--muted);
+      text-align:center;
     }
 
     @media (max-width:520px){
       h1{font-size:28px}
     }
- /* Success / Kaufseite – scoped buttons */
-.cta .cta-actions{
-  display:flex;
-  gap:12px;
-  margin-top:18px;
-  flex-wrap:wrap;
-}
-
-.cta .btn{
-  flex:1 1 220px;
-  text-align:center;
-  padding:12px 16px;
-  font-weight:800;
-  border-radius:12px;
-}
-
-/* Primary = Pro */
-.cta .btn--primary{
-  background:#0C6C48; /* SlackDigest Grün */
-  color:#ffffff;
-  border:none;
-}
-
-/* Secondary = Basic */
-.cta .btn--secondary{
-  background:#ffffff;
-  color:#0C6C48;
-  border:2px solid #0C6C48;
-}
-
-/* Hover dezent */
-.cta .btn--primary:hover{ opacity:.92; }
-.cta .btn--secondary:hover{ background:#F0FDF4; }
-
-/* Microcopy */
-.cta .microcopy{
-  width:100%;
-  margin-top:6px;
-  font-size:12.5px;
-  color:#6B7280;
-  text-align:center;
-}
-
-/* Mobile */
-@media (max-width:520px){
-  .cta .cta-actions{
-    flex-direction:column;
-  }
-}
-
   </style>
 </head>
 
@@ -153,21 +126,44 @@
     <section class="card">
 
       <p class="lead">
+        <strong>Nach dem Kauf ist SlackDigest sofort einsatzbereit.</strong>
+      </p>
+
+      <ul class="features">
+        <li>Relevante Updates werden automatisch gebündelt</li>
+        <li><strong>Pro:</strong> zusätzlich priorisiert &amp; mit nächsten Schritten ergänzt</li>
+        <li>Zustellung regelmäßig per Slack oder E-Mail</li>
+      </ul>
+
+      <div class="price">
+        <b>Pro: 21 € / Monat · pro Workspace</b><br>
+        <span style="opacity:.85;">
+          Für Arbeit mit Priorisierung, Abhängigkeiten &amp; klaren nächsten Schritten
+        </span><br><br>
+
+        <b>Basic: 9 € / Monat · pro Workspace</b><br>
+        <span style="opacity:.85;">
+          Für Überblick &amp; Zusammenfassung – ohne Priorisierung &amp; Empfehlungen
+        </span><br><br>
+
+        <span style="opacity:.75;">
+          Ein Workspace umfasst alle angebundenen Kanäle &amp; Postfächer eines Teams.
+        </span>
+      </div>
+
       <div class="cta-actions">
-  <a class="btn btn--primary" href="/checkout/slackdigest/pro">
-    Pro kaufen &amp; aktivieren
-  </a>
+        <a class="btn btn--primary" href="/checkout/slackdigest/pro">
+          Pro kaufen &amp; aktivieren
+        </a>
 
-  <a class="btn btn--secondary" href="/checkout/slackdigest/basic">
-    Basic kaufen &amp; aktivieren
-  </a>
+        <a class="btn btn--secondary" href="/checkout/slackdigest/basic">
+          Basic kaufen &amp; aktivieren
+        </a>
 
-  <p class="microcopy">
-    Kein Setup · kein Call · jederzeit kündbar
-  </p>
-</div>
-
-       
+        <p class="microcopy">
+          Kein Setup · kein Call · jederzeit kündbar
+        </p>
+      </div>
 
     </section>
 
