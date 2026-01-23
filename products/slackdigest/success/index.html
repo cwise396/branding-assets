@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SlackDigest aktivieren</title>
-  <meta name="description" content="SlackDigest aktivieren – ruhig, klar, jederzeit kündbar.">
+  <meta name="description" content="SlackDigest aktivieren – Basic oder Pro. Jederzeit kündbar.">
 
   <style>
     :root{
@@ -13,6 +13,7 @@
       --card:#ffffff;
       --text:#111827;
       --muted:#6B7280;
+      --line:rgba(17,24,39,.10);
       --shadow:0 10px 30px rgba(0,0,0,.15);
     }
 
@@ -27,7 +28,7 @@
     }
 
     .wrap{
-      max-width:720px;
+      max-width:820px;
       margin:0 auto;
       padding:56px 18px 88px;
     }
@@ -53,64 +54,132 @@
       box-shadow:var(--shadow);
     }
 
-    .lead{
-      font-size:15px;
-      margin:0 0 18px;
+    h2{
+      margin:0 0 10px;
+      font-size:18px;
+      letter-spacing:-.15px;
     }
 
-    .features{
-      margin:0 0 18px;
-      padding-left:18px;
+    .lead{
+      margin:0 0 14px;
+      color:var(--text);
+      font-size:15px;
+    }
+
+    .hint-micro{
+      margin:10px 0 18px;
+      padding:12px 12px;
+      border-radius:12px;
+      background:rgba(12,108,72,.06);
+      border:1px solid rgba(12,108,72,.14);
+      color:var(--text);
+      font-size:13.5px;
+    }
+    .hint-micro em{font-style:normal; font-weight:800}
+
+    /* Table */
+    .matrix{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:14px;
+      margin:10px 0 14px;
       font-size:14px;
     }
-    .features li{
-      margin:6px 0;
+    .matrix th,
+    .matrix td{
+      padding:10px 12px;
+      border-bottom:1px solid var(--line);
+      text-align:left;
+      vertical-align:middle;
     }
+    .matrix thead th{
+      background:rgba(17,24,39,.04);
+      font-weight:900;
+      color:var(--text);
+    }
+    .matrix tr:last-child td{border-bottom:none}
+    .matrix .col-basic,
+    .matrix .col-pro{
+      width:90px;
+      text-align:center;
+      font-weight:900;
+    }
+
+    /* Bullet list */
+    .bullets{
+      margin:14px 0 14px;
+      padding-left:18px;
+      color:var(--text);
+      font-size:14.5px;
+    }
+    .bullets li{margin:6px 0}
 
     .price{
-      margin:18px 0 22px;
+      margin:12px 0 8px;
       font-size:14px;
+      color:var(--text);
     }
-    .price b{
+    .price b{font-weight:900}
+
+    .workspace{
+      margin:8px 0 18px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    /* Buttons (scoped) */
+    .cta-actions{
+      margin-top:14px;
+    }
+
+    .cta-ready{
+      margin:10px 0 12px;
+      font-size:14px;
+      color:var(--text);
       font-weight:800;
     }
 
-    /* scoped CTA area */
-    .cta-actions{
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      margin-top:10px;
-    }
-
     .cta-actions .btn{
-      display:block;
-      width:100%;
+      display:inline-block;
       background:var(--sd-green);
       color:#ffffff;
       text-decoration:none;
-      padding:14px 18px;
+      padding:12px 14px;         /* etwas kleiner */
       border-radius:14px;
       font-weight:900;
-      text-align:center;
       letter-spacing:.2px;
+      text-align:center;
+      border:1px solid rgba(255,255,255,.0);
+      width:100%;
     }
-
-    .cta-actions .btn--secondary{
-      background:#0F766E;
-    }
-
     .cta-actions .btn:hover{opacity:.92}
+
+    .cta-actions .btn-row{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:10px;
+      margin-top:10px;
+    }
 
     .microcopy{
       margin-top:10px;
-      font-size:13px;
+      font-size:12.5px;
       color:var(--muted);
       text-align:center;
     }
 
+    @media (min-width:560px){
+      .cta-actions .btn-row{
+        grid-template-columns:1fr 1fr; /* Desktop: nebeneinander */
+      }
+    }
+
     @media (max-width:520px){
       h1{font-size:28px}
+      .card{padding:22px 18px}
     }
   </style>
 </head>
@@ -120,49 +189,81 @@
 
     <h1>SlackDigest aktivieren</h1>
     <p class="sub">
-      Der Digest, den du gerade gesehen hast – regelmäßig, klar priorisiert, auf einen Blick.
+      Wähle <strong>Basic</strong> oder <strong>Pro</strong> — beide jederzeit kündbar.
     </p>
 
     <section class="card">
 
-      <p class="lead">
-        <strong>Nach dem Kauf ist SlackDigest sofort einsatzbereit.</strong>
+      <h2>Was ist der Unterschied zwischen Basic &amp; Pro?</h2>
+      <p class="lead">Pro priorisiert automatisch &amp; schlägt nächste Schritte vor.</p>
+
+      <p class="hint-micro">
+        <strong>Hinweis:</strong> Basic enthält dieselben Inhalte – <em>ohne Priorisierung &amp; Empfehlungen</em>.<br>
+        Du kannst jederzeit zwischen <strong>Basic</strong> und <strong>Pro</strong> wechseln.
       </p>
 
-      <ul class="features">
+      <table class="matrix" aria-label="Basic vs Pro">
+        <thead>
+          <tr>
+            <th>Ebene</th>
+            <th class="col-basic">Basic</th>
+            <th class="col-pro">Pro</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Daten sammeln</td>
+            <td class="col-basic">✔</td>
+            <td class="col-pro">✔</td>
+          </tr>
+          <tr>
+            <td>Threads bündeln</td>
+            <td class="col-basic">✔</td>
+            <td class="col-pro">✔</td>
+          </tr>
+          <tr>
+            <td>Relevanz filtern</td>
+            <td class="col-basic">✔</td>
+            <td class="col-pro">✔</td>
+          </tr>
+          <tr>
+            <td>Priorisieren</td>
+            <td class="col-basic">✖</td>
+            <td class="col-pro">✔</td>
+          </tr>
+          <tr>
+            <td>Empfehlungen &amp; nächste Schritte</td>
+            <td class="col-basic">✖</td>
+            <td class="col-pro">✔</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <ul class="bullets">
         <li>Relevante Updates werden automatisch gebündelt</li>
-        <li><strong>Pro:</strong> zusätzlich priorisiert &amp; mit nächsten Schritten ergänzt</li>
+        <li><strong>(Pro)</strong> zusätzlich priorisiert &amp; mit nächsten Schritten ergänzt</li>
         <li>Zustellung regelmäßig per Slack oder E-Mail</li>
       </ul>
 
       <div class="price">
-        <b>Pro: 21 € / Monat · pro Workspace</b><br>
-        <span style="opacity:.85;">
-          Für Arbeit mit Priorisierung, Abhängigkeiten &amp; klaren nächsten Schritten
-        </span><br><br>
-
-        <b>Basic: 9 € / Monat · pro Workspace</b><br>
-        <span style="opacity:.85;">
-          Für Überblick &amp; Zusammenfassung – ohne Priorisierung &amp; Empfehlungen
-        </span><br><br>
-
-        <span style="opacity:.75;">
-          Ein Workspace umfasst alle angebundenen Kanäle &amp; Postfächer eines Teams.
-        </span>
+        <b>Pro: 21 € / Monat</b> · pro Workspace<br>
+        <b>Basic: 9 € / Monat</b> · pro Workspace
       </div>
 
+      <div class="workspace">
+        Ein Workspace umfasst alle angebundenen Kanäle &amp; Postfächer eines Teams.
+      </div>
+
+      <!-- OBERHALB der Buttons (wie gewünscht) -->
+      <div class="cta-ready">Nach dem Kauf ist SlackDigest sofort einsatzbereit.</div>
+
       <div class="cta-actions">
-        <a class="btn btn--primary" href="/checkout/slackdigest/pro">
-          Pro kaufen &amp; aktivieren
-        </a>
+        <div class="btn-row">
+          <a class="btn" href="/checkout/slackdigest/pro">Pro kaufen &amp; aktivieren</a>
+          <a class="btn" href="/checkout/slackdigest/basic">Basic kaufen &amp; aktivieren</a>
+        </div>
 
-        <a class="btn btn--secondary" href="/checkout/slackdigest/basic">
-          Basic kaufen &amp; aktivieren
-        </a>
-
-        <p class="microcopy">
-          Kein Setup · kein Call · jederzeit kündbar
-        </p>
+        <p class="microcopy">Kein Setup · kein Call · jederzeit kündbar</p>
       </div>
 
     </section>
