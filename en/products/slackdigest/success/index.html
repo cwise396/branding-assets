@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Activate SlackDigest</title>
-  <meta name="description" content="Activate SlackDigest — Basic or Pro.">
+  <meta name="description" content="Activate SlackDigest — Basic or Pro. Cancel anytime.">
 
   <style>
     :root{
@@ -41,9 +41,20 @@
     }
 
     .sub{
-      margin:0 0 28px;
+      margin:0 0 22px;
       font-size:16px;
       opacity:.95;
+    }
+
+    /* BRAND */
+    .brand-row{
+      display:flex;
+      justify-content:center;
+      margin-bottom:24px;
+    }
+    .brand-logo{
+      height:64px;
+      width:auto;
     }
 
     .card{
@@ -62,31 +73,19 @@
 
     .lead{
       margin:0 0 14px;
-      color:var(--text);
       font-size:15px;
     }
-
-    .hint-micro{
-      margin:10px 0 18px;
-      padding:12px 12px;
-      border-radius:12px;
-      background:rgba(12,108,72,.06);
-      border:1px solid rgba(12,108,72,.14);
-      color:var(--text);
-      font-size:13.5px;
-    }
-    .hint-micro em{font-style:normal; font-weight:800}
 
     /* Table */
     .matrix{
       width:100%;
       border-collapse:separate;
       border-spacing:0;
-      overflow:hidden;
       border:1px solid var(--line);
       border-radius:14px;
       margin:10px 0 14px;
       font-size:14px;
+      overflow:hidden;
     }
     .matrix th,
     .matrix td{
@@ -98,7 +97,6 @@
     .matrix thead th{
       background:rgba(17,24,39,.04);
       font-weight:900;
-      color:var(--text);
     }
     .matrix tr:last-child td{border-bottom:none}
     .matrix .col-basic,
@@ -108,11 +106,10 @@
       font-weight:900;
     }
 
-    /* Bullet list */
+    /* Bullets */
     .bullets{
-      margin:14px 0 14px;
+      margin:14px 0;
       padding-left:18px;
-      color:var(--text);
       font-size:14.5px;
     }
     .bullets li{margin:6px 0}
@@ -120,7 +117,6 @@
     .price{
       margin:12px 0 8px;
       font-size:14px;
-      color:var(--text);
     }
     .price b{font-weight:900}
 
@@ -130,32 +126,11 @@
       color:var(--muted);
     }
 
-    /* Buttons (scoped) */
-    .cta-actions{
-      margin-top:14px;
-    }
-
     .cta-ready{
       margin:10px 0 12px;
       font-size:14px;
-      color:var(--text);
       font-weight:800;
     }
-
-    .cta-actions .btn{
-      display:inline-block;
-      background:var(--sd-green);
-      color:#ffffff;
-      text-decoration:none;
-      padding:12px 14px;         /* slightly smaller */
-      border-radius:14px;
-      font-weight:900;
-      letter-spacing:.2px;
-      text-align:center;
-      border:1px solid rgba(255,255,255,.0);
-      width:100%;
-    }
-    .cta-actions .btn:hover{opacity:.92}
 
     .cta-actions .btn-row{
       display:grid;
@@ -163,6 +138,19 @@
       gap:10px;
       margin-top:10px;
     }
+
+    .cta-actions .btn{
+      display:inline-block;
+      background:var(--sd-green);
+      color:#fff;
+      text-decoration:none;
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:900;
+      text-align:center;
+      width:100%;
+    }
+    .cta-actions .btn:hover{opacity:.92}
 
     .microcopy{
       margin-top:10px;
@@ -173,7 +161,7 @@
 
     @media (min-width:560px){
       .cta-actions .btn-row{
-        grid-template-columns:1fr 1fr; /* desktop: side by side */
+        grid-template-columns:1fr 1fr;
       }
     }
 
@@ -188,16 +176,20 @@
   <main class="wrap">
 
     <h1>Activate SlackDigest</h1>
-    <p class="sub">
-      Choose <strong>Basic</strong> or <strong>Pro</strong>  
-    </p>
+    <p class="sub">Choose <strong>Basic</strong> or <strong>Pro</strong></p>
+
+    <div class="brand-row">
+      <img src="/assets/brand/slackdigest_logo.svg"
+           alt="SlackDigest"
+           class="brand-logo">
+    </div>
 
     <section class="card">
 
       <h2>What’s the difference between Basic and Pro?</h2>
-      <p class="lead">Pro automatically prioritizes and suggests next steps.</p>
+      <p class="lead">Pro automatically prioritises and suggests next steps.</p>
 
-       <table class="matrix" aria-label="Basic vs Pro">
+      <table class="matrix" aria-label="Basic vs Pro">
         <thead>
           <tr>
             <th>Layer</th>
@@ -206,41 +198,22 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Collect data</td>
-            <td class="col-basic">✔</td>
-            <td class="col-pro">✔</td>
-          </tr>
-          <tr>
-            <td>Group threads</td>
-            <td class="col-basic">✔</td>
-            <td class="col-pro">✔</td>
-          </tr>
-          <tr>
-            <td>Filter for relevance</td>
-            <td class="col-basic">✔</td>
-            <td class="col-pro">✔</td>
-          </tr>
-          <tr>
-            <td>Prioritize</td>
-            <td class="col-basic">✖</td>
-            <td class="col-pro">✔</td>
-          </tr>
-          <tr>
-            <td>Recommendations &amp; next steps</td>
-            <td class="col-basic">✖</td>
-            <td class="col-pro">✔</td>
-          </tr>
+          <tr><td>Collect data</td><td class="col-basic">✔</td><td class="col-pro">✔</td></tr>
+          <tr><td>Group threads</td><td class="col-basic">✔</td><td class="col-pro">✔</td></tr>
+          <tr><td>Filter for relevance</td><td class="col-basic">✔</td><td class="col-pro">✔</td></tr>
+          <tr><td>Prioritise</td><td class="col-basic">✖</td><td class="col-pro">✔</td></tr>
+          <tr><td>Recommendations & next steps</td><td class="col-basic">✖</td><td class="col-pro">✔</td></tr>
         </tbody>
       </table>
 
       <ul class="bullets">
-  <li>Relevant updates are automatically grouped.</li>
-  <li><b>Basic</b> provides the same overview.</li>
-  <li><b>Pro</b> adds prioritisation and recommendations.</li>
-  <li>Delivery on a regular schedule via Slack or email.</li>
-</ul>
-   <div class="price">
+        <li>Relevant updates are automatically grouped.</li>
+        <li><b>Basic</b> provides the same overview.</li>
+        <li><b>Pro</b> adds prioritisation and recommendations.</li>
+        <li>Delivery on a regular schedule via Slack or email.</li>
+      </ul>
+
+      <div class="price">
         <b>Pro: €15 / month</b> · per workspace<br>
         <b>Basic: €9 / month</b> · per workspace
       </div>
@@ -249,15 +222,13 @@
         A workspace includes all connected channels and inboxes for one team.
       </div>
 
-      <!-- ABOVE the buttons (as requested) -->
       <div class="cta-ready">SlackDigest is ready to use right after purchase.</div>
 
       <div class="cta-actions">
         <div class="btn-row">
-          <a class="btn" href="/en/checkout/slackdigest/pro">Buy &amp; activate Pro</a>
-          <a class="btn" href="/en/checkout/slackdigest/basic">Buy &amp; activate Basic</a>
+          <a class="btn" href="/en/checkout/slackdigest/pro">Buy & activate Pro</a>
+          <a class="btn" href="/en/checkout/slackdigest/basic">Buy & activate Basic</a>
         </div>
-
         <p class="microcopy">No setup · no call · cancel anytime</p>
       </div>
 
