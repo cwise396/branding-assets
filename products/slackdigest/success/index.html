@@ -33,6 +33,29 @@
       padding:56px 18px 88px;
     }
 
+    /* NEW: hero row (text left, logo right) */
+    .hero-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:18px;
+      flex-wrap:wrap;
+    }
+    .hero-text{ max-width:560px; }
+
+    .brand-col{
+      display:flex;
+      justify-content:flex-end;
+      flex:1;
+      min-width:160px;
+    }
+    .brand-logo{
+      height:72px;   /* bigger */
+      width:auto;
+      display:block;
+    }
+
     h1{
       margin:0 0 12px;
       font-size:32px;
@@ -41,7 +64,7 @@
     }
 
     .sub{
-      margin:0 0 28px;
+      margin:0;
       font-size:16px;
       opacity:.95;
     }
@@ -180,40 +203,37 @@
     @media (max-width:520px){
       h1{font-size:28px}
       .card{padding:22px 18px}
-    }
- .brand-row{
-  display:flex;
-  justify-content:center;
-  margin-bottom:18px;
-}
 
-.brand-logo{
-  height:56px;
-  width:auto;
-}
- </style>
+      /* Mobile: logo smaller + stacks nicely */
+      .brand-logo{ height:56px; }
+      .brand-col{ width:100%; justify-content:flex-start; }
+    }
+  </style>
 </head>
 
 <body>
   <main class="wrap">
 
-    <h1>SlackDigest aktivieren</h1>
-    <p class="sub">
-      Wähle <strong>Basic</strong> oder <strong>Pro</strong>  
-    </p>
-<div class="brand-row">
-  <img src="/assets/brand/slackdigest_logo.svg"
-       alt="SlackDigest"
-       class="brand-logo">
-</div>
+    <!-- NEW header block -->
+    <div class="hero-top">
+      <div class="hero-text">
+        <h1>SlackDigest aktivieren</h1>
+        <p class="sub">
+          Wähle <strong>Basic</strong> oder <strong>Pro</strong>
+        </p>
+      </div>
+
+      <div class="brand-col">
+        <img src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest" class="brand-logo">
+      </div>
+    </div>
 
     <section class="card">
 
       <h2>Was ist der Unterschied zwischen Basic &amp; Pro?</h2>
       <p class="lead">Pro priorisiert automatisch &amp; schlägt nächste Schritte vor.</p>
 
-       
-       <table class="matrix" aria-label="Basic vs Pro">
+      <table class="matrix" aria-label="Basic vs Pro">
         <thead>
           <tr>
             <th>Ebene</th>
@@ -249,12 +269,13 @@
           </tr>
         </tbody>
       </table>
+
       <ul class="bullets">
-  <li>Relevante Updates werden automatisch gebündelt.</li>
-  <li><b>Basic</b> liefert denselben Überblick.</li>
-  <li><b>Pro</b> ergänzt Priorisierung und Empfehlungen.</li>
-  <li>Zustellung regelmäßig per Slack oder E-Mail.</li>
-</ul>
+        <li>Relevante Updates werden automatisch gebündelt.</li>
+        <li><b>Basic</b> liefert denselben Überblick.</li>
+        <li><b>Pro</b> ergänzt Priorisierung und Empfehlungen.</li>
+        <li>Zustellung regelmäßig per Slack oder E-Mail.</li>
+      </ul>
 
       <div class="price">
         <b>Pro: 15 € / Monat</b> · pro Workspace<br>
