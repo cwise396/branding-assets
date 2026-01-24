@@ -87,22 +87,7 @@
   }
 }
 
-  /* ===== Logo rechts ===== */
-  .brand-slot{
-    flex:0 0 auto;
-  }
-
-  .brand-logo{
-    height:78px;
-    width:auto;
-    display:block;
-    background:#ffffff;
-    padding:5px;              /* weißer Rand */
-    border-radius:50%;
-    box-shadow:0 4px 12px rgba(0,0,0,.08);
-  }
-
-  .sub{
+    .sub{
     margin:0 0 22px;
     font-size:14px;
     opacity:.92;
@@ -189,6 +174,19 @@
     border-radius:12px;
     font-weight:800;
   }
+.brand-slot{ flex:0 0 auto; }
+.brand-logo{
+  height:78px;
+  width:auto;
+  display:block;
+  background:#ffffff;
+  padding:5px;
+  border-radius:50%;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+@media (max-width:520px){
+  .brand-logo{height:60px}
+}
 
   .btn:hover{opacity:.92}
 /* CTA button (example-digest only) */
@@ -233,21 +231,8 @@
     <img class="brand-logo" src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest">
   </div>
 </div>
-.brand-slot{ flex:0 0 auto; }
-.brand-logo{
-  height:78px;
-  width:auto;
-  display:block;
-  background:#ffffff;
-  padding:5px;          /* weißer Rand */
-  border-radius:50%;
-  box-shadow:0 4px 12px rgba(0,0,0,.08);
-}
-@media (max-width:520px){
-  .brand-logo{height:60px}
-}
-
-  <p class="sub">
+ 
+   <p class="sub">
     So arbeitet SlackDigest: relevante Updates, klar priorisiert, auf einen Blick.
   </p>
 
