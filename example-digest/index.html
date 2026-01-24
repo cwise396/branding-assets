@@ -47,6 +47,26 @@
     gap:16px;
     margin-bottom:16px;
   }
+/* Logo slot */
+.brand-slot{ flex:0 0 auto; }
+
+.brand-logo{
+  height:78px;
+  width:auto;
+  display:block;
+  background:#ffffff;
+  padding:5px;           /* weißer Rand */
+  border-radius:50%;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+/* Mobile: Logo NICHT verstecken, sondern sauber umbrechen */
+@media (max-width:520px){
+  .topline{ flex-direction:column; align-items:flex-start; }
+  .brand-slot{ order:2; margin-top:12px; }      /* unter Head */
+  .digest-head{ order:1; }
+  .brand-logo{ height:60px; }
+}
 
   .digest-head{max-width:680px}
 
