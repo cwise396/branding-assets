@@ -45,19 +45,36 @@
       font-size:16px;
       opacity:.95;
     }
+/* HEADER ROW (text left, logo right aligned to card edge) */
+.header-row{
+  display:grid;
+  grid-template-columns: 1fr auto;
+  align-items:end;
+  gap:16px;
+  margin-bottom:22px;
+}
 
-    /* BRAND */
-    .brand-row{
-      display:flex;
-      justify-content:center;
-      margin-bottom:24px;
-    }
-    .brand-logo{
-      height:64px;
-      width:auto;
-    }
+.header-row .sub{
+  margin:0; /* wichtig: Abstand kommt von .header-row */
+}
 
-    .card{
+.brand-logo{
+  height:62px;
+  width:auto;
+  display:block;
+}
+
+/* Mobile: stack */
+@media (max-width:520px){
+  .header-row{
+    grid-template-columns:1fr;
+    align-items:start;
+    gap:10px;
+  }
+  .brand-logo{ height:56px; }
+}
+
+     .card{
       background:var(--card);
       color:var(--text);
       border-radius:18px;
@@ -175,14 +192,17 @@
 <body>
   <main class="wrap">
 
+    <div class="header-row">
+  <div>
     <h1>Activate SlackDigest</h1>
     <p class="sub">Choose <strong>Basic</strong> or <strong>Pro</strong></p>
+  </div>
 
-    <div class="brand-row">
-      <img src="/assets/brand/slackdigest_logo.svg"
-           alt="SlackDigest"
-           class="brand-logo">
-    </div>
+  <img class="brand-logo"
+       src="/assets/brand/slackdigest_logo.svg"
+       alt="SlackDigest">
+</div>
+
 
     <section class="card">
 
