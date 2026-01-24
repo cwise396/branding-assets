@@ -1,333 +1,277 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Example Digest – SlackDigest</title>
-  <meta name="description" content="Example Digest – preview of how SlackDigest works.">
+  <meta name="description" content="What a SlackDigest looks like: relevant updates, clearly prioritised, at a glance." />
 
-  <style>
-    :root{
-      --bg:#0C6C48;           /* SlackDigest green */
-      --text:#111827;         /* dark text on white cards */
-      --muted:#ffffff;        /* on green background we use white */
-      --shadow: 0 10px 30px rgba(0,0,0,.25);
+<style>
+  :root{
+    --bg:#0C6C48;
+    --panel:rgba(255,255,255,.04);
+    --text:#E5E7EB;
+    --muted:#9FB0C3;
+    --border:rgba(255,255,255,.12);
+    --accent:#0C6C48;
 
-      --red:#F87171;
-      --amber:#FBBF24;
-      --green:#34D399;
+    --red:#F87171;
+    --amber:#FBBF24;
+    --green:#34D399;
 
-      --cwblue:#0E3960;       /* ChangeWise blue for the steps bar */
-      --btn:#0C6C48;
-    }
-
-    *{box-sizing:border-box}
-
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.55;
-    }
-
-    .wrap{
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 44px 18px 88px;
-    }
-
-    .topline{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:14px;
-      margin-bottom:18px;
-      align-items:flex-start; /* statt center */
-      flex-wrap:wrap;
-    }
-
-    .digest-head{
-      margin-bottom: 0;
-    }
-
-    .digest-title{
-      font-size: 34px;
-      font-weight: 900;
-      letter-spacing: -0.4px;
-      margin: 0;
-      color:#ffffff;
-    }
-
-    .digest-sub{
-      font-size: 18px;
-      font-weight: 700;
-      color: rgba(255,255,255,.92);
-      margin-top: 4px;
-    }
-.pro-badge{
-  display:inline-block;
-  margin-top:10px;
-  padding:6px 10px;
-  border-radius:999px;
-  background:rgba(255,255,255,.18);
-  border:1px solid rgba(255,255,255,.35);
-  color:#ffffff;
-  font-size:12.5px;
-  font-weight:800;
-  letter-spacing:-.1px;
-  line-height:1.2;
-  white-space:nowrap;
-}
-@media (max-width:520px){
-  .pro-badge{
-    white-space:normal;
-    max-width:100%;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+    --cwblue:#0E3960;
   }
-}
 
+  *{box-sizing:border-box}
 
-    .notice{
-      font-size:13px;
-      color:#ffffff;
-      padding:12px 14px;
-      background:rgba(255,255,255,.14);
-      border:1px solid rgba(255,255,255,.28);
-      border-radius:14px;
-      max-width: 520px;
-    }
+  body{
+    margin:0;
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.55;
+  }
 
-    h1{
-      font-size:30px;
-      margin:18px 0 6px;
-      letter-spacing:-.2px;
-      color:#ffffff;
-    }
+  .wrap{
+    max-width:920px;
+    margin:0 auto;
+    padding:44px 18px 88px;
+  }
 
-    .sub{
-      color:#ffffff;          /* requested: pure white for readability */
-      margin:0 0 22px;
-      font-size:14px;
-      opacity:.92;
-    }
+  /* ===== Header ===== */
+  .topline{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:16px;
+    margin-bottom:16px;
+  }
 
-    .digest{
-      background: rgba(255,255,255,.15);
-      border: 1px solid rgba(255,255,255,.35);
-      border-radius: 18px;
-      padding: 18px;
-      box-shadow: var(--shadow);
-    }
+  .digest-head{max-width:680px}
 
-    .block{
-      display:flex;
-      gap:14px;
-      padding:16px 14px;
-      border-radius:14px;
-      background:#ffffff;
-      margin-top:12px;
-      color:#111827;
-    }
+  .digest-title{
+    font-size:34px;
+    font-weight:900;
+    letter-spacing:-.4px;
+    margin:0;
+    color:#ffffff;
+  }
 
-    .bar{
-      width:6px;
-      border-radius:999px;
-      flex:0 0 6px;
-      opacity:.95;
-    }
-    .bar.red{background:var(--red)}
-    .bar.amber{background:var(--amber)}
-    .bar.green{background:var(--green)}
+  .digest-sub{
+    font-size:18px;
+    font-weight:700;
+    margin-top:4px;
+    color:#ffffff;
+  }
 
-    .kicker{
-      font-size:13px;
-      color:#6B7280;
-      margin:0 0 6px;
-    }
-    .title{
-      margin:0 0 6px;
-      font-weight:800;
-      letter-spacing:-.1px;
-      color:#0F172A;
-    }
-    .desc{
-      margin:0 0 8px;
-      color:#111827;
-    }
-    .hint{
-      margin:0;
-      color:#374151;
-      font-size:13px;
-    }
+  .pro-badge{
+    display:inline-block;
+    margin-top:10px;
+    padding:6px 10px;
+    border-radius:999px;
+    background:rgba(255,255,255,.18);
+    border:1px solid rgba(255,255,255,.35);
+    color:#ffffff;
+    font-size:12.5px;
+    font-weight:800;
+    white-space:nowrap;
+  }
 
-    code{
-      background: rgba(15,23,42,.08);
-      border: 1px solid rgba(15,23,42,.18);
-      padding: 2px 6px;
-      border-radius: 8px;
-      color:#0F172A;
-      font-size:12px;
-      font-weight:700;
-    }
+  /* ===== Logo right ===== */
+  .brand-slot{
+    flex:0 0 auto;
+  }
 
-    ul{margin:10px 0 0; padding-left:18px}
-    li{margin:6px 0; color:#111827}
+  .brand-logo{
+    height:78px;
+    width:auto;
+    display:block;
+    background:#ffffff;
+    padding:5px;
+    border-radius:50%;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+  }
 
-    .steps{
-      margin-top:12px;
-      display:flex;
-      gap:14px;
-      padding:16px 14px;
-      border-radius:14px;
-      background:#ffffff;
-      color:#111827;
-    }
-    .steps .bar-blue{
-      width:6px;
-      border-radius:999px;
-      flex:0 0 6px;
-      background:var(--cwblue);
-    }
-    .steps .title{ color:#0F172A; font-weight:800; }
+  .sub{
+    margin:0 0 22px;
+    font-size:14px;
+    opacity:.92;
+    color:#ffffff;
+  }
 
-    .summary{
-      margin-top:12px;
-      padding:14px;
-      border-radius:14px;
-      background:#ffffff;
-      color:#111827;
-      font-size:13px;
-    }
-    .summary b{ color:#0F172A; }
+  /* ===== Digest ===== */
+  .digest{
+    background:rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.35);
+    border-radius:18px;
+    padding:18px;
+    box-shadow:var(--shadow);
+  }
 
-    .cta{
-      margin-top:24px;
-      padding:20px;
-      border-radius:18px;
-      background:#ffffff;     /* requested: white card */
-      color:#111827;
-      box-shadow: 0 10px 30px rgba(0,0,0,.08);
-    }
+  .block{
+    display:flex;
+    gap:14px;
+    padding:16px 14px;
+    border-radius:14px;
+    background:#ffffff;
+    margin-top:12px;
+    color:#111827;
+  }
 
-    .cta h2{
-      margin:0 0 8px;
-      font-size:18px;
-      color:#0F172A;
-    }
+  .bar{width:6px;border-radius:999px;flex:0 0 6px}
+  .bar.red{background:var(--red)}
+  .bar.amber{background:var(--amber)}
+  .bar.green{background:var(--green)}
 
-    .price{
-      color:#111827;
-      font-size:13px;
-      margin:10px 0 0;
-    }
+  .kicker{font-size:13px;color:#6B7280;margin:0 0 6px}
+  .title{margin:0 0 6px;font-weight:800;color:#0F172A}
+  .desc{margin:0 0 8px;color:#111827}
+  .hint{margin:0;color:#374151;font-size:13px}
 
-    .btn{
-      display:inline-block;
-      margin-top:14px;
-      padding:12px 16px;
-      background:var(--btn);  /* keep green button */
-      color:white;
-      text-decoration:none;
-      border-radius:12px;
-      font-weight:900;
-    }
-    .btn:hover{opacity:.92}
+  code{
+    background:rgba(15,23,42,.08);
+    border:1px solid rgba(15,23,42,.18);
+    padding:2px 6px;
+    border-radius:8px;
+    font-size:12px;
+    font-weight:700;
+    color:#0F172A;
+  }
 
-    .fine{
-      margin-top:10px;
-      font-size:12.5px;
-      color:#374151;
-    }
+  .steps{
+    margin-top:12px;
+    display:flex;
+    gap:14px;
+    padding:16px 14px;
+    border-radius:14px;
+    background:#ffffff;
+    color:#111827;
+  }
 
-    @media (max-width:520px){
-      .digest-title{font-size:30px}
-      h1{font-size:26px}
-      .wrap{padding:34px 14px 72px}
-    }
-  </style>
+  .steps .bar-blue{
+    width:6px;
+    border-radius:999px;
+    background:var(--cwblue);
+  }
+
+  .summary{
+    margin-top:12px;
+    padding:14px;
+    border-radius:14px;
+    background:#ffffff;
+    color:#111827;
+    font-size:13px;
+  }
+
+  /* ===== CTA ===== */
+  .cta{
+    margin-top:28px;
+    text-align:center;
+  }
+
+  .btn{
+    display:inline-block;
+    margin-top:14px;
+    padding:12px 16px;
+    background:var(--accent);
+    color:#ffffff;
+    text-decoration:none;
+    border-radius:12px;
+    font-weight:800;
+  }
+
+  .btn:hover{opacity:.92}
+
+  @media (max-width:520px){
+    .digest-title{font-size:30px}
+    .brand-logo{height:60px}
+    .wrap{padding:34px 14px 72px}
+  }
+</style>
 </head>
 
 <body>
-  <main class="wrap">
+<main class="wrap">
 
-   <div class="topline">
-  <div class="digest-head">
-    <div class="digest-title">SlackDigest</div>
-    <div class="digest-sub">Example Digest</div>
+  <div class="topline">
+    <div class="digest-head">
+      <div class="digest-title">SlackDigest</div>
+      <div class="digest-sub">Example Digest</div>
+      <div class="pro-badge">Pro: prioritisation &amp; recommendations included</div>
+    </div>
 
-    <div class="pro-badge">
-      Pro: prioritization &amp; recommendations included
+    <div class="brand-slot">
+      <img
+        src="/assets/brand/slackdigest_logo.svg"
+        alt="SlackDigest"
+        class="brand-logo"
+      >
     </div>
   </div>
-</div>
 
-<p class="sub">This is how SlackDigest works: relevant updates, clearly prioritized, at a glance.</p>
+  <p class="sub">
+    This is how SlackDigest works: relevant updates, clearly prioritised, at a glance.
+  </p>
 
+  <section class="digest">
 
-    <section class="digest">
-
-      <div class="block">
-        <div class="bar red" aria-hidden="true"></div>
-        <div>
-          <p class="kicker">🔴 Important · High Impact</p>
-          <p class="title">Support tickets with revenue relevance</p>
-          <p class="desc">3 new topics from <code>#support</code> with direct customer impact.</p>
-          <p class="hint">→ Recommended: prioritize today.</p>
-        </div>
+    <div class="block">
+      <div class="bar red"></div>
+      <div>
+        <p class="kicker">🔴 Important · High impact</p>
+        <p class="title">Support tickets affecting revenue</p>
+        <p class="desc">3 new topics from <code>#support</code> with direct customer impact.</p>
+        <p class="hint">→ Recommended: prioritise today.</p>
       </div>
+    </div>
 
-      <div class="block">
-        <div class="bar amber" aria-hidden="true"></div>
-        <div>
-          <p class="kicker">🟠 Relevant · Needs attention</p>
-          <p class="title">Sales questions about Feature X</p>
-          <p class="desc">Multiple similar questions coming in via <code>#sales</code>.</p>
-          <p class="hint">→ One clarification reduces repetition.</p>
-        </div>
+    <div class="block">
+      <div class="bar amber"></div>
+      <div>
+        <p class="kicker">🟠 Relevant · Needs attention</p>
+        <p class="title">Sales questions about Feature X</p>
+        <p class="desc">Similar questions across <code>#sales</code>.</p>
+        <p class="hint">→ One clarification reduces repetition.</p>
       </div>
+    </div>
 
-      <div class="block">
-        <div class="bar green" aria-hidden="true"></div>
-        <div>
-          <p class="kicker">🟢 Informational · FYI</p>
-          <p class="title">Internal updates & status notes</p>
-          <p class="desc">Status updates with no immediate action required.</p>
-          <p class="hint">→ For awareness.</p>
-        </div>
+    <div class="block">
+      <div class="bar green"></div>
+      <div>
+        <p class="kicker">🟢 Informational · Overview</p>
+        <p class="title">Internal updates &amp; FYIs</p>
+        <p class="desc">Status notes without immediate action.</p>
+        <p class="hint">→ For awareness.</p>
       </div>
+    </div>
 
-      <div class="steps">
-        <div class="bar-blue" aria-hidden="true"></div>
-        <div>
-          <p class="title" style="margin:0 0 8px;">📌 Suggested next steps</p>
-          <ul>
-            <li>Prioritize the support topic</li>
-            <li>Prepare a short clarification for sales</li>
-            <li>Keep the rest grouped</li>
-          </ul>
-        </div>
+    <div class="steps">
+      <div class="bar-blue"></div>
+      <div>
+        <p class="title">📌 Suggested next steps</p>
+        <ul>
+          <li>Prioritise support topic</li>
+          <li>Prepare a short clarification for sales</li>
+          <li>Keep the rest grouped</li>
+        </ul>
       </div>
+    </div>
 
-      <div class="summary">
-        ⏱ <b>Summary</b><br>
-        12 channels scanned · 5 threads grouped · 3 items relevant
-      </div>
-<div class="cta" style="text-align:center; margin-top:28px;">
-  <a class="btn" href="/en/products/slackdigest/success/">
-    <span style="font-size:1.05rem; font-weight:800;">
-     See pricing &amp; feature overview
-    </span>
-    <span style="font-size:0.85rem; opacity:.8;">
-      Differences between Basic &amp; Pro
-    </span>
-  </a>
-</div>
-   </div>
+    <div class="summary">
+      ⏱ <b>Summary</b><br>
+      12 channels scanned · 5 threads grouped · 3 items relevant
+    </div>
 
+  </section>
 
-    </section>
+  <div class="cta">
+    <a class="btn" href="/en/products/slackdigest/success/">
+      See pricing &amp; feature overview<br>
+      <span style="font-size:.85rem;opacity:.85">Differences between Basic &amp; Pro</span>
+    </a>
+  </div>
 
-  </main>
+</main>
 </body>
 </html>
