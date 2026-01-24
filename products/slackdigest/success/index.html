@@ -181,7 +181,17 @@
       h1{font-size:28px}
       .card{padding:22px 18px}
     }
-  </style>
+ .brand-row{
+  display:flex;
+  justify-content:center;
+  margin-bottom:18px;
+}
+
+.brand-logo{
+  height:56px;
+  width:auto;
+}
+ </style>
 </head>
 
 <body>
@@ -191,18 +201,19 @@
     <p class="sub">
       Wähle <strong>Basic</strong> oder <strong>Pro</strong>  
     </p>
+<div class="brand-row">
+  <img src="/assets/brand/slackdigest_logo.svg"
+       alt="SlackDigest"
+       class="brand-logo">
+</div>
 
     <section class="card">
 
       <h2>Was ist der Unterschied zwischen Basic &amp; Pro?</h2>
       <p class="lead">Pro priorisiert automatisch &amp; schlägt nächste Schritte vor.</p>
 
-      <p class="hint-micro">
-        <strong>Hinweis:</strong> Basic enthält dieselben Inhalte – <em>ohne Priorisierung &amp; Empfehlungen</em>.<br>
-        Du kannst jederzeit zwischen <strong>Basic</strong> und <strong>Pro</strong> wechseln.
-      </p>
-
-      <table class="matrix" aria-label="Basic vs Pro">
+       
+       <table class="matrix" aria-label="Basic vs Pro">
         <thead>
           <tr>
             <th>Ebene</th>
@@ -238,7 +249,12 @@
           </tr>
         </tbody>
       </table>
-
+      <p class="hint-micro">
+  <strong>Hinweis:</strong>
+  Basic liefert denselben Überblick.
+  Pro ergänzt Priorisierung und Empfehlungen.<br>
+  Du kannst jederzeit zwischen <strong>Basic</strong> und <strong>Pro</strong> wechseln.
+</p>
       <ul class="bullets">
         <li>Relevante Updates werden automatisch gebündelt</li>
         <li><strong>(Pro)</strong> zusätzlich priorisiert &amp; mit nächsten Schritten ergänzt</li>
