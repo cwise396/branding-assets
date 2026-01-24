@@ -33,34 +33,14 @@
       padding:56px 18px 88px;
     }
 
-    /* NEW: hero row (text left, logo right) */
-    .hero-top{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
+    /* ===== Header row (Text links, Logo rechts – immer) ===== */
+    .header-row{
+      display:grid;
+      grid-template-columns:1fr auto;
+      align-items:start;
       gap:16px;
-      margin-bottom:18px;
-      flex-wrap:wrap;
+      margin-bottom:22px;
     }
-    .hero-text{ max-width:560px; }
-
-    .brand-col{
-      display:flex;
-      justify-content:flex-end;
-      flex:1;
-      min-width:160px;
-    }
-    .brand-logo{
-  height:78px;                 /* wie gerade eingestellt */
-  width:auto;
-  display:block;
-  background:#ffffff;          /* weißer Hintergrund */
-  padding:5px;                 /* ← der gewünschte Rand */
-  border-radius:50%;           /* rund wie bisher */
-}
-.brand-logo{
-  box-shadow:0 4px 12px rgba(0,0,0,.08);
-}
 
     h1{
       margin:0 0 12px;
@@ -75,6 +55,24 @@
       opacity:.95;
     }
 
+    .brand-logo{
+      height:78px;
+      width:auto;
+      display:block;
+      background:#ffffff;
+      padding:5px;                 /* weißer Rand */
+      border-radius:50%;
+      box-shadow:0 4px 12px rgba(0,0,0,.08);
+    }
+
+    /* Mobile: Layout bleibt zweispaltig */
+    @media (max-width:520px){
+      .wrap{padding:34px 14px 72px}
+      h1{font-size:28px}
+      .brand-logo{height:56px}
+    }
+
+    /* ===== Card ===== */
     .card{
       background:var(--card);
       color:var(--text);
@@ -91,31 +89,19 @@
 
     .lead{
       margin:0 0 14px;
-      color:var(--text);
       font-size:15px;
     }
-
-    .hint-micro{
-      margin:10px 0 18px;
-      padding:12px 12px;
-      border-radius:12px;
-      background:rgba(12,108,72,.06);
-      border:1px solid rgba(12,108,72,.14);
-      color:var(--text);
-      font-size:13.5px;
-    }
-    .hint-micro em{font-style:normal; font-weight:800}
 
     /* Table */
     .matrix{
       width:100%;
       border-collapse:separate;
       border-spacing:0;
-      overflow:hidden;
       border:1px solid var(--line);
       border-radius:14px;
       margin:10px 0 14px;
       font-size:14px;
+      overflow:hidden;
     }
     .matrix th,
     .matrix td{
@@ -127,7 +113,6 @@
     .matrix thead th{
       background:rgba(17,24,39,.04);
       font-weight:900;
-      color:var(--text);
     }
     .matrix tr:last-child td{border-bottom:none}
     .matrix .col-basic,
@@ -137,11 +122,10 @@
       font-weight:900;
     }
 
-    /* Bullet list */
+    /* Bullets */
     .bullets{
-      margin:14px 0 14px;
+      margin:14px 0;
       padding-left:18px;
-      color:var(--text);
       font-size:14.5px;
     }
     .bullets li{margin:6px 0}
@@ -149,7 +133,6 @@
     .price{
       margin:12px 0 8px;
       font-size:14px;
-      color:var(--text);
     }
     .price b{font-weight:900}
 
@@ -159,32 +142,11 @@
       color:var(--muted);
     }
 
-    /* Buttons (scoped) */
-    .cta-actions{
-      margin-top:14px;
-    }
-
     .cta-ready{
       margin:10px 0 12px;
       font-size:14px;
-      color:var(--text);
       font-weight:800;
     }
-
-    .cta-actions .btn{
-      display:inline-block;
-      background:var(--sd-green);
-      color:#ffffff;
-      text-decoration:none;
-      padding:12px 14px;         /* etwas kleiner */
-      border-radius:14px;
-      font-weight:900;
-      letter-spacing:.2px;
-      text-align:center;
-      border:1px solid rgba(255,255,255,.0);
-      width:100%;
-    }
-    .cta-actions .btn:hover{opacity:.92}
 
     .cta-actions .btn-row{
       display:grid;
@@ -192,6 +154,19 @@
       gap:10px;
       margin-top:10px;
     }
+
+    .cta-actions .btn{
+      display:inline-block;
+      background:var(--sd-green);
+      color:#ffffff;
+      text-decoration:none;
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:900;
+      text-align:center;
+      width:100%;
+    }
+    .cta-actions .btn:hover{opacity:.92}
 
     .microcopy{
       margin-top:10px;
@@ -202,17 +177,12 @@
 
     @media (min-width:560px){
       .cta-actions .btn-row{
-        grid-template-columns:1fr 1fr; /* Desktop: nebeneinander */
+        grid-template-columns:1fr 1fr;
       }
     }
 
     @media (max-width:520px){
-      h1{font-size:28px}
       .card{padding:22px 18px}
-
-      /* Mobile: logo smaller + stacks nicely */
-      .brand-logo{ height:56px; }
-      .brand-col{ width:100%; justify-content:flex-start; }
     }
   </style>
 </head>
@@ -220,18 +190,17 @@
 <body>
   <main class="wrap">
 
-    <!-- NEW header block -->
-    <div class="hero-top">
-      <div class="hero-text">
+    <!-- Header -->
+    <div class="header-row">
+      <div>
         <h1>SlackDigest aktivieren</h1>
-        <p class="sub">
-          Wähle <strong>Basic</strong> oder <strong>Pro</strong>
-        </p>
+        <p class="sub">Wähle <strong>Basic</strong> oder <strong>Pro</strong></p>
       </div>
 
-      <div class="brand-col">
-        <img src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest" class="brand-logo">
-      </div>
+      <img
+        class="brand-logo"
+        src="/assets/brand/slackdigest_logo.svg"
+        alt="SlackDigest">
     </div>
 
     <section class="card">
@@ -248,31 +217,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Daten sammeln</td>
-            <td class="col-basic">✔</td>
-            <td class="col-pro">✔</td>
-          </tr>
-          <tr>
-            <td>Threads bündeln</td>
-            <td class="col-basic">✔</td>
-            <td class="col-pro">✔</td>
-          </tr>
-          <tr>
-            <td>Relevanz filtern</td>
-            <td class="col-basic">✔</td>
-            <td class="col-pro">✔</td>
-          </tr>
-          <tr>
-            <td>Priorisieren</td>
-            <td class="col-basic">✖</td>
-            <td class="col-pro">✔</td>
-          </tr>
-          <tr>
-            <td>Empfehlungen &amp; nächste Schritte</td>
-            <td class="col-basic">✖</td>
-            <td class="col-pro">✔</td>
-          </tr>
+          <tr><td>Daten sammeln</td><td class="col-basic">✔</td><td class="col-pro">✔</td></tr>
+          <tr><td>Threads bündeln</td><td class="col-basic">✔</td><td class="col-pro">✔</td></tr>
+          <tr><td>Relevanz filtern</td><td class="col-basic">✔</td><td class="col-pro">✔</td></tr>
+          <tr><td>Priorisieren</td><td class="col-basic">✖</td><td class="col-pro">✔</td></tr>
+          <tr><td>Empfehlungen &amp; nächste Schritte</td><td class="col-basic">✖</td><td class="col-pro">✔</td></tr>
         </tbody>
       </table>
 
@@ -292,7 +241,6 @@
         Ein Workspace umfasst alle angebundenen Kanäle &amp; Postfächer eines Teams.
       </div>
 
-      <!-- OBERHALB der Buttons (wie gewünscht) -->
       <div class="cta-ready">Nach dem Kauf ist SlackDigest sofort einsatzbereit.</div>
 
       <div class="cta-actions">
@@ -300,7 +248,6 @@
           <a class="btn" href="/checkout/slackdigest/pro">Pro kaufen &amp; aktivieren</a>
           <a class="btn" href="/checkout/slackdigest/basic">Basic kaufen &amp; aktivieren</a>
         </div>
-
         <p class="microcopy">Kein Setup · kein Call · jederzeit kündbar</p>
       </div>
 
