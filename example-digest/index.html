@@ -79,6 +79,300 @@
   line-height:1.2;
   max-width:520px;
 }
+
+@media (max-width:520px){
+  .pro-badge{
+    white-space:normal;   /* darf umbrechen */
+    max-width:100%;
+  }
+}
+
+    .sub{
+    margin:0 0 22px;
+    font-size:14px;
+    opacity:.92;
+    color:#ffffff;
+  }
+
+  /* ===== Digest ===== */
+  .digest{
+    background:rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.35);
+    border-radius:18px;
+    padding:18px;
+    box-shadow:var(--shadow);
+  }
+
+  .block{
+    display:flex;
+    gap:14px;
+    padding:16px 14px;
+    border-radius:14px;
+    background:#ffffff;
+    margin-top:12px;
+    color:#111827;
+  }
+
+  .bar{width:6px;border-radius:999px;flex:0 0 6px}
+  .bar.red{background:var(--red)}
+  .bar.amber{background:var(--amber)}
+  .bar.green{background:var(--green)}
+
+  .kicker{font-size:13px;color:#6B7280;margin:0 0 6px}
+  .title{margin:0 0 6px;font-weight:800;color:#0F172A}
+  .desc{margin:0 0 8px;color:#111827}
+  .hint{margin:0;color:#374151;font-size:13px}
+
+  code{
+    background:rgba(15,23,42,.08);
+    border:1px solid rgba(15,23,42,.18);
+    padding:2px 6px;
+    border-radius:8px;
+    font-size:12px;
+    font-weight:700;
+    color:#0F172A;
+  }
+
+  .steps{
+    margin-top:12px;
+    display:flex;
+    gap:14px;
+    padding:16px 14px;
+    border-radius:14px;
+    background:#ffffff;
+    color:#111827;
+  }
+
+  .steps .bar-blue{
+    width:6px;
+    border-radius:999px;
+    background:var(--cwblue);
+  }
+
+  .summary{
+    margin-top:12px;
+    padding:14px;
+    border-radius:14px;
+    background:#ffffff;
+    color:#111827;
+    font-size:13px;
+  }
+
+  /* ===== CTA ===== */
+  .cta{
+    margin-top:28px;
+    text-align:center;
+  }
+
+  .btn{
+    display:inline-block;
+    margin-top:14px;
+    padding:12px 16px;
+    background:var(--accent);
+    color:#ffffff;
+    text-decoration:none;
+    border-radius:12px;
+    font-weight:800;
+  }
+.brand-slot{ flex:0 0 auto; }
+.brand-logo{
+  height:78px;
+  width:auto;
+  display:block;
+  background:#ffffff;
+  padding:5px;
+  border-radius:50%;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+@media (max-width:520px){
+  .brand-logo{height:60px}
+}
+
+  .btn:hover{opacity:.92}
+/* CTA button (example-digest only) */
+.cta .btn{
+  display:inline-block;
+  padding:12px 16px;
+  border-radius:14px;
+  text-decoration:none;
+  font-weight:900;
+  line-height:1.25;
+  background:rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.40);
+  color:#ffffff;
+  box-shadow:0 10px 30px rgba(0,0,0,.18);
+}
+.cta .btn span{display:block}
+.cta .btn:hover{opacity:.92}
+@media (max-width:520px){
+  .cta .btn{width:100%; max-width:520px}
+}
+
+  
+  @media (max-width:520px){
+    .digest-title{font-size:30px}
+    .brand-logo{height:60px}
+    .wrap{padding:34px 14px 72px}
+  }
+</style>
+</head>
+
+<body>
+<main class="wrap">
+
+<div class="topline">
+  <div class="digest-head">
+    <div class="digest-title">SlackDigest</div>
+    <div class="digest-sub">Beispiel-Digest</div>
+    <div class="pro-badge">Pro: Priorisierung &amp; Empfehlungen inklusive</div>
+  </div>
+</div>
+ 
+   <p class="sub">
+    So arbeitet SlackDigest: relevante Updates, klar priorisiert, auf einen Blick.
+  </p>
+
+  <section class="digest">
+
+    <div class="block">
+      <div class="bar red"></div>
+      <div>
+        <p class="kicker">🔴 Wichtig · Hoher Impact</p>
+        <p class="title">Support-Tickets mit Umsatzbezug</p>
+        <p class="desc">3 neue Themen aus <code>#support</code> mit direkter Kundenwirkung.</p>
+        <p class="hint">→ Empfehlung: heute priorisieren.</p>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="bar amber"></div>
+      <div>
+        <p class="kicker">🟠 Relevant · Bald klären</p>
+        <p class="title">Sales-Rückfragen zu Feature X</p>
+        <p class="desc">Mehrere ähnliche Nachfragen aus <code>#sales</code>.</p>
+        <p class="hint">→ Kurze Klarstellung spart Wiederholungen.</p>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="bar green"></div>
+      <div>
+        <p class="kicker">🟢 Informativ · Überblick</p>
+        <p class="title">Interne Updates &amp; FYIs</p>
+        <p class="desc">Statusmeldungen ohne Handlungsdruck.</p>
+        <p class="hint">→ Zur Kenntnis nehmen.</p>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="bar-blue"></div>
+      <div>
+        <p class="title">📌 Nächste sinnvolle Schritte</p>
+        <ul>
+          <li>Support-Thema priorisieren</li>
+          <li>Kurzstatement für Sales vorbereiten</li>
+          <li>Rest gesammelt lassen</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="summary">
+      ⏱ <b>Zusammenfassung</b><br>
+      12 Kanäle geprüft · 5 Threads gebündelt · 3 Punkte relevant
+    </div>
+
+  </section>
+
+  <div class="cta">
+    <a class="btn" href="/products/slackdigest/success/">
+      Preis- &amp; Leistungsübersicht ansehen<br>
+      <span style="font-size:.85rem;opacity:.85">Unterschiede zwischen Basic &amp; Pro</span>
+    </a>
+  </div>
+
+</main>
+</body>
+</html><!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Beispiel-Digest – SlackDigest</title>
+  <meta name="description" content="So sieht ein SlackDigest aus: Relevante Updates, klar priorisiert, auf einen Blick." />
+
+<style>
+  :root{
+    --bg:#0C6C48;
+    --panel:rgba(255,255,255,.04);
+    --text:#E5E7EB;
+    --muted:#9FB0C3;
+    --border:rgba(255,255,255,.12);
+    --accent:#0C6C48;
+
+    --red:#F87171;
+    --amber:#FBBF24;
+    --green:#34D399;
+
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+    --cwblue:#0E3960;
+  }
+
+  *{box-sizing:border-box}
+
+  body{
+    margin:0;
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.55;
+  }
+
+  .wrap{
+    max-width:920px;
+    margin:0 auto;
+    padding:44px 18px 88px;
+  }
+
+  /* ===== Header ===== */
+  .topline{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:16px;
+    margin-bottom:16px;
+  }
+
+  .digest-head{max-width:680px}
+
+  .digest-title{
+    font-size:34px;
+    font-weight:900;
+    letter-spacing:-.4px;
+    margin:0;
+    color:#ffffff;
+  }
+
+  .digest-sub{
+    font-size:18px;
+    font-weight:700;
+    margin-top:4px;
+    color:#ffffff;
+  }
+
+  .pro-badge{
+  display:inline-block;
+  margin-top:10px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.18);
+  border:1px solid rgba(255,255,255,.35);
+  color:#ffffff;
+  font-size:12.5px;
+  font-weight:800;
+  letter-spacing:-.1px;
+  line-height:1.2;
+  max-width:520px;
+}
  /* ===== Logo right ===== */
   .brand-slot{
     flex:0 0 auto;
