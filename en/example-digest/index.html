@@ -186,22 +186,20 @@
     .cta .btn span{display:block}
     .cta .btn:hover{opacity:.92}
 
-    /* ===== Mobile ===== */
-    @media (max-width:520px){
-      .wrap{padding:34px 14px 72px}
-      .digest-title{font-size:30px}
+   @media (max-width:520px){
+  .topline{
+    flex-direction:row;         /* bleibt 2-spaltig */
+    align-items:flex-start;
+  }
+  .digest-head{max-width:100%}  /* Text darf volle Breite nutzen */
+  .brand-slot{margin-left:auto} /* Logo bleibt rechts */
+  .brand-logo{height:56px}      /* leicht kleiner für Mobile */
+  .pro-badge{
+    white-space:normal;         /* darf umbrechen */
+    max-width:100%;
+  }
+}
 
-      /* Logo ALWAYS visible on mobile */
-      .topline{ flex-direction:column; align-items:flex-start; }
-      .brand-slot{ order:2; margin-top:12px; }
-      .digest-head{ order:1; }
-      .brand-logo{ height:60px; }
-
-      /* Badge shouldn't clip */
-      .pro-badge{ max-width:100%; white-space:normal; }
-
-      .cta .btn{width:100%; max-width:520px}
-    }
   </style>
 </head>
 
