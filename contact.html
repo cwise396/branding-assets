@@ -107,9 +107,23 @@
     opacity:.96;
     line-height:1.4;
   }
-  @media (max-width:640px){
-    .hero-grid{grid-template-columns:1fr}
+/* Mobile: keep 2 columns (logo stays right, not below) */
+@media (max-width:640px){
+  .hero-grid{
+    grid-template-columns:1fr auto; /* keep side-by-side */
+    align-items:start;
   }
+  .badge{
+    width:56px;
+    height:56px;
+  }
+  .badge .inner{
+    left:4px;
+    top:4px;
+    width:calc(56px - 8px);
+    height:calc(56px - 8px);
+  }
+}
 
   /* BADGE */
   .badge{
