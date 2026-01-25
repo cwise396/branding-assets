@@ -73,13 +73,25 @@
 
 /* Mobile: stack */
 @media (max-width:520px){
+  .wrap{padding:34px 14px 72px}
+  h1{font-size:28px}
+
+  /* KEEP two columns on mobile */
   .header-row{
-    grid-template-columns:1fr;
-    align-items:start;
-    gap:10px;
+    grid-template-columns: 1fr auto;
+    align-items:flex-start;
+    gap:12px;
   }
-  .brand-logo{ height:56px; }
+
+  .brand-logo{
+    height:56px;
+  }
+
+  .card{
+    padding:22px 18px;
+  }
 }
+
 
      .card{
       background:var(--card);
