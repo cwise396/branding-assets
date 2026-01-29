@@ -6,6 +6,7 @@
   <title>TaskSieve – Wichtige Aufgaben zuerst.</title>
   <meta name="description" content="TaskSieve bündelt E-Mail, Notizen und Slack in einer Inbox, entdoppelt und priorisiert nach Wirkung, Dringlichkeit und Aufwand." />
   <meta name="theme-color" content="#0B1220" />
+
   <style>
     :root{
       --container:1100px;
@@ -101,38 +102,35 @@
       line-height:1.05;
       letter-spacing:.2px;
     }
-    .hero p.sub{
-      margin:0;
-      max-width:34rem;
-      opacity:.92;
+
+    /* (optional) falls du später wieder .sub/.sub-main nutzt */
+    .hero p.sub{ margin:0; max-width:34rem; opacity:.92; }
+    .hero p.sub-main{
+      font-size:clamp(1.1rem, 2.4vw, 1.35rem);
+      font-weight:700;
+      opacity:.95;
     }
-     /* TaskSieve: erste Sub-Zeile als „Lead“ wie bei SlackDigest */
-.hero p.sub-main{
-  font-size:clamp(1.1rem, 2.4vw, 1.35rem);
-  font-weight:700;
-  opacity:.95;
-}
+
     .logo-col{
       grid-column:9/13;
       display:flex;
       align-items:center;
-      justify-content:flex-start; /* Logo links im Grid-Zellenbereich */
+      justify-content:flex-start;
     }
 
-    /* Hero-Logo: weißer Ring direkt per Border, Logo 100% rund */
+    /* Hero-Logo: weißer Ring */
     .hero-logo-wrap{
       position:relative;
       width:104px;
       height:104px;
       border-radius:50%;
-      border:5px solid #FFFFFF;    /* Weißer Ring */
+      border:5px solid #FFFFFF;
       box-sizing:border-box;
       display:flex;
       align-items:center;
       justify-content:center;
-      aspect-ratio:1/1;            /* sicher kein Oval */
+      aspect-ratio:1/1;
     }
-
     .hero-logo-inner{
       width:100%;
       height:100%;
@@ -140,7 +138,6 @@
       overflow:hidden;
       aspect-ratio:1/1;
     }
-
     .hero-logo{
       width:100%;
       height:100%;
@@ -148,8 +145,7 @@
       display:block;
     }
 
-
-     /* PAGE */
+    /* PAGE */
     main.page{
       max-width:var(--container);
       margin:0 auto;
@@ -172,8 +168,13 @@
     }
     .card h3{margin:0 0 .4rem}
 
-    .card-delivers ul{list-style:disc; padding-left:1.2rem; margin:.35rem 0}
-    .card-delivers details{margin-top:.4rem}
+    /* generelles Listen-Styling in Cards */
+    .card ul{
+      list-style:disc;
+      padding-left:1.2rem;
+      margin:.35rem 0;
+    }
+    .card details{margin-top:.4rem}
 
     /* Vorteile-Karte: breiter weißer Rand */
     #card-benefits-ts-de{
@@ -183,7 +184,7 @@
         inset 0 1px 0 rgba(255,255,255,.06);
     }
 
-    /* Weißer Button / rote Schrift (Safari-safe) */
+    /* Button (weiß) */
     .btn{
       display:inline-block;
       border-radius:12px;
@@ -198,15 +199,21 @@
       -webkit-text-fill-color:#AE0F12 !important;
     }
     .btn span{display:block;}
-    .btn small{
-      display:block;
-      font-size:.82rem;
+
+    /* statt Inline-Styles */
+    .btn .btn-title{
+      font-size:1.05rem;
+      font-weight:800;
+      line-height:1.2;
+    }
+    .btn .btn-sub{
+      margin-top:.2rem;
+      font-size:.9rem;
       font-weight:500;
       opacity:.9;
-      line-height:1.25;
+      line-height:1.3;
       color:#AE0F12 !important;
       -webkit-text-fill-color:#AE0F12 !important;
-      margin-top:.2rem;
     }
 
     footer{
@@ -225,6 +232,7 @@
     }
   </style>
 </head>
+
 <body>
   <header class="site-header">
     <nav class="nav" role="navigation" aria-label="Main">
@@ -251,132 +259,128 @@
   </header>
 
   <!-- HERO -->
- <section class="hero" id="ts-hero">
-  <div class="hero-text">
-  <h1>TaskSieve</h1>
-  <p class="lead">
-    Sieh deine Aufgaben nach Wirkung sortiert.
-  </p>
-  <p class="lead-sub">
-    Priorisierung, die Projekte wirklich voranbringt.
-  </p>
-</div>
+  <section class="hero" id="ts-hero">
+    <div class="hero-text">
+      <h1>TaskSieve</h1>
+      <p class="lead">Sieh deine Aufgaben nach Wirkung sortiert.</p>
+      <p class="lead-sub">Priorisierung, die Projekte wirklich voranbringt.</p>
+    </div>
 
-      <div class="logo-col">
-    <div class="hero-logo-wrap" aria-hidden="true">
-      <div class="hero-logo-inner">
-        <img
-          src="/assets/brand/tasksieve_logo.svg"
-          alt="TaskSieve Logo"
-          class="hero-logo"
-        >
+    <div class="logo-col">
+      <div class="hero-logo-wrap" aria-hidden="true">
+        <div class="hero-logo-inner">
+          <img
+            src="/assets/brand/tasksieve_logo.svg"
+            alt="TaskSieve Logo"
+            class="hero-logo"
+          >
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-     <main class="page">
+  <main class="page">
     <div class="grid" id="ts-grid">
-      <!-- Obere 3 Karten -->
-  <article class="card">
-  <h3>Zentrale Inbox – kein Streuverlust</h3>
-  <p>
-    E-Mail, Notizen &amp; Slack werden automatisch zusammengeführt – für klare Übersicht
-    und sofort erkennbare Next Actions.
-  </p>
-</article>
 
+      <!-- Karte 1 -->
       <article class="card">
-  <h3>So funktioniert’s</h3>
-  <ul>
-    <li>Quellen verbinden – E-Mail, Notizen &amp; Slack auswählen.</li>
-    <li>Dubletten werden entfernt &amp; Themen automatisch gebündelt.</li>
-    <li>Aufgaben mit größtem Nutzen stehen oben — nach Wirkung, Dringlichkeit & Aufwand sortiert.
-</li>
-  </ul>
-</article>
- <section class="card ts-control">
-  <h2>Automatisch. Und flexibel.</h2>
+        <h3>Zentrale Inbox – kein Streuverlust</h3>
+        <p>
+          E-Mail, Notizen &amp; Slack werden automatisch zusammengeführt – für klare Übersicht
+          und sofort erkennbare Next Actions.
+        </p>
+      </article>
 
-  <p class="lead-sub">
-    <strong>TaskSieve sortiert automatisch –</strong><br>
-    du kannst jederzeit eingreifen, umpriorisieren oder Dinge bewusst liegen lassen.
-  </p>
-
-  <ul class="bullets">
-    <li>Empfehlungen statt Vorgaben</li>
-    <li>Prioritäten jederzeit änderbar</li>
-    <li>Alles bleibt sichtbar. Volle Transparenz.</li>
-  </ul>
-</section>
-   <!-- Kachel 3: Was es liefert -->
-    <article class="card">
-  <h3>Was es liefert</h3>
-  <ul>
-    <li><strong>Wirkung zuerst</strong> → Wichtiges rutscht nach oben.</li>
-    <li><strong>Konkreter Fortschritt</strong> → klare nächste Schritte statt vager To-dos.</li>
-    <li><strong>Weniger Jonglage</strong> → weniger Statusabfragen, mehr Umsetzung.</li>
-  </ul>
-  <details style="margin-top:.4rem">
-    <summary>mehr</summary>
-    <ul>
-      <li>Bringt Wirkung, Dringlichkeit &amp; Aufwand in eine klare Reihenfolge.</li>
-      <li>Hilft Teams zu fokussieren, wenn „alles wichtig“ wirkt.</li>
-      <li>Funktioniert mit E-Mails, Notizen oder Slack als Quellen.</li>
-    </ul>
-  </details>
-</article>
-
-    <!-- Untere 3 Karten: Integrationen, Vorteile, dann Status & Kontakt -->
-
-       <!-- Vorteile -->
-    <article class="card" id="card-benefits-ts-de">
-      <h3>Vorteile</h3>
-      <ul>
-        <li><strong>Schneller Start</strong> – in wenigen Minuten.</li>
-       <li><strong>Reihenfolge nach Wirkung, Dringlichkeit & Aufwand</strong> – durch klare Kriterien.</li>
-        <li><strong>Integrationen: E-Mail, Notizen &amp; Slack – sobald du bereit bist.</li>
-        <li><strong>Neue Aufgaben ordnen sich ein</strong> – ohne den Fokus zu verschieben.</li>
-      </ul>
-      <details style="margin-top:.4rem">
-        <summary>mehr</summary>
+      <!-- Karte 2 -->
+      <article class="card">
+        <h3>So funktioniert’s</h3>
         <ul>
-          <li>Weniger Kontextwechsel.</li>
-          <li>Team-Zusagen bleiben sichtbar.</li>
-          <li>Klarer Arbeitsfluss – priorisiert statt überfüllt.</li>
-          <li>Klare Reihenfolge – jederzeit nachvollziehbar.</li>
+          <li>Quellen verbinden – E-Mail, Notizen &amp; Slack auswählen.</li>
+          <li>Dubletten werden entfernt &amp; Themen automatisch gebündelt.</li>
+          <li>Aufgaben mit größtem Nutzen stehen oben — nach Wirkung, Dringlichkeit &amp; Aufwand sortiert.</li>
         </ul>
-      </details>
-    </article>
+      </article>
 
-    <!-- Status & Kontakt – jetzt bewusst letzte Karte -->
-   <article class="card">
-  <h3>Status &amp; Kontakt</h3>
-  <p><strong>Status: Bereit zum Test.</strong> In wenigen Minuten im Posteingang.</p>
+      <!-- Karte 3: Kontrolle & Transparenz (aus Integrationen umgewidmet) -->
+      <article class="card ts-control">
+        <h3>Automatisch. Und flexibel.</h3>
 
-  <p>
-    <button type="button" class="btn btn--inverse-ts"
-      onclick="location.href='/products/tasksieve/getting-started.html'">
-      <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
-        TaskSieve im Einsatz sehen
-      </span>
-      <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
-        So sieht eine priorisierte Inbox aus – danach kannst du eigene Quellen freischalten.
-      </span>
-    </button>
-  </p>
+        <p class="lead-sub">
+          <strong>TaskSieve sortiert automatisch –</strong><br>
+          du kannst jederzeit eingreifen, umpriorisieren oder Dinge bewusst liegen lassen.
+        </p>
 
-      <details style="margin-top:.6rem">
-        <summary>FAQ</summary>
+        <ul class="bullets">
+          <li>Empfehlungen statt Vorgaben</li>
+          <li>Prioritäten jederzeit änderbar</li>
+          <li>Alles bleibt sichtbar. Volle Transparenz.</li>
+        </ul>
+      </article>
+
+      <!-- Karte 4 -->
+      <article class="card">
+        <h3>Was es liefert</h3>
         <ul>
-          <li><strong>Import nötig?</strong> Nein – Demo-Inbox reicht für den Start.</li>
-          <li><strong>Eigene Quellen?</strong> Später verbindbar (E-Mail, Notizen, Slack).</li>
-          <li><strong>Verlässlichkeit?</strong> Priorisierung nach klaren Kriterien (Wirkung, Dringlichkeit &amp; Aufwand).</li>
-          <li><strong>Sicherheit?</strong> Least-Privilege, nur notwendige Leserechte.</li>
+          <li><strong>Wirkung zuerst</strong> → Wichtiges rutscht nach oben.</li>
+          <li><strong>Konkreter Fortschritt</strong> → klare nächste Schritte statt vager To-dos.</li>
+          <li><strong>Weniger Jonglage</strong> → weniger Statusabfragen, mehr Umsetzung.</li>
         </ul>
-      </details>
-    </article>
 
+        <details style="margin-top:.4rem">
+          <summary>mehr</summary>
+          <ul>
+            <li>Bringt Wirkung, Dringlichkeit &amp; Aufwand in eine klare Reihenfolge.</li>
+            <li>Hilft Teams zu fokussieren, wenn „alles wichtig“ wirkt.</li>
+            <li>Funktioniert mit E-Mails, Notizen oder Slack als Quellen.</li>
+          </ul>
+        </details>
+      </article>
+
+      <!-- Karte 5 -->
+      <article class="card" id="card-benefits-ts-de">
+        <h3>Vorteile</h3>
+        <ul>
+          <li><strong>Schneller Start</strong> – in wenigen Minuten.</li>
+          <li><strong>Reihenfolge nach Wirkung, Dringlichkeit &amp; Aufwand</strong> – durch klare Kriterien.</li>
+          <li>Integrationen: E-Mail, Notizen &amp; Slack – sobald du bereit bist.</li>
+          <li><strong>Neue Aufgaben ordnen sich ein</strong> – ohne den Fokus zu verschieben.</li>
+        </ul>
+
+        <details style="margin-top:.4rem">
+          <summary>mehr</summary>
+          <ul>
+            <li>Weniger Kontextwechsel.</li>
+            <li>Team-Zusagen bleiben sichtbar.</li>
+            <li>Klarer Arbeitsfluss – priorisiert statt überfüllt.</li>
+            <li>Klare Reihenfolge – jederzeit nachvollziehbar.</li>
+          </ul>
+        </details>
+      </article>
+
+      <!-- Karte 6: Status & Kontakt -->
+      <article class="card">
+        <h3>Status &amp; Kontakt</h3>
+
+        <p><strong>Status:</strong> Bereit zum Test. Ergebnis sofort sichtbar.</p>
+
+        <p>
+          <button type="button" class="btn btn--inverse-ts"
+            onclick="location.href='/products/tasksieve/getting-started.html'">
+            <span class="btn-title">TaskSieve im Einsatz sehen</span>
+            <span class="btn-sub">So sieht eine priorisierte Inbox aus.</span>
+          </button>
+        </p>
+
+        <details style="margin-top:.6rem">
+          <summary>FAQ</summary>
+          <ul>
+            <li><strong>Import nötig?</strong> Nein – Demo-Inbox reicht für den Start.</li>
+            <li><strong>Eigene Quellen?</strong> Später verbindbar (E-Mail, Notizen, Slack).</li>
+            <li><strong>Verlässlichkeit?</strong> Priorisierung nach klaren Kriterien (Wirkung, Dringlichkeit &amp; Aufwand).</li>
+            <li><strong>Sicherheit?</strong> Least-Privilege, nur notwendige Leserechte.</li>
+          </ul>
+        </details>
+      </article>
 
     </div>
   </main>
@@ -391,75 +395,64 @@
     </div>
   </footer>
 
-<script>
-  /* Deep-link „Vorteile zeigen“: Hero ausblenden, nur die 3 unteren Karten anzeigen */
-  (function(){
-    var raw = location.hash;
-    if (!raw || raw === "#" || raw === "#!") return;
-    var hash = raw.toLowerCase();
+  <script>
+    /* Deep-link „Vorteile zeigen“: Hero ausblenden, nur die 3 unteren Karten anzeigen */
+    (function(){
+      var raw = location.hash;
+      if (!raw || raw === "#" || raw === "#!") return;
+      var hash = raw.toLowerCase();
 
-    // Erlaubte Hashes, auf die wir reagieren
-    var wanted = [
-      "#benefits",
-      "#card-benefits",
-      "#card-benefits-ts-de",
-      "#benefits-tasksieve",
-      "#show-benefits"
-    ];
-    if (wanted.indexOf(hash) === -1) return;
+      var wanted = [
+        "#benefits",
+        "#card-benefits",
+        "#card-benefits-ts-de",
+        "#benefits-tasksieve",
+        "#show-benefits"
+      ];
+      if (wanted.indexOf(hash) === -1) return;
 
-    // Hero ausblenden
-    var hero = document.getElementById("ts-hero") || document.querySelector(".hero");
-    if (hero) hero.style.display = "none";
+      var hero = document.getElementById("ts-hero") || document.querySelector(".hero");
+      if (hero) hero.style.display = "none";
 
-    // Grid mit allen Karten holen
-    var grid = document.getElementById("ts-grid") || document.querySelector(".grid");
-    if (!grid) return;
+      var grid = document.getElementById("ts-grid") || document.querySelector(".grid");
+      if (!grid) return;
 
-    var cards = Array.from(grid.children);
-    var total = cards.length;
+      var cards = Array.from(grid.children);
+      var total = cards.length;
+      if (total <= 3) return;
 
-    // Wenn es weniger als 3 Karten wären, machen wir nichts
-    if (total <= 3) return;
+      cards.forEach(function(node, idx){
+        if (idx < total - 3){
+          node.style.display = "none";
+        }
+      });
 
-    // Alle Karten außer den letzten 3 ausblenden
-    cards.forEach(function(node, idx){
-      if (idx < total - 3){
-        node.style.display = "none";
+      var card = document.getElementById("card-benefits-ts-de") ||
+                 document.getElementById("card-benefits");
+      if (!card) return;
+
+      var det = card.querySelector("details");
+      if (det && !det.open) det.open = true;
+
+      if (location.hash !== "#" + card.id){
+        history.replaceState(null, "", "#" + card.id);
       }
-    });
 
-    // Vorteile-Karte finden und Details öffnen
-    var card = document.getElementById("card-benefits-ts-de") ||
-               document.getElementById("card-benefits");
-    if (!card) return;
-
-    var det = card.querySelector("details");
-    if (det && !det.open) det.open = true;
-
-    // Hash auf die tatsächliche ID korrigieren
-    if (location.hash !== "#" + card.id){
-      history.replaceState(null, "", "#" + card.id);
-    }
-
-    // Zur Karte scrollen
-    try{
-      card.scrollIntoView({behavior:"instant", block:"start"});
-      window.scrollBy(0, -16);
-    }catch(e){
-      card.scrollIntoView();
-    }
-  })();
-</script>
-
-
+      try{
+        card.scrollIntoView({behavior:"instant", block:"start"});
+        window.scrollBy(0, -16);
+      }catch(e){
+        card.scrollIntoView();
+      }
+    })();
+  </script>
 
   <script>
-  function __toggleNav(){
-    var l=document.getElementById('navLinks'); if(!l) return;
-    var open=l.classList.toggle('open');
-    var t=document.getElementById('navToggle'); if(t) t.setAttribute('aria-expanded', open?'true':'false');
-  }
+    function __toggleNav(){
+      var l=document.getElementById('navLinks'); if(!l) return;
+      var open=l.classList.toggle('open');
+      var t=document.getElementById('navToggle'); if(t) t.setAttribute('aria-expanded', open?'true':'false');
+    }
   </script>
 </body>
 </html>
