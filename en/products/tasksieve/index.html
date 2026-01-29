@@ -1,86 +1,334 @@
 <!doctype html>
-<div class="logo-col">
-<div class="hero-logo-wrap"><div class="hero-logo-inner">
-<img src="/assets/brand/tasksieve_logo.svg" alt="TaskSieve logo" class="hero-logo">
-</div></div>
-</div>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TaskSieve – Important tasks first.</title>
+  <meta name="description" content="TaskSieve brings email, notes, and Slack into one inbox, removes duplicates, and prioritizes by impact, urgency, and effort." />
+  <meta name="theme-color" content="#0B1220" />
+
+  <style>
+    :root{
+      --container:1100px;
+      --bg-dark:#0B1220;
+      --fg-dark:#FFFFFF;
+      --nav-red:#AE0F12;
+
+      --card-ts-bg: rgb(186, 15, 18);
+      --card-border: rgba(255,255,255,.28);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg-dark);
+      color:var(--fg-dark);
+      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+    }
+    a{color:#FFFFFF; text-decoration:none}
+
+    /* NAV */
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      width:100%;
+      background:var(--nav-red);
+    }
+    .nav{ background:var(--nav-red) }
+    .nav-inner{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:.9rem 1rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .brand{
+      color:#FFFFFF;
+      font-weight:800;
+      white-space:nowrap;
+    }
+    .nav-links{
+      list-style:none;
+      display:flex;
+      gap:1rem;
+      margin:0;
+      padding:0;
+      align-items:center;
+    }
+    .nav-links a{ color:#FFFFFF }
+    .nav-toggle{
+      display:none;
+      background:none;
+      border:0;
+      color:#FFFFFF;
+      font-size:1.2rem;
+    }
+
+    @media (max-width:980px){
+      .nav-inner{ position:relative }
+      .nav-links{
+        display:none;
+        position:absolute;
+        top:56px;
+        left:0;
+        right:0;
+        background:var(--nav-red);
+        padding:1rem;
+        margin:0;
+        flex-direction:column;
+        gap:.6rem;
+      }
+      .nav-links.open{ display:flex }
+      .nav-toggle{ display:inline-block }
+    }
+
+    /* HERO */
+    .hero{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:1.2rem 1rem .5rem;
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:1rem;
+      align-items:end;
+    }
+    .hero-text{grid-column:1/9}
+    .hero h1{
+      margin:0 0 .2rem;
+      font-size:clamp(2.2rem, 5vw, 3.2rem);
+      line-height:1.05;
+    }
+
+    .logo-col{
+      grid-column:9/13;
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+    }
+
+    .hero-logo-wrap{
+      width:104px;
+      height:104px;
+      border-radius:50%;
+      border:5px solid #FFFFFF;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .hero-logo-inner{
+      width:100%;
+      height:100%;
+      border-radius:50%;
+      overflow:hidden;
+    }
+    .hero-logo{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+    }
+
+    /* PAGE */
+    main.page{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:.5rem 1rem 2.4rem;
+    }
+
+    /* GRID / CARDS */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:1rem;
+    }
+    .card{
+      grid-column:span 4;
+      background:var(--card-ts-bg);
+      border:1px solid var(--card-border);
+      border-radius:14px;
+      padding:1.05rem 1rem;
+      box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06);
+    }
+    .card h3{margin:0 0 .4rem}
+
+    .card ul{
+      list-style:disc;
+      padding-left:1.2rem;
+      margin:.35rem 0;
+    }
+    .card details{margin-top:.4rem}
+
+    #card-benefits-ts-en{
+      border:2px solid rgba(255,255,255,.85);
+      box-shadow:
+        0 10px 24px rgba(0,0,0,.28),
+        inset 0 1px 0 rgba(255,255,255,.06);
+    }
+
+    .btn{
+      display:inline-block;
+      border-radius:12px;
+      padding:0.9rem 1.1rem;
+      border:1px solid #FFFFFF;
+      background:#FFFFFF;
+      text-align:left;
+      line-height:1.25;
+      font-weight:800;
+      font-size:1.05rem;
+      color:#AE0F12 !important;
+      -webkit-text-fill-color:#AE0F12 !important;
+    }
+    .btn span{display:block;}
+    .btn .btn-sub{
+      margin-top:.2rem;
+      font-size:.9rem;
+      font-weight:500;
+      opacity:.9;
+      line-height:1.3;
+    }
+
+    @media (max-width:960px){
+      .card{grid-column:span 6}
+    }
+    @media (max-width:640px){
+      .card{grid-column:span 12}
+    }
+  </style>
+</head>
+
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="/">Home</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/products/changewise/">ChangeWise</a></li>
+        <li><a href="/products/slackdigest/">SlackDigest</a></li>
+        <li><a href="/products/tasksieve/">TaskSieve</a></li>
+        <li><a href="/products/tasksieve/">DE</a> | <strong>EN</strong></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" onclick="__toggleNav()">☰</button>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="ts-hero">
+  <div class="hero-text">
+    <h1>TaskSieve</h1>
+    <p class="lead">See your tasks sorted by impact.</p>
+    <p class="lead-sub">Prioritization that actually moves projects forward.</p>
+  </div>
+
+  <div class="logo-col">
+    <div class="hero-logo-wrap" aria-hidden="true">
+      <div class="hero-logo-inner">
+        <img src="/assets/brand/tasksieve_logo.svg" alt="TaskSieve logo" class="hero-logo">
+      </div>
+    </div>
+  </div>
 </section>
 
-
 <main class="page">
-<div class="grid" id="ts-grid">
+  <div class="grid" id="ts-grid">
 
+    <!-- Card 1 -->
+    <article class="card">
+      <h3>One central inbox</h3>
+      <p>
+        Email, notes &amp; Slack are merged automatically — for clear overview
+        and obvious next actions.
+      </p>
+    </article>
 
-<article class="card">
-<h3>One central inbox</h3>
-<p>Email, notes & Slack are merged automatically — for clear overview and obvious next actions.</p>
-</article>
+    <!-- Card 2 -->
+    <article class="card">
+      <h3>How it works</h3>
+      <ul>
+        <li>Connect sources — choose email, notes &amp; Slack.</li>
+        <li>Duplicates are removed and topics bundled automatically.</li>
+        <li>Tasks with the highest value rise to the top — sorted by impact, urgency &amp; effort.</li>
+      </ul>
+    </article>
 
+    <!-- Card 3: Control & Transparency -->
+    <article class="card ts-control">
+      <h3>Automatic. And flexible.</h3>
+      <p class="lead-sub">
+        <strong>TaskSieve sorts automatically —</strong><br>
+        you can step in anytime, reprioritize, or deliberately leave things untouched.
+      </p>
+      <ul>
+        <li>Recommendations, not rules</li>
+        <li>Priorities can be adjusted anytime</li>
+        <li>Everything stays visible. Full transparency.</li>
+      </ul>
+    </article>
 
-<article class="card">
-<h3>How it works</h3>
-<ul>
-<li>Connect sources — choose email, notes & Slack.</li>
-<li>Duplicates are removed and topics bundled automatically.</li>
-<li>Tasks with the highest value rise to the top — sorted by impact, urgency & effort.</li>
-</ul>
-</article>
+    <!-- Card 4 -->
+    <article class="card">
+      <h3>What it delivers</h3>
+      <ul>
+        <li><strong>Impact first</strong> — what matters rises to the top.</li>
+        <li><strong>Real progress</strong> — clear next steps instead of vague to-dos.</li>
+        <li><strong>Less juggling</strong> — fewer status checks, more execution.</li>
+      </ul>
 
+      <details style="margin-top:.4rem">
+        <summary>more</summary>
+        <ul>
+          <li>Orders tasks by impact, urgency &amp; effort.</li>
+          <li>Helps teams focus when everything feels important.</li>
+          <li>Works with email, notes, or Slack as sources.</li>
+        </ul>
+      </details>
+    </article>
 
-<article class="card ts-control">
-<h3>Automatic. And flexible.</h3>
-<p class="lead-sub"><strong>TaskSieve sorts automatically —</strong><br>
-you can step in anytime, reprioritize, or deliberately leave things untouched.</p>
-<ul>
-<li>Recommendations, not rules</li>
-<li>Priorities can be adjusted anytime</li>
-<li>Everything stays visible. Full transparency.</li>
-</ul>
-</article>
+    <!-- Card 5 -->
+    <article class="card" id="card-benefits-ts-en">
+      <h3>Benefits</h3>
+      <ul>
+        <li><strong>Fast start</strong> — ready in minutes.</li>
+        <li><strong>Clear ordering</strong> by impact, urgency &amp; effort.</li>
+        <li>Integrations: email, notes &amp; Slack — when you’re ready.</li>
+        <li><strong>New tasks fall into place</strong> without breaking focus.</li>
+      </ul>
 
+      <details style="margin-top:.4rem">
+        <summary>more</summary>
+        <ul>
+          <li>Fewer context switches.</li>
+          <li>Team commitments stay visible.</li>
+          <li>Clear workflow — prioritized, not overloaded.</li>
+          <li>Transparent ordering at any time.</li>
+        </ul>
+      </details>
+    </article>
 
-<article class="card">
-<h3>What it delivers</h3>
-<ul>
-<li><strong>Impact first</strong> — what matters rises to the top.</li>
-<li><strong>Real progress</strong> — clear next steps instead of vague to-dos.</li>
-<li><strong>Less juggling</strong> — fewer status checks, more execution.</li>
-</ul>
-</article>
+    <!-- Card 6 -->
+    <article class="card">
+      <h3>Status &amp; Contact</h3>
+      <p><strong>Status:</strong> Ready to test. Results visible immediately.</p>
+      <p>
+        <button type="button" class="btn"
+          onclick="location.href='/products/tasksieve/getting-started.html'">
+          <span>See TaskSieve in action</span>
+          <span class="btn-sub">This is what a prioritized inbox looks like.</span>
+        </button>
+      </p>
+    </article>
 
-
-<article class="card" id="card-benefits-ts-en">
-<h3>Benefits</h3>
-<ul>
-<li><strong>Fast start</strong> — ready in minutes.</li>
-<li><strong>Clear ordering</strong> by impact, urgency & effort.</li>
-<li>Integrations: email, notes & Slack — when you're ready.</li>
-<li><strong>New tasks fall into place</strong> without breaking focus.</li>
-</ul>
-</article>
-
-
-<article class="card">
-<h3>Status & Contact</h3>
-<p><strong>Status:</strong> Ready to test. Results visible immediately.</p>
-<p>
-<button class="btn" onclick="location.href='/products/tasksieve/getting-started.html'">
-<span>See TaskSieve in action</span>
-<span class="btn-sub">This is what a prioritized inbox looks like.</span>
-</button>
-</p>
-</article>
-
-
-</div>
+  </div>
 </main>
-
 
 <script>
 function __toggleNav(){
-var l=document.getElementById('navLinks'); if(!l) return;
-var open=l.classList.toggle('open');
-var t=document.getElementById('navToggle'); if(t) t.setAttribute('aria-expanded', open?'true':'false');
+  var l=document.getElementById('navLinks'); if(!l) return;
+  var open=l.classList.toggle('open');
+  var t=document.getElementById('navToggle');
+  if(t) t.setAttribute('aria-expanded', open?'true':'false');
 }
 </script>
 </body>
