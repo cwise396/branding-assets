@@ -21,7 +21,7 @@
   --card-border:rgba(255,255,255,.28);
 
   /* CTA Button: weißer Button, grüne Schrift (robust) */
-  --btn-inverse-bg:#FFFFFF; --btn-inverse-fg:#0C6C48; /* sRGB(12,108,72) */
+  --btn-inverse-bg:#FFFFFF; --btn-inverse-fg:#0C6C48;
 
   /* Ring */
   --ring:#FFFFFF; --ring-w:5px;
@@ -41,7 +41,7 @@ a{ color:#FFFFFF; text-decoration:none }
 .nav-inner{
   max-width:var(--container); margin:0 auto; padding:0 1rem;
   display:flex; align-items:center; justify-content:space-between;
-  height:12mm;           /* fixe Höhe */
+  height:12mm;
 }
 .brand{ color:#FFFFFF; font-weight:800; white-space:nowrap }
 .nav-links{ list-style:none; display:flex; gap:1rem; margin:0; padding:0; align-items:center }
@@ -58,22 +58,31 @@ a{ color:#FFFFFF; text-decoration:none }
   .nav-toggle{ display:inline-block }
 }
 
-/* Hero */
-.hero{ color:#FFFFFF; padding-top:11mm } /* 11mm: „mehr“ ohne Scroll sichtbar */
+/* ===== Hero ===== */
+.hero{ color:#FFFFFF; padding-top:11mm }
 .hero-header{
   max-width:var(--container); margin:0 auto; padding:0 1rem;
   display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; align-items:end;
 }
 .hero-text{ grid-column:1 / 9 }
 .hero h1{ margin:0 0 .2rem; font-size:clamp(1.8rem,4vw,3rem); line-height:1.1 }
+
+/* Desktop-Texte */
 .hero p.lead{ margin:0; font-size:clamp(1.1rem,2.4vw,1.35rem); font-weight:700; opacity:.95 }
-.hero p.precision{
+.lead-sub{
   margin:.35rem 0 0;
+  font-size:clamp(1.05rem,2.2vw,1.25rem);
+  font-weight:700;
+  opacity:.92;
+}
+.hero-precision{
+  margin:.45rem 0 0;
   font-size:clamp(.95rem,2vw,1.05rem);
   font-weight:500;
   opacity:.85;
 }
 
+/* Logo */
 .logo-col{ grid-column:9 / 13; justify-self:start; display:flex; align-items:center }
 .product-logo{ position:relative; width:98px; height:98px }
 .product-logo .logo-ring{ position:absolute; inset:0; width:98px; height:98px; z-index:2; pointer-events:none; display:block }
@@ -90,7 +99,8 @@ a{ color:#FFFFFF; text-decoration:none }
   border:1px solid var(--card-border);
   box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06);
 }
-.card h3{ margin:0 0 .4rem } .card p,.card li{ margin:.35rem 0 }
+.card h3{ margin:0 0 .4rem }
+.card p,.card li{ margin:.35rem 0 }
 .card ul{ list-style:disc; padding-left:1.2rem }
 .card a{ text-decoration:underline; text-underline-offset:2px; color:#FFFFFF }
 
@@ -108,6 +118,7 @@ a{ color:#FFFFFF; text-decoration:none }
   color:var(--btn-inverse-fg) !important;
   -webkit-text-fill-color:var(--btn-inverse-fg) !important;
 }
+
 /* SlackDigest CTA: white pill with green text (Safari-safe) */
 .btn--inverse-sd{
   background:#FFFFFF;
@@ -119,12 +130,9 @@ a{ color:#FFFFFF; text-decoration:none }
   text-align:left;
   padding:0.7rem 1rem;
   line-height:1.3;
-
-  /* SlackDigest-Grün */
   color:#0C6C48 !important;
   -webkit-text-fill-color:#0C6C48 !important;
 }
-
 .btn--inverse-sd span{
   display:block;
   color:#0C6C48 !important;
@@ -132,7 +140,8 @@ a{ color:#FFFFFF; text-decoration:none }
 }
 
 /* Accordion */
-details{ border:0 } details summary{ cursor:pointer; font-weight:800 }
+details{ border:0 }
+details summary{ cursor:pointer; font-weight:800 }
 
 /* Footer */
 footer{ max-width:var(--container); margin:2.2rem auto; padding:0 1rem 2.4rem; color:#FFFFFF }
@@ -147,7 +156,42 @@ footer a{ color:#FFFFFF }
 
 /* Alt-Overlay sicher aus */
 #bg-overlay{ display:none !important; }
+
+/* ===== Mobile helpers ===== */
+.mobile-only{ display:none; }
+.desktop-only{ display:block; }
+
+/* ===== Mobile: 1 Tick kompakter + Logo rechts, 84px ===== */
+@media (max-width:520px){
+  /* 1 Tick kompakter: weniger Luft oben/unten (ohne Font-Änderung) */
+  .hero{ padding-top:9mm; }
+  .hero-header{ gap:.75rem; align-items:start; }
+  .grid{ margin-top:.85rem; }
+
+  /* Layout: 2 Spalten (Text + Logo) */
+  .hero-header{
+    grid-template-columns: 1fr auto;
+  }
+  .hero-text{ grid-column:1 / 2; max-width:100%; }
+  .logo-col{ grid-column:2 / 3; justify-self:end; align-self:start; }
+
+  /* Logo 84px */
+  .product-logo{ width:84px; height:84px; }
+  .product-logo .logo-ring{ width:84px; height:84px; }
+  .product-logo .logo-img{ width:74px; height:74px; top:5px; left:5px; }
+
+  /* Nur Mobile-Text aktiv */
+  .desktop-only{ display:none; }
+  .mobile-only{ display:block; }
+
+  /* Headline/Lead kompakter ohne Font-Änderung */
+  .lead-sub{ margin:.30rem 0 0; line-height:1.28; }
+  .hero-precision{ margin:.40rem 0 0; line-height:1.28; }
+
+  /* Nav/Allgemein bleibt wie gehabt */
+}
 </style>
+
 <script>
 function __toggleNav(){
   var l=document.getElementById('navLinks');
@@ -157,18 +201,18 @@ function __toggleNav(){
 }
 </script>
 </head>
+
 <body>
 <header class="site-header">
   <nav class="nav">
     <div class="nav-inner">
       <a class="brand" href="/">Home</a>
-       <ul class="nav-links" id="navLinks">
-  <li><a href="/products/changewise/">ChangeWise</a></li>
-  <li><a href="/products/slackdigest/">SlackDigest</a></li>
-  <li><a href="/products/tasksieve/">TaskSieve</a></li>
-  <li><strong>DE</strong> | <a href="/en/products/slackdigest/">EN</a></li>
-</ul>
-
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/products/changewise/">ChangeWise</a></li>
+        <li><a href="/products/slackdigest/">SlackDigest</a></li>
+        <li><a href="/products/tasksieve/">TaskSieve</a></li>
+        <li><strong>DE</strong> | <a href="/en/products/slackdigest/">EN</a></li>
+      </ul>
       <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-controls="navLinks" aria-expanded="false" onclick="__toggleNav()">☰</button>
     </div>
   </nav>
@@ -176,16 +220,38 @@ function __toggleNav(){
 
 <main class="hero">
   <div class="hero-header">
-     <div class="hero-text">
-  <h1>SlackDigest</h1>
-<p class="lead">Fokus in Slack – automatisch, klar, verständlich.</p>
-<p class="lead-sub">
-  Das Wichtige zuerst. Übersicht behalten. Relevantes sehen. Einfach entscheiden.
-</p>
-  <p class="hero-precision">Du erhältst regelmäßig einen priorisierten Überblick über relevante Slack- und Mail-Updates.</p>
+    <div class="hero-text">
+      <h1>SlackDigest</h1>
+
+      <!-- Mobile: exakt wie du es willst -->
+      <p class="lead mobile-only">
+        Fokus in Slack –<br>
+        automatisch, klar,<br>
+        verständlich.
+      </p>
+
+      <p class="lead-sub mobile-only">
+        Das Wichtige zuerst. Übersicht behalten.<br>
+        Relevantes sehen. Einfach entscheiden.
+      </p>
+
+      <p class="hero-precision mobile-only">
+        Du erhältst regelmäßig<br>
+        einen priorisierten Überblick<br>
+        über relevante Slack- und Mail-Updates.
+      </p>
+
+      <!-- Desktop: bisheriger Text bleibt -->
+      <p class="lead desktop-only">Fokus in Slack – automatisch, klar, verständlich.</p>
+      <p class="lead-sub desktop-only">
+        Das Wichtige zuerst. Übersicht behalten. Relevantes sehen. Einfach entscheiden.
+      </p>
+      <p class="hero-precision desktop-only">
+        Du erhältst regelmäßig einen priorisierten Überblick über relevante Slack- und Mail-Updates.
+      </p>
     </div>
-   
-   <div class="logo-col">
+
+    <div class="logo-col">
       <div class="product-logo">
         <span class="logo-ring" aria-hidden="true">
           <svg viewBox="0 0 100 100" width="98" height="98" focusable="false" aria-hidden="true">
@@ -196,119 +262,119 @@ function __toggleNav(){
       </div>
     </div>
   </div>
- <section class="section-cards">
-  <section class="grid" aria-label="Key Features">
-    <!-- 1 -->
-    <article class="card">
-      <h3>Auf den Punkt</h3>
-      <p>Alles Relevante auf einer Seite – kompakt, mit Link zum Kontext, sofort verständlich.</p>
-    </article>
 
-    <!-- 2 -->
-    <article class="card">
-      <h3>So funktioniert’s</h3>
-      <ul>
-        <li>Wähle deine Kanäle &amp; Taktung.</li>
-        <li>SlackDigest bündelt automatisch.</li>
-        <li>Du bekommst Relevantes zuerst – fertig.</li>
-      </ul>
-    </article>
+  <section class="section-cards">
+    <section class="grid" aria-label="Key Features">
+      <!-- 1 -->
+      <article class="card">
+        <h3>Auf den Punkt</h3>
+        <p>Alles Relevante auf einer Seite – kompakt, mit Link zum Kontext, sofort verständlich.</p>
+      </article>
 
-    <!-- 3 -->
-    <article class="card">
-      <h3>Was es liefert</h3>
-      <ul>
-        <li><strong>Mehr Fokus</strong> → weniger Rauschen, klare Entscheidungen.</li>
-        <li><strong>Überblick</strong> → alles Wichtige im Posteingang, kein Scrollen nötig.</li>
-        <li><strong>Transparenz</strong> → wer, was, wann – sichtbar im Digest.</li>
-        <li><strong>Geschwindigkeit</strong> → Updates, die sofort handlungsfähig machen.</li>
-      </ul>
-      <details style="margin-top:.4rem">
-        <summary>mehr</summary>
+      <!-- 2 -->
+      <article class="card">
+        <h3>So funktioniert’s</h3>
         <ul>
-          <li>Asynchron statt Meetings &amp; Pings.</li>
-          <li>Deep-Links statt Suchaufwand.</li>
-          <li>Teamweise konfigurierbar, Leserechte genügen.</li>
-          <li>Stabil im Alltag, zuverlässige Zustellung.</li>
-          <li>Skaliert mit Teams &amp; Kanälen.</li>
+          <li>Wähle deine Kanäle &amp; Taktung.</li>
+          <li>SlackDigest bündelt automatisch.</li>
+          <li>Du bekommst Relevantes zuerst – fertig.</li>
         </ul>
-      </details>
-    </article>
+      </article>
 
-    <!-- 5 (unter 2) -->
-    <article class="card">
-      <h3>Integrationen</h3>
-      <p>Slack, E-Mail.</p>
-    </article>
-
-    <!-- 6 (unter 3): Vorteile -->
-    <article class="card" id="card-benefits">
-      <h3>Vorteile</h3>
-      <ul>
-        <li><strong>Schneller Überblick</strong> → Digest statt Feed.</li>
-        <li><strong>Klare Struktur</strong> → keine Informationsflut.</li>
-        <li><strong>Zeitersparnis</strong> → Fokus auf das Wesentliche.</li>
-      </ul>
-      <details style="margin-top:.4rem">
-        <summary>mehr</summary>
+      <!-- 3 -->
+      <article class="card">
+        <h3>Was es liefert</h3>
         <ul>
-          <li>Setup in Minuten, Leserechte genügen.</li>
-          <li>Asynchron – weniger Unterbrechungen.</li>
-          <li>Owner &amp; Next Step erhöhen Verbindlichkeit.</li>
-          <li>Weniger Streuverlust, mehr Fokus.</li>
-          <li>Skalierbar pro Team/Kanal.</li>
-          <li>Portabel: E-Mail oder Slack, kein Lock-in.</li>
+          <li><strong>Mehr Fokus</strong> → weniger Rauschen, klare Entscheidungen.</li>
+          <li><strong>Überblick</strong> → alles Wichtige im Posteingang, kein Scrollen nötig.</li>
+          <li><strong>Transparenz</strong> → wer, was, wann – sichtbar im Digest.</li>
+          <li><strong>Geschwindigkeit</strong> → Updates, die sofort handlungsfähig machen.</li>
         </ul>
-      </details>
-    </article>
+        <details style="margin-top:.4rem">
+          <summary>mehr</summary>
+          <ul>
+            <li>Asynchron statt Meetings &amp; Pings.</li>
+            <li>Deep-Links statt Suchaufwand.</li>
+            <li>Teamweise konfigurierbar, Leserechte genügen.</li>
+            <li>Stabil im Alltag, zuverlässige Zustellung.</li>
+            <li>Skaliert mit Teams &amp; Kanälen.</li>
+          </ul>
+        </details>
+      </article>
 
-    <!-- 4 – jetzt letzte Karte: Status & Kontakt -->
-    <article class="card">
-      <h3>Status &amp; Kontakt</h3>
-     <p><strong>Status: Bereit zum Test.</strong> Beispiel-Digest wird sofort gezeigt.</p>
+      <!-- 5 (unter 2) -->
+      <article class="card">
+        <h3>Integrationen</h3>
+        <p>Slack, E-Mail.</p>
+      </article>
 
-<p>
-  <a class="btn btn--inverse-sd" href="/contact/#slackdigest">
-    <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
-      So sieht SlackDigest in der Praxis aus
-    </span>
-    <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
-      Kompakt, klar, sofort verständlich.
-    </span>
-  </a>
-</p>
-
-    <details style="margin-top:.6rem">
-        <summary>FAQ</summary>
+      <!-- 6 (unter 3): Vorteile -->
+      <article class="card" id="card-benefits">
+        <h3>Vorteile</h3>
         <ul>
-          <li><strong>Adminrechte?</strong> Nicht nötig – Leserechte genügen.</li>
-          <li><strong>Setup?</strong> In Minuten – Kanäle, Takt &amp; Filter wählen.</li>
-          <li><strong>Formate?</strong> E-Mail oder Slack-DM.</li>
-          <li><strong>Kontext?</strong> Jeder Eintrag mit Link zurück.</li>
-          <li><strong>Verantwortliche?</strong> Owner &amp; Next Step optional anzeigen.</li>
-          <li><strong>Sicherheit?</strong> Least-Privilege – nur Lesen.</li>
-          <li><strong>Skalierung?</strong> Für beliebig viele Teams &amp; Kanäle.</li>
-          <li><strong>Daten?</strong> Kein Verkauf, kein unnötiges Tracking.</li>
+          <li><strong>Schneller Überblick</strong> → Digest statt Feed.</li>
+          <li><strong>Klare Struktur</strong> → keine Informationsflut.</li>
+          <li><strong>Zeitersparnis</strong> → Fokus auf das Wesentliche.</li>
         </ul>
-      </details>
-    </article>
+        <details style="margin-top:.4rem">
+          <summary>mehr</summary>
+          <ul>
+            <li>Setup in Minuten, Leserechte genügen.</li>
+            <li>Asynchron – weniger Unterbrechungen.</li>
+            <li>Owner &amp; Next Step erhöhen Verbindlichkeit.</li>
+            <li>Weniger Streuverlust, mehr Fokus.</li>
+            <li>Skalierbar pro Team/Kanal.</li>
+            <li>Portabel: E-Mail oder Slack, kein Lock-in.</li>
+          </ul>
+        </details>
+      </article>
+
+      <!-- 4 – letzte Karte: Status & Kontakt -->
+      <article class="card">
+        <h3>Status &amp; Kontakt</h3>
+        <p><strong>Status: Bereit zum Test.</strong> Beispiel-Digest wird sofort gezeigt.</p>
+
+        <p>
+          <a class="btn btn--inverse-sd" href="/contact/#slackdigest">
+            <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
+              So sieht SlackDigest in der Praxis aus
+            </span>
+            <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
+              Kompakt, klar, sofort verständlich.
+            </span>
+          </a>
+        </p>
+
+        <details style="margin-top:.6rem">
+          <summary>FAQ</summary>
+          <ul>
+            <li><strong>Adminrechte?</strong> Nicht nötig – Leserechte genügen.</li>
+            <li><strong>Setup?</strong> In Minuten – Kanäle, Takt &amp; Filter wählen.</li>
+            <li><strong>Formate?</strong> E-Mail oder Slack-DM.</li>
+            <li><strong>Kontext?</strong> Jeder Eintrag mit Link zurück.</li>
+            <li><strong>Verantwortliche?</strong> Owner &amp; Next Step optional anzeigen.</li>
+            <li><strong>Sicherheit?</strong> Least-Privilege – nur Lesen.</li>
+            <li><strong>Skalierung?</strong> Für beliebig viele Teams &amp; Kanäle.</li>
+            <li><strong>Daten?</strong> Kein Verkauf, kein unnötiges Tracking.</li>
+          </ul>
+        </details>
+      </article>
+    </section>
   </section>
-</section>
-
 </main>
 
-  <footer>
-    <div class="footbar">
-      <nav class="legal" aria-label="Footer">
-        <a href="/impressum.html">Impressum</a><span class="sep" aria-hidden="true"> · </span>
-        <a href="/datenschutz.html">Datenschutz</a>
-      </nav>
-      <small>© ChangeWise · SlackDigest · TaskSieve</small>
-    </div>
-  </footer>
+<footer>
+  <div class="footbar">
+    <nav class="legal" aria-label="Footer">
+      <a href="/impressum.html">Impressum</a><span class="sep" aria-hidden="true"> · </span>
+      <a href="/datenschutz.html">Datenschutz</a>
+    </nav>
+    <small>© ChangeWise · SlackDigest · TaskSieve</small>
+  </div>
+</footer>
 
 <!-- Benefits Auto-open (A) -->
- <script>
+<script>
 (function(){
   var hash = (location.hash||"").toLowerCase();
   if(!hash || (hash!=='#benefits' && hash!=='#card-benefits')) return;
