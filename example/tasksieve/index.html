@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sample inbox – TaskSieve</title>
+  <meta name="description" content="What a prioritized TaskSieve inbox looks like: bundled, deduped, sorted by impact." />
+
+  <style>
+    :root{
+      --bg:rgb(151,12,15);
+      --panel:rgba(255,255,255,.04);
+      --text:#E5E7EB;
+      --muted:#9FB0C3;
+      --border:rgba(255,255,255,.12);
+      --accent:rgb(151,12,15);
+
+      --red:#F87171;
+      --amber:#FBBF24;
+      --green:#34D399;
+
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --cwblue:#0E3960;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+
+    .wrap{
+      max-width:920px;
+      margin:0 auto;
+      padding:44px 18px 88px;
+    }
+
+    .topline{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:16px;
+      margin-bottom:16px;
+    }
+
+    .digest-head{max-width:680px}
+
+    .digest-title{
+      font-size:34px;
+      font-weight:900;
+      letter-spacing:-.4px;
+      margin:0;
+      color:#ffffff;
+    }
+
+    .digest-sub{
+      font-size:18px;
+      font-weight:700;
+      margin-top:4px;
+      color:#ffffff;
+    }
+
+    .pro-badge{
+      display:inline-block;
+      margin-top:10px;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.18);
+      border:1px solid rgba(255,255,255,.35);
+      color:#ffffff;
+      font-size:12.5px;
+      font-weight:800;
+      letter-spacing:-.1px;
+      line-height:1.2;
+      max-width:520px;
+    }
+
+    .brand-slot{ flex:0 0 auto; }
+
+    .brand-logo{
+      height:84px;
+      width:auto;
+      display:block;
+      background:#ffffff;
+      padding:5px;
+      border-radius:50%;
+      box-shadow:0 4px 12px rgba(0,0,0,.08);
+    }
+
+    .sub{
+      margin:0 0 22px;
+      font-size:14px;
+      opacity:.92;
+      color:#ffffff;
+    }
+
+    .digest{
+      background:rgba(255,255,255,.15);
+      border:1px solid rgba(255,255,255,.35);
+      border-radius:18px;
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+
+    .block{
+      display:flex;
+      gap:14px;
+      padding:16px 14px;
+      border-radius:14px;
+      background:#ffffff;
+      margin-top:12px;
+      color:#111827;
+    }
+
+    .bar{width:6px;border-radius:999px;flex:0 0 6px}
+    .bar.red{background:var(--red)}
+    .bar.amber{background:var(--amber)}
+    .bar.green{background:var(--green)}
+
+    .kicker{font-size:13px;color:#6B7280;margin:0 0 6px}
+    .title{margin:0 0 6px;font-weight:800;color:#0F172A}
+    .desc{margin:0 0 8px;color:#111827}
+    .hint{margin:0;color:#374151;font-size:13px}
+
+    code{
+      background:rgba(15,23,42,.08);
+      border:1px solid rgba(15,23,42,.18);
+      padding:2px 6px;
+      border-radius:8px;
+      font-size:12px;
+      font-weight:700;
+      color:#0F172A;
+    }
+
+    .steps{
+      margin-top:12px;
+      display:flex;
+      gap:14px;
+      padding:16px 14px;
+      border-radius:14px;
+      background:#ffffff;
+      color:#111827;
+    }
+
+    .steps .bar-blue{
+      width:6px;
+      border-radius:999px;
+      background:var(--cwblue);
+    }
+
+    .summary{
+      margin-top:12px;
+      padding:14px;
+      border-radius:14px;
+      background:#ffffff;
+      color:#111827;
+      font-size:13px;
+    }
+
+    .cta{
+      margin-top:28px;
+      text-align:center;
+    }
+
+    .cta .btn{
+      display:inline-block;
+      padding:12px 16px;
+      border-radius:14px;
+      text-decoration:none;
+      font-weight:900;
+      line-height:1.25;
+      background:rgba(255,255,255,.16);
+      border:1px solid rgba(255,255,255,.40);
+      color:#ffffff;
+      box-shadow:0 10px 30px rgba(0,0,0,.18);
+    }
+    .cta .btn span{display:block}
+    .cta .btn:hover{opacity:.92}
+
+    @media (max-width:520px){
+      .wrap{padding:34px 14px 72px}
+      .digest-title{font-size:30px}
+
+      .topline{flex-direction:row;align-items:flex-start}
+      .digest-head{max-width:100%}
+      .brand-slot{margin-left:auto}
+      .brand-logo{height:84px}
+
+      .pro-badge{max-width:100%;white-space:normal}
+      .cta .btn{width:100%;max-width:520px}
+    }
+  </style>
+</head>
+
+<body>
+<main class="wrap">
+
+  <div class="topline">
+    <div class="digest-head">
+      <div class="digest-title">TaskSieve</div>
+      <div class="digest-sub">Sample inbox</div>
+      <div class="pro-badge">Pro: Impact prioritisation &amp; full transparency</div>
+    </div>
+
+    <div class="brand-slot" aria-hidden="true">
+      <img class="brand-logo" src="/assets/brand/tasksieve_logo.svg" alt="TaskSieve logo">
+    </div>
+  </div>
+
+  <p class="sub">This is how TaskSieve works: signals from email, notes &amp; Slack bundled — sorted by impact, with nothing disappearing.</p>
+
+  <section class="digest">
+
+    <div class="block">
+      <div class="bar red"></div>
+      <div>
+        <p class="kicker">🔴 Today · High impact</p>
+        <p class="title">Customer blocker from support</p>
+        <p class="desc">3 open items from <code>Support</code> with direct impact on churn and satisfaction.</p>
+        <p class="hint">→ Recommendation: do this first (stop the bleeding).</p>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="bar amber"></div>
+      <div>
+        <p class="kicker">🟠 This week · Clarify</p>
+        <p class="title">Question around Decision A</p>
+        <p class="desc">Multiple notes + 2 emails were bundled into one topic.</p>
+        <p class="hint">→ Recommendation: clarify in 10 minutes, prevents follow-ups.</p>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="bar green"></div>
+      <div>
+        <p class="kicker">🟢 Later · Overview</p>
+        <p class="title">FYIs &amp; small to-dos</p>
+        <p class="desc">Low-pressure updates — collected instead of interrupting you.</p>
+        <p class="hint">→ Read when you have time.</p>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="bar-blue"></div>
+      <div>
+        <p class="title">📌 Next sensible steps</p>
+        <ul>
+          <li>Resolve the support blocker</li>
+          <li>Lock in Decision A</li>
+          <li>Keep the rest collected</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="summary">
+      ⏱ <b>Summary</b><br>
+      3 sources checked · 7 signals bundled · 3 topics prioritised
+    </div>
+
+  </section>
+
+  <div class="cta">
+    <a class="btn" href="/en/products/tasksieve/pricing/">
+      View pricing &amp; plan details
+      <span style="font-size:.85rem;opacity:.85">Packages &amp; differences at a glance</span>
+    </a>
+  </div>
+
+</main>
+</body>
+</html>
