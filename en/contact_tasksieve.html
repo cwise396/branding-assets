@@ -1,19 +1,19 @@
- <!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
   <title>Contact – TaskSieve</title>
-  <meta name="description" content="Start a TaskSieve demo: get a demo inbox, see what’s first and how work is prioritised – no import and no prep needed.">
-   <style>
+  <meta name="description" content="Start a TaskSieve demo: choose mode and sources — see the result immediately. No import, no prep needed.">
+
+  <style>
     :root{
-      /* same red stack as DE */
-      --page-bg:rgb(151,12,15); /* final TaskSieve red */
+      --page-bg:rgb(151,12,15);
       --text:#FFFFFF;
       --muted:#FFFFFF;
 
-      --nav-red:#AE0F12; /* Brand spine stays red */
+      --nav-red:#AE0F12;
 
       --card-bg:rgba(0,0,0,.2);
       --card-bd:rgba(255,255,255,.28);
@@ -81,7 +81,7 @@
 
     .container{width:min(var(--container),92%);margin:0 auto}
 
-    /* HERO (same layout as DE) */
+    /* HERO */
     .hero{color:#fff;padding:18px 0 10px}
     .hero-grid{
       display:grid;
@@ -107,7 +107,7 @@
       .hero-grid{grid-template-columns:1fr}
     }
 
-    /* Badge like DE (ring + red inner + logo full) */
+    /* BADGE */
     .badge{
       position:relative;
       width:var(--badge);
@@ -157,66 +157,62 @@
     }
     .card p{margin:.4rem 0 .8rem;color:#fff}
 
-     /* FORM */
-form{display:grid;gap:10px}
-label{display:block;font-weight:600;color:#fff}
+    /* FORM */
+    form{display:grid;gap:10px}
+    label{display:block;font-weight:600;color:#fff}
 
-/* Basis-Inputs (bestehend) */
-input[type="text"],
-input[type="email"],
-input[type="url"],
-select,
-textarea{
-  width:100%;
-  margin-top:6px;
-  padding:10px 12px;
-  border-radius:10px;
-  border:1px solid var(--input-bd);
-  background:var(--input-bg);
-  color:#fff;
-}
-input::placeholder,
-textarea::placeholder{
-  color:rgba(255,255,255,.7);
-}
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    select,
+    textarea{
+      width:100%;
+      margin-top:6px;
+      padding:10px 12px;
+      border-radius:10px;
+      border:1px solid var(--input-bd);
+      background:var(--input-bg);
+      color:#fff;
+    }
+    input::placeholder,
+    textarea::placeholder{
+      color:rgba(255,255,255,.7);
+    }
 
-/* ⬇️ Safari / EN-Angleich – MUSS nach den obigen Regeln stehen */
-input[type="text"],
-input[type="email"],
-input[type="url"],
-textarea,
-select{
-  -webkit-appearance:none;
-  appearance:none;
-  background:rgb(136,12,12) !important;           /* wie DE */
-  border:1px solid rgba(255,255,255,.4) !important;
-  min-height:42px;                                 /* gleiche Höhe wie Chrome */
-  font:inherit;
-}
+    /* Safari align */
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    textarea,
+    select{
+      -webkit-appearance:none;
+      appearance:none;
+      background:rgb(136,12,12) !important;
+      border:1px solid rgba(255,255,255,.4) !important;
+      min-height:42px;
+      font:inherit;
+    }
+    select{
+      background-position:right 10px center;
+      background-repeat:no-repeat;
+    }
 
-select{
-  background-position:right 10px center;
-  background-repeat:no-repeat;
-}
+    .consent{
+      display:flex;
+      align-items:flex-start;
+      gap:.5rem;
+      margin-top:.2rem;
+      color:#fff;
+      font-size:.9rem;
+      line-height:1.4;
+    }
+    .consent input[type="checkbox"]{
+      margin-top:.2rem;
+      flex-shrink:0;
+    }
+    .consent a{color:#fff;text-decoration:underline}
 
-/* Rest wie gehabt */
-.consent{
-  display:flex;
-  align-items:flex-start;
-  gap:.5rem;
-  margin-top:.2rem;
-  color:#fff;
-  font-size:.9rem;
-  line-height:1.4;
-}
-.consent input[type="checkbox"]{
-  margin-top:.2rem;
-  flex-shrink:0;
-}
-.consent a{color:#fff;text-decoration:underline}
-
-
-    /* CTA button (white pill / red text – same as DE) */
+    /* CTA button */
     .btn{
       display:inline-block;
       padding:.7rem 1rem;
@@ -227,6 +223,7 @@ select{
       font-weight:800;
       text-align:left;
       line-height:1.3;
+      cursor:pointer;
     }
     .btn:hover{background:var(--btn-bg-h)}
 
@@ -234,35 +231,20 @@ select{
       color:#AE0F12 !important;
       -webkit-text-fill-color:#AE0F12 !important;
     }
-    .btn--inverse-ts span{
-      display:block;
-      color:#AE0F12 !important;
-      -webkit-text-fill-color:#AE0F12 !important;
+
+    /* Compact (like DE/SlackDigest pattern) */
+    .btn--compact{
+      padding:.65rem .95rem;
+      border-radius:12px;
+      font-size:1.02rem;
     }
 
-    /* Flash */
-    .flash{
-      position:relative;
-      margin:8px 0 14px;
-      padding:12px 14px;
-      border-radius:10px;
-      background:#fff;
-      color:#000;
-      border:1px solid rgba(255,255,255,.6);
-      box-shadow:0 3px 12px rgba(0,0,0,.4);
-      opacity:0;
-      transform:translateY(-6px);
-      transition:opacity .2s ease, transform .2s ease;
-    }
-    .flash.show{
-      opacity:1;
-      transform:translateY(0);
-    }
-    .flash small{
-      display:block;
-      font-size:12px;
-      color:#333;
-      margin-top:4px;
+    /* Microcopy under button */
+    .microcopy{
+      margin:.5rem 0 0;
+      font-size:.9rem;
+      opacity:.95;
+      line-height:1.35;
     }
 
     footer{
@@ -271,10 +253,7 @@ select{
       font-size:.9rem;
       line-height:1.4;
     }
-    footer a{
-      color:#fff;
-      text-decoration:none;
-    }
+    footer a{color:#fff;text-decoration:none}
     .footbar{
       display:flex;
       justify-content:space-between;
@@ -286,6 +265,7 @@ select{
     .sep{margin:0 .3rem;opacity:.85}
   </style>
 </head>
+
 <body>
 
 <header class="site-header">
@@ -296,7 +276,9 @@ select{
         <li><a href="/en/products/tasksieve/">TaskSieve</a></li>
         <li><a href="/en/products/slackdigest/">SlackDigest</a></li>
         <li><a href="/en/products/changewise/">ChangeWise</a></li>
-        <li><strong>EN</strong> | <a href="/contact_tasksieve.html">DE</a></li>
+        <li>
+          <strong>EN</strong> | <a id="langSwitchLink" href="/contact_tasksieve.html">DE</a>
+        </li>
       </ul>
       <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false">☰</button>
     </div>
@@ -306,27 +288,27 @@ select{
 <main class="container">
 
   <!-- HERO -->
-   <section class="hero">
-  <div class="hero-grid">
-    <div class="hero-text">
-      <h1>TaskSieve</h1>
-      <p class="sub">
-  Request a demo: you choose mode and sources — TaskSieve returns a clearly prioritised inbox.
-</p>
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <h1>TaskSieve</h1>
+        <p class="sub">
+          Request a demo: you choose mode and sources — TaskSieve returns a clearly prioritised inbox.
+        </p>
+      </div>
+      <div class="badge" aria-hidden="true">
+        <span class="ring"></span>
+        <span class="inner">
+          <img src="/assets/brand/tasksieve_logo.svg" alt="">
+        </span>
+      </div>
     </div>
-    <div class="badge" aria-hidden="true">
-      <span class="ring"></span>
-      <span class="inner">
-        <img src="/assets/brand/tasksieve_logo.svg" alt="">
-      </span>
-    </div>
-  </div>
-</section>
+  </section>
 
-   <!-- FORM CARD -->
+  <!-- FORM CARD -->
   <section class="card">
     <h2>TaskSieve – start demo</h2>
-    <p>Start without import: get a demo inbox and see prioritization live.</p>
+    <p>Start without import: see the result immediately.</p>
 
     <form action="https://formspree.io/f/xeorrjrz" method="POST" autocomplete="on">
       <input type="hidden" name="product" value="tasksieve">
@@ -359,17 +341,17 @@ select{
         </label>
       </div>
 
-      <button class="btn btn--inverse-ts" type="submit">
-        <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
-          Start demo
-        </span>
-        <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
-          Demo sample and next steps will be sent right away. No spam, no newsletter.
-        </span>
+      <button class="btn btn--inverse-ts btn--compact" type="submit">
+        View sample inbox
       </button>
 
+      <p class="microcopy">
+        No setup · no call · no commitment
+      </p>
+
       <input type="hidden" name="_subject" value="[Website] TaskSieve demo">
-      <input type="hidden" name="_next" value="/en/contact_tasksieve.html?success=1">
+      <!-- Redirect after submit straight to success/example page -->
+      <input type="hidden" name="_next" value="https://slackdigest.org/en/success/tasksieve/">
     </form>
   </section>
 
@@ -387,7 +369,6 @@ select{
 
 <script>
 (function(){
-  // nav toggle
   var t=document.getElementById('navToggle'),
       l=document.getElementById('navLinks');
   if(t&&l){
@@ -397,35 +378,17 @@ select{
     });
   }
 
-  // success flash
-  try{
-    var sp=new URLSearchParams(location.search);
-    if(sp.get('success')==='1'){
-      var host=document.querySelector('.card');
-      if(host){
-        var box=document.createElement('div');
-        box.className='flash';
-        box.innerHTML='Thanks — we received your message.<small>You will get the next step shortly.</small>';
-        var f=host.querySelector('form');
-        if(f) f.parentNode.insertBefore(box,f);
-        setTimeout(function(){box.classList.add('show');},60);
-        setTimeout(function(){
-          if(box&&box.parentNode) box.parentNode.removeChild(box);
-        },8000);
-      }
-    }
-  }catch(e){}
-
-  // prevent double submit
+  // prevent double submit (without destroying button label)
   try{
     document.addEventListener('submit',function(e){
       var f=e.target;
       if(!f||f.tagName!=='FORM')return;
       var btn=f.querySelector('button[type="submit"]');
-      if(btn&&!btn.disabled){
+      if(btn && !btn.disabled){
         btn.disabled=true;
         btn.setAttribute('aria-disabled','true');
-        btn.textContent='Sending…';
+        btn.style.opacity='.85';
+        btn.style.cursor='not-allowed';
       }
     },{capture:true});
   }catch(e){}
