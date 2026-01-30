@@ -1,24 +1,24 @@
- <!doctype html>
+<!doctype html>
 <html lang="de">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
   <title>Kontakt – TaskSieve</title>
- <meta name="description" content="TaskSieve Demo starten: Demo-Inbox erhalten, Priorisierung erleben und sehen, was zuerst dran ist – ohne Import, ohne Vorbereitung.">
+  <meta name="description" content="TaskSieve Demo starten: Modus & Quellen wählen – Ergebnis sofort sehen. Ohne Import, ohne Vorbereitung.">
+
   <style>
   :root{
-    --page-bg:rgb(151,12,15);        /* dunkler Hintergrund */
+    --page-bg:rgb(151,12,15);
     --text:#FFFFFF;
     --muted:#FFFFFF;
 
-    --nav-red:rgb(174,15,18);        /* Brand Spine Rot (Header) */
+    --nav-red:rgb(174,15,18);
 
     --card-bg:rgba(0,0,0,.2);
     --card-bd:rgba(255,255,255,.28);
 
-    /* Inputs jetzt rot-getönt statt grau-schmutzig */
-    --input-bg:rgba(174,15,18,.28);  /* NEU */
+    --input-bg:rgba(174,15,18,.28);
     --input-bd:rgba(255,255,255,.45);
 
     --btn-bg:#FFFFFF;
@@ -125,7 +125,7 @@
     top:5px;
     width:calc(var(--badge) - 10px);
     height:calc(var(--badge) - 10px);
-    background:rgb(174,15,18); /* sauberer Spine-Rot Innenkreis */
+    background:rgb(174,15,18);
     border-radius:50%;
     display:grid;
     place-items:center;
@@ -166,28 +166,24 @@
     padding:10px 12px;
     border-radius:10px;
     border:1px solid var(--input-bd);
-    background:var(--input-bg); /* jetzt rot-transparent, kein grauschwarz */
+    background:var(--input-bg);
     color:#fff;
   }
   input::placeholder{color:rgba(255,255,255,.7)}
-/* Safari-/Height-Align für DE (Modus + Quellen) */
-input[type="text"],
-input[type="email"],
-input[type="url"],
-select,
-textarea{
-  -webkit-appearance:none;
-  appearance:none;
-  background:rgb(136,12,12) !important;           /* gleiche Farbe wie oben DE */
-  border:1px solid rgba(255,255,255,.4) !important;
-  min-height:42px;                                 /* gleiche Höhe wie Chrome */
-  font:inherit;
-}
 
-select{
-  background-position:right 10px center;
-  background-repeat:no-repeat;
-}
+  /* Safari-/Height-Align */
+  input[type="text"],
+  input[type="email"],
+  input[type="url"],
+  select,
+  textarea{
+    -webkit-appearance:none;
+    appearance:none;
+    background:rgb(136,12,12) !important;
+    border:1px solid rgba(255,255,255,.4) !important;
+    min-height:42px;
+    font:inherit;
+  }
 
   .consent{
     display:flex;
@@ -204,7 +200,7 @@ select{
   }
   .consent a{color:#fff;text-decoration:underline}
 
-  /* CTA BUTTON – weiße Kapsel mit roter Schrift */
+  /* CTA BUTTON */
   .btn{
     display:inline-block;
     padding:.7rem 1rem;
@@ -215,6 +211,7 @@ select{
     font-weight:800;
     text-align:left;
     line-height:1.3;
+    cursor:pointer;
   }
   .btn:hover{background:var(--btn-bg-h)}
 
@@ -228,28 +225,19 @@ select{
     -webkit-text-fill-color:rgb(174,15,18) !important;
   }
 
-  .flash{
-    position:relative;
-    margin:8px 0 14px;
-    padding:12px 14px;
-    border-radius:10px;
-    background:#fff;
-    color:#000;
-    border:1px solid rgba(255,255,255,.6);
-    box-shadow:0 3px 12px rgba(0,0,0,.4);
-    opacity:0;
-    transform:translateY(-6px);
-    transition:opacity .2s ease, transform .2s ease;
+  /* Compact (wie SlackDigest) */
+  .btn--compact{
+    padding:.65rem .95rem;
+    border-radius:12px;
+    font-size:1.02rem;
   }
-  .flash.show{
-    opacity:1;
-    transform:translateY(0);
-  }
-  .flash small{
-    display:block;
-    font-size:12px;
-    color:#333;
-    margin-top:4px;
+
+  /* Microcopy unter dem Button */
+  .microcopy{
+    margin:.5rem 0 0;
+    font-size:.9rem;
+    opacity:.95;
+    line-height:1.35;
   }
 
   footer{
@@ -258,10 +246,7 @@ select{
     font-size:.9rem;
     line-height:1.4;
   }
-  footer a{
-    color:#fff;
-    text-decoration:none;
-  }
+  footer a{color:#fff;text-decoration:none}
   .footbar{
     display:flex;
     justify-content:space-between;
@@ -284,7 +269,9 @@ select{
         <li><a href="/products/tasksieve/">TaskSieve</a></li>
         <li><a href="/products/slackdigest/">SlackDigest</a></li>
         <li><a href="/products/changewise/">ChangeWise</a></li>
-        <li><strong>DE</strong> | <a href="/en/contact_tasksieve.html">EN</a></li>
+        <li>
+          <strong>DE</strong> | <a id="langSwitchLink" href="/en/contact_tasksieve.html">EN</a>
+        </li>
       </ul>
       <button class="nav-toggle" id="navToggle" aria-label="Menü" aria-controls="navLinks" aria-expanded="false">☰</button>
     </div>
@@ -294,32 +281,29 @@ select{
 <main class="container">
 
   <!-- HERO -->
- <!-- nur relevanter Anfangsteil -->
-<section class="hero">
-  <div class="hero-grid">
-    <div class="hero-text">
-      <h1>TaskSieve</h1>
-      <p class="sub">
-  Demo anfordern: Du wählst Modus &amp; Quellen – TaskSieve liefert dir eine klar priorisierte Inbox.
-</p>
-   </div>
-    <div class="badge" aria-hidden="true">
-      <span class="ring"></span>
-      <span class="inner">
-        <img src="/assets/brand/tasksieve_logo.svg" alt="">
-      </span>
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <h1>TaskSieve</h1>
+        <p class="sub">
+          Demo anfordern: Du wählst Modus &amp; Quellen – TaskSieve liefert dir eine klar priorisierte Inbox.
+        </p>
+      </div>
+      <div class="badge" aria-hidden="true">
+        <span class="ring"></span>
+        <span class="inner">
+          <img src="/assets/brand/tasksieve_logo.svg" alt="">
+        </span>
+      </div>
     </div>
-  </div>
-</section>
-<!-- Rest deines bestehenden Formular-Codes bleibt wie bei dir -->
-
+  </section>
 
   <!-- FORM CARD -->
   <section class="card">
     <h2>TaskSieve – Demo starten</h2>
-   <p>Ohne Import starten: Demo-Inbox erhalten und sehen, was zuerst dran ist.</p>
+    <p>Ohne Import starten: Ergebnis sofort sehen.</p>
 
-      <form action="https://formspree.io/f/mnnggabe" method="POST" autocomplete="on">
+    <form action="https://formspree.io/f/mnnggabe" method="POST" autocomplete="on">
       <input type="hidden" name="product" value="tasksieve">
       <input type="hidden" name="lang" value="de">
       <input type="text" name="_gotcha" style="display:none">
@@ -350,17 +334,17 @@ select{
         </label>
       </div>
 
-      <button class="btn btn--inverse-ts" type="submit">
-        <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
-          Demo starten
-        </span>
-        <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
-          Demo-Beispiel und weitere Infos kommen direkt zu dir. Kein Spam, kein Newsletter.
-        </span>
+      <button class="btn btn--inverse-ts btn--compact" type="submit">
+        Beispiel-Inbox ansehen
       </button>
 
+      <p class="microcopy">
+        Kein Setup · kein Call · keine Verpflichtung
+      </p>
+
       <input type="hidden" name="_subject" value="[Website] TaskSieve Demo">
-      <input type="hidden" name="_next" value="/contact_tasksieve.html?success=1">
+      <!-- Redirect nach Submit direkt zur Beispiel-/Success-Seite -->
+      <input type="hidden" name="_next" value="https://slackdigest.org/success/tasksieve/">
     </form>
   </section>
 
@@ -387,35 +371,17 @@ select{
     });
   }
 
-  // success flash
-  try{
-    var sp=new URLSearchParams(location.search);
-    if(sp.get('success')==='1'){
-      var host=document.querySelector('.card');
-      if(host){
-        var box=document.createElement('div');
-        box.className='flash';
-        box.innerHTML='Danke — deine Nachricht ist eingegangen.<small>Wir melden uns zeitnah mit dem nächsten Schritt.</small>';
-        var f=host.querySelector('form');
-        if(f) f.parentNode.insertBefore(box,f);
-        setTimeout(function(){box.classList.add('show');},60);
-        setTimeout(function(){
-          if(box&&box.parentNode) box.parentNode.removeChild(box);
-        },8000);
-      }
-    }
-  }catch(e){}
-
-  // prevent double submit
+  // prevent double submit (ohne Text zu zerstören)
   try{
     document.addEventListener('submit',function(e){
       var f=e.target;
       if(!f||f.tagName!=='FORM')return;
       var btn=f.querySelector('button[type="submit"]');
-      if(btn&&!btn.disabled){
+      if(btn && !btn.disabled){
         btn.disabled=true;
         btn.setAttribute('aria-disabled','true');
-        btn.textContent='Senden…';
+        btn.style.opacity='.85';
+        btn.style.cursor='not-allowed';
       }
     },{capture:true});
   }catch(e){}
