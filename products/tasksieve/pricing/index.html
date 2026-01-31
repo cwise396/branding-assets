@@ -10,19 +10,24 @@
 
   <style>
     :root{
-      --container:1100px;
-      --bg:#0B1220;
-      --text:#E5E7EB;
-      --muted:#9FB0C3;
+  --container:1100px;
+  --bg:#0B1220;
+  --text:#E5E7EB;
+  --muted:#9FB0C3;
 
-      --nav-red:#AE0F12;
+  --nav-red:#AE0F12;
 
-      /* ✅ TaskSieve Rot: R150 G12 B15 */
-      --ts-red: rgb(150,12,15);
-    body{ background: rgb(150,12,15); 
+  /* ✅ TaskSieve Rot: R150 G12 B15 */
+  --ts-red: rgb(150,12,15);
 
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-    }
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+body{
+  margin:0;
+  background: var(--ts-red);
+  color: var(--text);
+  font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+}
 
     *{box-sizing:border-box}
     html,body{height:100%}
