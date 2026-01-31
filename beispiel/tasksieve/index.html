@@ -13,7 +13,7 @@
       --text:#E5E7EB;
       --muted:#9FB0C3;
       --border:rgba(255,255,255,.12);
-      --accent:rgb(151,12,15);
+      --accent:--ts-red: rgb(151,12,15);
 
       --red:#F87171;
       --amber:#FBBF24;
@@ -184,6 +184,30 @@
     }
     .cta .btn span{display:block}
     .cta .btn:hover{opacity:.92}
+/* === TaskSieve Example: Visual Source Hints === */
+
+.example{
+  margin:.25rem 0 .35rem;
+  font-size:.92rem;
+  color:rgba(255,255,255,.92);
+}
+
+.sources{
+  margin-left:.35rem;
+  white-space:nowrap;
+}
+
+.src{
+  display:inline-block;
+  margin-left:.25rem;
+  padding:.05rem .45rem;
+  border-radius:999px;
+  font-size:.7rem;
+  font-weight:600;
+  letter-spacing:.2px;
+  background:rgba(255,255,255,.14);
+  color:#fff;
+}
 
     /* ===== Mobile ===== */
     @media (max-width:520px){
@@ -229,9 +253,7 @@
   eine priorisierte <strong>Arbeits-Inbox</strong> — transparent, kontrollierbar, ohne Onboarding.
 </p>
 
-</p>
-
-  <section class="digest">
+ <section class="digest">
 
     <div class="block">
       <div class="bar red"></div>
@@ -240,13 +262,14 @@
         <p class="title">Entscheidungen mit direkter Wirkung</p>
         <p class="desc">3 offene Punkte mit direkter Auswirkung auf Abschluss & Zufriedenheit.</p>
         <p class="example">
-  Entscheidung A  · gebündelt aus
+  <em>Beispiel:</em> Entscheidung A · gebündelt aus
   <span class="sources">
-    <span class="src">E-Mail,</span>
-    <span class="src">Notiz &</span>
+    <span class="src">E-Mail</span>
+    <span class="src">Notiz</span>
     <span class="src">Slack</span>
   </span>
 </p>
+
      <p class="hint">→ Empfehlung: jetzt angehen.</p>
       </div>
     </div>
@@ -257,14 +280,15 @@
         <p class="kicker">🟠 Als Nächstes · Wichtig klären</p>
         <p class="title">Themen, die mit kurzer Klärung weiterbringen</p>
         <p class="desc">2 Punkte aus E-Mails & Notizen mit offenem Status.</p>
-       <p class="example">
-  Rückfrage zu Entscheidung B   · gebündelt aus
+   <p class="example">
+  <em>Beispiel:</em> Entscheidung A · gebündelt aus
   <span class="sources">
-    <span class="src">E-Mail &</span>
+    <span class="src">E-Mail</span>
     <span class="src">Notiz</span>
+    <span class="src">Slack</span>
   </span>
 </p>
-
+   
         <p class="hint">→ Empfehlung: 10 Minuten klären, spart Nachläufe.</p>
       </div>
     </div>
@@ -276,8 +300,14 @@
         <p class="title">Sammelthemen & Nachrangiges</p>
         <p class="desc">Updates und Aufgaben ohne akuten Handlungsdruck.</p>
         <p class="example">
-  FYIs &  To-dos  ·  gesammelt aus mehreren Quellen
-  </p>
+  <em>Beispiel:</em> Entscheidung A · gebündelt aus
+  <span class="sources">
+    <span class="src">E-Mail</span>
+    <span class="src">Notiz</span>
+    <span class="src">Slack</span>
+  </span>
+</p>
+
 
         <p class="hint">→ Zur Kenntnis nehmen / wenn Zeit ist.</p>
       </div>
