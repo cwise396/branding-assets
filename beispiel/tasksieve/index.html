@@ -13,7 +13,10 @@
       --text:#E5E7EB;
       --muted:#9FB0C3;
       --border:rgba(255,255,255,.12);
-      --accent:--ts-red: rgb(151,12,15);
+
+      /* ✅ TaskSieve rot (für CTA/Badge) */
+      --ts-red: rgb(120,12,13);
+      --accent: var(--ts-red);
 
       --red:#F87171;
       --amber:#FBBF24;
@@ -184,30 +187,38 @@
     }
     .cta .btn span{display:block}
     .cta .btn:hover{opacity:.92}
-/* === TaskSieve Example: Visual Source Hints === */
 
-.example{
-  margin:.25rem 0 .35rem;
-  font-size:.92rem;
-  color:rgba(255,255,255,.92);
-}
+    /* === TaskSieve Example: Visual Source Hints (on WHITE blocks) === */
+    .example{
+      margin:.25rem 0 .35rem;
+      font-size:.92rem;
+      color:rgba(17,24,39,.78);
+    }
 
-.sources{
-  margin-left:.35rem;
-  white-space:nowrap;
-}
+    .example em{
+      font-style:normal;
+      font-size:.75rem;
+      opacity:.55;
+      margin-right:.25rem;
+    }
 
-.src{
-  display:inline-block;
-  margin-left:.25rem;
-  padding:.05rem .45rem;
-  border-radius:999px;
-  font-size:.7rem;
-  font-weight:600;
-  letter-spacing:.2px;
-  background:rgba(255,255,255,.14);
-  color:#fff;
-}
+    .sources{
+      margin-left:.4rem;
+      white-space:nowrap;
+    }
+
+    .src{
+      display:inline-block;
+      margin-left:.25rem;
+      padding:.08rem .5rem;
+      border-radius:999px;
+      font-size:.72rem;
+      font-weight:700;
+      letter-spacing:.15px;
+      background:rgba(15,23,42,.08);
+      border:1px solid rgba(15,23,42,.12);
+      color:#0F172A;
+    }
 
     /* ===== Mobile ===== */
     @media (max-width:520px){
@@ -234,13 +245,12 @@
   <div class="topline">
     <div class="digest-head">
       <div class="digest-title">TaskSieve</div>
-      <div class="digest-sub">Beispiel-Inbox</div>
-      <p class="sub">
-  Beantwortet die Frage:<br>
-  <strong>Welche Aufgaben haben jetzt Priorität?</strong>
-</p>
+      <div class="digest-sub">Beispiel-Inbox · Arbeitsprioritäten</div>
 
-      
+      <p class="sub">
+        Beantwortet die Frage:<br>
+        <strong>Welche Aufgaben haben jetzt Priorität?</strong>
+      </p>
     </div>
 
     <div class="brand-slot" aria-hidden="true">
@@ -248,29 +258,30 @@
     </div>
   </div>
 
-  <p class="sub"> 
-  TaskSieve macht aus realen Signalen (E-Mail, Notizen, Slack) automatisch<br>
-  eine priorisierte <strong>Arbeits-Inbox</strong> — transparent, kontrollierbar, ohne Onboarding.
-</p>
+  <p class="sub">
+    TaskSieve macht aus realen Signalen (E-Mail, Notizen, Slack) automatisch<br>
+    eine priorisierte <strong>Arbeits-Inbox</strong> — transparent, kontrollierbar, ohne Onboarding.
+  </p>
 
- <section class="digest">
+  <section class="digest">
 
     <div class="block">
       <div class="bar red"></div>
       <div>
         <p class="kicker">🔴 Jetzt · Arbeitsfokus</p>
         <p class="title">Entscheidungen mit direkter Wirkung</p>
-        <p class="desc">3 offene Punkte mit direkter Auswirkung auf Abschluss & Zufriedenheit.</p>
-        <p class="example">
-  <em>Beispiel:</em> Entscheidung A · gebündelt aus
-  <span class="sources">
-    <span class="src">E-Mail</span>
-    <span class="src">Notiz</span>
-    <span class="src">Slack</span>
-  </span>
-</p>
+        <p class="desc">3 offene Punkte mit direkter Auswirkung auf Abschluss &amp; Zufriedenheit.</p>
 
-     <p class="hint">→ Empfehlung: jetzt angehen.</p>
+        <p class="example">
+          <em>Beispiel:</em> Entscheidung A · gebündelt aus
+          <span class="sources">
+            <span class="src">E-Mail</span>
+            <span class="src">Notiz</span>
+            <span class="src">Slack</span>
+          </span>
+        </p>
+
+        <p class="hint">→ Empfehlung: jetzt entscheiden.</p>
       </div>
     </div>
 
@@ -279,17 +290,17 @@
       <div>
         <p class="kicker">🟠 Als Nächstes · Wichtig klären</p>
         <p class="title">Themen, die mit kurzer Klärung weiterbringen</p>
-        <p class="desc">2 Punkte aus E-Mails & Notizen mit offenem Status.</p>
-   <p class="example">
-  <em>Beispiel:</em> Entscheidung A · gebündelt aus
-  <span class="sources">
-    <span class="src">E-Mail</span>
-    <span class="src">Notiz</span>
-    <span class="src">Slack</span>
-  </span>
-</p>
-   
-        <p class="hint">→ Empfehlung: 10 Minuten klären, spart Nachläufe.</p>
+        <p class="desc">2 Punkte aus E-Mails &amp; Notizen mit offenem Status.</p>
+
+        <p class="example">
+          <em>Beispiel:</em> Rückfrage zu Entscheidung B · gebündelt aus
+          <span class="sources">
+            <span class="src">E-Mail</span>
+            <span class="src">Notiz</span>
+          </span>
+        </p>
+
+        <p class="hint">→ Empfehlung: kurz klären.</p>
       </div>
     </div>
 
@@ -297,17 +308,16 @@
       <div class="bar green"></div>
       <div>
         <p class="kicker">🟢 Kein Zeitdruck · Überblick</p>
-        <p class="title">Sammelthemen & Nachrangiges</p>
+        <p class="title">Sammelthemen &amp; Nachrangiges</p>
         <p class="desc">Updates und Aufgaben ohne akuten Handlungsdruck.</p>
-        <p class="example">
-  <em>Beispiel:</em> Entscheidung A · gebündelt aus
-  <span class="sources">
-    <span class="src">E-Mail</span>
-    <span class="src">Notiz</span>
-    <span class="src">Slack</span>
-  </span>
-</p>
 
+        <p class="example">
+          <em>Beispiel:</em> FYIs &amp; To-dos · gesammelt aus
+          <span class="sources">
+            <span class="src">E-Mail</span>
+            <span class="src">Slack</span>
+          </span>
+        </p>
 
         <p class="hint">→ Zur Kenntnis nehmen / wenn Zeit ist.</p>
       </div>
