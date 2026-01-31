@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="dark">
-  <title>Pricing – TaskSieve</title>
-  <meta name="description" content="Preis- & Leistungsübersicht für TaskSieve: Pakete & Unterschiede auf einen Blick." />
+  <title>Preis & Leistung – TaskSieve</title>
+  <meta name="description" content="Preis- & Leistungsübersicht für TaskSieve: manuell vs. TaskSieve – klar, transparent, kontrollierbar." />
   <meta name="theme-color" content="#0B1220" />
 
   <style>
@@ -17,11 +17,9 @@
 
       --nav-red:#AE0F12;
 
-      /* TaskSieve accent */
-      --ts-red: rgb(120,12,13);
+      /* ✅ TaskSieve Rot: R150 G12 B15 */
+      --ts-red: rgb(150,12,15);
 
-      --card-bg: rgba(255,255,255,.04);
-      --card-bd: rgba(255,255,255,.12);
       --shadow: 0 10px 30px rgba(0,0,0,.35);
     }
 
@@ -97,6 +95,7 @@
       font-size:clamp(2.0rem, 4vw, 2.8rem);
       line-height:1.08;
       letter-spacing:.1px;
+      color:#fff;
     }
 
     /* ✅ Inserted statement */
@@ -107,7 +106,7 @@
       line-height:1.45;
       color:rgba(255,255,255,.92);
     }
-    .pricing-intro strong{font-weight:800;color:#fff}
+    .pricing-intro strong{font-weight:900;color:#fff}
 
     .badge{
       width:84px;height:84px;
@@ -123,30 +122,34 @@
       border-radius:50%;
       object-fit:contain;
       display:block;
-      background:transparent;
     }
 
-    /* SECTIONS */
+    /* LAYOUT */
     .grid{
       display:grid;
       grid-template-columns:repeat(12,1fr);
       gap:1rem;
       margin-top:1.1rem;
     }
+
+    /* ✅ Pricing cards: white inside, red frame */
     .card{
       grid-column:span 12;
-      background:var(--card-bg);
-      border:1px solid var(--card-bd);
+      background:#ffffff;
+      color:#111827;
+      border:2px solid var(--ts-red);
       border-radius:16px;
       padding:1.05rem 1rem;
-      box-shadow:var(--shadow);
+      box-shadow:0 10px 30px rgba(0,0,0,.25);
     }
     .card h2{
       margin:0 0 .6rem;
-      font-size:1.1rem;
+      font-size:1.12rem;
       letter-spacing:.1px;
+      color:#0F172A;
     }
-    .muted{color:var(--muted)}
+    .card p{color:#111827}
+    .muted{color:rgba(17,24,39,.78)}
 
     /* TABLE */
     .table-wrap{overflow:auto;border-radius:14px}
@@ -155,28 +158,29 @@
       border-collapse:separate;
       border-spacing:0;
       min-width:680px;
-      background:rgba(0,0,0,.18);
-      border:1px solid rgba(255,255,255,.14);
+      background:#fff;
+      border:1px solid rgba(0,0,0,.10);
       border-radius:14px;
       overflow:hidden;
     }
     th, td{
       padding:.85rem .85rem;
-      border-bottom:1px solid rgba(255,255,255,.12);
+      border-bottom:1px solid rgba(0,0,0,.10);
       vertical-align:top;
       text-align:left;
+      color:#111827;
     }
     th{
       font-size:.9rem;
-      color:#fff;
-      background:rgba(255,255,255,.06);
+      color:#0F172A;
+      background:rgba(0,0,0,.03);
     }
     tr:last-child td{border-bottom:0}
-    td small{color:rgba(255,255,255,.75)}
+    td small{color:rgba(17,24,39,.72)}
     .yes{font-weight:900}
     .no{opacity:.55}
 
-    /* PRICE BLOCK */
+    /* PRICE BLOCKS */
     .price-grid{
       display:grid;
       grid-template-columns:repeat(12,1fr);
@@ -186,23 +190,26 @@
     }
     .price{
       grid-column:span 6;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.14);
+      background:#ffffff;
+      color:#111827;
+      border:2px solid var(--ts-red);
       border-radius:16px;
       padding:1rem;
     }
-    .price h3{margin:0 0 .25rem;font-size:1.05rem}
+    .price h3{margin:0 0 .25rem;font-size:1.05rem;color:#0F172A}
     .amount{
       font-size:1.55rem;
       font-weight:900;
       letter-spacing:-.2px;
       margin:.15rem 0 .4rem;
+      color:#0F172A;
     }
-    .amount .per{font-size:.95rem;font-weight:700;opacity:.85}
-    .note{margin:0;color:rgba(255,255,255,.85)}
+    .amount .per{font-size:.95rem;font-weight:700;opacity:.75;color:#111827}
+    .note{margin:0;color:#111827;opacity:.85}
     .micro{
       margin:.8rem 0 0;
-      color:rgba(255,255,255,.88);
+      color:#111827;
+      opacity:.75;
       font-size:.95rem;
     }
 
@@ -217,18 +224,19 @@
       display:inline-block;
       border-radius:14px;
       padding:.85rem 1.05rem;
-      border:1px solid rgba(255,255,255,.35);
-      background:rgba(255,255,255,.10);
-      color:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      background:rgba(0,0,0,.04);
+      color:#0F172A;
       font-weight:900;
       line-height:1.2;
-      box-shadow:0 10px 30px rgba(0,0,0,.18);
     }
     .btn:hover{opacity:.92}
 
+    /* ✅ Primary = TaskSieve red */
     .btn-primary{
       background:var(--ts-red);
-      border-color:rgba(255,255,255,.38);
+      border-color:rgba(0,0,0,.10);
+      color:#ffffff;
     }
     .btn span{display:block}
     .btn .sub{
@@ -237,6 +245,7 @@
       opacity:.88;
       margin-top:.25rem;
     }
+    .btn-primary .sub{opacity:.92}
 
     footer{
       max-width:var(--container);
@@ -292,10 +301,12 @@
     </section>
 
     <section class="grid">
+
       <article class="card">
-        <h2>Pakete &amp; Unterschiede auf einen Blick</h2>
+        <h2>Arbeitsprioritäten: manuell vs. TaskSieve</h2>
         <p class="muted" style="margin:.2rem 0 .9rem">
-          TaskSieve priorisiert aus realen Signalen (E-Mail, Notizen, Slack) – transparent und kontrollierbar.
+          Ohne TaskSieve entstehen Prioritäten manuell. TaskSieve macht daraus klare Arbeitsprioritäten –
+          transparent und kontrollierbar.
         </p>
 
         <div class="table-wrap">
@@ -303,7 +314,7 @@
             <thead>
               <tr>
                 <th>Ebene</th>
-                <th>Standard (manuell)</th>
+                <th>Ohne TaskSieve<br><small style="opacity:.75;font-weight:600">manuell</small></th>
                 <th>TaskSieve</th>
               </tr>
             </thead>
@@ -329,7 +340,7 @@
                 <td class="yes">✔</td>
               </tr>
               <tr>
-                <td><strong>Transparenz &amp; Kontrolle</strong><br><small>Nichts verschwindet ohne dich</small></td>
+                <td><strong>Transparenz &amp; Kontrolle</strong><br><small>Alles bleibt sichtbar</small></td>
                 <td class="no">✖</td>
                 <td class="yes">✔</td>
               </tr>
@@ -338,7 +349,7 @@
         </div>
 
         <p class="muted" style="margin:.9rem 0 0">
-          Standard zeigt Listen. TaskSieve macht daraus Arbeitsprioritäten – und alles bleibt sichtbar.
+          Manuell heißt: Liste. TaskSieve heißt: Arbeitsprioritäten – ohne dass etwas verschwindet.
         </p>
       </article>
 
@@ -355,7 +366,7 @@
             <div class="cta-row">
               <a class="btn btn-primary" href="/contact_tasksieve.html">
                 Pro starten
-                <span class="sub">Demo anfordern</span>
+                <span class="sub">Direkt starten</span>
               </a>
             </div>
           </div>
@@ -364,12 +375,12 @@
             <h3>Jährlich</h3>
             <div class="amount">9 € <span class="per">/ Monat · pro Nutzer</span></div>
             <p class="note">Gebucht jährlich – gleicher Funktionsumfang, bessere Konditionen.</p>
-            <div class="micro">Transparenz &amp; Kontrolle inklusive</div>
+            <div class="micro">Kein Setup · kein Call · jederzeit kündbar</div>
 
             <div class="cta-row">
-              <a class="btn" href="/contact_tasksieve.html">
+              <a class="btn btn-primary" href="/contact_tasksieve.html">
                 Jährlich starten
-                <span class="sub">Demo anfordern</span>
+                <span class="sub">Direkt starten</span>
               </a>
             </div>
           </div>
