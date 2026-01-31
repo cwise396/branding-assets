@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark">
+  <title>Pricing – TaskSieve</title>
+  <meta name="description" content="TaskSieve pricing & plan details: packages and differences at a glance." />
+  <meta name="theme-color" content="#0B1220" />
+
+  <style>
+    :root{
+      --container:1100px;
+      --bg:#0B1220;
+      --text:#E5E7EB;
+      --muted:#9FB0C3;
+
+      --nav-red:#AE0F12;
+
+      /* TaskSieve accent */
+      --ts-red: rgb(120,12,13);
+
+      --card-bg: rgba(255,255,255,.04);
+      --card-bd: rgba(255,255,255,.12);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+    }
+    a{color:#fff;text-decoration:none}
+
+    /* NAV */
+    .site-header{
+      position:sticky; top:0; z-index:50;
+      background:var(--nav-red);
+      width:100%;
+    }
+    .nav-inner{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:.9rem 1rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+    }
+    .brand{font-weight:800;white-space:nowrap}
+    .nav-links{
+      list-style:none;
+      display:flex;
+      align-items:center;
+      gap:1rem;
+      margin:0; padding:0;
+    }
+    .nav-toggle{
+      display:none;
+      background:none;border:0;
+      color:#fff;font-size:1.2rem;
+    }
+    @media (max-width:980px){
+      .nav-inner{position:relative}
+      .nav-links{
+        display:none;
+        position:absolute;
+        top:56px; left:0; right:0;
+        background:var(--nav-red);
+        padding:1rem;
+        flex-direction:column;
+        gap:.6rem;
+      }
+      .nav-links.open{display:flex}
+      .nav-toggle{display:inline-block}
+    }
+
+    main{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:1.4rem 1rem 2.8rem;
+    }
+
+    /* HERO */
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap:1rem;
+      align-items:center;
+      margin-bottom:1.2rem;
+    }
+    .hero h1{
+      margin:0 0 .25rem;
+      font-size:clamp(2.0rem, 4vw, 2.8rem);
+      line-height:1.08;
+      letter-spacing:.1px;
+    }
+
+    /* ✅ Inserted statement */
+    .pricing-intro{
+      margin:.6rem 0 0;
+      max-width:42rem;
+      font-size:1.05rem;
+      line-height:1.45;
+      color:rgba(255,255,255,.92);
+    }
+    .pricing-intro strong{font-weight:800;color:#fff}
+
+    .badge{
+      width:84px;height:84px;
+      border-radius:50%;
+      background:#fff;
+      padding:5px;
+      display:grid;place-items:center;
+      box-shadow:0 4px 12px rgba(0,0,0,.10);
+      flex:0 0 auto;
+    }
+    .badge img{
+      width:100%;height:100%;
+      border-radius:50%;
+      object-fit:contain;
+      display:block;
+    }
+
+    /* SECTIONS */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:1rem;
+      margin-top:1.1rem;
+    }
+    .card{
+      grid-column:span 12;
+      background:var(--card-bg);
+      border:1px solid var(--card-bd);
+      border-radius:16px;
+      padding:1.05rem 1rem;
+      box-shadow:var(--shadow);
+    }
+    .card h2{
+      margin:0 0 .6rem;
+      font-size:1.1rem;
+      letter-spacing:.1px;
+    }
+    .muted{color:var(--muted)}
+
+    /* TABLE */
+    .table-wrap{overflow:auto;border-radius:14px}
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      min-width:680px;
+      background:rgba(0,0,0,.18);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:14px;
+      overflow:hidden;
+    }
+    th, td{
+      padding:.85rem .85rem;
+      border-bottom:1px solid rgba(255,255,255,.12);
+      vertical-align:top;
+      text-align:left;
+    }
+    th{
+      font-size:.9rem;
+      color:#fff;
+      background:rgba(255,255,255,.06);
+    }
+    tr:last-child td{border-bottom:0}
+    td small{color:rgba(255,255,255,.75)}
+    .yes{font-weight:900}
+    .no{opacity:.55}
+
+    /* PRICE BLOCK */
+    .price-grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:1rem;
+      margin-top:1rem;
+      align-items:stretch;
+    }
+    .price{
+      grid-column:span 6;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:16px;
+      padding:1rem;
+    }
+    .price h3{margin:0 0 .25rem;font-size:1.05rem}
+    .amount{
+      font-size:1.55rem;
+      font-weight:900;
+      letter-spacing:-.2px;
+      margin:.15rem 0 .4rem;
+    }
+    .amount .per{font-size:.95rem;font-weight:700;opacity:.85}
+    .note{margin:0;color:rgba(255,255,255,.85)}
+    .micro{
+      margin:.8rem 0 0;
+      color:rgba(255,255,255,.88);
+      font-size:.95rem;
+    }
+
+    .cta-row{
+      display:flex;
+      gap:.8rem;
+      flex-wrap:wrap;
+      margin-top:1rem;
+    }
+
+    .btn{
+      display:inline-block;
+      border-radius:14px;
+      padding:.85rem 1.05rem;
+      border:1px solid rgba(255,255,255,.35);
+      background:rgba(255,255,255,.10);
+      color:#fff;
+      font-weight:900;
+      line-height:1.2;
+      box-shadow:0 10px 30px rgba(0,0,0,.18);
+    }
+    .btn:hover{opacity:.92}
+
+    .btn-primary{
+      background:var(--ts-red);
+      border-color:rgba(255,255,255,.38);
+    }
+    .btn span{display:block}
+    .btn .sub{
+      font-size:.85rem;
+      font-weight:700;
+      opacity:.88;
+      margin-top:.25rem;
+    }
+
+    footer{
+      max-width:var(--container);
+      margin:2.2rem auto 2.6rem;
+      padding:0 1rem;
+      color:#fff;
+    }
+    footer a{color:#fff}
+
+    @media (max-width:900px){
+      .price{grid-column:span 12}
+      table{min-width:560px}
+    }
+    @media (max-width:520px){
+      .hero{grid-template-columns:1fr auto}
+      .pricing-intro{font-size:1rem}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav aria-label="Main">
+      <div class="nav-inner">
+        <a class="brand" href="/en/">Home</a>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="/en/products/changewise/">ChangeWise</a></li>
+          <li><a href="/en/products/slackdigest/">SlackDigest</a></li>
+          <li><a href="/en/products/tasksieve/">TaskSieve</a></li>
+          <li><strong>EN</strong> | <a href="/products/tasksieve/pricing/">DE</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <h1>Pricing &amp; plans</h1>
+        <p class="pricing-intro">
+          <strong>TaskSieve is more than reporting.</strong><br>
+          It delivers transactional, individual work priorities –
+          where decisions are actually made.
+        </p>
+      </div>
+
+      <div class="badge" aria-hidden="true">
+        <img src="/assets/brand/tasksieve_logo.svg" alt="">
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Packages &amp; differences at a glance</h2>
+        <p class="muted" style="margin:.2rem 0 .9rem">
+          TaskSieve prioritises real signals (email, notes, Slack) — transparent and controllable.
+        </p>
+
+        <div class="table-wrap">
+          <table aria-label="Plan comparison">
+            <thead>
+              <tr>
+                <th>Layer</th>
+                <th>Standard (manual)</th>
+                <th>TaskSieve</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Collect signals</strong><br><small>Email / notes / Slack</small></td>
+                <td class="yes">✔</td>
+                <td class="yes">✔</td>
+              </tr>
+              <tr>
+                <td><strong>Bundle duplicates &amp; topics</strong></td>
+                <td class="no">✖ / partly</td>
+                <td class="yes">✔</td>
+              </tr>
+              <tr>
+                <td><strong>Sort by impact</strong></td>
+                <td class="no">✖</td>
+                <td class="yes">✔</td>
+              </tr>
+              <tr>
+                <td><strong>Recommendations &amp; next steps</strong></td>
+                <td class="no">✖</td>
+                <td class="yes">✔</td>
+              </tr>
+              <tr>
+                <td><strong>Transparency &amp; control</strong><br><small>Nothing disappears</small></td>
+                <td class="no">✖</td>
+                <td class="yes">✔</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="muted" style="margin:.9rem 0 0">
+          Standard shows lists. TaskSieve turns them into work priorities — and everything stays visible.
+        </p>
+      </article>
+
+      <article class="card">
+        <h2>Prices</h2>
+
+        <div class="price-grid">
+          <div class="price">
+            <h3>TaskSieve Pro</h3>
+            <div class="amount">€12 <span class="per">/ month · per user</span></div>
+            <p class="note">Built for individuals and teams — scales cleanly per seat.</p>
+            <div class="micro">No setup · no call · cancel anytime</div>
+
+            <div class="cta-row">
+              <a class="btn btn-primary" href="/en/contact_tasksieve.html">
+                Start Pro
+                <span class="sub">Request demo</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="price">
+            <h3>Annual</h3>
+            <div class="amount">€9 <span class="per">/ month · per user</span></div>
+            <p class="note">Billed yearly — same features, better rate.</p>
+            <div class="micro">Transparency &amp; control included</div>
+
+            <div class="cta-row">
+              <a class="btn" href="/en/contact_tasksieve.html">
+                Start annual
+                <span class="sub">Request demo</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </article>
+    </section>
+
+    <footer>
+      <nav class="legal" aria-label="Footer">
+        <a href="/en/imprint/">Imprint</a><span class="sep" aria-hidden="true"> · </span>
+        <a href="/en/privacy/">Privacy</a>
+      </nav>
+      <small>© ChangeWise · SlackDigest · TaskSieve</small>
+    </footer>
+  </main>
+
+  <script>
+    function __toggleNav(){
+      var l=document.getElementById('navLinks'); if(!l) return;
+      var open=l.classList.toggle('open');
+      var t=document.getElementById('navToggle'); if(t) t.setAttribute('aria-expanded', open?'true':'false');
+    }
+    (function(){
+      var t=document.getElementById('navToggle');
+      if(t) t.addEventListener('click', __toggleNav);
+    })();
+  </script>
+</body>
+</html>
