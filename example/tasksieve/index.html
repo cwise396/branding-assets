@@ -13,7 +13,10 @@
       --text:#E5E7EB;
       --muted:#9FB0C3;
       --border:rgba(255,255,255,.12);
-      --accent:rgb(151,12,15);
+
+      /* ✅ TaskSieve red for CTA/labels */
+      --ts-red: rgb(120,12,13);
+      --accent: var(--ts-red);
 
       --red:#F87171;
       --amber:#FBBF24;
@@ -121,7 +124,16 @@
     .bar.amber{background:var(--amber)}
     .bar.green{background:var(--green)}
 
-    .kicker{font-size:13px;color:#6B7280;margin:0 0 6px}
+    /* ✅ marker style like DE */
+    .kicker{
+      font-size:.75rem;
+      font-weight:800;
+      letter-spacing:.03em;
+      color:#0F172A;
+      margin:0 0 .4rem;
+      opacity:.85;
+    }
+
     .title{margin:0 0 6px;font-weight:800;color:#0F172A}
     .desc{margin:0 0 8px;color:#111827}
     .hint{margin:0;color:#374151;font-size:13px}
@@ -181,6 +193,40 @@
     .cta .btn span{display:block}
     .cta .btn:hover{opacity:.92}
 
+    /* === Visual Source Hints (on WHITE blocks) === */
+    .example{
+      margin:.25rem 0 .35rem;
+      font-size:.92rem;
+      color:rgba(17,24,39,.78);
+    }
+
+    .example em{
+      font-style:normal;
+      font-size:.75rem;     /* size stays */
+      font-weight:800;      /* clearly bold */
+      letter-spacing:.02em;
+      opacity:.9;
+      margin-right:.3rem;
+    }
+
+    .sources{
+      margin-left:.4rem;
+      white-space:nowrap;
+    }
+
+    .src{
+      display:inline-block;
+      margin-left:.25rem;
+      padding:.08rem .5rem;
+      border-radius:999px;
+      font-size:.72rem;
+      font-weight:700;
+      letter-spacing:.15px;
+      background:rgba(15,23,42,.08);
+      border:1px solid rgba(15,23,42,.12);
+      color:#0F172A;
+    }
+
     @media (max-width:520px){
       .wrap{padding:34px 14px 72px}
       .digest-title{font-size:30px}
@@ -202,12 +248,12 @@
   <div class="topline">
     <div class="digest-head">
       <div class="digest-title">TaskSieve</div>
-      <div class="digest-sub">Sample inbox</div>
-     <p class="sub">
-  Answers the question:<br>
-  <strong>What should I spend my time on right now?</strong>
-</p>
+      <div class="digest-sub">Sample inbox · Work priorities</div>
 
+      <p class="sub">
+        Answers the question:<br>
+        <strong>What should I spend my time on right now?</strong>
+      </p>
     </div>
 
     <div class="brand-slot" aria-hidden="true">
@@ -216,10 +262,9 @@
   </div>
 
   <p class="sub">
-  TaskSieve turns real signals (email, notes, Slack) into a prioritized<br>
-  <strong>working inbox</strong> — automatic, transparent, and fully under your control. No onboarding.
-</p>
-
+    TaskSieve turns real signals (email, notes, Slack) into a prioritized<br>
+    <strong>working inbox</strong> — automatic, transparent, and fully under your control. No onboarding.
+  </p>
 
   <section class="digest">
 
@@ -227,9 +272,19 @@
       <div class="bar red"></div>
       <div>
         <p class="kicker">🔴 Now · Work focus</p>
-        <p class="title">Items with immediate impact</p>
+        <p class="title">Decisions with immediate impact</p>
         <p class="desc">3 open items with a direct effect on results and satisfaction.</p>
-        <p class="hint">→ Recommendation: do this first (stop the bleeding).</p>
+
+        <p class="example">
+          <em>Example:</em> Approval for offer X · grouped from
+          <span class="sources">
+            <span class="src">Email</span>
+            <span class="src">Note</span>
+            <span class="src">Slack</span>
+          </span>
+        </p>
+
+        <p class="hint">→ Recommendation: decide now.</p>
       </div>
     </div>
 
@@ -237,9 +292,18 @@
       <div class="bar amber"></div>
       <div>
         <p class="kicker">🟠 Next · Clarify what matters</p>
-        <p class="title">Question around Decision A</p>
-        <p class="desc">Multiple notes + 2 emails were bundled into one topic.</p>
-        <p class="hint">→ Recommendation: clarify in 10 minutes, prevents follow-ups.</p>
+        <p class="title">Items that move forward with a quick clarification</p>
+        <p class="desc">2 items from emails & notes with an open status.</p>
+
+        <p class="example">
+          <em>Example:</em> Follow-up on decision B · grouped from
+          <span class="sources">
+            <span class="src">Email</span>
+            <span class="src">Note</span>
+          </span>
+        </p>
+
+        <p class="hint">→ Recommendation: clarify briefly.</p>
       </div>
     </div>
 
@@ -248,19 +312,28 @@
       <div>
         <p class="kicker">🟢 Low urgency · Overview</p>
         <p class="title">Grouped topics & lower-priority items</p>
-        <p class="desc">Low-pressure updates — collected instead of interrupting you.</p>
-        <p class="hint">→ Read when you have time.</p>
+        <p class="desc">Low-pressure updates and small tasks — collected instead of interrupting you.</p>
+
+        <p class="example">
+          <em>Example:</em> FYIs & small to-dos · grouped from
+          <span class="sources">
+            <span class="src">Email</span>
+            <span class="src">Slack</span>
+          </span>
+        </p>
+
+        <p class="hint">→ Review when you have time.</p>
       </div>
     </div>
 
     <div class="steps">
       <div class="bar-blue"></div>
       <div>
-        <p class="title">📌Current work focus</p>
+        <p class="title">📌 Current work focus</p>
         <ul>
           <li>Address high-impact items</li>
           <li>Finalize decision A</li>
-          <li>Defer lower-priority items</li>
+          <li>Keep lower-priority items grouped</li>
         </ul>
       </div>
     </div>
