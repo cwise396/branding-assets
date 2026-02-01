@@ -49,10 +49,19 @@
       letter-spacing:-.3px;
     }
 
-    .sub{
+    /* Headline + Subline styles (waren im HTML, fehlten im CSS) */
+    .lead-strong{
+      margin:0 0 6px;
+      font-size:16.5px;
+      font-weight:900;
+      letter-spacing:-.1px;
+      opacity:.98;
+    }
+    .lead-sub{
       margin:0;
-      font-size:16px;
-      opacity:.95;
+      font-size:14.5px;
+      opacity:.92;
+      line-height:1.45;
     }
 
     .brand-logo{
@@ -130,32 +139,37 @@
     }
     .bullets li{margin:6px 0}
 
+    /* Price blocks */
     .price{
-      margin:12px 0 8px;
+      margin:14px 0 6px;
       font-size:14px;
     }
-    .price b{font-weight:900}
+    .price p{margin:10px 0}
+    .price strong{font-weight:900}
+    .price .muted{color:var(--muted); font-weight:600}
 
     .workspace{
-      margin:8px 0 18px;
+      margin:8px 0 14px;
       font-size:13px;
       color:var(--muted);
     }
 
     .cta-ready{
-      margin:10px 0 12px;
+      margin:8px 0 12px;
       font-size:14px;
       font-weight:800;
     }
 
-    .cta-actions .btn-row{
+    /* Buttons */
+    .cta-actions{ margin-top:10px; }
+
+    .btn-grid{
       display:grid;
       grid-template-columns:1fr;
       gap:10px;
-      margin-top:10px;
     }
 
-    .cta-actions .btn{
+    .btn{
       display:inline-block;
       background:var(--sd-green);
       color:#ffffff;
@@ -165,8 +179,20 @@
       font-weight:900;
       text-align:center;
       width:100%;
+      line-height:1.2;
     }
-    .cta-actions .btn:hover{opacity:.92}
+    .btn:hover{opacity:.92}
+    .btn .sub{
+      display:block;
+      font-weight:800;
+      font-size:12.5px;
+      opacity:.92;
+      margin-top:4px;
+    }
+
+    @media (min-width:560px){
+      .btn-grid{ grid-template-columns:1fr 1fr; }
+    }
 
     .microcopy{
       margin-top:10px;
@@ -174,19 +200,6 @@
       color:var(--muted);
       text-align:center;
     }
-
-    @media (min-width:560px){
-      .cta-actions .btn-row{
-        grid-template-columns:1fr 1fr;
-      }
-    }
-
-   @media (max-width:520px){
-  .wrap{padding:34px 14px 72px}
-  h1{font-size:28px}
-  .brand-logo{height:84px}
-}
-
   </style>
 </head>
 
@@ -198,15 +211,14 @@
       <div>
         <h1>Preis &amp; Leistung</h1>
 
-<p class="lead-strong">
-  SlackDigest bringt Ordnung in Team-Kommunikation.
-</p>
+        <p class="lead-strong">
+          SlackDigest bringt Ordnung in Team-Kommunikation.
+        </p>
 
-<p class="lead-sub">
-  Es bündelt relevante Slack-Updates, filtert Wiederholungen<br>
-  und macht sichtbar, was für das Team wirklich zählt.
-</p>
-
+        <p class="lead-sub">
+          Es bündelt relevante Slack-Updates, filtert Wiederholungen<br>
+          und macht sichtbar, was für das Team wirklich zählt.
+        </p>
       </div>
 
       <img
@@ -244,21 +256,23 @@
         <li>Zustellung regelmäßig per Slack oder E-Mail.</li>
       </ul>
 
+      <!-- ✅ Preise: Basic zuerst, Jahres-Hinweis direkt dahinter -->
       <div class="price">
         <p>
-  <strong>SlackDigest Pro</strong><br>
-  15 € monatlich · pro Workspace<br>
-  12 € monatlich · pro Workspace<br>
-  <span class="muted">Jährlich abgerechnet – gleicher Funktionsumfang, bessere Konditionen.</span>
-</p>
+          <strong>SlackDigest Basic</strong><br>
+          9 € monatlich · pro Workspace<br>
+          8 € monatlich · pro Workspace <span class="muted">— jährlich abgerechnet</span>
+        </p>
 
-<p>
-  <strong>SlackDigest Basic</strong><br>
-  9 € monatlich · pro Workspace<br>
-  8 € monatlich · pro Workspace<br>
-  <span class="muted">Jährlich abgerechnet – gleicher Funktionsumfang, bessere Konditionen.</span>
-</p>
+        <p>
+          <strong>SlackDigest Pro</strong><br>
+          15 € monatlich · pro Workspace<br>
+          12 € monatlich · pro Workspace <span class="muted">— jährlich abgerechnet</span>
+        </p>
 
+        <p class="muted" style="margin-top:10px">
+          Jährlich abgerechnet – gleicher Funktionsumfang, bessere Konditionen.
+        </p>
       </div>
 
       <div class="workspace">
@@ -267,16 +281,30 @@
 
       <div class="cta-ready">Nach dem Kauf ist SlackDigest sofort einsatzbereit.</div>
 
+      <!-- ✅ Buttons: 2×2 Grid (Basic/Pro × monatlich/jährlich) -->
       <div class="cta-actions">
-        <a class="btn btn-primary" href="#">
-    Pro<br>
-    <span class="sub">monatlich aktivieren</span>
-  </a>
+        <div class="btn-grid">
+          <a class="btn" href="#">
+            Basic
+            <span class="sub">monatlich aktivieren</span>
+          </a>
 
-  <a class="btn" href="#">
-    Pro<br>
-    <span class="sub">jährlich aktivieren</span>
+          <a class="btn" href="#">
+            Basic
+            <span class="sub">jährlich aktivieren</span>
+          </a>
+
+          <a class="btn" href="#">
+            Pro
+            <span class="sub">monatlich aktivieren</span>
+          </a>
+
+          <a class="btn" href="#">
+            Pro
+            <span class="sub">jährlich aktivieren</span>
+          </a>
         </div>
+
         <p class="microcopy">Kein Setup · kein Call · jederzeit kündbar</p>
       </div>
 
