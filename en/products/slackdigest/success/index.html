@@ -45,55 +45,43 @@
       font-size:16px;
       opacity:.95;
     }
-/* HEADER ROW (text left, logo right aligned to card edge) */
-.header-row{
-  display:grid;
-  grid-template-columns: 1fr auto;
-  align-items:end;
-  gap:16px;
-  margin-bottom:22px;
-}
 
-.header-row .sub{
-  margin:0; /* wichtig: Abstand kommt von .header-row */
-}
+    /* HEADER ROW (text left, logo right aligned to card edge) */
+    .header-row{
+      display:grid;
+      grid-template-columns: 1fr auto;
+      align-items:end;
+      gap:16px;
+      margin-bottom:22px;
+    }
 
-.brand-logo{
-  height:84px;                 /* wie gerade eingestellt */
-  width:auto;
-  display:block;
-  background:#ffffff;          /* weißer Hintergrund */
-  padding:5px;                 /* ← der gewünschte Rand */
-  border-radius:50%;           /* rund wie bisher */
-}
-.brand-logo{
-  box-shadow:0 4px 12px rgba(0,0,0,.08);
-}
+    .header-row .sub{ margin:0 }
 
+    .brand-logo{
+      height:84px;
+      width:auto;
+      display:block;
+      background:#ffffff;
+      padding:5px;
+      border-radius:50%;
+      box-shadow:0 4px 12px rgba(0,0,0,.08);
+    }
 
-/* Mobile: stack */
-@media (max-width:520px){
-  .wrap{padding:34px 14px 72px}
-  h1{font-size:28px}
+    @media (max-width:520px){
+      .wrap{padding:34px 14px 72px}
+      h1{font-size:28px}
 
-  /* KEEP two columns on mobile */
-  .header-row{
-    grid-template-columns: 1fr auto;
-    align-items:flex-start;
-    gap:12px;
-  }
+      .header-row{
+        grid-template-columns: 1fr auto;
+        align-items:flex-start;
+        gap:12px;
+      }
 
-  .brand-logo{
-    height:84px;
-  }
+      .brand-logo{ height:84px }
+      .card{ padding:22px 18px }
+    }
 
-  .card{
-    padding:22px 18px;
-  }
-}
-
-
-     .card{
+    .card{
       background:var(--card);
       color:var(--text);
       border-radius:18px;
@@ -150,11 +138,22 @@
     }
     .bullets li{margin:6px 0}
 
+    /* Pricing blocks */
     .price{
       margin:12px 0 8px;
       font-size:14px;
     }
-    .price b{font-weight:900}
+
+    .plan{
+      margin:0 0 10px;
+      line-height:1.45;
+    }
+    .plan strong{font-weight:900}
+    .muted{
+      color:var(--muted);
+      font-size:13px;
+      font-weight:600;
+    }
 
     .workspace{
       margin:8px 0 18px;
@@ -195,15 +194,16 @@
       text-align:center;
     }
 
+    /* ✅ 2×2 grid on desktop */
     @media (min-width:560px){
       .cta-actions .btn-row{
         grid-template-columns:1fr 1fr;
       }
-    }
-
-    @media (max-width:520px){
-      h1{font-size:28px}
-      .card{padding:22px 18px}
+      /* Explicit placement: left column = Pro, right column = Basic */
+      .btn-pro-yearly{grid-column:1; grid-row:1}
+      .btn-basic-yearly{grid-column:2; grid-row:1}
+      .btn-pro-monthly{grid-column:1; grid-row:2}
+      .btn-basic-monthly{grid-column:2; grid-row:2}
     }
   </style>
 </head>
@@ -212,25 +212,23 @@
   <main class="wrap">
 
     <div class="header-row">
-  <div>
-    <h1>Pricing &amp; plans</h1>
+      <div>
+        <h1>Pricing &amp; plans</h1>
 
-<p class="lead-strong">
-  SlackDigest brings clarity to team communication.
-</p>
+        <p class="lead-strong">
+          SlackDigest brings clarity to team communication.
+        </p>
 
-<p class="lead-sub">
-  It bundles relevant Slack updates, removes repetition<br>
-  and highlights what truly matters for the team.
-</p>
+        <p class="lead-sub">
+          It bundles relevant Slack updates, removes repetition<br>
+          and highlights what truly matters for the team.
+        </p>
+      </div>
 
-  </div>
-
-  <img class="brand-logo"
-       src="/assets/brand/slackdigest_logo.svg"
-       alt="SlackDigest">
-</div>
-
+      <img class="brand-logo"
+           src="/assets/brand/slackdigest_logo.svg"
+           alt="SlackDigest">
+    </div>
 
     <section class="card">
 
@@ -250,7 +248,7 @@
           <tr><td>Group threads</td><td class="col-basic">✔</td><td class="col-pro">✔</td></tr>
           <tr><td>Filter for relevance</td><td class="col-basic">✔</td><td class="col-pro">✔</td></tr>
           <tr><td>Prioritise</td><td class="col-basic">✖</td><td class="col-pro">✔</td></tr>
-          <tr><td>Recommendations & next steps</td><td class="col-basic">✖</td><td class="col-pro">✔</td></tr>
+          <tr><td>Recommendations &amp; next steps</td><td class="col-basic">✖</td><td class="col-pro">✔</td></tr>
         </tbody>
       </table>
 
@@ -261,9 +259,19 @@
         <li>Delivery on a regular schedule via Slack or email.</li>
       </ul>
 
+      <!-- ✅ Basic first -->
       <div class="price">
-        <b>Pro: €15 / month</b> · per workspace<br>
-        <b>Basic: €9 / month</b> · per workspace
+        <p class="plan">
+          <strong>SlackDigest Basic</strong><br>
+          9 € monthly · per workspace<br>
+          8 € monthly · per workspace <span class="muted">— billed yearly (same features, better rate).</span>
+        </p>
+
+        <p class="plan" style="margin-top:10px;">
+          <strong>SlackDigest Pro</strong><br>
+          15 € monthly · per workspace<br>
+          12 € monthly · per workspace <span class="muted">— billed yearly (same features, better rate).</span>
+        </p>
       </div>
 
       <div class="workspace">
@@ -272,10 +280,14 @@
 
       <div class="cta-ready">SlackDigest is ready to use right after purchase.</div>
 
+      <!-- ✅ Buttons: Pro yearly | Basic yearly / Pro monthly | Basic monthly -->
       <div class="cta-actions">
         <div class="btn-row">
-          <a class="btn" href="/en/checkout/slackdigest/pro">Buy & activate Pro</a>
-          <a class="btn" href="/en/checkout/slackdigest/basic">Buy & activate Basic</a>
+          <a class="btn btn-pro-yearly" href="/en/checkout/slackdigest/pro-yearly">Pro<br>activate yearly</a>
+          <a class="btn btn-basic-yearly" href="/en/checkout/slackdigest/basic-yearly">Basic<br>activate yearly</a>
+
+          <a class="btn btn-pro-monthly" href="/en/checkout/slackdigest/pro-monthly">Pro<br>activate monthly</a>
+          <a class="btn btn-basic-monthly" href="/en/checkout/slackdigest/basic-monthly">Basic<br>activate monthly</a>
         </div>
         <p class="microcopy">No setup · no call · cancel anytime</p>
       </div>
