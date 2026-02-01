@@ -219,11 +219,6 @@
     color:rgb(174,15,18) !important;
     -webkit-text-fill-color:rgb(174,15,18) !important;
   }
-  .btn--inverse-ts span{
-    display:block;
-    color:rgb(174,15,18) !important;
-    -webkit-text-fill-color:rgb(174,15,18) !important;
-  }
 
   /* Compact (wie SlackDigest) */
   .btn--compact{
@@ -256,7 +251,7 @@
   }
   .legal a{margin-right:.6rem}
   .sep{margin:0 .3rem;opacity:.85}
-</style>
+  </style>
 
 </head>
 <body>
@@ -334,18 +329,18 @@
         </label>
       </div>
 
-      <a class="btn btn-primary" href="/contact_tasksieve.html">
-  Beispiel-Inbox ansehen
-</a>
+      <!-- ✅ echtes Submit -->
+      <button class="btn btn--inverse-ts btn--compact" type="submit">
+        Demo starten
+      </button>
 
       <p class="microcopy">
         Kein Setup · kein Call · keine Verpflichtung
       </p>
 
       <input type="hidden" name="_subject" value="[Website] TaskSieve Demo">
-      <!-- Redirect nach Submit direkt zur Beispiel-/Success-Seite -->
-     <input type="hidden" name="_next" value="https://slackdigest.org/beispiel/tasksieve/">
-     </form>
+      <input type="hidden" name="_next" value="https://slackdigest.org/beispiel/tasksieve/">
+    </form>
   </section>
 
   <footer>
