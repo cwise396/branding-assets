@@ -118,17 +118,24 @@
     }
     .micro li{ margin:2px 0; }
 
-    /* „Vorteile ansehen“ */
-    .micro .goto-benefits{
-      display:inline-block; margin-top:4px;
-      text-decoration:underline; text-underline-offset:2px;
-      cursor:pointer; font-weight:600; position:relative; z-index:5;
-    }
-   /* TaskSieve (Home DE): Benefits-Link unterstrichen + definierter Abstand darunter */
+   /* „Vorteile ansehen“ – wie EN */
 .micro .goto-benefits{
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  display:inline-block;
+  margin-top:6px;
+  margin-bottom:10px;          /* ← sichtbare Leerzeile */
+  text-decoration:underline;
+  text-underline-offset:3px;
+  cursor:pointer;
+  font-weight:600;
+  position:relative;
+  z-index:5;
 }
+
+.micro .goto-benefits:hover{
+  filter:brightness(1.1);
+}
+ 
+  
 
 /* “Leerzeile” danach (nur optisch, ohne <br>) */
 .micro li:last-child{
