@@ -152,8 +152,8 @@
     .muted{color:rgba(17,24,39,.78)}
 
     /* TABLE */
-    .table-wrap{overflow:auto;border-radius:14px}
-    table{
+    .table-wrap{overflow:hidden;border-radius:14px}
+      table{
       width:100%;
       border-collapse:separate;
       border-spacing:0;
@@ -263,6 +263,27 @@
       .hero{grid-template-columns:1fr auto}
       .pricing-intro{font-size:1rem}
     }
+  /* ✅ Mobile: table fits on screen (no horizontal scroll) */
+@media (max-width:520px){
+  table{
+    min-width:0 !important;      /* kills min-width:680/560 */
+    width:100%;
+    table-layout:fixed;          /* columns stay inside viewport */
+  }
+  th, td{
+    padding:.55rem .55rem;
+    font-size:.82rem;
+    vertical-align:middle;
+    word-break:break-word;
+    hyphens:auto;
+  }
+
+  /* column sizing */
+  th:first-child, td:first-child{width:58%;}
+  th:nth-child(2), td:nth-child(2){width:21%; text-align:center;}
+  th:nth-child(3), td:nth-child(3){width:21%; text-align:center;}
+}
+
   </style>
 </head>
 
