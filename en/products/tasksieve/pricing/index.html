@@ -278,6 +278,18 @@
         overflow-wrap:normal;
         hyphens:none;
       }
+  /* ✅ header wrap: no overlap */
+  th.col-th{
+    text-align:center;
+    line-height:1.12;
+    overflow:hidden;              /* prevents bleed into neighbor cells */
+  }
+  th.col-th .th-top,
+  th.col-th .th-bot{
+    display:block;
+    white-space:normal;
+    overflow-wrap:anywhere;       /* allows breaking if needed */
+  }
 
       /* column sizing */
       th:first-child, td:first-child{width:58%;}
@@ -319,8 +331,15 @@
             <thead>
               <tr>
                 <th>Layer</th>
-                <th>Without<br>TaskSieve</th>
-                <th>With<br>TaskSieve</th>
+               <th class="col-th">
+  <span class="th-top">Without</span>
+  <span class="th-bot">TaskSieve</span>
+</th>
+<th class="col-th">
+  <span class="th-top">With</span>
+  <span class="th-bot">TaskSieve</span>
+</th>
+
               </tr>
             </thead>
             <tbody>
