@@ -264,12 +264,20 @@
     }
 @media (max-width:520px){
   th.col-th{
-    padding-left:.35rem;
-    padding-right:.35rem;
+    padding:.55rem .35rem;     /* enger */
     text-align:center;
   }
-
-  .th-top{
+  .th-label{
+    display:inline-block;
+    font-weight:900;
+    font-size:.78rem;
+    letter-spacing:.2px;
+    white-space:nowrap;        /* verhindert Witho/ut */
+    word-break:keep-all;
+    hyphens:none;
+  }
+ 
+   .th-top{
     display:block;
     font-weight:800;
     font-size:.78rem;
@@ -284,6 +292,16 @@
     opacity:.75;
     white-space:nowrap;   /* TaskSieve bleibt ganz */
   }
+}
+/* Screenreader only */
+.sr-only{
+  position:absolute !important;
+  width:1px;height:1px;
+  padding:0;margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
 }
 
     /* ✅ Mobile: table fits on screen (no horizontal scroll) */
@@ -348,21 +366,25 @@
           Without TaskSieve, you sort it yourself.<br>
           TaskSieve delivers clear work priorities — transparent and controllable.
         </p>
+<p class="muted" style="margin:.2rem 0 .6rem">
+  Columns: Without TaskSieve vs. With TaskSieve
+</p>
 
         <div class="table-wrap">
           <table aria-label="Plan comparison">
             <thead>
               <tr>
                 <th>Layer</th>
-              <th class="col-th">
-  <span class="th-top">Without</span>
-  <span class="th-bot">TaskSieve</span>
+             <th class="col-th">
+  <span class="th-label" aria-hidden="true">Without</span>
+  <span class="sr-only">Without TaskSieve</span>
 </th>
 
 <th class="col-th">
-  <span class="th-top">With</span>
-  <span class="th-bot">TaskSieve</span>
+  <span class="th-label" aria-hidden="true">With</span>
+  <span class="sr-only">With TaskSieve</span>
 </th>
+
 
        </tr>
             </thead>
