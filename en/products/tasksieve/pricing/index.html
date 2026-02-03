@@ -262,6 +262,29 @@
       .hero{grid-template-columns:1fr auto}
       .pricing-intro{font-size:1rem}
     }
+@media (max-width:520px){
+  th.col-th{
+    padding-left:.35rem;
+    padding-right:.35rem;
+    text-align:center;
+  }
+
+  .th-top{
+    display:block;
+    font-weight:800;
+    font-size:.78rem;
+    letter-spacing:.2px;
+    white-space:nowrap;   /* verhindert Zerreißen von Without / With */
+  }
+
+  .th-bot{
+    display:block;
+    margin-top:.1rem;
+    font-size:.65rem;
+    opacity:.75;
+    white-space:nowrap;   /* TaskSieve bleibt ganz */
+  }
+}
 
     /* ✅ Mobile: table fits on screen (no horizontal scroll) */
     @media (max-width:520px){
@@ -331,16 +354,17 @@
             <thead>
               <tr>
                 <th>Layer</th>
-               <th class="col-th">
+              <th class="col-th">
   <span class="th-top">Without</span>
   <span class="th-bot">TaskSieve</span>
 </th>
+
 <th class="col-th">
   <span class="th-top">With</span>
   <span class="th-bot">TaskSieve</span>
 </th>
 
-              </tr>
+       </tr>
             </thead>
             <tbody>
               <tr>
