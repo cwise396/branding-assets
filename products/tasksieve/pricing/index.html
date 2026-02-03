@@ -276,25 +276,37 @@
       .pricing-intro{font-size:1rem}
     }
   /* ✅ Mobile: Tabelle komplett sichtbar (kein Horizontal-Scroll) */
+/* ✅ Mobile: Tabelle vollständig sichtbar */
 @media (max-width:520px){
   table{
-    min-width:0 !important;
+    min-width:0;
     width:100%;
     table-layout:fixed;
   }
+
   th, td{
-    padding:.55rem .55rem;
+    padding:.55rem .45rem;
     font-size:.82rem;
     vertical-align:middle;
-    word-break:break-word;
-    hyphens:auto;
+    text-align:center;
+    word-break:normal;
+    white-space:normal;
+    hyphens:none;
   }
 
-  /* Spaltenbreiten */
-  th:first-child, td:first-child{width:58%;}
-  th:nth-child(2), td:nth-child(2){width:21%; text-align:center;}
-  th:nth-child(3), td:nth-child(3){width:21%; text-align:center;}
+  /* Spaltenverteilung */
+  th:first-child, td:first-child{
+    width:58%;
+    text-align:left;
+  }
+  th:nth-child(2), td:nth-child(2){
+    width:21%;
+  }
+  th:nth-child(3), td:nth-child(3){
+    width:21%;
+  }
 }
+
 
   </style>
 </head>
@@ -327,14 +339,25 @@
   Ohne TaskSieve sortierst du selbst.<br>
   TaskSieve liefert klare Arbeitsprioritäten – transparent und kontrollierbar.
        </p>
+<p class="muted" style="margin:.2rem 0 .6rem">
+  Tabelle: Ohne TaskSieve vs. Mit TaskSieve
+</p>
 
         <div class="table-wrap">
           <table aria-label="Leistungsübersicht">
             <thead>
               <tr>
                 <th>Ebene</th>
-                <th>Ohne TaskSieve<br><small style="opacity:.75;font-weight:600">manuell</small></th>
-                <th>TaskSieve</th>
+                <th class="col-th">
+  <span class="th-label" aria-hidden="true">Ohne</span>
+  <span class="sr-only">Ohne TaskSieve</span>
+</th>
+
+<th class="col-th">
+  <span class="th-label" aria-hidden="true">Mit</span>
+  <span class="sr-only">Mit TaskSieve</span>
+</th>
+
               </tr>
             </thead>
             <tbody>
