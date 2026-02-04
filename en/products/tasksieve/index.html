@@ -214,6 +214,17 @@
     @media (max-width:640px){
       .card{grid-column:span 12}
     }
+ /* ✅ Show-benefits mode: hide nav + hero (only lower 3 cards visible) */
+body.show-benefits .site-header,
+body.show-benefits .hero{
+  display:none !important;
+}
+
+/* optional: tighten top spacing when hero is hidden */
+body.show-benefits main.page{
+  padding-top: 1rem;
+}
+
   </style>
 </head>
 
@@ -362,7 +373,9 @@ function __toggleNav(){
   // accept aliases coming from Home
   if(!hash || (hash!=='#benefits' && hash!=='#show-benefits' && hash!=='#card-benefits-ts-en')) return;
 
-  // switch into "only lower 3 cards" mode
+  document.body.classList.add('show-benefits');
+
+   // switch into "only lower 3 cards" mode
   document.body.classList.add('show-benefits');
 
   // normalize hash to the real target
