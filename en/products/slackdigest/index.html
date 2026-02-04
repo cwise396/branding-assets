@@ -107,7 +107,6 @@ a{ color:#FFFFFF; text-decoration:none }
     inset 0 1px 0 rgba(255,255,255,.06);
 }
 
-
 .card h3{ margin:0 0 .4rem } .card p,.card li{ margin:.35rem 0 }
 .card ul{ list-style:disc; padding-left:1.2rem }
 .card a{ text-decoration:underline; text-underline-offset:2px; color:#FFFFFF }
@@ -155,12 +154,11 @@ footer a{ color:#FFFFFF }
    MOBILE: 2-column hero + compact spacing (NO font-size changes)
    ========================= */
 @media (max-width:640px){
-  .hero{ padding-top:8mm; }                 /* 1 tick less */
+  .hero{ padding-top:8mm; }
   .hero-header{ gap:.6rem; align-items:start; }
 }
 
 @media (max-width:520px){
-  /* keep 2 columns: text left, logo right */
   .hero-header{
     grid-template-columns: 1fr auto;
     column-gap:12px;
@@ -174,23 +172,19 @@ footer a{ color:#FFFFFF }
     align-self:start;
   }
 
-  /* logo to 84px (ring included) */
   .product-logo{ width:84px; height:84px; }
   .product-logo .logo-ring{ width:84px; height:84px; }
   .product-logo .logo-img{ width:74px; height:74px; }
 
-  /* tighter vertical rhythm (no size change) */
   .hero h1{ margin-bottom:.15rem; }
   .hero p.lead{ line-height:1.25; }
   .hero p.lead-sub,
   .hero p.hero-precision{ line-height:1.25; }
 
-  /* EXACT line breaks only on mobile */
   .mobile-only{ display:block; }
   .desktop-only{ display:none; }
 }
 
-/* default visibility */
 .mobile-only{ display:none; }
 .desktop-only{ display:block; }
 </style>
@@ -226,33 +220,24 @@ function __toggleNav(){
     <div class="hero-text">
       <h1>SlackDigest</h1>
 
-      <!-- Lead: desktop normal -->
       <p class="lead desktop-only">Focus in Slack — automatic, clear, understandable.</p>
-
-      <!-- Lead: mobile with your desired breaks -->
       <p class="lead mobile-only">
         Focus in Slack —<br>
         automatic, clear,<br>
         understandable.
       </p>
 
-      <!-- Lead-sub: desktop normal -->
       <p class="lead-sub desktop-only">
         The important stuff first. Stay oriented. See what matters. Decide faster.
       </p>
-
-      <!-- Lead-sub: mobile compact breaks -->
       <p class="lead-sub mobile-only">
         The important stuff first. Stay oriented.<br>
         See what matters. Decide faster.
       </p>
 
-      <!-- Precision: desktop normal -->
       <p class="hero-precision desktop-only">
         You receive a prioritised overview of relevant Slack and email updates on a regular schedule.
       </p>
-
-      <!-- Precision: mobile EXACT breaks + NBSP to keep “Mail updates” together -->
       <p class="hero-precision mobile-only">
         You receive updates regularly<br>
         a prioritised overview<br>
@@ -273,7 +258,6 @@ function __toggleNav(){
     </div>
   </div>
 
-  <!-- Cards (keep your existing cards below; paste your current grid section here) -->
   <section class="section-cards">
     <section class="grid" aria-label="Key Features">
 
@@ -296,7 +280,6 @@ function __toggleNav(){
         <p>Slack, Email.</p>
       </article>
 
-
       <article class="card">
         <h3>What it delivers</h3>
         <ul>
@@ -316,6 +299,9 @@ function __toggleNav(){
           </ul>
         </details>
       </article>
+
+      <!-- ✅ Anchor alias so Home EN links with #card-benefits also work -->
+      <span id="card-benefits" aria-hidden="true"></span>
 
       <article class="card" id="card-benefits-en">
         <h3>Benefits</h3>
@@ -381,13 +367,20 @@ function __toggleNav(){
   </div>
 </footer>
 
+<!-- ✅ Benefits jump: behave like DE (no hiding, just open + scroll) -->
 <script>
 (function(){
   var hash = (location.hash||"").toLowerCase();
-  if(!hash || (hash!=='#benefits' && hash!=='#card-benefits-en')) return;
+  if(!hash || (hash!=='#benefits' && hash!=='#card-benefits' && hash!=='#card-benefits-en')) return;
 
-  var card = document.getElementById('card-benefits-en');
+  var card = document.getElementById('card-benefits-en') || document.getElementById('card-benefits');
   if(!card) return;
+
+  /* If hash was the alias span, scroll to the real card */
+  if(card.id === 'card-benefits'){
+    var real = document.getElementById('card-benefits-en');
+    if(real) card = real;
+  }
 
   var det = card.querySelector('details');
   if(det && !det.open) det.open = true;
