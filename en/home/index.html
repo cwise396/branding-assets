@@ -32,8 +32,10 @@
 
     *{box-sizing:border-box}
     html,body{height:100%; background:var(--page-bg)}
-    body{ margin:0; color:var(--text);
-      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif }
+    body{
+      margin:0; color:var(--text);
+      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+    }
     .container{width:min(1160px,92%); margin:0 auto}
 
     /* Language Switch */
@@ -47,17 +49,22 @@
 
     /* Hero */
     .hero{padding:36px 0 12px}
-     .hero h1{
-  font-size:clamp(1.4rem, 1rem + 2vw, 2.1rem);
-  margin:0 0 6px;
-  color:var(--hero-color);
-}
-
-    .hero p.lead{margin:0 0 22px;color:var(--hero-color)}
+    .hero h1{
+      font-size:clamp(1.4rem, 1rem + 2vw, 2.1rem);
+      margin:0 0 6px;
+      color:var(--hero-color);
+    }
+    .hero p.lead{margin:0 0 22px; color:var(--hero-color)}
 
     /* Grid */
-    .tiles{display:grid;gap:22px;grid-template-columns:1fr;margin:14px 0 44px}
-    @media (min-width:860px){.tiles{grid-template-columns:repeat(3,1fr)}}
+    .tiles{
+      display:grid; gap:22px;
+      grid-template-columns:1fr;
+      margin:14px 0 44px;
+    }
+    @media (min-width:860px){
+      .tiles{ grid-template-columns:repeat(3,1fr); }
+    }
 
     /* Tile */
     .tile{
@@ -66,12 +73,12 @@
       transition:transform .18s ease, box-shadow .18s ease;
       display:flex; flex-direction:column; justify-content:flex-end; padding:22px; isolation:isolate;
     }
-    .tile:hover{ transform:translateY(-3px); box-shadow:var(--card-shadow-hover) }
-    .tile.sd{ background-color:var(--color-sd) !important; --btn-fg:var(--color-sd) }
-    .tile.ts{ background-color:var(--color-ts) !important; --btn-fg:var(--color-ts) }
-    .tile.cw{ background-color:var(--color-cw) !important; --btn-fg:var(--color-cw) }
+    .tile:hover{ transform:translateY(-3px); box-shadow:var(--card-shadow-hover); }
+    .tile.sd{ background-color:var(--color-sd) !important; --btn-fg:var(--color-sd); }
+    .tile.ts{ background-color:var(--color-ts) !important; --btn-fg:var(--color-ts); }
+    .tile.cw{ background-color:var(--color-cw) !important; --btn-fg:var(--color-cw); }
 
-    /* Logo ring */
+    /* Logo badge */
     .logo-wrap{
       position:absolute; right:14px; top:14px; z-index:1;
       width:var(--badge-size); height:var(--badge-size);
@@ -81,23 +88,51 @@
       content:""; position:absolute; inset:calc(-1 * var(--badge-ring-width));
       border-radius:50%; border:var(--badge-ring-width) solid var(--badge-ring-color);
     }
-    .logo-inner{ width:100%; height:100%; border-radius:50%; display:grid; place-items:center; overflow:hidden }
+    .logo-inner{
+      width:100%; height:100%; border-radius:50%;
+      display:grid; place-items:center; overflow:hidden;
+    }
     .logo{ width:100%; height:100%; object-fit:contain; display:block }
     .logo-fallback{ display:none; }
 
-    /* Texts */
-    .tile h2{margin:0 0 8px;font-size:1.35rem}
-    .tile p.sub{margin:0 0 10px;opacity:.98}
-    .micro{margin:0 0 14px;padding-left:1.1rem;font-size:.92rem;line-height:1.35;opacity:.98}
-    .micro li{margin:2px 0}
-
-    /* “Show benefits” link */
-    .micro .goto-benefits{
-      display:inline-block; margin-top:4px;
-      text-decoration:underline; text-underline-offset:2px;
-      cursor:pointer; font-weight:600; position:relative; z-index:5;
+    /* Text */
+    .tile h2{ margin:0 0 8px; font-size:1.35rem; }
+    .tile p.sub{ margin:0 0 10px; opacity:.98; }
+    .tool-role{
+      margin:0 0 10px;
+      font-weight:600;
     }
-    .micro .goto-benefits:hover{ filter:brightness(1.1) }
+    .micro{
+      margin:0 0 14px;
+      padding-left:1.1rem;
+      font-size:.92rem;
+      line-height:1.35;
+      opacity:.98;
+    }
+    .micro li{ margin:2px 0; }
+
+    /* Show benefits – Chevron with motion (EN Home) */
+    .micro .goto-benefits{
+      display:inline-block;
+      margin-top:6px;
+      text-decoration:underline;
+      text-underline-offset:3px;
+      font-weight:600;
+      cursor:pointer;
+      position:relative;
+    }
+    .micro .goto-benefits::after{
+      content:" ›";
+      opacity:.6;
+      transition:transform .15s ease, opacity .15s ease;
+    }
+    .micro .goto-benefits:hover::after{
+      transform:translateX(2px);
+      opacity:1;
+    }
+    @media (hover:none){
+      .micro .goto-benefits::after{ opacity:1; transform:none; }
+    }
 
     /* CTA */
     .btn{
@@ -105,105 +140,71 @@
       padding:var(--btn-pad-y) var(--btn-pad-x); border-radius:12px;
       border:1px solid var(--btn-border); background:var(--btn-bg);
       color:var(--btn-fg, var(--btn-fg-default)); font-weight:800; font-size:var(--btn-font);
-      text-decoration:none; backdrop-filter:saturate(140%) blur(2px)
+      text-decoration:none; backdrop-filter:saturate(140%) blur(2px);
     }
-    .btn:hover{ background:var(--btn-bg-hover) }
-  /* --- Mobile polish: Badge verkleinern & Text rechts freihalten --- */
+    .btn:hover{ background:var(--btn-bg-hover); }
 
-/* Ab ~680px: Logo etwas kleiner, rechte Textseite freihalten */
-@media (max-width: 680px){
-  :root{
-    --badge-size: 100px;         /* vorher 120px */
-  }
-  .tile{
-    min-height: 360px;
-    padding: 18px;
-  }
-  /* Headline, Subline, Liste nicht unter das Badge laufen lassen */
-  .tile :is(h2, p.sub, ul.micro){
-    padding-right: calc(var(--badge-size) + 12px);
-  }
-}
+    /* Keep text clear of badge */
+    .tile :is(h2, p.sub, ul.micro, .tool-role, .tile-body, p.tile-sub){
+      padding-right: calc(var(--badge-size) + 20px);
+    }
 
-/* Ab ~420px: nochmals kompakter */
-@media (max-width: 420px){
-  :root{
-    --badge-size: 88px;          /* noch etwas kleiner */
-  }
- @media (max-width: 420px){
-  /* Text in den Kacheln leicht verkleinern, damit mehr sichtbar ist */
-  .tile p.sub,
-  .tile .micro{
-    font-size:0.86rem;
-    line-height:1.35;
-  }
+    /* Tablet */
+    @media (max-width: 860px){
+      :root{ --badge-size: 100px; }
+      .tile{ min-height:360px; padding:18px; }
+      .tile :is(h2, p.sub, ul.micro, .tool-role, .tile-body, p.tile-sub){
+        padding-right: calc(var(--badge-size) + 14px);
+      }
+    }
 
-  /* Die Abstände etwas kompakter, damit nicht unnötig Höhe verloren geht */
-  .tile p.sub{ margin-bottom:8px; }
-  .micro{ margin-bottom:10px; }
-}
+    /* Small phones */
+    @media (max-width: 420px){
+      :root{ --badge-size: 88px; }
+      .tile{ min-height:340px; padding:16px; }
+      .tile :is(h2, p.sub, ul.micro, .tool-role, .tile-body, p.tile-sub){
+        padding-right: calc(var(--badge-size) + 10px);
+      }
+      .tile p.sub,
+      .tile .micro,
+      .tile p.tile-sub{
+        font-size:0.86rem;
+        line-height:1.35;
+      }
+      .tile p.sub{ margin-bottom:8px; }
+      .micro{ margin-bottom:10px; }
+    }
 
-  .tile{
-    min-height: 340px;
-    padding: 16px;
-  }
-  .tile :is(h2, p.sub, ul.micro){
-    padding-right: calc(var(--badge-size) + 10px);
-  }
-.tile .tool-role{
-  margin:0 0 8px;
-  font-weight:600;
- }
-/* Suite block under the tiles */
-.suite{
-  margin: 8px 0 40px;
-  color: var(--muted, #9AA4B2);
-  font-size: 0.92rem;
-  line-height: 1.5;
-}
-.suite-title{
-  font-weight: 600;
-  margin: 0 0 4px;
-}
-/* Suite block under the tiles */
-.suite {
-  margin: 8px 0 40px;
-  color: var(--muted, #9AA4B2);
-  font-size: 0.92rem;
-  line-height: 1.5;
-  text-align: left;
-}
+    /* SlackDigest EN: core lines bigger in landscape */
+    .sd .sd-sub-hero,
+    .sd .sd-micro-hero{
+      font-weight:600;
+      white-space:nowrap;
+    }
+    @media (orientation: landscape) and (min-width:600px){
+      .sd .sd-sub-hero,
+      .sd .sd-micro-hero{
+        font-size:1.05rem;
+      }
+    }
 
-.suite-title {
-  font-weight: 600;
-  margin: 0 0 6px;
-  font-size: 1.05rem; /* etwas größer, wie auf DE */
-}
-
-.suite-body {
-  margin: 0;
-  max-width: 64rem;
-  font-size: 0.92rem;
-}
-
+    /* Suite */
+    .suite{
+      margin:12px 0 40px;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+    .suite-title{
+      margin:0 0 6px;
+      font-size:1.05rem;
+      font-weight:600;
+      color:var(--muted);
+    }
     .suite-body{
-  margin: 0;
-  max-width: 64rem;
-}
-/* SlackDigest EN: core lines bigger in landscape */
-.sd .sd-sub-hero,
-.sd .sd-micro-hero{
-  font-weight:600;
-  white-space:nowrap;
-}
-
-/* Landscape: leichte Vergrößerung wie bei DE */
-@media (orientation: landscape) and (min-width: 600px){
-  .sd .sd-sub-hero,
-  .sd .sd-micro-hero{
-    font-size:1.05rem;
-  }
-
+      margin:4px 0;
+      max-width:60rem;
+      font-size:.92rem;
+    }
   </style>
 </head>
 <body>
@@ -213,142 +214,141 @@
 
 <main class="container">
   <section class="hero">
-     <h1>
-  A compact portfolio for clear communication, priorities &amp; change
-  – three tools that deliver fast results.
-</h1>
-    <div class="tiles">
-  <!-- SlackDigest -->
-<a class="tile sd" href="/en/products/slackdigest/">
-  <div class="logo-wrap">
-    <div class="logo-inner">
-      <img class="logo" src="/assets/brand/slackdigest_logo.svg?v=9" alt="SlackDigest Logo"
-           onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}">
-      <span class="logo-fallback" aria-hidden="true">SD</span>
-    </div>
-  </div>
+    <h1>
+      A compact portfolio for clear communication, priorities &amp; change —
+      three tools that deliver fast results.
+    </h1>
+  </section>
 
-  <!-- Title -->
-  <h2>SlackDigest</h2>
+  <div class="tiles">
 
-  <!-- Role line -->
-  <p class="tool-role">
-    Clarity<br>
-    in communication.
-  </p>
-
-  <!-- Subblock -->
-  <p class="sub">
-    <span class="sd-sub-hero">Makes Slack clear at a glance.</span><br>
-    The important comes first.<br><br>
-    See what matters.<br>
-    Decide faster.
-  </p>
-
-  <ul class="micro">
-    <li>
-      <span class="sd-micro-hero">
-        One glance, one link — done.
-      </span>
-    </li>
-    <li>
-      <span class="goto-benefits" role="link" tabindex="0"
-        onclick="event.preventDefault(); event.stopPropagation(); location.href='/en/products/slackdigest/#card-benefits';"
-        onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); event.stopPropagation(); location.href='/en/products/slackdigest/#card-benefits';}">
-        Show benefits
-      </span>
-    </li>
-  </ul>
-
-  <span class="btn">Go to product</span>
-</a>
-
-         <!-- TaskSieve -->
-      <a class="tile ts" href="/en/products/tasksieve/">
-        <div class="logo-wrap">
-          <div class="logo-inner">
-            <img class="logo" src="/assets/brand/tasksieve_logo.svg?v=9" alt="TaskSieve Logo"
-                 onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}">
-            <span class="logo-fallback" aria-hidden="true">TS</span>
-          </div>
+    <!-- SlackDigest -->
+    <a class="tile sd" href="/en/products/slackdigest/">
+      <div class="logo-wrap">
+        <div class="logo-inner">
+          <img class="logo" src="/assets/brand/slackdigest_logo.svg?v=9" alt="SlackDigest Logo"
+               onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}">
+          <span class="logo-fallback" aria-hidden="true">SD</span>
         </div>
+      </div>
 
-        <h2>TaskSieve</h2>
+      <h2>SlackDigest</h2>
 
-        <!-- Role line (zweizeilig, wie auf DE) -->
-        <p class="tool-role">
-          Focus<br>
-          in tasks &amp; priorities.
-        </p>
+      <p class="tool-role">
+        Clarity<br>
+        in communication.
+      </p>
 
-        <!-- Subline -->
-        <p class="tile-sub">
-  One inbox for email, notes &amp; Slack.<br>
-  You stay in control.
-</p>
+      <p class="sub">
+        <span class="sd-sub-hero">Makes Slack clear at a glance.</span><br>
+        The important comes first.<br><br>
+        See what matters.<br>
+        Decide faster.
+      </p>
 
-        <ul class="micro">
-          <li>Automatically sorted. Clearly prioritised.</li>
-          <li>
-            <span class="goto-benefits" role="link" tabindex="0"
-             onclick="event.preventDefault(); event.stopPropagation(); location.href='/en/products/tasksieve/#show-benefits';"
-             onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); event.stopPropagation(); location.href='/en/products/tasksieve/#card-benefits';}">
-              Show benefits
-            </span>
-          </li>
-        </ul>
+      <ul class="micro">
+        <li>
+          <span class="sd-micro-hero">
+            One glance, one link — done.
+          </span>
+        </li>
+        <li>
+          <span class="goto-benefits" role="link" tabindex="0"
+                onclick="event.preventDefault(); event.stopPropagation(); location.href='/en/products/slackdigest/#card-benefits';"
+                onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); event.stopPropagation(); location.href='/en/products/slackdigest/#card-benefits';}">
+            Show benefits
+          </span>
+        </li>
+      </ul>
 
-        <span class="btn">Go to product</span>
-      </a>
+      <span class="btn">Go to product</span>
+    </a>
 
-   <!-- ChangeWise -->
-<a class="tile cw" href="/en/products/changewise/">
-  <div class="logo-wrap">
-    <div class="logo-inner">
-      <img class="logo" src="/assets/brand/changewise_logo.svg?v=9" alt="ChangeWise Logo"
-           onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}">
-      <span class="logo-fallback" aria-hidden="true">CW</span>
-    </div>
+    <!-- TaskSieve -->
+    <a class="tile ts" href="/en/products/tasksieve/">
+      <div class="logo-wrap">
+        <div class="logo-inner">
+          <img class="logo" src="/assets/brand/tasksieve_logo.svg?v=9" alt="TaskSieve Logo"
+               onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}">
+          <span class="logo-fallback" aria-hidden="true">TS</span>
+        </div>
+      </div>
+
+      <h2>TaskSieve</h2>
+
+      <p class="tool-role">
+        Focus<br>
+        in tasks &amp; priorities.
+      </p>
+
+      <p class="tile-sub">
+        One inbox for email, notes &amp; Slack.<br>
+        You stay in control.
+      </p>
+
+      <ul class="micro">
+        <li>Automatically sorted. Clearly prioritised.</li>
+        <li>
+          <span class="goto-benefits" role="link" tabindex="0"
+                onclick="event.preventDefault(); event.stopPropagation(); location.href='/en/products/tasksieve/#show-benefits';"
+                onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); event.stopPropagation(); location.href='/en/products/tasksieve/#show-benefits';}">
+            Show benefits
+          </span>
+        </li>
+      </ul>
+
+      <span class="btn">Go to product</span>
+    </a>
+
+    <!-- ChangeWise -->
+    <a class="tile cw" href="/en/products/changewise/">
+      <div class="logo-wrap">
+        <div class="logo-inner">
+          <img class="logo" src="/assets/brand/changewise_logo.svg?v=9" alt="ChangeWise Logo"
+               onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='grid';}">
+          <span class="logo-fallback" aria-hidden="true">CW</span>
+        </div>
+      </div>
+
+      <h2>ChangeWise</h2>
+
+      <p class="tool-role">
+        Direction<br>
+        in story &amp; change.
+      </p>
+
+      <p class="sub">
+        Clear messaging and direction<br>
+        for projects or internal alignment<br>
+        without lengthy prep.
+      </p>
+
+      <ul class="micro">
+        <li>Core message &amp; tone – a clear framework.</li>
+        <li>Templates &amp; playbooks – consistent quality.</li>
+        <li>
+          <span class="goto-benefits" role="link" tabindex="0"
+                onclick="event.preventDefault(); event.stopPropagation(); location.href='/en/products/changewise/#show-benefits';"
+                onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); event.stopPropagation(); location.href='/en/products/changewise/#show-benefits';}">
+            Show benefits
+          </span>
+        </li>
+      </ul>
+
+      <span class="btn">Go to product</span>
+    </a>
+
   </div>
 
- <h2>ChangeWise</h2>
-
-<p class="tool-role">
-  Direction<br>
-  in story &amp; change.
-</p>
-
- <p class="sub">
-  Clear messaging and direction<br>
-  for projects or internal alignment<br>
-  without lengthy prep.
-</p>
-
-<ul class="micro">
-  <li>Core message &amp; tone – a clear framework.</li>
-  <li>Templates &amp; playbooks – consistent quality.</li>
-  <li>
-    <span class="goto-benefits" role="link" tabindex="0"
-     onclick="event.preventDefault(); event.stopPropagation(); location.href='/en/products/changewise/#show-benefits';"
-     onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); event.stopPropagation(); location.href='/en/products/changewise/benefits.html#card-benefits';}">
-      Show benefits
-    </span>
-  </li>
-</ul>
-
-<span class="btn">Go to product</span>
-  </a>
-  </div> <!-- /tiles -->
-
- <section class="suite">
-  <p class="suite-title">
-    Three standalone tools – one shared principle: clarity and impact.
-  </p>
-  <p class="suite-body">
-    Each tool serves a clear purpose – in communication, priorities and change.
-    You can use them on their own or combine them as needed.
-  </p>
-</section>
+  <section class="suite">
+    <p class="suite-title">
+      Three standalone tools – one shared principle: clarity and impact.
+    </p>
+    <p class="suite-body">
+      Each tool serves a clear purpose – in communication, priorities and change.
+      You can use them on their own or combine them as needed.
+    </p>
+  </section>
 </main>
 
 <footer style="border-top:1px solid var(--border); padding:20px 0; color:var(--muted)">
@@ -360,5 +360,6 @@
     <small>© ChangeWise • SlackDigest • TaskSieve</small>
   </div>
 </footer>
+
 </body>
 </html>
