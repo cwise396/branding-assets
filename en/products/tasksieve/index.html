@@ -117,21 +117,17 @@
       display:flex;
       align-items:center;
       justify-content:center;
+      aspect-ratio: 1 / 1;
+      flex-shrink: 0;
     }
-    .hero-logo-wrap{
-  aspect-ratio: 1 / 1;
-  flex-shrink: 0;
-}
 
     .hero-logo-inner{
       width:100%;
       height:100%;
       border-radius:50%;
       overflow:hidden;
+      aspect-ratio: 1 / 1;
     }
-    .hero-logo-inner{
-  aspect-ratio: 1 / 1;
-}
 
     .hero-logo{
       width:100%;
@@ -170,11 +166,24 @@
     }
     .card details{margin-top:.4rem}
 
+    /* ✅ Benefits card highlight */
     #card-benefits-ts-en{
       border:2px solid rgba(255,255,255,.85);
       box-shadow:
         0 10px 24px rgba(0,0,0,.28),
         inset 0 1px 0 rgba(255,255,255,.06);
+    }
+
+    /* Anchor behavior: scroll margin + target outline */
+    #card-benefits-ts-en{ scroll-margin-top: 14mm; }
+    .card:target{
+      outline:3px solid rgba(255,255,255,.75);
+      box-shadow:0 0 0 4px rgba(255,255,255,.25), 0 12px 28px rgba(0,0,0,.45);
+    }
+
+    /* ✅ Show-benefits mode: only show lower 3 cards (4–6) */
+    body.show-benefits #ts-grid > article:nth-child(-n+3){
+      display:none;
     }
 
     .btn{
@@ -229,10 +238,10 @@
     <h1>TaskSieve</h1>
     <p class="lead">See your tasks sorted by impact.</p>
     <p class="lead-sub">Prioritization that actually moves projects forward.</p>
-  <p class="sub">
-  TaskSieve turns real signals (email, notes, Slack) into a prioritized inbox —<br>
-  automatic, transparent, and fully under your control. No onboarding.
-</p>
+    <p class="sub">
+      TaskSieve turns real signals (email, notes, Slack) into a prioritized inbox —<br>
+      automatic, transparent, and fully under your control. No onboarding.
+    </p>
   </div>
 
   <div class="logo-col">
@@ -269,10 +278,10 @@
     <!-- Card 3: Control & Transparency -->
     <article class="card ts-control">
       <h3>Automatic. And flexible.</h3>
-     <p class="lead-sub">
-  <strong>TaskSieve sorts automatically.</strong><br>
-  You can step in anytime, reprioritize, or deliberately leave things untouched.
-</p>
+      <p class="lead-sub">
+        <strong>TaskSieve sorts automatically.</strong><br>
+        You can step in anytime, reprioritize, or deliberately leave things untouched.
+      </p>
 
       <ul>
         <li>Recommendations, not rules</li>
@@ -282,7 +291,7 @@
     </article>
 
     <!-- Card 4 -->
-    <article class="card">
+    <article class="card" id="card-delivers-ts-en">
       <h3>What it delivers</h3>
       <ul>
         <li><strong>Impact first</strong> — what matters rises to the top.</li>
@@ -322,16 +331,15 @@
     </article>
 
     <!-- Card 6 -->
-    <article class="card">
+    <article class="card" id="card-status-ts-en">
       <h3>Status &amp; Contact</h3>
       <p><strong>Status:</strong> Ready to test. Results visible immediately.</p>
       <p>
-     <button type="button" class="btn"
-  onclick="location.href='/en/contact_tasksieve.html'">
-  <span>See TaskSieve in action</span>
-  <span class="btn-sub">Start now → see the result.</span>
-</button>
-   </p>
+        <button type="button" class="btn" onclick="location.href='/en/contact_tasksieve.html'">
+          <span>See TaskSieve in action</span>
+          <span class="btn-sub">Start now → see the result.</span>
+        </button>
+      </p>
     </article>
 
   </div>
@@ -345,5 +353,35 @@ function __toggleNav(){
   if(t) t.setAttribute('aria-expanded', open?'true':'false');
 }
 </script>
+
+<!-- ✅ Show-benefits behavior (same logic as SlackDigest) -->
+<script>
+(function(){
+  var hash = (location.hash||"").toLowerCase();
+
+  // accept aliases coming from Home
+  if(!hash || (hash!=='#benefits' && hash!=='#show-benefits' && hash!=='#card-benefits-ts-en')) return;
+
+  // switch into "only lower 3 cards" mode
+  document.body.classList.add('show-benefits');
+
+  // normalize hash to the real target
+  if(hash === '#show-benefits' || hash === '#benefits'){
+    try{ history.replaceState(null,'', '#card-benefits-ts-en'); }catch(e){}
+  }
+
+  var card = document.getElementById('card-benefits-ts-en');
+  if(!card) return;
+
+  // auto-open details inside Benefits
+  var det = card.querySelector('details');
+  if(det && !det.open) det.open = true;
+
+  // scroll to Benefits
+  try { card.scrollIntoView({behavior:'instant', block:'start'}); }
+  catch(e){ card.scrollIntoView(); }
+})();
+</script>
+
 </body>
 </html>
