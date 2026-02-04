@@ -297,8 +297,8 @@ function __toggleNav(){
       </article>
 
 
-      <article class="card">
-        <h3>What it delivers</h3>
+     <article class="card" id="card-delivers-en">
+         <h3>What it delivers</h3>
         <ul>
           <li><strong>More focus</strong> → less noise, clearer decisions.</li>
           <li><strong>Overview</strong> → the important things in one glance.</li>
@@ -317,9 +317,8 @@ function __toggleNav(){
         </details>
       </article>
 
-      <article class="card" id="card-delivers-en">
-
-        <h3>Benefits</h3>
+     <article class="card" id="card-benefits-en">
+       <h3>Benefits</h3>
         <ul>
           <li><strong>Fast overview</strong> → digest instead of feed.</li>
           <li><strong>Clear structure</strong> → no information overload.</li>
@@ -338,9 +337,8 @@ function __toggleNav(){
         </details>
       </article>
 
-     <article class="card" id="card-benefits-en">
+     
 
-        <h3>Status & Contact</h3>
         <p><strong>Status: Ready to try.</strong> The example digest is shown immediately.</p>
 
         <p>
@@ -368,7 +366,7 @@ function __toggleNav(){
           </ul>
         </details>
       </article>
-<article class="card" id="card-status-en">
+ 
 
     </section>
   </section>
@@ -387,7 +385,11 @@ function __toggleNav(){
 <script>
 (function(){
   var hash = (location.hash||"").toLowerCase();
-  if(!hash || (hash!=='#benefits' && hash!=='#card-benefits-en')) return;
+  if(!hash || (hash!=='#benefits' && hash!=='#card-benefits-en' && hash!=='#show-benefits')) return;
+if(hash === '#show-benefits'){
+  try{ history.replaceState(null,'', '#card-benefits-en'); }catch(e){}
+}
+
 
   var card = document.getElementById('card-benefits-en');
   if(!card) return;
