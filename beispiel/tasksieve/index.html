@@ -18,12 +18,13 @@
       --ts-red: rgb(120,12,13);
       --accent: var(--ts-red);
 
-      --red:#F87171;
-      --amber:#FBBF24;
-      --green:#34D399;
+      /* ✅ NEW: Ziel-Farben (laut Vorgabe) */
+      --prio-now: rgb(183, 15, 18);     /* Rot */
+      --prio-next: rgb(10, 108, 72);    /* Grün */
+      --prio-later: rgb(255, 213, 54);  /* Gelb */
+      --prio-focus: rgb(15, 57, 96);    /* Blau */
 
       --shadow:0 10px 30px rgba(0,0,0,.35);
-      --cwblue:#0E3960;
     }
 
     *{box-sizing:border-box}
@@ -122,24 +123,26 @@
       color:#111827;
     }
 
+    /* Bars */
     .bar{width:6px;border-radius:999px;flex:0 0 6px}
-    .bar.red{background:var(--red)}
-    .bar.amber{background:var(--amber)}
-    .bar.green{background:var(--green)}
+
+    /* ✅ UPDATED: Mapping gemäß Vorgaben */
+    .bar.red{background:var(--prio-now)}     /* 🔴 Jetzt */
+    .bar.amber{background:var(--prio-next)} /* 🟠 Als Nächstes -> GRÜN */
+    .bar.green{background:var(--prio-later)}/* 🟢 Kein Zeitdruck -> GELB */
 
     .kicker{
-  font-size:.75rem;
-  font-weight:800;
-  letter-spacing:.03em;
-  color:#0F172A;
-  margin:0 0 .4rem;
-  opacity:.85;
-}
+      font-size:.75rem;
+      font-weight:800;
+      letter-spacing:.03em;
+      color:#0F172A;
+      margin:0 0 .4rem;
+      opacity:.85;
+    }
 
-.title{margin:0 0 6px;font-weight:800;color:#0F172A}
-.desc{margin:0 0 8px;color:#111827}
-.hint{margin:0;color:#374151;font-size:13px}
-
+    .title{margin:0 0 6px;font-weight:800;color:#0F172A}
+    .desc{margin:0 0 8px;color:#111827}
+    .hint{margin:0;color:#374151;font-size:13px}
 
     code{
       background:rgba(15,23,42,.08);
@@ -161,10 +164,12 @@
       color:#111827;
     }
 
+    /* ✅ UPDATED: Fokus-Balken blau + gleiche Breite wie andere (6px) */
     .steps .bar-blue{
       width:6px;
+      flex:0 0 6px;
       border-radius:999px;
-      background:var(--cwblue);
+      background:var(--prio-focus);
     }
 
     .summary{
@@ -205,14 +210,13 @@
     }
 
     .example em{
-  font-style:normal;
-  font-size:.75rem;      /* Größe bleibt */
-  font-weight:800;       /* ✅ sichtbar fett */
-  letter-spacing:.02em;  /* leicht technischer Marker */
-  opacity:.85;           /* deutlich besserer Kontrast */
-  margin-right:.3rem;
-}
-
+      font-style:normal;
+      font-size:.75rem;
+      font-weight:800;
+      letter-spacing:.02em;
+      opacity:.85;
+      margin-right:.3rem;
+    }
 
     .sources{
       margin-left:.4rem;
