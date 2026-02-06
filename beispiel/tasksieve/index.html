@@ -18,7 +18,7 @@
       --ts-red: rgb(120,12,13);
       --accent: var(--ts-red);
 
-      /* ✅ NEW: Ziel-Farben (laut Vorgabe) */
+      /* ✅ Ziel-Farben (laut Vorgabe) */
       --prio-now: rgb(183, 15, 18);     /* Rot */
       --prio-next: rgb(10, 108, 72);    /* Grün */
       --prio-later: rgb(255, 213, 54);  /* Gelb */
@@ -126,10 +126,10 @@
     /* Bars */
     .bar{width:6px;border-radius:999px;flex:0 0 6px}
 
-    /* ✅ UPDATED: Mapping gemäß Vorgaben */
-    .bar.red{background:var(--prio-now)}     /* 🔴 Jetzt */
-    .bar.amber{background:var(--prio-next)} /* 🟠 Als Nächstes -> GRÜN */
-    .bar.green{background:var(--prio-later)}/* 🟢 Kein Zeitdruck -> GELB */
+    /* ✅ B) Balken-Farben (Mapping gemäß Vorgabe) */
+    .bar.red{background:var(--prio-now)}      /* 🔴 Jetzt */
+    .bar.amber{background:var(--prio-next)}  /* 🟠 Als Nächstes -> GRÜN */
+    .bar.green{background:var(--prio-later)} /* 🟢 Kein Zeitdruck -> GELB */
 
     .kicker{
       font-size:.75rem;
@@ -139,6 +139,11 @@
       margin:0 0 .4rem;
       opacity:.85;
     }
+
+    /* ✅ Punkte/Emojis farbig passend zu Balken */
+    .block:nth-of-type(1) .kicker{ color:var(--prio-now); }
+    .block:nth-of-type(2) .kicker{ color:var(--prio-next); }
+    .block:nth-of-type(3) .kicker{ color:var(--prio-later); }
 
     .title{margin:0 0 6px;font-weight:800;color:#0F172A}
     .desc{margin:0 0 8px;color:#111827}
@@ -164,13 +169,16 @@
       color:#111827;
     }
 
-    /* ✅ UPDATED: Fokus-Balken blau + gleiche Breite wie andere (6px) */
+    /* ✅ C) 📌 Aktueller Arbeitsfokus – Balken blau (Breite wie andere) */
     .steps .bar-blue{
       width:6px;
       flex:0 0 6px;
       border-radius:999px;
       background:var(--prio-focus);
     }
+
+    /* 📌 Titel auch in Blau (statt schwarz) */
+    .steps .title{ color:var(--prio-focus); }
 
     .summary{
       margin-top:12px;
