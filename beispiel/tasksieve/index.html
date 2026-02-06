@@ -139,7 +139,30 @@
       margin:0 0 .4rem;
       opacity:.85;
     }
+/* Emoji / Marker */
+.dot{
+  font-weight:900;
+  margin-right:.25rem;
+}
 
+/* Farbzuordnung exakt nach Vorgabe */
+.dot-now{
+  color: rgb(183,15,18);   /* 🔴 Jetzt */
+}
+
+.dot-next{
+  color: rgb(10,108,72);   /* 🟢 Als Nächstes */
+}
+
+.dot-later{
+  color: rgb(255,213,54);  /* 🟠 Kein Zeitdruck */
+}
+
+.dot-focus{
+  color: rgb(15,57,96);    /* 📌 Fokus */
+}
+
+    
     /* ✅ Punkte/Emojis farbig passend zu Balken */
     .block:nth-of-type(1) .kicker{ color:var(--prio-now); }
     .block:nth-of-type(2) .kicker{ color:var(--prio-next); }
@@ -292,7 +315,7 @@
     <div class="block">
       <div class="bar red"></div>
       <div>
-        <p class="kicker">🔴 Jetzt · Arbeitsfokus</p>
+       <p class="kicker"><span class="dot dot-now">🔴</span> Jetzt · Arbeitsfokus</p>
         <p class="title">Entscheidungen mit direkter Wirkung</p>
         <p class="desc">3 offene Punkte mit direkter Auswirkung auf Abschluss &amp; Zufriedenheit.</p>
 
@@ -312,7 +335,8 @@
     <div class="block">
       <div class="bar amber"></div>
       <div>
-        <p class="kicker">🟠 Als Nächstes · Wichtig klären</p>
+       
+<p class="kicker"><span class="dot dot-next">🟢</span> Als Nächstes · Wichtig klären</p>
         <p class="title">Themen, die mit kurzer Klärung weiterbringen</p>
         <p class="desc">2 Punkte aus E-Mails &amp; Notizen mit offenem Status.</p>
 
@@ -331,7 +355,8 @@
     <div class="block">
       <div class="bar green"></div>
       <div>
-        <p class="kicker">🟢 Kein Zeitdruck · Überblick</p>
+       <p class="kicker"><span class="dot dot-later">🟠</span> Kein Zeitdruck · Überblick</p>
+
         <p class="title">Sammelthemen &amp; Nachrangiges</p>
         <p class="desc">Updates und Aufgaben ohne akuten Handlungsdruck.</p>
 
@@ -350,7 +375,7 @@
     <div class="steps">
       <div class="bar-blue"></div>
       <div>
-        <p class="title">📌 Aktueller Arbeitsfokus</p>
+       <p class="title"><span class="dot dot-focus">📌</span> Aktueller Arbeitsfokus</p>
         <ul>
           <li>Wirkungsstarke Punkte angehen</li>
           <li>Entscheidung A kurz festziehen</li>
