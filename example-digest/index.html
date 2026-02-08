@@ -13,14 +13,14 @@
       --text:#E5E7EB;
       --muted:#9FB0C3;
       --border:rgba(255,255,255,.12);
-      --accent:#0C6C48;
 
-      --red:#F87171;
-      --amber:#FBBF24;
-      --green:#34D399;
+      /* 🎯 finale Prioritätsfarben (wie TaskSieve) */
+      --prio-now:   rgb(183,15,18);   /* rot */
+      --prio-next:  rgb(10,108,72);   /* grün */
+      --prio-later: rgb(255,213,54);  /* gelb */
+      --prio-focus: rgb(15,57,96);    /* blau */
 
       --shadow:0 10px 30px rgba(0,0,0,.35);
-      --cwblue:#0E3960;
     }
 
     *{box-sizing:border-box}
@@ -75,20 +75,13 @@
       color:#ffffff;
       font-size:12.5px;
       font-weight:800;
-      letter-spacing:-.1px;
       line-height:1.2;
-      max-width:520px;
     }
-
-    /* ===== Logo right ===== */
-    .brand-slot{ flex:0 0 auto; }
 
     .brand-logo{
       height:84px;
-      width:auto;
-      display:block;
-      background:#ffffff;
-      padding:5px;                 /* weißer Rand */
+      background:#fff;
+      padding:5px;
       border-radius:50%;
       box-shadow:0 4px 12px rgba(0,0,0,.08);
     }
@@ -119,12 +112,26 @@
       color:#111827;
     }
 
+    /* Balken */
     .bar{width:6px;border-radius:999px;flex:0 0 6px}
-    .bar.red{background:var(--red)}
-    .bar.amber{background:var(--amber)}
-    .bar.green{background:var(--green)}
+    .bar.now{background:var(--prio-now)}
+    .bar.next{background:var(--prio-next)}
+    .bar.later{background:var(--prio-later)}
 
-    .kicker{font-size:13px;color:#6B7280;margin:0 0 6px}
+    /* Emoji-Färbung (nur Symbol, nicht Text) */
+    .dot{font-weight:900}
+    .dot-now{color:var(--prio-now)}
+    .dot-next{color:var(--prio-next)}
+    .dot-later{color:var(--prio-later)}
+    .dot-focus{color:var(--prio-focus)}
+
+    .kicker{
+      font-size:13px;
+      font-weight:700;
+      color:#374151;
+      margin:0 0 6px;
+    }
+
     .title{margin:0 0 6px;font-weight:800;color:#0F172A}
     .desc{margin:0 0 8px;color:#111827}
     .hint{margin:0;color:#374151;font-size:13px}
@@ -136,7 +143,6 @@
       border-radius:8px;
       font-size:12px;
       font-weight:700;
-      color:#0F172A;
     }
 
     .steps{
@@ -151,8 +157,9 @@
 
     .steps .bar-blue{
       width:6px;
+      flex:0 0 6px;
       border-radius:999px;
-      background:var(--cwblue);
+      background:var(--prio-focus);
     }
 
     .summary{
@@ -163,64 +170,6 @@
       color:#111827;
       font-size:13px;
     }
-
-    /* ===== CTA ===== */
-    .cta{
-      margin-top:28px;
-      text-align:center;
-    }
-
-    /* CTA button (example-digest only) */
-    .cta .btn{
-      display:inline-block;
-      padding:12px 16px;
-      border-radius:14px;
-      text-decoration:none;
-      font-weight:900;
-      line-height:1.25;
-      background:rgba(255,255,255,.16);
-      border:1px solid rgba(255,255,255,.40);
-      color:#ffffff;
-      box-shadow:0 10px 30px rgba(0,0,0,.18);
-    }
-    .cta .btn span{display:block}
-    .cta .btn:hover{opacity:.92}
-
-   /* ===== Mobile ===== */
-@media (max-width:520px){
-  .wrap{padding:34px 14px 72px}
-  .digest-title{font-size:30px}
-
-  /* Header stays 2-column on mobile */
-  .topline{
-    flex-direction:row;        /* ❗ bleibt nebeneinander */
-    align-items:flex-start;
-  }
-
-  .digest-head{
-    max-width:100%;
-  }
-
-  .brand-slot{
-    margin-left:auto;          /* ❗ Logo bleibt rechts */
-  }
-
-  .brand-logo{
-    height:84px;               /* etwas kleiner auf Mobile */
-  }
-
-  /* Badge darf umbrechen, aber nicht clippen */
-  .pro-badge{
-    max-width:100%;
-    white-space:normal;
-  }
-
-  .cta .btn{
-    width:100%;
-    max-width:520px;
-  }
-}
-
   </style>
 </head>
 
@@ -232,27 +181,21 @@
       <div class="digest-title">SlackDigest</div>
       <div class="digest-sub">Beispiel-Digest</div>
       <p class="sub">
-  Beantwortet die Frage:<br>
-  <strong>Was ist seit dem letzten Mal passiert – und was davon ist relevant?</strong>
-</p>
-
+        Beantwortet die Frage:<br>
+        <strong>Was ist seit dem letzten Mal passiert – und was davon ist relevant?</strong>
+      </p>
       <div class="pro-badge">Pro: Priorisierung &amp; Empfehlungen inklusive</div>
     </div>
 
-    <!-- ✅ Logo rechts (Desktop), sichtbar unter Head (Mobile) -->
-    <div class="brand-slot" aria-hidden="true">
-      <img class="brand-logo" src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo">
-    </div>
+    <img class="brand-logo" src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo">
   </div>
-
-  <p class="sub">So arbeitet SlackDigest: relevante Updates, klar priorisiert, auf einen Blick.</p>
 
   <section class="digest">
 
     <div class="block">
-      <div class="bar red"></div>
+      <div class="bar now"></div>
       <div>
-        <p class="kicker">🔴 Wichtig · Hoher Impact</p>
+        <p class="kicker"><span class="dot dot-now">🔴</span> Wichtig · Hoher Impact</p>
         <p class="title">Support-Tickets mit Umsatzbezug</p>
         <p class="desc">3 neue Themen aus <code>#support</code> mit direkter Kundenwirkung.</p>
         <p class="hint">→ Empfehlung: heute priorisieren.</p>
@@ -260,9 +203,9 @@
     </div>
 
     <div class="block">
-      <div class="bar amber"></div>
+      <div class="bar next"></div>
       <div>
-        <p class="kicker">🟠 Relevant · Bald klären</p>
+        <p class="kicker"><span class="dot dot-next">🟢</span> Relevant · Bald klären</p>
         <p class="title">Sales-Rückfragen zu Feature X</p>
         <p class="desc">Mehrere ähnliche Nachfragen aus <code>#sales</code>.</p>
         <p class="hint">→ Kurze Klarstellung spart Wiederholungen.</p>
@@ -270,9 +213,9 @@
     </div>
 
     <div class="block">
-      <div class="bar green"></div>
+      <div class="bar later"></div>
       <div>
-        <p class="kicker">🟢 Informativ · Überblick</p>
+        <p class="kicker"><span class="dot dot-later">🟡</span> Informativ · Überblick</p>
         <p class="title">Interne Updates &amp; FYIs</p>
         <p class="desc">Statusmeldungen ohne Handlungsdruck.</p>
         <p class="hint">→ Zur Kenntnis nehmen.</p>
@@ -282,7 +225,7 @@
     <div class="steps">
       <div class="bar-blue"></div>
       <div>
-        <p class="title">📌 Nächste sinnvolle Schritte</p>
+        <p class="title"><span class="dot dot-focus">📌</span> Nächste sinnvolle Schritte</p>
         <ul>
           <li>Support-Thema priorisieren</li>
           <li>Kurzstatement für Sales vorbereiten</li>
@@ -297,13 +240,6 @@
     </div>
 
   </section>
-
-  <div class="cta">
-    <a class="btn" href="/products/slackdigest/success/">
-      Preis- &amp; Leistungsübersicht ansehen
-      <span style="font-size:.85rem;opacity:.85">Unterschiede zwischen Basic &amp; Pro</span>
-    </a>
-  </div>
 
 </main>
 </body>
