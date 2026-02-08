@@ -24,6 +24,12 @@
 
       --shadow:0 10px 30px rgba(0,0,0,.35);
       --cwblue:#0E3960;
+
+      /* ✅ Dots (emoji replacement) */
+      --prio-now: rgb(183, 15, 18);     /* red */
+      --prio-next: rgb(10, 108, 72);    /* green */
+      --prio-later: rgb(255, 213, 54);  /* yellow */
+      --prio-focus: rgb(15, 57, 96);    /* blue */
     }
 
     *{box-sizing:border-box}
@@ -132,9 +138,42 @@
       color:#0F172A;
       margin:0 0 .4rem;
       opacity:.85;
+      display:flex;
+      align-items:center;
+      gap:.45rem;
     }
 
-    .title{margin:0 0 6px;font-weight:800;color:#0F172A}
+    /* ✅ colored “emoji replacement” dots (text stays neutral) */
+    .dot{
+      width:10px;
+      height:10px;
+      border-radius:999px;
+      display:inline-block;
+      flex:0 0 10px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.12);
+    }
+    .dot-now{ background:var(--prio-now); }
+    .dot-next{ background:var(--prio-next); }
+    .dot-later{ background:var(--prio-later); }
+
+    .title{
+      margin:0 0 6px;
+      font-weight:800;
+      color:#0F172A;
+      display:flex;
+      align-items:center;
+      gap:.45rem;
+    }
+    .dot-focus{
+      width:10px;
+      height:10px;
+      border-radius:3px;
+      background:var(--prio-focus);
+      display:inline-block;
+      flex:0 0 10px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.12);
+    }
+
     .desc{margin:0 0 8px;color:#111827}
     .hint{margin:0;color:#374151;font-size:13px}
 
@@ -243,8 +282,6 @@
 </head>
 
 <body>
-<!-- PROOF: example/tasksieve UPDATED 2026-02-08 -->
-
 <main class="wrap">
 
   <div class="topline">
@@ -273,7 +310,7 @@
     <div class="block">
       <div class="bar red"></div>
       <div>
-        <p class="kicker">🔴 Now · Work focus</p>
+        <p class="kicker"><span class="dot dot-now" aria-hidden="true"></span> Now · Work focus</p>
         <p class="title">Decisions with immediate impact</p>
         <p class="desc">3 open items with a direct effect on results and satisfaction.</p>
 
@@ -293,7 +330,7 @@
     <div class="block">
       <div class="bar amber"></div>
       <div>
-        <p class="kicker">🟠 Next · Clarify what matters</p>
+        <p class="kicker"><span class="dot dot-next" aria-hidden="true"></span> Next · Clarify what matters</p>
         <p class="title">Items that move forward with a quick clarification</p>
         <p class="desc">2 items from emails & notes with an open status.</p>
 
@@ -312,7 +349,7 @@
     <div class="block">
       <div class="bar green"></div>
       <div>
-        <p class="kicker">🟢 Low urgency · Overview</p>
+        <p class="kicker"><span class="dot dot-later" aria-hidden="true"></span> Low urgency · Overview</p>
         <p class="title">Grouped topics & lower-priority items</p>
         <p class="desc">Low-pressure updates and small tasks — collected instead of interrupting you.</p>
 
@@ -331,7 +368,7 @@
     <div class="steps">
       <div class="bar-blue"></div>
       <div>
-        <p class="title">📌 Current work focus</p>
+        <p class="title"><span class="dot-focus" aria-hidden="true"></span> Current work focus</p>
         <ul>
           <li>Address high-impact items</li>
           <li>Finalize decision A</li>
