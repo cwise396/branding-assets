@@ -126,51 +126,52 @@
     /* Bars */
     .bar{width:6px;border-radius:999px;flex:0 0 6px}
 
-    /* ✅ B) Balken-Farben (Mapping gemäß Vorgabe) */
-    .bar.red{background:var(--prio-now)}      /* 🔴 Jetzt */
-    .bar.amber{background:var(--prio-next)}  /* 🟠 Als Nächstes -> GRÜN */
-    .bar.green{background:var(--prio-later)} /* 🟢 Kein Zeitdruck -> GELB */
+    /* ✅ Balken-Mapping gemäß Vorgaben */
+    .bar.red{background:var(--prio-now)}      /* Jetzt = Rot */
+    .bar.amber{background:var(--prio-next)}  /* Als Nächstes = Grün */
+    .bar.green{background:var(--prio-later)} /* Kein Zeitdruck = Gelb */
 
     .kicker{
       font-size:.75rem;
       font-weight:800;
       letter-spacing:.03em;
-      color:#0F172A;
+      color:#0F172A;            /* ✅ Text bleibt neutral */
       margin:0 0 .4rem;
       opacity:.85;
+      display:flex;
+      align-items:center;
+      gap:.35rem;
     }
-/* Emoji / Marker */
-.dot{
-  font-weight:900;
-  margin-right:.25rem;
-}
-
-/* Farbzuordnung exakt nach Vorgabe */
-.dot-now{
-  color: rgb(183,15,18);   /* 🔴 Jetzt */
-}
-
-.dot-next{
-  color: rgb(10,108,72);   /* 🟢 Als Nächstes */
-}
-
-.dot-later{
-  color: rgb(255,213,54);  /* 🟠 Kein Zeitdruck */
-}
-
-.dot-focus{
-  color: rgb(15,57,96);    /* 📌 Fokus */
-}
-
-    
-    /* ✅ Punkte/Emojis farbig passend zu Balken */
-    .block:nth-of-type(1) .kicker{ color:var(--prio-now); }
-    .block:nth-of-type(2) .kicker{ color:var(--prio-next); }
-    .block:nth-of-type(3) .kicker{ color:var(--prio-later); }
 
     .title{margin:0 0 6px;font-weight:800;color:#0F172A}
     .desc{margin:0 0 8px;color:#111827}
     .hint{margin:0;color:#374151;font-size:13px}
+
+    /* =========================
+       Marker (statt Emoji) – zuverlässig färbbar
+       ========================= */
+    .dot{
+      width:.72rem;
+      height:.72rem;
+      border-radius:999px;
+      flex:0 0 .72rem;
+      display:inline-block;
+      box-shadow: inset 0 0 0 1px rgba(15,23,42,.18);
+    }
+    .dot-now{ background:var(--prio-now); }
+    .dot-next{ background:var(--prio-next); }
+    .dot-later{ background:var(--prio-later); }
+
+    /* Pin-ähnlicher Marker für Fokus */
+    .dot-focus{
+      width:.78rem;
+      height:.78rem;
+      border-radius:6px;
+      background:var(--prio-focus);
+      flex:0 0 .78rem;
+      display:inline-block;
+      box-shadow: inset 0 0 0 1px rgba(15,23,42,.18);
+    }
 
     code{
       background:rgba(15,23,42,.08);
@@ -192,16 +193,13 @@
       color:#111827;
     }
 
-    /* ✅ C) 📌 Aktueller Arbeitsfokus – Balken blau (Breite wie andere) */
+    /* ✅ Fokus-Balken blau + gleiche Breite wie andere */
     .steps .bar-blue{
       width:6px;
       flex:0 0 6px;
       border-radius:999px;
       background:var(--prio-focus);
     }
-
-    /* 📌 Titel auch in Blau (statt schwarz) */
-    .steps .title{ color:var(--prio-focus); }
 
     .summary{
       margin-top:12px;
@@ -315,7 +313,7 @@
     <div class="block">
       <div class="bar red"></div>
       <div>
-       <p class="kicker"><span class="dot dot-now">🔴</span> Jetzt · Arbeitsfokus</p>
+        <p class="kicker"><span class="dot dot-now" aria-label="Jetzt"></span> Jetzt · Arbeitsfokus</p>
         <p class="title">Entscheidungen mit direkter Wirkung</p>
         <p class="desc">3 offene Punkte mit direkter Auswirkung auf Abschluss &amp; Zufriedenheit.</p>
 
@@ -335,8 +333,7 @@
     <div class="block">
       <div class="bar amber"></div>
       <div>
-       
-<p class="kicker"><span class="dot dot-next">🟢</span> Als Nächstes · Wichtig klären</p>
+        <p class="kicker"><span class="dot dot-next" aria-label="Als Nächstes"></span> Als Nächstes · Wichtig klären</p>
         <p class="title">Themen, die mit kurzer Klärung weiterbringen</p>
         <p class="desc">2 Punkte aus E-Mails &amp; Notizen mit offenem Status.</p>
 
@@ -355,8 +352,7 @@
     <div class="block">
       <div class="bar green"></div>
       <div>
-       <p class="kicker"><span class="dot dot-later">🟠</span> Kein Zeitdruck · Überblick</p>
-
+        <p class="kicker"><span class="dot dot-later" aria-label="Kein Zeitdruck"></span> Kein Zeitdruck · Überblick</p>
         <p class="title">Sammelthemen &amp; Nachrangiges</p>
         <p class="desc">Updates und Aufgaben ohne akuten Handlungsdruck.</p>
 
@@ -375,7 +371,7 @@
     <div class="steps">
       <div class="bar-blue"></div>
       <div>
-       <p class="title"><span class="dot dot-focus">📌</span> Aktueller Arbeitsfokus</p>
+        <p class="title"><span class="dot-focus" aria-label="Aktueller Arbeitsfokus"></span> Aktueller Arbeitsfokus</p>
         <ul>
           <li>Wirkungsstarke Punkte angehen</li>
           <li>Entscheidung A kurz festziehen</li>
