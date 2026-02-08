@@ -3,17 +3,20 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Example Digest – SlackDigest</title>
-  <meta name="description" content="This is what a SlackDigest looks like: relevant updates, clearly prioritised, at a glance." />
+  <title>Sample inbox – TaskSieve</title>
+  <meta name="description" content="What a prioritized TaskSieve inbox looks like: bundled, deduped, sorted by impact." />
 
   <style>
     :root{
-      --bg:#0C6C48;
+      --bg:rgb(151,12,15);
       --panel:rgba(255,255,255,.04);
       --text:#E5E7EB;
       --muted:#9FB0C3;
       --border:rgba(255,255,255,.12);
-      --accent:#0C6C48;
+
+      /* ✅ TaskSieve red for CTA/labels */
+      --ts-red: rgb(120,12,13);
+      --accent: var(--ts-red);
 
       --red:#F87171;
       --amber:#FBBF24;
@@ -21,12 +24,6 @@
 
       --shadow:0 10px 30px rgba(0,0,0,.35);
       --cwblue:#0E3960;
-
-      /* ✅ Marker colors (text stays neutral) */
-      --prio-now: rgb(183, 15, 18);     /* red */
-      --prio-next: rgb(10, 108, 72);    /* green */
-      --prio-later: rgb(255, 213, 54);  /* yellow */
-      --prio-focus: rgb(15, 57, 96);    /* blue */
     }
 
     *{box-sizing:border-box}
@@ -45,7 +42,6 @@
       padding:44px 18px 88px;
     }
 
-    /* ===== Header ===== */
     .topline{
       display:flex;
       justify-content:space-between;
@@ -76,7 +72,7 @@
       margin-top:10px;
       padding:6px 10px;
       border-radius:999px;
-      background:rgba(255,255,255,.18);
+      background:var(--ts-red);
       border:1px solid rgba(255,255,255,.35);
       color:#ffffff;
       font-size:12.5px;
@@ -86,7 +82,6 @@
       max-width:520px;
     }
 
-    /* ===== Logo right ===== */
     .brand-slot{ flex:0 0 auto; }
 
     .brand-logo{
@@ -94,7 +89,7 @@
       width:auto;
       display:block;
       background:#ffffff;
-      padding:5px;                 /* white ring */
+      padding:5px;
       border-radius:50%;
       box-shadow:0 4px 12px rgba(0,0,0,.08);
     }
@@ -106,7 +101,6 @@
       color:#ffffff;
     }
 
-    /* ===== Digest ===== */
     .digest{
       background:rgba(255,255,255,.15);
       border:1px solid rgba(255,255,255,.35);
@@ -130,7 +124,7 @@
     .bar.amber{background:var(--amber)}
     .bar.green{background:var(--green)}
 
-    /* ✅ marker style like DE (neutral text) */
+    /* ✅ marker style like DE */
     .kicker{
       font-size:.75rem;
       font-weight:800;
@@ -138,42 +132,9 @@
       color:#0F172A;
       margin:0 0 .4rem;
       opacity:.85;
-      display:flex;
-      align-items:center;
-      gap:.45rem;
     }
 
-    /* ✅ colored "emoji replacements" */
-    .dot{
-      width:10px;
-      height:10px;
-      border-radius:999px;
-      display:inline-block;
-      flex:0 0 10px;
-      box-shadow: inset 0 0 0 1px rgba(0,0,0,.12);
-    }
-    .dot-now{ background:var(--prio-now); }
-    .dot-next{ background:var(--prio-next); }
-    .dot-later{ background:var(--prio-later); }
-
-    .title{
-      margin:0 0 6px;
-      font-weight:800;
-      color:#0F172A;
-      display:flex;
-      align-items:center;
-      gap:.45rem;
-    }
-    .dot-focus{
-      width:10px;
-      height:10px;
-      border-radius:3px; /* small “pin-ish” marker */
-      background:var(--prio-focus);
-      display:inline-block;
-      flex:0 0 10px;
-      box-shadow: inset 0 0 0 1px rgba(0,0,0,.12);
-    }
-
+    .title{margin:0 0 6px;font-weight:800;color:#0F172A}
     .desc{margin:0 0 8px;color:#111827}
     .hint{margin:0;color:#374151;font-size:13px}
 
@@ -212,13 +173,11 @@
       font-size:13px;
     }
 
-    /* ===== CTA ===== */
     .cta{
       margin-top:28px;
       text-align:center;
     }
 
-    /* CTA button (example-digest only) */
     .cta .btn{
       display:inline-block;
       padding:12px 16px;
@@ -226,46 +185,87 @@
       text-decoration:none;
       font-weight:900;
       line-height:1.25;
-      background:rgba(255,255,255,.16);
-      border:1px solid rgba(255,255,255,.40);
+      background:var(--ts-red);
+      border:1px solid rgba(255,255,255,.35);
       color:#ffffff;
       box-shadow:0 10px 30px rgba(0,0,0,.18);
     }
     .cta .btn span{display:block}
     .cta .btn:hover{opacity:.92}
 
+    /* === Visual Source Hints (on WHITE blocks) === */
+    .example{
+      margin:.25rem 0 .35rem;
+      font-size:.92rem;
+      color:rgba(17,24,39,.78);
+    }
+
+    .example em{
+      font-style:normal;
+      font-size:.75rem;     /* size stays */
+      font-weight:800;      /* clearly bold */
+      letter-spacing:.02em;
+      opacity:.9;
+      margin-right:.3rem;
+    }
+
+    .sources{
+      margin-left:.4rem;
+      white-space:nowrap;
+    }
+
+    .src{
+      display:inline-block;
+      margin-left:.25rem;
+      padding:.08rem .5rem;
+      border-radius:999px;
+      font-size:.72rem;
+      font-weight:700;
+      letter-spacing:.15px;
+      background:rgba(15,23,42,.08);
+      border:1px solid rgba(15,23,42,.12);
+      color:#0F172A;
+    }
+
     @media (max-width:520px){
-      .topline{ flex-direction:row; align-items:flex-start; }
+      .wrap{padding:34px 14px 72px}
+      .digest-title{font-size:30px}
+
+      .topline{flex-direction:row;align-items:flex-start}
       .digest-head{max-width:100%}
       .brand-slot{margin-left:auto}
       .brand-logo{height:84px}
-      .pro-badge{ white-space:normal; max-width:100%; }
+
+      .pro-badge{max-width:100%;white-space:normal}
+      .cta .btn{width:100%;max-width:520px}
     }
   </style>
 </head>
 
 <body>
+<!-- PROOF: example/tasksieve UPDATED 2026-02-08 -->
+
 <main class="wrap">
+
   <div class="topline">
     <div class="digest-head">
-      <div class="digest-title">SlackDigest</div>
-      <div class="digest-sub">Example Digest</div>
+      <div class="digest-title">TaskSieve</div>
+      <div class="digest-sub">Sample inbox · Work priorities</div>
 
       <p class="sub">
         Answers the question:<br>
-        <strong>What has happened since the last time – and what actually matters?</strong>
+        <strong>What should I spend my time on right now?</strong>
       </p>
-
-      <div class="pro-badge">Pro: prioritisation &amp; recommendations included</div>
     </div>
 
     <div class="brand-slot" aria-hidden="true">
-      <img class="brand-logo" src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo">
+      <img class="brand-logo" src="/assets/brand/tasksieve_logo.svg" alt="TaskSieve logo">
     </div>
   </div>
 
   <p class="sub">
-    This is how SlackDigest works: relevant updates, clearly prioritised, at a glance.
+    TaskSieve turns real signals (email, notes, Slack) into a prioritized<br>
+    <strong>working inbox</strong> — automatic, transparent, and fully under your control. No onboarding.
   </p>
 
   <section class="digest">
@@ -273,56 +273,84 @@
     <div class="block">
       <div class="bar red"></div>
       <div>
-        <p class="kicker"><span class="dot dot-now" aria-hidden="true"></span> Important · High impact</p>
-        <p class="title">Support tickets affecting revenue</p>
-        <p class="desc">3 new topics from <code>#support</code> with direct customer impact.</p>
-        <p class="hint">→ Recommended: prioritise today.</p>
+        <p class="kicker">🔴 Now · Work focus</p>
+        <p class="title">Decisions with immediate impact</p>
+        <p class="desc">3 open items with a direct effect on results and satisfaction.</p>
+
+        <p class="example">
+          <em>Example:</em> Approval for offer X · grouped from
+          <span class="sources">
+            <span class="src">Email</span>
+            <span class="src">Note</span>
+            <span class="src">Slack</span>
+          </span>
+        </p>
+
+        <p class="hint">→ Recommendation: decide now.</p>
       </div>
     </div>
 
     <div class="block">
       <div class="bar amber"></div>
       <div>
-        <p class="kicker"><span class="dot dot-next" aria-hidden="true"></span> Relevant · Needs attention</p>
-        <p class="title">Sales questions about Feature X</p>
-        <p class="desc">Similar questions across <code>#sales</code>.</p>
-        <p class="hint">→ One clarification reduces repetition.</p>
+        <p class="kicker">🟠 Next · Clarify what matters</p>
+        <p class="title">Items that move forward with a quick clarification</p>
+        <p class="desc">2 items from emails & notes with an open status.</p>
+
+        <p class="example">
+          <em>Example:</em> Follow-up on decision B · grouped from
+          <span class="sources">
+            <span class="src">Email</span>
+            <span class="src">Note</span>
+          </span>
+        </p>
+
+        <p class="hint">→ Recommendation: clarify briefly.</p>
       </div>
     </div>
 
     <div class="block">
       <div class="bar green"></div>
       <div>
-        <p class="kicker"><span class="dot dot-later" aria-hidden="true"></span> Informational · FYI</p>
-        <p class="title">Internal updates &amp; status notes</p>
-        <p class="desc">No immediate action required.</p>
-        <p class="hint">→ For awareness.</p>
+        <p class="kicker">🟢 Low urgency · Overview</p>
+        <p class="title">Grouped topics & lower-priority items</p>
+        <p class="desc">Low-pressure updates and small tasks — collected instead of interrupting you.</p>
+
+        <p class="example">
+          <em>Example:</em> FYIs & small to-dos · grouped from
+          <span class="sources">
+            <span class="src">Email</span>
+            <span class="src">Slack</span>
+          </span>
+        </p>
+
+        <p class="hint">→ Review when you have time.</p>
       </div>
     </div>
 
     <div class="steps">
       <div class="bar-blue"></div>
       <div>
-        <p class="title"><span class="dot-focus" aria-hidden="true"></span> Suggested next steps</p>
+        <p class="title">📌 Current work focus</p>
         <ul>
-          <li>Prioritise the support topic</li>
-          <li>Prepare a short clarification for sales</li>
-          <li>Keep the rest grouped</li>
+          <li>Address high-impact items</li>
+          <li>Finalize decision A</li>
+          <li>Keep lower-priority items grouped</li>
         </ul>
       </div>
     </div>
 
     <div class="summary">
       ⏱ <b>Summary</b><br>
-      12 channels scanned · 5 threads grouped · 3 items relevant
+      3 sources checked · 7 signals bundled · 3 topics prioritised
     </div>
 
   </section>
 
   <div class="cta">
-    <a class="btn" href="/en/products/slackdigest/success/">
-      See pricing &amp; feature overview
-      <span style="font-size:.85rem;opacity:.85">Differences between Basic &amp; Pro</span>
+    <a class="btn" href="/en/products/tasksieve/pricing/">
+      View pricing &amp; plan details
+      <span style="font-size:.85rem;opacity:.85">Packages &amp; differences at a glance</span>
     </a>
   </div>
 
