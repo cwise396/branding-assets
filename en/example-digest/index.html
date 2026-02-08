@@ -15,6 +15,7 @@
       --border:rgba(255,255,255,.12);
       --accent:#0C6C48;
 
+      /* Bars (unchanged) */
       --red:#F87171;
       --amber:#FBBF24;
       --green:#34D399;
@@ -124,10 +125,46 @@
     .bar.amber{background:var(--amber)}
     .bar.green{background:var(--green)}
 
-    .kicker{font-size:13px;color:#6B7280;margin:0 0 6px}
+    /* ✅ UPDATED (like DE): kicker becomes neutral + supports marker */
+    .kicker{
+      font-size:.75rem;
+      font-weight:800;
+      letter-spacing:.03em;
+      color:#0F172A;
+      margin:0 0 .4rem;
+      opacity:.85;
+      display:flex;
+      align-items:center;
+      gap:.35rem;
+    }
+
     .title{margin:0 0 6px;font-weight:800;color:#0F172A}
     .desc{margin:0 0 8px;color:#111827}
     .hint{margin:0;color:#374151;font-size:13px}
+
+    /* ✅ NEW: markers instead of emoji (reliable color) */
+    .dot{
+      width:.72rem;
+      height:.72rem;
+      border-radius:999px;
+      flex:0 0 .72rem;
+      display:inline-block;
+      box-shadow: inset 0 0 0 1px rgba(15,23,42,.18);
+    }
+    .dot-now{ background:var(--red); }
+    .dot-next{ background:var(--amber); }
+    .dot-info{ background:var(--green); }
+
+    /* Pin-like marker for steps */
+    .dot-focus{
+      width:.78rem;
+      height:.78rem;
+      border-radius:6px;
+      background:var(--cwblue);
+      flex:0 0 .78rem;
+      display:inline-block;
+      box-shadow: inset 0 0 0 1px rgba(15,23,42,.18);
+    }
 
     code{
       background:rgba(15,23,42,.08);
@@ -153,6 +190,7 @@
       width:6px;
       border-radius:999px;
       background:var(--cwblue);
+      flex:0 0 6px;
     }
 
     .summary{
@@ -186,55 +224,52 @@
     .cta .btn span{display:block}
     .cta .btn:hover{opacity:.92}
 
-   @media (max-width:520px){
-  .topline{
-    flex-direction:row;         /* bleibt 2-spaltig */
-    align-items:flex-start;
-  }
-  .digest-head{max-width:100%}  /* Text darf volle Breite nutzen */
-  .brand-slot{margin-left:auto} /* Logo bleibt rechts */
-  .brand-logo{height:84px}      /* leicht kleiner für Mobile */
-  .pro-badge{
-    white-space:normal;         /* darf umbrechen */
-    max-width:100%;
-  }
-}
-
+    @media (max-width:520px){
+      .topline{
+        flex-direction:row;
+        align-items:flex-start;
+      }
+      .digest-head{max-width:100%}
+      .brand-slot{margin-left:auto}
+      .brand-logo{height:84px}
+      .pro-badge{
+        white-space:normal;
+        max-width:100%;
+      }
+    }
   </style>
 </head>
 
 <body>
 <main class="wrap">
-<div class="topline">
-  <div class="digest-head">
-    <div class="digest-title">SlackDigest</div>
-    <div class="digest-sub">Example Digest</div>
+  <div class="topline">
+    <div class="digest-head">
+      <div class="digest-title">SlackDigest</div>
+      <div class="digest-sub">Example Digest</div>
 
-    <p class="sub">
-      Answers the question:<br>
-      <strong>What has happened since the last time – and what actually matters?</strong>
-    </p>
+      <p class="sub">
+        Answers the question:<br>
+        <strong>What has happened since the last time – and what actually matters?</strong>
+      </p>
 
-    <div class="pro-badge">Pro: prioritisation &amp; recommendations included</div>
+      <div class="pro-badge">Pro: prioritisation &amp; recommendations included</div>
+    </div>
+
+    <div class="brand-slot" aria-hidden="true">
+      <img class="brand-logo" src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo">
+    </div>
   </div>
 
-  <!-- ✅ Logo right (desktop), visible under header (mobile) -->
-  <div class="brand-slot" aria-hidden="true">
-    <img class="brand-logo" src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo">
-  </div>
-</div>
-
-<p class="sub">
-  This is how SlackDigest works: relevant updates, clearly prioritised, at a glance.
-</p>
-
+  <p class="sub">
+    This is how SlackDigest works: relevant updates, clearly prioritised, at a glance.
+  </p>
 
   <section class="digest">
 
     <div class="block">
       <div class="bar red"></div>
       <div>
-        <p class="kicker">🔴 Important · High impact</p>
+        <p class="kicker"><span class="dot dot-now" aria-label="Important"></span> Important · High impact</p>
         <p class="title">Support tickets affecting revenue</p>
         <p class="desc">3 new topics from <code>#support</code> with direct customer impact.</p>
         <p class="hint">→ Recommended: prioritise today.</p>
@@ -244,7 +279,7 @@
     <div class="block">
       <div class="bar amber"></div>
       <div>
-        <p class="kicker">🟠 Relevant · Needs attention</p>
+        <p class="kicker"><span class="dot dot-next" aria-label="Relevant"></span> Relevant · Needs attention</p>
         <p class="title">Sales questions about Feature X</p>
         <p class="desc">Similar questions across <code>#sales</code>.</p>
         <p class="hint">→ One clarification reduces repetition.</p>
@@ -254,7 +289,7 @@
     <div class="block">
       <div class="bar green"></div>
       <div>
-        <p class="kicker">🟢 Informational · FYI</p>
+        <p class="kicker"><span class="dot dot-info" aria-label="Informational"></span> Informational · FYI</p>
         <p class="title">Internal updates &amp; status notes</p>
         <p class="desc">No immediate action required.</p>
         <p class="hint">→ For awareness.</p>
@@ -264,7 +299,7 @@
     <div class="steps">
       <div class="bar-blue"></div>
       <div>
-        <p class="title">📌 Suggested next steps</p>
+        <p class="title"><span class="dot-focus" aria-label="Suggested next steps"></span> Suggested next steps</p>
         <ul>
           <li>Prioritise the support topic</li>
           <li>Prepare a short clarification for sales</li>
