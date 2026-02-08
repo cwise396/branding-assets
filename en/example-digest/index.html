@@ -13,15 +13,14 @@
       --text:#E5E7EB;
       --muted:#9FB0C3;
       --border:rgba(255,255,255,.12);
-      --accent:#0C6C48;
 
-      /* Bars (unchanged) */
-      --red:#F87171;
-      --amber:#FBBF24;
-      --green:#34D399;
+      /* 🎯 final priority colors (match DE logic) */
+      --prio-now:   rgb(183,15,18);   /* red */
+      --prio-next:  rgb(10,108,72);   /* green */
+      --prio-later: rgb(255,213,54);  /* yellow */
+      --prio-focus: rgb(15,57,96);    /* blue */
 
       --shadow:0 10px 30px rgba(0,0,0,.35);
-      --cwblue:#0E3960;
     }
 
     *{box-sizing:border-box}
@@ -120,12 +119,20 @@
       color:#111827;
     }
 
+    /* Bars */
     .bar{width:6px;border-radius:999px;flex:0 0 6px}
-    .bar.red{background:var(--red)}
-    .bar.amber{background:var(--amber)}
-    .bar.green{background:var(--green)}
+    .bar.now{background:var(--prio-now)}
+    .bar.next{background:var(--prio-next)}
+    .bar.later{background:var(--prio-later)}
 
-    /* ✅ UPDATED (like DE): kicker becomes neutral + supports marker */
+    /* Emoji coloring (only symbol, not text) */
+    .dot{font-weight:900}
+    .dot-now{color:var(--prio-now)}
+    .dot-next{color:var(--prio-next)}
+    .dot-later{color:var(--prio-later)}
+    .dot-focus{color:var(--prio-focus)}
+
+    /* ✅ neutral kicker like DE */
     .kicker{
       font-size:.75rem;
       font-weight:800;
@@ -133,38 +140,11 @@
       color:#0F172A;
       margin:0 0 .4rem;
       opacity:.85;
-      display:flex;
-      align-items:center;
-      gap:.35rem;
     }
 
     .title{margin:0 0 6px;font-weight:800;color:#0F172A}
     .desc{margin:0 0 8px;color:#111827}
     .hint{margin:0;color:#374151;font-size:13px}
-
-    /* ✅ NEW: markers instead of emoji (reliable color) */
-    .dot{
-      width:.72rem;
-      height:.72rem;
-      border-radius:999px;
-      flex:0 0 .72rem;
-      display:inline-block;
-      box-shadow: inset 0 0 0 1px rgba(15,23,42,.18);
-    }
-    .dot-now{ background:var(--red); }
-    .dot-next{ background:var(--amber); }
-    .dot-info{ background:var(--green); }
-
-    /* Pin-like marker for steps */
-    .dot-focus{
-      width:.78rem;
-      height:.78rem;
-      border-radius:6px;
-      background:var(--cwblue);
-      flex:0 0 .78rem;
-      display:inline-block;
-      box-shadow: inset 0 0 0 1px rgba(15,23,42,.18);
-    }
 
     code{
       background:rgba(15,23,42,.08);
@@ -188,9 +168,9 @@
 
     .steps .bar-blue{
       width:6px;
-      border-radius:999px;
-      background:var(--cwblue);
       flex:0 0 6px;
+      border-radius:999px;
+      background:var(--prio-focus);
     }
 
     .summary{
@@ -208,7 +188,6 @@
       text-align:center;
     }
 
-    /* CTA button (example-digest only) */
     .cta .btn{
       display:inline-block;
       padding:12px 16px;
@@ -225,17 +204,11 @@
     .cta .btn:hover{opacity:.92}
 
     @media (max-width:520px){
-      .topline{
-        flex-direction:row;
-        align-items:flex-start;
-      }
+      .topline{ flex-direction:row; align-items:flex-start; }
       .digest-head{max-width:100%}
       .brand-slot{margin-left:auto}
       .brand-logo{height:84px}
-      .pro-badge{
-        white-space:normal;
-        max-width:100%;
-      }
+      .pro-badge{ white-space:normal; max-width:100%; }
     }
   </style>
 </head>
@@ -267,9 +240,9 @@
   <section class="digest">
 
     <div class="block">
-      <div class="bar red"></div>
+      <div class="bar now"></div>
       <div>
-        <p class="kicker"><span class="dot dot-now" aria-label="Important"></span> Important · High impact</p>
+        <p class="kicker"><span class="dot dot-now">🔴</span> Important · High impact</p>
         <p class="title">Support tickets affecting revenue</p>
         <p class="desc">3 new topics from <code>#support</code> with direct customer impact.</p>
         <p class="hint">→ Recommended: prioritise today.</p>
@@ -277,9 +250,9 @@
     </div>
 
     <div class="block">
-      <div class="bar amber"></div>
+      <div class="bar next"></div>
       <div>
-        <p class="kicker"><span class="dot dot-next" aria-label="Relevant"></span> Relevant · Needs attention</p>
+        <p class="kicker"><span class="dot dot-next">🟢</span> Relevant · Needs attention</p>
         <p class="title">Sales questions about Feature X</p>
         <p class="desc">Similar questions across <code>#sales</code>.</p>
         <p class="hint">→ One clarification reduces repetition.</p>
@@ -287,9 +260,9 @@
     </div>
 
     <div class="block">
-      <div class="bar green"></div>
+      <div class="bar later"></div>
       <div>
-        <p class="kicker"><span class="dot dot-info" aria-label="Informational"></span> Informational · FYI</p>
+        <p class="kicker"><span class="dot dot-later">🟡</span> Informational · FYI</p>
         <p class="title">Internal updates &amp; status notes</p>
         <p class="desc">No immediate action required.</p>
         <p class="hint">→ For awareness.</p>
@@ -299,7 +272,7 @@
     <div class="steps">
       <div class="bar-blue"></div>
       <div>
-        <p class="title"><span class="dot-focus" aria-label="Suggested next steps"></span> Suggested next steps</p>
+        <p class="title"><span class="dot dot-focus">📌</span> Suggested next steps</p>
         <ul>
           <li>Prioritise the support topic</li>
           <li>Prepare a short clarification for sales</li>
