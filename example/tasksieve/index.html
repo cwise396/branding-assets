@@ -125,10 +125,25 @@
       color:#111827;
     }
 
-    .bar{width:6px;border-radius:999px;flex:0 0 6px}
-    .bar.red{background:var(--red)}
-    .bar.amber{background:var(--amber)}
-    .bar.green{background:var(--green)}
+    .bar{
+  width:6px;
+  border-radius:999px;
+  flex:0 0 6px;
+}
+
+/* FINAL mapping – exakt nach deiner Vorgabe */
+.bar.red{
+  background:var(--prio-now);     /* Now · Work focus → ROT */
+}
+
+.bar.amber{
+  background:var(--prio-next);    /* Next · Clarify → GRÜN */
+}
+
+.bar.green{
+  background:var(--prio-later);   /* Low urgency → GELB */
+}
+
 
     /* ✅ marker style like DE */
     .kicker{
