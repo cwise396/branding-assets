@@ -320,6 +320,24 @@ details summary{
   cursor:pointer;
   font-weight:800
 }
+/* ChangeWise EN: force visible text inside inverse button (Safari/override-safe) */
+.btn--inverse-cw{
+  background:#FFFFFF;
+  border:1px solid #FFFFFF;
+  border-radius:12px;
+  text-align:left;
+  padding:0.7rem 1rem;
+  line-height:1.3;
+  color:#0E3960 !important;
+  -webkit-text-fill-color:#0E3960 !important;
+}
+
+.btn--inverse-cw,
+.btn--inverse-cw *{
+  color:#0E3960 !important;
+  -webkit-text-fill-color:#0E3960 !important;
+  opacity:1 !important;
+}
 
 /* FOOTER */
 footer{
