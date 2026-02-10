@@ -1,306 +1,231 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Beispiel-Ergebnis – ChangeWise</title>
-  <meta name="description" content="So sieht ein typisches ChangeWise-Ergebnis aus: Fokus, Ton, Kernbotschaft und nächste Schritte – sofort nutzbar im Team." />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>ChangeWise – Beispiel</title>
+<meta name="description" content="ChangeWise Beispiel: Mini-Diagnose, Ton, Kernbotschaft und nächste Schritte – sofort erlebbar.">
 
-  <style>
-    :root{
-      --bg:#0E3960;
-      --text:#E5E7EB;
-      --muted:#9FB0C3;
-      --border:rgba(255,255,255,.12);
+<style>
+:root{
+  --bg:#0B1220;
+  --panel:rgba(255,255,255,.04);
+  --border:rgba(255,255,255,.12);
+  --text:#E5E7EB;
+  --muted:#9FB0C3;
 
-      --panel:rgba(255,255,255,.15);
-      --shadow:0 10px 30px rgba(0,0,0,.35);
+  --cw-blue:#0E3960;
+  --cw-blue-soft:rgb(34,93,150);
 
-      /* Output-Bars (CW) */
-      --cw-red: rgb(183, 15, 18);
-      --cw-green: rgb(10, 108, 72);
-      --cw-yellow: rgb(255, 213, 54);
-      --cw-blue: rgb(15, 57, 96);
+  --red:rgb(183,15,18);
+  --green:rgb(10,108,72);
+  --yellow:rgb(255,213,54);
 
-      --cw-ink:#0F172A;
-    }
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+  --container:980px;
+}
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.55;
-    }
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+}
 
-    .wrap{
-      max-width:920px;
-      margin:0 auto;
-      padding:44px 18px 88px;
-    }
+.container{
+  width:min(var(--container),92%);
+  margin:0 auto;
+}
 
-    /* Header */
-    .topline{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      gap:16px;
-      margin-bottom:16px;
-    }
-    .head{max-width:680px}
-    .title{
-      font-size:34px;
-      font-weight:900;
-      letter-spacing:-.4px;
-      margin:0;
-      color:#fff;
-    }
-    .subttl{
-      font-size:18px;
-      font-weight:700;
-      margin-top:4px;
-      color:#fff;
-    }
-    .sub{
-      margin:12px 0 0;
-      font-size:14px;
-      opacity:.92;
-      color:#fff;
-    }
+.hero{
+  padding:28px 0 16px;
+}
+.hero h1{
+  margin:0 0 6px;
+  font-size:clamp(1.8rem,1.3rem + 2vw,2.4rem);
+}
+.hero p{
+  margin:0;
+  font-size:1.1rem;
+  color:var(--muted);
+}
 
-    /* Logo badge */
-    .brand-slot{flex:0 0 auto}
-    .brand-logo{
-      height:84px;
-      width:auto;
-      display:block;
-      background:#fff;
-      padding:5px;
-      border-radius:50%;
-      box-shadow:0 4px 12px rgba(0,0,0,.08);
-    }
+/* Cards */
+.grid{
+  display:grid;
+  gap:16px;
+  margin-top:24px;
+}
+@media(min-width:860px){
+  .grid{grid-template-columns:1fr 1fr}
+}
 
-    /* Panel */
-    .digest{
-      margin-top:18px;
-      background:var(--panel);
-      border:1px solid rgba(255,255,255,.35);
-      border-radius:18px;
-      padding:18px;
-      box-shadow:var(--shadow);
-    }
+.card{
+  display:flex;
+  gap:14px;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:18px 16px;
+  box-shadow:var(--shadow);
+}
 
-    .block{
-      display:flex;
-      gap:14px;
-      padding:16px 14px;
-      border-radius:14px;
-      background:#fff;
-      margin-top:12px;
-      color:#111827;
-    }
+.bar{
+  width:6px;
+  border-radius:999px;
+  flex:0 0 6px;
+}
+.bar.red{background:var(--red)}
+.bar.green{background:var(--green)}
+.bar.yellow{background:var(--yellow)}
+.bar.blue-soft{background:var(--cw-blue-soft)}
 
-    .bar{width:6px;border-radius:999px;flex:0 0 6px}
-    .bar.red{background:var(--cw-red)}
-    .bar.green{background:var(--cw-green)}
-    .bar.yellow{background:var(--cw-yellow)}
-    .bar.blue{background:var(--cw-blue)}
+.content h3{
+  margin:0 0 6px;
+  font-size:1.05rem;
+}
+.content p{
+  margin:.3rem 0;
+}
+.list{
+  margin:.4rem 0 .2rem;
+  padding-left:18px;
+}
+.list li{margin:.25rem 0}
 
-    .kicker{
-      font-size:.75rem;
-      font-weight:800;
-      letter-spacing:.03em;
-      color:var(--cw-ink);
-      margin:0 0 .4rem;
-      opacity:.85;
-    }
-    .h{
-      margin:0 0 6px;
-      font-weight:900;
-      color:var(--cw-ink);
-    }
-    .p{margin:0 0 10px;color:#111827}
-    .hint{margin:0;color:#374151;font-size:13px}
+.formula{
+  margin:10px 0 0;
+  font-weight:800;
+  font-size:13px;
+  color:rgba(229,231,235,.8);
+}
 
-    .chips{margin-top:8px}
-    .chip{
-      display:inline-block;
-      margin:0 .35rem .35rem 0;
-      padding:.18rem .55rem;
-      border-radius:999px;
-      font-size:.72rem;
-      font-weight:800;
-      letter-spacing:.15px;
-      background:rgba(15,23,42,.07);
-      border:1px solid rgba(15,23,42,.12);
-      color:var(--cw-ink);
-      white-space:nowrap;
-    }
+.hint{
+  margin-top:8px;
+  font-size:13px;
+  color:var(--muted);
+}
+.hint-strong{
+  font-weight:900;
+  font-size:14px;
+}
 
-    .list{margin:.25rem 0 0;padding-left:1.1rem}
-    .list li{margin:.25rem 0}
-
-    .quote{
-      margin:10px 0 0;
-      padding:10px 12px;
-      border-radius:12px;
-      background:rgba(15,23,42,.06);
-      border:1px solid rgba(15,23,42,.12);
-      color:#0F172A;
-      font-weight:800;
-      letter-spacing:-.1px;
-    }
-
-    /* CTA */
-    .cta{margin-top:28px;text-align:center}
-    .btn{
-      display:inline-block;
-      padding:12px 16px;
-      border-radius:14px;
-      text-decoration:none;
-      font-weight:900;
-      line-height:1.25;
-      background:rgba(255,255,255,.16);
-      border:1px solid rgba(255,255,255,.40);
-      color:#fff;
-      box-shadow:0 10px 30px rgba(0,0,0,.18);
-      text-align:left;
-    }
-    .btn span{display:block}
-    .btn:hover{opacity:.92}
-
-    @media (max-width:520px){
-      .wrap{padding:34px 14px 72px}
-      .title{font-size:30px}
-      .topline{flex-direction:row;align-items:flex-start}
-      .head{max-width:100%}
-      .brand-slot{margin-left:auto}
-      .brand-logo{height:84px}
-      .btn{width:100%;max-width:520px}
-    }
-  </style>
+/* CTA */
+.cta{
+  margin:28px 0 40px;
+  text-align:center;
+}
+.btn{
+  display:inline-block;
+  padding:.8rem 1.2rem;
+  border-radius:12px;
+  background:#fff;
+  color:var(--cw-blue);
+  text-decoration:none;
+  font-weight:900;
+  text-align:left;
+}
+.btn span{display:block}
+.btn span:last-child{
+  font-size:.85rem;
+  font-weight:500;
+  opacity:.85;
+}
+</style>
 </head>
 
 <body>
-<main class="wrap">
 
-  <div class="topline">
-    <div class="head">
-      <div class="title">ChangeWise</div>
-      <div class="subttl">Beispiel-Ergebnis · Team-Alignment</div>
-      <p class="sub">
-        Beantwortet die Frage:<br>
-        <strong>Worauf richten wir uns gemeinsam aus – und was tun wir als Nächstes?</strong>
-      </p>
-    </div>
+<main class="container">
 
-    <div class="brand-slot" aria-hidden="true">
-      <img class="brand-logo" src="/assets/brand/changewise_logo.svg" alt="ChangeWise Logo">
-    </div>
-  </div>
+  <section class="hero">
+    <h1>ChangeWise – Beispiel</h1>
+    <p>So entsteht Alignment: Fokus, Ton, Kernbotschaft und nächste Schritte – sofort nutzbar.</p>
+  </section>
 
-  <p class="sub">
-    So sieht ein typisches ChangeWise-Ergebnis aus: Fokus, Ton, Kernbotschaft und nächste Schritte – sofort nutzbar im Team.
-  </p>
+  <section class="grid">
 
-  <section class="digest">
-
-    <!-- 1) Fokus & Diagnose -->
-    <div class="block">
+    <!-- Kachel 1 -->
+    <article class="card">
       <div class="bar red"></div>
-      <div>
-        <p class="kicker">Fokus · Mini-Diagnose</p>
-        <p class="h">Wo hakt es wirklich?</p>
-        <p class="p">
-          Drei Perspektiven ziehen in unterschiedliche Richtungen: „Kosten runter“, „Qualität hoch“, „Tempo halten“.
-          Dadurch entstehen widersprüchliche Aussagen – und Entscheidungen stocken.
-        </p>
-        <p class="hint">→ Ziel: eine gemeinsame Leitlinie, die Entscheidungen vereinfacht.</p>
-        <div class="chips" aria-label="Signale">
-          <span class="chip">Unklarer Ton</span>
-          <span class="chip">Widerspruch im Team</span>
-          <span class="chip">Entscheidungen bleiben hängen</span>
-        </div>
+      <div class="content">
+        <h3>Fokus · Mini-Diagnose</h3>
+        <p>Unterschiedliche Perspektiven bündeln wir zu einem gemeinsamen Bezugsrahmen.</p>
+        <p class="hint hint-strong">→ Ergebnis: Ein gemeinsamer Rahmen, der Entscheidungen schneller macht.</p>
       </div>
-    </div>
+    </article>
 
-    <!-- 2) Ton & Leitplanken -->
-    <div class="block">
+    <!-- Kachel 2 -->
+    <article class="card">
       <div class="bar green"></div>
-      <div>
-        <p class="kicker">Ton · Leitplanken</p>
-        <p class="h">Wie sprechen wir darüber?</p>
+      <div class="content">
+        <h3>Ton · Leitplanken</h3>
+        <p>Wie sprechen wir darüber?</p>
         <ul class="list">
-          <li><strong>Klar & verbindlich</strong> (keine „vielleicht“-Formulierungen)</li>
-          <li><strong>Team-orientiert</strong> („wir“, nicht „ihr“)</li>
-          <li><strong>Entscheidungsnah</strong> (Konsequenzen und nächste Schritte sichtbar)</li>
+          <li><strong>Klar</strong> – ohne „vielleicht“-Formulierungen</li>
+          <li><strong>Team-orientiert</strong> – wir statt ihr</li>
+          <li><strong>Entscheidungsnah</strong> – Konsequenzen und nächster Schritt sichtbar</li>
         </ul>
-        <div class="quote">Ton-Formel: „Klarheit + Richtung + nächster Schritt“</div>
+        <p class="formula">Ton-Formel: Klarheit + Richtung + nächster Schritt</p>
+        <p class="hint hint-strong">→ Ergebnis: Aussagen sind einheitlich und anschlussfähig.</p>
       </div>
-    </div>
+    </article>
 
-    <!-- 3) Kernbotschaft -->
-    <div class="block">
+    <!-- Kachel 3 -->
+    <article class="card">
       <div class="bar yellow"></div>
-      <div>
-        <p class="kicker">Kernbotschaft</p>
-        <p class="h">Was ist die gemeinsame Linie?</p>
-        <p class="p">
-          <strong>Wir entscheiden nach Wirkung:</strong> Was Kundennutzen und Ergebnis stärkt, hat Vorrang –
-          und wir machen diese Priorität für alle sichtbar.
+      <div class="content">
+        <h3>Kernbotschaft</h3>
+        <p><strong>Was ist die gemeinsame Linie?</strong></p>
+        <p>
+          Wir entscheiden nach Wirkung: Was Kundennutzen und Ergebnis stärkt,
+          hat Vorrang – und diese Priorität machen wir für alle sichtbar.
         </p>
-        <p class="hint">→ Ein Satz, der Entscheidungen vereinfacht und Abstimmung verkürzt.</p>
+        <p class="hint hint-strong">→ Ein Satz, der Entscheidungen vereinfacht und Abstimmung verkürzt.</p>
       </div>
-    </div>
+    </article>
 
-    <!-- 4) Nächste Schritte -->
-    <div class="block">
-      <div class="bar blue"></div>
-      <div>
-        <p class="kicker">Nächste Schritte</p>
-        <p class="h">Was tun wir als Nächstes – konkret?</p>
+    <!-- Kachel 4 -->
+    <article class="card">
+      <div class="bar yellow"></div>
+      <div class="content">
+        <h3>Nächste Schritte</h3>
+        <p><strong>Was tun wir als Nächstes – konkret?</strong></p>
+        <ol class="list">
+          <li>Klarer Entscheidungsrahmen: 3 Kriterien + Beispiel</li>
+          <li>Review-Gate: Wer entscheidet was – bis wann?</li>
+          <li>Team-Statement: Kernbotschaft + Ton als Kurztext</li>
+        </ol>
+        <p class="hint hint-strong">→ Ergebnis: Entscheidungen passieren wieder im Fluss.</p>
+      </div>
+    </article>
+
+    <!-- Kachel 5 -->
+    <article class="card">
+      <div class="bar blue-soft"></div>
+      <div class="content">
+        <h3>Templates &amp; Playbooks</h3>
         <ul class="list">
-          <li><strong>1 Klarer Entscheidungsrahmen</strong>: 3 Kriterien + Beispiel, 1 Seite.</li>
-          <li><strong>2 Review-Gate</strong>: Wer entscheidet was – bis wann?</li>
-          <li><strong>3 Team-Statement</strong>: Kernbotschaft + Ton als Kurztext für Updates.</li>
+          <li>1-Pager Entscheidungsrahmen</li>
+          <li>Messaging-Template für Updates</li>
+          <li>Mini-Playbook für Folgeentscheidungen</li>
         </ul>
-        <p class="hint">→ Ergebnis: Entscheidungen passieren wieder „im Fluss“.</p>
+        <p class="hint hint-strong">→ Alignment wird direkt umgesetzt.</p>
       </div>
-    </div>
-
-    <!-- 5) Deliverables -->
-    <div class="block">
-      <div class="bar blue"></div>
-      <div>
-        <p class="kicker">Templates &amp; Playbook-Snippets</p>
-        <p class="h">Sofort kopierbar fürs Team</p>
-
-        <div class="quote">Template 1 · Team-Update (3 Zeilen)<br>
-          „Wir richten uns an Wirkung aus. Diese Woche entscheiden wir X bis Freitag. Nächster Schritt: Y.“
-        </div>
-
-        <div class="quote">Template 2 · Entscheidungs-Post (Slack/Email)<br>
-          „Entscheidung nötig: ___ / Option A/B / Wirkung: ___ / Empfehlung: ___ / Deadline: ___.“
-        </div>
-
-        <div class="quote">Snippet 3 · Review-Gate (klar, knapp)<br>
-          „Wenn ___ betroffen ist, entscheidet ___. Sonst ___. Ziel: in 24h Klarheit.“
-        </div>
-
-        <p class="hint">→ Damit wird Alignment nicht erklärt – sondern direkt umgesetzt.</p>
-      </div>
-    </div>
+    </article>
 
   </section>
 
-  <div class="cta">
-    <a class="btn" href="/products/changewise/pricing/">
-      Preis- &amp; Leistungsübersicht ansehen
-      <span style="font-size:.85rem;opacity:.85">Pakete &amp; Unterschiede auf einen Blick</span>
+  <section class="cta">
+    <a class="btn" href="/pricing.html">
+      <span>Zu den Preisen</span>
+      <span>Basic &amp; Pro – klar vergleichbar</span>
     </a>
-  </div>
+  </section>
 
 </main>
+
 </body>
 </html>
