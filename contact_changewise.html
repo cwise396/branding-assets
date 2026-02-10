@@ -1,4 +1,4 @@
- <!doctype html>
+<!doctype html>
 <html lang="de">
 <head>
   <meta charset="utf-8">
@@ -6,6 +6,7 @@
   <meta name="color-scheme" content="dark">
   <title>Kontakt – ChangeWise</title>
   <meta name="description" content="ChangeWise Kurz-Briefing & Mini-Diagnose: 3–4 Angaben, sofort klare Kernbotschaft & priorisierte nächste Schritte – vertraulich.">
+
   <style>
   :root{
     --page-bg:#0E3960;   /* ChangeWise Blau */
@@ -38,6 +39,7 @@
     font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
   }
 
+  /* NAV */
   .site-header{position:sticky;top:0;z-index:50;width:100%;background:var(--nav-red)}
   .nav{background:var(--nav-red)}
   .nav-inner{
@@ -61,6 +63,7 @@
   }
   .nav-links a{color:#fff;text-decoration:none}
   .nav-toggle{display:none;background:none;border:0;color:#fff;font-size:1.2rem}
+
   @media (max-width:980px){
     .nav-inner{position:relative}
     .nav-links{
@@ -105,8 +108,23 @@
     opacity:.96;
     line-height:1.4;
   }
+
+  /* Mobile: keep 2 columns (logo stays right) */
   @media (max-width:640px){
-    .hero-grid{grid-template-columns:1fr}
+    .hero-grid{
+      grid-template-columns:1fr auto;
+      align-items:start;
+    }
+    .badge{
+      width:56px;
+      height:56px;
+    }
+    .badge .inner{
+      left:4px;
+      top:4px;
+      width:calc(56px - 8px);
+      height:calc(56px - 8px);
+    }
   }
 
   /* BADGE */
@@ -128,7 +146,7 @@
     top:5px;
     width:calc(var(--badge) - 10px);
     height:calc(var(--badge) - 10px);
-    background:rgb(174,15,18); /* NEU: roter Innenkreis statt blauer Saum */
+    background:rgb(174,15,18); /* roter Innenkreis */
     border-radius:50%;
     display:grid;
     place-items:center;
@@ -141,6 +159,7 @@
     display:block;
   }
 
+  /* CARD */
   .card{
     background:var(--card-bg);
     border:1px solid var(--card-bd);
@@ -153,11 +172,15 @@
   }
   .card h2{
     margin:.2rem 0 .6rem;
-    font-size:1.2rem;
+    font-size:1.25rem;
     color:#fff;
   }
   .card p{margin:.4rem 0 .8rem;color:#fff}
 
+  /* HERO → Card etwas mehr Luft */
+  .hero + .card{ margin-top:1.4rem; }
+
+  /* FORM */
   form{display:grid;gap:10px}
   label{display:block;font-weight:600;color:#fff}
   input[type="text"],
@@ -171,10 +194,26 @@
     border:1px solid var(--input-bd);
     background:var(--input-bg);
     color:#fff;
+    font:inherit;
   }
   input::placeholder,
   textarea::placeholder{color:rgba(255,255,255,.7)}
   textarea{resize:vertical}
+
+  small{
+    display:block;
+    margin-top:6px;
+    font-size:12.5px;
+    opacity:.85;
+    line-height:1.35;
+  }
+
+  /* Optionales Feld optisch absetzen */
+  label[for="asset_url"]{
+    margin-top:.6rem;
+    border-top:1px solid rgba(255,255,255,.10);
+    padding-top:.6rem;
+  }
 
   .consent{
     display:flex;
@@ -206,49 +245,31 @@
   .btn:hover{background:var(--btn-bg-h)}
 
   .btn--inverse-cw{
-    color:#0E3960 !important;
-    -webkit-text-fill-color:#0E3960 !important;
+    color:var(--cw-blue) !important;
+    -webkit-text-fill-color:var(--cw-blue) !important;
   }
   .btn--inverse-cw span{
     display:block;
-    color:#0E3960 !important;
-    -webkit-text-fill-color:#0E3960 !important;
+    color:var(--cw-blue) !important;
+    -webkit-text-fill-color:var(--cw-blue) !important;
+  }
+  .btn--inverse-cw span:last-child{
+    font-size:.8rem !important;
+    line-height:1.25 !important;
+    max-width:30rem;
+    opacity:.85;
+    font-weight:500;
   }
 
-  .flash{
-    position:relative;
-    margin:8px 0 14px;
-    padding:12px 14px;
-    border-radius:10px;
-    background:#fff;
-    color:#000;
-    border:1px solid rgba(255,255,255,.6);
-    box-shadow:0 3px 12px rgba(0,0,0,.4);
-    opacity:0;
-    transform:translateY(-6px);
-    transition:opacity .2s ease, transform .2s ease;
-  }
-  .flash.show{
-    opacity:1;
-    transform:translateY(0);
-  }
-  .flash small{
-    display:block;
-    font-size:12px;
-    color:#333;
-    margin-top:4px;
-  }
-
+  /* FOOTER */
   footer{
-    margin:24px 0 40px;
+    margin:1.8rem 0 40px;
     color:#fff;
-    font-size:.9rem;
+    font-size:.85rem;
     line-height:1.4;
+    opacity:.85;
   }
-  footer a{
-    color:#fff;
-    text-decoration:none;
-  }
+  footer a{color:#fff;text-decoration:none}
   .footbar{
     display:flex;
     justify-content:space-between;
@@ -258,77 +279,9 @@
   }
   .legal a{margin-right:.6rem}
   .sep{margin:0 .3rem;opacity:.85}
-<style>
-  /* ... dein bisheriger Style ... */
-
-  /* HERO → Card etwas mehr Luft */
-  .hero + .card{
-    margin-top:1.4rem;
-  }
-
-  /* Card-Überschrift etwas kräftiger */
-  .card h2{
-    font-size:1.25rem;
-    margin:.2rem 0 .6rem;
-  }
-
-  /* Optionales Feld optisch absetzen */
-  label[for="asset_url"]{
-    margin-top:.4rem;
-    border-top:1px solid rgba(255,255,255,.08);
-    padding-top:.6rem;
-  }
-
-  /* CTA kompakter, zweite Zeile kürzer */
-  .btn--inverse-cw span:last-child{
-    font-size:.8rem !important;
-    line-height:1.25 !important;
-    max-width:30rem;
-  }
-
-  /* Footer weniger dominant */
-  footer{
-    margin:1.8rem 0 40px;
-    opacity:.82;
-    font-size:.85rem;
-  }
-/* --- CW contact DE: post-fix --- */
-
-/* Karte unter Hero etwas runter */
-main .card{
-  margin-top:1.4rem !important;
-}
-
-/* Überschrift in der Karte etwas größer */
-main .card h2{
-  font-size:1.25rem !important;
-  margin:.2rem 0 .6rem !important;
-}
-
-/* Optional: Link zu Brand-Dokumenten absetzen */
-main .card form label[for="asset_url"]{
-  margin-top:.6rem !important;
-  padding-top:.6rem !important;
-  border-top:1px solid rgba(255,255,255,.10) !important;
-}
-
-/* CTA: zweite Zeile kompakter */
-main .card .btn--inverse-cw span:last-child{
-  font-size:.8rem !important;
-  line-height:1.25 !important;
-  max-width:30rem !important;
-}
-
-/* Footer dezenter */
-main + footer,
-footer{
-  margin:1.8rem 0 40px !important;
-  opacity:.85 !important;
-  font-size:.85rem !important;
-}
-
   </style>
-  </head>
+</head>
+
 <body>
 
 <header class="site-header">
@@ -354,10 +307,10 @@ footer{
       <div class="hero-text">
         <h1>ChangeWise</h1>
         <p class="sub">
-  Kurz-Briefing &amp; Mini-Diagnose: 3–4 Angaben – du bekommst Fokus, klare Kernbotschaft &amp; sofort nutzbare nächste Schritte.
-</p>
-     </div>
-     <div class="badge" aria-hidden="true">
+          Kurz-Briefing &amp; Mini-Diagnose: 3–4 Angaben – du bekommst Fokus, klare Kernbotschaft &amp; sofort nutzbare nächste Schritte.
+        </p>
+      </div>
+      <div class="badge" aria-hidden="true">
         <span class="ring"></span>
         <span class="inner">
           <img src="/assets/brand/changewise_logo.svg" alt="">
@@ -371,7 +324,7 @@ footer{
     <h2>ChangeWise – Kurz-Briefing &amp; Mini-Diagnose</h2>
     <p>3–4 Angaben → Sofort-Ergebnis mit klaren Empfehlungen.</p>
 
-      <form action="https://formspree.io/f/xjkaawkr" method="POST" autocomplete="on">
+    <form action="https://formspree.io/f/xjkaawkr" method="POST" autocomplete="on">
       <input type="hidden" name="product" value="changewise">
       <input type="hidden" name="lang" value="de">
       <input type="text" name="_gotcha" style="display:none">
@@ -385,12 +338,12 @@ footer{
       </label>
 
       <label>Mini-Diagnose
-        <textarea name="diagnosis" rows="4" placeholder="z. B. Uneinheitliche Botschaften; brauchen Kernnarrativ &amp; Vorlagen." required></textarea>
+        <textarea name="diagnosis" rows="4" placeholder="z. B. Uneinheitliche Botschaften; brauchen Kernnarrativ &amp; nächste Schritte fürs Team." required></textarea>
       </label>
 
-      <label>Optional: Link zu Brand-Dokumenten
-        <input type="url" name="asset_url" placeholder="https://…/brandkit.pdf">
-        <small>PDF/URL – wird vertraulich geprüft; das Ergebnis bezieht sich darauf.</small>
+      <label for="asset_url">Optional: Link zu Brand-Dokumenten
+        <input id="asset_url" type="url" name="asset_url" placeholder="https://…/brandkit.pdf">
+        <small>PDF/URL – wird vertraulich berücksichtigt; das Ergebnis bezieht sich darauf.</small>
       </label>
 
       <div class="consent">
@@ -402,16 +355,16 @@ footer{
 
       <button class="btn btn--inverse-cw" type="submit">
         <span style="font-size:1.1rem;font-weight:800;line-height:1.2;">
-          Briefing &amp; Mini-Diagnose
+          Briefing &amp; Mini-Diagnose starten
         </span>
-        <span style="font-size:0.85rem;font-weight:500;opacity:.85;line-height:1.3;">
-          Deine Angaben werden KI-gestützt ausgewertet. Du bekommst eine klare Kernbotschaft
-          und nächste Schritte – vertraulich. Kein Spam, kein Newsletter.
+        <span>
+          Ergebnis wird direkt angezeigt – Kernbotschaft &amp; nächste Schritte. Kein Spam.
         </span>
       </button>
 
       <input type="hidden" name="_subject" value="[Website] ChangeWise Kurz-Briefing">
-      <input type="hidden" name="_next" value="/contact_changewise.html?success=1">
+      <!-- ✅ Instant Experience: direkt zur Beispielseite -->
+      <input type="hidden" name="_next" value="https://slackdigest.org/example/changewise/">
     </form>
   </section>
 
@@ -437,25 +390,6 @@ footer{
       t.setAttribute('aria-expanded',o?'true':'false');
     });
   }
-
-  // success flash
-  try{
-    var sp=new URLSearchParams(location.search);
-    if(sp.get('success')==='1'){
-      var host=document.querySelector('.card');
-      if(host){
-        var box=document.createElement('div');
-        box.className='flash';
-        box.innerHTML='Danke — deine Nachricht ist eingegangen.<small>Wir melden uns zeitnah mit dem nächsten Schritt.</small>';
-        var f=host.querySelector('form');
-        if(f) f.parentNode.insertBefore(box,f);
-        setTimeout(function(){box.classList.add('show');},60);
-        setTimeout(function(){
-          if(box&&box.parentNode) box.parentNode.removeChild(box);
-        },8000);
-      }
-    }
-  }catch(e){}
 
   // prevent double submit
   try{
