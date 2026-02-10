@@ -16,11 +16,12 @@
       --panel:rgba(255,255,255,.15);
       --shadow:0 10px 30px rgba(0,0,0,.35);
 
-      /* Output-Bars (CW) */
+      /* Output-Bars */
       --cw-red: rgb(183, 15, 18);
       --cw-green: rgb(10, 108, 72);
       --cw-yellow: rgb(255, 213, 54);
       --cw-blue: rgb(15, 57, 96);
+      --cw-blue-soft: rgb(32, 86, 138);
 
       --cw-ink:#0F172A;
     }
@@ -34,71 +35,28 @@
       line-height:1.55;
     }
 
-    .wrap{
-      max-width:920px;
-      margin:0 auto;
-      padding:44px 18px 88px;
-    }
+    .wrap{max-width:920px;margin:0 auto;padding:44px 18px 88px}
 
-    /* Header */
-    .topline{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      gap:16px;
-      margin-bottom:16px;
-    }
+    .topline{display:flex;justify-content:space-between;gap:16px;margin-bottom:16px}
     .head{max-width:680px}
-    .title{
-      font-size:34px;
-      font-weight:900;
-      letter-spacing:-.4px;
-      margin:0;
-      color:#fff;
-    }
-    .subttl{
-      font-size:18px;
-      font-weight:700;
-      margin-top:4px;
-      color:#fff;
-    }
-    .sub{
-      margin:12px 0 0;
-      font-size:14px;
-      opacity:.92;
-      color:#fff;
-    }
+    .title{font-size:34px;font-weight:900;letter-spacing:-.4px;margin:0;color:#fff}
+    .subttl{font-size:18px;font-weight:700;margin-top:4px;color:#fff}
+    .sub{margin:12px 0 0;font-size:14px;color:#fff;opacity:.92}
 
-    /* Logo badge */
-    .brand-slot{flex:0 0 auto}
     .brand-logo{
-      height:84px;
-      width:auto;
-      display:block;
-      background:#fff;
-      padding:5px;
-      border-radius:50%;
-      box-shadow:0 4px 12px rgba(0,0,0,.08);
+      height:84px;background:#fff;padding:5px;border-radius:50%;
+      box-shadow:0 4px 12px rgba(0,0,0,.08)
     }
 
-    /* Panel */
     .digest{
-      margin-top:18px;
-      background:var(--panel);
+      margin-top:18px;background:var(--panel);
       border:1px solid rgba(255,255,255,.35);
-      border-radius:18px;
-      padding:18px;
-      box-shadow:var(--shadow);
+      border-radius:18px;padding:18px;box-shadow:var(--shadow)
     }
 
     .block{
-      display:flex;
-      gap:14px;
-      padding:16px 14px;
-      border-radius:14px;
-      background:#fff;
-      margin-top:12px;
-      color:#111827;
+      display:flex;gap:14px;padding:16px 14px;
+      border-radius:14px;background:#fff;margin-top:12px;color:#111827
     }
 
     .bar{width:6px;border-radius:999px;flex:0 0 6px}
@@ -106,78 +64,35 @@
     .bar.green{background:var(--cw-green)}
     .bar.yellow{background:var(--cw-yellow)}
     .bar.blue{background:var(--cw-blue)}
+    .bar.blue-soft{background:var(--cw-blue-soft)}
 
-    .kicker{
-      font-size:.75rem;
-      font-weight:800;
-      letter-spacing:.03em;
-      color:var(--cw-ink);
-      margin:0 0 .4rem;
-      opacity:.85;
-    }
-    .h{
-      margin:0 0 6px;
-      font-weight:900;
-      color:var(--cw-ink);
-    }
+    .kicker{font-size:.75rem;font-weight:800;letter-spacing:.03em;color:var(--cw-ink);opacity:.85}
+    .h{margin:.2rem 0 .4rem;font-weight:900;color:var(--cw-ink)}
     .p{margin:0 0 10px;color:#111827}
-    .hint{margin:0;color:#374151;font-size:13px}
-
-    .chips{margin-top:8px}
-    .chip{
-      display:inline-block;
-      margin:0 .35rem .35rem 0;
-      padding:.18rem .55rem;
-      border-radius:999px;
-      font-size:.72rem;
-      font-weight:800;
-      letter-spacing:.15px;
-      background:rgba(15,23,42,.07);
-      border:1px solid rgba(15,23,42,.12);
-      color:var(--cw-ink);
-      white-space:nowrap;
-    }
+    .hint{margin:0;font-size:14px;font-weight:800;color:#374151}
 
     .list{margin:.25rem 0 0;padding-left:1.1rem}
     .list li{margin:.25rem 0}
 
     .quote{
-      margin:10px 0 0;
-      padding:10px 12px;
-      border-radius:12px;
+      margin:10px 0 0;padding:10px 12px;border-radius:12px;
       background:rgba(15,23,42,.06);
       border:1px solid rgba(15,23,42,.12);
-      color:#0F172A;
-      font-weight:800;
-      letter-spacing:-.1px;
+      color:#0F172A;font-weight:800
     }
 
-    /* CTA */
     .cta{margin-top:28px;text-align:center}
     .btn{
-      display:inline-block;
-      padding:12px 16px;
-      border-radius:14px;
-      text-decoration:none;
-      font-weight:900;
-      line-height:1.25;
+      display:inline-block;padding:12px 16px;border-radius:14px;
       background:rgba(255,255,255,.16);
       border:1px solid rgba(255,255,255,.40);
-      color:#fff;
-      box-shadow:0 10px 30px rgba(0,0,0,.18);
-      text-align:left;
+      color:#fff;font-weight:900;text-decoration:none;text-align:left
     }
     .btn span{display:block}
-    .btn:hover{opacity:.92}
 
     @media (max-width:520px){
-      .wrap{padding:34px 14px 72px}
       .title{font-size:30px}
-      .topline{flex-direction:row;align-items:flex-start}
-      .head{max-width:100%}
-      .brand-slot{margin-left:auto}
-      .brand-logo{height:84px}
-      .btn{width:100%;max-width:520px}
+      .btn{width:100%}
     }
   </style>
 </head>
@@ -189,54 +104,39 @@
     <div class="head">
       <div class="title">ChangeWise</div>
       <div class="subttl">Beispiel-Ergebnis · Team-Alignment</div>
-      <p class="sub">
-        Beantwortet die Frage:<br>
-        <strong>Worauf richten wir uns gemeinsam aus – und was tun wir als Nächstes?</strong>
-      </p>
+      <p class="sub"><strong>Worauf richten wir uns gemeinsam aus – und was tun wir als Nächstes?</strong></p>
     </div>
-
-    <div class="brand-slot" aria-hidden="true">
-      <img class="brand-logo" src="/assets/brand/changewise_logo.svg" alt="ChangeWise Logo">
-    </div>
+    <img class="brand-logo" src="/assets/brand/changewise_logo.svg" alt="">
   </div>
-
-  <p class="sub">
-    So sieht ein typisches ChangeWise-Ergebnis aus: Fokus, Ton, Kernbotschaft und nächste Schritte – sofort nutzbar im Team.
-  </p>
 
   <section class="digest">
 
-    <!-- 1) Fokus & Diagnose -->
+    <!-- 1) Fokus -->
     <div class="block">
       <div class="bar red"></div>
       <div>
         <p class="kicker">Fokus · Mini-Diagnose</p>
         <p class="h">Wo hakt es wirklich?</p>
         <p class="p">
-          Drei Perspektiven ziehen in unterschiedliche Richtungen: „Kosten runter“, „Qualität hoch“, „Tempo halten“.
-          Dadurch entstehen widersprüchliche Aussagen – und Entscheidungen stocken.
+          Drei Perspektiven setzen unterschiedliche Schwerpunkte. Das erschwert klare Prioritäten
+          und verlangsamt Entscheidungen.
         </p>
-        <p class="hint">→ Ziel: eine gemeinsame Leitlinie, die Entscheidungen vereinfacht.</p>
-        <div class="chips" aria-label="Signale">
-          <span class="chip">Unklarer Ton</span>
-          <span class="chip">Widerspruch im Team</span>
-          <span class="chip">Entscheidungen bleiben hängen</span>
-        </div>
+        <p class="hint"><strong>→ Ziel: eine gemeinsame Leitlinie, die Entscheidungen vereinfacht.</strong></p>
       </div>
     </div>
 
-    <!-- 2) Ton & Leitplanken -->
+    <!-- 2) Ton -->
     <div class="block">
       <div class="bar green"></div>
       <div>
         <p class="kicker">Ton · Leitplanken</p>
         <p class="h">Wie sprechen wir darüber?</p>
         <ul class="list">
-          <li><strong>Klar & verbindlich</strong> (keine „vielleicht“-Formulierungen)</li>
-          <li><strong>Team-orientiert</strong> („wir“, nicht „ihr“)</li>
-          <li><strong>Entscheidungsnah</strong> (Konsequenzen und nächste Schritte sichtbar)</li>
+          <li>Klar & verbindlich</li>
+          <li>Team-orientiert („wir“)</li>
+          <li>Entscheidungsnah</li>
         </ul>
-        <div class="quote">Ton-Formel: „Klarheit + Richtung + nächster Schritt“</div>
+        <p class="p"><strong>Ton-Formel: Klarheit + Richtung + nächster Schritt</strong></p>
       </div>
     </div>
 
@@ -247,10 +147,10 @@
         <p class="kicker">Kernbotschaft</p>
         <p class="h">Was ist die gemeinsame Linie?</p>
         <p class="p">
-          <strong>Wir entscheiden nach Wirkung:</strong> Was Kundennutzen und Ergebnis stärkt, hat Vorrang –
-          und wir machen diese Priorität für alle sichtbar.
+          <strong>Wir entscheiden nach Wirkung:</strong> Was Kundennutzen und Ergebnis stärkt,
+          hat Vorrang – und wir machen diese Priorität für alle sichtbar.
         </p>
-        <p class="hint">→ Ein Satz, der Entscheidungen vereinfacht und Abstimmung verkürzt.</p>
+        <p class="hint"><strong>→ Ein Satz, der Entscheidungen vereinfacht und Abstimmung verkürzt.</strong></p>
       </div>
     </div>
 
@@ -261,34 +161,26 @@
         <p class="kicker">Nächste Schritte</p>
         <p class="h">Was tun wir als Nächstes – konkret?</p>
         <ul class="list">
-          <li><strong>1 Klarer Entscheidungsrahmen</strong>: 3 Kriterien + Beispiel, 1 Seite.</li>
-          <li><strong>2 Review-Gate</strong>: Wer entscheidet was – bis wann?</li>
-          <li><strong>3 Team-Statement</strong>: Kernbotschaft + Ton als Kurztext für Updates.</li>
+          <li>1 Entscheidungsrahmen (3 Kriterien)</li>
+          <li>2 Review-Gate mit Verantwortlichen</li>
+          <li>3 Team-Statement für Updates</li>
         </ul>
-        <p class="hint">→ Ergebnis: Entscheidungen passieren wieder „im Fluss“.</p>
+        <p class="hint"><strong>→ Ergebnis: Entscheidungen passieren wieder im Fluss.</strong></p>
       </div>
     </div>
 
-    <!-- 5) Deliverables -->
+    <!-- 5) Templates -->
     <div class="block">
-      <div class="bar blue"></div>
+      <div class="bar blue-soft"></div>
       <div>
-        <p class="kicker">Templates &amp; Playbook-Snippets</p>
+        <p class="kicker">Templates & Playbook-Snippets</p>
         <p class="h">Sofort kopierbar fürs Team</p>
 
-        <div class="quote">Template 1 · Team-Update (3 Zeilen)<br>
-          „Wir richten uns an Wirkung aus. Diese Woche entscheiden wir X bis Freitag. Nächster Schritt: Y.“
-        </div>
+        <div class="quote">Team-Update: „Wir richten uns an Wirkung aus. Entscheidung X bis Freitag.“</div>
+        <div class="quote">Entscheidungs-Post: Option A/B · Wirkung · Empfehlung · Deadline</div>
+        <div class="quote">Review-Gate: Wer entscheidet was – bis wann?</div>
 
-        <div class="quote">Template 2 · Entscheidungs-Post (Slack/Email)<br>
-          „Entscheidung nötig: ___ / Option A/B / Wirkung: ___ / Empfehlung: ___ / Deadline: ___.“
-        </div>
-
-        <div class="quote">Snippet 3 · Review-Gate (klar, knapp)<br>
-          „Wenn ___ betroffen ist, entscheidet ___. Sonst ___. Ziel: in 24h Klarheit.“
-        </div>
-
-        <p class="hint">→ Damit wird Alignment direkt umgesetzt.</p>
+        <p class="hint"><strong>→ Damit wird Alignment direkt umgesetzt.</strong></p>
       </div>
     </div>
 
@@ -296,8 +188,8 @@
 
   <div class="cta">
     <a class="btn" href="/products/changewise/pricing/">
-      Preis- &amp; Leistungsübersicht ansehen
-      <span style="font-size:.85rem;opacity:.85">Pakete &amp; Unterschiede auf einen Blick</span>
+      Preis- & Leistungsübersicht ansehen
+      <span style="font-size:.85rem;opacity:.85">Pakete & Unterschiede auf einen Blick</span>
     </a>
   </div>
 
