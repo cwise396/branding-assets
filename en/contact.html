@@ -107,23 +107,21 @@
       opacity:.96;
       line-height:1.4;
     }
+
     /* Mobile: keep 2 columns (logo stays right, not below) */
-@media (max-width:640px){
-  .hero-grid{
-    grid-template-columns:1fr auto; /* keep side-by-side */
-    align-items:start;
-  }
-  .badge{
-    width:56px;
-    height:56px;
-  }
-  .badge .inner{
-    left:4px;
-    top:4px;
-    width:calc(56px - 8px);
-    height:calc(56px - 8px);
-  }
-}
+    @media (max-width:640px){
+      .hero-grid{
+        grid-template-columns:1fr auto;
+        align-items:start;
+      }
+      .badge{ width:56px; height:56px; }
+      .badge .inner{
+        left:4px;
+        top:4px;
+        width:calc(56px - 8px);
+        height:calc(56px - 8px);
+      }
+    }
 
     /* BADGE (product logo in white ring) */
     .badge{
@@ -144,15 +142,15 @@
       top:5px;
       width:calc(var(--badge) - 10px);
       height:calc(var(--badge) - 10px);
-      background:#0C6C48; /* brand bg behind logo */
+      background:#FFFFFF; /* ✅ remove green halo */
       border-radius:50%;
       display:grid;
       place-items:center;
       overflow:hidden;
     }
     .badge img{
-      width:80%;
-      height:80%;
+      width:100%;
+      height:100%;
       object-fit:contain;
       display:block;
     }
@@ -190,42 +188,34 @@
       color:#fff;
     }
     input::placeholder{color:rgba(255,255,255,.7)}
-    select{color:#fff;background:var(--input-bg)}
-/* SlackDigest – Safari-Fix für Takt/Zustellung (DE+EN angeglichen) */
- /* SlackDigest – Safari-Fix für Takt/Zustellung (DE+EN angeglichen) */
-input[type="text"],
-input[type="email"],
-input[type="url"],
-textarea,
-select{
-  -webkit-appearance:none;
-  appearance:none;
-  background:rgb(12,108,72) !important;             /* neues Grün */
-  border:1px solid rgba(255,255,255,.35) !important;
-  min-height:42px;
-  border-radius:10px;
-  color:#FFFFFF;
-  font:inherit;
-}
 
-/* Platzhalter */
-input::placeholder,
-textarea::placeholder{
-  color:rgba(229,231,235,.85);
-}
-
-/* select-Pfeil */
-select{
-  background-position:right 10px center;
-  background-repeat:no-repeat;
-}
-
-/* falls Safari die Card-Regeln stärker zieht */
-.card input,
-.card select{
-  background:rgb(12,108,72) !important;
-}
-
+    /* SlackDigest – Safari-fix (DE+EN aligned) */
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    textarea,
+    select{
+      -webkit-appearance:none;
+      appearance:none;
+      background:rgb(12,108,72) !important;
+      border:1px solid rgba(255,255,255,.35) !important;
+      min-height:42px;
+      border-radius:10px;
+      color:#FFFFFF;
+      font:inherit;
+    }
+    input::placeholder,
+    textarea::placeholder{
+      color:rgba(229,231,235,.85);
+    }
+    select{
+      background-position:right 10px center;
+      background-repeat:no-repeat;
+    }
+    .card input,
+    .card select{
+      background:rgb(12,108,72) !important;
+    }
 
     .consent{
       display:flex;
@@ -265,20 +255,20 @@ select{
       color:var(--sd-green) !important;
       -webkit-text-fill-color:var(--sd-green) !important;
     }
-/* --- CTA microcopy & compact button --- */
-.btn--compact{
-  padding:10px 14px;
-  font-size:0.95rem;
-}
 
-.microcopy{
-  margin-top:6px;
-  font-size:12.5px;
-  color:#9CA3AF; /* ruhig, nicht verkäuferisch */
-  text-align:center;
-}
+    .btn--compact{
+      padding:10px 14px;
+      font-size:0.95rem;
+    }
 
-    /* FLASH (success after submit) */
+    .microcopy{
+      margin-top:6px;
+      font-size:12.5px;
+      color:#9CA3AF;
+      text-align:center;
+    }
+
+    /* FLASH */
     .flash{
       position:relative;
       margin:8px 0 14px;
@@ -292,16 +282,8 @@ select{
       transform:translateY(-6px);
       transition:opacity .2s ease, transform .2s ease;
     }
-    .flash.show{
-      opacity:1;
-      transform:translateY(0);
-    }
-    .flash small{
-      display:block;
-      font-size:12px;
-      color:#333;
-      margin-top:4px;
-    }
+    .flash.show{opacity:1;transform:translateY(0)}
+    .flash small{display:block;font-size:12px;color:#333;margin-top:4px}
 
     /* FOOTER */
     footer{
@@ -310,10 +292,7 @@ select{
       font-size:.9rem;
       line-height:1.4;
     }
-    footer a{
-      color:#fff;
-      text-decoration:none;
-    }
+    footer a{color:#fff;text-decoration:none}
     .footbar{
       display:flex;
       justify-content:space-between;
@@ -323,25 +302,11 @@ select{
     }
     .legal a{margin-right:.6rem}
     .sep{margin:0 .3rem;opacity:.85}
-  /* SlackDigest (EN) – remove inner green halo in logo badge */
-.badge .inner{
-  background: #FFFFFF !important;   /* was #0C6C48 */
-}
-
-.badge img{
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-  /* if a hairline remains due to SVG padding, uncomment the next two lines:
-  transform: scale(1.02);
-  */
-}
   </style>
 </head>
 <body>
 
- <header class="site-header">
+<header class="site-header">
   <nav class="nav">
     <div class="nav-inner">
       <a class="brand" href="/en/home/">Home</a>
@@ -364,11 +329,8 @@ select{
   <section class="hero">
     <div class="hero-grid">
       <div class="hero-text">
-         <h1>SlackDigest in practice</h1>
-<p class="sub">
-  How SlackDigest works in day-to-day work.
-</p>
-
+        <h1>SlackDigest in practice</h1>
+        <p class="sub">How SlackDigest works in day-to-day work.</p>
       </div>
       <div class="badge" aria-hidden="true">
         <span class="ring"></span>
@@ -382,12 +344,15 @@ select{
   <!-- FORM CARD -->
   <section class="card">
     <h2>SlackDigest in practice</h2>
-    <p><strong>Choose channels and cadence — SlackDigest bundles relevant updates automatically.</p>
+    <p><strong>Choose channels and cadence — SlackDigest bundles relevant updates automatically.</strong></p>
 
     <form action="https://formspree.io/f/xovkkann" method="POST" autocomplete="on">
+      <input type="hidden" name="_next" value="https://slackdigest.org/en/example-digest/">
+      <input type="hidden" name="_subject" value="[Website] SlackDigest test digest">
+
       <input type="hidden" name="product" value="slackdigest">
       <input type="hidden" name="lang" value="en">
-      <input type="text" name="_gotcha" style="display:none">
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
       <label>Name
         <input type="text" name="name" autocomplete="name" required>
@@ -422,17 +387,10 @@ select{
         </label>
       </div>
 
-      <button class="btn btn--inverse-sd btn--compact" type="submit">
-  Request example digest
-</button>
+      <button class="btn btn--inverse-sd btn--compact" type="submit">Request example digest</button>
 
-<p class="microcopy">
-  No setup · no call · no commitment
-</p>
-
-      <input type="hidden" name="_subject" value="[Website] SlackDigest test digest">
-    <input type="hidden" name="_next" value="https://slackdigest.org/en/example-digest/">
-   </form>
+      <p class="microcopy">No setup · no call · no commitment</p>
+    </form>
   </section>
 
   <footer>
