@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Example output – ChangeWise</title>
+  <meta name="description" content="What a typical ChangeWise output looks like: focus, tone, core message and next steps — ready to use with your team." />
+
+  <style>
+    :root{
+      --bg:#0E3960;
+      --text:#E5E7EB;
+      --muted:#9FB0C3;
+      --border:rgba(255,255,255,.12);
+
+      --panel:rgba(255,255,255,.15);
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+
+      /* Output-Bars */
+      --cw-red: rgb(183, 15, 18);
+      --cw-green: rgb(10, 108, 72);
+      --cw-yellow: rgb(255, 213, 54);
+      --cw-blue: rgb(15, 57, 96);
+      --cw-blue-soft: rgb(72, 132, 192);
+
+      --cw-ink:#0F172A;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+
+    .wrap{max-width:920px;margin:0 auto;padding:44px 18px 88px}
+
+    .topline{display:flex;justify-content:space-between;gap:16px;margin-bottom:16px}
+    .head{max-width:680px}
+    .title{font-size:34px;font-weight:900;letter-spacing:-.4px;margin:0;color:#fff}
+    .subttl{font-size:18px;font-weight:700;margin-top:4px;color:#fff}
+    .sub{margin:12px 0 0;font-size:14px;color:#fff;opacity:.92}
+
+    .brand-logo{
+      height:84px;background:#fff;padding:5px;border-radius:50%;
+      box-shadow:0 4px 12px rgba(0,0,0,.08)
+    }
+
+    .digest{
+      margin-top:18px;background:var(--panel);
+      border:1px solid rgba(255,255,255,.35);
+      border-radius:18px;padding:18px;box-shadow:var(--shadow)
+    }
+
+    .block{
+      display:flex;gap:14px;padding:16px 14px;
+      border-radius:14px;background:#fff;margin-top:12px;color:#111827
+    }
+
+    .bar{width:6px;border-radius:999px;flex:0 0 6px}
+    .bar.red{background:var(--cw-red)}
+    .bar.green{background:var(--cw-green)}
+    .bar.yellow{background:var(--cw-yellow)}
+    .bar.blue{background:var(--cw-blue)}
+    .bar.blue-soft{background:var(--cw-blue-soft)}
+
+    .kicker{font-size:.75rem;font-weight:800;letter-spacing:.03em;color:var(--cw-ink);opacity:.85}
+    .h{margin:.2rem 0 .4rem;font-weight:900;color:var(--cw-ink)}
+    .p{margin:0 0 10px;color:#111827}
+    .hint{margin:0;font-size:14px;font-weight:800;color:#374151}
+
+    .list{margin:.25rem 0 0;padding-left:1.1rem}
+    .list li{margin:.25rem 0}
+
+    .quote{
+      margin:10px 0 0;padding:10px 12px;border-radius:12px;
+      background:rgba(15,23,42,.06);
+      border:1px solid rgba(15,23,42,.12);
+      color:#0F172A;font-weight:800
+    }
+
+    .cta{margin-top:28px;text-align:center}
+    .btn{
+      display:inline-block;padding:12px 16px;border-radius:14px;
+      background:rgba(255,255,255,.16);
+      border:1px solid rgba(255,255,255,.40);
+      color:#fff;font-weight:900;text-decoration:none;text-align:left
+    }
+    .btn span{display:block}
+
+    @media (max-width:520px){
+      .title{font-size:30px}
+      .btn{width:100%}
+    }
+  </style>
+</head>
+
+<body>
+<main class="wrap">
+
+  <div class="topline">
+    <div class="head">
+      <div class="title">ChangeWise</div>
+      <div class="subttl">Example output · Team alignment</div>
+      <p class="sub"><strong>What are we aligning on — and what do we do next?</strong></p>
+    </div>
+    <img class="brand-logo" src="/assets/brand/changewise_logo.svg" alt="">
+  </div>
+
+  <section class="digest">
+
+    <!-- 1) Focus -->
+    <div class="block">
+      <div class="bar red"></div>
+      <div>
+        <p class="kicker">Focus · Mini diagnosis</p>
+        <p class="h">What’s actually blocking progress?</p>
+        <p class="p">
+          Three perspectives set different priorities. That makes it harder to choose clearly —
+          and slows down decisions.
+        </p>
+        <p class="hint"><strong>→ Goal: one shared guideline that makes decisions easier.</strong></p>
+      </div>
+    </div>
+
+    <!-- 2) Tone -->
+    <div class="block">
+      <div class="bar green"></div>
+      <div>
+        <p class="kicker">Tone · Guardrails</p>
+        <p class="h">How do we talk about it?</p>
+        <ul class="list">
+          <li>Clear & committed</li>
+          <li>Team-oriented (“we”)</li>
+          <li>Decision-ready</li>
+        </ul>
+        <p class="hint"><strong>→ Tone formula: clarity + direction + next step</strong></p>
+      </div>
+    </div>
+
+    <!-- 3) Core message -->
+    <div class="block">
+      <div class="bar yellow"></div>
+      <div>
+        <p class="kicker">Core message</p>
+        <p class="h">What’s the shared line?</p>
+        <p class="p">
+          <strong>We decide by impact:</strong> what strengthens customer value and outcomes
+          comes first — and we make that priority explicit for everyone.
+        </p>
+        <p class="hint"><strong>→ One sentence that simplifies decisions and reduces back-and-forth.</strong></p>
+      </div>
+    </div>
+
+    <!-- 4) Next steps -->
+    <div class="block">
+      <div class="bar blue"></div>
+      <div>
+        <p class="kicker">Next steps</p>
+        <p class="h">What do we do next — concretely?</p>
+        <ul class="list">
+          <li>1 Decision frame (3 criteria)</li>
+          <li>2 Review gate with owners</li>
+          <li>3 Team statement for updates</li>
+        </ul>
+        <p class="hint"><strong>→ Result: decisions move again — smoothly.</strong></p>
+      </div>
+    </div>
+
+    <!-- 5) Templates -->
+    <div class="block">
+      <div class="bar blue-soft"></div>
+      <div>
+        <p class="kicker">Templates &amp; playbook snippets</p>
+        <p class="h">Copy/paste deliverables for your team</p>
+
+        <div class="quote">Team update: “We align on impact. Decision X by Friday.”</div>
+        <div class="quote">Decision post: Option A/B · Impact · Recommendation · Deadline</div>
+        <div class="quote">Review gate: Who decides what — by when?</div>
+
+        <p class="hint"><strong>→ This turns alignment into action.</strong></p>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="cta">
+    <a class="btn" href="/en/products/changewise/pricing/">
+      View pricing &amp; plan overview
+      <span style="font-size:.85rem;opacity:.85">Packages &amp; differences at a glance</span>
+    </a>
+  </div>
+
+</main>
+</body>
+</html>
