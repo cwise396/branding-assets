@@ -183,7 +183,11 @@
 
 .head{max-width:680px}
 
-.brand-slot{flex:0 0 auto}
+.brand-slot{
+  flex:0 0 auto;
+  margin-left:auto; /* <- dauerhaft: Logo rechts, fluchtet mit rechter Kante */
+}
+
 
 .brand-logo{
   height:84px;
@@ -197,12 +201,14 @@
 
 @media (max-width:640px){
   .topline{
-    flex-direction:row;
+    flex-direction:row;      /* bleibt 2-spaltig */
+    align-items:flex-start;
   }
-  .brand-slot{
-    margin-left:auto;
+  .brand-logo{
+    height:84px;             /* optional: gleich lassen */
   }
 }
+
 
   </style>
 </head>
