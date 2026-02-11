@@ -122,6 +122,26 @@
     0 20px 60px rgba(0,0,0,.38);
   transform:translateY(-4px);
 }
+.billing-toggle{
+  display:flex;
+  gap:8px;
+  margin:35px 0 25px;
+}
+
+.toggle-btn{
+  padding:8px 14px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.35);
+  background:transparent;
+  color:#fff;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.toggle-btn.active{
+  background:#fff;
+  color:#0E3960;
+}
 
      .plan h3{
       margin:0;
@@ -284,15 +304,21 @@
 <div class="value-confirmation">
   Weil Klarheit Wirkung entfaltet.
 </div>
+<div class="billing-toggle">
+  <button class="toggle-btn active" data-billing="monthly">Monatlich</button>
+  <button class="toggle-btn" data-billing="yearly">Jährlich</button>
+</div>
 
   <!-- ✅ Pro links, Basic rechts -->
   <div class="plans">
 
     <div class="plan pro">
       <h3>Pro (Team)</h3>
-      <div class="price">€198 / Monat
-        <small>€1.980 / Jahr</small>
-      </div>
+     <div class="price">
+  <span class="price-monthly">€198 / Monat</span>
+  <span class="price-yearly" style="display:none;">€1.980 / Jahr</span>
+</div>
+
       <ul>
         <li>120 Briefs / Monat</li>
         <li>5 Brand / Voice-Profile</li>
@@ -306,9 +332,11 @@
 
     <div class="plan">
       <h3>Basic (Team)</h3>
-      <div class="price">€48 / Monat
-        <small>€480 / Jahr</small>
-      </div>
+     <div class="price">
+  <span class="price-monthly">€48 / Monat</span>
+  <span class="price-yearly" style="display:none;">€480 / Jahr</span>
+</div>
+
       <ul>
         <li>20 Briefs / Monat</li>
         <li>1 Brand / Voice-Profil</li>
@@ -320,6 +348,26 @@
     </div>
 
   </div>
+<script>
+document.querySelectorAll('.toggle-btn').forEach(btn=>{
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.toggle-btn').forEach(b=>b.classList.remove('active'));
+    this.classList.add('active');
+
+    const billing=this.dataset.billing;
+    const monthly=document.querySelectorAll('.price-monthly');
+    const yearly=document.querySelectorAll('.price-yearly');
+
+    if(billing==='monthly'){
+      monthly.forEach(el=>el.style.display='block');
+      yearly.forEach(el=>el.style.display='none');
+    }else{
+      monthly.forEach(el=>el.style.display='none');
+      yearly.forEach(el=>el.style.display='block');
+    }
+  });
+});
+</script>
 
   <footer>
     <div>
