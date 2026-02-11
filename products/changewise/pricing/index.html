@@ -172,6 +172,38 @@
       .plans{grid-template-columns:1fr}
       .plan.pro{transform:none}
     }
+  /* Header with logo */
+.topline{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:16px;
+  margin-bottom:16px;
+}
+
+.head{max-width:680px}
+
+.brand-slot{flex:0 0 auto}
+
+.brand-logo{
+  height:84px;
+  width:auto;
+  display:block;
+  background:#fff;
+  padding:5px;
+  border-radius:50%;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+@media (max-width:640px){
+  .topline{
+    flex-direction:row;
+  }
+  .brand-slot{
+    margin-left:auto;
+  }
+}
+
   </style>
 </head>
 
@@ -183,7 +215,10 @@
   <div class="subheadline">
     Klarheit für Entscheidungen. Einmalig – oder systematisch im Team verankert.
   </div>
-
+<div class="brand-slot" aria-hidden="true">
+    <img class="brand-logo" src="/assets/brand/changewise_logo.svg" alt="ChangeWise Logo">
+  </div>
+</div>
   <h2>Was sich im Alltag unterscheidet</h2>
 
   <table>
