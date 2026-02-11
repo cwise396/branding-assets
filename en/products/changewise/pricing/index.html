@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pricing & Plans – ChangeWise</title>
-  <meta name="description" content="ChangeWise pricing: Basic and Pro compared. Clarity for decisions — once, or systematically embedded in your team." />
+  <meta name="description" content="ChangeWise pricing: Basic and Pro compared. Clarity for decisions — one-time or systematically embedded in your team." />
 
   <style>
     :root{
@@ -47,9 +47,9 @@
       color:#fff;
     }
 
-    h2{
-      margin:34px 0 16px;
-      color:#fff;
+    .section-title{
+      margin:34px 0 14px;
+      font-size:20px;
       font-weight:900;
       letter-spacing:-.2px;
     }
@@ -88,7 +88,7 @@
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:24px;
-      margin-top:22px;
+      margin-top:45px;
     }
 
     .plan{
@@ -101,9 +101,16 @@
     }
 
     .plan.pro{
-      background:var(--panel-strong);
-      border:1px solid var(--border-strong);
-      box-shadow:var(--pro-glow);
+      background: linear-gradient(
+        160deg,
+        rgba(255,255,255,.20) 0%,
+        rgba(255,255,255,.12) 55%,
+        rgba(255,255,255,.10) 100%
+      );
+      border:1px solid rgba(255,255,255,.32);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.08),
+        0 20px 60px rgba(0,0,0,.38);
       transform:translateY(-4px);
     }
 
@@ -124,11 +131,12 @@
 
     .price small{
       display:block;
-      margin-top:6px;
-      font-size:13px;
-      font-weight:700;
-      color:rgba(255,255,255,.86);
-      opacity:.95;
+      margin-top:8px;
+      font-size:20px;
+      font-weight:900;
+      letter-spacing:-.2px;
+      color:#fff;
+      opacity:1;
     }
 
     ul{padding-left:18px;margin:0}
@@ -169,92 +177,135 @@
       .plans{grid-template-columns:1fr}
       .plan.pro{transform:none}
     }
+
+    .topline{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:16px;
+      margin-bottom:16px;
+    }
+
+    .head{max-width:680px}
+
+    .brand-slot{
+      flex:0 0 auto;
+      margin-left:auto;
+    }
+
+    .brand-logo{
+      height:102px;
+      width:auto;
+      display:block;
+      background:#fff;
+      padding:6px;
+      border-radius:50%;
+      box-shadow:0 6px 18px rgba(0,0,0,.15);
+    }
+
+    @media (max-width:640px){
+      .topline{
+        flex-direction:row;
+        align-items:flex-start;
+      }
+      .brand-logo{
+        height:84px;
+      }
+    }
+
   </style>
 </head>
 
 <body>
 <main class="wrap">
 
-  <h1>ChangeWise - Pricing & Plans</h1>
-
-  <div class="subheadline">
-    Clarity for decisions. Once — or systematically embedded in your team.
+<div class="topline">
+  <div class="head">
+    <h1>ChangeWise – Pricing & Plans</h1>
+    <div class="subheadline">
+      Clarity for decisions. One-time — or systematically embedded in your team.
+    </div>
   </div>
 
-  <h2>What changes in daily use</h2>
+  <div class="brand-slot" aria-hidden="true">
+    <img class="brand-logo" src="/assets/brand/changewise_logo.svg" alt="ChangeWise Logo">
+  </div>
+</div>
 
-  <table>
-    <tr>
-      <th>Dimension</th>
-      <th>Basic</th>
-      <th>Pro</th>
-    </tr>
-    <tr>
-      <td>Working mode</td>
-      <td>1 active Brand/Voice profile</td>
-      <td>5 active profiles · parallel contexts</td>
-    </tr>
-    <tr>
-      <td>Team usage</td>
-      <td>Copy &amp; paste</td>
-      <td>Export sets (predefined): Update · Decision · Rollout</td>
-    </tr>
-    <tr>
-      <td>Impact over time</td>
-      <td>No history</td>
-      <td>History incl. reference date · searchable · reusable</td>
-    </tr>
-  </table>
+<h2 class="section-title">Basic vs. Pro — the difference in daily use</h2>
 
-  <div class="compare-intro">
-    Basic delivers clarity for the current decision.<br>
-    Pro makes clarity repeatable — across the team and over time.
+<table>
+  <tr>
+    <th>Dimension</th>
+    <th>Basic</th>
+    <th>Pro</th>
+  </tr>
+  <tr>
+    <td>Work mode</td>
+    <td>1 active brand/voice profile</td>
+    <td>5 active profiles · parallel contexts</td>
+  </tr>
+  <tr>
+    <td>Team usage</td>
+    <td>Copy & Paste</td>
+    <td>Predefined export sets: Update · Decision · Rollout</td>
+  </tr>
+  <tr>
+    <td>Impact over time</td>
+    <td>No history</td>
+    <td>History incl. reference date · referencable · reusable</td>
+  </tr>
+</table>
+
+<div class="compare-intro">
+  Basic brings clarity for the current decision.<br>
+  Pro makes clarity repeatable — across teams and over time.
+</div>
+
+<div class="plans">
+
+  <div class="plan pro">
+    <h3>Pro (Team)</h3>
+    <div class="price">€198 / month
+      <small>€1,980 / year</small>
+    </div>
+    <ul>
+      <li>120 briefs / month</li>
+      <li>5 brand / voice profiles</li>
+      <li>Full template & playbook library</li>
+      <li>Light review gate</li>
+      <li>History & reuse</li>
+      <li>Export sets (Update · Decision · Rollout)</li>
+    </ul>
+    <a href="/en/contact_changewise.html" class="cta">Start Pro</a>
   </div>
 
-  <div class="plans">
-
-    <div class="plan pro">
-      <h3>Pro (Team)</h3>
-      <div class="price">€198 / month
-        <small>€1,980 / year</small>
-      </div>
-      <ul>
-        <li>120 briefs / month</li>
-        <li>5 Brand / Voice profiles</li>
-        <li>Full template &amp; playbook library</li>
-        <li>Light review gate</li>
-        <li>History &amp; reuse</li>
-        <li>Export sets (Update · Decision · Rollout)</li>
-      </ul>
-      <a href="/en/contact_changewise.html" class="cta">Start Pro</a>
+  <div class="plan">
+    <h3>Basic (Team)</h3>
+    <div class="price">€48 / month
+      <small>€480 / year</small>
     </div>
-
-    <div class="plan">
-      <h3>Basic (Team)</h3>
-      <div class="price">€48 / month
-        <small>€480 / year</small>
-      </div>
-      <ul>
-        <li>20 briefs / month</li>
-        <li>1 Brand / Voice profile</li>
-        <li>Focus · Tone · Core message · Next steps</li>
-        <li>15 base templates</li>
-        <li>Team usage (mail, meeting, update)</li>
-      </ul>
-      <a href="/en/contact_changewise.html" class="cta">Start Basic</a>
-    </div>
-
+    <ul>
+      <li>20 briefs / month</li>
+      <li>1 brand / voice profile</li>
+      <li>Focus · Tone · Core message · Next steps</li>
+      <li>15 base templates</li>
+      <li>Team usage (mail, meeting, update)</li>
+    </ul>
+    <a href="/en/contact_changewise.html" class="cta">Start Basic</a>
   </div>
 
-  <footer>
-    <div>
-      <a href="/en/imprint/">Imprint</a>
-      <a href="/en/privacy/">Privacy</a>
-    </div>
-    <div>
-      © ChangeWise · SlackDigest · TaskSieve
-    </div>
-  </footer>
+</div>
+
+<footer>
+  <div>
+    <a href="/en/imprint/">Imprint</a>
+    <a href="/en/privacy/">Privacy</a>
+  </div>
+  <div>
+    © ChangeWise · SlackDigest · TaskSieve
+  </div>
+</footer>
 
 </main>
 </body>
