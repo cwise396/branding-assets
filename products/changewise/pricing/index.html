@@ -167,7 +167,17 @@
   color:#fff;
   opacity:1;
 }
-.value-confirmation{
+.savings{
+  display:block;
+  margin-top:6px;
+  font-size:12px;
+  font-weight:500;
+  color:rgba(255,255,255,.65);
+  letter-spacing:.3px;
+}
+
+
+    .value-confirmation{
   margin-top:10px;
   font-weight:900;
   font-size:18px;
@@ -314,10 +324,14 @@
 
     <div class="plan pro">
       <h3>Pro (Team)</h3>
-     <div class="price">
-  <span class="price-monthly">€198 / Monat</span>
-  <span class="price-yearly" style="display:none;">€1.980 / Jahr</span>
+    <div class="price">
+  <span class="monthly">€198 / Monat</span>
+  <span class="yearly" style="display:none;">
+    €1.980 / Jahr
+   <span class="savings">396€ Ersparnis bei jährlicher Abrechnung</span>
+</span>
 </div>
+
 
       <ul>
         <li>120 Briefs / Monat</li>
@@ -333,9 +347,13 @@
     <div class="plan">
       <h3>Basic (Team)</h3>
      <div class="price">
-  <span class="price-monthly">€48 / Monat</span>
-  <span class="price-yearly" style="display:none;">€480 / Jahr</span>
+  <span class="monthly">€48 / Monat</span>
+  <span class="yearly" style="display:none;">
+    €480 / Jahr
+   <span class="savings">96€ Ersparnis bei jährlicher Abrechnung</span>
+ </span>
 </div>
+
 
       <ul>
         <li>20 Briefs / Monat</li>
@@ -380,5 +398,29 @@ document.querySelectorAll('.toggle-btn').forEach(btn=>{
   </footer>
 
 </main>
+<script>
+document.querySelectorAll('.toggle-btn').forEach(btn=>{
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.toggle-btn').forEach(b=>b.classList.remove('active'));
+    this.classList.add('active');
+
+    const mode = this.dataset.billing;
+
+    document.querySelectorAll('.price').forEach(price=>{
+      const monthly = price.querySelector('.monthly');
+      const yearly  = price.querySelector('.yearly');
+
+      if(mode === 'monthly'){
+        monthly.style.display = 'block';
+        yearly.style.display  = 'none';
+      } else {
+        monthly.style.display = 'none';
+        yearly.style.display  = 'block';
+      }
+    });
+  });
+});
+</script>
+
 </body>
 </html>
