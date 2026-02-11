@@ -3,17 +3,21 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Preise – ChangeWise</title>
+  <title>Preis & Leistung – ChangeWise</title>
   <meta name="description" content="ChangeWise Pricing: Basic und Pro im Vergleich. Klarheit für Entscheidungen – einmalig oder systematisch im Team verankert." />
 
   <style>
     :root{
       --bg:#0E3960;
       --panel:rgba(255,255,255,.12);
+      --panel-strong:rgba(255,255,255,.16);
       --text:#E5E7EB;
       --muted:#9FB0C3;
       --border:rgba(255,255,255,.18);
-      --accent:#FFFFFF;
+      --border-strong:rgba(255,255,255,.28);
+      --shadow:0 18px 50px rgba(0,0,0,.28);
+      --shadow-soft:0 10px 28px rgba(0,0,0,.22);
+      --pro-glow: 0 0 0 1px rgba(255,255,255,.10), 0 18px 60px rgba(0,0,0,.35);
     }
 
     *{box-sizing:border-box}
@@ -27,44 +31,58 @@
 
     .wrap{max-width:980px;margin:0 auto;padding:60px 20px 80px}
 
-    h1{font-size:36px;margin:0 0 8px;color:#fff}
-    h2{margin:50px 0 20px;color:#fff}
-    p.lead{color:#fff;opacity:.9}
-
-    /* Vergleichsblock */
-    .compare-intro{
-      margin-top:40px;
-      font-weight:800;
-      font-size:18px;
-      line-height:1.4;
+    h1{
+      font-size:36px;
+      margin:0 0 16px;
+      color:#fff;
+      font-weight:900;
+      letter-spacing:-.3px;
     }
 
+    .subheadline{
+      font-size:20px;
+      font-weight:900;
+      margin-bottom:34px;
+      line-height:1.4;
+      color:#fff;
+    }
+
+    h2{
+      margin:34px 0 16px;
+      color:#fff;
+      font-weight:900;
+      letter-spacing:-.2px;
+    }
+
+    /* Vergleich */
     table{
       width:100%;
       border-collapse:collapse;
-      margin-top:24px;
+      margin-top:14px;
       background:var(--panel);
       border:1px solid var(--border);
       border-radius:14px;
       overflow:hidden;
+      box-shadow:var(--shadow-soft);
     }
 
     th,td{
       padding:14px;
       text-align:left;
-      border-bottom:1px solid var(--border);
+      border-bottom:1px solid rgba(255,255,255,.14);
+      vertical-align:top;
     }
 
     th{font-weight:900;color:#fff}
     td{color:#fff}
-
     tr:last-child td{border-bottom:none}
 
-    .transition{
-      margin:36px 0 10px;
+    .compare-intro{
+      margin:22px 0 10px;
       font-weight:900;
       font-size:20px;
       line-height:1.4;
+      color:#fff;
     }
 
     /* Preis-Karten */
@@ -72,7 +90,7 @@
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:24px;
-      margin-top:24px;
+      margin-top:22px;
     }
 
     .plan{
@@ -80,20 +98,48 @@
       border:1px solid var(--border);
       border-radius:18px;
       padding:28px;
+      box-shadow:var(--shadow-soft);
+      position:relative;
+    }
+
+    /* ✅ Subtiler Pro-Boost: helleres Panel, etwas stärkere Border, leichter Lift, softer Glow */
+    .plan.pro{
+      background:var(--panel-strong);
+      border:1px solid var(--border-strong);
+      box-shadow:var(--pro-glow);
+      transform:translateY(-4px);
+    }
+
+    .plan h3{
+      margin:0;
+      color:#fff;
+      font-weight:900;
+      letter-spacing:-.2px;
     }
 
     .price{
       font-size:28px;
       font-weight:900;
-      margin:10px 0 20px;
+      margin:10px 0 16px;
       color:#fff;
+      letter-spacing:-.2px;
     }
 
-    ul{padding-left:18px}
-    li{margin-bottom:8px}
+    .price small{
+      display:block;
+      margin-top:6px;
+      font-size:13px;
+      font-weight:700;
+      color:rgba(255,255,255,.86);
+      opacity:.95;
+    }
+
+    ul{padding-left:18px;margin:0}
+    li{margin:0 0 8px}
+    li:last-child{margin-bottom:0}
 
     .cta{
-      margin-top:20px;
+      margin-top:18px;
       display:inline-block;
       padding:12px 16px;
       border-radius:12px;
@@ -101,15 +147,19 @@
       color:#0E3960;
       font-weight:900;
       text-decoration:none;
+      box-shadow:0 10px 24px rgba(0,0,0,.20);
     }
+
+    .cta:hover{opacity:.92}
 
     footer{
       margin-top:80px;
       font-size:14px;
-      opacity:.8;
+      opacity:.85;
       display:flex;
       justify-content:space-between;
       flex-wrap:wrap;
+      gap:10px;
     }
 
     footer a{
@@ -120,18 +170,19 @@
 
     @media (max-width:800px){
       .plans{grid-template-columns:1fr}
+      .plan.pro{transform:none}
     }
-
   </style>
 </head>
 
 <body>
 <main class="wrap">
 
-  <h1>ChangeWise – Preise</h1>
-  <p class="lead">
+  <h1>Preis & Leistung</h1>
+
+  <div class="subheadline">
     Klarheit für Entscheidungen. Einmalig – oder systematisch im Team verankert.
-  </p>
+  </div>
 
   <h2>Was sich im Alltag unterscheidet</h2>
 
@@ -143,18 +194,18 @@
     </tr>
     <tr>
       <td>Arbeitsmodus</td>
-      <td>1 aktives Profil</td>
+      <td>1 aktives Brand/Voice-Profil</td>
       <td>5 aktive Profile · parallele Kontexte</td>
     </tr>
     <tr>
       <td>Team-Nutzung</td>
-      <td>Copy & Paste</td>
-      <td>Export-Sets: Update · Entscheid · Rollout</td>
+      <td>Copy &amp; Paste</td>
+      <td>Export-Sets (vordefiniert): Update · Entscheid · Rollout</td>
     </tr>
     <tr>
       <td>Wirkung über Zeit</td>
       <td>Kein Verlauf</td>
-      <td>History · Referenzierbar · Wiederverwendbar</td>
+      <td>History inkl. Referenzdatum · referenzierbar · wiederverwendbar</td>
     </tr>
   </table>
 
@@ -163,11 +214,30 @@
     Pro macht Klarheit wiederholbar – im Team und über Zeit.
   </div>
 
+  <!-- ✅ Pro links, Basic rechts -->
   <div class="plans">
+
+    <div class="plan pro">
+      <h3>Pro (Team)</h3>
+      <div class="price">€198 / Monat
+        <small>€1.980 / Jahr</small>
+      </div>
+      <ul>
+        <li>120 Briefs / Monat</li>
+        <li>5 Brand / Voice-Profile</li>
+        <li>Vollständige Template- &amp; Playbook-Library</li>
+        <li>Review-Gate (leicht)</li>
+        <li>History &amp; Wiederverwendung</li>
+        <li>Export-Sets (Update · Entscheid · Rollout)</li>
+      </ul>
+      <a href="/contact_changewise.html" class="cta">Pro starten</a>
+    </div>
 
     <div class="plan">
       <h3>Basic (Team)</h3>
-      <div class="price">€48 / Monat<br>€480 / Jahr</div>
+      <div class="price">€48 / Monat
+        <small>€480 / Jahr</small>
+      </div>
       <ul>
         <li>20 Briefs / Monat</li>
         <li>1 Brand / Voice-Profil</li>
@@ -176,20 +246,6 @@
         <li>Team-Nutzung (Mail, Meeting, Update)</li>
       </ul>
       <a href="/contact_changewise.html" class="cta">Basic starten</a>
-    </div>
-
-    <div class="plan">
-      <h3>Pro (Team)</h3>
-      <div class="price">€198 / Monat<br>€1.980 / Jahr</div>
-      <ul>
-        <li>120 Briefs / Monat</li>
-        <li>5 Brand / Voice-Profile</li>
-        <li>Vollständige Template- & Playbook-Library</li>
-        <li>Review-Gate (leicht)</li>
-        <li>History & Wiederverwendung</li>
-        <li>Export-Sets (Update · Entscheid · Rollout)</li>
-      </ul>
-      <a href="/contact_changewise.html" class="cta">Pro starten</a>
     </div>
 
   </div>
