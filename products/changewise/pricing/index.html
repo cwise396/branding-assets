@@ -109,15 +109,21 @@
       position:relative;
     }
 
-    /* ✅ Subtiler Pro-Boost: helleres Panel, etwas stärkere Border, leichter Lift, softer Glow */
     .plan.pro{
-      background:var(--panel-strong);
-      border:1px solid var(--border-strong);
-      box-shadow:var(--pro-glow);
-      transform:translateY(-4px);
-    }
+  background: linear-gradient(
+    160deg,
+    rgba(255,255,255,.20) 0%,
+    rgba(255,255,255,.12) 55%,
+    rgba(255,255,255,.10) 100%
+  );
+  border:1px solid rgba(255,255,255,.32);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.08),
+    0 20px 60px rgba(0,0,0,.38);
+  transform:translateY(-4px);
+}
 
-    .plan h3{
+     .plan h3{
       margin:0;
       color:#fff;
       font-weight:900;
@@ -199,13 +205,13 @@
 
 
 .brand-logo{
-  height:100px;
+  height:102px;
   width:auto;
   display:block;
   background:#fff;
   padding:6px;
   border-radius:50%;
-  box-shadow:0 4px 14px rgba(0,0,0,.12);
+  box-shadow:0 6px 18px rgba(0,0,0,.15);
 }
 
 @media (max-width:640px){
