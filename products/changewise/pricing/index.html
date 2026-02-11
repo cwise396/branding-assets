@@ -1,182 +1,208 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Preise – ChangeWise</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Preise – ChangeWise</title>
+  <meta name="description" content="ChangeWise Pricing: Basic und Pro im Vergleich. Klarheit für Entscheidungen – einmalig oder systematisch im Team verankert." />
 
-<style>
-:root{
-  --bg:#0E3960;
-  --text:#E5E7EB;
-  --panel:rgba(255,255,255,.08);
-  --border:rgba(255,255,255,.18);
-  --accent:#FFFFFF;
-}
+  <style>
+    :root{
+      --bg:#0E3960;
+      --panel:rgba(255,255,255,.12);
+      --text:#E5E7EB;
+      --muted:#9FB0C3;
+      --border:rgba(255,255,255,.18);
+      --accent:#FFFFFF;
+    }
 
-body{
-  margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.55;
-}
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
 
-.wrap{max-width:1100px;margin:0 auto;padding:60px 20px}
+    .wrap{max-width:980px;margin:0 auto;padding:60px 20px 80px}
 
-h1{font-size:36px;margin:0 0 10px}
-.sub{opacity:.9;margin-bottom:40px}
+    h1{font-size:36px;margin:0 0 8px;color:#fff}
+    h2{margin:50px 0 20px;color:#fff}
+    p.lead{color:#fff;opacity:.9}
 
-.plans{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:24px;
-}
+    /* Vergleichsblock */
+    .compare-intro{
+      margin-top:40px;
+      font-weight:800;
+      font-size:18px;
+      line-height:1.4;
+    }
 
-.card{
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:28px;
-}
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:24px;
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:14px;
+      overflow:hidden;
+    }
 
-.price{
-  font-size:32px;
-  font-weight:900;
-  margin:12px 0;
-}
+    th,td{
+      padding:14px;
+      text-align:left;
+      border-bottom:1px solid var(--border);
+    }
 
-.small{opacity:.8;font-size:14px;margin-bottom:20px}
+    th{font-weight:900;color:#fff}
+    td{color:#fff}
 
-ul{padding-left:18px;margin:0}
-li{margin:6px 0}
+    tr:last-child td{border-bottom:none}
 
-.cta{
-  margin-top:20px;
-}
+    .transition{
+      margin:36px 0 10px;
+      font-weight:900;
+      font-size:20px;
+      line-height:1.4;
+    }
 
-.btn{
-  display:inline-block;
-  padding:12px 16px;
-  background:#fff;
-  color:#0E3960;
-  font-weight:900;
-  border-radius:12px;
-  text-decoration:none;
-}
+    /* Preis-Karten */
+    .plans{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+      margin-top:24px;
+    }
 
-.compare{
-  margin-top:60px;
-}
+    .plan{
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:28px;
+    }
 
-table{
-  width:100%;
-  border-collapse:collapse;
-  margin-top:20px;
-}
+    .price{
+      font-size:28px;
+      font-weight:900;
+      margin:10px 0 20px;
+      color:#fff;
+    }
 
-th, td{
-  border:1px solid var(--border);
-  padding:12px;
-  text-align:left;
-}
+    ul{padding-left:18px}
+    li{margin-bottom:8px}
 
-th{
-  background:rgba(255,255,255,.12);
-}
+    .cta{
+      margin-top:20px;
+      display:inline-block;
+      padding:12px 16px;
+      border-radius:12px;
+      background:#fff;
+      color:#0E3960;
+      font-weight:900;
+      text-decoration:none;
+    }
 
-.note{
-  margin-top:30px;
-  font-weight:600;
-}
-</style>
+    footer{
+      margin-top:80px;
+      font-size:14px;
+      opacity:.8;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+
+    footer a{
+      color:#fff;
+      text-decoration:none;
+      margin-right:10px;
+    }
+
+    @media (max-width:800px){
+      .plans{grid-template-columns:1fr}
+    }
+
+  </style>
 </head>
 
 <body>
 <main class="wrap">
 
-<h1>Preise</h1>
-<p class="sub">
-Basic liefert Klarheit für konkrete Situationen.<br>
-Pro sorgt dafür, dass diese Klarheit im Team bleibt, wiederverwendbar ist und nicht jedes Mal neu entstehen muss.
-</p>
+  <h1>ChangeWise – Preise</h1>
+  <p class="lead">
+    Klarheit für Entscheidungen. Einmalig – oder systematisch im Team verankert.
+  </p>
 
-<div class="plans">
+  <h2>Was sich im Alltag unterscheidet</h2>
 
-<div class="card">
-<h2>Basic (Team)</h2>
-<div class="price">48€ / Monat</div>
-<div class="small">480€ / Jahr</div>
+  <table>
+    <tr>
+      <th>Dimension</th>
+      <th>Basic</th>
+      <th>Pro</th>
+    </tr>
+    <tr>
+      <td>Arbeitsmodus</td>
+      <td>1 aktives Profil</td>
+      <td>5 aktive Profile · parallele Kontexte</td>
+    </tr>
+    <tr>
+      <td>Team-Nutzung</td>
+      <td>Copy & Paste</td>
+      <td>Export-Sets: Update · Entscheid · Rollout</td>
+    </tr>
+    <tr>
+      <td>Wirkung über Zeit</td>
+      <td>Kein Verlauf</td>
+      <td>History · Referenzierbar · Wiederverwendbar</td>
+    </tr>
+  </table>
 
-<ul>
-<li>20 Briefs / Monat</li>
-<li>1 Brand / Voice-Profil</li>
-<li>Fokus · Ton · Kernbotschaft · Next Steps</li>
-<li>15 Basis-Templates</li>
-<li>Team-Nutzung inkl. (Mail, Meeting, Update)</li>
-</ul>
+  <div class="compare-intro">
+    Basic bringt Klarheit für die aktuelle Entscheidung.<br>
+    Pro macht Klarheit wiederholbar – im Team und über Zeit.
+  </div>
 
-<div class="cta">
-<a class="btn" href="/contact_changewise.html">Basic starten</a>
-</div>
-</div>
+  <div class="plans">
 
-<div class="card">
-<h2>Pro (Team)</h2>
-<div class="price">198€ / Monat</div>
-<div class="small">1.980€ / Jahr</div>
+    <div class="plan">
+      <h3>Basic (Team)</h3>
+      <div class="price">€48 / Monat<br>€480 / Jahr</div>
+      <ul>
+        <li>20 Briefs / Monat</li>
+        <li>1 Brand / Voice-Profil</li>
+        <li>Fokus · Ton · Kernbotschaft · Next Steps</li>
+        <li>15 Basis-Templates</li>
+        <li>Team-Nutzung (Mail, Meeting, Update)</li>
+      </ul>
+      <a href="/contact_changewise.html" class="cta">Basic starten</a>
+    </div>
 
-<ul>
-<li>120 Briefs / Monat</li>
-<li>5 Brand / Voice-Profile</li>
-<li>Vollständige Template- & Playbook-Library</li>
-<li>Review-Gate (light)</li>
-<li>History & Wiederverwendung</li>
-<li>Strukturierte Export-Sets</li>
-</ul>
+    <div class="plan">
+      <h3>Pro (Team)</h3>
+      <div class="price">€198 / Monat<br>€1.980 / Jahr</div>
+      <ul>
+        <li>120 Briefs / Monat</li>
+        <li>5 Brand / Voice-Profile</li>
+        <li>Vollständige Template- & Playbook-Library</li>
+        <li>Review-Gate (leicht)</li>
+        <li>History & Wiederverwendung</li>
+        <li>Export-Sets (Update · Entscheid · Rollout)</li>
+      </ul>
+      <a href="/contact_changewise.html" class="cta">Pro starten</a>
+    </div>
 
-<div class="cta">
-<a class="btn" href="/contact_changewise.html">Pro starten</a>
-</div>
-</div>
+  </div>
 
-</div>
-
-<div class="compare">
-<h2>Was sich im Alltag unterscheidet</h2>
-
-<table>
-<tr>
-<th>Dimension</th>
-<th>Basic</th>
-<th>Pro</th>
-</tr>
-
-<tr>
-<td>Arbeitsmodus</td>
-<td>1 aktives Profil</td>
-<td>5 aktive Profile · parallele Kontexte</td>
-</tr>
-
-<tr>
-<td>Team-Nutzung</td>
-<td>Copy & Paste</td>
-<td>Export-Sets: Update · Entscheid · Rollout</td>
-</tr>
-
-<tr>
-<td>Wirkung über Zeit</td>
-<td>Kein Verlauf</td>
-<td>History · Referenzierbar · Wiederverwendbar</td>
-</tr>
-
-</table>
-
-<p class="note">
-Pro macht nicht „mehr Features“ – es reduziert Reibung und macht Klarheit systematisch nutzbar.
-</p>
-
-</div>
+  <footer>
+    <div>
+      <a href="/impressum.html">Impressum</a>
+      <a href="/datenschutz.html">Datenschutz</a>
+    </div>
+    <div>
+      © ChangeWise · SlackDigest · TaskSieve
+    </div>
+  </footer>
 
 </main>
 </body>
