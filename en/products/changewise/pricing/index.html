@@ -128,17 +128,31 @@
       color:#fff;
       letter-spacing:-.2px;
     }
+.billing-toggle{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin:28px 0 10px;
+}
 
-    .price small{
-      display:block;
-      margin-top:8px;
-      font-size:20px;
-      font-weight:900;
-      letter-spacing:-.2px;
-      color:#fff;
-      opacity:1;
-    }
-.value-confirmation{
+.toggle-btn{
+  padding:8px 14px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.25);
+  background:rgba(255,255,255,.08);
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+  transition:all .2s ease;
+}
+
+.toggle-btn.active{
+  background:#fff;
+  color:#0E3960;
+  border-color:#fff;
+}
+
+     .value-confirmation{
   margin-top:10px;
   font-weight:900;
   font-size:18px;
@@ -272,14 +286,20 @@
 <div class="value-confirmation">
   Because clarity creates lasting impact.
 </div>
+<div class="billing-toggle">
+  <button class="toggle-btn active" data-billing="monthly">Monthly</button>
+  <button class="toggle-btn" data-billing="yearly">Yearly</button>
+</div>
 
 <div class="plans">
 
   <div class="plan pro">
     <h3>Pro (Team)</h3>
-    <div class="price">€198 / month
-      <small>€1,980 / year</small>
-    </div>
+    <div class="price">
+  <span class="monthly">€198 / month</span>
+  <span class="yearly" style="display:none;">€1,980 / year</span>
+</div>
+
     <ul>
       <li>120 briefs / month</li>
       <li>5 brand / voice profiles</li>
@@ -293,9 +313,10 @@
 
   <div class="plan">
     <h3>Basic (Team)</h3>
-    <div class="price">€48 / month
-      <small>€480 / year</small>
-    </div>
+   <div class="price">
+  <span class="monthly">€48 / month</span>
+  <span class="yearly" style="display:none;">€480 / year</span>
+</div>
     <ul>
       <li>20 briefs / month</li>
       <li>1 brand / voice profile</li>
@@ -316,8 +337,31 @@
   <div>
     © ChangeWise · SlackDigest · TaskSieve
   </div>
-</footer>
+  </footer>
 
 </main>
+
+<script>
+document.querySelectorAll('.toggle-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+
+    document.querySelectorAll('.toggle-btn')
+      .forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+
+    const billing = this.dataset.billing;
+
+    document.querySelectorAll('.price').forEach(price => {
+      price.querySelector('.monthly').style.display =
+        billing === 'monthly' ? 'inline' : 'none';
+      price.querySelector('.yearly').style.display =
+        billing === 'yearly' ? 'inline' : 'none';
+    });
+
+  });
+});
+</script>
+
 </body>
 </html>
+
