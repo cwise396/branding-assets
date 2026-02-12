@@ -47,19 +47,14 @@
       color:#fff;
     }
 
-    h2{
-      margin:34px 0 16px;
-      color:#fff;
+    /* smaller section headline (match subheadline weight/size better) */
+    .section-title{
+      margin:34px 0 14px;
+      font-size:20px;
       font-weight:900;
       letter-spacing:-.2px;
+      color:#fff;
     }
-/* smaller section headline (match subheadline weight/size better) */
-.section-title{
-  margin:34px 0 14px;
-  font-size:20px;     /* wie Subheadline-Größe */
-  font-weight:900;
-  letter-spacing:-.2px;
-}
 
     /* Vergleich */
     table{
@@ -92,12 +87,46 @@
       color:#fff;
     }
 
+    .value-confirmation{
+      margin-top:10px;
+      font-weight:900;
+      font-size:18px;
+      letter-spacing:-.2px;
+      color:#fff;
+      opacity:.95;
+    }
+
+    /* Toggle */
+    .billing-toggle{
+      display:flex;
+      gap:8px;
+      margin:35px 0 25px;
+    }
+
+    .toggle-btn{
+      padding:8px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.35);
+      background:#fff;              /* Default = weiß */
+      color:#0E3960;                /* Text blau */
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    /* ✅ Monatlich soll aktiv (blau) sein */
+    .toggle-btn.active{
+      background:#0E3960;           /* Blau */
+      color:#fff;                   /* Weißer Text */
+      border:1px solid rgba(255,255,255,.55);
+      box-shadow:0 10px 24px rgba(0,0,0,.22);
+    }
+
     /* Preis-Karten */
     .plans{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:24px;
-      margin-top:45px;
+      margin-top:45px; /* mehr Luft zwischen Intro und Cards */
     }
 
     .plan{
@@ -110,40 +139,20 @@
     }
 
     .plan.pro{
-  background: linear-gradient(
-    160deg,
-    rgba(255,255,255,.20) 0%,
-    rgba(255,255,255,.12) 55%,
-    rgba(255,255,255,.10) 100%
-  );
-  border:1px solid rgba(255,255,255,.32);
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,.08),
-    0 20px 60px rgba(0,0,0,.38);
-  transform:translateY(-4px);
-}
-.billing-toggle{
-  display:flex;
-  gap:8px;
-  margin:35px 0 25px;
-}
+      background: linear-gradient(
+        160deg,
+        rgba(255,255,255,.20) 0%,
+        rgba(255,255,255,.12) 55%,
+        rgba(255,255,255,.10) 100%
+      );
+      border:1px solid rgba(255,255,255,.32);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.08),
+        0 20px 60px rgba(0,0,0,.38);
+      transform:translateY(-4px);
+    }
 
-.toggle-btn{
-  padding:8px 14px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.35);
-  background:transparent;
-  color:#fff;
-  font-weight:800;
-  cursor:pointer;
-}
-
-.toggle-btn.active{
-  background:#fff;
-  color:#0E3960;
-}
-
-     .plan h3{
+    .plan h3{
       margin:0;
       color:#fff;
       font-weight:900;
@@ -158,34 +167,28 @@
       letter-spacing:-.2px;
     }
 
-  .price small{
-  display:block;
-  margin-top:8px;
-  font-size:20px;        /* deutlich größer */
-  font-weight:900;       /* fett */
-  letter-spacing:-.2px;
-  color:#fff;
-  opacity:1;
-}
-.savings{
-  display:block;
-  margin-top:6px;
-  font-size:12px;
-  font-weight:500;
-  color:rgba(255,255,255,.65);
-  letter-spacing:.3px;
-}
+    /* Jahrespreis: größer + fett */
+    .price .yearly{
+      font-size:32px;
+      font-weight:900;
+      letter-spacing:-.2px;
+      display:none; /* Default: Monatsansicht */
+    }
 
+    /* Monatspreis */
+    .price .monthly{
+      display:block;
+    }
 
-    .value-confirmation{
-  margin-top:10px;
-  font-weight:900;
-  font-size:18px;
-  letter-spacing:-.2px;
-  color:#fff;
-  opacity:.95;
-}
-
+    /* Savings: immer sichtbar, dezent premium */
+    .savings{
+      display:block;
+      margin-top:6px;
+      font-size:12px;
+      font-weight:600;
+      color:rgba(255,255,255,.70);
+      letter-spacing:.2px;
+    }
 
     ul{padding-left:18px;margin:0}
     li{margin:0 0 8px}
@@ -202,7 +205,6 @@
       text-decoration:none;
       box-shadow:0 10px 24px rgba(0,0,0,.20);
     }
-
     .cta:hover{opacity:.92}
 
     footer{
@@ -214,7 +216,6 @@
       flex-wrap:wrap;
       gap:10px;
     }
-
     footer a{
       color:#fff;
       text-decoration:none;
@@ -225,64 +226,60 @@
       .plans{grid-template-columns:1fr}
       .plan.pro{transform:none}
     }
-  /* Header with logo */
-.topline{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:16px;
-  margin-bottom:16px;
-}
 
-.head{max-width:680px}
+    /* Header with logo */
+    .topline{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:16px;
+      margin-bottom:16px;
+    }
 
-.brand-slot{
-  flex:0 0 auto;
-  margin-left:auto; /* <- dauerhaft: Logo rechts, fluchtet mit rechter Kante */
-}
+    .head{max-width:680px}
 
+    .brand-slot{
+      flex:0 0 auto;
+      margin-left:auto;
+    }
 
-.brand-logo{
-  height:102px;
-  width:auto;
-  display:block;
-  background:#fff;
-  padding:6px;
-  border-radius:50%;
-  box-shadow:0 6px 18px rgba(0,0,0,.15);
-}
+    .brand-logo{
+      height:102px;
+      width:auto;
+      display:block;
+      background:#fff;
+      padding:6px;
+      border-radius:50%;
+      box-shadow:0 6px 18px rgba(0,0,0,.15);
+    }
 
-@media (max-width:640px){
-  .topline{
-    flex-direction:row;      /* bleibt 2-spaltig */
-    align-items:flex-start;
-  }
-  .brand-logo{
-    height:84px;             /* optional: gleich lassen */
-  }
-}
-
-
+    @media (max-width:640px){
+      .topline{
+        flex-direction:row;
+        align-items:flex-start;
+      }
+      .brand-logo{height:84px}
+    }
   </style>
 </head>
 
 <body>
 <main class="wrap">
-<div class="topline">
-  <div class="head">
-    <h1>ChangeWise - Preis & Leistung</h1>
-    <div class="subheadline">
-      Klarheit für konkrete Entscheidungen – oder als dauerhaftes System im Team.
+
+  <div class="topline">
+    <div class="head">
+      <h1>ChangeWise - Preis & Leistung</h1>
+      <div class="subheadline">
+        Klarheit für konkrete Entscheidungen – oder als dauerhaftes System im Team.
+      </div>
+    </div>
+
+    <div class="brand-slot" aria-hidden="true">
+      <img class="brand-logo" src="/assets/brand/changewise_logo.svg" alt="ChangeWise Logo">
     </div>
   </div>
 
-  <div class="brand-slot" aria-hidden="true">
-    <img class="brand-logo" src="/assets/brand/changewise_logo.svg" alt="ChangeWise Logo">
-  </div>
-</div>
-
   <h2 class="section-title">Basic vs. Pro – der Unterschied im Alltag</h2>
-
 
   <table>
     <tr>
@@ -311,27 +308,28 @@
     Basic bringt Klarheit für die aktuelle Entscheidung.<br>
     Pro macht Klarheit wiederholbar – im Team und über Zeit.
   </div>
-<div class="value-confirmation">
-  Weil Klarheit Wirkung entfaltet.
-</div>
-<div class="billing-toggle">
-  <button class="toggle-btn active" data-billing="monthly">Monatlich</button>
-  <button class="toggle-btn" data-billing="yearly">Jährlich</button>
-</div>
+
+  <div class="value-confirmation">
+    Weil Klarheit Wirkung entfaltet.
+  </div>
+
+  <div class="billing-toggle" aria-label="Abrechnung umschalten">
+    <!-- ✅ Monatlich aktiv + blau hinterlegt -->
+    <button class="toggle-btn active" data-billing="monthly" type="button">Monatlich</button>
+    <button class="toggle-btn" data-billing="yearly" type="button">Jährlich</button>
+  </div>
 
   <!-- ✅ Pro links, Basic rechts -->
   <div class="plans">
 
     <div class="plan pro">
       <h3>Pro (Team)</h3>
-    <div class="price">
-  <span class="monthly">€198 / Monat</span>
-  <span class="yearly" style="display:none;">
-    €1.980 / Jahr
-   <span class="savings">396€ Ersparnis bei jährlicher Abrechnung</span>
-</span>
-</div>
 
+      <div class="price">
+        <span class="monthly">€198 / Monat</span>
+        <span class="yearly">€1.980 / Jahr</span>
+        <span class="savings">– 396€ gegenüber Monatszahlung</span>
+      </div>
 
       <ul>
         <li>120 Briefs / Monat</li>
@@ -341,19 +339,18 @@
         <li>History &amp; Wiederverwendung</li>
         <li>Export-Sets (Update · Entscheid · Rollout)</li>
       </ul>
+
       <a href="/contact_changewise.html" class="cta">Pro starten</a>
     </div>
 
     <div class="plan">
       <h3>Basic (Team)</h3>
-     <div class="price">
-  <span class="monthly">€48 / Monat</span>
-  <span class="yearly" style="display:none;">
-    €480 / Jahr
-   <span class="savings">96€ Ersparnis bei jährlicher Abrechnung</span>
- </span>
-</div>
 
+      <div class="price">
+        <span class="monthly">€48 / Monat</span>
+        <span class="yearly">€480 / Jahr</span>
+        <span class="savings">– 96€ gegenüber Monatszahlung</span>
+      </div>
 
       <ul>
         <li>20 Briefs / Monat</li>
@@ -362,30 +359,11 @@
         <li>15 Basis-Templates</li>
         <li>Team-Nutzung (Mail, Meeting, Update)</li>
       </ul>
+
       <a href="/contact_changewise.html" class="cta">Basic starten</a>
     </div>
 
   </div>
-<script>
-document.querySelectorAll('.toggle-btn').forEach(btn=>{
-  btn.addEventListener('click',function(){
-    document.querySelectorAll('.toggle-btn').forEach(b=>b.classList.remove('active'));
-    this.classList.add('active');
-
-    const billing=this.dataset.billing;
-    const monthly=document.querySelectorAll('.price-monthly');
-    const yearly=document.querySelectorAll('.price-yearly');
-
-    if(billing==='monthly'){
-      monthly.forEach(el=>el.style.display='block');
-      yearly.forEach(el=>el.style.display='none');
-    }else{
-      monthly.forEach(el=>el.style.display='none');
-      yearly.forEach(el=>el.style.display='block');
-    }
-  });
-});
-</script>
 
   <footer>
     <div>
@@ -398,17 +376,17 @@ document.querySelectorAll('.toggle-btn').forEach(btn=>{
   </footer>
 
 </main>
+
+<!-- ✅ Script: direkt vor </body> (nach </main>) -->
 <script>
-document.querySelectorAll('.toggle-btn').forEach(btn=>{
-  btn.addEventListener('click', function(){
-    document.querySelectorAll('.toggle-btn').forEach(b=>b.classList.remove('active'));
-    this.classList.add('active');
+(function(){
+  var buttons = document.querySelectorAll('.toggle-btn');
 
-    const mode = this.dataset.billing;
-
-    document.querySelectorAll('.price').forEach(price=>{
-      const monthly = price.querySelector('.monthly');
-      const yearly  = price.querySelector('.yearly');
+  function setBilling(mode){
+    document.querySelectorAll('.price').forEach(function(price){
+      var monthly = price.querySelector('.monthly');
+      var yearly  = price.querySelector('.yearly');
+      if(!monthly || !yearly) return;
 
       if(mode === 'monthly'){
         monthly.style.display = 'block';
@@ -418,8 +396,19 @@ document.querySelectorAll('.toggle-btn').forEach(btn=>{
         yearly.style.display  = 'block';
       }
     });
+  }
+
+  buttons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      buttons.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      setBilling(btn.getAttribute('data-billing'));
+    });
   });
-});
+
+  // Default state: monthly
+  setBilling('monthly');
+})();
 </script>
 
 </body>
