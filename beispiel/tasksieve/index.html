@@ -281,17 +281,22 @@
       .pro-badge{max-width:100%;white-space:normal}
       .cta .btn{width:100%;max-width:520px}
     }
-  .site-footer{
+.site-footer{
   margin-top:80px;
   font-size:14px;
   opacity:.9;
   text-align:center;
+  color:#fff;
 }
 
 .site-footer a{
-  color:#fff;
+  color:#fff !important;
   text-decoration:none;
   font-weight:500;
+}
+
+.site-footer a:visited{
+  color:#fff !important;
 }
 
 .site-footer a:hover{
@@ -415,14 +420,13 @@
       <span style="font-size:.85rem;opacity:.85">Pakete &amp; Unterschiede auf einen Blick</span>
     </a>
   </div>
-<footer>
-  <div>
-    <a href="/impressum.html">Impressum</a>
-    <a href="/datenschutz.html">Datenschutz</a>
-  </div>
-  <div>© ChangeWise · SlackDigest · TaskSieve</div>
+<footer class="site-footer">
+  <a href="/impressum.html">Impressum</a>
+  <span class="sep">·</span>
+  <a href="/datenschutz.html">Datenschutz</a>
+  <span class="sep">·</span>
+  © ChangeWise · SlackDigest · TaskSieve
 </footer>
-
 
 </main>
 </body>
