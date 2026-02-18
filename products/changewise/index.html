@@ -84,6 +84,39 @@ a{ color:#FFFFFF; text-decoration:none }
 .card a{ text-decoration:underline; text-underline-offset:2px; color:#FFFFFF }
 @media (max-width:960px){ .card{ grid-column:span 6 } }
 @media (max-width:640px){ .card{ grid-column:span 12 } }
+/* ✅ TaskSieve Produktseite: Mobile-only Logo kleiner + höher (Desktop bleibt unverändert) */
+@media (max-width:640px){
+
+  /* Hero etwas kompakter, damit Logo nicht "über der Karte hängt" */
+  .hero{
+    padding:0.9rem 1rem .35rem;
+    align-items:start; /* statt align-items:end */
+  }
+
+  /* Logo-Spalte: oben ausrichten (statt mittig) */
+  .logo-col{
+    align-items:flex-start;
+    justify-content:flex-end; /* sorgt für sauberes rechts oben */
+    padding-top:2px;
+  }
+
+  /* Logo kleiner */
+  .hero-logo-wrap{
+    width:84px;
+    height:84px;
+    border-width:4px;  /* etwas feiner als 5px */
+  }
+
+  /* Innenabstand proportional kleiner */
+  .hero-logo-inner{
+    /* bleibt 100%/100% – keine Änderung nötig */
+  }
+
+  /* Optional: Mini-Lift nach oben (sehr subtil) */
+  .hero-logo-wrap{
+    transform:translateY(-4px);
+  }
+}
 
 /* CTA BUTTON (weiß, blaue Schrift) */
 .btn{
