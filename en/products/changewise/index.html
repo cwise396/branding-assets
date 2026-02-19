@@ -258,28 +258,37 @@ a{
 @media (max-width:640px){
   .card{grid-column:span 12}
 }
-/* ✅ TaskSieve Produktseite: Mobile-only Logo kleiner + höher (Desktop bleibt unverändert) */
-@media (max-width:640px){
+/* ✅ ChangeWise: Mobile-only Logo kleiner + oben rechts (Desktop bleibt unverändert) */
+@media (max-width:520px){
 
-  /* Hero etwas kompakter, damit Logo nicht "über der Karte hängt" */
-  .hero{
-    padding:0.9rem 1rem .35rem;
-    align-items:start; /* statt align-items:end */
+  /* Hero etwas kompakter */
+  .hero{ padding-top:9mm; }
+
+  /* Layout wie SlackDigest: Text links, Logo rechts */
+  .hero-header{
+    grid-template-columns: 1fr auto;
+    align-items:start;
+    gap:.75rem;
   }
-
-  /* Logo-Spalte: oben ausrichten (statt mittig) */
+  .hero-text{ grid-column:1 / 2; max-width:100%; }
   .logo-col{
-    align-items:flex-start;
-    justify-content:flex-end; /* sorgt für sauberes rechts oben */
-    padding-top:2px;
+    grid-column:2 / 3;
+    justify-self:end;
+    align-self:start;
   }
 
   /* Logo kleiner */
-  .hero-logo-wrap{
-    width:84px;
-    height:84px;
-    border-width:4px;  /* etwas feiner als 5px */
+  .product-logo{ width:84px; height:84px; }
+  .product-logo .logo-ring{ width:84px; height:84px; }
+  .product-logo .logo-img{
+    width:74px; height:74px;
+    top:5px; left:5px;
   }
+
+  /* SVG im Ring sicher mitskalieren */
+  .product-logo .logo-ring svg{ width:84px; height:84px; }
+}
+
 
   /* Innenabstand proportional kleiner */
   .hero-logo-inner{
