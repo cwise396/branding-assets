@@ -267,6 +267,21 @@
     padding:.55rem .35rem;     /* enger */
     text-align:center;
   }
+ @media (max-width:520px){
+  /* Hero: Logo rechts oben statt mittig */
+  .hero{
+    align-items:start; /* statt center */
+  }
+
+  /* Badge-Zelle oben ausrichten + minimal nach oben ziehen */
+  .badge{
+    align-self:start;
+    justify-self:end;
+    margin-top:2px;          /* fein justierbar */
+    transform:translateY(-2px);
+  }
+}
+
   .th-label{
     display:inline-block;
     font-weight:900;
