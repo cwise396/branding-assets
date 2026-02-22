@@ -277,6 +277,66 @@ body{ overflow-x:hidden; }
       }
       .brand-logo{height:84px}
     }
+ /* Headline: Desktop bleibt normal, Mobile wird zweizeilig kontrolliert */
+h1{ margin:0 0 16px; }
+
+.h1-brand, .h1-title{ display:inline; } /* Desktop: eine Zeile möglich */
+.h1-title{ margin-left:.35rem; }
+
+@media (max-width:640px){
+  h1{
+    font-size:32px;
+    line-height:1.08;
+    margin-bottom:10px;
+  }
+  .h1-brand, .h1-title{
+    display:block;          /* Mobile: exakt 2 Zeilen */
+  }
+  .h1-title{ margin-left:0; }
+
+  /* Logo: leicht nach oben + links in den Block ziehen */
+  .brand-slot{ margin-left:auto; }
+  .brand-logo{
+    height:76px;            /* etwas kleiner = passt sauber neben 2 Zeilen */
+    padding:6px;
+    transform:translate(-6px,-6px);  /* nach links + oben */
+  }
+
+  /* Topline: vertikal mittig, damit Logo neben den zwei Zeilen sitzt */
+  .topline{
+    align-items:center;
+  }
+}
+ .scroll-hint{
+  margin:10px 0 6px;
+  font-size:.95rem;
+  font-weight:800;
+  color:#fff;
+  opacity:.9;
+}
+
+/* Rechts ein dezentes "weiter geht's" Gradient */
+.table-scroll{
+  position:relative;
+}
+
+.table-scroll::after{
+  content:"";
+  position:absolute;
+  top:0;
+  right:0;
+  width:44px;
+  height:100%;
+  pointer-events:none;
+  background:linear-gradient(to left, rgba(14,57,96,1), rgba(14,57,96,0));
+  opacity:.9;
+  display:none;
+}
+
+/* Nur auf Mobile anzeigen */
+@media (max-width:720px){
+  .table-scroll::after{ display:block; }
+} 
   </style>
 </head>
 
@@ -285,7 +345,7 @@ body{ overflow-x:hidden; }
 
   <div class="topline">
     <div class="head">
-      <h1>ChangeWise - Preis & Leistung</h1>
+      <h1><span class="h1-brand">ChangeWise</span><span class="h1-title">Preis &amp; Leistung</span></h1>
       <div class="subheadline">
         Klarheit für konkrete Entscheidungen – oder als dauerhaftes System im Team.
       </div>
@@ -297,7 +357,8 @@ body{ overflow-x:hidden; }
   </div>
 
   <h2 class="section-title">Basic vs. Pro – der Unterschied im Alltag</h2>
-<div class="table-scroll" role="region" aria-label="Pricing-Vergleich: Basic vs Pro">
+<p class="scroll-hint">→ Wische nach rechts für „Pro“</p>
+  <div class="table-scroll" role="region" aria-label="Pricing-Vergleich: Basic vs Pro">
   <table>
     <tr>
       <th>Dimension</th>
