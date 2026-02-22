@@ -74,7 +74,21 @@
       border-bottom:1px solid rgba(255,255,255,.14);
       vertical-align:top;
     }
+/* Mobile: nur die Vergleichstabelle darf horizontal scrollen */
+.table-scroll{
+  width:100%;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  border-radius:14px; /* damit es wie vorher aussieht */
+}
 
+/* Tabelle braucht eine Mindestbreite, damit Spalten nicht zerquetschen */
+.table-scroll table{
+  min-width:640px;
+}
+
+/* Optional: verhindert "Body-Scroll" durch Kleinkram (z.B. Schatten/Transform) */
+body{ overflow-x:hidden; }
     th{font-weight:900;color:#fff}
     td{color:#fff}
     tr:last-child td{border-bottom:none}
@@ -86,7 +100,10 @@
       line-height:1.4;
       color:#fff;
     }
-
+@media (max-width:520px){
+  .topline{ flex-direction:column; }
+  .brand-slot{ align-self:flex-end; }
+}
     .value-confirmation{
       margin-top:10px;
       font-weight:900;
@@ -280,7 +297,7 @@
   </div>
 
   <h2 class="section-title">Basic vs. Pro – der Unterschied im Alltag</h2>
-
+<div class="table-scroll" role="region" aria-label="Pricing-Vergleich: Basic vs Pro">
   <table>
     <tr>
       <th>Dimension</th>
@@ -303,7 +320,7 @@
       <td>History inkl. Referenzdatum · referenzierbar · wiederverwendbar</td>
     </tr>
   </table>
-
+</div>
   <div class="compare-intro">
     Basic bringt Klarheit für die aktuelle Entscheidung.<br>
     Pro macht Klarheit wiederholbar – im Team und über Zeit.
