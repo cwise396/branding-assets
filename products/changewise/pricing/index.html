@@ -139,7 +139,11 @@
     color:#fff;
     opacity:.9;
   }
-
+/* Nur auf Mobile sichtbar */
+@media (max-width:720px){
+  .scroll-hint{
+    display:block;
+  }
   .compare-intro{
     margin:22px 0 10px;
     font-weight:900;
@@ -344,6 +348,7 @@
 </div>
 
   <h2 class="section-title">Basic und Pro im direkten Vergleich</h2>
+<p class="scroll-hint">→ Wische nach rechts, um „Pro“ zu sehen</p>
    
 
   <div class="table-scroll" role="region" aria-label="Pricing-Vergleich: Basic vs Pro">
