@@ -220,7 +220,21 @@
     font-weight:900;
     letter-spacing:-.2px;
   }
+.plan-fit{
+  margin:6px 0 12px;
+  font-size:14px;
+  font-weight:600;
+  color:#fff;
+  opacity:.9;
+}
 
+.price-context{
+  margin:2px 0 14px;
+  font-size:13px;
+  font-weight:600;
+  color:#fff;
+  opacity:.82;
+}
   .price{
     font-size:28px;
     font-weight:900;
@@ -401,51 +415,63 @@
     <button class="toggle-btn active" data-billing="monthly" type="button">Monthly</button>
     <button class="toggle-btn" data-billing="yearly" type="button">Yearly</button>
   </div>
+<div class="plans">
 
-  <div class="plans">
+  <!-- PRO PLAN -->
+  <div class="plan pro">
 
-    <div class="plan pro">
-      <h3>Pro (Team scale)</h3>
+    <h3>Pro (Team scale)</h3>
+    <p class="plan-fit">For teams that need consistent alignment.</p>
 
-      <div class="price">
-        <span class="monthly">€198 per month</span>
-        <span class="yearly">€1,980 per year</span>
-        <span class="savings">Save €396 with yearly billing</span>
-      </div>
-
-      <ul>
-        <li>Complete template &amp; playbook library</li>
-        <li>5 brand / voice profiles</li>
-        <li>Export sets (update · decision · rollout)</li>
-        <li>History &amp; reuse</li>
-        <li>Optional review gate</li>
-        <li>Up to 120 briefs per month</li>
-      </ul>
-
-      <a href="/en/contact_changewise.html" class="cta">Activate Pro</a>
+    <div class="price">
+      <span class="monthly">€198 per month</span>
+      <span class="yearly">€1,980 per year</span>
+      <span class="savings">Save €396 with yearly billing</span>
     </div>
 
-    <div class="plan">
-      <h3>Basic (Start here)</h3>
+    <p class="price-context">Designed for recurring team use.</p>
 
-      <div class="price">
-        <span class="monthly">€48 per month</span>
-        <span class="yearly">€480 per year</span>
-        <span class="savings">Save €96 with yearly billing</span>
-      </div>
+    <ul>
+      <li>Complete template &amp; playbook library</li>
+      <li>5 brand / voice profiles</li>
+      <li>Export sets (update · decision · rollout)</li>
+      <li>History &amp; reuse</li>
+      <li>Optional review gate</li>
+      <li>Up to 120 briefs per month</li>
+    </ul>
 
-      <ul>
-        <li>Focus · tone · core message · next steps</li>
-        <li>15 ready-to-use templates</li>
-        <li>Ready to use (mail · meeting · update)</li>
-        <li>1 brand / voice profile</li>
-        <li>Up to 20 briefs per month</li>
-      </ul>
-
-      <a href="/en/contact_changewise.html" class="cta">Start with Basic</a>
-    </div>
+    <a href="/en/contact_changewise.html" class="cta">Activate Pro</a>
 
   </div>
+
+
+  <!-- BASIC PLAN -->
+  <div class="plan">
+
+    <h3>Basic (Start here)</h3>
+    <p class="plan-fit">For individual decisions and smaller contexts.</p>
+
+    <div class="price">
+      <span class="monthly">€48 per month</span>
+      <span class="yearly">€480 per year</span>
+      <span class="savings">Save €96 with yearly billing</span>
+    </div>
+
+    <p class="price-context">Best for focused individual use.</p>
+
+    <ul>
+      <li>Focus · tone · core message · next steps</li>
+      <li>15 ready-to-use templates</li>
+      <li>Ready for team use (mail · meeting · updates)</li>
+      <li>1 brand / voice profile</li>
+      <li>Up to 20 briefs per month</li>
+    </ul>
+
+    <a href="/en/contact_changewise.html" class="cta">Start with Basic</a>
+
+  </div>
+
+</div>
 
   <footer>
     <div>
