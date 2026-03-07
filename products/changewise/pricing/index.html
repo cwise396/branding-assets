@@ -90,6 +90,16 @@
     color:#fff;
   }
 
+  /* Scroll-Hinweis: nur mobil sichtbar */
+  .scroll-hint{
+    display:none;
+    margin:10px 0 6px;
+    font-size:.95rem;
+    font-weight:800;
+    color:#fff;
+    opacity:.9;
+  }
+
   /* Vergleichstabelle */
   .table-scroll{
     width:100%;
@@ -132,22 +142,20 @@
     border-bottom:none;
   }
 
-  
-.scroll-hint{
-  display:none;
-  margin:10px 0 6px;
-  font-size:.95rem;
-  font-weight:800;
-  color:#fff;
-  opacity:.9;
-}
-
-/* Nur auf Mobile sichtbar */
-@media (max-width:720px){
-  .scroll-hint{
-    display:block;
+  /* Erste Spalte fixieren */
+  .table-scroll th:first-child,
+  .table-scroll td:first-child{
+    position:sticky;
+    left:0;
+    background:var(--panel);
+    z-index:2;
+    border-right:1px solid rgba(255,255,255,.12);
   }
- 
+
+  .table-scroll th:first-child{
+    z-index:3;
+  }
+
   .compare-intro{
     margin:22px 0 10px;
     font-weight:900;
@@ -306,6 +314,12 @@
     .plan.pro{transform:none}
   }
 
+  @media (max-width:720px){
+    .scroll-hint{
+      display:block;
+    }
+  }
+
   @media (max-width:640px){
     .topline{
       display:flex;
@@ -322,7 +336,7 @@
     .brand-logo{
       height:75px;
       padding:4px;
-    
+    }
   }
 
   /* Pfeil nur mobil im Tabellen-Header */
@@ -334,25 +348,8 @@
   @media (min-width:721px){
     .scroll-hint-header::after{
       content:"";
-  /* Erste Spalte der Tabelle fixieren */
-.table-scroll th:first-child,
-.table-scroll td:first-child{
-  position:sticky;
-  left:0;
-  background:var(--panel);
-  z-index:2;
-}
-
-/* Header etwas stärker */
-.table-scroll th:first-child{
-  z-index:3;
-  
     }
- .table-scroll th:first-child,
-.table-scroll td:first-child{
-  border-right:1px solid rgba(255,255,255,.12);
-}
-    }
+  }
 </style>
 </head>
 
