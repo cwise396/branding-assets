@@ -214,52 +214,71 @@
     transform:translateY(-4px);
   }
 
-  .plan h3{
-    margin:0;
-    color:#fff;
-    font-weight:900;
-    letter-spacing:-.2px;
-  }
+.plan h3{
+  margin:0;
+  color:#fff;
+  font-weight:900;
+  letter-spacing:-.2px;
+}
+
 .plan-fit{
-  margin:6px 0 12px;
+  margin:4px 0 8px;
   font-size:14px;
   font-weight:600;
   color:#fff;
   opacity:.9;
+  line-height:1.35;
 }
 
- 
-  .price{
-    font-size:28px;
-    font-weight:900;
-    margin:10px 0 16px;
-    color:#fff;
-    letter-spacing:-.2px;
-  }
-/* NEW: Price context under price */
+.price{
+  font-size:28px;
+  font-weight:900;
+  margin:10px 0 12px;
+  color:#fff;
+  letter-spacing:-.2px;
+}
+
 .price-context{
-  margin:2px 0 14px;
+  margin:0 0 4px;
   font-size:13px;
   font-weight:600;
   color:#fff;
   opacity:.82;
+  line-height:1.35;
 }
- .value-anchor{
-  margin:0 0 14px;
+
+.value-anchor{
+  margin:0 0 10px;
   font-size:13px;
   color:#fff;
   opacity:.75;
+  line-height:1.35;
 }
-  .price .yearly{
-    font-size:32px;
-    font-weight:900;
-    letter-spacing:-.2px;
-    display:none;
+
+@media (max-width:640px){
+  .plan-fit{
+    margin:6px 0 10px;
   }
 
-  .price .monthly{
-    display:block;
+  .price-context{
+    margin:2px 0 6px;
   }
+
+  .value-anchor{
+    margin:0 0 12px;
+  }
+
+ }
+.price .yearly{
+  font-size:32px;
+  font-weight:900;
+  letter-spacing:-.2px;
+  display:none;
+}
+
+.price .monthly{
+  display:block;
+}
 
   .savings{
     display:block;
