@@ -5,362 +5,330 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Preis & Leistung – ChangeWise</title>
   <meta name="description" content="ChangeWise Pricing: Basic und Pro im Vergleich. Klarheit für Entscheidungen – einmalig oder systematisch im Team verankert." />
+<style>
+  :root{
+    --bg:#0E3960;
+    --panel:rgba(255,255,255,.12);
+    --panel-strong:rgba(255,255,255,.16);
+    --text:#E5E7EB;
+    --muted:#9FB0C3;
+    --border:rgba(255,255,255,.18);
+    --border-strong:rgba(255,255,255,.28);
+    --shadow:0 18px 50px rgba(0,0,0,.28);
+    --shadow-soft:0 10px 28px rgba(0,0,0,.22);
+    --pro-glow:0 0 0 1px rgba(255,255,255,.10), 0 18px 60px rgba(0,0,0,.35);
+  }
 
-  <style>
-    :root{
-      --bg:#0E3960;
-      --panel:rgba(255,255,255,.12);
-      --panel-strong:rgba(255,255,255,.16);
-      --text:#E5E7EB;
-      --muted:#9FB0C3;
-      --border:rgba(255,255,255,.18);
-      --border-strong:rgba(255,255,255,.28);
-      --shadow:0 18px 50px rgba(0,0,0,.28);
-      --shadow-soft:0 10px 28px rgba(0,0,0,.22);
-      --pro-glow:0 0 0 1px rgba(255,255,255,.10), 0 18px 60px rgba(0,0,0,.35);
-    }
+  *{box-sizing:border-box}
 
-    *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.55;
+    overflow-x:hidden;
+  }
 
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.55;
-      overflow-x:hidden;
-    }
+  .wrap{
+    max-width:980px;
+    margin:0 auto;
+    padding:60px 20px 80px;
+  }
 
-    .wrap{
-      max-width:980px;
-      margin:0 auto;
-      padding:60px 20px 80px;
-    }
+  /* Header */
+  .topline{
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:16px;
+    align-items:flex-start;
+  }
 
-    h1{
-      font-size:36px;
-      margin:0 0 16px;
-      color:#fff;
-      font-weight:900;
-      letter-spacing:-.3px;
-    }
+  .head{
+    max-width:680px;
+  }
 
-    .subheadline{
-      font-size:20px;
-      font-weight:900;
-      margin-bottom:34px;
-      line-height:1.4;
-      color:#fff;
-    }
+  .title{
+    font-size:34px;
+    font-weight:900;
+    letter-spacing:-.4px;
+    margin:0;
+    color:#fff;
+  }
 
-    .section-title{
-      margin:34px 0 14px;
-      font-size:20px;
-      font-weight:900;
-      letter-spacing:-.2px;
-      color:#fff;
-    }
+  .subttl{
+    font-size:18px;
+    font-weight:700;
+    margin-top:4px;
+    color:#fff;
+  }
 
-    /* Vergleichstabelle */
-    .table-scroll{
-      width:100%;
-      position:relative;
-      overflow-x:auto;
-      -webkit-overflow-scrolling:touch;
-      border:1px solid var(--border);
-      border-radius:14px;
-      box-shadow:var(--shadow-soft);
-      background:var(--panel);
-    }
+  .sub{
+    margin:12px 0 0;
+    font-size:14px;
+    color:#fff;
+    opacity:.92;
+  }
 
-    table{
-      width:100%;
-      min-width:640px;
-      border-collapse:collapse;
-      margin-top:0;
-      background:transparent;
-      border:none;
-      box-shadow:none;
-    }
+  .brand-logo{
+    height:96px;
+    width:auto;
+    display:block;
+    background:#fff;
+    padding:6px;
+    border-radius:50%;
+    box-shadow:0 4px 18px rgba(0,0,0,.15);
+    flex:0 0 auto;
+  }
 
-    th,td{
-      padding:14px;
-      text-align:left;
-      border-bottom:1px solid rgba(255,255,255,.14);
-      vertical-align:top;
-    }
+  .section-title{
+    margin:34px 0 14px;
+    font-size:20px;
+    font-weight:900;
+    letter-spacing:-.2px;
+    color:#fff;
+  }
 
-    th{
-      font-weight:900;
-      color:#fff;
-    }
+  /* Vergleichstabelle */
+  .table-scroll{
+    width:100%;
+    position:relative;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    border:1px solid var(--border);
+    border-radius:14px;
+    box-shadow:var(--shadow-soft);
+    background:var(--panel);
+  }
 
-    td{
-      color:#fff;
-    }
+  table{
+    width:100%;
+    min-width:640px;
+    border-collapse:collapse;
+    margin-top:0;
+    background:transparent;
+    border:none;
+    box-shadow:none;
+  }
 
-    tr:last-child td{
-      border-bottom:none;
-    }
+  th,td{
+    padding:14px;
+    text-align:left;
+    border-bottom:1px solid rgba(255,255,255,.14);
+    vertical-align:top;
+  }
 
-    .scroll-hint{
-      margin:10px 0 6px;
-      font-size:.95rem;
-      font-weight:800;
-      color:#fff;
-      opacity:.9;
-    }
+  th{
+    font-weight:900;
+    color:#fff;
+  }
 
-    .compare-intro{
-      margin:22px 0 10px;
-      font-weight:900;
-      font-size:20px;
-      line-height:1.4;
-      color:#fff;
-    }
+  td{
+    color:#fff;
+  }
 
-    .value-confirmation{
-      margin-top:10px;
-      font-weight:900;
-      font-size:18px;
-      letter-spacing:-.2px;
-      color:#fff;
-      opacity:.95;
-    }
+  tr:last-child td{
+    border-bottom:none;
+  }
 
-    /* Toggle */
-    .billing-toggle{
-      display:flex;
-      gap:8px;
-      margin:35px 0 25px;
-    }
+  .scroll-hint{
+    margin:10px 0 6px;
+    font-size:.95rem;
+    font-weight:800;
+    color:#fff;
+    opacity:.9;
+  }
 
-    .toggle-btn{
-      padding:8px 14px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.35);
-      background:#fff;
-      color:#0E3960;
-      font-weight:900;
-      cursor:pointer;
-    }
+  .compare-intro{
+    margin:22px 0 10px;
+    font-weight:900;
+    font-size:20px;
+    line-height:1.4;
+    color:#fff;
+  }
 
-    .toggle-btn.active{
-      background:#0E3960;
-      color:#fff;
-      border:1px solid rgba(255,255,255,.55);
-      box-shadow:0 10px 24px rgba(0,0,0,.22);
-    }
+  .value-confirmation{
+    margin-top:10px;
+    font-weight:900;
+    font-size:18px;
+    letter-spacing:-.2px;
+    color:#fff;
+    opacity:.95;
+  }
 
-    /* Preis-Karten */
-    .plans{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:24px;
-      margin-top:45px;
-    }
+  /* Toggle */
+  .billing-toggle{
+    display:flex;
+    gap:8px;
+    margin:35px 0 25px;
+  }
 
-    .plan{
-      background:var(--panel);
-      border:1px solid var(--border);
-      border-radius:18px;
-      padding:28px;
-      box-shadow:var(--shadow-soft);
-      position:relative;
-    }
+  .toggle-btn{
+    padding:8px 14px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,.35);
+    background:#fff;
+    color:#0E3960;
+    font-weight:900;
+    cursor:pointer;
+  }
 
-    .plan.pro{
-      background:linear-gradient(
-        160deg,
-        rgba(255,255,255,.20) 0%,
-        rgba(255,255,255,.12) 55%,
-        rgba(255,255,255,.10) 100%
-      );
-      border:1px solid rgba(255,255,255,.32);
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,.08),
-        0 20px 60px rgba(0,0,0,.38);
-      transform:translateY(-4px);
-    }
+  .toggle-btn.active{
+    background:#0E3960;
+    color:#fff;
+    border:1px solid rgba(255,255,255,.55);
+    box-shadow:0 10px 24px rgba(0,0,0,.22);
+  }
 
-    .plan h3{
-      margin:0;
-      color:#fff;
-      font-weight:900;
-      letter-spacing:-.2px;
-    }
+  /* Preis-Karten */
+  .plans{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+    margin-top:45px;
+  }
 
-    .price{
-      font-size:28px;
-      font-weight:900;
-      margin:10px 0 16px;
-      color:#fff;
-      letter-spacing:-.2px;
-    }
+  .plan{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:28px;
+    box-shadow:var(--shadow-soft);
+    position:relative;
+  }
 
-    .price .yearly{
-      font-size:32px;
-      font-weight:900;
-      letter-spacing:-.2px;
-      display:none;
-    }
+  .plan.pro{
+    background:linear-gradient(
+      160deg,
+      rgba(255,255,255,.20) 0%,
+      rgba(255,255,255,.12) 55%,
+      rgba(255,255,255,.10) 100%
+    );
+    border:1px solid rgba(255,255,255,.32);
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,.08),
+      0 20px 60px rgba(0,0,0,.38);
+    transform:translateY(-4px);
+  }
 
-    .price .monthly{
-      display:block;
-    }
+  .plan h3{
+    margin:0;
+    color:#fff;
+    font-weight:900;
+    letter-spacing:-.2px;
+  }
 
-    .savings{
-      display:block;
-      margin-top:6px;
-      font-size:12px;
-      font-weight:600;
-      color:rgba(255,255,255,.70);
-      letter-spacing:.2px;
-    }
+  .price{
+    font-size:28px;
+    font-weight:900;
+    margin:10px 0 16px;
+    color:#fff;
+    letter-spacing:-.2px;
+  }
 
-    ul{
-      padding-left:18px;
-      margin:0;
-    }
+  .price .yearly{
+    font-size:32px;
+    font-weight:900;
+    letter-spacing:-.2px;
+    display:none;
+  }
 
-    li{
-      margin:0 0 8px;
-    }
+  .price .monthly{
+    display:block;
+  }
 
-    li:last-child{
-      margin-bottom:0;
-    }
+  .savings{
+    display:block;
+    margin-top:6px;
+    font-size:12px;
+    font-weight:600;
+    color:rgba(255,255,255,.70);
+    letter-spacing:.2px;
+  }
 
-    .cta{
-      margin-top:18px;
-      display:inline-block;
-      padding:12px 16px;
-      border-radius:12px;
-      background:#fff;
-      color:#0E3960;
-      font-weight:900;
-      text-decoration:none;
-      box-shadow:0 10px 24px rgba(0,0,0,.20);
-    }
+  ul{
+    padding-left:18px;
+    margin:0;
+  }
 
-    .cta:hover{
-      opacity:.92;
-    }
+  li{
+    margin:0 0 8px;
+  }
 
-    footer{
-      margin-top:80px;
-      font-size:14px;
-      opacity:.85;
-      display:flex;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      gap:10px;
-    }
+  li:last-child{
+    margin-bottom:0;
+  }
 
-    footer a{
-      color:#fff;
-      text-decoration:none;
-      margin-right:10px;
-    }
+  .cta{
+    margin-top:18px;
+    display:inline-block;
+    padding:12px 16px;
+    border-radius:12px;
+    background:#fff;
+    color:#0E3960;
+    font-weight:900;
+    text-decoration:none;
+    box-shadow:0 10px 24px rgba(0,0,0,.20);
+  }
 
-    /* Header with logo */
+  .cta:hover{
+    opacity:.92;
+  }
+
+  footer{
+    margin-top:80px;
+    font-size:14px;
+    opacity:.85;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  footer a{
+    color:#fff;
+    text-decoration:none;
+    margin-right:10px;
+  }
+
+  /* Mobile */
+  @media (max-width:800px){
+    .plans{grid-template-columns:1fr}
+    .plan.pro{transform:none}
+  }
+
+  @media (max-width:640px){
     .topline{
       display:flex;
       justify-content:space-between;
-      align-items:flex-start;
       gap:16px;
       margin-bottom:16px;
+      align-items:flex-start;
     }
 
-    .head{
-      max-width:680px;
-    }
-
-    .brand-slot{
-      flex:0 0 auto;
-      margin-left:auto;
+    .title{
+      font-size:30px;
     }
 
     .brand-logo{
-      height:102px;
-      width:auto;
-      display:block;
-      background:#fff;
-      padding:6px;
-      border-radius:50%;
-      box-shadow:0 6px 18px rgba(0,0,0,.15);
+      height:75px;
+      padding:4px;
     }
+  }
 
-    /* Headline: Desktop normal, Mobile kontrolliert zweizeilig */
-    .h1-brand,
-    .h1-title{
-      display:inline;
-    }
+  /* Pfeil nur mobil im Tabellen-Header */
+  .scroll-hint-header::after{
+    content:" →";
+    opacity:.75;
+  }
 
-    .h1-title{
-      margin-left:.35rem;
-    }
-
-    /* Mobile */
-    @media (max-width:800px){
-      .plans{grid-template-columns:1fr}
-      .plan.pro{transform:none}
-    }
-
-    @media (max-width:640px){
-      .topline{
-        flex-direction:row;
-        align-items:center;
-      }
-
-      h1{
-        font-size:32px;
-        line-height:1.08;
-        margin-bottom:10px;
-      }
-
-      .h1-brand,
-      .h1-title{
-        display:block;
-      }
-
-      .h1-title{
-        margin-left:0;
-      }
-
-      .brand-slot{
-        margin-left:auto;
-      }
-
-      .brand-logo{
-        height:76px;
-        padding:6px;
-        transform:translate(-6px,-6px);
-      }
-    }
-
-    @media (max-width:520px){
-      .topline{
-        flex-direction:column;
-      }
-
-      .brand-slot{
-        align-self:flex-end;
-      }
-    }
-
-    /* Pfeil nur mobil im Tabellen-Header */
+  @media (min-width:721px){
     .scroll-hint-header::after{
-      content:" →";
-      opacity:.75;
+      content:"";
     }
-
-    @media (min-width:721px){
-      .scroll-hint-header::after{
-        content:"";
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 
 <body>
