@@ -183,36 +183,37 @@
     box-shadow:0 10px 24px rgba(0,0,0,.22);
   }
 
-  /* Pricing cards */
-  .plans{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:24px;
-    margin-top:45px;
-  }
+/* Pricing cards */
+.plans{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:24px;
+  margin-top:45px;
+  align-items:start;
+}
 
-  .plan{
-    background:var(--panel);
-    border:1px solid var(--border);
-    border-radius:18px;
-    padding:28px;
-    box-shadow:var(--shadow-soft);
-    position:relative;
-  }
+.plan{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:24px;
+  box-shadow:var(--shadow-soft);
+  position:relative;
+}
 
-  .plan.pro{
-    background:linear-gradient(
-      160deg,
-      rgba(255,255,255,.20) 0%,
-      rgba(255,255,255,.12) 55%,
-      rgba(255,255,255,.10) 100%
-    );
-    border:1px solid rgba(255,255,255,.32);
-    box-shadow:
-      0 0 0 1px rgba(255,255,255,.08),
-      0 20px 60px rgba(0,0,0,.38);
-    transform:translateY(-4px);
-  }
+.plan.pro{
+  background:linear-gradient(
+    160deg,
+    rgba(255,255,255,.20) 0%,
+    rgba(255,255,255,.12) 55%,
+    rgba(255,255,255,.10) 100%
+  );
+  border:1px solid rgba(255,255,255,.32);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.08),
+    0 20px 60px rgba(0,0,0,.38);
+  transform:translateY(-4px);
+}
 
 .plan h3{
   margin:0;
@@ -227,7 +228,7 @@
   font-weight:600;
   color:#fff;
   opacity:.9;
-  line-height:1.35;
+  line-height:1.3;
 }
 
 .price{
@@ -244,7 +245,7 @@
   font-weight:600;
   color:#fff;
   opacity:.82;
-  line-height:1.35;
+  line-height:1.3;
 }
 
 .value-anchor{
@@ -252,23 +253,9 @@
   font-size:13px;
   color:#fff;
   opacity:.75;
-  line-height:1.35;
+  line-height:1.3;
 }
 
-@media (max-width:640px){
-  .plan-fit{
-    margin:6px 0 10px;
-  }
-
-  .price-context{
-    margin:2px 0 6px;
-  }
-
-  .value-anchor{
-    margin:0 0 12px;
-  }
-
- }
 .price .yearly{
   font-size:32px;
   font-weight:900;
@@ -280,43 +267,43 @@
   display:block;
 }
 
-  .savings{
-    display:block;
-    margin-top:6px;
-    font-size:12px;
-    font-weight:600;
-    color:rgba(255,255,255,.70);
-    letter-spacing:.2px;
-  }
+.savings{
+  display:block;
+  margin-top:6px;
+  font-size:12px;
+  font-weight:600;
+  color:rgba(255,255,255,.70);
+  letter-spacing:.2px;
+}
 
-  ul{
-    padding-left:18px;
-    margin:0;
-  }
+ul{
+  padding-left:18px;
+  margin:0;
+}
 
-  li{
-    margin:0 0 8px;
-  }
+li{
+  margin:0 0 8px;
+}
 
-  li:last-child{
-    margin-bottom:0;
-  }
+li:last-child{
+  margin-bottom:0;
+}
 
-  .cta{
-    margin-top:18px;
-    display:inline-block;
-    padding:12px 16px;
-    border-radius:12px;
-    background:#fff;
-    color:#0E3960;
-    font-weight:900;
-    text-decoration:none;
-    box-shadow:0 10px 24px rgba(0,0,0,.20);
-  }
+.cta{
+  margin-top:18px;
+  display:inline-block;
+  padding:12px 16px;
+  border-radius:12px;
+  background:#fff;
+  color:#0E3960;
+  font-weight:900;
+  text-decoration:none;
+  box-shadow:0 10px 24px rgba(0,0,0,.20);
+}
 
-  .cta:hover{
-    opacity:.92;
-  }
+.cta:hover{
+  opacity:.92;
+}
 
   footer{
     margin-top:80px;
@@ -441,7 +428,7 @@
     <button class="toggle-btn active" data-billing="monthly" type="button">Monthly</button>
     <button class="toggle-btn" data-billing="yearly" type="button">Yearly</button>
   </div>
-<div class="plans">
+ 
 
   <!-- PRO PLAN -->
 <div class="plans">
