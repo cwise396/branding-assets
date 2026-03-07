@@ -17,19 +17,25 @@
       --border-strong:rgba(255,255,255,.28);
       --shadow:0 18px 50px rgba(0,0,0,.28);
       --shadow-soft:0 10px 28px rgba(0,0,0,.22);
-      --pro-glow: 0 0 0 1px rgba(255,255,255,.10), 0 18px 60px rgba(0,0,0,.35);
+      --pro-glow:0 0 0 1px rgba(255,255,255,.10), 0 18px 60px rgba(0,0,0,.35);
     }
 
     *{box-sizing:border-box}
+
     body{
       margin:0;
       font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
       background:var(--bg);
       color:var(--text);
       line-height:1.55;
+      overflow-x:hidden;
     }
 
-    .wrap{max-width:980px;margin:0 auto;padding:60px 20px 80px}
+    .wrap{
+      max-width:980px;
+      margin:0 auto;
+      padding:60px 20px 80px;
+    }
 
     h1{
       font-size:36px;
@@ -47,7 +53,6 @@
       color:#fff;
     }
 
-    /* smaller section headline (match subheadline weight/size better) */
     .section-title{
       margin:34px 0 14px;
       font-size:20px;
@@ -56,24 +61,27 @@
       color:#fff;
     }
 
-    /* Vergleich */
-   table{
-  width:100%;
-  border-collapse:collapse;
-  margin-top:14px;
-  background:var(--panel);
-  border:none;
-  box-shadow:none;
-}
+    /* Vergleichstabelle */
+    .table-scroll{
+      width:100%;
+      position:relative;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      border:1px solid var(--border);
+      border-radius:14px;
+      box-shadow:var(--shadow-soft);
+      background:var(--panel);
+    }
 
-/* Border & Shadow jetzt auf Wrapper */
-.table-scroll{
-  position:relative;
-  border:1px solid var(--border);
-  border-radius:14px;
-  box-shadow:var(--shadow-soft);
-  overflow:hidden;
-}
+    table{
+      width:100%;
+      min-width:640px;
+      border-collapse:collapse;
+      margin-top:0;
+      background:transparent;
+      border:none;
+      box-shadow:none;
+    }
 
     th,td{
       padding:14px;
@@ -81,24 +89,27 @@
       border-bottom:1px solid rgba(255,255,255,.14);
       vertical-align:top;
     }
-/* Mobile: nur die Vergleichstabelle darf horizontal scrollen */
-.table-scroll{
-  width:100%;
-  overflow-x:auto;
-  -webkit-overflow-scrolling:touch;
-  border-radius:14px; /* damit es wie vorher aussieht */
-}
 
-/* Tabelle braucht eine Mindestbreite, damit Spalten nicht zerquetschen */
-.table-scroll table{
-  min-width:640px;
-}
+    th{
+      font-weight:900;
+      color:#fff;
+    }
 
-/* Optional: verhindert "Body-Scroll" durch Kleinkram (z.B. Schatten/Transform) */
-body{ overflow-x:hidden; }
-    th{font-weight:900;color:#fff}
-    td{color:#fff}
-    tr:last-child td{border-bottom:none}
+    td{
+      color:#fff;
+    }
+
+    tr:last-child td{
+      border-bottom:none;
+    }
+
+    .scroll-hint{
+      margin:10px 0 6px;
+      font-size:.95rem;
+      font-weight:800;
+      color:#fff;
+      opacity:.9;
+    }
 
     .compare-intro{
       margin:22px 0 10px;
@@ -107,10 +118,7 @@ body{ overflow-x:hidden; }
       line-height:1.4;
       color:#fff;
     }
-@media (max-width:520px){
-  .topline{ flex-direction:column; }
-  .brand-slot{ align-self:flex-end; }
-}
+
     .value-confirmation{
       margin-top:10px;
       font-weight:900;
@@ -131,16 +139,15 @@ body{ overflow-x:hidden; }
       padding:8px 14px;
       border-radius:999px;
       border:1px solid rgba(255,255,255,.35);
-      background:#fff;              /* Default = weiß */
-      color:#0E3960;                /* Text blau */
+      background:#fff;
+      color:#0E3960;
       font-weight:900;
       cursor:pointer;
     }
 
-    /* ✅ Monatlich soll aktiv (blau) sein */
     .toggle-btn.active{
-      background:#0E3960;           /* Blau */
-      color:#fff;                   /* Weißer Text */
+      background:#0E3960;
+      color:#fff;
       border:1px solid rgba(255,255,255,.55);
       box-shadow:0 10px 24px rgba(0,0,0,.22);
     }
@@ -150,7 +157,7 @@ body{ overflow-x:hidden; }
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:24px;
-      margin-top:45px; /* mehr Luft zwischen Intro und Cards */
+      margin-top:45px;
     }
 
     .plan{
@@ -163,7 +170,7 @@ body{ overflow-x:hidden; }
     }
 
     .plan.pro{
-      background: linear-gradient(
+      background:linear-gradient(
         160deg,
         rgba(255,255,255,.20) 0%,
         rgba(255,255,255,.12) 55%,
@@ -191,20 +198,17 @@ body{ overflow-x:hidden; }
       letter-spacing:-.2px;
     }
 
-    /* Jahrespreis: größer + fett */
     .price .yearly{
       font-size:32px;
       font-weight:900;
       letter-spacing:-.2px;
-      display:none; /* Default: Monatsansicht */
+      display:none;
     }
 
-    /* Monatspreis */
     .price .monthly{
       display:block;
     }
 
-    /* Savings: immer sichtbar, dezent premium */
     .savings{
       display:block;
       margin-top:6px;
@@ -214,9 +218,18 @@ body{ overflow-x:hidden; }
       letter-spacing:.2px;
     }
 
-    ul{padding-left:18px;margin:0}
-    li{margin:0 0 8px}
-    li:last-child{margin-bottom:0}
+    ul{
+      padding-left:18px;
+      margin:0;
+    }
+
+    li{
+      margin:0 0 8px;
+    }
+
+    li:last-child{
+      margin-bottom:0;
+    }
 
     .cta{
       margin-top:18px;
@@ -229,7 +242,10 @@ body{ overflow-x:hidden; }
       text-decoration:none;
       box-shadow:0 10px 24px rgba(0,0,0,.20);
     }
-    .cta:hover{opacity:.92}
+
+    .cta:hover{
+      opacity:.92;
+    }
 
     footer{
       margin-top:80px;
@@ -240,15 +256,11 @@ body{ overflow-x:hidden; }
       flex-wrap:wrap;
       gap:10px;
     }
+
     footer a{
       color:#fff;
       text-decoration:none;
       margin-right:10px;
-    }
-
-    @media (max-width:800px){
-      .plans{grid-template-columns:1fr}
-      .plan.pro{transform:none}
     }
 
     /* Header with logo */
@@ -260,7 +272,9 @@ body{ overflow-x:hidden; }
       margin-bottom:16px;
     }
 
-    .head{max-width:680px}
+    .head{
+      max-width:680px;
+    }
 
     .brand-slot{
       flex:0 0 auto;
@@ -277,73 +291,75 @@ body{ overflow-x:hidden; }
       box-shadow:0 6px 18px rgba(0,0,0,.15);
     }
 
+    /* Headline: Desktop normal, Mobile kontrolliert zweizeilig */
+    .h1-brand,
+    .h1-title{
+      display:inline;
+    }
+
+    .h1-title{
+      margin-left:.35rem;
+    }
+
+    /* Mobile */
+    @media (max-width:800px){
+      .plans{grid-template-columns:1fr}
+      .plan.pro{transform:none}
+    }
+
     @media (max-width:640px){
       .topline{
         flex-direction:row;
-        align-items:flex-start;
+        align-items:center;
       }
-      .brand-logo{height:84px}
+
+      h1{
+        font-size:32px;
+        line-height:1.08;
+        margin-bottom:10px;
+      }
+
+      .h1-brand,
+      .h1-title{
+        display:block;
+      }
+
+      .h1-title{
+        margin-left:0;
+      }
+
+      .brand-slot{
+        margin-left:auto;
+      }
+
+      .brand-logo{
+        height:76px;
+        padding:6px;
+        transform:translate(-6px,-6px);
+      }
     }
- /* Headline: Desktop bleibt normal, Mobile wird zweizeilig kontrolliert */
-h1{ margin:0 0 16px; }
 
-.h1-brand, .h1-title{ display:inline; } /* Desktop: eine Zeile möglich */
-.h1-title{ margin-left:.35rem; }
+    @media (max-width:520px){
+      .topline{
+        flex-direction:column;
+      }
 
-@media (max-width:640px){
-  h1{
-    font-size:32px;
-    line-height:1.08;
-    margin-bottom:10px;
-  }
-  .h1-brand, .h1-title{
-    display:block;          /* Mobile: exakt 2 Zeilen */
-  }
-  .h1-title{ margin-left:0; }
+      .brand-slot{
+        align-self:flex-end;
+      }
+    }
 
-  /* Logo: leicht nach oben + links in den Block ziehen */
-  .brand-slot{ margin-left:auto; }
-  .brand-logo{
-    height:76px;            /* etwas kleiner = passt sauber neben 2 Zeilen */
-    padding:6px;
-    transform:translate(-6px,-6px);  /* nach links + oben */
-  }
+    /* Pfeil nur mobil im Tabellen-Header */
+    .scroll-hint-header::after{
+      content:" →";
+      opacity:.75;
+    }
 
-  /* Topline: vertikal mittig, damit Logo neben den zwei Zeilen sitzt */
-  .topline{
-    align-items:center;
-  }
-}
- .scroll-hint{
-  margin:10px 0 6px;
-  font-size:.95rem;
-  font-weight:800;
-  color:#fff;
-  opacity:.9;
-}
-
-/* Rechts ein dezentes "weiter geht's" Gradient */
-.table-scroll{
-  position:relative;
-}
-
-.table-scroll::after{ display:none !important; }
-  content:"";
-  position:absolute;
-  top:0;
-  right:0;
-  width:44px;
-  height:100%;
-  pointer-events:none;
-  background:linear-gradient(to left, rgba(14,57,96,1), rgba(14,57,96,0));
-  opacity:.9;
-  display:none;
-}
-
-/* Nur auf Mobile anzeigen */
-@media (max-width:720px){
-  .table-scroll::after{ display:block; }
-} 
+    @media (min-width:721px){
+      .scroll-hint-header::after{
+        content:"";
+      }
+    }
   </style>
 </head>
 
@@ -363,41 +379,43 @@ h1{ margin:0 0 16px; }
     </div>
   </div>
 
-  <h2 class="section-title">Basic vs. Pro – der Unterschied im Alltag</h2>
-<p class="scroll-hint">→ Wische nach rechts für „Pro“</p>
+  <h2 class="section-title">Basic und Pro im direkten Vergleich</h2>
+  <p class="scroll-hint">→ Wische nach rechts für „Pro“</p>
+
   <div class="table-scroll" role="region" aria-label="Pricing-Vergleich: Basic vs Pro">
-  <table>
-  <tr>
-    <th>Dimension</th>
-    <th>Basic</th>
-    <th>Pro</th>
-  </tr>
+    <table>
+      <tr>
+        <th>Dimension</th>
+        <th class="scroll-hint-header">Basic</th>
+        <th>Pro</th>
+      </tr>
 
-  <tr>
-    <td>System & Struktur</td>
-    <td>1 Brand / Voice-Profil</td>
-    <td>5 Brand / Voice-Profile · parallele Kontexte</td>
-  </tr>
+      <tr>
+        <td>System &amp; Struktur</td>
+        <td>1&nbsp;Brand/<br>Voice-Profil</td>
+        <td>5 Brand / Voice-Profile · parallele Kontexte</td>
+      </tr>
 
-  <tr>
-    <td>Team-Integration</td>
-    <td>Direkt nutzbar (Mail · Meeting · Update)</td>
-    <td>Export-Sets (Update · Entscheid · Rollout)</td>
-  </tr>
+      <tr>
+        <td>Team-Integration</td>
+        <td>Direkt nutzbar (Mail · Meeting · Update)</td>
+        <td>Export-Sets (Update · Entscheid · Rollout)</td>
+      </tr>
 
-  <tr>
-    <td>Skalierung</td>
-    <td>Bis zu 20 Briefs / Monat</td>
-    <td>Bis zu 120 Briefs / Monat</td>
-  </tr>
+      <tr>
+        <td>Skalierung</td>
+        <td>Bis zu 20 Briefs / Monat</td>
+        <td>Bis zu 120 Briefs / Monat</td>
+      </tr>
 
-  <tr>
-    <td>Nachhaltigkeit</td>
-    <td>Kein Verlauf</td>
-    <td>History inkl. Referenzdatum · referenzierbar · wiederverwendbar</td>
-  </tr>
-</table>
-</div>
+      <tr>
+        <td>Nachhaltigkeit</td>
+        <td>Kein Verlauf</td>
+        <td>History inkl. Referenzdatum · referenzierbar · wiederverwendbar</td>
+      </tr>
+    </table>
+  </div>
+
   <div class="compare-intro">
     Basic bringt Klarheit für die aktuelle Entscheidung.<br>
     Pro macht Klarheit wiederholbar – im Team und über Zeit.
@@ -408,53 +426,51 @@ h1{ margin:0 0 16px; }
   </div>
 
   <div class="billing-toggle" aria-label="Abrechnung umschalten">
-    <!-- ✅ Monatlich aktiv + blau hinterlegt -->
     <button class="toggle-btn active" data-billing="monthly" type="button">Monatlich</button>
     <button class="toggle-btn" data-billing="yearly" type="button">Jährlich</button>
   </div>
 
-  <!-- ✅ Pro links, Basic rechts -->
   <div class="plans">
 
     <div class="plan pro">
-<h3>Pro (Team-System)</h3>
+      <h3>Pro (Team-System)</h3>
 
-<div class="price">
-  <span class="monthly">€198 / Monat</span>
-  <span class="yearly">€1.980 / Jahr</span>
-  <span class="savings">396€ Ersparnis bei jährlicher Abrechnung</span>
-</div>
+      <div class="price">
+        <span class="monthly">€198 / Monat</span>
+        <span class="yearly">€1.980 / Jahr</span>
+        <span class="savings">396€ Ersparnis bei jährlicher Abrechnung</span>
+      </div>
 
-<ul>
-  <li>Komplette Template- &amp; Playbook-Library</li>
-  <li>5 Brand / Voice-Profile</li>
-  <li>Export-Sets (Update · Entscheid · Rollout)</li>
-  <li>History &amp; Wiederverwendung</li>
-  <li>Optionales Review-Gate</li>
-  <li>Bis zu 120 Briefs / Monat</li>
-</ul>
+      <ul>
+        <li>Komplette Template- &amp; Playbook-Library</li>
+        <li>5 Brand / Voice-Profile</li>
+        <li>Export-Sets (Update · Entscheid · Rollout)</li>
+        <li>History &amp; Wiederverwendung</li>
+        <li>Optionales Review-Gate</li>
+        <li>Bis zu 120 Briefs / Monat</li>
+      </ul>
 
-<a href="/contact_changewise.html" class="cta">Pro aktivieren</a>
+      <a href="/contact_changewise.html" class="cta">Pro aktivieren</a>
     </div>
 
     <div class="plan">
-     <h3>Basic (Klarer Einstieg)</h3>
+      <h3>Basic (Klarer Einstieg)</h3>
 
-<div class="price">
-  <span class="monthly">€48 / Monat</span>
-  <span class="yearly">€480 / Jahr</span>
-  <span class="savings">96€ Ersparnis bei jährlicher Abrechnung</span>
-</div>
+      <div class="price">
+        <span class="monthly">€48 / Monat</span>
+        <span class="yearly">€480 / Jahr</span>
+        <span class="savings">96€ Ersparnis bei jährlicher Abrechnung</span>
+      </div>
 
-<ul>
-  <li>Fokus · Ton · Kernbotschaft · Next Steps</li>
-  <li>15 sofort nutzbare Templates</li>
-  <li>Direkt einsetzbar (Mail · Meeting · Update)</li>
-  <li>1 Brand / Voice-Profil</li>
-  <li>Bis zu 20 Briefs / Monat</li>
-</ul>
+      <ul>
+        <li>Fokus · Ton · Kernbotschaft · Next Steps</li>
+        <li>15 sofort nutzbare Templates</li>
+        <li>Direkt einsetzbar (Mail · Meeting · Update)</li>
+        <li>1 Brand / Voice-Profil</li>
+        <li>Bis zu 20 Briefs / Monat</li>
+      </ul>
 
-<a href="/contact_changewise.html" class="cta">Mit Basic starten</a>
+      <a href="/contact_changewise.html" class="cta">Mit Basic starten</a>
     </div>
 
   </div>
@@ -471,7 +487,6 @@ h1{ margin:0 0 16px; }
 
 </main>
 
-<!-- ✅ Script: direkt vor </body> (nach </main>) -->
 <script>
 (function(){
   var buttons = document.querySelectorAll('.toggle-btn');
@@ -500,7 +515,6 @@ h1{ margin:0 0 16px; }
     });
   });
 
-  // Default state: monthly
   setBilling('monthly');
 })();
 </script>
