@@ -90,16 +90,6 @@
     color:#fff;
   }
 
-  /* Scroll-Hinweis: nur mobil sichtbar */
-  .scroll-hint{
-    display:none;
-    margin:10px 0 6px;
-    font-size:.95rem;
-    font-weight:800;
-    color:#fff;
-    opacity:.9;
-  }
-
   /* Vergleichstabelle */
   .table-scroll{
     width:100%;
@@ -142,18 +132,12 @@
     border-bottom:none;
   }
 
-  /* Erste Spalte fixieren */
-  .table-scroll th:first-child,
-  .table-scroll td:first-child{
-    position:sticky;
-    left:0;
-    background:var(--panel);
-    z-index:2;
-    border-right:1px solid rgba(255,255,255,.12);
-  }
-
-  .table-scroll th:first-child{
-    z-index:3;
+  .scroll-hint{
+    margin:10px 0 6px;
+    font-size:.95rem;
+    font-weight:800;
+    color:#fff;
+    opacity:.9;
   }
 
   .compare-intro{
@@ -314,12 +298,6 @@
     .plan.pro{transform:none}
   }
 
-  @media (max-width:720px){
-    .scroll-hint{
-      display:block;
-    }
-  }
-
   @media (max-width:640px){
     .topline{
       display:flex;
@@ -366,8 +344,6 @@
 </div>
 
   <h2 class="section-title">Basic und Pro im direkten Vergleich</h2>
-
-<p class="scroll-hint">→ Wische nach rechts, um „Pro“ zu sehen</p>
    
 
   <div class="table-scroll" role="region" aria-label="Pricing-Vergleich: Basic vs Pro">
