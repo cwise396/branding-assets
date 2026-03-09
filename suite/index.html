@@ -7,6 +7,7 @@
 <meta name="description" content="How SlackDigest, TaskSieve and ChangeWise work together to turn signals into clear decisions.">
 
 <style>
+
 :root{
   --bg:#0B1220;
   --text:#E5E7EB;
@@ -31,8 +32,6 @@ body{
   color:var(--text);
   line-height:1.55;
   -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  text-rendering:optimizeLegibility;
 }
 
 .wrap{
@@ -44,27 +43,23 @@ body{
 h1{
   font-size:42px;
   font-weight:900;
-  letter-spacing:-.02em;
   margin:0 0 12px;
-  line-height:1.1;
+  letter-spacing:-.02em;
 }
 
 h2{
   font-size:30px;
   margin:0 0 18px;
-  letter-spacing:-.02em;
-  line-height:1.15;
 }
 
 .section{
   margin-top:110px;
 }
 
-.center{
-  text-align:center;
-}
+.center{text-align:center}
 
-/* Hero */
+/* HERO */
+
 .hero{
   max-width:780px;
   margin:0 auto;
@@ -77,35 +72,23 @@ h2{
   letter-spacing:.08em;
   text-transform:uppercase;
   opacity:.6;
-  margin:0 0 18px;
+  margin-bottom:18px;
 }
 
 .hero-sub{
   font-size:20px;
   margin:16px auto 0;
   color:var(--muted);
-  max-width:760px;
 }
 
 .hero-explain{
   font-size:16px;
-  opacity:.85;
   margin:18px auto 30px;
-  max-width:760px;
+  opacity:.85;
 }
 
-.hero-cta{
-  display:inline-block;
-  padding:14px 18px;
-  background:#ffffff;
-  color:#0E3960;
-  border-radius:12px;
-  font-weight:900;
-  text-decoration:none;
-  box-shadow:var(--shadow);
-}
+/* WORKFLOW */
 
-/* Workflow */
 .workflow-wrap{
   max-width:1020px;
   margin:0 auto;
@@ -127,7 +110,6 @@ h2{
   justify-content:center;
   align-items:center;
   gap:28px;
-  margin-top:32px;
   flex-wrap:wrap;
 }
 
@@ -141,6 +123,8 @@ h2{
   z-index:0;
 }
 
+/* CARDS */
+
 .wf-card{
   position:relative;
   z-index:1;
@@ -153,39 +137,50 @@ h2{
   text-align:left;
   transform:translateY(-6px);
   box-shadow:var(--shadow-lift);
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    border-color .25s ease,
+    background .25s ease;
+}
+
+@media (hover:hover){
+  .wf-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 20px 48px rgba(0,0,0,.34);
+    border-color:rgba(255,255,255,.22);
+    background:rgba(255,255,255,.06);
+  }
 }
 
 .wf-card h3{
   margin:0 0 6px;
   font-size:18px;
-  font-weight:800;
-  letter-spacing:-.01em;
 }
 
 .wf-role{
   font-size:14px;
   font-weight:800;
-  opacity:.88;
   margin:6px 0 12px;
-  letter-spacing:.02em;
+  opacity:.85;
 }
 
 .flow-desc{
-font-size:15px;
-line-height:1.6;
-max-width:240px;
+  font-size:15px;
+  line-height:1.6;
+  max-width:240px;
 }
 
 .wf-arrow{
   position:relative;
   z-index:1;
-  font-size:27px;
+  font-size:26px;
   opacity:.35;
 }
 
-.sd{border-top:3px solid var(--sd);}
-.ts{border-top:3px solid var(--ts);}
-.cw{border-top:3px solid var(--cw);}
+.sd{border-top:3px solid var(--sd)}
+.ts{border-top:3px solid var(--ts)}
+.cw{border-top:3px solid var(--cw)}
 
 .suite-bridge{
   text-align:center;
@@ -194,7 +189,8 @@ max-width:240px;
   opacity:.85;
 }
 
-/* Cards */
+/* CARDS GRID */
+
 .cards{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -212,27 +208,65 @@ max-width:240px;
 
 .card h3{
   margin:0 0 8px;
-  font-size:20px;
-  letter-spacing:-.01em;
 }
 
 .card p{
   margin:0;
   font-size:15px;
-  opacity:.9;
 }
 
 .btn{
   display:inline-block;
   margin-top:16px;
   padding:12px 16px;
-  background:#ffffff;
+  background:#fff;
   color:#0E3960;
   border-radius:12px;
   font-weight:800;
   text-decoration:none;
   box-shadow:var(--shadow);
 }
+
+/* SCROLL ANIMATION */
+
+.reveal-item,
+.reveal-card,
+.reveal-line{
+  opacity:0;
+}
+
+.reveal-item{
+  transform:translateY(16px);
+  transition:opacity .7s ease, transform .7s ease;
+}
+
+.reveal-card{
+  transform:translateY(14px);
+  transition:opacity .7s ease, transform .7s ease;
+}
+
+.reveal-line{
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .8s ease;
+}
+
+.reveal-section.is-visible .reveal-item{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.reveal-section.is-visible .reveal-card{
+  opacity:1;
+  transform:translateY(-6px);
+}
+
+.reveal-section.is-visible .reveal-line{
+  opacity:1;
+  transform:scaleX(1);
+}
+
+/* FOOTER */
 
 footer{
   margin-top:130px;
@@ -247,63 +281,32 @@ footer a{
   margin:0 8px;
 }
 
+/* MOBILE */
+
 @media (max-width:700px){
-  .pipeline{
-    display:none;
-  }
+  .pipeline{display:none}
 }
 
 @media (max-width:640px){
-  .wrap{
-    padding:58px 18px 90px;
-  }
 
-  h1{
-    font-size:34px;
-  }
-
-  h2{
-    font-size:26px;
-  }
-
-  .section{
-    margin-top:88px;
-  }
-
-  .hero-sub{
-    font-size:18px;
-  }
-
-  .hero-explain{
-    font-size:15px;
-  }
-
-  .suite-system-line{
-    font-size:14px;
-    margin:10px 0 28px;
-  }
+  h1{font-size:34px}
+  h2{font-size:26px}
 
   .workflow{
     gap:16px;
   }
 
   .wf-card{
-    width:min(100%, 420px);
-    min-height:auto;
+    width:min(100%,420px);
     transform:none;
   }
 
   .wf-arrow{
     width:100%;
     text-align:center;
-    line-height:1;
-  }
-
-  .suite-bridge{
-    font-size:17px;
-    margin:62px 0 28px;
   }
 }
+
 </style>
 </head>
 
@@ -312,121 +315,152 @@ footer a{
 <main class="wrap">
 
 <section class="hero center">
-  <p class="hero-kicker">Suite</p>
+<p class="hero-kicker">Suite</p>
 
-  <h1>From signals to clear decisions</h1>
+<h1>From signals to clear decisions</h1>
 
-  <p class="hero-sub">
-    Turn signals into clear decisions.
-  </p>
+<p class="hero-sub">
+Turn signals into clear decisions.
+</p>
 
-  <p class="hero-explain">
-    SlackDigest, TaskSieve and ChangeWise form a workflow that
-    helps teams move from signals to priorities to aligned decisions.
-  </p>
+<p class="hero-explain">
+SlackDigest, TaskSieve and ChangeWise form a workflow that
+helps teams move from signals to priorities to aligned decisions.
+</p>
 
-  
 </section>
 
-<section id="workflow" class="section center">
-  <div class="workflow-wrap">
-    <h2>How teams move from signals to decisions</h2>
+<section id="workflow" class="section center reveal-section">
 
-    <p class="suite-system-line">
-      <span style="color:var(--sd)">Signals</span> → <span style="color:var(--ts)">Priorities</span> → <span style="color:var(--cw)">Decisions</span>
-    </p>
+<div class="workflow-wrap">
 
-    <div class="workflow">
-      <div class="pipeline"></div>
+<h2 class="reveal-item">How teams move from signals to decisions</h2>
 
-      <div class="wf-card sd">
-        <h3>SlackDigest</h3>
-        <p class="wf-role">Signals</p>
-        <div class="flow-desc">
-          Slack and email updates distilled into a clear overview.
-        </div>
-      </div>
+<p class="suite-system-line reveal-item">
+<span style="color:var(--sd)">Signals</span> →
+<span style="color:var(--ts)">Priorities</span> →
+<span style="color:var(--cw)">Decisions</span>
+</p>
 
-      <div class="wf-arrow">→</div>
+<div class="workflow">
 
-      <div class="wf-card ts">
-        <h3>TaskSieve</h3>
-        <p class="wf-role">Priorities</p>
-        <div class="flow-desc">
-          Incoming work becomes ordered priorities.
-        </div>
-      </div>
+<div class="pipeline reveal-line"></div>
 
-      <div class="wf-arrow">→</div>
+<div class="wf-card sd reveal-card">
+<h3>SlackDigest</h3>
+<p class="wf-role">Signals</p>
+<div class="flow-desc">
+Slack and email updates distilled into a clear overview.
+</div>
+</div>
 
-      <div class="wf-card cw">
-        <h3>ChangeWise</h3>
-        <p class="wf-role">Decisions</p>
-        <div class="flow-desc">
-          Teams align on clear direction and next steps.
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="wf-arrow reveal-item">→</div>
+
+<div class="wf-card ts reveal-card">
+<h3>TaskSieve</h3>
+<p class="wf-role">Priorities</p>
+<div class="flow-desc">
+Incoming work becomes ordered priorities.
+</div>
+</div>
+
+<div class="wf-arrow reveal-item">→</div>
+
+<div class="wf-card cw reveal-card">
+<h3>ChangeWise</h3>
+<p class="wf-role">Decisions</p>
+<div class="flow-desc">
+Teams align on clear direction and next steps.
+</div>
+</div>
+
+</div>
+</div>
 </section>
 
 <p class="suite-bridge">
-  Most teams start with one step.
+Most teams start with one step.
 </p>
 
 <section class="section">
-  <h2 class="center">Why decisions break down in modern teams</h2>
 
-  <div class="cards">
-    <div class="card">
-      <h3>Too many signals</h3>
-      <p>Slack, email and updates create constant information noise.</p>
-    </div>
+<h2 class="center">Why decisions break down in modern teams</h2>
 
-    <div class="card">
-      <h3>Unclear priorities</h3>
-      <p>Teams struggle to see what matters most.</p>
-    </div>
+<div class="cards">
 
-    <div class="card">
-      <h3>Misalignment</h3>
-      <p>People interpret priorities differently.</p>
-    </div>
-  </div>
+<div class="card">
+<h3>Too many signals</h3>
+<p>Slack, email and updates create constant information noise.</p>
+</div>
+
+<div class="card">
+<h3>Unclear priorities</h3>
+<p>Teams struggle to see what matters most.</p>
+</div>
+
+<div class="card">
+<h3>Misalignment</h3>
+<p>People interpret priorities differently.</p>
+</div>
+
+</div>
+
 </section>
 
 <section class="section center">
-  <h2>Start where clarity matters most</h2>
 
-  <div class="cards">
-    <div class="card">
-      <h3>SlackDigest</h3>
-      <p>For teams overwhelmed by updates.</p>
-      <a class="btn" href="/products/slackdigest/">Explore SlackDigest</a>
-    </div>
+<h2>Start where clarity matters most</h2>
 
-    <div class="card">
-      <h3>TaskSieve</h3>
-      <p>For teams struggling with priorities.</p>
-      <a class="btn" href="/products/tasksieve/">Explore TaskSieve</a>
-    </div>
+<div class="cards">
 
-    <div class="card">
-      <h3>ChangeWise</h3>
-      <p>For teams aligning decisions.</p>
-      <a class="btn" href="/products/changewise/">Explore ChangeWise</a>
-    </div>
-  </div>
+<div class="card">
+<h3>SlackDigest</h3>
+<p>For teams overwhelmed by updates.</p>
+<a class="btn" href="/products/slackdigest/">Explore SlackDigest</a>
+</div>
+
+<div class="card">
+<h3>TaskSieve</h3>
+<p>For teams struggling with priorities.</p>
+<a class="btn" href="/products/tasksieve/">Explore TaskSieve</a>
+</div>
+
+<div class="card">
+<h3>ChangeWise</h3>
+<p>For teams aligning decisions.</p>
+<a class="btn" href="/products/changewise/">Explore ChangeWise</a>
+</div>
+
+</div>
+
 </section>
 
 <footer>
-  <a href="/imprint/">Imprint</a> ·
-  <a href="/privacy/">Privacy</a>
-  <br><br>
-  © ChangeWise · SlackDigest · TaskSieve
+<a href="/imprint/">Imprint</a> ·
+<a href="/privacy/">Privacy</a>
+<br><br>
+© ChangeWise · SlackDigest · TaskSieve
 </footer>
 
 </main>
+
+<script>
+(function(){
+  const sections=document.querySelectorAll('.reveal-section');
+
+  const observer=new IntersectionObserver((entries,obs)=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      obs.unobserve(entry.target);
+    });
+  },{
+    threshold:0.25
+  });
+
+  sections.forEach(section=>observer.observe(section));
+})();
+</script>
 
 </body>
 </html>
