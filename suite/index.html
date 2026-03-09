@@ -64,8 +64,67 @@ h2{
 .center{
   text-align:center;
 }
+.hero{
+  max-width:760px;
+  margin:0 auto;
+  text-align:center;
+}
 
-.flow{
+.hero-sub{
+  font-size:20px;
+  margin:16px 0;
+  color:var(--muted);
+}
+
+.hero-explain{
+  font-size:16px;
+  opacity:.85;
+  margin-bottom:28px;
+}
+
+.hero-cta{
+  display:inline-block;
+  padding:14px 18px;
+  background:#ffffff;
+  color:#0E3960;
+  border-radius:12px;
+  font-weight:900;
+  text-decoration:none;
+}
+.workflow{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:28px;
+  margin-top:40px;
+  flex-wrap:wrap;
+}
+
+.wf-card{
+  width:260px;
+  padding:22px;
+  border-radius:16px;
+  background:var(--panel);
+  border:1px solid var(--border);
+  text-align:left;
+}
+
+.wf-role{
+  font-size:14px;
+  font-weight:800;
+  opacity:.85;
+  margin:6px 0 10px;
+}
+
+.wf-arrow{
+  font-size:28px;
+  opacity:.5;
+}
+
+.sd{border-top:3px solid #0C6C48;}
+.ts{border-top:3px solid #B90E13;}
+.cw{border-top:3px solid #0E3960;}
+  .flow{
   display:flex;
   align-items:center;
   justify-content:center;
@@ -160,17 +219,56 @@ footer a{
 
 <main class="wrap">
 
-<section class="center">
+<section class="hero center">
 
 <h1>From signals to clear decisions</h1>
 
-<p class="sub">
-A simple workflow that helps teams turn incoming information into aligned action.
-SlackDigest, TaskSieve and ChangeWise work together as a decision workflow.
+<p class="hero-sub">
+A simple workflow that helps teams turn incoming information
+into aligned action.
 </p>
 
-</section>
+<p class="hero-explain">
+SlackDigest, TaskSieve and ChangeWise form a clear decision workflow:
+signals → priorities → decisions.
+</p>
 
+<a class="hero-cta" href="#workflow">
+See how the workflow works
+</a>
+
+</section>
+<section id="workflow" class="section center">
+
+<h2>The decision workflow</h2>
+
+<div class="workflow">
+
+<div class="wf-card sd">
+<h3>SlackDigest</h3>
+<p class="wf-role">Signals</p>
+<p>Slack and email updates distilled into what matters.</p>
+</div>
+
+<div class="wf-arrow">→</div>
+
+<div class="wf-card ts">
+<h3>TaskSieve</h3>
+<p class="wf-role">Priorities</p>
+<p>Incoming work becomes ordered priorities.</p>
+</div>
+
+<div class="wf-arrow">→</div>
+
+<div class="wf-card cw">
+<h3>ChangeWise</h3>
+<p class="wf-role">Decisions</p>
+<p>Teams align on direction and communicate the next step.</p>
+</div>
+
+</div>
+
+</section>
 <section class="section center">
 
 <h2>How teams move from signals to decisions</h2>
