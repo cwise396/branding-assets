@@ -143,9 +143,11 @@ h2{
     border-color .25s ease,
     background .25s ease;
 }
-
+.wf-card.reveal-card{
+  opacity:0;
+}
 @media (hover:hover){
-  .wf-card:hover{
+  .reveal-section.is-visible .wf-card:hover{
     transform:translateY(-10px);
     box-shadow:0 20px 48px rgba(0,0,0,.34);
     border-color:rgba(255,255,255,.22);
@@ -232,66 +234,83 @@ h2{
 .reveal-card,
 .reveal-line{
   opacity:0;
+  will-change:opacity, transform;
 }
 
+/* headline + system line + arrows */
 .reveal-item{
   transform:translateY(18px);
-  transition:opacity .7s ease, transform .7s ease;
+  transition:
+    opacity .75s ease,
+    transform .75s ease;
 }
 
-.reveal-card{
-  transition:opacity .7s ease;
+/* cards */
+.wf-card.reveal-card{
+  opacity:0;
+  transform:translateY(14px);
+  transition:
+    opacity .75s ease,
+    transform .75s ease,
+    box-shadow .25s ease,
+    border-color .25s ease,
+    background .25s ease;
 }
 
+/* line draw */
 .reveal-line{
+  opacity:1;
   transform:scaleX(0);
   transform-origin:left center;
-  transition:opacity .4s ease, transform .8s ease;
+  transition:transform .9s ease;
 }
 
+/* active */
 .reveal-section.is-visible .reveal-item{
   opacity:1;
   transform:translateY(0);
 }
 
-.reveal-section.is-visible .reveal-card{
+.reveal-section.is-visible .wf-card.reveal-card{
   opacity:1;
+  transform:translateY(-6px);
 }
 
 .reveal-section.is-visible .reveal-line{
-  opacity:1;
   transform:scaleX(1);
 }
+
+/* stagger */
 .reveal-section.is-visible h2.reveal-item{
   transition-delay:.02s;
 }
 
 .reveal-section.is-visible .suite-system-line.reveal-item{
-  transition-delay:.10s;
+  transition-delay:.12s;
 }
 
 .reveal-section.is-visible .reveal-line{
-  transition-delay:.18s;
+  transition-delay:.22s;
 }
 
 .reveal-section.is-visible .wf-card.sd{
-  transition-delay:.28s;
+  transition-delay:.34s;
 }
 
 .reveal-section.is-visible .wf-arrow:nth-of-type(4){
-  transition-delay:.38s;
-}
-
-.reveal-section.is-visible .wf-card.ts{
   transition-delay:.46s;
 }
 
-.reveal-section.is-visible .wf-arrow:nth-of-type(6){
+.reveal-section.is-visible .wf-card.ts{
   transition-delay:.56s;
 }
 
+.reveal-section.is-visible .wf-arrow:nth-of-type(6){
+  transition-delay:.68s;
+}
+
 .reveal-section.is-visible .wf-card.cw{
-  transition-delay:.64s;
+  transition-delay:.78s;
 }
 /* FOOTER */
 
@@ -472,28 +491,28 @@ Most teams start with one step.
 </main>
 
 <script>
-(function(){
-  const sections = document.querySelectorAll('.reveal-section');
-  if (!sections.length) return;
+document.addEventListener("DOMContentLoaded", function () {
+  const target = document.querySelector(".reveal-section");
+  if (!target) return;
 
-  if (!('IntersectionObserver' in window)) {
-    sections.forEach(section => section.classList.add('is-visible'));
+  if (!("IntersectionObserver" in window)) {
+    target.classList.add("is-visible");
     return;
   }
 
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
-      entry.target.classList.add('is-visible');
-      obs.unobserve(entry.target);
+      target.classList.add("is-visible");
+      obs.unobserve(target);
     });
   }, {
-    threshold: 0.45,
-    rootMargin: '0px 0px -12% 0px'
+    threshold: 0.6,
+    rootMargin: "0px 0px -8% 0px"
   });
 
-  sections.forEach(section => observer.observe(section));
-})();
+  observer.observe(target);
+});
 </script>
 
 </body>
