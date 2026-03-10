@@ -123,13 +123,42 @@ h2{
 .pipeline{
   position:absolute;
   top:50%;
-  left:8%;
-  right:8%;
+  left:6%;
+  right:6%;
   height:1px;
-  background:rgba(255,255,255,.12);
+  background:linear-gradient(
+    90deg,
+    rgba(255,255,255,.08),
+    rgba(255,255,255,.28),
+    rgba(255,255,255,.08)
+  );
   z-index:0;
 }
+.pipeline-node{
+  position:absolute;
+  top:50%;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#fff;
+  transform:translate(-50%,-50%);
+  opacity:.45;
+}
 
+.pipeline-node.sd{
+  left:18%;
+  background:var(--sd);
+}
+
+.pipeline-node.ts{
+  left:50%;
+  background:var(--ts);
+}
+
+.pipeline-node.cw{
+  left:82%;
+  background:var(--cw);
+}
 /* WORKFLOW CARDS */
 
 .wf-card{
@@ -513,7 +542,11 @@ footer a{
 
     <div class="workflow">
 
-      <div class="pipeline reveal-line"></div>
+     <div class="pipeline reveal-line"></div>
+
+<div class="pipeline-node sd"></div>
+<div class="pipeline-node ts"></div>
+<div class="pipeline-node cw"></div>
 
       <div class="wf-card sd reveal-card">
         <p class="wf-role">Signals</p>
