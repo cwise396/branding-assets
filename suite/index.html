@@ -7,7 +7,6 @@
 <meta name="description" content="How SlackDigest, TaskSieve and ChangeWise work together to turn signals into clear decisions.">
 
 <style>
-
 :root{
   --bg:#0B1220;
   --text:#E5E7EB;
@@ -32,6 +31,8 @@ body{
   color:var(--text);
   line-height:1.55;
   -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
 }
 
 .wrap{
@@ -45,18 +46,23 @@ h1{
   font-weight:900;
   margin:0 0 12px;
   letter-spacing:-.02em;
+  line-height:1.08;
 }
 
 h2{
   font-size:30px;
   margin:0 0 18px;
+  letter-spacing:-.02em;
+  line-height:1.14;
 }
 
 .section{
   margin-top:110px;
 }
 
-.center{text-align:center}
+.center{
+  text-align:center;
+}
 
 /* HERO */
 
@@ -85,6 +91,7 @@ h2{
   font-size:16px;
   margin:18px auto 30px;
   opacity:.85;
+  max-width:760px;
 }
 
 /* WORKFLOW */
@@ -109,7 +116,7 @@ h2{
   display:flex;
   justify-content:center;
   align-items:center;
-  gap:28px;
+  gap:36px;
   flex-wrap:wrap;
 }
 
@@ -123,13 +130,13 @@ h2{
   z-index:0;
 }
 
-/* CARDS */
+/* WORKFLOW CARDS */
 
 .wf-card{
   position:relative;
   z-index:1;
-  width:285px;
-  min-height:186px;
+  width:300px;
+  min-height:208px;
   padding:24px;
   border-radius:16px;
   background:var(--panel);
@@ -143,9 +150,52 @@ h2{
     border-color .25s ease,
     background .25s ease;
 }
-.wf-card.reveal-card{
+
+/* subtiler Farb-Glow */
+.wf-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:16px;
   opacity:0;
+  transition:opacity .35s ease;
+  z-index:-1;
 }
+
+.sd{
+  border-top:3px solid var(--sd);
+}
+.ts{
+  border-top:3px solid var(--ts);
+}
+.cw{
+  border-top:3px solid var(--cw);
+}
+
+.sd::before{
+  background:radial-gradient(
+    circle at 50% -20%,
+    rgba(12,108,72,.25),
+    transparent 70%
+  );
+}
+
+.ts::before{
+  background:radial-gradient(
+    circle at 50% -20%,
+    rgba(185,14,19,.25),
+    transparent 70%
+  );
+}
+
+.cw::before{
+  background:radial-gradient(
+    circle at 50% -20%,
+    rgba(14,57,96,.25),
+    transparent 70%
+  );
+}
+
 @media (hover:hover){
   .reveal-section.is-visible .wf-card:hover{
     transform:translateY(-10px);
@@ -153,24 +203,39 @@ h2{
     border-color:rgba(255,255,255,.22);
     background:rgba(255,255,255,.06);
   }
-}
 
-.wf-card h3{
-  margin:0 0 6px;
-  font-size:18px;
+  .reveal-section.is-visible .wf-card:hover::before{
+    opacity:1;
+  }
 }
 
 .wf-role{
-  font-size:14px;
+  font-size:12px;
   font-weight:800;
-  margin:6px 0 12px;
-  opacity:.85;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  opacity:.65;
+  margin:0 0 6px;
+}
+
+.wf-card h3{
+  margin:0 0 8px;
+  font-size:18px;
+  letter-spacing:-.01em;
 }
 
 .flow-desc{
   font-size:15px;
   line-height:1.6;
-  max-width:240px;
+  max-width:248px;
+}
+
+.wf-output{
+  margin:14px 0 0;
+  font-size:13px;
+  line-height:1.4;
+  color:var(--muted);
+  opacity:.9;
 }
 
 .wf-arrow{
@@ -180,11 +245,7 @@ h2{
   opacity:.5;
 }
 
-.sd{border-top:3px solid var(--sd)}
-.ts{border-top:3px solid var(--ts)}
-.cw{border-top:3px solid var(--cw)}
-
- .suite-system-note{
+.suite-system-note{
   text-align:center;
   font-size:17px;
   opacity:.78;
@@ -192,12 +253,13 @@ h2{
   max-width:720px;
   line-height:1.5;
 }
+
 /* CARDS GRID */
 
 .cards{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:36px;
+  gap:26px;
   margin-top:40px;
 }
 
@@ -211,11 +273,27 @@ h2{
 
 .card h3{
   margin:0 0 8px;
+  font-size:20px;
+  letter-spacing:-.01em;
 }
 
 .card p{
   margin:0;
   font-size:15px;
+  opacity:.92;
+}
+
+.entry-note{
+  margin:8px 0 0;
+  font-size:13px;
+  line-height:1.4;
+  color:var(--muted);
+  opacity:.9;
+}
+
+.entry-card-primary{
+  border-color:rgba(255,255,255,.18);
+  box-shadow:0 14px 40px rgba(0,0,0,.30);
 }
 
 .btn{
@@ -231,6 +309,7 @@ h2{
 }
 
 /* SCROLL ANIMATION */
+
 .reveal-item,
 .reveal-card,
 .reveal-line{
@@ -238,7 +317,6 @@ h2{
   will-change:opacity, transform;
 }
 
-/* headline + system line + arrows */
 .reveal-item{
   transform:translateY(18px);
   transition:
@@ -246,7 +324,6 @@ h2{
     transform .75s ease;
 }
 
-/* cards */
 .wf-card.reveal-card{
   opacity:0;
   transform:translateY(14px);
@@ -258,7 +335,6 @@ h2{
     background .25s ease;
 }
 
-/* line draw */
 .reveal-line{
   opacity:1;
   transform:scaleX(0);
@@ -266,7 +342,6 @@ h2{
   transition:transform .9s ease;
 }
 
-/* active */
 .reveal-section.is-visible .reveal-item{
   opacity:1;
   transform:translateY(0);
@@ -313,6 +388,7 @@ h2{
 .reveal-section.is-visible .wf-card.cw{
   transition-delay:.78s;
 }
+
 /* FOOTER */
 
 footer{
@@ -331,13 +407,40 @@ footer a{
 /* MOBILE */
 
 @media (max-width:700px){
-  .pipeline{display:none}
+  .pipeline{
+    display:none;
+  }
 }
 
 @media (max-width:640px){
+  .wrap{
+    padding:58px 18px 90px;
+  }
 
-  h1{font-size:34px}
-  h2{font-size:26px}
+  h1{
+    font-size:34px;
+  }
+
+  h2{
+    font-size:26px;
+  }
+
+  .section{
+    margin-top:88px;
+  }
+
+  .hero-sub{
+    font-size:18px;
+  }
+
+  .hero-explain{
+    font-size:15px;
+  }
+
+  .suite-system-line{
+    font-size:14px;
+    margin:10px 0 28px;
+  }
 
   .workflow{
     gap:16px;
@@ -345,15 +448,19 @@ footer a{
 
   .wf-card{
     width:min(100%,420px);
-    transform:none;
+    min-height:auto;
   }
 
   .wf-arrow{
     width:100%;
     text-align:center;
   }
-}
 
+  .suite-system-note{
+    font-size:16px;
+    margin:42px auto 10px;
+  }
+}
 </style>
 </head>
 
@@ -362,131 +469,125 @@ footer a{
 <main class="wrap">
 
 <section class="hero center">
-<p class="hero-kicker">Suite</p>
+  <p class="hero-kicker">Suite</p>
 
-<h1>From signals to clear decisions</h1>
+  <h1>From signals to clear decisions</h1>
 
-<p class="hero-sub">
-Turn signals into clear decisions.
-</p>
+  <p class="hero-sub">
+    Turn signals into clear decisions.
+  </p>
 
-<p class="hero-explain">
-SlackDigest, TaskSieve and ChangeWise form a workflow that
-helps teams move from signals to priorities to aligned decisions.
-</p>
-
+  <p class="hero-explain">
+    SlackDigest, TaskSieve and ChangeWise form a workflow that
+    helps teams move from signals to priorities to aligned decisions.
+  </p>
 </section>
 
 <section id="workflow" class="section center">
+  <div class="workflow-wrap reveal-section">
 
-<div class="workflow-wrap reveal-section">
+    <h2 class="reveal-item">How teams move from signals to decisions</h2>
 
-<h2 class="reveal-item">How teams move from signals to decisions</h2>
+    <p class="suite-system-line reveal-item">
+      <span style="color:var(--sd)">Signals</span> →
+      <span style="color:var(--ts)">Priorities</span> →
+      <span style="color:var(--cw)">Decisions</span>
+    </p>
 
-<p class="suite-system-line reveal-item">
-<span style="color:var(--sd)">Signals</span> →
-<span style="color:var(--ts)">Priorities</span> →
-<span style="color:var(--cw)">Decisions</span>
-</p>
+    <div class="workflow">
 
-<div class="workflow">
+      <div class="pipeline reveal-line"></div>
 
-<div class="pipeline reveal-line"></div>
+      <div class="wf-card sd reveal-card">
+        <p class="wf-role">Signals</p>
+        <h3>SlackDigest</h3>
+        <div class="flow-desc">
+          Slack and email updates distilled into a clear overview.
+        </div>
+        <p class="wf-output">Output: a clearer signal</p>
+      </div>
 
-<div class="wf-card sd reveal-card">
-<h3>SlackDigest</h3>
-<p class="wf-role">Signals</p>
-<div class="flow-desc">
-Slack and email updates distilled into a clear overview.
-</div>
-</div>
+      <div class="wf-arrow reveal-item">→</div>
 
-<div class="wf-arrow reveal-item">→</div>
+      <div class="wf-card ts reveal-card">
+        <p class="wf-role">Priorities</p>
+        <h3>TaskSieve</h3>
+        <div class="flow-desc">
+          Incoming work becomes ordered priorities.
+        </div>
+        <p class="wf-output">Output: ordered priorities</p>
+      </div>
 
-<div class="wf-card ts reveal-card">
-<h3>TaskSieve</h3>
-<p class="wf-role">Priorities</p>
-<div class="flow-desc">
-Incoming work becomes ordered priorities.
-</div>
-</div>
+      <div class="wf-arrow reveal-item">→</div>
 
-<div class="wf-arrow reveal-item">→</div>
+      <div class="wf-card cw reveal-card">
+        <p class="wf-role">Decisions</p>
+        <h3>ChangeWise</h3>
+        <div class="flow-desc">
+          Teams align on clear direction and next steps.
+        </div>
+        <p class="wf-output">Output: aligned next steps</p>
+      </div>
 
-<div class="wf-card cw reveal-card">
-<h3>ChangeWise</h3>
-<p class="wf-role">Decisions</p>
-<div class="flow-desc">
-Teams align on clear direction and next steps.
-</div>
-</div>
-
-</div>
-</div>
+    </div>
+  </div>
 </section>
 
 <p class="suite-system-note">
-Each tool solves one step — together they form a decision system.
+  Each tool solves one step — together they form a decision system.
 </p>
 
 <section class="section">
+  <h2 class="center">Why decisions break down in modern teams</h2>
 
-<h2 class="center">Why decisions break down in modern teams</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Too many signals</h3>
+      <p>Slack, email and updates create constant information noise.</p>
+    </div>
 
-<div class="cards">
+    <div class="card">
+      <h3>Unclear priorities</h3>
+      <p>Teams struggle to see what matters most.</p>
+    </div>
 
-<div class="card">
-<h3>Too many signals</h3>
-<p>Slack, email and updates create constant information noise.</p>
-</div>
-
-<div class="card">
-<h3>Unclear priorities</h3>
-<p>Teams struggle to see what matters most.</p>
-</div>
-
-<div class="card">
-<h3>Misalignment</h3>
-<p>People interpret priorities differently.</p>
-</div>
-
-</div>
-
+    <div class="card">
+      <h3>Misalignment</h3>
+      <p>People interpret priorities differently.</p>
+    </div>
+  </div>
 </section>
 
 <section class="section center">
+  <h2>Start where clarity matters most</h2>
 
-<h2>Start where clarity matters most</h2>
+  <div class="cards">
+    <div class="card entry-card-primary">
+      <h3>SlackDigest</h3>
+      <p>For teams overwhelmed by updates.</p>
+      <p class="entry-note">Often the first step in the workflow.</p>
+      <a class="btn" href="/products/slackdigest/">Explore SlackDigest</a>
+    </div>
 
-<div class="cards">
+    <div class="card">
+      <h3>TaskSieve</h3>
+      <p>For teams struggling with priorities.</p>
+      <a class="btn" href="/products/tasksieve/">Explore TaskSieve</a>
+    </div>
 
-<div class="card">
-<h3>SlackDigest</h3>
-<p>For teams overwhelmed by updates.</p>
-<a class="btn" href="/products/slackdigest/">Explore SlackDigest</a>
-</div>
-
-<div class="card">
-<h3>TaskSieve</h3>
-<p>For teams struggling with priorities.</p>
-<a class="btn" href="/products/tasksieve/">Explore TaskSieve</a>
-</div>
-
-<div class="card">
-<h3>ChangeWise</h3>
-<p>For teams aligning decisions.</p>
-<a class="btn" href="/products/changewise/">Explore ChangeWise</a>
-</div>
-
-</div>
-
+    <div class="card">
+      <h3>ChangeWise</h3>
+      <p>For teams aligning decisions.</p>
+      <a class="btn" href="/products/changewise/">Explore ChangeWise</a>
+    </div>
+  </div>
 </section>
 
 <footer>
-<a href="/imprint/">Imprint</a> ·
-<a href="/privacy/">Privacy</a>
-<br><br>
-© ChangeWise · SlackDigest · TaskSieve
+  <a href="/imprint/">Imprint</a> ·
+  <a href="/privacy/">Privacy</a>
+  <br><br>
+  © ChangeWise · SlackDigest · TaskSieve
 </footer>
 
 </main>
