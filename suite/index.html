@@ -228,7 +228,6 @@ h2{
 }
 
 /* SCROLL ANIMATION */
-
 .reveal-item,
 .reveal-card,
 .reveal-line{
@@ -236,19 +235,18 @@ h2{
 }
 
 .reveal-item{
-  transform:translateY(16px);
+  transform:translateY(18px);
   transition:opacity .7s ease, transform .7s ease;
 }
 
 .reveal-card{
-  transform:translateY(14px);
-  transition:opacity .7s ease, transform .7s ease;
+  transition:opacity .7s ease;
 }
 
 .reveal-line{
   transform:scaleX(0);
-  transform-origin:left;
-  transition:transform .8s ease;
+  transform-origin:left center;
+  transition:opacity .4s ease, transform .8s ease;
 }
 
 .reveal-section.is-visible .reveal-item{
@@ -258,7 +256,6 @@ h2{
 
 .reveal-section.is-visible .reveal-card{
   opacity:1;
-  transform:translateY(-6px);
 }
 
 .reveal-section.is-visible .reveal-line{
@@ -446,19 +443,26 @@ Most teams start with one step.
 
 <script>
 (function(){
-  const sections=document.querySelectorAll('.reveal-section');
+  const sections = document.querySelectorAll('.reveal-section');
+  if (!sections.length) return;
 
-  const observer=new IntersectionObserver((entries,obs)=>{
-    entries.forEach(entry=>{
-      if(!entry.isIntersecting) return;
+  if (!('IntersectionObserver' in window)) {
+    sections.forEach(section => section.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
       entry.target.classList.add('is-visible');
       obs.unobserve(entry.target);
     });
-  },{
-    threshold:0.25
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -10% 0px'
   });
 
-  sections.forEach(section=>observer.observe(section));
+  sections.forEach(section => observer.observe(section));
 })();
 </script>
 
