@@ -307,7 +307,15 @@ h2{
   font-size:20px;
   letter-spacing:-.01em;
 }
-
+.card-label{
+  margin:0 0 8px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--muted);
+  opacity:.75;
+}
 .card p{
   margin:0;
   font-size:15px;
@@ -592,18 +600,20 @@ Each tool solves one step — <strong>together they form a decision system.</str
 
   <div class="cards">
     <div class="card">
+      <p class="card-label">Problem</p>
       <h3>Too many signals</h3>
       <p>Slack, email and updates create constant information noise.</p>
     </div>
 
     <div class="card">
+     <p class="card-label">Problem</p>
       <h3>Unclear priorities</h3>
       <p>Teams struggle to see what matters most.</p>
     </div>
 
     <div class="card">
-      <h3>Misalignment</h3>
-      <p>People interpret priorities differently.</p>
+     <p class="card-label">Problem</p> 
+       <p>People interpret priorities differently.</p>
     </div>
   </div>
 </section>
