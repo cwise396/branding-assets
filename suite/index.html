@@ -286,10 +286,11 @@ h1{
   margin:0 0 10px;
   font-size:12px;
   font-weight:800;
-  letter-spacing:.08em;
+  letter-spacing:.12em;
   text-transform:uppercase;
   color:var(--muted);
   opacity:.72;
+  margin-bottom:8px;
 }
 
 .platform-title{
@@ -312,10 +313,24 @@ h1{
 .cards{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:26px;
+  gap:33px;
   margin-top:40px;
 }
+.cards-flow{
+  margin:12px 0 26px;
+  text-align:center;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--muted);
+  opacity:.65;
+}
 
+.cards-flow span{
+  margin:0 10px;
+  opacity:.55;
+}
 .card{
   background:var(--panel);
   border:1px solid var(--border);
@@ -537,7 +552,7 @@ footer a{
     gap:16px;
   }
 .workflow-note{
-  margin:28px auto 0;
+  margin:30px auto 0;
   max-width:640px;
   text-align:center;
   font-size:15px;
@@ -634,10 +649,7 @@ footer a{
 
     </div>
   </div>
-<p class="workflow-note">
-Start with any product. Together they work as one system.
-</p>
-</section>
+ </section>
 
  <section class="section">
   <h2 class="center problem-title">Why decisions break down in modern teams</h2>
@@ -695,7 +707,11 @@ Start with any product. Together they work as one system.
   <p class="section-kicker">Entry points</p>
   <h2>Start where clarity matters most</h2>
 
-<div class="cards">
+<p class="cards-flow">
+Signals <span>→</span> Priorities <span>→</span> Decisions
+</p>
+
+<div class="cards">>
 
 <div class="card entry-card-primary">
 
@@ -749,7 +765,9 @@ Start with any product. Together they work as one system.
 </div>
 
 </div>
-
+<p class="workflow-note">
+Start with any product. Together they work as one system.
+</p>
 </section>
 
   
