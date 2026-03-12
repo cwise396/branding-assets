@@ -82,7 +82,14 @@ h1{
   max-width:640px;
   line-height:1.6;
 }
-
+.hero::after{
+  content:"";
+  display:block;
+  height:70px;
+  margin-top:40px;
+  background:linear-gradient(to bottom, rgba(255,255,255,.04), transparent);
+  opacity:.35;
+}
 /* WORKFLOW */
 
 .workflow-wrap{
@@ -396,7 +403,7 @@ h1{
   box-shadow:var(--shadow);
 }
 .entry-card-primary .btn{
-  margin-top:27px;
+  margin-top:30px;
 }
 /* SCROLL ANIMATION */
 
