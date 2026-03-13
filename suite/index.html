@@ -429,12 +429,17 @@ var(--card-soft);
 
 .cards{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  grid-template-columns:repeat(3,minmax(0,1fr));
   gap:33px;
+  width:min(980px,100%);
   margin:40px auto 0;
-  max-width:980px;
 }
-
+@media (max-width:860px){
+  .cards{
+    grid-template-columns:1fr;
+    width:min(420px,100%);
+  }
+}
 .cards-flow{
   margin:12px 0 26px;
   text-align:center;
