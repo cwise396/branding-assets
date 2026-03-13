@@ -26,7 +26,7 @@
   --panel-entry-bottom:rgba(210,215,230,.03);
 
  --card-soft:rgba(255,255,255,.032);
-  --card-soft-border:rgba(255,255,255,.13);
+  --card-soft-border:rgba(255,255,255,.10);
 
   --sd:#0C6C48;
   --ts:#B90E13;
@@ -55,8 +55,9 @@ body{
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   text-rendering:optimizeLegibility;
-
- letter-spacing:.01em;
+  font-smooth:always;
+ 
+  letter-spacing:.01em;
   font-feature-settings:"kern";
 }
 
@@ -76,7 +77,7 @@ h1{
   font-weight:900;
   margin:0 auto 18px;
   letter-spacing:-.03em;
-  line-height:1.08 → 1.06;
+  line-height:1.04;
   max-width:520px;
 }
 
@@ -130,7 +131,7 @@ h1{
 }
 
 .hero-explain{
-  font-size:17px;
+  font-size:16.5px;
   margin:18px auto 0;
   opacity:.88;
   max-width:620px;
@@ -177,6 +178,7 @@ h1{
     );
 }
 .workflow-panel{
+  position:relative;
   background:linear-gradient(
     180deg,
     var(--panel-workflow-top),
@@ -192,9 +194,27 @@ h1{
     inset 0 1px 0 rgba(255,255,255,.05);
 
   backdrop-filter:blur(2px);
+  
 }
+.workflow-panel::before{
+  content:"";
+  position:absolute;
+  inset:-40px -60px -60px -60px;
+  z-index:-1;
+  pointer-events:none;
 
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(79,127,166,.12),
+      transparent 55%
+    );
+
+  filter:blur(28px);
+  opacity:.65;
+}
 .entry-panel{
+  position:relative;
   max-width:1020px;
   margin:0 auto;
   padding:38px 28px 34px;
@@ -214,7 +234,22 @@ h1{
 
   backdrop-filter:blur(2px);
 }
-
+.entry-panel::after{
+  content:"";
+  position:absolute;
+  top:55%;
+  left:6%;
+  right:6%;
+  height:1px;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.10),
+    transparent
+  );
+  z-index:0;
+  pointer-events:none;
+}
 .suite-system-line{
   text-align:center;
   font-size:15px;
@@ -665,9 +700,8 @@ var(--card-soft);
 }
 .btn:hover{
   transform:translateY(-1px);
-  box-shadow:0 12px 26px rgba(0,0,0,.30);
-  filter:saturate(1.1);
-}
+  box-shadow:0 8px 18px rgba(0,0,0,.35);
+  }
 .entry-section .cards .card:nth-child(1) .btn{
   color:var(--sd);
 }
