@@ -56,7 +56,7 @@ body{
 }
 
 .wrap{
-  max-width:1100px;
+  max-width:1040px;
   margin:0 auto;
   padding:72px 20px 110px;
 }
@@ -65,9 +65,9 @@ h1{
   font-size:38px;
   font-weight:900;
   margin:0 auto 18px;
-  letter-spacing:-.02em;
-  line-height:1.08;
-  max-width:540px;
+  letter-spacing:-.03em;
+  line-height:1.05;
+  max-width:520px;
 }
 
 .section{
@@ -192,10 +192,19 @@ h1{
 .pipeline{
   position:absolute;
   top:50%;
-  left:8%;
-  right:8%;
-  height:1px;
-  background:rgba(255,255,255,.12);
+  left:10%;
+  right:10%;
+  height:2px;
+
+  background:linear-gradient(
+    90deg,
+    rgba(12,108,72,.45),
+    rgba(209,75,79,.35),
+    rgba(91,143,181,.45)
+  );
+
+  opacity:.35;
+  border-radius:2px;
   z-index:0;
 }
 
@@ -208,7 +217,13 @@ h1{
   min-height:205px;
   padding:24px;
   border-radius:16px;
-  background:var(--card-soft);
+  background:
+linear-gradient(
+ 180deg,
+ rgba(255,255,255,.06),
+ rgba(255,255,255,.02)
+),
+var(--card-soft);
   border:1px solid var(--card-soft-border);
   text-align:left;
   transform:translateY(-6px);
@@ -428,8 +443,23 @@ h1{
 .entry-section .cards .card:nth-child(3){
   border-top:3px solid var(--cw-ui);
 }
+/* Entry card title colors */
 
-.entry-section .card{
+.entry-section .cards .card:nth-child(1) h3{
+  color:var(--sd);
+}
+
+.entry-section .cards .card:nth-child(2) h3{
+  color:var(--ts-ui);
+}
+
+.entry-section .cards .card:nth-child(3) h3{
+  color:var(--cw-ui);
+}
+.entry-section .card h3{
+  font-weight:800;
+}
+  .entry-section .card{
   transition:
     transform .22s ease,
     box-shadow .22s ease,
@@ -611,7 +641,17 @@ footer a{
   letter-spacing:.02em;
   opacity:.75;
 }
+.suite-sd{
+  color:var(--sd);
+}
 
+.suite-ts{
+  color:var(--ts-ui);
+}
+
+.suite-cw{
+  color:var(--cw-ui);
+}
 /* MOBILE */
 
 @media (max-width:700px){
@@ -871,7 +911,9 @@ footer a{
 </section>
 
 <p class="suite-ending">
-  From signals to decisions.
+From <span class="suite-sd">signals</span>
+to <span class="suite-ts">priorities</span>
+to <span class="suite-cw">decisions</span>.
 </p>
 
 <footer>
