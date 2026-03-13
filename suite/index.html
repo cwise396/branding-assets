@@ -18,11 +18,13 @@
   --panel-soft-top:rgba(214,198,164,.10);
   --panel-soft-bottom:rgba(214,198,164,.05);
   --panel-soft-border:rgba(255,255,255,.10);
---panel-workflow-top:rgba(210,215,230,.06);
---panel-workflow-bottom:rgba(210,215,230,.03);
 
---panel-entry-top:rgba(214,198,164,.11);
---panel-entry-bottom:rgba(214,198,164,.055);
+  --panel-workflow-top:rgba(210,215,230,.06);
+  --panel-workflow-bottom:rgba(210,215,230,.03);
+
+  --panel-entry-top:rgba(210,215,230,.06);
+  --panel-entry-bottom:rgba(210,215,230,.03);
+
   --card-soft:rgba(255,255,255,.045);
   --card-soft-border:rgba(255,255,255,.13);
 
@@ -45,6 +47,7 @@ body{
     180deg,
     #0F1A2D 0%,
     #0D1626 100%
+  );
   color:var(--text);
   line-height:1.55;
   -webkit-font-smoothing:antialiased;
@@ -70,9 +73,11 @@ h1{
 .section{
   margin-top:120px;
 }
+
 #workflow{
   margin-top:60px;
 }
+
 .center{
   text-align:center;
 }
@@ -85,6 +90,7 @@ h1{
   margin:0 auto 42px;
   text-align:center;
 }
+
 .hero::before{
   content:"";
   position:absolute;
@@ -102,6 +108,7 @@ h1{
   filter:blur(26px);
   opacity:.8;
 }
+
 .hero-kicker{
   font-size:20px;
   font-weight:800;
@@ -118,6 +125,7 @@ h1{
   max-width:640px;
   line-height:1.6;
 }
+
 .hero::after{
   content:"";
   display:block;
@@ -125,7 +133,8 @@ h1{
   margin-top:40px;
   background:linear-gradient(to bottom, rgba(255,255,255,.04), transparent);
   opacity:.35;
-  }
+}
+
 /* WORKFLOW */
 
 .workflow-wrap{
@@ -145,6 +154,7 @@ h1{
   box-shadow:0 16px 50px rgba(0,0,0,.20);
   backdrop-filter:blur(2px);
 }
+
 .entry-panel{
   max-width:1020px;
   margin:0 auto;
@@ -152,13 +162,14 @@ h1{
   border-radius:22px;
   background:linear-gradient(
     180deg,
-    var(--panel-workflow-top),
-  var(--panel-workflow-bottom)
+    var(--panel-entry-top),
+    var(--panel-entry-bottom)
   );
   border:1px solid var(--panel-soft-border);
   box-shadow:0 16px 50px rgba(0,0,0,.18);
   backdrop-filter:blur(2px);
 }
+
 .suite-system-line{
   text-align:center;
   font-size:15px;
@@ -209,7 +220,6 @@ h1{
     background .25s ease;
 }
 
-/* subtiler Farb-Glow */
 .wf-card::before{
   content:"";
   position:absolute;
@@ -287,17 +297,11 @@ h1{
   font-size:18px;
   letter-spacing:-.01em;
 }
-.wf-card.sd h3{
-  color:var(--sd);
-}
 
-.wf-card.ts h3{
-  color:var(--ts);
-}
+.wf-card.sd h3{ color:var(--sd); }
+.wf-card.ts h3{ color:var(--ts-ui); }
+.wf-card.cw h3{ color:var(--cw-ui); }
 
-.wf-card.cw h3{
-  color:var(--cw-ui);
-}
 .flow-desc{
   font-size:15px;
   line-height:1.6;
@@ -324,21 +328,6 @@ h1{
   opacity:.5;
 }
 
-.suite-system-note{
-  text-align:center;
-  font-size:18px;
-  font-weight:500;
-  letter-spacing:.01em;
-  opacity:.88;
-  margin:70px auto 22px;
-  max-width:640px;
-  line-height:1.55;
-}
-
-.suite-system-note strong{
-  font-weight:600;
-}
-
 /* SECTION TITLES */
 
 .problem-title{
@@ -350,14 +339,13 @@ h1{
 }
 
 .section-kicker{
-  margin:0 0 10px;
+  margin:0 0 8px;
   font-size:12px;
   font-weight:800;
   letter-spacing:.12em;
   text-transform:uppercase;
   color:var(--muted);
   opacity:.72;
-  margin-bottom:8px;
 }
 
 .platform-title{
@@ -383,6 +371,7 @@ h1{
   gap:33px;
   margin-top:40px;
 }
+
 .cards-flow{
   margin:12px 0 26px;
   text-align:center;
@@ -393,30 +382,13 @@ h1{
   opacity:.9;
 }
 
-.cards-flow .flow-sd{
-   color:var(--sd);
-  font-weight:800;
-}
-
-.cards-flow .flow-ts{
-  color:var(--ts);
-  font-weight:800;
-}
-
-.cards-flow .flow-cw{
-  color:var(--cw-ui);
-  font-weight:800;
-}
-
 .cards-flow .flow-arrow{
+  display:inline-block;
   margin:0 12px;
+  color:var(--muted);
   opacity:.75;
 }
 
-.cards-flow span{
-  margin:0 10px;
-  opacity:.55;
-}
 .workflow-note{
   margin:30px auto 0;
   max-width:640px;
@@ -425,13 +397,14 @@ h1{
   color:var(--muted);
   opacity:.9;
 }
+
 .card{
+  position:relative;
   background:rgba(255,255,255,.055);
   border:1px solid var(--card-soft-border);
   border-radius:16px;
   padding:24px;
   box-shadow:var(--shadow);
-  position:relative;
 }
 
 .card-label{
@@ -443,32 +416,19 @@ h1{
   color:var(--muted);
   opacity:.65;
 }
+
 .entry-section .cards .card:nth-child(1){
   border-top:3px solid var(--sd);
 }
 
 .entry-section .cards .card:nth-child(2){
-  border-top:3px solid var(--ts);
+  border-top:3px solid var(--ts-ui);
 }
 
 .entry-section .cards .card:nth-child(3){
   border-top:3px solid var(--cw-ui);
 }
 
-.entry-section .cards .card:nth-child(1) .card-label,
-.entry-section .cards .card:nth-child(1) h3{
-  color:var(--sd);
-}
-
-.entry-section .cards .card:nth-child(2) .card-label,
-.entry-section .cards .card:nth-child(2) h3{
-  color:var(--ts);
-}
-
-.entry-section .cards .card:nth-child(3) .card-label,
-.entry-section .cards .card:nth-child(3) h3{
-  color:var(--cw-ui);
-}
 .entry-section .card{
   transition:
     transform .22s ease,
@@ -476,6 +436,7 @@ h1{
     border-color .22s ease,
     background .22s ease;
 }
+
 .entry-section .card::before{
   content:"";
   position:absolute;
@@ -485,6 +446,7 @@ h1{
   z-index:-1;
   transition:opacity .35s ease, filter .35s ease;
 }
+
 .entry-section .card:nth-child(1)::before{
   background:radial-gradient(
     140% 120% at 50% -20%,
@@ -497,8 +459,8 @@ h1{
 .entry-section .card:nth-child(2)::before{
   background:radial-gradient(
     140% 120% at 50% -20%,
-    rgba(185,14,19,.55),
-    rgba(185,14,19,.18) 38%,
+    rgba(209,75,79,.55),
+    rgba(209,75,79,.18) 38%,
     transparent 70%
   );
 }
@@ -506,12 +468,13 @@ h1{
 .entry-section .card:nth-child(3)::before{
   background:radial-gradient(
     140% 120% at 50% -20%,
-    rgba(75,124,163,.55),
-    rgba(75,124,163,.18) 38%,
+    rgba(91,143,181,.55),
+    rgba(91,143,181,.20) 38%,
     transparent 70%
   );
 }
-  .entry-section .card:hover{
+
+.entry-section .card:hover{
   transform:translateY(-10px);
   box-shadow:0 22px 52px rgba(0,0,0,.38);
   border-color:rgba(255,255,255,.24);
@@ -522,7 +485,8 @@ h1{
   opacity:.9;
   filter:blur(2px);
 }
-  .card h3{
+
+.card h3{
   margin:0 0 8px;
   font-size:20px;
   letter-spacing:-.01em;
@@ -541,9 +505,11 @@ h1{
   color:var(--muted);
   opacity:.9;
 }
+
 .entry-card-primary .entry-note{
   margin-top:21px;
 }
+
 .entry-card-primary{
   border-color:rgba(255,255,255,.18);
   box-shadow:0 14px 40px rgba(0,0,0,.30);
@@ -560,9 +526,11 @@ h1{
   text-decoration:none;
   box-shadow:var(--shadow);
 }
+
 .entry-card-primary .btn{
   margin-top:30px;
 }
+
 /* SCROLL ANIMATION */
 
 .reveal-item,
@@ -611,38 +579,14 @@ h1{
   transform:scaleX(1);
 }
 
-/* stagger */
-.reveal-section.is-visible h2.reveal-item{
-  transition-delay:.02s;
-}
-
-.reveal-section.is-visible .suite-system-line.reveal-item{
-  transition-delay:.12s;
-}
-
-.reveal-section.is-visible .reveal-line{
-  transition-delay:.22s;
-}
-
-.reveal-section.is-visible .wf-card.sd{
-  transition-delay:.34s;
-}
-
-.reveal-section.is-visible .wf-arrow:nth-of-type(4){
-  transition-delay:.46s;
-}
-
-.reveal-section.is-visible .wf-card.ts{
-  transition-delay:.56s;
-}
-
-.reveal-section.is-visible .wf-arrow:nth-of-type(6){
-  transition-delay:.68s;
-}
-
-.reveal-section.is-visible .wf-card.cw{
-  transition-delay:.78s;
-}
+.reveal-section.is-visible h2.reveal-item{ transition-delay:.02s; }
+.reveal-section.is-visible .suite-system-line.reveal-item{ transition-delay:.12s; }
+.reveal-section.is-visible .reveal-line{ transition-delay:.22s; }
+.reveal-section.is-visible .wf-card.sd{ transition-delay:.34s; }
+.reveal-section.is-visible .wf-arrow:nth-of-type(4){ transition-delay:.46s; }
+.reveal-section.is-visible .wf-card.ts{ transition-delay:.56s; }
+.reveal-section.is-visible .wf-arrow:nth-of-type(6){ transition-delay:.68s; }
+.reveal-section.is-visible .wf-card.cw{ transition-delay:.78s; }
 
 /* FOOTER */
 
@@ -658,6 +602,7 @@ footer a{
   text-decoration:none;
   margin:0 8px;
 }
+
 .suite-ending{
   text-align:center;
   margin:33px auto 30px;
@@ -666,12 +611,11 @@ footer a{
   letter-spacing:.02em;
   opacity:.75;
 }
+
 /* MOBILE */
 
 @media (max-width:700px){
-  .pipeline{
-    display:none;
-  }
+  .pipeline{ display:none; }
 }
 
 @media (max-width:640px){
@@ -679,48 +623,33 @@ footer a{
     padding:58px 18px 90px;
   }
 
-  h1{
-    font-size:34px;
-  }
+  h1{ font-size:34px; }
+  h2{ font-size:26px; }
 
-  h2{
-    font-size:26px;
-  }
-
-  .section{
-    margin-top:88px;
-  }
+  .section{ margin-top:88px; }
 
   .section-kicker{
     font-size:11px;
     margin:0 0 8px;
   }
 
-  .platform-title{
-    font-size:24px;
-  }
+  .platform-title{ font-size:24px; }
 
   .hero-kicker{
     font-size:16px;
     margin:0 0 22px;
   }
 
-  .hero-explain{
-    font-size:15px;
+  .hero-explain{ font-size:15px; }
+
+  .hero::before{
+    width:560px;
+    height:220px;
+    top:-16px;
+    filter:blur(22px);
+    opacity:.7;
   }
-.hero-system-note{
-  margin-top:14px;
-  font-size:15px;
-  color:var(--muted);
-  opacity:.9;
-}
- .hero::before{
-  width:560px;
-  height:220px;
-  top:-16px;
-  filter:blur(22px);
-  opacity:.7;
-}
+
   .suite-system-line{
     font-size:14px;
     margin:10px 0 28px;
@@ -735,14 +664,16 @@ footer a{
     flex-wrap:wrap;
     gap:16px;
   }
-.workflow-note{
-  margin:30px auto 0;
-  max-width:640px;
-  text-align:center;
-  font-size:15px;
-  color:var(--muted);
-  opacity:.9;
-}
+
+  .workflow-note{
+    margin:30px auto 0;
+    max-width:640px;
+    text-align:center;
+    font-size:15px;
+    color:var(--muted);
+    opacity:.9;
+  }
+
   .wf-card{
     width:min(100%,420px);
     min-height:auto;
@@ -759,13 +690,10 @@ footer a{
     font-size:16px;
     margin:0 auto 28px;
   }
-.entry-panel{
-  padding:28px 18px 24px;
-  border-radius:18px;
-}
-  .suite-system-note{
-    font-size:16px;
-    margin:42px auto 10px;
+
+  .entry-panel{
+    padding:28px 18px 24px;
+    border-radius:18px;
   }
 }
 </style>
@@ -776,7 +704,7 @@ footer a{
 <main class="wrap">
 
 <section class="hero center">
- <p class="hero-kicker">Decision system</p>
+  <p class="hero-kicker">Decision system</p>
   <h1>From signals to clear direction</h1>
 
   <p class="hero-explain">
@@ -784,7 +712,6 @@ footer a{
     that helps teams move from signals to priorities
     to aligned decisions.
   </p>
- 
 </section>
 
 <section id="workflow" class="section center">
@@ -795,7 +722,7 @@ footer a{
 
       <p class="suite-system-line reveal-item">
         <span style="color:var(--sd)">Signals</span> →
-        <span style="color:var(--ts)">Priorities</span> →
+        <span style="color:var(--ts-ui)">Priorities</span> →
         <span style="color:var(--cw-ui)">Decisions</span>
       </p>
 
@@ -836,9 +763,9 @@ footer a{
 
     </div>
   </div>
- </section>
+</section>
 
- <section class="section">
+<section class="section">
   <h2 class="center problem-title">Why decisions break down in modern teams</h2>
 
   <div class="cards">
@@ -890,82 +817,63 @@ footer a{
 </section>
 
 <section class="section center entry-section">
-
   <div class="entry-panel">
     <p class="section-kicker">Entry points</p>
     <h2>Start where clarity matters most</h2>
 
-<p class="cards-flow">
-<span style="color:var(--sd)">Signals</span>
-<span class="flow-arrow">→</span>
-<span style="color:var(--ts)">Priorities</span>
-<span class="flow-arrow">→</span>
-<span style="color:var(--cw-ui)">Decisions</span>
-</p>
+    <p class="cards-flow">
+      <span style="color:var(--sd)">Signals</span>
+      <span class="flow-arrow">→</span>
+      <span style="color:var(--ts-ui)">Priorities</span>
+      <span class="flow-arrow">→</span>
+      <span style="color:var(--cw-ui)">Decisions</span>
+    </p>
 
-<div class="cards">
+    <div class="cards">
+      <div class="card entry-card-primary">
+        <p class="card-label">Signals</p>
+        <h3>SlackDigest</h3>
+        <p>For teams handling many updates.</p>
+        <p class="entry-note">
+          Where clear decisions begin.<br>
+          Often the starting point of the workflow.
+        </p>
+        <a class="btn" href="/products/slackdigest/">See SlackDigest</a>
+      </div>
 
-<div class="card entry-card-primary">
+      <div class="card">
+        <p class="card-label">Priorities</p>
+        <h3>TaskSieve</h3>
+        <p>For teams organizing tasks and priorities.</p>
+        <p class="entry-note">
+          Where incoming work becomes structured.<br>
+          The next step after signals turn into action.
+        </p>
+        <a class="btn" href="/products/tasksieve/">See TaskSieve</a>
+      </div>
 
-  <p class="card-label">Signals</p>
-  
-  <h3>SlackDigest</h3>
+      <div class="card">
+        <p class="card-label">Decisions</p>
+        <h3>ChangeWise</h3>
+        <p>For teams aligning direction and decisions.</p>
+        <p class="entry-note">
+          Where teams create shared clarity.<br>
+          The final step from priorities to alignment.
+        </p>
+        <a class="btn" href="/products/changewise/">See ChangeWise</a>
+      </div>
+    </div>
 
-  <p>For teams handling many updates.</p>
-
-  <p class="entry-note">
-    Where clear decisions begin.<br>
-    Often the starting point of the workflow.
-  </p>
-
-  <a class="btn" href="/products/slackdigest/">See SlackDigest</a>
-
-</div>
-
-  <div class="card">
-
-  <p class="card-label">Priorities</p>
-
-  <h3>TaskSieve</h3>
-
-  <p>For teams organizing tasks and priorities.</p>
-
-  <p class="entry-note">
-    Where incoming work becomes structured.<br>
-    The next step after signals turn into action.
-  </p>
-
-  <a class="btn" href="/products/tasksieve/">See TaskSieve</a>
-
-</div>
-
- <div class="card">
-
-  <p class="card-label">Decisions</p>
-
-  <h3>ChangeWise</h3>
-
-  <p>For teams aligning direction and decisions.</p>
-
-  <p class="entry-note">
-    Where teams create shared clarity.<br>
-    The final step from priorities to alignment.
-  </p>
-
-  <a class="btn" href="/products/changewise/">See ChangeWise</a>
-
-</div>
-
-  <p class="workflow-note">
+    <p class="workflow-note">
       Start with any product. Together they work as one system.
     </p>
   </div>
 </section>
 
-  
 <p class="suite-ending">
-From signals to decisions.
+  From signals to decisions.
 </p>
+
 <footer>
   <a href="/imprint/">Imprint</a> ·
   <a href="/privacy/">Privacy</a>
