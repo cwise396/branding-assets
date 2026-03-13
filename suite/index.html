@@ -43,9 +43,13 @@
 body{
   margin:0;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+
   background:
-    radial-gradient(circle at 50% 0%, rgba(255,255,255,.035), transparent 34%),
-    linear-gradient(180deg, #101B30 0%, #0D1626 100%);
+    radial-gradient(circle at 50% -10%, rgba(255,255,255,.05), transparent 40%),
+    radial-gradient(circle at 20% 60%, rgba(91,143,181,.06), transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(12,108,72,.05), transparent 40%),
+    linear-gradient(180deg, #111E35 0%, #0D1626 100%);
+
   color:var(--text);
   line-height:1.55;
   -webkit-font-smoothing:antialiased;
@@ -137,20 +141,42 @@ h1{
 /* WORKFLOW */
 
 .workflow-wrap{
+  position:relative;
   max-width:1020px;
   margin:0 auto;
 }
+.workflow-wrap::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:120%;
+  height:140%;
+  pointer-events:none;
+  z-index:-1;
 
+  background:radial-gradient(
+    ellipse at center,
+    rgba(255,255,255,.035),
+    transparent 60%
+  );
+}
 .workflow-panel{
   background:linear-gradient(
     180deg,
     var(--panel-workflow-top),
     var(--panel-workflow-bottom)
   );
+
   border:1px solid var(--panel-soft-border);
   border-radius:22px;
   padding:42px 28px 34px;
-  box-shadow:0 16px 50px rgba(0,0,0,.20);
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.05);
+
   backdrop-filter:blur(2px);
 }
 
@@ -159,13 +185,19 @@ h1{
   margin:0 auto;
   padding:38px 28px 34px;
   border-radius:22px;
+
   background:linear-gradient(
     180deg,
     var(--panel-entry-top),
     var(--panel-entry-bottom)
   );
+
   border:1px solid var(--panel-soft-border);
-  box-shadow:0 16px 50px rgba(0,0,0,.18);
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.05);
+
   backdrop-filter:blur(2px);
 }
 
@@ -567,8 +599,27 @@ var(--card-soft);
 .entry-card-primary .btn{
   margin-top:30px;
 }
+.entry-section{
+  position:relative;
+}
+.entry-section::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:120%;
+  height:140%;
+  pointer-events:none;
+  z-index:-1;
 
-/* SCROLL ANIMATION */
+  background:radial-gradient(
+    ellipse at center,
+    rgba(255,255,255,.035),
+    transparent 60%
+  );
+}
+  /* SCROLL ANIMATION */
 
 .reveal-item,
 .reveal-card,
