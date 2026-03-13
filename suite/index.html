@@ -25,7 +25,7 @@
   --panel-entry-top:rgba(210,215,230,.06);
   --panel-entry-bottom:rgba(210,215,230,.03);
 
-  --card-soft:rgba(255,255,255,.045);
+ --card-soft:rgba(255,255,255,.032);
   --card-soft-border:rgba(255,255,255,.13);
 
   --sd:#0C6C48;
@@ -263,14 +263,15 @@ h1{
   background:
 linear-gradient(
  180deg,
- rgba(255,255,255,.06),
- rgba(255,255,255,.02)
+ rgba(255,255,255,.035)),
+ rgba(255,255,255,.01)
 ),
 var(--card-soft);
   border:1px solid var(--card-soft-border);
   text-align:left;
   transform:translateY(-3px);
   box-shadow:var(--shadow-lift);
+  filter:saturate(1.12);
   transition:
     transform .25s ease,
     box-shadow .25s ease,
