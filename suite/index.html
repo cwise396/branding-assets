@@ -159,16 +159,22 @@ h1{
   left:50%;
   top:50%;
   transform:translate(-50%,-50%);
-  width:120%;
-  height:140%;
+  width:125%;
+  height:150%;
   pointer-events:none;
   z-index:-1;
 
-  background:radial-gradient(
-    ellipse at center,
-    rgba(255,255,255,.035),
-    transparent 60%
-  );
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(255,255,255,.045),
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse at center,
+      rgba(91,143,181,.06),
+      transparent 70%
+    );
 }
 .workflow-panel{
   background:linear-gradient(
@@ -231,19 +237,17 @@ h1{
 .pipeline{
   position:absolute;
   top:50%;
-  left:10%;
-  right:10%;
-  height:2px;
+  left:8%;
+  right:8%;
+  height:1px;
 
   background:linear-gradient(
     90deg,
-    rgba(12,108,72,.45),
-    rgba(209,75,79,.35),
-    rgba(91,143,181,.45)
+    rgba(12,108,72,.25),
+    rgba(209,75,79,.25),
+    rgba(91,143,181,.25)
   );
 
-  opacity:.35;
-  border-radius:2px;
   z-index:0;
 }
 
