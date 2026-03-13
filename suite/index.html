@@ -642,17 +642,39 @@ var(--card-soft);
 
 .btn{
   display:inline-block;
-  margin-top:21px;
-  padding:12px 16px;
+  margin-top:20px;
+  padding:10px 14px;
   background:#fff;
-  color:#0E3960;
-  border-radius:12px;
-  font-weight:800;
+  border-radius:10px;
+
+  font-weight:700;
+  font-size:14px;
+  letter-spacing:.01em;
+
   text-decoration:none;
-  box-shadow:var(--shadow);
+
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease;
+}
+.btn:hover{
+  transform:translateY(-1px);
+  box-shadow:0 12px 26px rgba(0,0,0,.30);
+}
+.entry-section .cards .card:nth-child(1) .btn{
+  color:var(--sd);
 }
 
-.entry-card-primary .btn{
+.entry-section .cards .card:nth-child(2) .btn{
+  color:var(--ts-ui);
+}
+
+.entry-section .cards .card:nth-child(3) .btn{
+  color:var(--cw-ui);
+}
+  .entry-card-primary .btn{
   margin-top:30px;
 }
 .entry-section{
