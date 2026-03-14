@@ -2,7 +2,7 @@
   <title>ChangeWise Logo – Shift-style right arrow</title>
   <circle cx="75" cy="75" r="75" fill="#A22021"/>
   <!-- Shift-style right arrow: prominent symmetric head -->
-  <polygon fill="#0E3960" points="
+  <polygon fill="#4F7FA6" points="
     36,63   82,45   120,75   82,105   36,87
   "/>
 </svg>
