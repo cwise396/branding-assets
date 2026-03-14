@@ -146,8 +146,49 @@ h1{
   background:linear-gradient(to bottom, rgba(255,255,255,.04), transparent);
   opacity:.35;
 }
+.hero-suite-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:26px;
+  align-items:start;
+  justify-items:center;
+  max-width:760px;
+  margin:22px auto 12px;
+}
 
-/* WORKFLOW */
+.hero-suite-item{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+}
+
+.hero-suite-name{
+  margin:0;
+  font-size:15px;
+  font-weight:700;
+  letter-spacing:-.01em;
+  color:var(--text);
+  opacity:.96;
+}
+
+.hero-suite-logo{
+  height:30px;
+  width:auto;
+  display:block;
+  opacity:.97;
+}
+.hero-suite-item:not(:last-child)::after{
+  content:"";
+  position:absolute;
+  right:-13px;
+  top:6px;
+  bottom:6px;
+  width:1px;
+  background:rgba(255,255,255,.10);
+}
+  /* WORKFLOW */
 
 .workflow-wrap{
   position:relative;
@@ -865,7 +906,19 @@ footer a{
     filter:blur(22px);
     opacity:.7;
   }
+.hero-suite-grid{
+  grid-template-columns:1fr;
+  gap:18px;
+  max-width:320px;
+}
 
+.hero-suite-item:not(:last-child)::after{
+  display:none;
+}
+
+.hero-suite-logo{
+  height:28px;
+}
   .suite-system-line{
     font-size:14px;
     margin:10px 0 28px;
@@ -924,14 +977,40 @@ footer a{
 <main class="wrap">
 
 <section class="hero center">
+
   <p class="hero-kicker">Decision system</p>
+
   <h1>From signals to clear direction</h1>
 
+  <div class="hero-suite-grid" aria-label="Suite products">
+
+    <div class="hero-suite-item">
+      <p class="hero-suite-name">SlackDigest</p>
+      <img class="hero-suite-logo"
+           src="/assets/brand/slackdigest_logo.svg"
+           alt="SlackDigest logo">
+    </div>
+
+    <div class="hero-suite-item">
+      <p class="hero-suite-name">TaskSieve</p>
+      <img class="hero-suite-logo"
+           src="/assets/brand/tasksieve_logo.svg"
+           alt="TaskSieve logo">
+    </div>
+
+    <div class="hero-suite-item">
+      <p class="hero-suite-name">ChangeWise</p>
+      <img class="hero-suite-logo"
+           src="/assets/brand/changewise_logo.svg"
+           alt="ChangeWise logo">
+    </div>
+
+  </div>
+
   <p class="hero-explain">
-    SlackDigest, TaskSieve and ChangeWise form a workflow
-    that turns signals into priorities
-    and decisions.
+    Together they form a workflow that turns signals into priorities and decisions.
   </p>
+
 </section>
 
 <section id="workflow" class="section center">
