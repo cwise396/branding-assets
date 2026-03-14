@@ -19,8 +19,8 @@
   --panel-soft-bottom:rgba(214,198,164,.05);
   --panel-soft-border:rgba(255,255,255,.10);
 
-  --panel-workflow-top:rgba(210,215,230,.06);
-  --panel-workflow-bottom:rgba(210,215,230,.03);
+--panel-workflow-top:rgba(52,74,106,.14);
+--panel-workflow-bottom:rgba(28,42,66,.10);
 
   --panel-entry-top:rgba(210,215,230,.06);
   --panel-entry-bottom:rgba(210,215,230,.03);
@@ -206,12 +206,12 @@ h1{
   background:
     radial-gradient(
       circle at 50% 0%,
-      rgba(79,127,166,.12),
+      rgba(79,127,166,.08),
       transparent 55%
     );
 
   filter:blur(28px);
-  opacity:.65;
+  opacity:.5;
 }
 .entry-panel{
   position:relative;
@@ -339,8 +339,8 @@ var(--card-soft);
 .sd::before{
   background:radial-gradient(
     140% 120% at 50% -20%,
-    rgba(12,108,72,.38),
-    rgba(12,108,72,.12) 38%,
+    rgba(12,108,72,.30),
+    rgba(12,108,72,.10) 38%,
     transparent 70%
   );
 }
@@ -348,8 +348,8 @@ var(--card-soft);
 .ts::before{
   background:radial-gradient(
     140% 120% at 50% -20%,
-    rgba(209,75,79,.38),
-    rgba(209,75,79,.12) 38%,
+    rgba(209,75,79,.30),
+    rgba(209,75,79,.10) 38%,
     transparent 70%
   );
 }
@@ -357,22 +357,23 @@ var(--card-soft);
 .cw::before{
   background:radial-gradient(
     140% 120% at 50% -20%,
-    rgba(79,127,166,.38),
-    rgba(79,127,166,.14) 38%,
+    rgba(79,127,166,.30),
+    rgba(79,127,166,.11) 38%,
     transparent 70%
   );
 }
 
+ 
 @media (hover:hover){
   .reveal-section.is-visible .wf-card:hover{
-    transform:translateY(-12px);
-   box-shadow:0 24px 60px rgba(0,0,0,.42);
-   border-color:rgba(255,255,255,.18);
-   background:rgba(255,255,255,.045);
+    transform:translateY(-10px);
+    box-shadow:0 24px 60px rgba(0,0,0,.42);
+    border-color:rgba(255,255,255,.16);
+    background:rgba(255,255,255,.028);
   }
 
   .reveal-section.is-visible .wf-card:hover::before{
-    opacity:.75;
+    opacity:.62;
     filter:blur(2px);
   }
 }
@@ -596,8 +597,8 @@ var(--card-soft);
 .entry-section .card:nth-child(1)::before{
   background:radial-gradient(
     140% 120% at 50% -20%,
-    rgba(12,108,72,.55),
-    rgba(12,108,72,.18) 38%,
+    rgba(12,108,72,.30),
+    rgba(12,108,72,.10) 38%,
     transparent 70%
   );
 }
@@ -605,8 +606,8 @@ var(--card-soft);
 .entry-section .card:nth-child(2)::before{
   background:radial-gradient(
     140% 120% at 50% -20%,
-    rgba(209,75,79,.55),
-    rgba(209,75,79,.18) 38%,
+    rgba(209,75,79,.30),
+    rgba(209,75,79,.10) 38%,
     transparent 70%
   );
 }
@@ -614,8 +615,8 @@ var(--card-soft);
 .entry-section .card:nth-child(3)::before{
   background:radial-gradient(
     140% 120% at 50% -20%,
-    rgba(91,143,181,.55),
-    rgba(91,143,181,.20) 38%,
+    rgba(79,127,166,.30),
+    rgba(79,127,166,.11) 38%,
     transparent 70%
   );
 }
@@ -623,31 +624,31 @@ var(--card-soft);
 .entry-section .cards .card:nth-child(1):hover{
   transform:translateY(-9px) scale(1.01);
   box-shadow:0 26px 60px rgba(0,0,0,.42);
-  border-color:rgba(255,255,255,.24);
-  background:rgba(255,255,255,.07);
+  border-color:rgba(255,255,255,.16);
+  background:rgba(255,255,255,.03);
 }
 
 .entry-section .cards .card:nth-child(2):hover{
   transform:translateY(-6px) scale(1.01);
   box-shadow:0 26px 60px rgba(0,0,0,.42);
-  border-color:rgba(255,255,255,.24);
-  background:rgba(255,255,255,.07);
+  border-color:rgba(255,255,255,.16);
+  background:rgba(255,255,255,.03);
 }
 
 .entry-section .cards .card:nth-child(3):hover{
   transform:translateY(-3px) scale(1.01);
   box-shadow:0 26px 60px rgba(0,0,0,.42);
-  border-color:rgba(255,255,255,.24);
-  background:rgba(255,255,255,.07);
+  border-color:rgba(255,255,255,.16);
+  background:rgba(255,255,255,.03);
 }
 
 .entry-section .card:hover::before{
-  opacity:.9;
+  opacity:.62;
   filter:blur(2px);
 }
 
 .entry-section .card:hover::after{
-  opacity:1;
+  opacity:.45;
 }
 
 .card h3{
