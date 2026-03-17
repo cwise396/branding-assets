@@ -8,36 +8,51 @@
 
 <style>
 :root{
-  --bg:#0F1A2D;
-  --text:#E7ECF3;
-  --muted:#AAB7C8;
 
-  --panel:rgba(255,255,255,.05);
-  --border:rgba(255,255,255,.12);
+  /* =========================
+     BASE COLORS
+     ========================= */
 
-  --panel-soft-top:rgba(214,198,164,.10);
-  --panel-soft-bottom:rgba(214,198,164,.05);
-  --panel-soft-border:rgba(255,255,255,.10);
+  --bg:#102038;
+  --text:#EAF0F7;
+  --muted:#B8C4D4;
 
---panel-workflow-top:rgba(52,74,106,.14);
---panel-workflow-bottom:rgba(28,42,66,.10);
+  /* =========================
+     PANELS (Workflow / Entry)
+     ========================= */
 
-  --panel-entry-top:rgba(210,215,230,.06);
-  --panel-entry-bottom:rgba(210,215,230,.03);
+  --panel-workflow-top:rgba(210,215,230,.08);
+  --panel-workflow-bottom:rgba(210,215,230,.04);
 
- --card-soft:rgba(255,255,255,.032);
-  --card-soft-border:rgba(255,255,255,.10);
+  --panel-entry-top:rgba(210,215,230,.08);
+  --panel-entry-bottom:rgba(210,215,230,.04);
 
-  --sd:#0C6C48;
-  --ts:#B90E13;
-  --ts-ui:#D14B4F;
+  /* =========================
+     CARDS
+     ========================= */
+
+  --card-soft:rgba(255,255,255,.038);
+  --card-soft-border:rgba(255,255,255,.11);
+
+  /* =========================
+     PRODUCT COLORS
+     ========================= */
+
+  --sd:#0E7A52;
+--ts:#C3171D;
+--ts-ui:#DA4D52;
+
   --cw:#0E3960;
-  --cw-ui:#5B8FB5;
+ --cw-ui:#5C8FB6;
+
+  /* =========================
+     SHADOWS / DEPTH
+     ========================= */
 
   --shadow:0 10px 30px rgba(0,0,0,.28);
-  --shadow-lift:0 14px 40px rgba(0,0,0,.30);
-}
+  --shadow-lift:0 16px 40px rgba(0,0,0,.38);
 
+}
 *{box-sizing:border-box}
 
 body{
@@ -413,8 +428,8 @@ h1{
 .sd::before{
   background:radial-gradient(
     140% 120% at 50% -20%,
-    rgba(12,108,72,.30),
-    rgba(12,108,72,.10) 38%,
+    rgba(14,122,82,.34),
+    rgba(14,122,82,.11) 38%,
     transparent 70%
   );
 }
@@ -422,8 +437,8 @@ h1{
 .ts::before{
   background:radial-gradient(
     140% 120% at 50% -20%,
-    rgba(209,75,79,.30),
-    rgba(209,75,79,.10) 38%,
+    rgba(218,77,82,.34),
+    rgba(218,77,82,.11) 38%,
     transparent 70%
   );
 }
@@ -431,12 +446,11 @@ h1{
 .cw::before{
   background:radial-gradient(
     140% 120% at 50% -20%,
-    rgba(79,127,166,.30),
-    rgba(79,127,166,.11) 38%,
+    rgba(92,143,182,.34),
+    rgba(92,143,182,.12) 38%,
     transparent 70%
   );
 }
-
  
 @media (hover:hover){
   .reveal-section.is-visible .wf-card:hover{
@@ -671,8 +685,8 @@ h1{
 .entry-section .card:nth-child(1)::before{
   background:radial-gradient(
     140% 120% at 50% -20%,
-    rgba(12,108,72,.30),
-    rgba(12,108,72,.10) 38%,
+    rgba(14,122,82,.34),
+    rgba(14,122,82,.11) 38%,
     transparent 70%
   );
 }
@@ -680,8 +694,8 @@ h1{
 .entry-section .card:nth-child(2)::before{
   background:radial-gradient(
     140% 120% at 50% -20%,
-    rgba(209,75,79,.30),
-    rgba(209,75,79,.10) 38%,
+    rgba(218,77,82,.34),
+    rgba(218,77,82,.11) 38%,
     transparent 70%
   );
 }
@@ -689,8 +703,8 @@ h1{
 .entry-section .card:nth-child(3)::before{
   background:radial-gradient(
     140% 120% at 50% -20%,
-    rgba(79,127,166,.30),
-    rgba(79,127,166,.11) 38%,
+    rgba(92,143,182,.34),
+    rgba(92,143,182,.12) 38%,
     transparent 70%
   );
 }
