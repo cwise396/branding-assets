@@ -5,20 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Suite – From signals to clear decisions</title>
 <meta name="description" content="How SlackDigest, TaskSieve and ChangeWise work together to turn signals into clear decisions.">
+
 <style>
 :root{
-
-  /* =========================
-     BASE COLORS
-     ========================= */
-
   --bg:#102038;
   --text:#EAF0F7;
   --muted:#B8C4D4;
 
-  /* =========================
-     PANELS (Workflow / Entry)
-     ========================= */
+  --panel-soft-border:rgba(255,255,255,.10);
 
   --panel-workflow-top:rgba(210,215,230,.08);
   --panel-workflow-bottom:rgba(210,215,230,.04);
@@ -26,56 +20,40 @@
   --panel-entry-top:rgba(210,215,230,.08);
   --panel-entry-bottom:rgba(210,215,230,.04);
 
-  /* =========================
-     CARDS
-     ========================= */
-
   --card-soft:rgba(255,255,255,.038);
   --card-soft-border:rgba(255,255,255,.11);
 
-  /* =========================
-     PRODUCT COLORS
-     ========================= */
-
   --sd:#0E7A52;
---ts:#C3171D;
---ts-ui:#DA4D52;
-
+  --ts:#C3171D;
+  --ts-ui:#DA4D52;
   --cw:#0E3960;
- --cw-ui:#5C8FB6;
-
-  /* =========================
-     SHADOWS / DEPTH
-     ========================= */
+  --cw-ui:#5C8FB6;
 
   --shadow:0 10px 30px rgba(0,0,0,.28);
   --shadow-lift:0 16px 40px rgba(0,0,0,.38);
-
 }
+
 *{box-sizing:border-box}
 
 body{
   margin:0;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-
   background:
     radial-gradient(circle at 50% -10%, rgba(255,255,255,.05), transparent 40%),
     radial-gradient(circle at 20% 60%, rgba(91,143,181,.06), transparent 40%),
     radial-gradient(circle at 80% 60%, rgba(12,108,72,.05), transparent 40%),
-    linear-gradient(180deg, #111E35 0%, #0D1626 100%);
-
+    linear-gradient(180deg, #11213A 0%, #0F1C31 100%);
   color:var(--text);
   line-height:1.55;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   text-rendering:optimizeLegibility;
   font-smooth:always;
- 
   letter-spacing:.01em;
   font-feature-settings:"kern";
 }
 
- .wrap{
+.wrap{
   max-width:1040px;
   margin:0 auto;
   padding:72px 20px 110px;
@@ -93,9 +71,11 @@ h1{
 .section{
   margin-top:120px;
 }
+
 .entry-section{
   margin-top:90px;
 }
+
 #workflow{
   margin-top:45px;
 }
@@ -132,6 +112,15 @@ h1{
   opacity:.8;
 }
 
+.hero::after{
+  content:"";
+  display:block;
+  height:70px;
+  margin-top:40px;
+  background:linear-gradient(to bottom, rgba(255,255,255,.04), transparent);
+  opacity:.35;
+}
+
 .hero-kicker{
   font-size:20px;
   font-weight:800;
@@ -140,16 +129,6 @@ h1{
   opacity:.72;
   margin:0 0 28px;
 }
-
-.hero-explain{
-  font-size:19px;
-  margin:42px auto 0;
-  opacity:.9;
-  max-width:640px;
-  line-height:1.6;
-  letter-spacing:.01em;
-}
-
 
 .hero-suite-grid{
   display:grid;
@@ -182,19 +161,26 @@ h1{
   height:93px;
   width:auto;
   display:block;
-
   background:#ffffff;
   padding:4px;
   border-radius:50%;
-
   border:1px solid rgba(255,255,255,.75);
-
   box-shadow:
     0 8px 22px rgba(0,0,0,.18),
     0 2px 5px rgba(0,0,0,.10);
-
   opacity:.99;
 }
+
+.hero-suite-item:not(:last-child)::after{
+  content:"";
+  position:absolute;
+  right:-14px;
+  top:6px;
+  bottom:6px;
+  width:1px;
+  background:rgba(255,255,255,.10);
+}
+
 .hero-standalone{
   margin:10px auto 0;
   max-width:760px;
@@ -214,31 +200,14 @@ h1{
   opacity:.95;
 }
 
-.hero-suite-item:not(:last-child)::after{
-  content:"";
-  position:absolute;
-  right:-14px;
-  top:6px;
-  bottom:6px;
-  width:1px;
-  background:rgba(255,255,255,.10);
-}
-.hero::after{
-  content:"";
-  display:block;
-  height:70px;
-  margin-top:40px;
-  background:linear-gradient(to bottom, rgba(255,255,255,.04), transparent);
-  opacity:.35;
-}
- 
-  /* WORKFLOW */
+/* WORKFLOW */
 
 .workflow-wrap{
   position:relative;
   max-width:1020px;
   margin:0 auto;
 }
+
 .workflow-wrap::before{
   content:"";
   position:absolute;
@@ -249,7 +218,6 @@ h1{
   height:150%;
   pointer-events:none;
   z-index:-1;
-
   background:
     radial-gradient(
       ellipse at center,
@@ -262,6 +230,7 @@ h1{
       transparent 70%
     );
 }
+
 .workflow-panel{
   position:relative;
   background:
@@ -282,74 +251,22 @@ h1{
   backdrop-filter:blur(2px);
 }
 
-
 .workflow-panel::before{
   content:"";
   position:absolute;
   inset:-40px -60px -60px -60px;
   z-index:-1;
   pointer-events:none;
-
   background:
     radial-gradient(
       circle at 50% 0%,
       rgba(79,127,166,.08),
       transparent 55%
     );
-
   filter:blur(28px);
   opacity:.5;
 }
-.problem-sub{
-  display:block;
-  text-align:center;
-  margin:8px auto 28px;
-  max-width:640px;
 
-  font-size:15px;
-  line-height:1.55;
-  letter-spacing:.01em;
-
-  color:var(--muted);
-  opacity:.78;
-}
-  .entry-panel{
-  position:relative;
-  max-width:1020px;
-  margin:0 auto;
-  padding:38px 28px 34px;
-  border-radius:22px;
-
-  background:linear-gradient(
-    180deg,
-    var(--panel-entry-top),
-    var(--panel-entry-bottom)
-  );
-
-  border:1px solid var(--panel-soft-border);
-
-  box-shadow:
-    0 20px 60px rgba(0,0,0,.35),
-    inset 0 1px 0 rgba(255,255,255,.05);
-
-  backdrop-filter:blur(2px);
-}
-.entry-panel::after{
-  content:"";
-  position:absolute;
-  top:55%;
-  left:6%;
-  right:6%;
-  height:1px;
-  background:linear-gradient(
-    90deg,
-    transparent,
-    rgba(255,255,255,.10),
-    transparent
-  );
-  z-index:0;
-  pointer-events:none;
-}
 .suite-system-line{
   text-align:center;
   font-size:15px;
@@ -375,14 +292,12 @@ h1{
   left:8%;
   right:8%;
   height:1px;
-
   background:linear-gradient(
     90deg,
     rgba(12,108,72,.25),
     rgba(209,75,79,.25),
     rgba(91,143,181,.25)
   );
-
   z-index:0;
 }
 
@@ -413,7 +328,6 @@ h1{
     border-color .25s ease,
     background .25s ease;
 }
-
 
 .wf-card::before{
   content:"";
@@ -463,9 +377,9 @@ h1{
     transparent 70%
   );
 }
- 
+
 @media (hover:hover){
- .reveal-section.is-visible .wf-card:hover{
+  .reveal-section.is-visible .wf-card:hover{
     transform:translateY(-10px);
     box-shadow:
       0 18px 40px rgba(0,0,0,.38),
@@ -532,10 +446,20 @@ h1{
   font-weight:700;
   letter-spacing:-.01em;
   opacity:.9;
-  margin-bottom:28px;
+  margin-bottom:0;
 }
 
-/* Workflow headline refinement */
+.problem-sub{
+  display:block;
+  text-align:center;
+  margin:8px auto 28px;
+  max-width:640px;
+  font-size:15px;
+  line-height:1.55;
+  letter-spacing:.01em;
+  color:var(--muted);
+  opacity:.78;
+}
 
 #workflow h2{
   letter-spacing:-.02em;
@@ -577,12 +501,14 @@ h1{
   width:min(980px,100%);
   margin:40px auto 0;
 }
+
 @media (max-width:860px){
   .cards{
     grid-template-columns:1fr;
     width:min(420px,100%);
   }
 }
+
 .cards-flow{
   margin:12px 0 26px;
   text-align:center;
@@ -622,7 +548,19 @@ h1{
   flex-direction:column;
   height:100%;
 }
- 
+
+.card h3{
+  margin:0 0 10px;
+  font-size:21px;
+  letter-spacing:-.015em;
+}
+
+.card p{
+  margin:0;
+  font-size:15px;
+  opacity:.92;
+}
+
 .card-label{
   margin:0 0 8px;
   font-size:11px;
@@ -632,18 +570,87 @@ h1{
   color:var(--muted);
   opacity:.72;
 }
+
+/* ENTRY */
+
+.entry-panel{
+  position:relative;
+  max-width:1020px;
+  margin:0 auto;
+  padding:38px 28px 34px;
+  border-radius:22px;
+  background:linear-gradient(
+    180deg,
+    var(--panel-entry-top),
+    var(--panel-entry-bottom)
+  );
+  border:1px solid var(--panel-soft-border);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.05);
+  backdrop-filter:blur(2px);
+}
+
+.entry-panel::after{
+  content:"";
+  position:absolute;
+  top:55%;
+  left:6%;
+  right:6%;
+  height:1px;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.10),
+    transparent
+  );
+  z-index:0;
+  pointer-events:none;
+}
+
+.entry-section{
+  position:relative;
+}
+
+.entry-section::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:120%;
+  height:140%;
+  pointer-events:none;
+  z-index:-1;
+  background:radial-gradient(
+    ellipse at center,
+    rgba(255,255,255,.035),
+    transparent 60%
+  );
+}
+
+.entry-section .card{
+  transition:
+    transform .28s cubic-bezier(.22,.61,.36,1),
+    box-shadow .28s ease,
+    border-color .22s ease,
+    background .22s ease;
+}
+
 .entry-section .cards .card:nth-child(1){
   border-top:3px solid var(--sd);
+  transform:translateY(-3px);
 }
 
 .entry-section .cards .card:nth-child(2){
   border-top:3px solid var(--ts-ui);
+  transform:translateY(0);
 }
 
 .entry-section .cards .card:nth-child(3){
   border-top:3px solid var(--cw-ui);
+  transform:translateY(3px);
 }
-/* Entry card title colors */
 
 .entry-section .cards .card:nth-child(1) h3{
   color:var(--sd);
@@ -656,57 +663,11 @@ h1{
 .entry-section .cards .card:nth-child(3) h3{
   color:var(--cw-ui);
 }
+
 .entry-section .card h3{
   font-weight:800;
 }
-.entry-section .card{
-  transition:
-    transform .28s cubic-bezier(.22,.61,.36,1),
-    box-shadow .28s ease,
-    border-color .22s ease,
-    background .22s ease;
-}
-/* Flow line (Signals → Priorities → Decisions) */
-.flow-line{
-  font-size:20px;
-  font-weight:700;
-  letter-spacing:-.01em;
-  text-align:center;
-  margin:8px 0 26px;
-  opacity:.95;
-}
 
-.flow-line span{
-  opacity:.85;
-}
-
-.flow-line .sd{ color:var(--sd); }
-.flow-line .ts{ color:var(--ts-ui); }
-.flow-line .cw{ color:var(--cw-ui); }
-  .entry-section .card{
-  display:flex;
-  flex-direction:column;
-  height:100%;
-}
-
-.entry-note{
-  flex-grow:1;
-}
-
-.entry-section .card .btn{
-  margin-top:auto;
-}
-  .entry-section .cards .card:nth-child(1){
-  transform:translateY(-3px);
-}
-
-.entry-section .cards .card:nth-child(2){
-  transform:translateY(0);
-}
-
-.entry-section .cards .card:nth-child(3){
-  transform:translateY(3px);
-}
 .entry-section .card::before{
   content:"";
   position:absolute;
@@ -716,6 +677,7 @@ h1{
   z-index:-1;
   transition:opacity .35s ease, filter .35s ease;
 }
+
 .entry-section .card::after{
   content:"";
   position:absolute;
@@ -731,6 +693,7 @@ h1{
   );
   transition:opacity .35s ease;
 }
+
 .entry-section .card:nth-child(1)::before{
   background:radial-gradient(
     140% 120% at 50% -20%,
@@ -756,6 +719,19 @@ h1{
     rgba(92,143,182,.12) 38%,
     transparent 70%
   );
+}
+
+.entry-note{
+  flex-grow:1;
+  margin:10px 0 0;
+  font-size:13px;
+  line-height:1.5;
+  color:var(--muted);
+  opacity:.9;
+}
+
+.entry-section .card .btn{
+  margin-top:auto;
 }
 
 .entry-section .cards .card:nth-child(1):hover{
@@ -794,33 +770,13 @@ h1{
   opacity:.45;
 }
 
-.card h3{
-  margin:0 0 10px;
-  font-size:21px;
-  letter-spacing:-.015em;
-}
-
-.card p{
-  margin:0;
-  font-size:15px;
-  opacity:.92;
-}
-
-.entry-note{
-  margin:10px 0 0;
-  font-size:13px;
-  line-height:1.5;
-  color:var(--muted);
-  opacity:.9;
+.entry-card-primary{
+  border-color:rgba(255,255,255,.18);
+  box-shadow:0 14px 40px rgba(0,0,0,.30);
 }
 
 .entry-card-primary .entry-note{
   margin-top:21px;
-}
-
-.entry-card-primary{
-  border-color:rgba(255,255,255,.18);
-  box-shadow:0 14px 40px rgba(0,0,0,.30);
 }
 
 .btn{
@@ -829,23 +785,21 @@ h1{
   padding:10px 14px;
   background:#fff;
   border-radius:10px;
-
   font-weight:700;
   font-size:14px;
   letter-spacing:.01em;
-
   text-decoration:none;
-
   box-shadow:0 8px 20px rgba(0,0,0,.25);
-
   transition:
     transform .18s ease,
     box-shadow .18s ease;
 }
+
 .btn:hover{
   transform:translateY(-1px);
   box-shadow:0 8px 18px rgba(0,0,0,.35);
-  }
+}
+
 .entry-section .cards .card:nth-child(1) .btn{
   color:var(--sd);
 }
@@ -857,30 +811,12 @@ h1{
 .entry-section .cards .card:nth-child(3) .btn{
   color:var(--cw-ui);
 }
-  .entry-card-primary .btn{
+
+.entry-card-primary .btn{
   margin-top:30px;
 }
-.entry-section{
-  position:relative;
-}
-.entry-section::before{
-  content:"";
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  width:120%;
-  height:140%;
-  pointer-events:none;
-  z-index:-1;
 
-  background:radial-gradient(
-    ellipse at center,
-    rgba(255,255,255,.035),
-    transparent 60%
-  );
-}
-  /* SCROLL ANIMATION */
+/* SCROLL ANIMATION */
 
 .reveal-item,
 .reveal-card,
@@ -960,17 +896,11 @@ footer a{
   letter-spacing:.04em;
   opacity:.72;
 }
-.suite-sd{
-  color:var(--sd);
-}
 
-.suite-ts{
-  color:var(--ts-ui);
-}
+.suite-sd{ color:var(--sd); }
+.suite-ts{ color:var(--ts-ui); }
+.suite-cw{ color:var(--cw-ui); }
 
-.suite-cw{
-  color:var(--cw-ui);
-}
 /* MOBILE */
 
 @media (max-width:700px){
@@ -999,8 +929,6 @@ footer a{
     margin:0 0 22px;
   }
 
-  .hero-explain{ font-size:15px; }
-
   .hero::before{
     width:560px;
     height:220px;
@@ -1008,36 +936,34 @@ footer a{
     filter:blur(22px);
     opacity:.7;
   }
-.hero-suite-grid{
-  grid-template-columns:1fr;
-  gap:18px;
-  max-width:320px;
-}
 
-.hero-suite-item:not(:last-child)::after{
-  display:none;
-}
+  .hero-suite-grid{
+    grid-template-columns:1fr;
+    gap:18px;
+    max-width:320px;
+  }
 
-.hero-suite-logo{
-  height:72px;
-  padding:4px;
-}
-.hero-standalone{
-  font-size:16px;
-  line-height:1.5;
-  margin:10px auto 0;
-}
+  .hero-suite-item:not(:last-child)::after{
+    display:none;
+  }
 
-.hero-usage{
-  font-size:15px;
-  line-height:1.55;
-  margin:14px auto 0;
-}
+  .hero-suite-logo{
+    height:72px;
+    padding:4px;
+  }
 
-.hero-explain{
-  font-size:17px;
-  margin:28px auto 0;
-}
+  .hero-standalone{
+    font-size:16px;
+    line-height:1.5;
+    margin:10px auto 0;
+  }
+
+  .hero-usage{
+    font-size:15px;
+    line-height:1.55;
+    margin:14px auto 0;
+  }
+
   .suite-system-line{
     font-size:14px;
     margin:10px 0 28px;
@@ -1054,12 +980,14 @@ footer a{
   }
 
   .workflow-note{
-    margin:30px auto 0;
-    max-width:640px;
+    margin:28px auto 0;
+    max-width:620px;
     text-align:center;
-    font-size:15px;
+    font-size:14px;
+    line-height:1.55;
+    letter-spacing:.01em;
     color:var(--muted);
-    opacity:.9;
+    opacity:.8;
   }
 
   .wf-card{
@@ -1078,11 +1006,13 @@ footer a{
     font-size:16px;
     margin:0 auto 28px;
   }
-.entry-section .cards .card:nth-child(1),
-.entry-section .cards .card:nth-child(2),
-.entry-section .cards .card:nth-child(3){
-  transform:none;
-}
+
+  .entry-section .cards .card:nth-child(1),
+  .entry-section .cards .card:nth-child(2),
+  .entry-section .cards .card:nth-child(3){
+    transform:none;
+  }
+
   .entry-panel{
     padding:28px 18px 24px;
     border-radius:18px;
@@ -1096,34 +1026,25 @@ footer a{
 <main class="wrap">
 
 <section class="hero center">
-
   <p class="hero-kicker">Decision system</p>
 
   <h1>From signals to clear direction</h1>
 
   <div class="hero-suite-grid" aria-label="Suite products">
-
     <div class="hero-suite-item">
       <p class="hero-suite-name">SlackDigest</p>
-      <img class="hero-suite-logo"
-           src="/assets/brand/slackdigest_logo.svg"
-           alt="SlackDigest logo">
+      <img class="hero-suite-logo" src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest logo">
     </div>
 
     <div class="hero-suite-item">
       <p class="hero-suite-name">TaskSieve</p>
-      <img class="hero-suite-logo"
-           src="/assets/brand/tasksieve_logo.svg"
-           alt="TaskSieve logo">
+      <img class="hero-suite-logo" src="/assets/brand/tasksieve_logo.svg" alt="TaskSieve logo">
     </div>
 
     <div class="hero-suite-item">
       <p class="hero-suite-name">ChangeWise</p>
-      <img class="hero-suite-logo"
-           src="/assets/brand/changewise_logo.svg"
-           alt="ChangeWise logo">
+      <img class="hero-suite-logo" src="/assets/brand/changewise_logo.svg" alt="ChangeWise logo">
     </div>
-
   </div>
 
   <p class="hero-standalone">
@@ -1131,12 +1052,11 @@ footer a{
   </p>
 
   <p class="hero-usage">
-   Each tool serves a clear purpose — in communication, priorities and change.
-Used on their own or combined into a workflow that turns signals into priorities —
-and priorities into decisions.
+    Each tool serves a clear purpose — in communication, priorities and change.
+    Used on their own or combined into a workflow that turns signals into priorities —
+    and priorities into decisions.
   </p>
-
-  </section>
+</section>
 
 <section id="workflow" class="section center">
   <div class="workflow-wrap reveal-section">
@@ -1191,9 +1111,10 @@ and priorities into decisions.
 
 <section class="section">
   <h2 class="center problem-title">Where it breaks down</h2>
-<p class="problem-sub">
-  Workflows fail when signals, priorities and alignment drift apart.
-</p>
+  <p class="problem-sub">
+    Workflows fail when signals, priorities and alignment drift apart.
+  </p>
+
   <div class="cards">
     <div class="card">
       <p class="card-label">Problem</p>
@@ -1214,13 +1135,12 @@ and priorities into decisions.
     </div>
   </div>
 </section>
+
 <section class="section center">
   <p class="section-kicker">System impact</p>
-
   <h2 class="platform-title">Clear direction</h2>
-
   <p class="platform-sub">
-   Each step reduces noise, clarifies priorities and aligns action.
+    Each step reduces noise, clarifies priorities and aligns action.
   </p>
 </section>
 
@@ -1240,48 +1160,36 @@ and priorities into decisions.
 
     <div class="cards">
 
-      <!-- SlackDigest -->
       <div class="card entry-card-primary">
         <p class="card-label">Signals</p>
         <h3>SlackDigest</h3>
-
         <p>For teams handling many updates.</p>
-
         <p class="entry-note">
           Makes signals clear at a glance.<br>
           Where clarity begins.
         </p>
-
         <a class="btn" href="/products/slackdigest/">See SlackDigest</a>
       </div>
 
-      <!-- TaskSieve -->
       <div class="card">
         <p class="card-label">Priorities</p>
         <h3>TaskSieve</h3>
-
         <p>For teams organizing tasks and priorities.</p>
-
         <p class="entry-note">
           Turns incoming work into clear priorities.<br>
           Brings clarity to what matters.
         </p>
-
         <a class="btn" href="/products/tasksieve/">See TaskSieve</a>
       </div>
 
-      <!-- ChangeWise -->
       <div class="card">
         <p class="card-label">Decisions</p>
         <h3>ChangeWise</h3>
-
         <p>For teams aligning direction and action.</p>
-
-       <p class="entry-note">
+        <p class="entry-note">
           Creates shared direction across teams.<br>
           Turns priorities into aligned action.
         </p>
-
         <a class="btn" href="/products/changewise/">See ChangeWise</a>
       </div>
 
@@ -1295,9 +1203,9 @@ and priorities into decisions.
 </section>
 
 <p class="suite-ending">
-From <span class="suite-sd">signals</span>
-to <span class="suite-ts">priorities</span>
-to <span class="suite-cw">decisions</span>.
+  From <span class="suite-sd">signals</span>
+  to <span class="suite-ts">priorities</span>
+  to <span class="suite-cw">decisions</span>.
 </p>
 
 <footer>
