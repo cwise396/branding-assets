@@ -653,7 +653,24 @@ h1{
     border-color .22s ease,
     background .22s ease;
 }
-.entry-section .card{
+/* Flow line (Signals → Priorities → Decisions) */
+.flow-line{
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:-.01em;
+  text-align:center;
+  margin:8px 0 26px;
+  opacity:.95;
+}
+
+.flow-line span{
+  opacity:.85;
+}
+
+.flow-line .sd{ color:var(--sd); }
+.flow-line .ts{ color:var(--ts-ui); }
+.flow-line .cw{ color:var(--cw-ui); }
+  .entry-section .card{
   display:flex;
   flex-direction:column;
   height:100%;
