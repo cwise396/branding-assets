@@ -901,7 +901,10 @@ footer a{
 .suite-sd{ color:var(--sd); }
 .suite-ts{ color:var(--ts-ui); }
 .suite-cw{ color:var(--cw-ui); }
-
+/* --- Suite: System line colors --- */
+.system-line .sig { color: var(--sd); }
+.system-line .pri { color: var(--ts-ui); }
+.system-line .act { color: var(--cw-ui); }
 /* MOBILE */
 
 @media (max-width:700px){
@@ -1140,7 +1143,10 @@ footer a{
 <section class="section center">
   <p class="section-kicker">System impact</p>
   <h2 class="platform-title">Clear direction</h2>
-  <p class="platform-sub">Clear signals. Focused priorities. Aligned action.
+  <p class="platform-sub system-line">
+    <span class="sig">Clear signals</span>.
+    <span class="pri">Focused priorities</span>.
+    <span class="act">Aligned action</span>.
   </p>
 </section>
 
