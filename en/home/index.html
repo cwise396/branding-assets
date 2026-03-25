@@ -263,10 +263,39 @@
 
     /* Suite bridge */
     .suite{
-      margin:8px 0 70px;
-      text-align:center;
-      padding:28px 20px 0;
-    }
+  margin:8px 0 0;
+  text-align:center;
+  padding:28px 20px 24px;
+}
+  .suite-link-wrap{
+  margin:10px 0 0;
+}
+
+.suite-link{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(11,18,32,.72);
+  color:var(--text);
+  text-decoration:none;
+  font-weight:600;
+  opacity:.92;
+}
+
+.suite-link:hover{
+  opacity:1;
+}
+
+.suite-link::after{
+  content:" ›";
+  opacity:.7;
+  transition:transform .15s ease, opacity .15s ease;
+}
+
+.suite-link:hover::after{
+  transform:translateX(2px);
+  opacity:1;
+}
     .suite-title{
       margin:0 0 8px;
       font-size:1.02rem;
@@ -481,16 +510,18 @@
   </div>
 
   <section class="suite">
-    <p class="suite-title">
-      Three standalone tools — one shared principle: clarity and impact.
-    </p>
-    <p class="suite-body">
-      See how everything connects.
-    </p>
+  <p class="suite-title">
+    Three standalone tools — one shared principle: clarity and impact.
+  </p>
+  <p class="suite-body">
+    See how everything connects.
+  </p>
+  <p class="suite-link-wrap">
     <a class="suite-link" href="/suite/">
       Signals → Priorities → Decisions
     </a>
-  </section>
+  </p>
+</section>
 </main>
 
 <footer style="
