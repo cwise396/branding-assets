@@ -267,19 +267,25 @@
   text-align:center;
   padding:28px 20px 24px;
 }
-  .suite-link-wrap{
+.suite-link-wrap{
   margin:10px 0 0;
+  line-height:1;
 }
 
 .suite-link{
-  display:inline-block;
-  padding:6px 10px;
-  border-radius:999px;
-  background:rgba(11,18,32,.72);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:24px;
+  padding:0;
+  background:none;
+  border:none;
+  border-radius:0;
   color:var(--text);
   text-decoration:none;
   font-weight:600;
   opacity:.92;
+  box-shadow:none;
 }
 
 .suite-link:hover{
@@ -509,7 +515,7 @@
 
   </div>
 
-  <section class="suite">
+<section class="suite">
   <p class="suite-title">
     Three standalone tools — one shared principle: clarity and impact.
   </p>
