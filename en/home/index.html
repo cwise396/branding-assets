@@ -261,6 +261,7 @@
     }
 
     /* Suite bridge */
+/* Suite bridge */
 .suite{
   margin:8px 0 0;
   text-align:center;
@@ -284,8 +285,6 @@
 .suite-link-wrap{
   margin:10px 0 0;
   line-height:1;
-  background:transparent;
-  isolation:isolate;
 }
 
 .suite-link{
@@ -295,16 +294,14 @@
   min-height:24px;
   padding:0;
   margin:0;
-  background:none;
-  border:none;
-  border-radius:0;
   color:var(--text);
   text-decoration:none;
   font-weight:600;
   opacity:.92;
+  background:none;
+  border:none;
+  border-radius:0;
   box-shadow:none;
-  position:relative;
-  z-index:1;
 }
 
 .suite-link:hover{
@@ -321,36 +318,6 @@
   transform:translateX(2px);
   opacity:1;
 }
-    .suite-title{
-      margin:0 0 8px;
-      font-size:1.02rem;
-      font-weight:600;
-      color:var(--muted);
-    }
-    .suite-body{
-      margin:0 auto 10px;
-      max-width:42rem;
-      font-size:.95rem;
-      color:var(--muted);
-    }
-    .suite-link{
-      display:inline-block;
-      margin-top:6px;
-      color:var(--text);
-      text-decoration:none;
-      font-weight:600;
-      opacity:.92;
-    }
-    .suite-link:hover{ opacity:1; }
-    .suite-link::after{
-      content:" ›";
-      opacity:.7;
-      transition:transform .15s ease, opacity .15s ease;
-    }
-    .suite-link:hover::after{
-      transform:translateX(2px);
-      opacity:1;
-    }
 
     /* Tablet */
     @media (max-width: 860px){
