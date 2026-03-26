@@ -53,14 +53,60 @@
     .i18n-toggle:hover{ filter:brightness(1.06) }
 
     /* Hero */
-    .hero{padding:36px 0 12px}
-    .hero h1{
-      font-size:clamp(1.4rem, 1rem + 2vw, 2.1rem);
-      margin:0 0 6px;
-      color:var(--hero-color);
-    }
-    .hero p.lead{margin:0 0 22px; color:var(--hero-color)}
+    .hero{padding:51px 0 21px}
+    text-align:center;
+   }
+ .hero h1{
+  font-size:clamp(1.45rem, 1rem + 2vw, 2.2rem);
+  line-height:1.22;
+  margin:0 0 3px;
+  color:var(--hero-color);
+  max-width:980px;
+  margin-inline:auto;
+}
+     
+.hero-line-2{
+  margin:0 auto 10px;
+  max-width:860px;
+  color:var(--hero-color);
+  font-size:clamp(1.02rem, .9rem + .5vw, 1.18rem);
+  line-height:1.3;
+}
 
+.hero-structure{
+  margin:0 auto 4px;
+  max-width:760px;
+  color:var(--text);
+  font-size:1rem;
+  font-weight:600;
+  letter-spacing:.01em;
+}
+
+.hero .lead-sub{
+  margin:0 auto;
+  max-width:760px;
+  color:var(--muted);
+  font-size:.96rem;
+  line-height:1.4;
+}
+
+.hero-suite-link{
+  margin:10px 0 0;
+  text-align:center;
+  font-size:.92rem;
+}
+
+.hero-suite-link a{
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:600;
+  opacity:.85;
+}
+
+.hero-suite-link a:hover{
+  opacity:1;
+  color:var(--text);
+}
     /* Grid */
     .tiles{
       display:grid; gap:22px;
@@ -177,7 +223,18 @@
       .tile p.sub{ margin-bottom:8px; }
       .micro{ margin-bottom:10px; }
     }
+      .hero-line-2{
+  font-size:.98rem;
+}
 
+.hero-structure{
+  font-size:.96rem;
+}
+
+.hero .lead-sub{
+  font-size:.93rem;
+  }
+}
     /* SlackDigest: Kernzeilen etwas größer im Querformat */
     .sd .sd-sub-hero,
     .sd .sd-micro-hero{
@@ -221,6 +278,15 @@
       max-width:60rem;
       font-size:.92rem;
     }
+  /* subtle page load fade */
+.page-load{
+  opacity:0;
+  animation:fadeIn .35s ease forwards;
+}
+
+@keyframes fadeIn{
+  to{ opacity:1; }
+}
   </style>
 </head>
 <body>
@@ -228,19 +294,22 @@
 <!-- EN-Switch -->
 <a class="i18n-toggle" href="/en/home/" hreflang="en" aria-label="Switch to English">EN</a>
 
-<main class="container">
+<main class="container page-load">
   <section class="hero">
-    <h1>
-  Ein kompaktes Portfolio für klare Kommunikation, Prioritäten &amp; Wandel —
-  drei Tools, die schnell Ergebnisse liefern.
+   <h1>
+  Ein kompaktes Portfolio für klare Kommunikation, Prioritäten &amp; Richtung
 </h1>
-
-<p class="hero-structure">
-  Drei klare Rollen. Ein durchgängiger Workflow.
+<p class="hero-line-2">
+  drei Tools, die schnell Ergebnisse liefern.
+</p>
+<p class="hero-structure">Drei klare Schritte. Ein System.
 </p>
 
 <p class="lead-sub">
   Von Signalen zu Prioritäten zu klaren Entscheidungen.
+</p>
+ <p class="hero-suite-link">
+  <a href="/suite/">Wie die Tools zusammenwirken →</a>
 </p>
   </section>
 
