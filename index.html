@@ -129,6 +129,23 @@ footer,
   opacity:1;
   color:var(--text);
 }
+
+/* Flow colors (Hero Prozesszeile) */
+.hero-structure{
+  margin-top:9px;
+  font-size:.96rem;
+  letter-spacing:.03em;
+  color:var(--muted);
+}
+
+.flow-sd{ color: var(--color-sd); font-weight:600; }
+.flow-ts{ color: var(--color-ts); font-weight:600; }
+.flow-cw{ color: var(--color-cw); font-weight:600; }
+
+.flow-arrow{
+  margin:0 6px;
+  color:var(--muted);
+}
     /* Grid */
     .tiles{
       display:grid; gap:22px;
@@ -185,7 +202,13 @@ footer,
       opacity:.98;
     }
     .micro li{ margin:2px 0; }
-
+.mini-label{
+  display:block;
+  font-size:.75rem;
+  color:var(--muted);
+  margin-bottom:6px;
+  letter-spacing:.04em;
+}
     /* Vorteile ansehen – Chevron mit Bewegung (Home DE) */
     .micro .goto-benefits{
       display:inline-block;
@@ -322,13 +345,19 @@ footer,
   Ein kompaktes Portfolio für klare Kommunikation, Prioritäten &amp; Richtung
 </h1>
 <p class="hero-line-2">
-  drei Tools, die schnell Ergebnisse liefern.
+  drei Tools, die einzeln schnell Überblick schaffen – und zusammen zu konkreten nächsten Schritten führen.
 </p>
-<p class="hero-structure">Drei klare Schritte. Ein System.
+<p class="hero-structure">
+  <span class="flow-sd">Signale</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-ts">Prioritäten</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-cw">Entscheidungen</span>
+</p>
 </p>
 
 <p class="lead-sub">
-  Von Signalen zu Prioritäten zu klaren Entscheidungen.
+  Signale → Prioritäten → Entscheidungen
 </p>
  <p class="hero-suite-link">
   <a href="/suite/">Wie die Tools zusammenwirken →</a>
@@ -347,7 +376,8 @@ footer,
         </div>
       </div>
 
-      <h2>SlackDigest</h2>
+     <h2>SlackDigest</h2>
+<span class="mini-label">Signale</span>
 
      <p class="tool-role">
   Klare Signale<br>
@@ -355,13 +385,13 @@ footer,
 </p>
 
      <p class="sub">
-  Macht Slack auf einen Blick klar.<br>
-  Die wichtigsten Punkte kommen zuerst.
+ Macht Slack auf einen Blick verständlich.<br>
+  Das Wichtige kommt zuerst.
 </p>
 
       <p class="sub">
-        Relevantes sehen.<br>
-        Schnell entscheiden.
+        Überblick gewinnen.<br>
+  Sofort reagieren.
       </p>
 
       <ul class="micro">
@@ -393,6 +423,7 @@ footer,
       </div>
 
       <h2>TaskSieve</h2>
+<span class="mini-label">Prioritäten</span>
 <p class="tool-role">
   Klare Prioritäten<br>
   über Aufgaben &amp; Workflow hinweg.
@@ -400,11 +431,12 @@ footer,
 
       <p class="sub">
         Eine Inbox für E-Mail, Notizen &amp; Slack.<br>
-        Kontrolle bleibt bei dir.
+        Du siehst, was zuerst zählt.
       </p>
 
       <ul class="micro">
-        <li>Automatisch sortiert. Klar priorisiert.</li>
+        <li> Sortiert nach Wirkung.<br>
+  Direkt entscheidbar.</li>
         <li>
           <span class="goto-benefits" role="link" tabindex="0"
                 onclick="event.preventDefault(); event.stopPropagation(); location.href='/products/tasksieve/#show-benefits';"
@@ -427,40 +459,43 @@ footer,
         </div>
       </div>
 
-      <h2>ChangeWise</h2>
+   <h2>ChangeWise</h2>
+<span class="mini-label">Entscheidungen</span>
 
-      <p class="tool-role">
+<p class="tool-role">
   Klare Entscheidungen<br>
-  für Richtung &amp; Wandel.
+  für Richtung und Abstimmung.
 </p>
 
-      <div class="tile-body">
-        <span class="cw-ideal-line">Ideal, wenn du für Projekte</span>
-        <span class="cw-ideal-line">oder interne Abstimmungen</span>
-        <span class="cw-ideal-line">klare Botschaften</span>
-        <span class="cw-ideal-line">und Richtung brauchst</span>
-        <span class="cw-ideal-line">ohne lange Vorarbeit.</span>
-      </div>
+<p class="sub">
+  Bringt Botschaften und Teams auf eine Linie.<br>
+  Ohne lange Vorarbeit.
+</p>
 
-      <ul class="micro">
-        <li>
-          Kernbotschaft &amp; Ton<br>
-          – ein klarer Rahmen.
-        </li>
-        <li>
-          Vorlagen &amp; Playbooks<br>
-          – konsistente Qualität.
-        </li>
-        <li>
-          <span class="goto-benefits" role="link" tabindex="0"
-                onclick="event.preventDefault(); event.stopPropagation(); location.href='/products/changewise/#show-benefits';"
-                onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); event.stopPropagation(); location.href='/products/changewise/#show-benefits';}">
-            Vorteile ansehen
-          </span>
-        </li>
-      </ul>
+<p class="sub">
+  Nächste Schritte festlegen.<br>
+  Gemeinsam handeln.
+</p>
 
-      <span class="btn">Zur Produktseite</span>
+<ul class="micro">
+  <li>
+    Kernbotschaft &amp; Ton<br>
+    – ein klarer Rahmen.
+  </li>
+  <li>
+    Vorlagen &amp; Playbooks<br>
+    – konsistente Qualität.
+  </li>
+  <li>
+    <span class="goto-benefits" role="link" tabindex="0"
+          onclick="event.preventDefault(); event.stopPropagation(); location.href='/products/changewise/#show-benefits';"
+          onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); event.stopPropagation(); location.href='/products/changewise/#show-benefits';}">
+      Vorteile ansehen
+    </span>
+  </li>
+</ul>
+
+<span class="btn">Zur Produktseite</span>
     </a>
 
   </div>
