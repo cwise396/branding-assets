@@ -13,29 +13,49 @@
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0E3960" />
 
- <style>
+<style>
 :root{
   --container:1100px;
-  --page-blue:#0E3960;
+
+  --page-blue:#102038;
   --text:#FFFFFF;
+  --muted:#CBD5E1;
+
   --nav-red:#AE0F12;
+
   --card-blue:#0E3960;
   --card-border:rgba(255,255,255,.28);
+
   --btn-bg:#FFFFFF;
   --btn-fg:#0E3960;
+
   --ring:#FFFFFF;
   --ring-w:5px;
 }
 
 *{box-sizing:border-box}
-html,body{height:100%}
+
+html,body{
+  height:100%;
+  background:#102038;
+}
+
 body{
   margin:0;
   font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
-  background:var(--page-blue);
+
+  background:
+    radial-gradient(circle at 50% -10%, rgba(255,255,255,.05), transparent 40%),
+    radial-gradient(circle at 20% 60%, rgba(91,143,181,.06), transparent 40%),
+    linear-gradient(180deg, #11213A 0%, #0F1C31 100%);
+
   color:var(--text);
 }
-a{ color:#FFFFFF; text-decoration:none }
+
+a{
+  color:#FFFFFF;
+  text-decoration:none;
+}
 
 /* HEADER / NAV */
 .site-header{ position:sticky; top:0; z-index:50; width:100%; background:var(--nav-red) }
