@@ -117,11 +117,30 @@ footer,
     }
 .hero-structure{
   margin:8px auto 4px;
-  max-width:760px;
-  color:var(--text);
-  font-size:1.02rem;
-  font-weight:600;
-  letter-spacing:.01em;
+  max-width:860px;
+  font-size:1rem;
+  letter-spacing:.03em;
+  color:var(--muted);
+}
+
+.flow-sd{
+  color:var(--color-sd);
+  font-weight:700;
+}
+
+.flow-ts{
+  color:var(--color-ts);
+  font-weight:700;
+}
+
+.flow-cw{
+  color:rgb(87,141,183);
+  font-weight:700;
+}
+
+.flow-arrow{
+  margin:0 6px;
+  color:var(--muted);
 }
 .hero-suite-link{
   margin:8px 0 0;
@@ -479,8 +498,12 @@ footer,
   Three clear roles. One connected workflow.
 </p>
 
-<p class="lead-sub">
-  From signals to priorities to aligned action.
+<p class="hero-structure">
+  <span class="flow-sd">Signals</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-ts">Priorities</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-cw">Decisions</span>
 </p>
  <p class="hero-suite-link">
   <a href="/suite/">See how it works together →</a>
