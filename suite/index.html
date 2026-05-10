@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Suite – From signals to clear decisions</title>
-<meta name="description" content="How SlackDigest, TaskSieve and ChangeWise work together to turn signals into clear decisions.">
+<title>Suite – Von Signalen zu klaren Entscheidungen</title>
+<meta name="description" content="Wie SlackDigest, TaskSieve und ChangeWise zusammenarbeiten, um Signale in klare Entscheidungen zu verwandeln.">
 
 <style>
 :root{
@@ -219,31 +219,15 @@ h1{
   pointer-events:none;
   z-index:-1;
   background:
-    radial-gradient(
-      ellipse at center,
-      rgba(255,255,255,.045),
-      transparent 60%
-    ),
-    radial-gradient(
-      ellipse at center,
-      rgba(91,143,181,.06),
-      transparent 70%
-    );
+    radial-gradient(ellipse at center, rgba(255,255,255,.045), transparent 60%),
+    radial-gradient(ellipse at center, rgba(91,143,181,.06), transparent 70%);
 }
 
 .workflow-panel{
   position:relative;
   background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,.06),
-      rgba(255,255,255,.02)
-    ),
-    linear-gradient(
-      180deg,
-      var(--panel-workflow-top),
-      var(--panel-workflow-bottom)
-    );
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
+    linear-gradient(180deg, var(--panel-workflow-top), var(--panel-workflow-bottom));
   border:1px solid var(--panel-soft-border);
   border-radius:22px;
   padding:42px 28px 34px;
@@ -257,12 +241,7 @@ h1{
   inset:-40px -60px -60px -60px;
   z-index:-1;
   pointer-events:none;
-  background:
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(79,127,166,.08),
-      transparent 55%
-    );
+  background:radial-gradient(circle at 50% 0%, rgba(79,127,166,.08), transparent 55%);
   filter:blur(28px);
   opacity:.5;
 }
@@ -292,12 +271,7 @@ h1{
   left:8%;
   right:8%;
   height:1px;
-  background:linear-gradient(
-    90deg,
-    rgba(12,108,72,.25),
-    rgba(209,75,79,.25),
-    rgba(91,143,181,.25)
-  );
+  background:linear-gradient(90deg, rgba(12,108,72,.25), rgba(209,75,79,.25), rgba(91,143,181,.25));
   z-index:0;
 }
 
@@ -311,11 +285,7 @@ h1{
   padding:24px;
   border-radius:16px;
   background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,.035),
-      rgba(255,255,255,.01)
-    ),
+    linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.01)),
     var(--card-soft);
   border:1px solid var(--card-soft-border);
   text-align:left;
@@ -339,43 +309,20 @@ h1{
   transition:opacity .35s ease, filter .35s ease;
 }
 
-.sd{
-  border-top:3px solid var(--sd);
-}
-
-.ts{
-  border-top:3px solid var(--ts-ui);
-}
-
-.cw{
-  border-top:3px solid var(--cw-ui);
-}
+.sd{ border-top:3px solid var(--sd); }
+.ts{ border-top:3px solid var(--ts-ui); }
+.cw{ border-top:3px solid var(--cw-ui); }
 
 .sd::before{
-  background:radial-gradient(
-    140% 120% at 50% -20%,
-    rgba(14,122,82,.34),
-    rgba(14,122,82,.11) 38%,
-    transparent 70%
-  );
+  background:radial-gradient(140% 120% at 50% -20%, rgba(14,122,82,.34), rgba(14,122,82,.11) 38%, transparent 70%);
 }
 
 .ts::before{
-  background:radial-gradient(
-    140% 120% at 50% -20%,
-    rgba(218,77,82,.34),
-    rgba(218,77,82,.11) 38%,
-    transparent 70%
-  );
+  background:radial-gradient(140% 120% at 50% -20%, rgba(218,77,82,.34), rgba(218,77,82,.11) 38%, transparent 70%);
 }
 
 .cw::before{
-  background:radial-gradient(
-    140% 120% at 50% -20%,
-    rgba(92,143,182,.34),
-    rgba(92,143,182,.12) 38%,
-    transparent 70%
-  );
+  background:radial-gradient(140% 120% at 50% -20%, rgba(92,143,182,.34), rgba(92,143,182,.12) 38%, transparent 70%);
 }
 
 @media (hover:hover){
@@ -437,8 +384,7 @@ h1{
   text-align:center;
   font-size:26px;
   opacity:.5;
-}
-
+} 
 /* SECTION TITLES */
 
 .problem-title{
@@ -816,6 +762,17 @@ h1{
   margin-top:30px;
 }
 
+.entry a{
+  display:inline-block;
+  margin-top:10px;
+  font-weight:500;
+  opacity:.9;
+}
+
+.entry a:hover{
+  opacity:1;
+}
+
 /* SCROLL ANIMATION */
 
 .reveal-item,
@@ -900,6 +857,10 @@ footer a{
 .suite-sd{ color:var(--sd); }
 .suite-ts{ color:var(--ts-ui); }
 .suite-cw{ color:var(--cw-ui); }
+
+.system-line .sig{ color:var(--sd); }
+.system-line .pri{ color:var(--ts-ui); }
+.system-line .act{ color:var(--cw-ui); }
 
 /* MOBILE */
 
@@ -1026,24 +987,24 @@ footer a{
 <main class="wrap">
 
 <section class="hero center">
-  <p class="hero-kicker">Decision system</p>
+  <p class="hero-kicker">Decision System</p>
 
-  <h1>Von Signalen zu klarer Richtung</h1>
+  <h1>Von Signalen zu klaren Entscheidungen</h1>
 
-  <div class="hero-suite-grid" aria-label="Suite products">
+  <div class="hero-suite-grid" aria-label="Suite-Produkte">
     <div class="hero-suite-item">
       <p class="hero-suite-name">SlackDigest</p>
-      <img class="hero-suite-logo" src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest logo">
+      <img class="hero-suite-logo" src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo">
     </div>
 
     <div class="hero-suite-item">
       <p class="hero-suite-name">TaskSieve</p>
-      <img class="hero-suite-logo" src="/assets/brand/tasksieve_logo.svg" alt="TaskSieve logo">
+      <img class="hero-suite-logo" src="/assets/brand/tasksieve_logo.svg" alt="TaskSieve Logo">
     </div>
 
     <div class="hero-suite-item">
       <p class="hero-suite-name">ChangeWise</p>
-      <img class="hero-suite-logo" src="/assets/brand/changewise_logo.svg" alt="ChangeWise logo">
+      <img class="hero-suite-logo" src="/assets/brand/changewise_logo.svg" alt="ChangeWise Logo">
     </div>
   </div>
 
@@ -1052,9 +1013,8 @@ footer a{
   </p>
 
   <p class="hero-usage">
-    Jedes Tool erfüllt eine klare Funktion — in Kommunikation, Priorisierung und Ausrichtung.
-Einzeln nutzbar oder kombiniert zu einem Workflow, der Signale in Prioritäten verwandelt —
-und Prioritäten in Entscheidungen.
+    Jedes Tool schafft Klarheit an einem Schritt — Signale, Prioritäten oder Entscheidungen.
+    Einzeln nutzbar oder gemeinsam als klarer Weg von Signalen zu Entscheidungen.
   </p>
 </section>
 
@@ -1077,9 +1037,9 @@ und Prioritäten in Entscheidungen.
           <p class="wf-role">Signale</p>
           <h3>SlackDigest</h3>
           <div class="flow-desc">
-             Slack- und E-Mail-Updates werden zu einem klaren Überblick verdichtet.
+            Slack- und E-Mail-Updates werden zu einem klaren Überblick verdichtet.
           </div>
-          <p class="wf-output">Output: ein klares Signal</p>
+          <p class="wf-output">Ergebnis: ein klares Signal</p>
         </div>
 
         <div class="wf-arrow reveal-item">→</div>
@@ -1088,9 +1048,9 @@ und Prioritäten in Entscheidungen.
           <p class="wf-role">Prioritäten</p>
           <h3>TaskSieve</h3>
           <div class="flow-desc">
-             Eingehende Aufgaben werden zu klar geordneten Prioritäten.
+            Eingehende Aufgaben werden zu geordneten Prioritäten.
           </div>
-          <p class="wf-output">Output: geordnete Prioritäten</p>
+          <p class="wf-output">Ergebnis: geordnete Prioritäten</p>
         </div>
 
         <div class="wf-arrow reveal-item">→</div>
@@ -1099,9 +1059,9 @@ und Prioritäten in Entscheidungen.
           <p class="wf-role">Entscheidungen</p>
           <h3>ChangeWise</h3>
           <div class="flow-desc">
-            Teams richten sich auf klare Richtung und nächste Schritte aus.
+            Teams finden eine klare Richtung und nächste Schritte.
           </div>
-          <p class="wf-output">Output: abgestimmte nächste Schritte</p>
+          <p class="wf-output">Ergebnis: abgestimmte nächste Schritte</p>
         </div>
       </div>
 
@@ -1110,93 +1070,95 @@ und Prioritäten in Entscheidungen.
 </section>
 
 <section class="section">
-  <h2 class="center problem-title">Wo es auseinanderfällt</h2>
+  <h2 class="center problem-title">Wo Klarheit verloren geht</h2>
   <p class="problem-sub">
-    Workflows brechen, wenn Signale, Prioritäten und Ausrichtung auseinanderdriften.
+    Arbeitsprozesse scheitern, wenn Signale, Prioritäten und Abstimmung auseinanderlaufen.
   </p>
 
   <div class="cards">
     <div class="card">
       <p class="card-label">Problem</p>
       <h3>Zu viele Signale</h3>
-      <p>Slack, E-Mail und Updates erzeugen einen konstanten Informationsstrom.</p>
+      <p>Slack, E-Mail und Updates erzeugen ständiges Informationsrauschen.</p>
     </div>
 
     <div class="card">
       <p class="card-label">Problem</p>
-     <h3>Unklare Prioritäten</h3>
-     <p>Teams erkennen nicht klar, was wirklich wichtig ist.</p>
+      <h3>Unklare Prioritäten</h3>
+      <p><p>Es bleibt unklar, was zuerst zählt.</p></p>
     </div>
 
     <div class="card">
       <p class="card-label">Problem</p>
-      <h3>Keine gemeinsame Linie</h3>
-      <p>Prioritäten werden unterschiedlich verstanden und umgesetzt.</p>
+      <h3>Fehlende Abstimmung</h3>
+      <p>Menschen interpretieren Prioritäten unterschiedlich.</p>
     </div>
   </div>
 </section>
 
 <section class="section center">
   <p class="section-kicker">Systemwirkung</p>
-  <h2 class="platform-title">Klare Richtung</h2>
-  <p class="platform-sub">
-   Jeder Schritt reduziert Komplexität, klärt Prioritäten und bringt Teams in eine gemeinsame Linie.
-  </p>
+  <h2 class="platform-title">Klare Entscheidungen</h2>
+  <p class="platform-sub system-line">
+  <span class="sig">Klare Signale</span>.
+  <span class="pri">Fokussierte Prioritäten</span>.
+  <span class="act">Gemeinsame Entscheidungen</span>.
+</p>
 </section>
 
 <section class="section center entry-section">
   <div class="entry-panel">
 
     <p class="section-kicker">Einstiegspunkte</p>
-    <h2>Dort beginnen, wo Klarheit am meisten fehlt</h2>
+    <h2>Dort starten, wo Klarheit am wichtigsten ist</h2>
 
     <p class="cards-flow">
-      <span style="color:var(--sd)">Signals</span>
+      <span style="color:var(--sd)">Signale</span>
       <span class="flow-arrow">→</span>
-      <span style="color:var(--ts-ui)">Priorities</span>
+      <span style="color:var(--ts-ui)">Prioritäten</span>
       <span class="flow-arrow">→</span>
-      <span style="color:var(--cw-ui)">Decisions</span>
+      <span style="color:var(--cw-ui)">Entscheidungen</span>
     </p>
 
     <div class="cards">
 
       <div class="card entry-card-primary">
-        <p class="card-label">Signals</p>
+        <p class="card-label">Signale</p>
         <h3>SlackDigest</h3>
         <p>Für Teams mit vielen Updates.</p>
         <p class="entry-note">
-          Macht Signale sofort verständlich.<br>
-          Hier beginnt Klarheit.
+          Signale auf einen Blick klar machen.<br>
+          Dort, wo Klarheit beginnt.
         </p>
-        <a class="btn" href="/products/slackdigest/">Zu SlackDigest</a>
+        <a class="btn" href="/products/slackdigest/">SlackDigest ansehen</a>
       </div>
 
       <div class="card">
-        <p class="card-label">Priorities</p>
+        <p class="card-label">Prioritäten</p>
         <h3>TaskSieve</h3>
-        <p>Für Teams, die Aufgaben und Prioritäten ordnen.</p>
+        <p>Für Teams mit Aufgaben und Prioritäten.</p>
         <p class="entry-note">
-          Macht aus Input klare Prioritäten.<br>
-          Fokus auf das, was wirklich zählt.
+          Aus Input fokussierte Prioritäten machen.<br>
+          Klarheit darüber, was zählt.
         </p>
-        <a class="btn" href="/products/tasksieve/">Zu TaskSieve</a>
+        <a class="btn" href="/products/tasksieve/">TaskSieve ansehen</a>
       </div>
 
       <div class="card">
-        <p class="card-label">Decisions</p>
+        <p class="card-label">Entscheidungen</p>
         <h3>ChangeWise</h3>
-        <p>Für Teams, die Richtung und Entscheidungen ausrichten.</p>
+        <p>Für Teams, die Richtung und Entscheidungen abstimmen.</p>
         <p class="entry-note">
-          Schafft gemeinsame Klarheit im Team.<br>
-          Macht aus Prioritäten konkrete Entscheidungen.
+          Gemeinsame Richtung im Team schaffen.<br>
+          Prioritäten in abgestimmtes Handeln übersetzen.
         </p>
-        <a class="btn" href="/products/changewise/">Zu ChangeWise</a>
+        <a class="btn" href="/products/changewise/">ChangeWise ansehen</a>
       </div>
 
     </div>
 
     <p class="workflow-note">
-      Du kannst mit jedem Produkt starten. Sie greifen nahtlos ineinander.
+      Starte mit einem Tool. Zusammen arbeiten sie wie ein System.
     </p>
 
   </div>
@@ -1204,13 +1166,13 @@ und Prioritäten in Entscheidungen.
 
 <p class="suite-ending">
   Von <span class="suite-sd">Signalen</span>
-zu <span class="suite-ts">Prioritäten</span>
-zu <span class="suite-cw">Entscheidungen</span>.
+  zu <span class="suite-ts">Prioritäten</span>
+  zu <span class="suite-cw">Entscheidungen</span>.
 </p>
 
 <footer>
-  <a href="/imprint/">Imprint</a> ·
-  <a href="/privacy/">Privacy</a>
+  <a href="/impressum.html">Impressum</a>
+  <a href="/datenschutz.html">Datenschutz</a>
   <br><br>
   © ChangeWise · SlackDigest · TaskSieve
 </footer>
