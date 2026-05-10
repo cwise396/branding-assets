@@ -11,7 +11,10 @@
   --container:1100px;
 
   /* Dark-only Seite */
-  --bg-dark:#0B1220; --fg-dark:#FFFFFF; --muted:#CBD5E1;
+  /* Dark-only Seite */
+--bg-dark:#102038;
+--fg-dark:#FFFFFF;
+--muted:#CBD5E1;
 
   /* Navbar */
   --nav-red:#AE0F12;
@@ -31,7 +34,9 @@
 html,body{ height:100% }
 body{
   margin:0; font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
-  background:var(--bg-dark); color:var(--fg-dark);
+ background:
+  radial-gradient(circle at 50% -10%, rgba(255,255,255,.05), transparent 40%),
+  linear-gradient(180deg, #11213A 0%, #0F1C31 100%);
 }
 a{ color:#FFFFFF; text-decoration:none }
 
