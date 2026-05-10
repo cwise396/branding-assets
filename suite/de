@@ -1085,7 +1085,7 @@ footer a{
     <div class="card">
       <p class="card-label">Problem</p>
       <h3>Unklare Prioritäten</h3>
-      <p>Teams sehen oft nicht schnell genug, was wirklich zählt.</p>
+      <p><p>Es bleibt unklar, was zuerst zählt.</p></p>
     </div>
 
     <div class="card">
@@ -1098,12 +1098,12 @@ footer a{
 
 <section class="section center">
   <p class="section-kicker">Systemwirkung</p>
-  <h2 class="platform-title">Klare Richtung</h2>
+  <h2 class="platform-title">Klare Entscheidungen</h2>
   <p class="platform-sub system-line">
-    <span class="sig">Klare Signale</span>.
-    <span class="pri">Fokussierte Prioritäten</span>.
-    <span class="act">Abgestimmte Entscheidungen</span>.
-  </p>
+  <span class="sig">Klare Signale</span>.
+  <span class="pri">Fokussierte Prioritäten</span>.
+  <span class="act">Gemeinsame Entscheidungen</span>.
+</p>
 </section>
 
 <section class="section center entry-section">
