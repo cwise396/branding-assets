@@ -9,7 +9,7 @@
   <style>
     :root{
       --sd-green:#0C6C48;
-      --bg:#0C6C48;
+      --bg:#102038;
       --card:#ffffff;
       --text:#111827;
       --muted:#6B7280;
@@ -46,16 +46,17 @@
       opacity:.95;
     }
 
-    /* HEADER ROW (text left, logo right aligned to card edge) */
     .header-row{
       display:grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns:1fr auto;
       align-items:end;
       gap:16px;
       margin-bottom:22px;
     }
 
-    .header-row .sub{ margin:0 }
+    .header-row .sub{
+      margin:0;
+    }
 
     .brand-logo{
       height:96px;
@@ -65,20 +66,6 @@
       padding:6px;
       border-radius:50%;
       box-shadow:0 6px 18px rgba(0,0,0,.15);
-    }
-
-    @media (max-width:520px){
-      .wrap{padding:34px 14px 72px}
-      h1{font-size:28px}
-
-      .header-row{
-        grid-template-columns: 1fr auto;
-        align-items:flex-start;
-        gap:12px;
-      }
-
-      .brand-logo{ height:84px }
-      .card{ padding:22px 18px }
     }
 
     .card{
@@ -100,7 +87,6 @@
       font-size:15px;
     }
 
-    /* Table */
     .matrix{
       width:100%;
       border-collapse:separate;
@@ -111,6 +97,7 @@
       font-size:14px;
       overflow:hidden;
     }
+
     .matrix th,
     .matrix td{
       padding:10px 12px;
@@ -118,11 +105,16 @@
       text-align:left;
       vertical-align:middle;
     }
+
     .matrix thead th{
       background:rgba(17,24,39,.04);
       font-weight:900;
     }
-    .matrix tr:last-child td{border-bottom:none}
+
+    .matrix tr:last-child td{
+      border-bottom:none;
+    }
+
     .matrix .col-basic,
     .matrix .col-pro{
       width:90px;
@@ -130,51 +122,85 @@
       font-weight:900;
     }
 
-    /* Bullets */
     .bullets{
       margin:14px 0;
       padding-left:18px;
       font-size:14.5px;
     }
-    .bullets li{margin:6px 0}
 
-    /* Pricing blocks */
-    .price{
-      margin:12px 0 8px;
-      font-size:14px;
-    }
-
-    .plan{
-      margin:0 0 10px;
-      line-height:1.45;
-    }
-    .plan strong{font-weight:900}
-    .muted{
-      color:var(--muted);
-      font-size:13px;
-      font-weight:600;
+    .bullets li{
+      margin:6px 0;
     }
 
     .workspace{
-      margin:8px 0 18px;
+      margin:12px 0 24px;
       font-size:13px;
       color:var(--muted);
     }
 
-    .cta-ready{
-      margin:10px 0 12px;
-      font-size:14px;
-      font-weight:800;
-    }
-
-    .cta-actions .btn-row{
+    .pricing-cards{
       display:grid;
-      grid-template-columns:1fr;
-      gap:10px;
-      margin-top:10px;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+      margin:22px 0 10px;
     }
 
-    .cta-actions .btn{
+    .plan-card{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:20px;
+      background:rgba(17,24,39,.03);
+    }
+
+    .plan-card-pro{
+      border:2px solid var(--sd-green);
+      box-shadow:0 10px 26px rgba(12,108,72,.16);
+    }
+
+    .recommended{
+      margin:0 0 8px;
+      font-size:12px;
+      font-weight:900;
+      color:var(--sd-green);
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .plan-card h3{
+      margin:0 0 6px;
+      font-size:20px;
+      letter-spacing:-.2px;
+    }
+
+    .plan-tagline{
+      margin:0 0 16px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.45;
+    }
+
+    .plan-price{
+      margin:0;
+      font-size:28px;
+      font-weight:900;
+      line-height:1.1;
+    }
+
+    .plan-price span{
+      display:block;
+      margin-top:6px;
+      font-size:13px;
+      font-weight:600;
+      color:var(--muted);
+    }
+
+    .plan-yearly{
+      margin:10px 0 18px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .btn{
       display:inline-block;
       background:var(--sd-green);
       color:#fff;
@@ -184,64 +210,89 @@
       font-weight:900;
       text-align:center;
       width:100%;
+      transition:opacity .18s ease, transform .18s ease;
     }
-    .cta-actions .btn:hover{opacity:.92}
+
+    .btn:hover{
+      opacity:.94;
+      transform:translateY(-1px);
+    }
 
     .microcopy{
-      margin-top:10px;
+      margin-top:18px;
       font-size:12.5px;
       color:var(--muted);
       text-align:center;
     }
 
-    /* ✅ 2×2 grid on desktop */
-    @media (min-width:560px){
-      .cta-actions .btn-row{
-        grid-template-columns:1fr 1fr;
-      }
-      /* Explicit placement: left column = Pro, right column = Basic */
-      .btn-pro-yearly{grid-column:1; grid-row:1}
-      .btn-basic-yearly{grid-column:2; grid-row:1}
-      .btn-pro-monthly{grid-column:1; grid-row:2}
-      .btn-basic-monthly{grid-column:2; grid-row:2}
+    .site-footer{
+      margin-top:80px;
+      font-size:14px;
+      opacity:.9;
+      text-align:center;
     }
-  .site-footer{
-  margin-top:80px;
-  font-size:14px;
-  opacity:.9;
-  text-align:center;
-}
 
-.site-footer a{
-  color:#fff;
-  text-decoration:none;
-  font-weight:500;
-}
+    .site-footer a{
+      color:#fff;
+      text-decoration:none;
+      font-weight:500;
+    }
 
-.site-footer a:hover{
-  opacity:.8;
-}
+    .site-footer a:hover{
+      opacity:.8;
+    }
 
-.site-footer .sep{
-  margin:0 8px;
-  opacity:.7;
-}
+    .site-footer .sep{
+      margin:0 8px;
+      opacity:.7;
+    }
+
+    @media (max-width:720px){
+
+      .wrap{
+        padding:34px 14px 72px;
+      }
+
+      h1{
+        font-size:28px;
+      }
+
+      .header-row{
+        grid-template-columns:1fr;
+        align-items:flex-start;
+        gap:16px;
+      }
+
+      .brand-logo{
+        height:84px;
+      }
+
+      .card{
+        padding:22px 18px;
+      }
+
+      .pricing-cards{
+        grid-template-columns:1fr;
+      }
+    }
 
   </style>
 </head>
 
 <body>
+
   <main class="wrap">
 
     <div class="header-row">
+
       <div>
         <h1>Pricing &amp; plans</h1>
 
-        <p class="lead-strong">
+        <p class="lead">
           SlackDigest brings clarity to team communication.
         </p>
 
-        <p class="lead-sub">
+        <p class="sub">
           It bundles relevant Slack updates, removes repetition<br>
           and highlights what truly matters for the team.
         </p>
@@ -250,14 +301,19 @@
       <img class="brand-logo"
            src="/assets/brand/slackdigest_logo.svg"
            alt="SlackDigest">
+
     </div>
 
     <section class="card">
 
       <h2>What’s the difference between Basic and Pro?</h2>
-      <p class="lead">Pro automatically prioritises and suggests next steps.</p>
+
+      <p class="lead">
+        Pro automatically prioritises and suggests next steps.
+      </p>
 
       <table class="matrix" aria-label="Basic vs Pro">
+
         <thead>
           <tr>
             <th>Layer</th>
@@ -265,13 +321,39 @@
             <th class="col-pro">Pro</th>
           </tr>
         </thead>
+
         <tbody>
-          <tr><td>Collect data</td><td class="col-basic">✔</td><td class="col-pro">✔</td></tr>
-          <tr><td>Group threads</td><td class="col-basic">✔</td><td class="col-pro">✔</td></tr>
-          <tr><td>Filter for relevance</td><td class="col-basic">✔</td><td class="col-pro">✔</td></tr>
-          <tr><td>Prioritise</td><td class="col-basic">✖</td><td class="col-pro">✔</td></tr>
-          <tr><td>Recommendations &amp; next steps</td><td class="col-basic">✖</td><td class="col-pro">✔</td></tr>
+          <tr>
+            <td>Collect data</td>
+            <td class="col-basic">✔</td>
+            <td class="col-pro">✔</td>
+          </tr>
+
+          <tr>
+            <td>Group threads</td>
+            <td class="col-basic">✔</td>
+            <td class="col-pro">✔</td>
+          </tr>
+
+          <tr>
+            <td>Filter for relevance</td>
+            <td class="col-basic">✔</td>
+            <td class="col-pro">✔</td>
+          </tr>
+
+          <tr>
+            <td>Prioritise</td>
+            <td class="col-basic">✖</td>
+            <td class="col-pro">✔</td>
+          </tr>
+
+          <tr>
+            <td>Recommendations &amp; next steps</td>
+            <td class="col-basic">✖</td>
+            <td class="col-pro">✔</td>
+          </tr>
         </tbody>
+
       </table>
 
       <ul class="bullets">
@@ -281,49 +363,79 @@
         <li>Delivery on a regular schedule via Slack or email.</li>
       </ul>
 
-      <!-- ✅ Basic first -->
-      <div class="price">
-        <p class="plan">
-          <strong>SlackDigest Basic</strong><br>
-          9 € monthly · per workspace<br>
-          8 € monthly · per workspace <span class="muted">— billed yearly (same features, better rate).</span>
-        </p>
-
-        <p class="plan" style="margin-top:10px;">
-          <strong>SlackDigest Pro</strong><br>
-          15 € monthly · per workspace<br>
-          12 € monthly · per workspace <span class="muted">— billed yearly (same features, better rate).</span>
-        </p>
-      </div>
-
       <div class="workspace">
         A workspace includes all connected channels and inboxes for one team.
       </div>
 
-      <div class="cta-ready">SlackDigest is ready to use right after purchase.</div>
+      <div class="pricing-cards">
 
-      <!-- ✅ Buttons: Pro yearly | Basic yearly / Pro monthly | Basic monthly -->
-      <div class="cta-actions">
-        <div class="btn-row">
-          <a class="btn btn-pro-yearly" href="/en/checkout/slackdigest/pro-yearly">Pro<br>yearly</a>
-          <a class="btn btn-basic-yearly" href="/en/checkout/slackdigest/basic-yearly">Basic<br>yearly</a>
+        <div class="plan-card">
 
-          <a class="btn btn-pro-monthly" href="/en/checkout/slackdigest/pro-monthly">Pro<br>monthly</a>
-          <a class="btn btn-basic-monthly" href="/en/checkout/slackdigest/basic-monthly">Basic<br>monthly</a>
+          <h3>SlackDigest Basic</h3>
+
+          <p class="plan-tagline">
+            Clear overview for team updates.
+          </p>
+
+          <p class="plan-price">
+            9 €
+            <span>monthly · per workspace</span>
+          </p>
+
+          <p class="plan-yearly">
+            8 € monthly · billed yearly
+          </p>
+
+          <a class="btn"
+             href="/en/checkout/slackdigest/basic-monthly">
+             Start Basic
+          </a>
+
         </div>
-        <p class="microcopy">No setup · no call · cancel anytime</p>
+
+        <div class="plan-card plan-card-pro">
+
+          <p class="recommended">Recommended</p>
+
+          <h3>SlackDigest Pro</h3>
+
+          <p class="plan-tagline">
+            Overview plus priorities and next steps.
+          </p>
+
+          <p class="plan-price">
+            15 €
+            <span>monthly · per workspace</span>
+          </p>
+
+          <p class="plan-yearly">
+            12 € monthly · billed yearly
+          </p>
+
+          <a class="btn"
+             href="/en/checkout/slackdigest/pro-monthly">
+             Start Pro
+          </a>
+
+        </div>
+
       </div>
 
-    </section>
-<footer class="site-footer">
-  <a href="/en/imprint/">Imprint</a>
-  <span class="sep">·</span>
-  <a href="/en/privacy/">Privacy</a>
-  <span class="sep">·</span>
-  © ChangeWise · SlackDigest · TaskSieve
-</footer>
+      <p class="microcopy">
+        No setup · no call · cancel anytime
+      </p>
 
+    </section>
+
+    <footer class="site-footer">
+      <a href="/en/imprint/">Imprint</a>
+      <span class="sep">·</span>
+      <a href="/en/privacy/">Privacy</a>
+      <span class="sep">·</span>
+      © ChangeWise · SlackDigest · TaskSieve
+    </footer>
 
   </main>
+
 </body>
 </html>
