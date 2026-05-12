@@ -79,6 +79,44 @@ footer,
   position:relative;
   z-index:1;
 }
+  /* Minimal top navigation */
+.top-nav{
+  position:fixed;
+  top:16px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:90;
+  display:flex;
+  gap:18px;
+  align-items:center;
+  justify-content:center;
+  padding:8px 14px;
+  border-radius:999px;
+  background:rgba(32,56,88,.84);
+  border:1px solid rgba(255,255,255,.10);
+  backdrop-filter:blur(10px);
+  box-shadow:0 6px 18px rgba(0,0,0,.18);
+}
+
+.top-nav a{
+  color:var(--muted);
+  text-decoration:none;
+  font-size:.9rem;
+  font-weight:700;
+  white-space:nowrap;
+  opacity:.9;
+}
+
+.top-nav a:hover{
+  color:var(--text);
+  opacity:1;
+}
+
+@media (max-width:720px){
+  .top-nav{
+    display:none;
+  }
+}  
     /* Language Switch */
     .i18n-toggle{
       position:fixed;
@@ -98,9 +136,9 @@ footer,
 
     /* Hero */
     .hero{
-      padding:52px 0 18px;
-      text-align:center;
-    }
+  padding:96px 0 18px;
+  text-align:center;
+}
     .hero h1{
       font-size:clamp(1.45rem, 1rem + 2vw, 2.2rem);
       line-height:1.25;
@@ -486,7 +524,12 @@ footer,
 <body>
 
 <a class="i18n-toggle" href="/" hreflang="de" aria-label="Zur deutschen Startseite">DE</a>
-
+<nav class="top-nav" aria-label="Main navigation">
+  <a href="/en/products/slackdigest/">SlackDigest</a>
+  <a href="/en/products/tasksieve/">TaskSieve</a>
+  <a href="/en/products/changewise/">ChangeWise</a>
+  <a href="/en/suite/">Decision System</a>
+</nav>
 <main class="container">
   <section class="hero">
    <h1>
