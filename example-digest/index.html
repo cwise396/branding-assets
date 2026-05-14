@@ -7,22 +7,17 @@
   <meta name="description" content="So sieht ein SlackDigest aus: Relevante Updates, klar priorisiert, auf einen Blick." />
 
   <style>
-  :root{
-  --bg:#0C6C48;
+    :root{
+      --bg:#0C6C48;
+      --panel:#FFFFFF;
+      --text:#0E3960;
+      --muted:#4B6380;
+      --border:rgba(17,24,39,.10);
 
-  --panel:#FFFFFF;
-
-  --text:#0E3960;
-  --muted:#4B6380;
-
-  --border:rgba(17,24,39,.10);
-}
-
-      /* 🎯 finale Prioritätsfarben (wie TaskSieve) */
-      --prio-now:   rgb(183,15,18);   /* rot */
-      --prio-next:  rgb(10,108,72);   /* grün */
-      --prio-later: rgb(255,213,54);  /* gelb */
-      --prio-focus: rgb(15,57,96);    /* blau */
+      --prio-now:rgb(183,15,18);
+      --prio-next:rgb(10,108,72);
+      --prio-later:rgb(255,213,54);
+      --prio-focus:rgb(15,57,96);
 
       --shadow:0 10px 30px rgba(0,0,0,.35);
     }
@@ -43,7 +38,6 @@
       padding:44px 18px 88px;
     }
 
-    /* ===== Header ===== */
     .topline{
       display:flex;
       justify-content:space-between;
@@ -69,6 +63,13 @@
       color:#ffffff;
     }
 
+    .sub{
+      margin:0 0 22px;
+      font-size:14px;
+      opacity:.92;
+      color:#ffffff;
+    }
+
     .pro-badge{
       display:inline-block;
       margin-top:10px;
@@ -89,20 +90,14 @@
       border-radius:50%;
       box-shadow:0 6px 18px rgba(0,0,0,.15);
     }
-@media (max-width:640px){
-  .brand-logo{
-    height:72px;
-    padding:4px;
-  }
-} 
-  .sub{
-      margin:0 0 22px;
-      font-size:14px;
-      opacity:.92;
-      color:#ffffff;
+
+    @media (max-width:640px){
+      .brand-logo{
+        height:72px;
+        padding:4px;
+      }
     }
 
-    /* ===== Digest ===== */
     .digest{
       background:rgba(255,255,255,.15);
       border:1px solid rgba(255,255,255,.35);
@@ -118,16 +113,19 @@
       border-radius:14px;
       background:#ffffff;
       margin-top:12px;
-      color:#111827;
+      color:var(--text);
     }
 
-    /* Balken */
-    .bar{width:6px;border-radius:999px;flex:0 0 6px}
+    .bar{
+      width:6px;
+      border-radius:999px;
+      flex:0 0 6px;
+    }
+
     .bar.now{background:var(--prio-now)}
     .bar.next{background:var(--prio-next)}
     .bar.later{background:var(--prio-later)}
 
-    /* Emoji-Färbung (nur Symbol, nicht Text) */
     .dot{font-weight:900}
     .dot-now{color:var(--prio-now)}
     .dot-next{color:var(--prio-next)}
@@ -137,13 +135,26 @@
     .kicker{
       font-size:13px;
       font-weight:700;
-      color:#374151;
+      color:var(--muted);
       margin:0 0 6px;
     }
 
-    .title{margin:0 0 6px;font-weight:800;color:#0F172A}
-    .desc{margin:0 0 8px;color:#111827}
-    .hint{margin:0;color:#374151;font-size:13px}
+    .title{
+      margin:0 0 6px;
+      font-weight:800;
+      color:var(--text);
+    }
+
+    .desc{
+      margin:0 0 8px;
+      color:var(--text);
+    }
+
+    .hint{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
 
     code{
       background:rgba(15,23,42,.08);
@@ -152,6 +163,7 @@
       border-radius:8px;
       font-size:12px;
       font-weight:700;
+      color:var(--text);
     }
 
     .steps{
@@ -161,7 +173,7 @@
       padding:16px 14px;
       border-radius:14px;
       background:#ffffff;
-      color:#111827;
+      color:var(--text);
     }
 
     .steps .bar-blue{
@@ -176,133 +188,147 @@
       padding:14px;
       border-radius:14px;
       background:#ffffff;
-      color:#111827;
+      color:var(--text);
       font-size:13px;
     }
-  .site-footer{
-  margin-top:80px;
-  font-size:14px;
-  opacity:.9;
-  text-align:center;
-}
 
-.site-footer a{
-  color:#fff;
-  text-decoration:none;
-  font-weight:500;
-}
+    .cta{
+      margin-top:28px;
+      text-align:center;
+    }
 
-.site-footer a:hover{
-  opacity:.8;
-}
+    .cta .btn{
+      display:inline-block;
+      padding:12px 16px;
+      border-radius:14px;
+      text-decoration:none;
+      font-weight:900;
+      line-height:1.25;
+      background:rgba(255,255,255,.16);
+      border:1px solid rgba(255,255,255,.40);
+      color:#ffffff;
+      box-shadow:0 10px 30px rgba(0,0,0,.18);
+      text-align:left;
+    }
 
-.site-footer .sep{
-  margin:0 8px;
-  opacity:.7;
-}
-/* CTA (Button unter Beispiel) */
-.cta{margin-top:28px;text-align:center}
-.cta .btn{
-  display:inline-block;
-  padding:12px 16px;
-  border-radius:14px;
-  text-decoration:none;
-  font-weight:900;
-  line-height:1.25;
-  background:rgba(255,255,255,.16);
-  border:1px solid rgba(255,255,255,.40);
- color:var(--text);
-  box-shadow:0 10px 30px rgba(0,0,0,.18);
-  text-align:left;
-}
-.cta .btn span{display:block}
-.cta .btn:hover{opacity:.92}
+    .cta .btn span{
+      display:block;
+    }
 
+    .cta .btn:hover{
+      opacity:.92;
+    }
+
+    .site-footer{
+      margin-top:80px;
+      font-size:14px;
+      opacity:.9;
+      text-align:center;
+      color:#ffffff;
+    }
+
+    .site-footer a{
+      color:#fff;
+      text-decoration:none;
+      font-weight:500;
+    }
+
+    .site-footer a:hover{
+      opacity:.8;
+    }
+
+    .site-footer .sep{
+      margin:0 8px;
+      opacity:.7;
+    }
   </style>
 </head>
 
 <body>
-<main class="wrap">
+  <main class="wrap">
 
-  <div class="topline">
-    <div class="digest-head">
-      <div class="digest-title">SlackDigest</div>
-      <div class="digest-sub">Beispiel-Digest</div>
-      <p class="sub">
-        Beantwortet die Frage:<br>
-        <strong>Was ist seit dem letzten Mal passiert – und was davon ist relevant?</strong>
-      </p>
-      <div class="pro-badge">Pro: Priorisierung &amp; Empfehlungen inklusive</div>
-    </div>
+    <div class="topline">
+      <div class="digest-head">
+        <div class="digest-title">SlackDigest</div>
+        <div class="digest-sub">Beispiel-Digest</div>
 
-    <img class="brand-logo" src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo">
-  </div>
+        <p class="sub">
+          Beantwortet die Frage:<br>
+          <strong>Was ist seit dem letzten Mal passiert – und was davon ist relevant?</strong>
+        </p>
 
-  <section class="digest">
-
-    <div class="block">
-      <div class="bar now"></div>
-      <div>
-        <p class="kicker"><span class="dot dot-now">🔴</span> Wichtig · Hoher Impact</p>
-        <p class="title">Support-Tickets mit Umsatzbezug</p>
-        <p class="desc">3 neue Themen aus <code>#support</code> mit direkter Kundenwirkung.</p>
-        <p class="hint">→ Empfehlung: heute priorisieren.</p>
+        <div class="pro-badge">Pro: Priorisierung &amp; Empfehlungen inklusive</div>
       </div>
+
+      <img class="brand-logo" src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo">
     </div>
 
-    <div class="block">
-      <div class="bar next"></div>
-      <div>
-        <p class="kicker"><span class="dot dot-next">🟢</span> Relevant · Bald klären</p>
-        <p class="title">Sales-Rückfragen zu Feature X</p>
-        <p class="desc">Mehrere ähnliche Nachfragen aus <code>#sales</code>.</p>
-        <p class="hint">→ Kurze Klarstellung spart Wiederholungen.</p>
+    <section class="digest">
+
+      <div class="block">
+        <div class="bar now"></div>
+        <div>
+          <p class="kicker"><span class="dot dot-now">🔴</span> Wichtig · Hoher Impact</p>
+          <p class="title">Support-Tickets mit Umsatzbezug</p>
+          <p class="desc">3 neue Themen aus <code>#support</code> mit direkter Kundenwirkung.</p>
+          <p class="hint">→ Empfehlung: heute priorisieren.</p>
+        </div>
       </div>
-    </div>
 
-    <div class="block">
-      <div class="bar later"></div>
-      <div>
-        <p class="kicker"><span class="dot dot-later">🟡</span> Informativ · Überblick</p>
-        <p class="title">Interne Updates &amp; FYIs</p>
-        <p class="desc">Statusmeldungen ohne Handlungsdruck.</p>
-        <p class="hint">→ Zur Kenntnis nehmen.</p>
+      <div class="block">
+        <div class="bar next"></div>
+        <div>
+          <p class="kicker"><span class="dot dot-next">🟢</span> Relevant · Bald klären</p>
+          <p class="title">Sales-Rückfragen zu Feature X</p>
+          <p class="desc">Mehrere ähnliche Nachfragen aus <code>#sales</code>.</p>
+          <p class="hint">→ Kurze Klarstellung spart Wiederholungen.</p>
+        </div>
       </div>
-    </div>
 
-    <div class="steps">
-      <div class="bar-blue"></div>
-      <div>
-        <p class="title"><span class="dot dot-focus">📌</span> Nächste sinnvolle Schritte</p>
-        <ul>
-          <li>Support-Thema priorisieren</li>
-          <li>Kurzstatement für Sales vorbereiten</li>
-          <li>Rest gesammelt lassen</li>
-        </ul>
+      <div class="block">
+        <div class="bar later"></div>
+        <div>
+          <p class="kicker"><span class="dot dot-later">🟡</span> Informativ · Überblick</p>
+          <p class="title">Interne Updates &amp; FYIs</p>
+          <p class="desc">Statusmeldungen ohne Handlungsdruck.</p>
+          <p class="hint">→ Zur Kenntnis nehmen.</p>
+        </div>
       </div>
+
+      <div class="steps">
+        <div class="bar-blue"></div>
+        <div>
+          <p class="title"><span class="dot dot-focus">📌</span> Nächste sinnvolle Schritte</p>
+          <ul>
+            <li>Support-Thema priorisieren</li>
+            <li>Kurzstatement für Sales vorbereiten</li>
+            <li>Rest gesammelt lassen</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="summary">
+        ⏱ <b>Zusammenfassung</b><br>
+        12 Kanäle geprüft · 5 Threads gebündelt · 3 Punkte relevant
+      </div>
+
+    </section>
+
+    <div class="cta">
+      <a class="btn" href="/products/slackdigest/pricing/">
+        Preis- &amp; Leistungsübersicht ansehen
+        <span style="font-size:.85rem;opacity:.85">Unterschiede zwischen Basic &amp; Pro</span>
+      </a>
     </div>
 
-    <div class="summary">
-      ⏱ <b>Zusammenfassung</b><br>
-      12 Kanäle geprüft · 5 Threads gebündelt · 3 Punkte relevant
-    </div>
-  </section>
- 
-<div class="cta">
-  <a class="btn" href="/products/slackdigest/pricing/">
-    Preis- &amp; Leistungsübersicht ansehen
-    <span style="font-size:.85rem;opacity:.85">Unterschiede zwischen Basic &amp; Pro</span>
-  </a>
-</div>
+    <footer class="site-footer">
+      <a href="/impressum.html">Impressum</a>
+      <span class="sep">·</span>
+      <a href="/datenschutz.html">Datenschutz</a>
+      <span class="sep">·</span>
+      © ChangeWise · SlackDigest · TaskSieve
+    </footer>
 
-  <footer class="site-footer">
- <a href="/impressum.html">Impressum</a>
-<span class="sep">·</span>
-   <a href="/datenschutz.html">Datenschutz</a>
-  <span class="sep">·</span>
-  © ChangeWise · SlackDigest · TaskSieve
-</footer>
-
-</main>
+  </main>
 </body>
 </html>
