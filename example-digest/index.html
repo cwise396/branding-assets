@@ -7,12 +7,16 @@
   <meta name="description" content="So sieht ein SlackDigest aus: Relevante Updates, klar priorisiert, auf einen Blick." />
 
   <style>
-    :root{
-      --bg:#0C6C48;
-      --panel:rgba(255,255,255,.04);
-      --text:#E5E7EB;
-      --muted:#9FB0C3;
-      --border:rgba(255,255,255,.12);
+  :root{
+  --bg:#0C6C48;
+
+  --panel:#FFFFFF;
+
+  --text:#0E3960;
+  --muted:#4B6380;
+
+  --border:rgba(17,24,39,.10);
+}
 
       /* 🎯 finale Prioritätsfarben (wie TaskSieve) */
       --prio-now:   rgb(183,15,18);   /* rot */
@@ -207,7 +211,7 @@
   line-height:1.25;
   background:rgba(255,255,255,.16);
   border:1px solid rgba(255,255,255,.40);
-  color:#fff;
+ color:var(--text);
   box-shadow:0 10px 30px rgba(0,0,0,.18);
   text-align:left;
 }
@@ -285,7 +289,7 @@
   </section>
  
 <div class="cta">
-  <a class="btn" href="/products/slackdigest/success/">
+  <a class="btn" href="/products/slackdigest/pricing/">
     Preis- &amp; Leistungsübersicht ansehen
     <span style="font-size:.85rem;opacity:.85">Unterschiede zwischen Basic &amp; Pro</span>
   </a>
