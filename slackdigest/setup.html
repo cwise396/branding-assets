@@ -160,45 +160,53 @@
 
     <section class="card">
       <h2>Digest einstellen</h2>
+<form action="https://formspree.io/f/xgooowpk" method="POST">
+  <input type="hidden" name="product" value="slackdigest">
+  <input type="hidden" name="lang" value="de">
 
-      <form action="https://formspree.io/f/xgooowpk" method="POST">
-        <input type="hidden" name="product" value="slackdigest">
-        <input type="hidden" name="lang" value="de">
-        <input type="hidden" name="_redirect" value="https://slackdigest.org/slackdigest/setup-success.html">
-        <label>E-Mail für Zustellung (oder Bestätigung)</label>
-        <input name="email" type="email" required placeholder="du@firma.de">
+  <input
+    type="hidden"
+    name="_redirect"
+    value="https://slackdigest.org/slackdigest/setup-success/">
 
-        <div class="row">
-          <div>
-            <label>Takt</label>
-            <select name="cadence" required>
-              <option value="daily">täglich</option>
-              <option value="weekly">wöchentlich</option>
-            </select>
-          </div>
+  <label>E-Mail für Zustellung (oder Bestätigung)</label>
+  <input name="email" type="email" required placeholder="du@firma.de">
 
-          <div>
-            <label>Zustellung</label>
-            <select name="delivery" required>
-              <option value="email">E-Mail</option>
-              <option value="slack">Slack</option>
-            </select>
-          </div>
-        </div>
+  <div class="row">
+    <div>
+      <label>Takt</label>
+      <select name="cadence" required>
+        <option value="daily">täglich</option>
+        <option value="weekly">wöchentlich</option>
+      </select>
+    </div>
 
-        <label>Kanäle (Komma-separiert)</label>
-        <input name="channels" type="text" required placeholder="#support, #sales, #product">
+    <div>
+      <label>Zustellung</label>
+      <select name="delivery" required>
+        <option value="email">E-Mail</option>
+        <option value="slack">Slack</option>
+      </select>
+    </div>
+  </div>
 
-        <div style="margin-top:18px;">
-          <button class="btn" type="submit">
-            Speichern & ersten Digest starten
-          </button>
-        </div>
+  <label>Kanäle (Komma-separiert)</label>
+  <input
+    name="channels"
+    type="text"
+    required
+    placeholder="#support, #sales, #product">
 
-        <div class="fine">
-          Du erhältst den ersten Digest zum nächsten Takt.
-        </div>
-      </form>
+  <div style="margin-top:18px;">
+    <button class="btn" type="submit">
+      Speichern & ersten Digest starten
+    </button>
+  </div>
+
+  <div class="fine">
+    Du erhältst den ersten Digest zum nächsten Takt.
+  </div>
+</form>
     </section>
 
   </main>
