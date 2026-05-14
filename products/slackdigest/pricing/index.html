@@ -197,12 +197,25 @@
       color:var(--muted);
     }
 
-    .plan-yearly{
-      margin:10px 0 18px;
-      font-size:14px;
-      font-weight:800;
-      color:var(--text);
-    }
+   .plan-yearly{
+  margin:16px 0 18px;
+  color:var(--text);
+}
+
+.plan-yearly strong{
+  display:block;
+  font-size:26px;
+  font-weight:900;
+  line-height:1.1;
+}
+
+.plan-yearly span{
+  display:block;
+  margin-top:6px;
+  font-size:13px;
+  font-weight:700;
+  color:var(--muted);
+}
 .plan-actions{
   display:grid;
   grid-template-columns:1fr;
@@ -386,8 +399,9 @@
           </p>
 
           <p class="plan-yearly">
-            8 € monatlich · jährlich abgerechnet
-          </p>
+  <strong>8 €</strong>
+  <span>monatlich · jährlich abgerechnet</span>
+</p>
 
           <div class="plan-actions">
   <a class="btn" href="/checkout/slackdigest/basic-monthly/">
@@ -412,8 +426,9 @@
           </p>
 
           <p class="plan-yearly">
-            12 € monatlich · jährlich abgerechnet
-          </p>
+  <strong>12 €</strong>
+  <span>monatlich · jährlich abgerechnet</span>
+</p>
 
          <div class="plan-actions">
   <a class="btn" href="/checkout/slackdigest/pro-monthly/">
