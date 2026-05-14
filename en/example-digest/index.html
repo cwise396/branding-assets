@@ -9,16 +9,15 @@
   <style>
     :root{
       --bg:#0C6C48;
-      --panel:rgba(255,255,255,.04);
-      --text:#E5E7EB;
-      --muted:#9FB0C3;
-      --border:rgba(255,255,255,.12);
+      --panel:#FFFFFF;
+      --text:#0E3960;
+      --muted:#4B6380;
+      --border:rgba(17,24,39,.10);
 
-      /* 🎯 final priority colors (match DE logic) */
-      --prio-now:   rgb(183,15,18);   /* red */
-      --prio-next:  rgb(10,108,72);   /* green */
-      --prio-later: rgb(255,213,54);  /* yellow */
-      --prio-focus: rgb(15,57,96);    /* blue */
+      --prio-now:rgb(183,15,18);
+      --prio-next:rgb(10,108,72);
+      --prio-later:rgb(255,213,54);
+      --prio-focus:rgb(15,57,96);
 
       --shadow:0 10px 30px rgba(0,0,0,.35);
     }
@@ -39,7 +38,6 @@
       padding:44px 18px 88px;
     }
 
-    /* ===== Header ===== */
     .topline{
       display:flex;
       justify-content:space-between;
@@ -65,6 +63,13 @@
       color:#ffffff;
     }
 
+    .sub{
+      margin:0 0 22px;
+      font-size:14px;
+      opacity:.92;
+      color:#ffffff;
+    }
+
     .pro-badge{
       display:inline-block;
       margin-top:10px;
@@ -80,33 +85,27 @@
       max-width:520px;
     }
 
-    /* ===== Logo right ===== */
-    .brand-slot{ flex:0 0 auto; }
+    .brand-slot{
+      flex:0 0 auto;
+    }
 
     .brand-logo{
       height:99px;
       width:auto;
       display:block;
       background:#ffffff;
-      padding:6px;                 /* white ring */
+      padding:6px;
       border-radius:50%;
       box-shadow:0 6px 18px rgba(0,0,0,.15);
     }
-@media (max-width:640px){
-  .brand-logo{
-    height:72px;
-    padding:4px;
-  }
 
- }
-    .sub{
-      margin:0 0 22px;
-      font-size:14px;
-      opacity:.92;
-      color:#ffffff;
+    @media (max-width:640px){
+      .brand-logo{
+        height:72px;
+        padding:4px;
+      }
     }
 
-    /* ===== Digest ===== */
     .digest{
       background:rgba(255,255,255,.15);
       border:1px solid rgba(255,255,255,.35);
@@ -122,35 +121,50 @@
       border-radius:14px;
       background:#ffffff;
       margin-top:12px;
-      color:#111827;
+      color:var(--text);
     }
 
-    /* Bars */
-    .bar{width:6px;border-radius:999px;flex:0 0 6px}
+    .bar{
+      width:6px;
+      border-radius:999px;
+      flex:0 0 6px;
+    }
+
     .bar.now{background:var(--prio-now)}
     .bar.next{background:var(--prio-next)}
     .bar.later{background:var(--prio-later)}
 
-    /* Emoji coloring (only symbol, not text) */
     .dot{font-weight:900}
     .dot-now{color:var(--prio-now)}
     .dot-next{color:var(--prio-next)}
     .dot-later{color:var(--prio-later)}
     .dot-focus{color:var(--prio-focus)}
 
-    /* ✅ neutral kicker like DE */
     .kicker{
       font-size:.75rem;
       font-weight:800;
       letter-spacing:.03em;
-      color:#0F172A;
+      color:var(--muted);
       margin:0 0 .4rem;
-      opacity:.85;
+      opacity:.9;
     }
 
-    .title{margin:0 0 6px;font-weight:800;color:#0F172A}
-    .desc{margin:0 0 8px;color:#111827}
-    .hint{margin:0;color:#374151;font-size:13px}
+    .title{
+      margin:0 0 6px;
+      font-weight:800;
+      color:var(--text);
+    }
+
+    .desc{
+      margin:0 0 8px;
+      color:var(--text);
+    }
+
+    .hint{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
 
     code{
       background:rgba(15,23,42,.08);
@@ -159,7 +173,7 @@
       border-radius:8px;
       font-size:12px;
       font-weight:700;
-      color:#0F172A;
+      color:var(--text);
     }
 
     .steps{
@@ -169,7 +183,7 @@
       padding:16px 14px;
       border-radius:14px;
       background:#ffffff;
-      color:#111827;
+      color:var(--text);
     }
 
     .steps .bar-blue{
@@ -184,11 +198,10 @@
       padding:14px;
       border-radius:14px;
       background:#ffffff;
-      color:#111827;
+      color:var(--text);
       font-size:13px;
     }
 
-    /* ===== CTA ===== */
     .cta{
       margin-top:28px;
       text-align:center;
@@ -206,130 +219,155 @@
       color:#ffffff;
       box-shadow:0 10px 30px rgba(0,0,0,.18);
     }
-    .cta .btn span{display:block}
-    .cta .btn:hover{opacity:.92}
+
+    .cta .btn span{
+      display:block;
+    }
+
+    .cta .btn:hover{
+      opacity:.92;
+    }
+
+    .site-footer{
+      margin-top:80px;
+      font-size:14px;
+      opacity:.9;
+      text-align:center;
+      color:#ffffff;
+    }
+
+    .site-footer a{
+      color:#fff;
+      text-decoration:none;
+      font-weight:500;
+    }
+
+    .site-footer a:hover{
+      opacity:.8;
+    }
+
+    .site-footer .sep{
+      margin:0 8px;
+      opacity:.7;
+    }
 
     @media (max-width:520px){
-      .topline{ flex-direction:row; align-items:flex-start; }
-      .digest-head{max-width:100%}
-      .brand-slot{margin-left:auto}
-      .brand-logo{height:84px}
-      .pro-badge{ white-space:normal; max-width:100%; }
+      .topline{
+        flex-direction:row;
+        align-items:flex-start;
+      }
+
+      .digest-head{
+        max-width:100%;
+      }
+
+      .brand-slot{
+        margin-left:auto;
+      }
+
+      .brand-logo{
+        height:84px;
+      }
+
+      .pro-badge{
+        white-space:normal;
+        max-width:100%;
+      }
     }
-  .site-footer{
-  margin-top:80px;
-  font-size:14px;
-  opacity:.9;
-  text-align:center;
-}
-
-.site-footer a{
-  color:#fff;
-  text-decoration:none;
-  font-weight:500;
-}
-
-.site-footer a:hover{
-  opacity:.8;
-}
-
-.site-footer .sep{
-  margin:0 8px;
-  opacity:.7;
-}
-
   </style>
 </head>
 
 <body>
-<main class="wrap">
-  <div class="topline">
-    <div class="digest-head">
-      <div class="digest-title">SlackDigest</div>
-      <div class="digest-sub">Example Digest</div>
+  <main class="wrap">
 
-      <p class="sub">
-        Answers the question:<br>
-        <strong>What has happened since the last time – and what actually matters?</strong>
-      </p>
+    <div class="topline">
+      <div class="digest-head">
+        <div class="digest-title">SlackDigest</div>
+        <div class="digest-sub">Example Digest</div>
 
-      <div class="pro-badge">Pro: prioritisation &amp; recommendations included</div>
-    </div>
+        <p class="sub">
+          Answers the question:<br>
+          <strong>What has happened since the last time – and what actually matters?</strong>
+        </p>
 
-    <div class="brand-slot" aria-hidden="true">
-      <img class="brand-logo" src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo">
-    </div>
-  </div>
+        <div class="pro-badge">Pro: prioritisation &amp; recommendations included</div>
+      </div>
 
-  <p class="sub">
-    This is how SlackDigest works: relevant updates, clearly prioritised, at a glance.
-  </p>
-
-  <section class="digest">
-
-    <div class="block">
-      <div class="bar now"></div>
-      <div>
-        <p class="kicker"><span class="dot dot-now">🔴</span> Important · High impact</p>
-        <p class="title">Support tickets affecting revenue</p>
-        <p class="desc">3 new topics from <code>#support</code> with direct customer impact.</p>
-        <p class="hint">→ Recommended: prioritise today.</p>
+      <div class="brand-slot" aria-hidden="true">
+        <img class="brand-logo" src="/assets/brand/slackdigest_logo.svg" alt="SlackDigest Logo">
       </div>
     </div>
 
-    <div class="block">
-      <div class="bar next"></div>
-      <div>
-        <p class="kicker"><span class="dot dot-next">🟢</span> Relevant · Needs attention</p>
-        <p class="title">Sales questions about Feature X</p>
-        <p class="desc">Similar questions across <code>#sales</code>.</p>
-        <p class="hint">→ One clarification reduces repetition.</p>
+    <p class="sub">
+      This is how SlackDigest works: relevant updates, clearly prioritised, at a glance.
+    </p>
+
+    <section class="digest">
+
+      <div class="block">
+        <div class="bar now"></div>
+        <div>
+          <p class="kicker"><span class="dot dot-now">🔴</span> Important · High impact</p>
+          <p class="title">Support tickets affecting revenue</p>
+          <p class="desc">3 new topics from <code>#support</code> with direct customer impact.</p>
+          <p class="hint">→ Recommended: prioritise today.</p>
+        </div>
       </div>
-    </div>
 
-    <div class="block">
-      <div class="bar later"></div>
-      <div>
-        <p class="kicker"><span class="dot dot-later">🟡</span> Informational · FYI</p>
-        <p class="title">Internal updates &amp; status notes</p>
-        <p class="desc">No immediate action required.</p>
-        <p class="hint">→ For awareness.</p>
+      <div class="block">
+        <div class="bar next"></div>
+        <div>
+          <p class="kicker"><span class="dot dot-next">🟢</span> Relevant · Needs attention</p>
+          <p class="title">Sales questions about Feature X</p>
+          <p class="desc">Similar questions across <code>#sales</code>.</p>
+          <p class="hint">→ One clarification reduces repetition.</p>
+        </div>
       </div>
-    </div>
 
-    <div class="steps">
-      <div class="bar-blue"></div>
-      <div>
-        <p class="title"><span class="dot dot-focus">📌</span> Suggested next steps</p>
-        <ul>
-          <li>Prioritise the support topic</li>
-          <li>Prepare a short clarification for sales</li>
-          <li>Keep the rest grouped</li>
-        </ul>
+      <div class="block">
+        <div class="bar later"></div>
+        <div>
+          <p class="kicker"><span class="dot dot-later">🟡</span> Informational · FYI</p>
+          <p class="title">Internal updates &amp; status notes</p>
+          <p class="desc">No immediate action required.</p>
+          <p class="hint">→ For awareness.</p>
+        </div>
       </div>
+
+      <div class="steps">
+        <div class="bar-blue"></div>
+        <div>
+          <p class="title"><span class="dot dot-focus">📌</span> Suggested next steps</p>
+          <ul>
+            <li>Prioritise the support topic</li>
+            <li>Prepare a short clarification for sales</li>
+            <li>Keep the rest grouped</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="summary">
+        ⏱ <b>Summary</b><br>
+        12 channels scanned · 5 threads grouped · 3 items relevant
+      </div>
+
+    </section>
+
+    <div class="cta">
+      <a class="btn" href="/en/products/slackdigest/pricing/">
+        See pricing &amp; feature overview
+        <span style="font-size:.85rem;opacity:.85">Differences between Basic &amp; Pro</span>
+      </a>
     </div>
 
-    <div class="summary">
-      ⏱ <b>Summary</b><br>
-      12 channels scanned · 5 threads grouped · 3 items relevant
-    </div>
+    <footer class="site-footer">
+      <a href="/en/imprint/">Imprint</a>
+      <span class="sep">·</span>
+      <a href="/en/privacy/">Privacy</a>
+      <span class="sep">·</span>
+      © ChangeWise · SlackDigest · TaskSieve
+    </footer>
 
-  </section>
-
-  <div class="cta">
-    <a class="btn" href="/en/products/slackdigest/success/">
-      See pricing &amp; feature overview
-      <span style="font-size:.85rem;opacity:.85">Differences between Basic &amp; Pro</span>
-    </a>
-  </div>
-<footer class="site-footer">
-  <a href="/en/imprint/">Imprint</a>
-  <span class="sep">·</span>
-  <a href="/en/privacy/">Privacy</a>
-  <span class="sep">·</span>
-  © ChangeWise · SlackDigest · TaskSieve
-</footer>
-
-</main>
+  </main>
 </body>
 </html>
