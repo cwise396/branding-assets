@@ -4,67 +4,182 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <title>Success – SlackDigest</title>
+
+  <title>Payment successful – SlackDigest</title>
+
+  <link rel="canonical" href="https://slackdigest.org/en/success/slackdigest/">
+
   <style>
-    :root{--bg:#0B1220;--text:#E5E7EB;--muted:#9FB0C3;--card:rgba(255,255,255,.04);--bd:rgba(255,255,255,.12);--input:rgba(13,20,34,.7);--btn:#fff;--btnText:#111;}
-    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text);}
-    .wrap{max-width:820px;margin:0 auto;padding:28px 18px 60px;}
-    .card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:18px 16px;margin:14px 0;}
-    h1{margin:0 0 6px;font-size:24px;}
-    p{margin:8px 0;color:var(--muted);}
-    label{display:block;margin:12px 0 6px;color:var(--muted);font-size:13px;}
-    input,select{width:100%;padding:12px;border-radius:12px;border:1px solid var(--bd);background:var(--input);color:var(--text);}
-    .row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-    @media(max-width:720px){.row{grid-template-columns:1fr;}}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 14px;border-radius:12px;background:var(--btn);color:var(--btnText);text-decoration:none;font-weight:700;border:0;cursor:pointer;}
-    .fine{margin-top:10px;font-size:13px;color:var(--muted);}
+    :root{
+      --bg:#0C6C48;
+
+      --card:#FFFFFF;
+      --cardText:#0E3960;
+
+      --btn:#0C6C48;
+      --btnText:#FFFFFF;
+
+      --shadow:0 10px 30px rgba(0,0,0,.15);
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+      min-height:100vh;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      padding:24px;
+
+      background:var(--bg);
+
+      font-family:
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        Segoe UI,
+        Roboto,
+        Arial,
+        sans-serif;
+    }
+
+    .card{
+      width:100%;
+      max-width:620px;
+
+      background:var(--card);
+      color:var(--cardText);
+
+      border-radius:22px;
+
+      padding:40px 34px;
+
+      box-shadow:var(--shadow);
+
+      text-align:center;
+    }
+
+    h1{
+      margin:0 0 12px;
+
+      font-size:34px;
+      line-height:1.08;
+
+      font-weight:900;
+      letter-spacing:-.4px;
+
+      color:var(--cardText);
+    }
+
+    .sub{
+      margin:0 auto 26px;
+
+      max-width:520px;
+
+      font-size:16px;
+      line-height:1.65;
+
+      color:var(--cardText);
+
+      opacity:.88;
+    }
+
+    .status{
+      display:inline-block;
+
+      margin-bottom:22px;
+
+      padding:7px 12px;
+
+      border-radius:999px;
+
+      background:rgba(12,108,72,.10);
+
+      color:#0C6C48;
+
+      font-size:13px;
+      font-weight:900;
+      letter-spacing:.02em;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+
+      padding:14px 18px;
+
+      border-radius:14px;
+
+      background:var(--btn);
+      color:var(--btnText);
+
+      text-decoration:none;
+
+      font-weight:900;
+
+      transition:
+        opacity .18s ease,
+        transform .18s ease;
+    }
+
+    .btn:hover{
+      opacity:.94;
+      transform:translateY(-1px);
+    }
+
+    .micro{
+      margin-top:22px;
+
+      font-size:13px;
+
+      opacity:.64;
+    }
+
+    @media (max-width:720px){
+
+      .card{
+        padding:32px 24px;
+      }
+
+      h1{
+        font-size:28px;
+      }
+
+    }
+
   </style>
 </head>
+
 <body>
-  <main class="wrap">
-    <section class="card">
-      <h1>Activated</h1>
-      <p>SlackDigest is on. Next: tell us <b>what</b> to bundle — and <b>where</b> to deliver it.</p>
-      <p class="fine">Self-explanatory. You can cancel or update payment details anytime.</p>
-    </section>
 
-    <section class="card">
-      <h2 style="margin:0 0 8px;font-size:18px;">Set up your digest</h2>
+  <main class="card">
 
-      <form action="https://formspree.io/f/xgooowpk" method="POST">
-        <input type="hidden" name="product" value="slackdigest">
-        <input type="hidden" name="lang" value="en">
+    <div class="status">
+      Payment successful
+    </div>
 
-        <label>Email for delivery (or confirmation)</label>
-        <input name="email" type="email" required placeholder="you@company.com">
+    <h1>SlackDigest is ready</h1>
 
-        <div class="row">
-          <div>
-            <label>Cadence</label>
-            <select name="cadence" required>
-              <option value="daily">daily</option>
-              <option value="weekly">weekly</option>
-            </select>
-          </div>
-          <div>
-            <label>Delivery</label>
-            <select name="delivery" required>
-              <option value="email">Email</option>
-              <option value="slack">Slack</option>
-            </select>
-          </div>
-        </div>
+    <p class="sub">
+      Continue with the setup to define
+      channels, cadence and delivery.
+    </p>
 
-        <label>Channels (comma-separated)</label>
-        <input name="channels" type="text" required placeholder="#support, #sales, #product">
+    <a class="btn" href="/en/slackdigest/setup/">
+      Continue to setup
+    </a>
 
-        <div style="margin-top:14px;">
-          <button class="btn" type="submit">Save & start first digest</button>
-        </div>
+    <div class="micro">
+      Everything can be adjusted later.
+    </div>
 
-        <div class="fine">Your first digest arrives on the next cadence.</div>
-      </form>
-    </section>
   </main>
+
 </body>
 </html>
