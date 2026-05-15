@@ -6,75 +6,30 @@
   <meta name="color-scheme" content="dark">
   <title>Pricing – TaskSieve</title>
   <meta name="description" content="TaskSieve pricing & plan details: manual vs. TaskSieve — clear, transparent, controllable." />
-  <meta name="theme-color" content="#0B1220" />
 
   <style>
     :root{
       --container:920px;
       --bg:#0B1220;
-      --text:#E5E7EB;
-      --muted:#9FB0C3;
-
+      --text:#0E3960;
+      --muted:#4B6380;
       --nav-red:#AE0F12;
-
-      /* ✅ TaskSieve Red: R150 G12 B15 */
-      --ts-red: rgb(150,12,15);
-
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --ts-red:rgb(150,12,15);
+      --shadow:0 10px 30px rgba(0,0,0,.35);
     }
 
     *{box-sizing:border-box}
+
     html,body{height:100%}
+
     body{
       margin:0;
       background:var(--ts-red);
-      color:var(--text);
+      color:#ffffff;
       font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
     }
-    a{color:#fff;text-decoration:none}
 
-    /* NAV */
-    .site-header{
-      position:sticky; top:0; z-index:50;
-      background:var(--nav-red);
-      width:100%;
-    }
-    .nav-inner{
-      max-width:var(--container);
-      margin:0 auto;
-      padding:.9rem 1rem;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:1rem;
-    }
-    .brand{font-weight:800;white-space:nowrap}
-    .nav-links{
-      list-style:none;
-      display:flex;
-      align-items:center;
-      gap:1rem;
-      margin:0; padding:0;
-    }
-    .nav-toggle{
-      display:none;
-      background:none;border:0;
-      color:#fff;font-size:1.2rem;
-    }
-    @media (max-width:980px){
-      .nav-inner{position:relative}
-      .nav-links{
-        display:none;
-        position:absolute;
-        top:56px; left:0; right:0;
-        background:var(--nav-red);
-        padding:1rem;
-        flex-direction:column;
-        gap:.6rem;
-      }
-      .nav-links.open{display:flex}
-      .nav-toggle{display:inline-block}
-    }
+    a{color:#fff;text-decoration:none}
 
     main{
       max-width:var(--container);
@@ -82,19 +37,18 @@
       padding:1.4rem 1rem 2.8rem;
     }
 
-    /* HERO */
     .hero{
       display:grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns:1fr auto;
       gap:1rem;
       align-items:center;
       margin-bottom:1.2rem;
     }
+
     .hero h1{
       margin:0 0 .25rem;
-      font-size:clamp(2.0rem, 4vw, 2.8rem);
+      font-size:clamp(2rem,4vw,2.8rem);
       line-height:1.08;
-      letter-spacing:.1px;
       color:#fff;
     }
 
@@ -105,25 +59,31 @@
       line-height:1.45;
       color:rgba(255,255,255,.92);
     }
-    .pricing-intro strong{font-weight:900;color:#fff}
+
+    .pricing-intro strong{
+      font-weight:900;
+      color:#fff;
+    }
 
     .badge{
-      width:99px;height:99px;
+      width:99px;
+      height:99px;
       border-radius:50%;
       background:#fff;
       padding:5px;
-      display:grid;place-items:center;
+      display:grid;
+      place-items:center;
       box-shadow:0 4px 12px rgba(0,0,0,.10);
-      flex:0 0 auto;
     }
+
     .badge img{
-      width:100%;height:100%;
+      width:100%;
+      height:100%;
       border-radius:50%;
       object-fit:contain;
       display:block;
     }
 
-    /* LAYOUT */
     .grid{
       display:grid;
       grid-template-columns:repeat(12,1fr);
@@ -131,27 +91,27 @@
       margin-top:1.1rem;
     }
 
-    /* Pricing cards: white inside, red frame */
     .card{
       grid-column:span 12;
       background:#ffffff;
-      color:#111827;
+      color:var(--text);
       border:2px solid var(--ts-red);
       border-radius:16px;
       padding:1.05rem 1rem;
       box-shadow:0 10px 30px rgba(0,0,0,.25);
     }
+
     .card h2{
       margin:0 0 .6rem;
       font-size:1.12rem;
-      letter-spacing:.1px;
-      color:#0F172A;
+      color:var(--text);
     }
-    .card p{color:#111827}
-    .muted{color:rgba(17,24,39,.78)}
 
-    /* TABLE */
+    .card p{color:var(--text)}
+    .muted{color:var(--muted)}
+
     .table-wrap{overflow:auto;border-radius:14px}
+
     table{
       width:100%;
       border-collapse:separate;
@@ -162,24 +122,30 @@
       border-radius:14px;
       overflow:hidden;
     }
-    th, td{
-      padding:.85rem .85rem;
+
+    th,td{
+      padding:.85rem;
       border-bottom:1px solid rgba(0,0,0,.10);
       vertical-align:top;
       text-align:left;
-      color:#111827;
+      color:var(--text);
     }
+
     th{
       font-size:.9rem;
-      color:#0F172A;
       background:rgba(0,0,0,.03);
+      font-weight:900;
     }
+
     tr:last-child td{border-bottom:0}
-    td small{color:rgba(17,24,39,.72)}
+
+    td small{
+      color:var(--muted);
+    }
+
     .yes{font-weight:900}
     .no{opacity:.55}
 
-    /* PRICE BLOCKS */
     .price-grid{
       display:grid;
       grid-template-columns:repeat(12,1fr);
@@ -187,28 +153,45 @@
       margin-top:1rem;
       align-items:stretch;
     }
+
     .price{
       grid-column:span 6;
       background:#ffffff;
-      color:#111827;
+      color:var(--text);
       border:2px solid var(--ts-red);
       border-radius:16px;
       padding:1rem;
     }
-    .price h3{margin:0 0 .25rem;font-size:1.05rem;color:#0F172A}
+
+    .price h3{
+      margin:0 0 .25rem;
+      font-size:1.05rem;
+      color:var(--text);
+    }
+
     .amount{
       font-size:1.55rem;
       font-weight:900;
       letter-spacing:-.2px;
       margin:.15rem 0 .4rem;
-      color:#0F172A;
+      color:var(--text);
     }
-    .amount .per{font-size:.95rem;font-weight:700;opacity:.75;color:#111827}
-    .note{margin:0;color:#111827;opacity:.85}
+
+    .amount .per{
+      font-size:13px;
+      font-weight:700;
+      color:var(--muted);
+    }
+
+    .note{
+      margin:0;
+      color:var(--text);
+      opacity:.86;
+    }
+
     .micro{
       margin:.8rem 0 0;
-      color:#111827;
-      opacity:.75;
+      color:var(--muted);
       font-size:.95rem;
     }
 
@@ -224,27 +207,26 @@
       border-radius:14px;
       padding:.85rem 1.05rem;
       border:1px solid rgba(0,0,0,.08);
-      background:rgba(0,0,0,.04);
-      color:#0F172A;
+      background:var(--ts-red);
+      color:#ffffff;
       font-weight:900;
       line-height:1.2;
     }
+
+    .btn-secondary{
+      background:#0E3960;
+    }
+
     .btn:hover{opacity:.92}
 
-    /* Primary = TaskSieve red */
-    .btn-primary{
-      background:var(--ts-red);
-      border-color:rgba(0,0,0,.10);
-      color:#ffffff;
-    }
     .btn span{display:block}
+
     .btn .sub{
       font-size:.85rem;
       font-weight:700;
-      opacity:.88;
+      opacity:.92;
       margin-top:.25rem;
     }
-    .btn-primary .sub{opacity:.92}
 
     footer{
       max-width:var(--container);
@@ -252,113 +234,55 @@
       padding:0 1rem;
       color:#fff;
     }
+
     footer a{color:#fff}
 
     @media (max-width:900px){
       .price{grid-column:span 12}
       table{min-width:560px}
     }
+
     @media (max-width:520px){
-      .hero{grid-template-columns:1fr auto}
-      .pricing-intro{font-size:1rem}
-    }
-@media (max-width:520px){
-  th.col-th{
-    padding:.55rem .35rem;     /* enger */
-    text-align:center;
-  }
- @media (max-width:520px){
-  /* Hero: Logo rechts oben statt mittig */
-  .hero{
-    align-items:start; /* statt center */
-  }
-
-  /* Badge-Zelle oben ausrichten + minimal nach oben ziehen */
-  .badge{
-    align-self:start;
-    justify-self:end;
-    margin-top:2px;          /* fein justierbar */
-    transform:translateY(-2px);
-  }
-@media (max-width:520px){
-  .badge{
-    width:84px;
-    height:84px;
-    padding:5px;
-  }
-}
-
- 
-
-  .th-label{
-    display:inline-block;
-    font-weight:900;
-    font-size:.78rem;
-    letter-spacing:.2px;
-    white-space:nowrap;        /* verhindert Witho/ut */
-    word-break:keep-all;
-    hyphens:none;
-  }
- 
-   .th-top{
-    display:block;
-    font-weight:800;
-    font-size:.78rem;
-    letter-spacing:.2px;
-    white-space:nowrap;   /* verhindert Zerreißen von Without / With */
-  }
-
-  .th-bot{
-    display:block;
-    margin-top:.1rem;
-    font-size:.65rem;
-    opacity:.75;
-    white-space:nowrap;   /* TaskSieve bleibt ganz */
-  }
-}
-/* Screenreader only */
-.sr-only{
-  position:absolute !important;
-  width:1px;height:1px;
-  padding:0;margin:-1px;
-  overflow:hidden;
-  clip:rect(0,0,0,0);
-  white-space:nowrap;
-  border:0;
-}
-
-    /* ✅ Mobile: table fits on screen (no horizontal scroll) */
-    @media (max-width:520px){
-      table{
-        min-width:0 !important;      /* kills min-width:680/560 */
-        width:100%;
-        table-layout:fixed;          /* columns stay inside viewport */
+      .hero{
+        grid-template-columns:1fr auto;
+        align-items:start;
       }
-      th, td{
-        padding:.55rem .55rem;
+
+      .pricing-intro{font-size:1rem}
+
+      .badge{
+        width:84px;
+        height:84px;
+        padding:5px;
+        align-self:start;
+        justify-self:end;
+        transform:translateY(-2px);
+      }
+
+      table{
+        min-width:0 !important;
+        width:100%;
+        table-layout:fixed;
+      }
+
+      th,td{
+        padding:.55rem;
         font-size:.82rem;
         vertical-align:middle;
         word-break:normal;
         overflow-wrap:normal;
         hyphens:none;
       }
-  /* ✅ header wrap: no overlap */
-  th.col-th{
-    text-align:center;
-    line-height:1.12;
-    overflow:hidden;              /* prevents bleed into neighbor cells */
-  }
-  th.col-th .th-top,
-  th.col-th .th-bot{
-    display:block;
-    white-space:normal;
-    overflow-wrap:anywhere;       /* allows breaking if needed */
-  }
 
-      /* column sizing */
-      th:first-child, td:first-child{width:58%;}
-      th:nth-child(2), td:nth-child(2){width:21%; text-align:center;}
-      th:nth-child(3), td:nth-child(3){width:21%; text-align:center;}
+      th.col-th{
+        text-align:center;
+        line-height:1.12;
+        overflow:hidden;
+      }
+
+      th:first-child,td:first-child{width:58%}
+      th:nth-child(2),td:nth-child(2){width:21%;text-align:center}
+      th:nth-child(3),td:nth-child(3){width:21%;text-align:center}
     }
   </style>
 </head>
@@ -366,6 +290,7 @@
 <body>
 
   <main>
+
     <section class="hero">
       <div>
         <h1>Pricing &amp; plans</h1>
@@ -385,29 +310,24 @@
 
       <article class="card">
         <h2>Work priorities: manual vs. TaskSieve</h2>
+
         <p class="muted" style="margin:.2rem 0 .9rem">
           Without TaskSieve, you sort it yourself.<br>
           TaskSieve delivers clear work priorities — transparent and controllable.
         </p>
-<p class="muted" style="margin:.2rem 0 .6rem">
-  Columns: Without TaskSieve vs. With TaskSieve
-</p>
+
+        <p class="muted" style="margin:.2rem 0 .6rem">
+          Columns: Without TaskSieve vs. With TaskSieve
+        </p>
 
         <div class="table-wrap">
           <table aria-label="Plan comparison">
             <thead>
               <tr>
-               <th>Layer</th>
-
-<th class="col-th">
-  Without TaskSieve
-</th>
-
-<th class="col-th">
-  With TaskSieve
-</th>
-
-       </tr>
+                <th>Layer</th>
+                <th class="col-th">Without TaskSieve</th>
+                <th class="col-th">With TaskSieve</th>
+              </tr>
             </thead>
             <tbody>
               <tr>
@@ -448,57 +368,68 @@
         <h2>Prices</h2>
 
         <div class="price-grid">
+
           <div class="price">
             <h3>TaskSieve Pro</h3>
-            <div class="amount">€12 <span class="per">/ month · per user</span></div>
-            <p class="note">Built for individuals and teams — easy to scale per user.</p>
-            <div class="micro">No setup · no call · cancel anytime</div>
+
+            <div class="amount">
+              €12 <span class="per">monthly · per user</span>
+            </div>
+
+            <p class="note">
+              Built for individuals and teams — easy to scale per user.
+            </p>
+
+            <div class="micro">
+              No setup · no call · cancel anytime
+            </div>
 
             <div class="cta-row">
-              <a class="btn btn-primary" href="/en/contact_tasksieve.html">
-                TaskSieve Pro<br>
-                <span class="sub">Start</span>
+              <a class="btn" href="/en/checkout/tasksieve/pro-monthly/">
+                TaskSieve Pro
+                <span class="sub">monthly</span>
               </a>
             </div>
           </div>
 
           <div class="price">
             <h3>TaskSieve Pro — Annual</h3>
-            <div class="amount">€9 <span class="per">/ month · per user</span></div>
-            <p class="note">Billed yearly — same features,<br>better pricing.</p>
-            <div class="micro">No setup · no call · cancel anytime</div>
+
+            <div class="amount">
+              €9 <span class="per">monthly · billed yearly</span>
+            </div>
+
+            <p class="note">
+              Ideal for teams with many tasks, updates &amp; decisions.
+            </p>
+
+            <div class="micro">
+              No setup · no call · cancel anytime
+            </div>
 
             <div class="cta-row">
-              <a class="btn btn-primary" href="/en/contact_tasksieve.html">
-                TaskSieve Pro — Annual<br>
-                <span class="sub">Start</span>
+              <a class="btn btn-secondary" href="/en/checkout/tasksieve/pro-yearly/">
+                TaskSieve Pro
+                <span class="sub">yearly</span>
               </a>
             </div>
           </div>
-        </div>
 
+        </div>
       </article>
+
     </section>
 
     <footer>
       <nav class="legal" aria-label="Footer">
-        <a href="/en/imprint/">Imprint</a><span class="sep" aria-hidden="true"> · </span>
+        <a href="/en/imprint/">Imprint</a>
+        <span class="sep" aria-hidden="true"> · </span>
         <a href="/en/privacy/">Privacy</a>
       </nav>
       <small>© ChangeWise · SlackDigest · TaskSieve</small>
     </footer>
+
   </main>
 
-  <script>
-    function __toggleNav(){
-      var l=document.getElementById('navLinks'); if(!l) return;
-      var open=l.classList.toggle('open');
-      var t=document.getElementById('navToggle'); if(t) t.setAttribute('aria-expanded', open?'true':'false');
-    }
-    (function(){
-      var t=document.getElementById('navToggle');
-      if(t) t.addEventListener('click', __toggleNav);
-    })();
-  </script>
 </body>
 </html>
