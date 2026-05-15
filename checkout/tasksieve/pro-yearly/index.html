@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+
+  <title>Checkout – SlackDigest Basic jährlich</title>
+
+  <link rel="canonical" href="https://slackdigest.org/checkout/slackdigest/basic-yearly/">
+
+  <style>
+    :root{
+      --bg:rgb(150,12,15);
+      --card:#FFFFFF;
+      --cardText:#0E3960;
+      --line:rgba(17,24,39,.10);
+      --btn:rgb(150,12,15);
+      --btnText:#FFFFFF;
+      --shadow:0 10px 30px rgba(0,0,0,.15);
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      background:var(--bg);
+      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .card{
+      width:100%;
+      max-width:560px;
+      background:var(--card);
+      color:var(--cardText);
+      border-radius:20px;
+      padding:34px 30px;
+      box-shadow:var(--shadow);
+    }
+
+    h1{
+      margin:0 0 8px;
+      font-size:32px;
+      line-height:1.1;
+      font-weight:900;
+      letter-spacing:-.3px;
+      color:var(--cardText);
+    }
+
+    .sub{
+      margin:0 0 28px;
+      font-size:16px;
+      line-height:1.55;
+      color:var(--cardText);
+      opacity:.86;
+    }
+
+    .plan{
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:22px 20px;
+      background:#F8FAFC;
+    }
+
+    .plan h2{
+      margin:0 0 10px;
+      font-size:22px;
+      color:var(--cardText);
+      letter-spacing:-.2px;
+    }
+
+    .price{
+      margin:0;
+      font-size:30px;
+      font-weight:900;
+      color:var(--cardText);
+      line-height:1.1;
+    }
+
+    .price span{
+      display:block;
+      margin-top:8px;
+      font-size:14px;
+      font-weight:800;
+      opacity:.76;
+    }
+
+    .note{
+      margin-top:14px;
+      font-size:14px;
+      line-height:1.5;
+      color:var(--cardText);
+      opacity:.78;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:100%;
+      margin-top:20px;
+      padding:13px 16px;
+      border-radius:14px;
+      background:var(--btn);
+      color:var(--btnText);
+      text-decoration:none;
+      font-weight:800;
+      transition:opacity .18s ease, transform .18s ease;
+    }
+
+    .btn:hover{
+      opacity:.94;
+      transform:translateY(-1px);
+    }
+
+    .info{
+      margin-top:24px;
+      font-size:14px;
+      line-height:1.6;
+      color:var(--cardText);
+      opacity:.8;
+    }
+
+    .micro{
+      margin-top:18px;
+      font-size:13px;
+      color:var(--cardText);
+      opacity:.64;
+    }
+
+    @media (max-width:720px){
+      .card{
+        padding:28px 22px;
+      }
+
+      h1{
+        font-size:28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="card">
+
+    <h1>Checkout</h1>
+
+    <p class="sub">
+      SlackDigest Basic wird nach erfolgreicher Zahlung aktiviert.
+    </p>
+
+    <section class="plan">
+
+      <h2>SlackDigest Basic</h2>
+
+      <p class="price">
+        8 €
+        <span>monatlich · jährlich abgerechnet</span>
+      </p>
+
+      <p class="note">
+        Gleicher Funktionsumfang, bessere Konditionen.
+      </p>
+
+      <a class="btn" href="/payment/slackdigest/basic-yearly/">
+  Weiter zur Zahlung
+</a>
+
+    </section>
+
+    <div class="info">
+      Die Zahlung wird später sicher über Stripe verarbeitet.
+      Nach erfolgreicher Zahlung gelangst du direkt zum Setup.
+    </div>
+
+    <div class="micro">
+      Kein Setup · kein Call · jederzeit kündbar
+    </div>
+
+  </main>
+
+</body>
+</html>
