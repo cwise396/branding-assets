@@ -12,8 +12,8 @@
     :root{
       --container:920px;
       --bg:#0B1220;
-      --text:#E5E7EB;
-      --muted:#9FB0C3;
+      --text:#0E3960;
+      --muted:#4B6380;
 
       --nav-red:#AE0F12;
 
@@ -168,7 +168,31 @@
       opacity:.75;
       font-size:.95rem;
     }
+.amount .per{
+  font-size:.95rem;
+  font-weight:700;
+  color:var(--muted);
+}
 
+.plan-yearly{
+  margin:16px 0 18px;
+  color:var(--text);
+}
+
+.plan-yearly strong{
+  display:block;
+  font-size:26px;
+  font-weight:900;
+  line-height:1.1;
+}
+
+.plan-yearly span{
+  display:block;
+  margin-top:6px;
+  font-size:13px;
+  font-weight:700;
+  color:var(--muted);
+}
     .cta-row{
       display:flex;
       gap:.8rem;
@@ -348,8 +372,12 @@
         <div class="price-grid">
           <div class="price">
             <h3>TaskSieve Pro</h3>
-            <div class="amount">12 € <span class="per">/ Monat · pro Nutzer</span></div>
-            <p class="note">Ideal für Einzelpersonen &amp; Teams – klar skalierbar pro Nutzer.</p>
+           <div class="amount">
+           12 €
+          <span class="per">monatlich · pro Nutzer</span>
+          </div>
+
+            <p class="note">Ideal für Einzelpersonen &amp; Teams – einfach pro Nutzer skalierbar.</p>
             <div class="micro">Kein Setup · kein Call · jederzeit kündbar</div>
 
             <div class="cta-row">
@@ -362,7 +390,10 @@
 
           <div class="price">
             <h3>TaskSieve Pro - Jährlich</h3>
-            <div class="amount">9 € <span class="per">/ Monat · pro Nutzer</span></div>
+            <p class="plan-yearly">
+           <strong>9 €</strong>
+           <span>monatlich · jährlich abgerechnet</span>
+           </p>
             <p class="note">Gebucht jährlich – gleicher Funktionsumfang, bessere Konditionen.</p>
             <div class="micro">Kein Setup · kein Call · jederzeit kündbar</div>
 
