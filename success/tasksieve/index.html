@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Zahlung erfolgreich – TaskSieve</title>
+  <link rel="canonical" href="https://slackdigest.org/success/tasksieve/">
+
+  <style>
+    :root{
+      --bg:rgb(150,12,15);
+      --card:#FFFFFF;
+      --cardText:#0E3960;
+      --btn:rgb(150,12,15);
+      --btnText:#FFFFFF;
+      --shadow:0 10px 30px rgba(0,0,0,.15);
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      background:var(--bg);
+      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .card{
+      width:100%;
+      max-width:620px;
+      background:var(--card);
+      color:var(--cardText);
+      border-radius:22px;
+      padding:40px 34px;
+      box-shadow:var(--shadow);
+      text-align:center;
+    }
+
+    .status{
+      display:inline-block;
+      margin-bottom:22px;
+      padding:7px 12px;
+      border-radius:999px;
+      background:rgba(150,12,15,.10);
+      color:rgb(150,12,15);
+      font-size:13px;
+      font-weight:900;
+      letter-spacing:.02em;
+    }
+
+    h1{
+      margin:0 0 12px;
+      font-size:34px;
+      line-height:1.08;
+      font-weight:900;
+      letter-spacing:-.4px;
+      color:var(--cardText);
+    }
+
+    .sub{
+      margin:0 auto 26px;
+      max-width:520px;
+      font-size:16px;
+      line-height:1.65;
+      color:var(--cardText);
+      opacity:.88;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 18px;
+      border-radius:14px;
+      background:var(--btn);
+      color:var(--btnText);
+      text-decoration:none;
+      font-weight:900;
+      transition:opacity .18s ease, transform .18s ease;
+    }
+
+    .btn:hover{
+      opacity:.94;
+      transform:translateY(-1px);
+    }
+
+    .micro{
+      margin-top:22px;
+      font-size:13px;
+      opacity:.64;
+    }
+
+    @media (max-width:720px){
+      .card{padding:32px 24px}
+      h1{font-size:28px}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <div class="status">Zahlung erfolgreich</div>
+
+    <h1>TaskSieve ist bereit</h1>
+
+    <p class="sub">
+      Weiter zum Setup, um Quellen, Prioritäten und Zustellung einzurichten.
+    </p>
+
+    <a class="btn" href="/tasksieve/setup/">
+      Weiter zum Setup
+    </a>
+
+    <div class="micro">
+      Alles kann später angepasst werden.
+    </div>
+  </main>
+</body>
+</html>
