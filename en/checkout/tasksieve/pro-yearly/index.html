@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+
+ <title>Checkout – TaskSieve Pro Annual</title>
+
+ <link rel="canonical" href="https://slackdigest.org/en/checkout/tasksieve/pro-yearly/">
+
+  <style>
+    :root{
+      --bg:rgb(150,12,15);
+
+      --card:#FFFFFF;
+      --cardText:#0E3960;
+
+      --line:rgba(17,24,39,.10);
+
+      --btn:rgb(150,12,15);
+      --btnText:#FFFFFF;
+
+      --shadow:0 10px 30px rgba(0,0,0,.15);
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+      min-height:100vh;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      padding:24px;
+
+      background:var(--bg);
+
+      font-family:
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        Segoe UI,
+        Roboto,
+        Arial,
+        sans-serif;
+    }
+
+    .card{
+      width:100%;
+      max-width:560px;
+
+      background:var(--card);
+      color:var(--cardText);
+
+      border-radius:20px;
+
+      padding:34px 30px;
+
+      box-shadow:var(--shadow);
+    }
+
+    h1{
+      margin:0 0 8px;
+
+      font-size:32px;
+      line-height:1.1;
+
+      font-weight:900;
+      letter-spacing:-.3px;
+
+      color:var(--cardText);
+    }
+
+    .sub{
+      margin:0 0 28px;
+
+      font-size:16px;
+      line-height:1.55;
+
+      color:var(--cardText);
+
+      opacity:.86;
+    }
+
+    .plan{
+      border:1px solid var(--line);
+
+      border-radius:18px;
+
+      padding:22px 20px;
+
+      background:#F8FAFC;
+    }
+
+    .plan h2{
+      margin:0 0 10px;
+
+      font-size:22px;
+
+      color:var(--cardText);
+
+      letter-spacing:-.2px;
+    }
+
+    .price{
+      margin:0;
+
+      font-size:30px;
+      font-weight:900;
+
+      color:var(--cardText);
+
+      line-height:1.1;
+    }
+
+    .price span{
+      display:block;
+
+      margin-top:8px;
+
+      font-size:14px;
+      font-weight:800;
+
+      opacity:.76;
+    }
+
+    .note{
+      margin-top:14px;
+
+      font-size:14px;
+      line-height:1.5;
+
+      color:var(--cardText);
+
+      opacity:.78;
+    }
+
+    .btn{
+      display:inline-flex;
+
+      align-items:center;
+      justify-content:center;
+
+      width:100%;
+
+      margin-top:20px;
+
+      padding:13px 16px;
+
+      border-radius:14px;
+
+      background:var(--btn);
+      color:var(--btnText);
+
+      text-decoration:none;
+
+      font-weight:800;
+
+      transition:
+        opacity .18s ease,
+        transform .18s ease;
+    }
+
+    .btn:hover{
+      opacity:.94;
+      transform:translateY(-1px);
+    }
+
+    .info{
+      margin-top:24px;
+
+      font-size:14px;
+      line-height:1.6;
+
+      color:var(--cardText);
+
+      opacity:.8;
+    }
+
+    .micro{
+      margin-top:18px;
+
+      font-size:13px;
+
+      color:var(--cardText);
+
+      opacity:.64;
+    }
+
+    @media (max-width:720px){
+
+      .card{
+        padding:28px 22px;
+      }
+
+      h1{
+        font-size:28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="card">
+
+    <h1>Checkout</h1>
+
+    <p class="sub">
+      TaskSieve Pro will be activated after successful payment.
+    </p>
+
+    <section class="plan">
+
+     <h2>TaskSieve Pro — Annual</h2>
+
+      <p class="price">
+  9 €
+  <span>monthly · billed yearly</span>
+</p>
+
+      <p class="note">
+        Cancel anytime.
+      </p>
+
+      <a class="btn"href="/en/payment/tasksieve/pro-yearly/">
+        Continue to payment
+      </a>
+
+    </section>
+
+    <div class="info">
+      Payment will later be securely processed via Stripe.
+      After successful payment, you continue directly to setup.
+    </div>
+
+    <div class="micro">
+      No setup · no call · cancel anytime
+    </div>
+
+  </main>
+
+</body>
+</html>
