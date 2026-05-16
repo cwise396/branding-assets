@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+
+  <title>TaskSieve Setup</title>
+
+  <style>
+    :root{
+      --bg:rgb(150,12,15);
+      --text:#FFFFFF;
+
+      --card:#FFFFFF;
+      --cardText:#0E3960;
+
+      --line:rgba(17,24,39,.10);
+
+      --input:#F3F6F9;
+
+      --btn:rgb(150,12,15);
+      --btnText:#FFFFFF;
+
+      --shadow:0 10px 30px rgba(0,0,0,.15);
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+
+    .wrap{
+      max-width:820px;
+      margin:0 auto;
+      padding:56px 18px 88px;
+    }
+
+    .card{
+      background:var(--card);
+      color:var(--cardText);
+      border-radius:18px;
+      padding:24px 22px;
+      margin:18px 0;
+      box-shadow:var(--shadow);
+    }
+
+    h1{
+      margin:0 0 8px;
+      font-size:30px;
+      font-weight:900;
+      letter-spacing:-.3px;
+      color:var(--cardText);
+    }
+
+    h2{
+      margin:0 0 10px;
+      font-size:20px;
+      letter-spacing:-.2px;
+      color:var(--cardText);
+    }
+
+    p{
+      margin:8px 0;
+      color:var(--cardText);
+      opacity:.88;
+    }
+
+    label{
+      display:block;
+      margin:14px 0 6px;
+      color:var(--cardText);
+      opacity:.82;
+      font-size:13px;
+      font-weight:700;
+    }
+
+    input,
+    select{
+      width:100%;
+      padding:12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:var(--input);
+      color:var(--cardText);
+      font-size:15px;
+    }
+
+    .row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
+    @media(max-width:720px){
+      .row{grid-template-columns:1fr}
+      .wrap{padding:34px 14px 72px}
+      h1{font-size:26px}
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:13px 16px;
+      border-radius:14px;
+      background:var(--btn);
+      color:var(--btnText);
+      text-decoration:none;
+      font-weight:800;
+      border:0;
+      cursor:pointer;
+    }
+
+    .lead{
+      font-size:15px;
+      line-height:1.55;
+    }
+
+    .fine{
+      margin-top:12px;
+      font-size:13px;
+      color:var(--cardText);
+      opacity:.72;
+    }
+
+    .success{
+      margin-top:18px;
+      font-size:16px;
+      font-weight:800;
+      color:var(--cardText);
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="wrap">
+
+    <section class="card">
+      <h1>TaskSieve ist aktiv</h1>
+
+      <p class="lead">
+        Richte jetzt Quellen,
+        Prioritäten und Zustellung ein.
+      </p>
+
+      <p class="fine">
+        Jederzeit flexibel anpassbar.
+      </p>
+    </section>
+
+    <section class="card">
+
+      <h2>TaskSieve konfigurieren</h2>
+
+      <form action="https://formspree.io/f/xgooowpk" method="POST">
+
+        <input type="hidden" name="product" value="tasksieve">
+        <input type="hidden" name="lang" value="de">
+
+        <label>E-Mail für Zustellung</label>
+        <input name="email" type="email" required placeholder="du@firma.de">
+
+        <div class="row">
+
+          <div>
+            <label>Priorisierung</label>
+
+            <select name="priority" required>
+              <option value="balanced">ausgewogen</option>
+              <option value="focus">starker Fokus</option>
+              <option value="overview">mehr Überblick</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Zustellung</label>
+
+            <select name="delivery" required>
+              <option value="email">E-Mail</option>
+              <option value="slack">Slack</option>
+            </select>
+          </div>
+
+        </div>
+
+        <label>Quellen / Kanäle</label>
+
+        <input
+          name="sources"
+          type="text"
+          required
+          placeholder="E-Mail, Slack, Notizen">
+
+        <div style="margin-top:18px;">
+          <button class="btn" type="submit">
+            Setup speichern
+          </button>
+        </div>
+
+        <div class="success">
+          Du erhältst deine ersten Prioritäten nach der Einrichtung.
+        </div>
+
+      </form>
+
+    </section>
+
+  </main>
+
+</body>
+</html>
