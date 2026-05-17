@@ -174,13 +174,16 @@
     }
 
     .info{
-      margin-top:28px;
+  margin-top:28px;
 
-      font-size:14px;
-      line-height:1.65;
+  font-size:16px;
+  font-weight:700;
+  line-height:1.5;
 
-      opacity:.82;
-    }
+  color:var(--cardText);
+
+  opacity:.92;
+}
 
     .micro{
       margin-top:18px;
@@ -209,12 +212,11 @@
 
   <main class="card">
 
-    <h1>Zahlung vorbereiten</h1>
+    <h1>Zahlung</h1>
 
     <p class="sub">
-      Stripe wird hier integriert.
-      Nach erfolgreicher Zahlung wird SlackDigest automatisch aktiviert.
-    </p>
+  Schließe die Zahlung ab, um SlackDigest zu aktivieren.
+</p>
 
     <section class="plan">
 
@@ -225,11 +227,9 @@
         <span>monatlich · pro Workspace</span>
       </p>
 
-      <p class="note">
-        Sicherer Checkout über Stripe.<br>
-        Jederzeit kündbar.
-      </p>
-
+     <p class="note">
+  Sichere Zahlung über Stripe.
+</p>
       <a class="btn" href="/success/slackdigest/">
         Zahlung simulieren
       </a>
@@ -240,11 +240,7 @@
       Nach erfolgreicher Zahlung gelangst du direkt zum Setup.
     </div>
 
-    <div class="micro">
-      Kein Setup · kein Call · jederzeit kündbar
-    </div>
-
-  </main>
+    </main>
 
 </body>
 </html>
