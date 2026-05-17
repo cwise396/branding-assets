@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+
+ <title>Zahlung – ChangeWise Basic Jährlich</title>
+<link rel="canonical" href="https://slackdigest.org/payment/changewise/basic-yearly/">
+
+  
+
+  <style>
+    :root{
+      --bg:rgb(16,57,96);
+
+      --card:#FFFFFF;
+      --cardText:#0E3960;
+
+      --line:rgba(17,24,39,.10);
+
+      --btn:rgb(21,63,108);
+      --btnText:#FFFFFF;
+
+      --shadow:0 10px 30px rgba(0,0,0,.15);
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+
+      min-height:100vh;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      padding:24px;
+
+      background:var(--bg);
+
+      font-family:
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        Segoe UI,
+        Roboto,
+        Arial,
+        sans-serif;
+    }
+
+    .card{
+      width:100%;
+      max-width:620px;
+
+      background:var(--card);
+      color:var(--cardText);
+
+      border-radius:22px;
+
+      padding:38px 32px;
+
+      box-shadow:var(--shadow);
+
+      text-align:center;
+    }
+
+    h1{
+      margin:0 0 10px;
+
+      font-size:34px;
+      line-height:1.08;
+
+      font-weight:900;
+      letter-spacing:-.4px;
+
+      color:var(--cardText);
+    }
+
+    .sub{
+      margin:0 auto 28px;
+
+      max-width:520px;
+
+      font-size:16px;
+      line-height:1.6;
+
+      color:var(--cardText);
+
+      opacity:.86;
+    }
+
+    .plan{
+      margin:0 auto;
+
+      border:1px solid var(--line);
+
+      border-radius:18px;
+
+      padding:24px 22px;
+
+      background:#F8FAFC;
+
+      max-width:420px;
+    }
+
+    .plan h2{
+      margin:0 0 12px;
+
+      font-size:24px;
+      font-weight:900;
+
+      letter-spacing:-.2px;
+    }
+
+    .price{
+      margin:0;
+
+      font-size:34px;
+      font-weight:900;
+
+      line-height:1.05;
+    }
+
+    .price span{
+      display:block;
+
+      margin-top:8px;
+
+      font-size:14px;
+      font-weight:700;
+
+      opacity:.72;
+    }
+
+    .note{
+      margin-top:16px;
+
+      font-size:14px;
+      line-height:1.55;
+
+      opacity:.82;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+
+      width:100%;
+
+      margin-top:22px;
+
+      padding:14px 18px;
+
+      border-radius:14px;
+
+      background:var(--btn);
+      color:var(--btnText);
+
+      text-decoration:none;
+
+      font-weight:900;
+
+      transition:
+        opacity .18s ease,
+        transform .18s ease;
+    }
+
+    .btn:hover{
+      opacity:.94;
+      transform:translateY(-1px);
+    }
+
+    .info{
+      margin-top:28px;
+
+      font-size:16px;
+      font-weight:700;
+      line-height:1.5;
+
+      color:var(--cardText);
+
+      opacity:.92;
+    }
+
+    @media (max-width:720px){
+
+      .card{
+        padding:30px 24px;
+      }
+
+      h1{
+        font-size:28px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <main class="card">
+
+    <h1>Zahlung</h1>
+
+    <p class="sub">
+      Schließe die Zahlung ab, um ChangeWise Basic zu aktivieren.
+    </p>
+
+    <section class="plan">
+
+      <h2>ChangeWise Basic</h2>
+
+      <p class="price">
+        40 €
+     <span>monatlich · jährlich abgerechnet</span>
+      </p>
+
+      <p class="note">
+        Sichere Zahlung über Stripe.
+      </p>
+
+      <a class="btn" href="/changewise/setup/">
+        Zahlung simulieren
+      </a>
+
+    </section>
+
+    <div class="info">
+      Nach der Zahlung: ChangeWise einrichten.
+    </div>
+
+  </main>
+
+</body>
+</html>
