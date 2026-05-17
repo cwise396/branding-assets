@@ -459,20 +459,21 @@
   Weil Klarheit Wirkung entfaltet.
 </p>
 
-  <div class="billing-toggle" aria-label="Abrechnung umschalten">
-    <button class="toggle-btn active" data-billing="monthly" type="button">Monatlich</button>
-    <button class="toggle-btn" data-billing="yearly" type="button">Jährlich</button>
-  </div>
+  
 <div class="plans">
   <div class="plan">
     <h3>Basic (Klarer Einstieg)</h3>
     <p class="plan-fit">Für einzelne Entscheidungen, Projekte oder kleine Teams.</p>
 
     <div class="price">
-      <span class="monthly">€48 pro Monat</span>
-      <span class="yearly">€480 pro Jahr</span>
-      <span class="savings">96€ Ersparnis bei jährlicher Abrechnung</span>
-    </div>
+  48 €
+  <span>monatlich</span>
+</div>
+
+<p class="plan-yearly">
+  <strong>40 €</strong>
+  <span>monatlich · jährlich abgerechnet</span>
+</p>
 
     <p class="price-context">Ideal für einzelne Entscheidungen.</p>
     <p class="value-anchor">Bringt schnell Klarheit in komplexe Themen.</p>
@@ -505,10 +506,14 @@
     <p class="plan-fit">Für Teams, die klare Entscheidungen gemeinsam entwickeln.</p>
 
     <div class="price">
-      <span class="monthly">€198 pro Monat</span>
-      <span class="yearly">€1.980 pro Jahr</span>
-      <span class="savings">396€ Ersparnis bei jährlicher Abrechnung</span>
-    </div>
+  198 €
+  <span>monatlich</span>
+</div>
+
+<p class="plan-yearly">
+  <strong>165 €</strong>
+  <span>monatlich · jährlich abgerechnet</span>
+</p>
 
     <p class="price-context">Für wiederkehrende Abstimmung.</p>
     <p class="value-anchor">Schafft klare Entscheidungsgrundlagen.</p>
@@ -552,46 +557,5 @@
   </footer>
 
 </main>
-
-<script>
-(function(){
-  var buttons = document.querySelectorAll('.toggle-btn');
-
-  function setBilling(mode){
-    document.querySelectorAll('.price').forEach(function(price){
-      var monthly = price.querySelector('.monthly');
-      var yearly  = price.querySelector('.yearly');
-      if(!monthly || !yearly) return;
-
-      if(mode === 'monthly'){
-        monthly.style.display = 'block';
-        yearly.style.display  = 'none';
-      } else {
-        monthly.style.display = 'none';
-        yearly.style.display  = 'block';
-      }
-    });
-
-    document.querySelectorAll('.cta-monthly').forEach(function(btn){
-      btn.style.display = (mode === 'monthly') ? 'inline-block' : 'none';
-    });
-
-    document.querySelectorAll('.cta-yearly').forEach(function(btn){
-      btn.style.display = (mode === 'yearly') ? 'inline-block' : 'none';
-    });
-  }
-
-  buttons.forEach(function(btn){
-    btn.addEventListener('click', function(){
-      buttons.forEach(function(b){ b.classList.remove('active'); });
-      btn.classList.add('active');
-      setBilling(btn.getAttribute('data-billing'));
-    });
-  });
-
-  setBilling('monthly');
-})();
-</script>
-
 </body>
 </html>
