@@ -4,49 +4,65 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pricing & Plans – ChangeWise</title>
-  <meta name="description" content="ChangeWise pricing: compare Basic and Pro. Clear direction for decisions — as a one-time output or a repeatable system for your team." />
+
+  <meta name="description"
+        content="ChangeWise pricing: compare Basic and Pro. Clear direction for decisions — as a one-time output or a repeatable system for your team." />
 
 <style>
   :root{
     --bg:#0E3960;
+
     --panel:rgba(255,255,255,.12);
-    --panel-strong:rgba(255,255,255,.16);
+
     --text:#E5E7EB;
     --muted:#9FB0C3;
+
     --border:rgba(255,255,255,.18);
-    --border-strong:rgba(255,255,255,.28);
+
     --shadow:0 18px 50px rgba(0,0,0,.28);
     --shadow-soft:0 10px 28px rgba(0,0,0,.22);
-    --pro-glow:0 0 0 1px rgba(255,255,255,.10), 0 18px 60px rgba(0,0,0,.35);
   }
 
-  *{box-sizing:border-box}
+  *{
+    box-sizing:border-box;
+  }
 
   body{
     margin:0;
+
     font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+
     background:var(--bg);
+
     color:var(--text);
+
     line-height:1.55;
+
     overflow-x:hidden;
+
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+
+    text-rendering:optimizeLegibility;
   }
-body{
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  text-rendering:optimizeLegibility;
-}
+
   .wrap{
     max-width:980px;
+
     margin:0 auto;
+
     padding:60px 20px 80px;
   }
 
-  /* Header */
   .topline{
     display:flex;
+
     justify-content:space-between;
+
     gap:16px;
+
     margin-bottom:16px;
+
     align-items:flex-start;
   }
 
@@ -56,82 +72,107 @@ body{
 
   .title{
     font-size:34px;
+
     font-weight:900;
+
     letter-spacing:-.4px;
+
     margin:0;
+
     color:#fff;
   }
 
   .subttl{
     font-size:18px;
+
     font-weight:700;
+
     margin-top:4px;
+
     color:#fff;
   }
 
   .sub{
     margin:12px 0 0;
+
     font-size:14px;
+
     color:#fff;
+
     opacity:.92;
   }
 
   .brand-logo{
     height:96px;
+
     width:auto;
+
     display:block;
+
     background:#fff;
+
     padding:6px;
+
     border-radius:50%;
+
     box-shadow:0 4px 18px rgba(0,0,0,.15);
+
     flex:0 0 auto;
   }
 
   .section-title{
     margin:34px 0 14px;
+
     font-size:20px;
+
     font-weight:900;
+
     letter-spacing:-.2px;
+
     color:#fff;
   }
 
-  /* Comparison table */
   .table-scroll{
     width:100%;
-    position:relative;
+
     overflow-x:auto;
+
     -webkit-overflow-scrolling:touch;
+
     border:1px solid var(--border);
+
     border-radius:14px;
+
     box-shadow:var(--shadow-soft);
+
     background:var(--panel);
   }
 
   table{
     width:100%;
-    min-width:640px;
-    border-collapse:collapse;
-    margin-top:0;
-    background:transparent;
-    border:none;
-    box-shadow:none;
-  }
-.table-scroll tr:nth-child(even) td{
-  background:rgba(255,255,255,.04);
-}
 
-.table-scroll tr:first-child td{
-  background:transparent;
-}
+    min-width:640px;
+
+    border-collapse:collapse;
+  }
+
+  .table-scroll tr:nth-child(even) td{
+    background:rgba(255,255,255,.04);
+  }
+
   th,td{
     padding:14px;
+
     text-align:left;
+
     border-bottom:1px solid rgba(255,255,255,.14);
+
     vertical-align:top;
   }
 
   th{
     font-weight:900;
+
     color:#fff;
   }
 
@@ -145,201 +186,279 @@ body{
 
   .scroll-hint{
     display:none;
+
     margin:10px 0 6px;
+
     font-size:.95rem;
+
     font-weight:800;
+
     color:#fff;
+
     opacity:.9;
   }
 
   .compare-intro{
     margin:22px 0 10px;
+
     font-weight:900;
+
     font-size:20px;
+
     line-height:1.4;
+
     color:#fff;
   }
 
   .value-confirmation{
     margin-top:10px;
+
     font-weight:900;
+
     font-size:18px;
+
     letter-spacing:-.2px;
+
     color:#fff;
+
     opacity:.95;
   }
 
-  /* Toggle */
-  .billing-toggle{
-    display:flex;
-    gap:8px;
-    margin:35px 0 25px;
+  .plans{
+    display:grid;
+
+    grid-template-columns:repeat(2,minmax(0,1fr));
+
+    gap:24px;
+
+    margin-top:45px;
+
+    align-items:start;
   }
 
-  .toggle-btn{
-    padding:8px 14px;
-    border-radius:999px;
-    border:1px solid rgba(255,255,255,.35);
-    background:#fff;
-    color:#0E3960;
-    font-weight:900;
-    cursor:pointer;
+  .plan{
+    backdrop-filter:blur(4px);
+
+    background:linear-gradient(
+      160deg,
+      rgba(255,255,255,.20) 0%,
+      rgba(255,255,255,.12) 55%,
+      rgba(255,255,255,.10) 100%
+    );
+
+    border:1px solid rgba(255,255,255,.32);
+
+    border-radius:18px;
+
+    padding:24px;
+
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,.08),
+      0 20px 60px rgba(0,0,0,.38);
+
+    position:relative;
   }
 
-  .toggle-btn.active{
-    background:#0E3960;
+  .plan.pro{
+    background:linear-gradient(
+      160deg,
+      rgba(22,78,132,.60),
+      rgba(14,57,96,.55)
+    );
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow-soft);
+
+    transform:translateY(-4px);
+  }
+
+  .plan h3{
+    margin:0;
+
     color:#fff;
-    border:1px solid rgba(255,255,255,.55);
-    box-shadow:0 10px 24px rgba(0,0,0,.22);
+
+    font-weight:900;
+
+    letter-spacing:-.2px;
   }
 
-/* Pricing cards */
-.plans{
-  display:grid;
-  grid-template-columns:repeat(2, minmax(0, 1fr));
-  gap:24px;
-  margin-top:45px;
-  align-items:start;
-}
+  .plan-fit{
+    margin:6px 0 12px;
 
-.plan{
-  backdrop-filter: blur(4px);
-}
- background:linear-gradient(
-  160deg,
-  rgba(22,78,132,.60),
-  rgba(14,57,96,.55)
-);
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:24px;
-  box-shadow:var(--shadow-soft);
-  position:relative;
-}
+    font-size:14px;
 
-.plan.pro{
-  background:linear-gradient(
-    160deg,
-    rgba(255,255,255,.20) 0%,
-    rgba(255,255,255,.12) 55%,
-    rgba(255,255,255,.10) 100%
-  );
-  border:1px solid rgba(255,255,255,.32);
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,.08),
-    0 20px 60px rgba(0,0,0,.38);
-  transform:translateY(-4px);
-}
+    font-weight:600;
 
-.plan h3{
-  margin:0;
-  color:#fff;
-  font-weight:900;
-  letter-spacing:-.2px;
-}
+    color:#fff;
 
-.plan-fit{
-  margin:4px 0 8px;
-  font-size:14px;
-  font-weight:600;
-  color:#fff;
-  opacity:.9;
-  line-height:1.3;
-}
+    opacity:.9;
+  }
 
-.price{
-  font-size:28px;
-  font-weight:900;
-  margin:10px 0 12px;
-  color:#fff;
-  letter-spacing:-.2px;
-}
+  .price{
+    font-size:26px;
 
-.price-context{
-  margin:0 0 4px;
-  font-size:14px;
-  font-weight:600;
-  color:#fff;
-  opacity:.9;
-  line-height:1.35;
-}
-.value-anchor{
-  margin:0 0 10px;
-  font-size:14px;
-  color:#fff;
-  opacity:.82;
-  line-height:1.35;
-}
+    font-weight:900;
 
-.price .yearly{
-  font-size:32px;
-  font-weight:900;
-  letter-spacing:-.2px;
-  display:none;
-}
+    margin:10px 0 12px;
 
-.price .monthly{
-  display:block;
-}
+    color:#fff;
 
-.savings{
-  display:block;
-  margin-top:6px;
-  font-size:13px;
-  font-weight:600;
-  color:rgba(255,255,255,.82);
-  letter-spacing:.2px;
-}
+    letter-spacing:-.2px;
+  }
 
-ul{
-  padding-left:18px;
-  margin:0;
-}
+  .price span{
+    display:block;
 
-li{
-  margin:0 0 8px;
-}
+    margin-top:4px;
 
-li:last-child{
-  margin-bottom:0;
-}
+    font-size:14px;
 
-.cta{
-  margin-top:18px;
-  display:inline-block;
-  padding:12px 16px;
-  border-radius:12px;
-  background:#fff;
-  color:#0E3960;
-  font-weight:900;
-  text-decoration:none;
-  box-shadow:0 10px 24px rgba(0,0,0,.20);
-}
+    font-weight:700;
 
-.cta:hover{
-  opacity:.92;
-}
+    opacity:.82;
+  }
+
+  .plan-yearly{
+    margin:8px 0 16px;
+
+    font-size:24px;
+
+    font-weight:900;
+
+    letter-spacing:-.2px;
+
+    color:#fff;
+
+    line-height:1.2;
+  }
+
+  .plan-yearly strong{
+    font-weight:900;
+  }
+
+  .plan-yearly span{
+    display:block;
+
+    margin-top:4px;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    opacity:.82;
+  }
+
+  .price-context{
+    margin:0 0 4px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:#fff;
+
+    opacity:.9;
+  }
+
+  .value-anchor{
+    margin:0 0 10px;
+
+    font-size:14px;
+
+    color:#fff;
+
+    opacity:.82;
+  }
+
+  ul{
+    padding-left:18px;
+
+    margin:0;
+  }
+
+  li{
+    margin:0 0 8px;
+  }
+
+  li:last-child{
+    margin-bottom:0;
+  }
+
+  .cta-group{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:10px;
+
+    margin-top:20px;
+  }
+
+  .cta{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:100%;
+
+    min-height:48px;
+
+    padding:12px 16px;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.92);
+
+    color:#0E3960;
+
+    font-weight:900;
+
+    text-decoration:none;
+
+    text-align:center;
+
+    box-shadow:0 10px 24px rgba(0,0,0,.20);
+  }
+
+  .cta:hover{
+    opacity:.92;
+  }
 
   footer{
     margin-top:80px;
+
     font-size:14px;
+
     opacity:.85;
+
     display:flex;
+
     justify-content:space-between;
+
     flex-wrap:wrap;
+
     gap:10px;
   }
 
   footer a{
     color:#fff;
+
     text-decoration:none;
+
     margin-right:10px;
   }
 
-  /* Mobile */
   @media (max-width:800px){
-    .plans{grid-template-columns:1fr}
-    .plan.pro{transform:none}
+    .plans{
+      grid-template-columns:1fr;
+    }
+
+    .plan.pro{
+      transform:none;
+    }
   }
 
   @media (max-width:720px){
@@ -349,64 +468,68 @@ li:last-child{
   }
 
   @media (max-width:640px){
-    .topline{
-      display:flex;
-      justify-content:space-between;
-      gap:16px;
-      margin-bottom:16px;
-      align-items:flex-start;
-    }
-
     .title{
       font-size:30px;
     }
 
     .brand-logo{
       height:75px;
+
       padding:4px;
     }
-  }
 
-  /* Arrow only on mobile in table header */
-  .scroll-hint-header::after{
-    content:" →";
-    opacity:.75;
-  }
-
-  @media (min-width:721px){
-    .scroll-hint-header::after{
-      content:"";
+    .cta-group{
+      grid-template-columns:1fr;
     }
   }
 </style>
 </head>
 
 <body>
+
 <main class="wrap">
 
   <div class="topline">
     <div class="head">
       <div class="title">ChangeWise</div>
+
       <div class="subttl">Pricing &amp; Plans</div>
-      <p class="sub"><strong>Clear direction for individual decisions — or as a repeatable system for your team.</strong></p>
+
+      <p class="sub">
+        <strong>
+          Clear direction for individual decisions —
+          or as a repeatable system for your team.
+        </strong>
+      </p>
     </div>
-    <img class="brand-logo" src="/assets/brand/changewise_logo.svg" alt="ChangeWise Logo">
+
+    <img class="brand-logo"
+         src="/assets/brand/changewise_logo.svg"
+         alt="ChangeWise Logo">
   </div>
 
-  <h2 class="section-title">Basic and Pro — side by side</h2>
-  <p class="scroll-hint">→ Swipe right to see “Pro”</p>
+  <h2 class="section-title">
+    Basic and Pro — side by side
+  </h2>
 
-  <div class="table-scroll" role="region" aria-label="Pricing comparison: Basic vs Pro">
+  <p class="scroll-hint">
+    → Swipe right to see “Pro”
+  </p>
+
+  <div class="table-scroll"
+       role="region"
+       aria-label="Pricing comparison: Basic vs Pro">
+
     <table>
       <tr>
         <th>Dimension</th>
-        <th class="scroll-hint-header">Basic</th>
+        <th>Basic</th>
         <th>Pro</th>
       </tr>
 
       <tr>
         <td>System &amp; structure</td>
-        <td>1&nbsp;brand/<br>voice profile</td>
+        <td>1 brand / voice profile</td>
         <td>5 brand / voice profiles · multiple contexts</td>
       </tr>
 
@@ -423,9 +546,9 @@ li:last-child{
       </tr>
 
       <tr>
-        <td>Reuse & history</td>
+        <td>Reuse &amp; history</td>
         <td>No history</td>
-        <td>History with reference dates · easy to revisit · reusable</td>
+        <td>History with reference dates · reusable</td>
       </tr>
     </table>
   </div>
@@ -439,116 +562,115 @@ li:last-child{
     Because clarity creates impact.
   </div>
 
-  <div class="billing-toggle" aria-label="Toggle billing">
-    <button class="toggle-btn active" data-billing="monthly" type="button">Monthly</button>
-    <button class="toggle-btn" data-billing="yearly" type="button">Yearly</button>
-  </div>
- 
+  <div class="plans">
 
-  <!-- PRO PLAN -->
-<div class="plans">
+    <div class="plan">
+      <h3>Basic (Clear starting point)</h3>
 
-  <!-- PRO PLAN -->
-  <div class="plan pro">
+      <p class="plan-fit">
+        For individual decisions, projects or smaller teams.
+      </p>
 
-    <h3>Pro (Team system)</h3>
-    <p class="plan-fit">For teams that develop clear decisions together.</p>
+      <div class="price">
+        48 €
+        <span>monthly</span>
+      </div>
 
-    <div class="price">
-      <span class="monthly">€198 per month</span>
-      <span class="yearly">€1,980 per year</span>
-      <span class="savings">Save €396 with yearly billing</span>
+      <p class="plan-yearly">
+        <strong>40 €</strong>
+        <span>monthly · billed yearly</span>
+      </p>
+
+      <p class="price-context">
+        Ideal for focused decisions.
+      </p>
+
+      <p class="value-anchor">
+        Brings quick clarity to complex topics.
+      </p>
+
+      <ul>
+        <li>Focus · tone · core message · next steps</li>
+        <li>15 ready-to-use templates</li>
+        <li>Directly usable (mail · meeting · update)</li>
+        <li>1 brand / voice profile</li>
+        <li>20 briefs per month</li>
+      </ul>
+
+      <div class="cta-group">
+        <a href="/en/payment/changewise/basic-monthly/"
+           class="cta">
+          Basic monthly
+        </a>
+
+        <a href="/en/payment/changewise/basic-yearly/"
+           class="cta">
+          Basic yearly
+        </a>
+      </div>
     </div>
 
-    <p class="price-context">For recurring alignment.</p>
-    <p class="value-anchor">Creates clear decision foundations.</p>
+    <div class="plan pro">
+      <h3>Pro (Team system)</h3>
 
-    <ul>
-      <li>Complete template &amp; playbook library</li>
-      <li>5 brand / voice profiles</li>
-      <li>Export sets (update · decision · rollout)</li>
-      <li>Reuse &amp; history</li>
-      <li>Optional review gate</li>
-      <li>120 briefs per month</li>
-    </ul>
+      <p class="plan-fit">
+        For teams that develop clear decisions together.
+      </p>
 
-    <a href="/en/contact_changewise.html" class="cta">Activate Pro</a>
+      <div class="price">
+        198 €
+        <span>monthly</span>
+      </div>
 
-  </div>
+      <p class="plan-yearly">
+        <strong>165 €</strong>
+        <span>monthly · billed yearly</span>
+      </p>
 
+      <p class="price-context">
+        For recurring alignment.
+      </p>
 
-  <!-- BASIC PLAN -->
-  <div class="plan">
+      <p class="value-anchor">
+        Creates clear decision foundations.
+      </p>
 
-    <h3>Basic (Clear starting point)</h3>
-    <p class="plan-fit">For individual decisions or small teams.</p>
+      <ul>
+        <li>Complete template &amp; playbook library</li>
+        <li>5 brand / voice profiles</li>
+        <li>Export sets (update · decision · rollout)</li>
+        <li>Reuse &amp; history</li>
+        <li>Optional review gate</li>
+        <li>120 briefs per month</li>
+      </ul>
 
-    <div class="price">
-      <span class="monthly">€48 per month</span>
-      <span class="yearly">€480 per year</span>
-      <span class="savings">Save €96 with yearly billing</span>
+      <div class="cta-group">
+        <a href="/en/payment/changewise/pro-monthly/"
+           class="cta">
+          Pro monthly
+        </a>
+
+        <a href="/en/payment/changewise/pro-yearly/"
+           class="cta">
+          Pro yearly
+        </a>
+      </div>
     </div>
 
-    <p class="price-context">Ideal for focused decisions and smaller projects.</p>
-    <p class="value-anchor">Brings quick clarity to complex topics.</p>
-
-    <ul>
-      <li>Focus · tone · core message · next steps</li>
-      <li>15 ready-to-use templates</li>
-      <li>Directly usable (mail · meeting · update)</li>
-      <li>1 brand / voice profile</li>
-      <li>20 briefs per month</li>
-    </ul>
-
-    <a href="/en/contact_changewise.html" class="cta">Start with Basic</a>
-
   </div>
-
-</div>
 
   <footer>
     <div>
       <a href="/en/imprint/">Imprint</a>
       <a href="/en/privacy/">Privacy</a>
     </div>
+
     <div>
       © ChangeWise · SlackDigest · TaskSieve
     </div>
   </footer>
 
 </main>
-
-<script>
-(function(){
-  var buttons = document.querySelectorAll('.toggle-btn');
-
-  function setBilling(mode){
-    document.querySelectorAll('.price').forEach(function(price){
-      var monthly = price.querySelector('.monthly');
-      var yearly  = price.querySelector('.yearly');
-      if(!monthly || !yearly) return;
-
-      if(mode === 'monthly'){
-        monthly.style.display = 'block';
-        yearly.style.display  = 'none';
-      } else {
-        monthly.style.display = 'none';
-        yearly.style.display  = 'block';
-      }
-    });
-  }
-
-  buttons.forEach(function(btn){
-    btn.addEventListener('click', function(){
-      buttons.forEach(function(b){ b.classList.remove('active'); });
-      btn.classList.add('active');
-      setBilling(btn.getAttribute('data-billing'));
-    });
-  });
-
-  setBilling('monthly');
-})();
-</script>
 
 </body>
 </html>
