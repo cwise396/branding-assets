@@ -173,14 +173,17 @@
       transform:translateY(-1px);
     }
 
-    .info{
-      margin-top:28px;
+   .info{
+  margin-top:28px;
 
-      font-size:14px;
-      line-height:1.65;
+  font-size:16px;
+  font-weight:700;
+  line-height:1.5;
 
-      opacity:.82;
-    }
+  color:var(--cardText);
+
+  opacity:.92;
+}
 
     .micro{
       margin-top:18px;
@@ -209,12 +212,11 @@
 
   <main class="card">
 
-    <h1>Prepare payment</h1>
+    <h1>Payment</h1>
 
-    <p class="sub">
-      Stripe will be integrated here.
-      SlackDigest Basic will be activated after successful payment.
-    </p>
+   <p class="sub">
+  Complete payment to activate SlackDigest.
+</p>
 
     <section class="plan">
 
@@ -225,24 +227,20 @@
         <span>monthly · per workspace</span>
       </p>
 
-      <p class="note">
-        Secure checkout through Stripe.<br>
-        Cancel anytime.
-      </p>
+     <p class="note">
+  Secure payment via Stripe.
+</p>
 
-      <a class="btn" href="/en/success/slackdigest/">
+     <a class="btn" href="/en/slackdigest/setup/">
         Simulate payment
       </a>
 
     </section>
 
-    <div class="info">
-      After successful payment, you will continue directly to setup.
-    </div>
-
-    <div class="micro">
-      No setup · no call · cancel anytime
-    </div>
+   <div class="info">
+  After payment: configure SlackDigest.
+</div>
+     
 
   </main>
 
