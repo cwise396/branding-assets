@@ -176,7 +176,7 @@
       padding:8px 14px;
       border-radius:999px;
       border:1px solid rgba(255,255,255,.35);
-      background:#fff;
+      background:rgba(255,255,255,.92);
       color:#0E3960;
       font-weight:900;
       cursor:pointer;
@@ -351,16 +351,22 @@
       opacity:.92;
     }
 .cta-group{
-  display:flex;
+  display:grid;
+  grid-template-columns:1fr 1fr;
   gap:10px;
-  flex-wrap:wrap;
-  margin-top:18px;
+  margin-top:20px;
 }
 
 .cta{
   margin-top:0;
 }
+display:flex;
+align-items:center;
+justify-content:center;
 
+min-height:48px;
+
+text-align:center;
 .cta-secondary{
   background:#164E84;
 
