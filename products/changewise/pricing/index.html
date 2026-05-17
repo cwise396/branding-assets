@@ -485,14 +485,19 @@
       <li>20 Briefs pro Monat</li>
     </ul>
 
-    <div class="cta-group">
-  <a href="/payment/changewise/basic-monthly/" class="cta">
+ <div class="cta-group">
+
+  <a href="/payment/changewise/basic-monthly/"
+     class="cta cta-monthly">
     Basic monatlich
   </a>
 
-  <a href="/payment/changewise/basic-yearly/" class="cta cta-secondary">
+  <a href="/payment/changewise/basic-yearly/"
+     class="cta cta-secondary cta-yearly"
+     style="display:none;">
     Basic jährlich
   </a>
+
 </div>
  </div>
     <div class="plan pro">
@@ -517,14 +522,19 @@
       <li>120 Briefs pro Monat</li>
     </ul>
 
-   <div class="cta-group">
-  <a href="/payment/changewise/pro-monthly/" class="cta">
+  <div class="cta-group">
+
+  <a href="/payment/changewise/pro-monthly/"
+     class="cta cta-monthly">
     Pro monatlich
   </a>
 
-  <a href="/payment/changewise/pro-yearly/" class="cta cta-secondary">
+  <a href="/payment/changewise/pro-yearly/"
+     class="cta cta-secondary cta-yearly"
+     style="display:none;">
     Pro jährlich
   </a>
+
 </div>
 </div>
  
@@ -560,6 +570,14 @@
         monthly.style.display = 'none';
         yearly.style.display  = 'block';
       }
+    });
+
+    document.querySelectorAll('.cta-monthly').forEach(function(btn){
+      btn.style.display = (mode === 'monthly') ? 'inline-block' : 'none';
+    });
+
+    document.querySelectorAll('.cta-yearly').forEach(function(btn){
+      btn.style.display = (mode === 'yearly') ? 'inline-block' : 'none';
     });
   }
 
