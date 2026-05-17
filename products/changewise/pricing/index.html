@@ -198,17 +198,21 @@
     }
 
 .plan{
-  backdrop-filter: blur(4px);
-}
- background:linear-gradient(
-  160deg,
-  rgba(22,78,132,.60),
-  rgba(14,57,96,.55)
-);
+  backdrop-filter:blur(4px);
+
+  background:linear-gradient(
+    160deg,
+    rgba(22,78,132,.60),
+    rgba(14,57,96,.55)
+  );
+
   border:1px solid var(--border);
   border-radius:18px;
+
   padding:24px;
+
   box-shadow:var(--shadow-soft);
+
   position:relative;
 }
 
@@ -316,7 +320,23 @@
     .cta:hover{
       opacity:.92;
     }
+.cta-group{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
 
+.cta{
+  margin-top:0;
+}
+
+.cta-secondary{
+  background:rgba(255,255,255,.14);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.28);
+  box-shadow:none;
+}
     footer{
       margin-top:80px;
       font-size:14px;
@@ -464,8 +484,15 @@
       <li>120 Briefs pro Monat</li>
     </ul>
 
-    <a href="/contact_changewise.html" class="cta">Pro aktivieren</a>
-  </div>
+   <div class="cta-group">
+  <a href="/payment/changewise/pro-monthly/" class="cta">
+    Pro monatlich
+  </a>
+
+  <a href="/payment/changewise/pro-yearly/" class="cta cta-secondary">
+    Pro jährlich
+  </a>
+</div>
 
   <div class="plan">
     <h3>Basic (Klarer Einstieg)</h3>
@@ -488,8 +515,15 @@
       <li>20 Briefs pro Monat</li>
     </ul>
 
-    <a href="/contact_changewise.html" class="cta">Mit Basic starten</a>
-  </div>
+    <div class="cta-group">
+  <a href="/payment/changewise/basic-monthly/" class="cta">
+    Basic monatlich
+  </a>
+
+  <a href="/payment/changewise/basic-yearly/" class="cta cta-secondary">
+    Basic jährlich
+  </a>
+</div>
 
 </div>
 
