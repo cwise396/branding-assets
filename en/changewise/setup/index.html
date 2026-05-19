@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+
+  <title>ChangeWise Setup</title>
+
+  <style>
+    :root{
+      --bg:rgb(16,57,96);
+      --card:#F3F6FA;
+      --cardText:#0E3960;
+      --line:rgba(17,24,39,.10);
+      --input:#F8FAFC;
+      --btn:rgb(21,63,108);
+      --btnText:#FFFFFF;
+      --shadow:0 10px 30px rgba(0,0,0,.15);
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+
+      font-family:
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        Segoe UI,
+        Roboto,
+        Arial,
+        sans-serif;
+
+      background:var(--bg);
+      color:var(--cardText);
+
+      line-height:1.55;
+    }
+
+    .wrap{
+      max-width:820px;
+
+      margin:0 auto;
+
+      padding:56px 18px 88px;
+    }
+
+    .card{
+      background:var(--card);
+
+      color:var(--cardText);
+
+      border-radius:18px;
+
+      padding:24px 22px;
+
+      margin:18px 0;
+
+      box-shadow:var(--shadow);
+    }
+
+    h1{
+      margin:0 0 8px;
+
+      font-size:30px;
+
+      font-weight:900;
+
+      letter-spacing:-.3px;
+    }
+
+    h2{
+      margin:0 0 10px;
+
+      font-size:20px;
+
+      letter-spacing:-.2px;
+    }
+
+    p{
+      margin:8px 0;
+
+      opacity:.88;
+    }
+
+    label{
+      display:block;
+
+      margin:14px 0 6px;
+
+      opacity:.82;
+
+      font-size:13px;
+
+      font-weight:700;
+    }
+
+    input,
+    select,
+    textarea{
+      width:100%;
+
+      padding:12px;
+
+      border-radius:12px;
+
+      border:1px solid var(--line);
+
+      background:var(--input);
+
+      color:var(--cardText);
+
+      font-size:15px;
+
+      font-family:inherit;
+    }
+
+    textarea{
+      min-height:96px;
+
+      resize:vertical;
+    }
+
+    .row{
+      display:grid;
+
+      grid-template-columns:1fr 1fr;
+
+      gap:12px;
+    }
+
+    .btn{
+      display:inline-flex;
+
+      align-items:center;
+      justify-content:center;
+
+      padding:13px 16px;
+
+      border-radius:14px;
+
+      background:var(--btn);
+      color:var(--btnText);
+
+      text-decoration:none;
+
+      font-weight:800;
+
+      border:0;
+
+      cursor:pointer;
+    }
+
+    .fine{
+      margin-top:12px;
+
+      font-size:13px;
+
+      opacity:.72;
+    }
+
+    .success{
+      margin-top:18px;
+
+      font-size:16px;
+
+      font-weight:800;
+    }
+
+    .footer-links{
+      margin-top:34px;
+
+      display:flex;
+      justify-content:center;
+
+      gap:18px;
+
+      font-size:14px;
+    }
+
+    .footer-links a{
+      color:#FFFFFF;
+
+      text-decoration:none;
+
+      opacity:.78;
+    }
+
+    .footer-links a:hover{
+      opacity:1;
+    }
+
+    @media(max-width:720px){
+
+      .row{
+        grid-template-columns:1fr;
+      }
+
+      .wrap{
+        padding:34px 14px 72px;
+      }
+
+      h1{
+        font-size:26px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="wrap">
+
+    <section class="card">
+
+      <h1>Payment successful · ChangeWise is ready</h1>
+
+      <p>
+        Define the context, tone and result
+        ChangeWise should create.
+      </p>
+
+      <p class="fine">
+        Everything can be adjusted later.
+      </p>
+
+    </section>
+
+    <section class="card">
+
+      <h2>Configure ChangeWise</h2>
+
+      <form action="https://formspree.io/f/xgooowpk" method="POST">
+
+        <input type="hidden" name="product" value="changewise">
+        <input type="hidden" name="lang" value="en">
+
+        <input
+          type="hidden"
+          name="_redirect"
+          value="https://slackdigest.org/en/changewise/setup-success/"
+        >
+
+        <label>Email for result or confirmation</label>
+
+        <input
+          name="email"
+          type="email"
+          required
+          placeholder="you@company.com"
+        >
+
+        <div class="row">
+
+          <div>
+            <label>Result format</label>
+
+            <select name="output_format" required>
+              <option value="decision_brief">
+                Decision recommendation
+              </option>
+
+              <option value="team_update">
+                Team update
+              </option>
+
+              <option value="message_draft">
+                Message draft
+              </option>
+            </select>
+          </div>
+
+          <div>
+            <label>Tone</label>
+
+            <select name="tone" required>
+              <option value="calm_clear">
+                calm & clear
+              </option>
+
+              <option value="executive">
+                executive
+              </option>
+
+              <option value="direct">
+                direct
+              </option>
+            </select>
+          </div>
+
+        </div>
+
+        <label>What is this about?</label>
+
+        <textarea
+          name="context"
+          required
+          placeholder="Short context, decision, project or situation"
+        ></textarea>
+
+        <label>
+          What should ChangeWise especially consider?
+        </label>
+
+        <textarea
+          name="focus"
+          placeholder="Goal, audience, open questions or preferred direction"
+        ></textarea>
+
+        <div style="margin-top:18px;">
+
+          <button class="btn" type="submit">
+            Save setup
+          </button>
+
+        </div>
+
+        <div class="success">
+          ChangeWise now creates the first foundation
+          based on your input.
+        </div>
+
+      </form>
+
+    </section>
+
+    <footer class="footer-links">
+      <a href="/en/imprint/">Imprint</a>
+      <a href="/en/privacy/">Privacy</a>
+    </footer>
+
+  </div>
+
+</body>
+</html>
