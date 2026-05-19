@@ -51,7 +51,14 @@
         Arial,
         sans-serif;
     }
+.page{
+  width:100%;
 
+  display:flex;
+  flex-direction:column;
+
+  align-items:center;
+}
     .card{
       width:100%;
       max-width:620px;
@@ -186,7 +193,7 @@
       opacity:.92;
     }
 .footer-links{
-  margin-top:34px;
+  margin-top:22px;
 
   display:flex;
   justify-content:center;
@@ -222,7 +229,7 @@
 </head>
 
 <body>
-
+<div class="page">
   <main class="card">
 
     <h1>Zahlung</h1>
@@ -253,11 +260,13 @@
     <div class="info">
       Nach der Zahlung: ChangeWise einrichten.
     </div>
+ 
+  </main>
 <footer class="footer-links">
   <a href="/impressum.html">Impressum</a>
   <a href="/datenschutz.html">Datenschutz</a>
 </footer>
-  </main>
 
+</div>
 </body>
 </html>
