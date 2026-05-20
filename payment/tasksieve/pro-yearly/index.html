@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="color-scheme" content="dark">
 
-  <title>Zahlung – TaskSieve Pro Jährlich</title>
+  <title>Zahlung – TaskSieve Pro</title>
 
- <link rel="canonical" href="https://slackdigest.org/payment/tasksieve/pro-yearly/">
+  <link rel="canonical" href="https://slackdigest.org/payment/tasksieve/pro-yearly/">
 
   <style>
     :root{
@@ -50,11 +50,20 @@
         sans-serif;
     }
 
+    .page{
+      width:100%;
+
+      display:flex;
+      flex-direction:column;
+
+      align-items:center;
+    }
+
     .card{
       width:100%;
       max-width:620px;
 
-      background:var(--card);
+      background:#F3F6FA;
       color:var(--cardText);
 
       border-radius:22px;
@@ -88,7 +97,7 @@
 
       color:var(--cardText);
 
-      opacity:.86;
+      opacity:.88;
     }
 
     .plan{
@@ -180,25 +189,37 @@
     }
 
     .info{
-  margin-top:28px;
+      margin-top:28px;
 
-  font-size:16px;
-  font-weight:700;
-  line-height:1.5;
-
-  color:var(--cardText);
-
-  opacity:.92;
-}
-
-    .micro{
-      margin-top:18px;
-
-      font-size:13px;
-
-      opacity:.62;
+      font-size:16px;
+      font-weight:700;
+      line-height:1.5;
 
       color:var(--cardText);
+
+      opacity:.92;
+    }
+
+    .footer-links{
+      margin-top:22px;
+
+      display:flex;
+      justify-content:center;
+      gap:18px;
+
+      font-size:14px;
+    }
+
+    .footer-links a{
+      color:#FFFFFF;
+
+      text-decoration:none;
+
+      opacity:.78;
+    }
+
+    .footer-links a:hover{
+      opacity:1;
     }
 
     @media (max-width:720px){
@@ -217,38 +238,47 @@
 
 <body>
 
+<div class="page">
+
   <main class="card">
 
     <h1>Zahlung</h1>
-<p class="sub">
-  Schließe die Zahlung ab, um TaskSieve Pro zu aktivieren.
-</p>
+
+    <p class="sub">
+      Schließe die Zahlung ab, um TaskSieve Pro zu aktivieren.
+    </p>
 
     <section class="plan">
 
-     <h2>TaskSieve Pro — Jährlich</h2>
+      <h2>TaskSieve Pro</h2>
 
-     <p class="price">
-  9 €
-  <span>monatlich · jährlich abgerechnet</span>
-</p>
+      <p class="price">
+        9 €
+        <span>monatlich · jährlich abgerechnet</span>
+      </p>
 
       <p class="note">
-  Sichere Zahlung über Stripe.
-</p>
+        Sichere Zahlung über Stripe.
+      </p>
 
-      <a class="btn "href="/tasksieve/setup/">
+      <a class="btn" href="/tasksieve/setup/">
         Zahlung simulieren
       </a>
 
     </section>
 
     <div class="info">
-  Nach der Zahlung: TaskSieve einrichten.
-</div>
-     
+      Nach der Zahlung: TaskSieve einrichten.
+    </div>
 
   </main>
+
+  <footer class="footer-links">
+    <a href="/impressum.html">Impressum</a>
+    <a href="/datenschutz.html">Datenschutz</a>
+  </footer>
+
+</div>
 
 </body>
 </html>
