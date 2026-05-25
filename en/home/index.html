@@ -114,9 +114,17 @@ footer,
 
 @media (max-width:720px){
   .top-nav{
-    display:none;
+    display:flex;
+    flex-wrap:wrap;
+    max-width:calc(100vw - 96px);
+    gap:8px 12px;
+    padding:7px 10px;
   }
-}  
+
+  .top-nav a{
+    font-size:.78rem;
+  }
+} 
     /* Language Switch */
     .i18n-toggle{
       position:fixed;
