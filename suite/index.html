@@ -1196,8 +1196,8 @@ document.addEventListener("DOMContentLoaded", function () {
       obs.unobserve(target);
     });
   }, {
-    threshold: 0.6,
-    rootMargin: "0px 0px -8% 0px"
+   threshold: window.matchMedia("(max-width: 640px)").matches ? 0.15 : 0.6,
+rootMargin: "0px 0px -8% 0px"
   });
 
   observer.observe(target);
