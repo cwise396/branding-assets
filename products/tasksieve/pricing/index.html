@@ -111,7 +111,11 @@
    .muted{color:#4B6380}
 
     /* TABLE */
-    .table-wrap{overflow:hidden;border-radius:14px}
+    .table-wrap{
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  border-radius:14px;
+}
     table{
       width:100%;
       border-collapse:separate;
