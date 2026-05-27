@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Quellen verbinden – SlackDigest</title>
+
+  <style>
+    :root{
+      --bg:#0C6C48;
+      --card:#FFFFFF;
+      --cardText:#0E3960;
+      --btn:#0C6C48;
+      --btnText:#FFFFFF;
+      --shadow:0 10px 30px rgba(0,0,0,.15);
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      background:var(--bg);
+      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .page{
+      width:100%;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+
+    .card{
+      width:100%;
+      max-width:620px;
+      background:var(--card);
+      color:var(--cardText);
+      border-radius:22px;
+      padding:40px 34px;
+      box-shadow:var(--shadow);
+      text-align:center;
+    }
+
+    h1{
+      margin:0 0 12px;
+      font-size:34px;
+      line-height:1.08;
+      font-weight:900;
+      letter-spacing:-.4px;
+    }
+
+    .sub{
+      margin:0 auto 24px;
+      max-width:520px;
+      font-size:16px;
+      line-height:1.65;
+      opacity:.88;
+    }
+
+    .selected{
+      margin:22px auto 26px;
+      padding:16px 18px;
+      max-width:420px;
+      border-radius:16px;
+      background:#F3F6FA;
+      text-align:left;
+      font-size:14px;
+      line-height:1.55;
+      font-weight:700;
+    }
+
+    .selected-title{
+      margin-bottom:8px;
+      font-size:13px;
+      opacity:.72;
+      font-weight:800;
+    }
+
+    .selected ul{
+      margin:0;
+      padding-left:18px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 18px;
+      border-radius:14px;
+      background:var(--btn);
+      color:var(--btnText);
+      text-decoration:none;
+      font-weight:900;
+    }
+
+    .micro{
+      margin-top:24px;
+      font-size:14px;
+      font-weight:700;
+      line-height:1.55;
+      opacity:.82;
+    }
+
+    .footer-links{
+      margin-top:22px;
+      display:flex;
+      justify-content:center;
+      gap:18px;
+      font-size:14px;
+    }
+
+    .footer-links a{
+      color:#FFFFFF;
+      text-decoration:none;
+      opacity:.78;
+    }
+
+    .footer-links a:hover{
+      opacity:1;
+    }
+
+    @media(max-width:720px){
+      .card{
+        padding:32px 24px;
+      }
+
+      h1{
+        font-size:28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <main class="card">
+
+    <h1>SlackDigest</h1>
+
+    <p class="sub">
+      Dein Setup wurde gespeichert.
+      <br>
+      SlackDigest benötigt nun Zugriff
+      auf die ausgewählten Quellen.
+    </p>
+
+    <div class="selected">
+
+      <div class="selected-title">
+        Ausgewählte Quellen
+      </div>
+
+      <ul id="selectedSources">
+        <li>Slack channels</li>
+      </ul>
+
+    </div>
+
+    <a class="btn" href="#">
+      Slack-Workspace verbinden
+    </a>
+
+    <div class="micro">
+      Der erste Digest folgt entsprechend
+      deines gewählten Takts.
+      <br><br>
+      Klare Prioritäten.<br>
+      Weniger Rauschen.<br>
+      Mehr Orientierung.
+    </div>
+
+  </main>
+
+  <footer class="footer-links">
+    <a href="/impressum.html">Impressum</a>
+    <a href="/datenschutz.html">Datenschutz</a>
+  </footer>
+
+</div>
+
+<script>
+  const storedSetup = sessionStorage.getItem("slackdigestSetup");
+
+  if(storedSetup){
+
+    try{
+
+      const setup = JSON.parse(storedSetup);
+
+      const list = document.getElementById("selectedSources");
+
+      if(setup.sources && setup.sources.length){
+
+        list.innerHTML = "";
+
+        setup.sources.forEach(function(source){
+
+          const item = document.createElement("li");
+
+          item.textContent = source;
+
+          list.appendChild(item);
+
+        });
+
+      }
+
+    }catch(e){}
+
+  }
+</script>
+
+</body>
+</html>
