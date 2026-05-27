@@ -198,83 +198,121 @@
 
     </section>
 
-    <section class="card">
+  <section class="card">
+  <h1>SlackDigest is active</h1>
 
-      <h2>Configure digest</h2>
+  <p class="lead">
+    Define briefly
+    <strong>what</strong> should shape the digest —
+    and <strong>how</strong> you would like to receive it.
+  </p>
+</section>
 
-      <form action="https://formspree.io/f/xgooowpk" method="POST">
+<section class="card">
+  <h2>Configure digest</h2>
 
-        <input type="hidden" name="product" value="slackdigest">
-        <input type="hidden" name="lang" value="en">
+  <form id="setupForm" action="https://formspree.io/f/xgooowpk" method="POST">
 
+    <input type="hidden" name="product" value="slackdigest">
+    <input type="hidden" name="lang" value="en">
+
+    <input
+      type="hidden"
+      name="_next"
+      value="https://slackdigest.org/en/slackdigest/connect/index.html"
+    >
+
+    <label>Email for delivery or confirmation</label>
+    <input
+      name="email"
+      type="email"
+      required
+      placeholder="you@company.com"
+    >
+
+    <label>Sources that should shape the digest</label>
+
+    <div class="source-options">
+
+      <label>
         <input
-          type="hidden"
-          name="_next"
-          value="https://slackdigest.org/en/slackdigest/setup-success/index.html"
+          type="checkbox"
+          name="selected_sources"
+          value="Slack channels"
+          checked
         >
+        Slack channels
+      </label>
 
-        <label>Email for delivery or confirmation</label>
-
+      <label>
         <input
-          name="email"
-          type="email"
-          required
-          placeholder="you@company.com"
+          type="checkbox"
+          name="selected_sources"
+          value="Sales updates"
         >
+        Sales updates
+      </label>
 
-        <div class="row">
-
-          <div>
-            <label>Cadence</label>
-
-            <select name="cadence" required>
-              <option value="daily">daily</option>
-              <option value="weekly">weekly</option>
-            </select>
-          </div>
-
-          <div>
-            <label>Delivery</label>
-
-            <select name="delivery" required>
-              <option value="email">Email</option>
-              <option value="slack">Slack</option>
-            </select>
-          </div>
-
-        </div>
-
-        <label>Channels, comma-separated</label>
-
+      <label>
         <input
-          name="channels"
-          type="text"
-          required
-          placeholder="#support, #sales, #product"
+          type="checkbox"
+          name="selected_sources"
+          value="Support topics"
         >
+        Support topics
+      </label>
 
-        <div style="margin-top:18px;">
-          <button class="btn" type="submit">
-            Save setup
-          </button>
-        </div>
+      <label>
+        <input
+          type="checkbox"
+          name="selected_sources"
+          value="Internal communication"
+        >
+        Internal communication
+      </label>
 
-        <div class="fine fine-strong">
-          Changes can be adjusted at any time.
-        </div>
+      <label>
+        <input
+          type="checkbox"
+          name="selected_sources"
+          value="Notes & summaries"
+        >
+        Notes & summaries
+      </label>
 
-      </form>
+    </div>
 
-    </section>
+    <div class="row">
 
-  </main>
+      <div>
+        <label>Cadence</label>
 
-  <footer class="footer-links">
-    <a href="/en/imprint/">Imprint</a>
-    <a href="/en/privacy/">Privacy</a>
-  </footer>
+        <select name="cadence" required>
+          <option value="daily">daily</option>
+          <option value="weekly">weekly</option>
+        </select>
+      </div>
 
-</div>
+      <div>
+        <label>Delivery</label>
 
-</body>
-</html>
+        <select name="delivery" required>
+          <option value="email">Email</option>
+          <option value="slack">Slack</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div style="margin-top:18px;">
+      <button class="btn" type="submit">
+        Save setup
+      </button>
+    </div>
+
+    <div class="fine fine-strong">
+      Your selection defines the focus.
+    </div>
+
+  </form>
+</section>
