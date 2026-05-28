@@ -122,7 +122,24 @@
     }
 
     .footer-links a:hover{opacity:1}
+.connect-help{
+  margin:18px auto 0;
+  max-width:420px;
+  text-align:left;
+  font-size:14px;
+  line-height:1.55;
+  opacity:.82;
+}
 
+.connect-help summary{
+  cursor:pointer;
+  font-weight:800;
+}
+
+.connect-help ol{
+  margin:10px 0 0;
+  padding-left:20px;
+}
     @media(max-width:720px){
       .card{padding:32px 24px}
       h1{font-size:28px}
@@ -157,7 +174,28 @@
     <a class="btn" href="#">
       Connect Slack workspace
     </a>
+<details class="connect-help">
+  <summary>What happens next?</summary>
 
+  <ol>
+    <li>
+      Click “Connect Slack workspace”.
+    </li>
+
+    <li>
+      A Slack window will open
+      where you can connect the workspace
+      linked to your selected sources.
+      <br><br>
+      This usually takes less than a minute.
+    </li>
+
+    <li>
+      SlackDigest prepares the first digest
+      based on your setup.
+    </li>
+  </ol>
+</details>
     <div class="micro">
       The first digest will follow according
       to your selected cadence.
